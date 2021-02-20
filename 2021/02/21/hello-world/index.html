@@ -52,16 +52,6 @@
   <div class="slimContent">
     <div class="navbar-header">
       
-      
-      <div class="profile-block text-center">
-        <a id="avatar" href="" target="_blank">
-          <img class="img-circle img-rotate" src="/images/avatar.jpg" width="200" height="200">
-        </a>
-        <h2 id="name" class="hidden-xs hidden-sm">Leon</h2>
-        <h3 id="title" class="hidden-xs hidden-sm hidden-md">Student</h3>
-        <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i> Shanghai, China</small>
-      </div>
-      
       <div class="search" id="search-form-wrap">
 
     <form class="search-form sidebar-form">
@@ -182,15 +172,15 @@
 	
     <ul class="social-links">
     	
-        <li><a href="https://github.com/skylyong" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
+        <li><a href="https://github.com/skylyong" target="_blank" title="Github" ><i class="icon icon-github"></i></a></li>
         
-        <li><a href="/null" target="_blank" title="Weibo" data-toggle=tooltip data-placement=top><i class="icon icon-weibo"></i></a></li>
+        <li><a href="/null" target="_blank" title="Weibo" ><i class="icon icon-weibo"></i></a></li>
         
-        <li><a href="/null" target="_blank" title="Twitter" data-toggle=tooltip data-placement=top><i class="icon icon-twitter"></i></a></li>
+        <li><a href="/null" target="_blank" title="Twitter" ><i class="icon icon-twitter"></i></a></li>
         
-        <li><a href="/null" target="_blank" title="Behance" data-toggle=tooltip data-placement=top><i class="icon icon-behance"></i></a></li>
+        <li><a href="/null" target="_blank" title="Behance" ><i class="icon icon-behance"></i></a></li>
         
-        <li><a href="/atom.xml" target="_blank" title="Rss" data-toggle=tooltip data-placement=top><i class="icon icon-rss"></i></a></li>
+        <li><a href="/atom.xml" target="_blank" title="Rss" ><i class="icon icon-rss"></i></a></li>
         
     </ul>
 
@@ -320,13 +310,6 @@
 
         
 
-	<span class="article-read hidden-xs">
-    	<i class="icon icon-eye-fill" aria-hidden="true"></i>
-    	<span id="/2021/02/21/hello-world/" class="leancloud_visitors"  data-flag-title="Hello World">
-			<span class="leancloud-visitors-count">0</span>
-		</span>
-    </span>
-
         <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2021/02/21/hello-world/#comments" class="article-comment-link">Comments</a></span>
         
       </div>
@@ -361,30 +344,15 @@
 </blockquote>
 
 
-<div class="panel panel-default panel-badger">
-  <div class="panel-body">
-    <figure class="media">
-      <div class="media-left">
-        <a href="" target="_blank" class="img-burn thumb-sm visible-lg">
-          <img src="/images/avatar.jpg" class="img-rounded w-full" alt="">
-        </a>
-      </div>
-      <div class="media-body">
-        <h3 class="media-heading"><a href="" target="_blank"><span class="text-dark">Leon</span><small class="ml-1x">Student</small></a></h3>
-        <div>A student of ECNU.</div>
-      </div>
-    </figure>
-  </div>
-</div>
-
-
     </div>
   </article>
   
     
   <section id="comments">
   	
-      <div id="vcomments"></div>
+      <div id="lv-container" data-id="city" data-uid="">
+        <noscript> 为正常使用来必力评论功能请激活JavaScript</noscript>
+      </div>    
     
   </section>
 
@@ -472,15 +440,15 @@
 	
     <ul class="social-links">
     	
-        <li><a href="https://github.com/skylyong" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
+        <li><a href="https://github.com/skylyong" target="_blank" title="Github" ><i class="icon icon-github"></i></a></li>
         
-        <li><a href="/null" target="_blank" title="Weibo" data-toggle=tooltip data-placement=top><i class="icon icon-weibo"></i></a></li>
+        <li><a href="/null" target="_blank" title="Weibo" ><i class="icon icon-weibo"></i></a></li>
         
-        <li><a href="/null" target="_blank" title="Twitter" data-toggle=tooltip data-placement=top><i class="icon icon-twitter"></i></a></li>
+        <li><a href="/null" target="_blank" title="Twitter" ><i class="icon icon-twitter"></i></a></li>
         
-        <li><a href="/null" target="_blank" title="Behance" data-toggle=tooltip data-placement=top><i class="icon icon-behance"></i></a></li>
+        <li><a href="/null" target="_blank" title="Behance" ><i class="icon icon-behance"></i></a></li>
         
-        <li><a href="/atom.xml" target="_blank" title="Rss" data-toggle=tooltip data-placement=top><i class="icon icon-rss"></i></a></li>
+        <li><a href="/atom.xml" target="_blank" title="Rss" ><i class="icon icon-rss"></i></a></li>
         
     </ul>
 
@@ -533,29 +501,20 @@ window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
 
    
     
-  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
-  <script src="//cdn.jsdelivr.net/npm/valine"></script>
-  <script type="text/javascript">
-  var GUEST = ['nick', 'mail', 'link'];
-  var meta = 'nick,mail,link';
-  meta = meta.split(',').filter(function(item) {
-    return GUEST.indexOf(item) > -1;
-  });
-  new Valine({
-    el: '#vcomments',
-    verify: false,
-    notify: false,
-    appId: '',
-    appKey: '',
-    placeholder: 'Just go go',
-    avatar: 'mm',
-    meta: meta,
-    pageSize: '10' || 10,
-    visitor: true
-  });
-  </script>
+<script defer type="text/javascript">
+  (function(d, s) {
+    var j, e = d.getElementsByTagName(s)[0];
 
-     
+    if (typeof LivereTower === 'function') { return; }
+
+    j = d.createElement(s);
+    j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+    j.async = true;
+
+    e.parentNode.insertBefore(j, e);
+  })(document, 'script');
+</script>
+
 
 
 
