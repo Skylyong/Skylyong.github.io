@@ -23,17 +23,17 @@
     var NexT = window.NexT || {};
     var CONFIG = {"hostname":"leongo.cn","root":"/","images":"/images","scheme":"Pisces","version":"8.2.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}};
   </script>
-<meta name="description" content="需求描述本次课程设计要求在n个城市之间架设n-1条线路，实现这几个城市之间的网络通信，要求网络经济代价最低。具体要求如下：  问题分析根据设计要求，我们假设城市之间的距离越大架设网线的经济代价越大，因此可以用两个城市之间的距离作为边的权重。 n个城市之间最多可以生成 1+2+…+(n-1)条边，分别计算出每条边的长度然后对他们进行升序排序，利用并查集得到由n-1条边组成的最小生成树，问题便得到解决">
+<meta name="description" content="需求描述本次课程设计要求在n个城市之间架设n-1条线路，实现这几个城市之间的网络通信，要求网络经济代价最低。具体要求如下：">
 <meta property="og:type" content="article">
 <meta property="og:title" content="【课程设计】最小生成树应用">
 <meta property="og:url" content="https://leongo.cn/2021/02/22/%E3%80%90%E8%AF%BE%E7%A8%8B%E8%AE%BE%E8%AE%A1%E3%80%91%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91%E5%BA%94%E7%94%A8/index.html">
 <meta property="og:site_name" content="Leon&#39;s Blog">
-<meta property="og:description" content="需求描述本次课程设计要求在n个城市之间架设n-1条线路，实现这几个城市之间的网络通信，要求网络经济代价最低。具体要求如下：  问题分析根据设计要求，我们假设城市之间的距离越大架设网线的经济代价越大，因此可以用两个城市之间的距离作为边的权重。 n个城市之间最多可以生成 1+2+…+(n-1)条边，分别计算出每条边的长度然后对他们进行升序排序，利用并查集得到由n-1条边组成的最小生成树，问题便得到解决">
+<meta property="og:description" content="需求描述本次课程设计要求在n个城市之间架设n-1条线路，实现这几个城市之间的网络通信，要求网络经济代价最低。具体要求如下：">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://imgconvert.csdnimg.cn/aHR0cHM6Ly91cGxvYWQtaW1hZ2VzLmppYW5zaHUuaW8vdXBsb2FkX2ltYWdlcy8xNzc4Njc2Mi1iN2U3M2JhMjE3ODgyMWVmLmpwZw?x-oss-process=image/format,png">
 <meta property="og:image" content="https://imgconvert.csdnimg.cn/aHR0cHM6Ly91cGxvYWQtaW1hZ2VzLmppYW5zaHUuaW8vdXBsb2FkX2ltYWdlcy8xNzc4Njc2Mi03MjhiZjIyMGNkYzY5NTIyLnBuZw?x-oss-process=image/format,png">
 <meta property="article:published_time" content="2021-02-22T10:20:41.000Z">
-<meta property="article:modified_time" content="2021-02-22T10:26:37.715Z">
+<meta property="article:modified_time" content="2021-02-25T07:27:24.913Z">
 <meta property="article:author" content="Leon">
 <meta property="article:tag" content="树">
 <meta name="twitter:card" content="summary">
@@ -288,10 +288,16 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">发表于</span>
-      
 
-      <time title="创建时间：2021-02-22 18:20:41 / 修改时间：18:26:37" itemprop="dateCreated datePublished" datetime="2021-02-22T18:20:41+08:00">2021-02-22</time>
+      <time title="创建时间：2021-02-22 18:20:41" itemprop="dateCreated datePublished" datetime="2021-02-22T18:20:41+08:00">2021-02-22</time>
     </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2021-02-25 15:27:24" itemprop="dateModified" datetime="2021-02-25T15:27:24+08:00">2021-02-25</time>
+      </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
         <i class="far fa-folder"></i>
@@ -320,6 +326,8 @@
     
     <div class="post-body" itemprop="articleBody">
         <h4 id="需求描述"><a href="#需求描述" class="headerlink" title="需求描述"></a>需求描述</h4><p>本次课程设计要求在n个城市之间架设n-1条线路，实现这几个城市之间的网络通信，要求网络经济代价最低。具体要求如下：</p>
+<a id="more"></a>
+
 <p><img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly91cGxvYWQtaW1hZ2VzLmppYW5zaHUuaW8vdXBsb2FkX2ltYWdlcy8xNzc4Njc2Mi1iN2U3M2JhMjE3ODgyMWVmLmpwZw?x-oss-process=image/format,png" alt="课程设计要求"></p>
 <h4 id="问题分析"><a href="#问题分析" class="headerlink" title="问题分析"></a>问题分析</h4><p>根据设计要求，我们假设城市之间的距离越大架设网线的经济代价越大，因此可以用两个城市之间的距离作为边的权重。</p>
 <p>n个城市之间最多可以生成 1+2+…+(n-1)条边，分别计算出每条边的长度然后对他们进行升序排序，利用并查集得到由n-1条边组成的最小生成树，问题便得到解决。</p>
