@@ -1,6 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>2020碎碎念</title>
+    <url>/2021/02/22/2020%E7%A2%8E%E7%A2%8E%E5%BF%B5/</url>
+    <content><![CDATA[<p>一眨眼就到了2021年了，又大了一岁，回想起过去的一年好似记忆被偷走了大半，由于疫情的原因，对2020年上半年的记忆几乎是没有的，下半年几乎都在敲代码，人一旦敲起代码来一整天的时间眨眼就没有了，也可以说下半年的时间被代码偷走了。</p>
+<a id="more"></a>
+<p>不过仔细回想起来，这一年里面还是发生了很多事情，也是有必要记录一下。</p>
+]]></content>
+      <categories>
+        <category>生活</category>
+      </categories>
+      <tags>
+        <tag>杂记</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>ECNU的春</title>
     <url>/2021/02/22/Spring-of-ECNU/</url>
     <content><![CDATA[<p>最开始令人感受到春气息的是红梅花，红梅花跟腊梅花的区别在于花瓣的颜色和开放的时间不同，腊梅花比红梅花开得更早一些。今年红梅花开的具体日子已经不记得了，只依稀记得那个时候天还很冷，操场上面很少见到跑步运动的人，留校的同学大多都还呆在宿舍，校园里面因此显得十分的冷清。</p>
@@ -71,55 +85,6 @@
       </tags>
   </entry>
   <entry>
-    <title>google访问助手安装</title>
-    <url>/2021/02/24/google%E4%B8%8A%E7%BD%91%E5%8A%A9%E6%89%8B%E5%AE%89%E8%A3%85/</url>
-    <content><![CDATA[<p>今天用图书馆电脑的时候发现不能访问google，非常不方便搜索文献，因此研究了一下google上网助手，记录一下。</p>
-<a id="more"></a>
-<h3 id="IGG谷歌访问助手"><a href="#IGG谷歌访问助手" class="headerlink" title="IGG谷歌访问助手"></a><a href="https://iguge.app/">IGG谷歌访问助手</a></h3><p>该助手具有如下特点：</p>
-<ul>
-<li>免费提供谷歌搜索</li>
-<li>微软onedrive加速</li>
-<li>不包含YouTube，谷歌网盘</li>
-</ul>
-<h3 id="google上网助手"><a href="#google上网助手" class="headerlink" title="google上网助手"></a><a href="https://chrome.google.com/webstore/detail/%E8%B0%B7%E6%AD%8C%E4%B8%8A%E7%BD%91%E5%8A%A9%E6%89%8B/nonmafimegllfoonjgplbabhmgfanaka?utm_source=chrome-ntp-icon">google上网助手</a></h3><p>该助手具备IGG谷歌访问助手的特点，但是安装的时候需要登录Chrome商店才能够下载，如果没有KX上网，建议读者选择安装“IGG谷歌访问助手”方式访问谷歌。</p>
-]]></content>
-      <categories>
-        <category>技术</category>
-      </categories>
-      <tags>
-        <tag>google上网</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Hello World</title>
-    <url>/2021/02/21/hello-world/</url>
-    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<a id="more"></a>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-]]></content>
-  </entry>
-  <entry>
-    <title>2020碎碎念</title>
-    <url>/2021/02/22/2020%E7%A2%8E%E7%A2%8E%E5%BF%B5/</url>
-    <content><![CDATA[<p>一眨眼就到了2021年了，又大了一岁，回想起过去的一年好似记忆被偷走了大半，由于疫情的原因，对2020年上半年的记忆几乎是没有的，下半年几乎都在敲代码，人一旦敲起代码来一整天的时间眨眼就没有了，也可以说下半年的时间被代码偷走了。</p>
-<a id="more"></a>
-<p>不过仔细回想起来，这一年里面还是发生了很多事情，也是有必要记录一下。</p>
-]]></content>
-      <categories>
-        <category>生活</category>
-      </categories>
-      <tags>
-        <tag>杂记</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>好用的免费无广告电影网站推荐</title>
     <url>/2021/02/21/first-blog/</url>
     <content><![CDATA[<p>今日阳光明媚，中午坐在阳台上面感受着春日暖风拂面，不由得让人想找一部电影伴着暖阳体验一番春日周末的慢生活。相信有不少同学跟我一样，不喜欢充视频网站的会员，更不喜欢看电影之前漫长的广告。好在日常生活中碰到好用的电影网站我都会加在收藏夹中，下面整理一下分享给各位喜欢看电影的同学。</p>
@@ -163,6 +128,41 @@
       <tags>
         <tag>电影</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>google访问助手安装</title>
+    <url>/2021/02/24/google%E4%B8%8A%E7%BD%91%E5%8A%A9%E6%89%8B%E5%AE%89%E8%A3%85/</url>
+    <content><![CDATA[<p>今天用图书馆电脑的时候发现不能访问google，非常不方便搜索文献，因此研究了一下google上网助手，记录一下。</p>
+<a id="more"></a>
+<h3 id="IGG谷歌访问助手"><a href="#IGG谷歌访问助手" class="headerlink" title="IGG谷歌访问助手"></a><a href="https://iguge.app/">IGG谷歌访问助手</a></h3><p>该助手具有如下特点：</p>
+<ul>
+<li>免费提供谷歌搜索</li>
+<li>微软onedrive加速</li>
+<li>不包含YouTube，谷歌网盘</li>
+</ul>
+<h3 id="google上网助手"><a href="#google上网助手" class="headerlink" title="google上网助手"></a><a href="https://chrome.google.com/webstore/detail/%E8%B0%B7%E6%AD%8C%E4%B8%8A%E7%BD%91%E5%8A%A9%E6%89%8B/nonmafimegllfoonjgplbabhmgfanaka?utm_source=chrome-ntp-icon">google上网助手</a></h3><p>该助手具备IGG谷歌访问助手的特点，但是安装的时候需要登录Chrome商店才能够下载，如果没有KX上网，建议读者选择安装“IGG谷歌访问助手”方式访问谷歌。</p>
+]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>google上网</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Hello World</title>
+    <url>/2021/02/21/hello-world/</url>
+    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
+<a id="more"></a>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+]]></content>
   </entry>
   <entry>
     <title>pytorch学习笔记</title>
