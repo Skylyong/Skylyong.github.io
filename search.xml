@@ -85,6 +85,41 @@
       </tags>
   </entry>
   <entry>
+    <title>Hello World</title>
+    <url>/2021/02/21/hello-world/</url>
+    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
+<a id="more"></a>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+]]></content>
+  </entry>
+  <entry>
+    <title>google访问助手安装</title>
+    <url>/2021/02/24/google%E4%B8%8A%E7%BD%91%E5%8A%A9%E6%89%8B%E5%AE%89%E8%A3%85/</url>
+    <content><![CDATA[<p>今天用图书馆电脑的时候发现不能访问google，非常不方便搜索文献，因此研究了一下google上网助手，记录一下。</p>
+<a id="more"></a>
+<h3 id="IGG谷歌访问助手"><a href="#IGG谷歌访问助手" class="headerlink" title="IGG谷歌访问助手"></a><a href="https://iguge.app/">IGG谷歌访问助手</a></h3><p>该助手具有如下特点：</p>
+<ul>
+<li>免费提供谷歌搜索</li>
+<li>微软onedrive加速</li>
+<li>不包含YouTube，谷歌网盘</li>
+</ul>
+<h3 id="google上网助手"><a href="#google上网助手" class="headerlink" title="google上网助手"></a><a href="https://chrome.google.com/webstore/detail/%E8%B0%B7%E6%AD%8C%E4%B8%8A%E7%BD%91%E5%8A%A9%E6%89%8B/nonmafimegllfoonjgplbabhmgfanaka?utm_source=chrome-ntp-icon">google上网助手</a></h3><p>该助手具备IGG谷歌访问助手的特点，但是安装的时候需要登录Chrome商店才能够下载，如果没有KX上网，建议读者选择安装“IGG谷歌访问助手”方式访问谷歌。</p>
+]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>google上网</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>好用的免费无广告电影网站推荐</title>
     <url>/2021/02/21/first-blog/</url>
     <content><![CDATA[<p>今日阳光明媚，中午坐在阳台上面感受着春日暖风拂面，不由得让人想找一部电影伴着暖阳体验一番春日周末的慢生活。相信有不少同学跟我一样，不喜欢充视频网站的会员，更不喜欢看电影之前漫长的广告。好在日常生活中碰到好用的电影网站我都会加在收藏夹中，下面整理一下分享给各位喜欢看电影的同学。</p>
@@ -128,41 +163,6 @@
       <tags>
         <tag>电影</tag>
       </tags>
-  </entry>
-  <entry>
-    <title>google访问助手安装</title>
-    <url>/2021/02/24/google%E4%B8%8A%E7%BD%91%E5%8A%A9%E6%89%8B%E5%AE%89%E8%A3%85/</url>
-    <content><![CDATA[<p>今天用图书馆电脑的时候发现不能访问google，非常不方便搜索文献，因此研究了一下google上网助手，记录一下。</p>
-<a id="more"></a>
-<h3 id="IGG谷歌访问助手"><a href="#IGG谷歌访问助手" class="headerlink" title="IGG谷歌访问助手"></a><a href="https://iguge.app/">IGG谷歌访问助手</a></h3><p>该助手具有如下特点：</p>
-<ul>
-<li>免费提供谷歌搜索</li>
-<li>微软onedrive加速</li>
-<li>不包含YouTube，谷歌网盘</li>
-</ul>
-<h3 id="google上网助手"><a href="#google上网助手" class="headerlink" title="google上网助手"></a><a href="https://chrome.google.com/webstore/detail/%E8%B0%B7%E6%AD%8C%E4%B8%8A%E7%BD%91%E5%8A%A9%E6%89%8B/nonmafimegllfoonjgplbabhmgfanaka?utm_source=chrome-ntp-icon">google上网助手</a></h3><p>该助手具备IGG谷歌访问助手的特点，但是安装的时候需要登录Chrome商店才能够下载，如果没有KX上网，建议读者选择安装“IGG谷歌访问助手”方式访问谷歌。</p>
-]]></content>
-      <categories>
-        <category>技术</category>
-      </categories>
-      <tags>
-        <tag>google上网</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Hello World</title>
-    <url>/2021/02/21/hello-world/</url>
-    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<a id="more"></a>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-]]></content>
   </entry>
   <entry>
     <title>pytorch学习笔记</title>
@@ -257,33 +257,7 @@
       </tags>
   </entry>
   <entry>
-    <title>常用数据集整理</title>
-    <url>/2021/02/22/%E5%B8%B8%E7%94%A8%E6%95%B0%E6%8D%AE%E9%9B%86%E6%95%B4%E7%90%86/</url>
-    <content><![CDATA[<blockquote>
-<p>前沿：所谓”巧妇难为无米之炊“，作为人工智能领域的学习者，免不了要跟数据打交道，有时候我们不得不耗费大量的精力来收集相关数据集。因此， 整理一些常用的数据集，以便不时之需。</p>
-</blockquote>
-<a id="more"></a>
-<h3 id="对话数据集"><a href="#对话数据集" class="headerlink" title="对话数据集"></a>对话数据集</h3><h3 id="nlp方向的生物医学"><a href="#nlp方向的生物医学" class="headerlink" title="nlp方向的生物医学"></a>nlp方向的生物医学</h3><ul>
-<li><p>Symcat’s database</p>
-<blockquote>
-<p>该数据集可以用来构建虚拟的电子病历，使用该数据集的论文有：</p>
-</blockquote>
-</li>
-<li><p>mz database</p>
-</li>
-<li><p>dxy database</p>
-</li>
-</ul>
-]]></content>
-      <categories>
-        <category>机器学习</category>
-      </categories>
-      <tags>
-        <tag>数据集</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>干货学习视频整理</title>
+    <title>学习视频整理</title>
     <url>/2021/02/28/%E5%B9%B2%E8%B4%A7%E5%AD%A6%E4%B9%A0%E8%A7%86%E9%A2%91%E6%95%B4%E7%90%86/</url>
     <content><![CDATA[<h4 id="MIT计算机科学导论"><a href="#MIT计算机科学导论" class="headerlink" title="MIT计算机科学导论"></a>MIT计算机科学导论</h4><blockquote>
 <p>MIT计算机科学导论教学视频，中英文字幕可以随意切换，老师发音很好，强推</p>
@@ -310,6 +284,32 @@
       <tags>
         <tag>干货</tag>
         <tag>计算机</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>常用数据集整理</title>
+    <url>/2021/02/22/%E5%B8%B8%E7%94%A8%E6%95%B0%E6%8D%AE%E9%9B%86%E6%95%B4%E7%90%86/</url>
+    <content><![CDATA[<blockquote>
+<p>前沿：所谓”巧妇难为无米之炊“，作为人工智能领域的学习者，免不了要跟数据打交道，有时候我们不得不耗费大量的精力来收集相关数据集。因此， 整理一些常用的数据集，以便不时之需。</p>
+</blockquote>
+<a id="more"></a>
+<h3 id="对话数据集"><a href="#对话数据集" class="headerlink" title="对话数据集"></a>对话数据集</h3><h3 id="nlp方向的生物医学"><a href="#nlp方向的生物医学" class="headerlink" title="nlp方向的生物医学"></a>nlp方向的生物医学</h3><ul>
+<li><p>Symcat’s database</p>
+<blockquote>
+<p>该数据集可以用来构建虚拟的电子病历，使用该数据集的论文有：</p>
+</blockquote>
+</li>
+<li><p>mz database</p>
+</li>
+<li><p>dxy database</p>
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>机器学习</category>
+      </categories>
+      <tags>
+        <tag>数据集</tag>
       </tags>
   </entry>
   <entry>
