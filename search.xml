@@ -165,6 +165,21 @@
 ]]></content>
   </entry>
   <entry>
+    <title>pytorch学习笔记</title>
+    <url>/2021/02/22/pytorch%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</url>
+    <content><![CDATA[<h4 id="pytorch常用参考资料"><a href="#pytorch常用参考资料" class="headerlink" title="pytorch常用参考资料"></a>pytorch常用参考资料</h4><a id="more"></a>
+<ul>
+<li><a href="https://pytorch.org/docs/stable/torch.html">官网</a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>机器学习</category>
+      </categories>
+      <tags>
+        <tag>技术</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>hexo个人博客搭建</title>
     <url>/2021/02/21/test/</url>
     <content><![CDATA[<blockquote>
@@ -232,21 +247,6 @@
       </categories>
       <tags>
         <tag>hexo搭建</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>pytorch学习笔记</title>
-    <url>/2021/02/22/pytorch%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</url>
-    <content><![CDATA[<h4 id="pytorch常用参考资料"><a href="#pytorch常用参考资料" class="headerlink" title="pytorch常用参考资料"></a>pytorch常用参考资料</h4><a id="more"></a>
-<ul>
-<li><a href="https://pytorch.org/docs/stable/torch.html">官网</a></li>
-</ul>
-]]></content>
-      <categories>
-        <category>机器学习</category>
-      </categories>
-      <tags>
-        <tag>技术</tag>
       </tags>
   </entry>
   <entry>
@@ -325,36 +325,6 @@
       </categories>
       <tags>
         <tag>数据集</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>学习视频整理</title>
-    <url>/2021/02/28/%E5%B9%B2%E8%B4%A7%E5%AD%A6%E4%B9%A0%E8%A7%86%E9%A2%91%E6%95%B4%E7%90%86/</url>
-    <content><![CDATA[<h4 id="MIT计算机科学导论"><a href="#MIT计算机科学导论" class="headerlink" title="MIT计算机科学导论"></a>MIT计算机科学导论</h4><blockquote>
-<p>MIT计算机科学导论教学视频，中英文字幕可以随意切换，老师发音很好，强推</p>
-</blockquote>
-<a id="more"></a>
-
-<ul>
-<li> <a href="https://www.bilibili.com/video/BV1sJ411n7aJ?from=search&seid=18376503429056860180">6.0001基础</a></li>
-</ul>
-<ul>
-<li><p><a href="https://www.bilibili.com/video/av83124797?spm_id_from=333.788.b_636f6d6d656e74.4">6.0002进价</a></p>
-</li>
-<li><p><a href="https://book.douban.com/subject/30155590/">教材</a></p>
-</li>
-<li><p><a href="https://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-0002-introduction-to-computational-thinking-and-data-science-fall-2016/index.htm">6.0002课后练习</a></p>
-</li>
-<li><p><a href="https://pan.baidu.com/s/1hqxh8ag#list/path=%2F">配套ppt</a>:<br>没有找到与最新视频配套的slide，只找到15年的.</p>
-</li>
-</ul>
-<h4 id="线性代数"><a href="#线性代数" class="headerlink" title="线性代数"></a>线性代数</h4>]]></content>
-      <categories>
-        <category>教程</category>
-      </categories>
-      <tags>
-        <tag>干货</tag>
-        <tag>计算机</tag>
       </tags>
   </entry>
   <entry>
@@ -477,6 +447,36 @@
       </categories>
       <tags>
         <tag>教师资格证</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>学习视频整理</title>
+    <url>/2021/02/28/%E5%B9%B2%E8%B4%A7%E5%AD%A6%E4%B9%A0%E8%A7%86%E9%A2%91%E6%95%B4%E7%90%86/</url>
+    <content><![CDATA[<h4 id="MIT计算机科学导论"><a href="#MIT计算机科学导论" class="headerlink" title="MIT计算机科学导论"></a>MIT计算机科学导论</h4><blockquote>
+<p>MIT计算机科学导论教学视频，中英文字幕可以随意切换，老师发音很好，强推</p>
+</blockquote>
+<a id="more"></a>
+
+<ul>
+<li> <a href="https://www.bilibili.com/video/BV1sJ411n7aJ?from=search&seid=18376503429056860180">6.0001基础</a></li>
+</ul>
+<ul>
+<li><p><a href="https://www.bilibili.com/video/av83124797?spm_id_from=333.788.b_636f6d6d656e74.4">6.0002进价</a></p>
+</li>
+<li><p><a href="https://book.douban.com/subject/30155590/">教材</a></p>
+</li>
+<li><p><a href="https://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-0002-introduction-to-computational-thinking-and-data-science-fall-2016/index.htm">6.0002课后练习</a></p>
+</li>
+<li><p><a href="https://pan.baidu.com/s/1hqxh8ag#list/path=%2F">配套ppt</a>:<br>没有找到与最新视频配套的slide，只找到15年的.</p>
+</li>
+</ul>
+<h4 id="线性代数"><a href="#线性代数" class="headerlink" title="线性代数"></a>线性代数</h4>]]></content>
+      <categories>
+        <category>教程</category>
+      </categories>
+      <tags>
+        <tag>干货</tag>
+        <tag>计算机</tag>
       </tags>
   </entry>
 </search>
