@@ -6,7 +6,7 @@
   <link href="https://leongo.cn/atom.xml" rel="self"/>
   
   <link href="https://leongo.cn/"/>
-  <updated>2021-02-28T19:46:52.797Z</updated>
+  <updated>2021-03-06T15:15:44.660Z</updated>
   <id>https://leongo.cn/</id>
   
   <author>
@@ -15,6 +15,35 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>微信标签整理</title>
+    <link href="https://leongo.cn/2021/03/06/wchatTagManage/"/>
+    <id>https://leongo.cn/2021/03/06/wchatTagManage/</id>
+    <published>2021-03-06T15:14:48.000Z</published>
+    <updated>2021-03-06T15:15:44.660Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote><p>最近对微信通讯录做了一次比较彻底的整理，记录一下。</p></blockquote><p>我根据兴趣、人生阶段、亲疏关系和生活四个维度来分类，每个维度的具体分类标签如下：</p><ul><li><p>按兴趣： 兴趣-户外，兴趣-跑步，兴趣-阅读，兴趣-美食等</p></li><li><p>按人生阶段划分为：中学，本科，研究生，兼职等，每一个阶段又可以做进一步划分。</p><ul><li>中学-同学，中学-校友，中学-老师</li><li>本科-同学，本科-校友，本科-老师</li><li>研究生-同学，研究生-校友，研究生-老师</li><li>兼职-同事，兼职-同行</li></ul></li><li><p>按亲疏关系可分为：</p><ul><li>家人</li><li>亲戚</li><li>朋友</li><li>有缘相逢</li></ul></li><li><p>生活涉及的东西比较杂，我是把“照相、打印和水电等”都放在了“生活便利”这一个标签里面，然后在名字上面做备注，比如“张三|打印”。此外，我把医生、法律人士做了单独的标签，最后加了一个“大佬”标签，方便时刻关注大佬的动态、向大佬靠齐。</p><ul><li>生活便利</li><li>生活-医务</li><li>生活-法律</li><li>大佬<br>分好之后感觉这种二级分类有点繁琐，先用一段时间看看，不行的话再做优化。</li></ul></li></ul>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;blockquote&gt;
+&lt;p&gt;最近对微信通讯录做了一次比较彻底的整理，记录一下。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;我根据兴趣、人生阶段、亲疏关系和生活四个维度来分类，每个维度的具体分类标签如下：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;按兴趣： 兴趣-户外，兴趣-跑步，兴趣-</summary>
+      
+    
+    
+    
+    <category term="生活" scheme="https://leongo.cn/categories/%E7%94%9F%E6%B4%BB/"/>
+    
+    
+    <category term="整理" scheme="https://leongo.cn/tags/%E6%95%B4%E7%90%86/"/>
+    
+  </entry>
   
   <entry>
     <title>工具箱</title>
@@ -64,35 +93,6 @@
     <category term="干货" scheme="https://leongo.cn/tags/%E5%B9%B2%E8%B4%A7/"/>
     
     <category term="计算机" scheme="https://leongo.cn/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>微信标签整理</title>
-    <link href="https://leongo.cn/2021/02/25/%E5%BE%AE%E4%BF%A1%E6%A0%87%E7%AD%BE%E6%95%B4%E7%90%86/"/>
-    <id>https://leongo.cn/2021/02/25/%E5%BE%AE%E4%BF%A1%E6%A0%87%E7%AD%BE%E6%95%B4%E7%90%86/</id>
-    <published>2021-02-25T13:11:18.000Z</published>
-    <updated>2021-03-06T15:12:21.857Z</updated>
-    
-    <content type="html"><![CDATA[<blockquote><p>最近对微信通讯录做了一次比较彻底的整理，记录一下。</p></blockquote><p>我根据兴趣、人生阶段、亲疏关系和生活四个维度来分类，每个维度的具体分类标签如下：</p><ul><li><p>按兴趣： 兴趣-户外，兴趣-跑步，兴趣-阅读，兴趣-美食等</p></li><li><p>按人生阶段划分为：中学，本科，研究生，兼职等，每一个阶段又可以做进一步划分。</p><ul><li>中学-同学，中学-校友，中学-老师</li><li>本科-同学，本科-校友，本科-老师</li><li>研究生-同学，研究生-校友，研究生-老师</li><li>兼职-同事，兼职-同行</li></ul></li><li><p>按亲疏关系可分为：</p><ul><li>家人</li><li>亲戚</li><li>朋友</li><li>有缘相逢</li></ul></li><li><p>生活涉及的东西比较杂，我是把“照相、打印和水电等”都放在了“生活便利”这一个标签里面，然后在名字上面做备注，比如“张三|打印”。此外，我把医生、法律人士做了单独的标签，最后加了一个“大佬”标签，方便时刻关注大佬的动态、向大佬靠齐。</p><ul><li>生活便利</li><li>生活-医务</li><li>生活-法律</li><li>大佬<br>分好之后感觉这种二级分类有点繁琐，先用一段时间看看，不行的话再做优化。</li></ul></li></ul>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;blockquote&gt;
-&lt;p&gt;最近对微信通讯录做了一次比较彻底的整理，记录一下。&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;我根据兴趣、人生阶段、亲疏关系和生活四个维度来分类，每个维度的具体分类标签如下：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;按兴趣： 兴趣-户外，兴趣-跑步，兴趣-</summary>
-      
-    
-    
-    
-    <category term="生活" scheme="https://leongo.cn/categories/%E7%94%9F%E6%B4%BB/"/>
-    
-    
-    <category term="整理" scheme="https://leongo.cn/tags/%E6%95%B4%E7%90%86/"/>
     
   </entry>
   
