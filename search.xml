@@ -1,20 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>2020碎碎念</title>
-    <url>/2021/02/22/2020%E7%A2%8E%E7%A2%8E%E5%BF%B5/</url>
-    <content><![CDATA[<p>一眨眼就到了2021年了，又大了一岁，回想起过去的一年好似记忆被偷走了大半，由于疫情的原因，对2020年上半年的记忆几乎是没有的，下半年几乎都在敲代码，人一旦敲起代码来一整天的时间眨眼就没有了，也可以说下半年的时间被代码偷走了。</p>
-<a id="more"></a>
-<p>不过仔细回想起来，这一年里面还是发生了很多事情，也是有必要记录一下。</p>
-]]></content>
-      <categories>
-        <category>生活</category>
-      </categories>
-      <tags>
-        <tag>杂记</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>ECNU的春</title>
     <url>/2021/02/22/Spring-of-ECNU/</url>
     <content><![CDATA[<p>最开始令人感受到春气息的是红梅花，红梅花跟腊梅花的区别在于花瓣的颜色和开放的时间不同，腊梅花比红梅花开得更早一些。今年红梅花开的具体日子已经不记得了，只依稀记得那个时候天还很冷，操场上面很少见到跑步运动的人，留校的同学大多都还呆在宿舍，校园里面因此显得十分的冷清。</p>
@@ -163,13 +149,22 @@
     <content><![CDATA[<blockquote>
 <p>我是从喜马拉雅路转粉过来听课的，<a href="https://www.ximalaya.com/waiyu/19111514/">张老师</a>推荐的东西必然是干货。因此利用周末时间搜集整理了一些老师课上推荐的视频资源，方便自己也分享给大家。</p>
 </blockquote>
+<a id="more"></a>
 <h3 id="电影推荐"><a href="#电影推荐" class="headerlink" title="电影推荐"></a>电影推荐</h3><ul>
-<li>The Queen</li>
-<li>The King’s Speech</li>
-<li>Downton Abbey</li>
-<li>The Holiday</li>
-<li>Coco</li>
-<li>Darkest Hours</li>
+<li><p>The Queen</p>
+</li>
+<li><p><a href="https://pan.baidu.com/s/1unNRcyP5VUUpA--aJ_Hmdw">The King’s Speech</a> (提取码:9h4x） </p>
+</li>
+<li><p><a href="https://pan.baidu.com/s/1hIyXIJ53H-p_rsCxR0f22Q">Downton Abbey</a> (提取码:cyb9)</p>
+</li>
+<li><p>The Holiday</p>
+</li>
+<li><p><a href="https://www.zxzj.me/video/1101-1-1.html">Coco</a></p>
+</li>
+<li><p><a href="https://pan.baidu.com/s/10o4jLTT9etBVNlhE9pLgEQ">Darkest Hours</a> (提取码:okwz)</p>
+</li>
+</ul>
+<ul>
 <li>Wonder</li>
 <li>Harry Potter</li>
 <li>Big Hero 6</li>
@@ -288,6 +283,36 @@
       </tags>
   </entry>
   <entry>
+    <title>pytorch学习笔记</title>
+    <url>/2021/02/22/pytorch%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</url>
+    <content><![CDATA[<h4 id="pytorch常用参考资料"><a href="#pytorch常用参考资料" class="headerlink" title="pytorch常用参考资料"></a>pytorch常用参考资料</h4><a id="more"></a>
+<ul>
+<li><a href="https://pytorch.org/docs/stable/torch.html">官网</a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>机器学习</category>
+      </categories>
+      <tags>
+        <tag>技术</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>工具箱</title>
+    <url>/2021/03/01/toolbox/</url>
+    <content><![CDATA[<ul>
+<li><a href="https://www.jibing57.com/2019/03/24/share-ShadowsocksX-NG-to-iOS/">Mac下共享ShadowsocksX-NG的梯子给iOS</a></li>
+<li><a href="https://www.cnblogs.com/jserhub/p/11770585.html">GitHub 设置和取消代理，加速 git clone</a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>工具</category>
+      </categories>
+      <tags>
+        <tag>工具</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>微信标签整理</title>
     <url>/2021/03/06/wchatTagManage/</url>
     <content><![CDATA[<blockquote>
@@ -330,36 +355,6 @@
       </categories>
       <tags>
         <tag>整理</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>工具箱</title>
-    <url>/2021/03/01/toolbox/</url>
-    <content><![CDATA[<ul>
-<li><a href="https://www.jibing57.com/2019/03/24/share-ShadowsocksX-NG-to-iOS/">Mac下共享ShadowsocksX-NG的梯子给iOS</a></li>
-<li><a href="https://www.cnblogs.com/jserhub/p/11770585.html">GitHub 设置和取消代理，加速 git clone</a></li>
-</ul>
-]]></content>
-      <categories>
-        <category>工具</category>
-      </categories>
-      <tags>
-        <tag>工具</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>pytorch学习笔记</title>
-    <url>/2021/02/22/pytorch%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</url>
-    <content><![CDATA[<h4 id="pytorch常用参考资料"><a href="#pytorch常用参考资料" class="headerlink" title="pytorch常用参考资料"></a>pytorch常用参考资料</h4><a id="more"></a>
-<ul>
-<li><a href="https://pytorch.org/docs/stable/torch.html">官网</a></li>
-</ul>
-]]></content>
-      <categories>
-        <category>机器学习</category>
-      </categories>
-      <tags>
-        <tag>技术</tag>
       </tags>
   </entry>
   <entry>
