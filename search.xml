@@ -276,42 +276,15 @@
 <p>  个人推荐指数：★★★★★</p>
 </li>
 </ul>
+<blockquote>
+<p>上面推荐的网站有时候可能会被封掉，最后再推荐一个存储电影资源网址的<a href="http://www.dyhz1.com/">站点</a>。</p>
+</blockquote>
 ]]></content>
       <categories>
         <category>生活</category>
       </categories>
       <tags>
         <tag>电影</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>pytorch学习笔记</title>
-    <url>/2021/02/22/pytorch%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</url>
-    <content><![CDATA[<h4 id="pytorch常用参考资料"><a href="#pytorch常用参考资料" class="headerlink" title="pytorch常用参考资料"></a>pytorch常用参考资料</h4><a id="more"></a>
-<ul>
-<li><a href="https://pytorch.org/docs/stable/torch.html">官网</a></li>
-</ul>
-]]></content>
-      <categories>
-        <category>机器学习</category>
-      </categories>
-      <tags>
-        <tag>技术</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>工具箱</title>
-    <url>/2021/03/01/toolbox/</url>
-    <content><![CDATA[<ul>
-<li><a href="https://www.jibing57.com/2019/03/24/share-ShadowsocksX-NG-to-iOS/">Mac下共享ShadowsocksX-NG的梯子给iOS</a></li>
-<li><a href="https://www.cnblogs.com/jserhub/p/11770585.html">GitHub 设置和取消代理，加速 git clone</a></li>
-</ul>
-]]></content>
-      <categories>
-        <category>工具</category>
-      </categories>
-      <tags>
-        <tag>工具</tag>
       </tags>
   </entry>
   <entry>
@@ -357,6 +330,36 @@
       </categories>
       <tags>
         <tag>整理</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>工具箱</title>
+    <url>/2021/03/01/toolbox/</url>
+    <content><![CDATA[<ul>
+<li><a href="https://www.jibing57.com/2019/03/24/share-ShadowsocksX-NG-to-iOS/">Mac下共享ShadowsocksX-NG的梯子给iOS</a></li>
+<li><a href="https://www.cnblogs.com/jserhub/p/11770585.html">GitHub 设置和取消代理，加速 git clone</a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>工具</category>
+      </categories>
+      <tags>
+        <tag>工具</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>pytorch学习笔记</title>
+    <url>/2021/02/22/pytorch%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</url>
+    <content><![CDATA[<h4 id="pytorch常用参考资料"><a href="#pytorch常用参考资料" class="headerlink" title="pytorch常用参考资料"></a>pytorch常用参考资料</h4><a id="more"></a>
+<ul>
+<li><a href="https://pytorch.org/docs/stable/torch.html">官网</a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>机器学习</category>
+      </categories>
+      <tags>
+        <tag>技术</tag>
       </tags>
   </entry>
   <entry>
