@@ -290,21 +290,6 @@
       </tags>
   </entry>
   <entry>
-    <title>工具箱</title>
-    <url>/2021/03/01/toolbox/</url>
-    <content><![CDATA[<ul>
-<li><a href="https://www.jibing57.com/2019/03/24/share-ShadowsocksX-NG-to-iOS/">Mac下共享ShadowsocksX-NG的梯子给iOS</a></li>
-<li><a href="https://www.cnblogs.com/jserhub/p/11770585.html">GitHub 设置和取消代理，加速 git clone</a></li>
-</ul>
-]]></content>
-      <categories>
-        <category>工具</category>
-      </categories>
-      <tags>
-        <tag>工具</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>pytorch学习笔记</title>
     <url>/2021/02/22/pytorch%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</url>
     <content><![CDATA[<h4 id="pytorch常用参考资料"><a href="#pytorch常用参考资料" class="headerlink" title="pytorch常用参考资料"></a>pytorch常用参考资料</h4><a id="more"></a>
@@ -379,6 +364,22 @@
       </categories>
       <tags>
         <tag>图</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>工具箱</title>
+    <url>/2021/03/01/toolbox/</url>
+    <content><![CDATA[<ul>
+<li><a href="https://www.jibing57.com/2019/03/24/share-ShadowsocksX-NG-to-iOS/">Mac下共享ShadowsocksX-NG的梯子给iOS</a></li>
+<li><a href="https://www.cnblogs.com/jserhub/p/11770585.html">GitHub 设置和取消代理，加速 git clone</a></li>
+<li><a href="https://www.zxgj.cn/g/rznl">在线智商测试</a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>工具</category>
+      </categories>
+      <tags>
+        <tag>工具</tag>
       </tags>
   </entry>
   <entry>
