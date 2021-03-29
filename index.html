@@ -145,6 +145,92 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-Hans">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/03/29/%E5%8F%98%E5%88%86%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Leon">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Leon's blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/03/29/%E5%8F%98%E5%88%86%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="post-title-link" itemprop="url">变分学习笔记</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2021-03-29 14:35:48 / Modified: 14:36:42" itemprop="dateCreated datePublished" datetime="2021-03-29T14:35:48+08:00">2021-03-29</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="变分推断"><a href="#变分推断" class="headerlink" title="变分推断"></a>变分推断</h1><h3 id="应用举例"><a href="#应用举例" class="headerlink" title="应用举例"></a>应用举例</h3><ul>
+<li><p>文章LAD题目分析</p>
+<p>对文本进行自动分析，然后自动从中找出topic</p>
+<img src="https://raw.githubusercontent.com/Skylyong/i/main/20210325161624.png" style="zoom:50%;" /></li>
+<li><p>交通数据分析</p>
+<p>美国湾区出租车数据分析，用变分推断的方法可以在一台笔记本电脑上面完成大量数据的计算</p>
+<img src="https://raw.githubusercontent.com/Skylyong/i/main/20210325162352.png" style="zoom:50%;" /></li>
+</ul>
+<h3 id="贝叶斯推断概述"><a href="#贝叶斯推断概述" class="headerlink" title="贝叶斯推断概述"></a>贝叶斯推断概述</h3><h4 id="目标优缺点"><a href="#目标优缺点" class="headerlink" title="目标优缺点"></a>目标优缺点</h4><p><img src="https://raw.githubusercontent.com/Skylyong/i/main/20210325162622.png"></p>
+<h4 id="Roadmap"><a href="#Roadmap" class="headerlink" title="Roadmap"></a>Roadmap</h4><img src="https://raw.githubusercontent.com/Skylyong/i/main/20210325162730.png" style="zoom:67%;" />
+
+<blockquote>
+<p>接下来主要讲解变分贝叶斯方法，变分贝叶斯方法是近似贝叶斯推断的一大类方法，变分贝叶斯方法又有很多子类，Mean-field变分推断是其中比较有代表性的一类。接下来结合讲解的方法讲三个例子：univariate Gaussian、Mixture of Gaussians和LDA</p>
+</blockquote>
+<h3 id="贝叶斯推断"><a href="#贝叶斯推断" class="headerlink" title="贝叶斯推断"></a><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1Qf4y1e7jN?from=search&seid=14715651649240686105">贝叶斯推断</a></h3> <img src="https://raw.githubusercontent.com/Skylyong/i/main/20210325164141.png" style="zoom:67%;" />
+
+<blockquote>
+<p>Data是观测变量，Parameters是模型的参数，通过对观测变量$x$取值的观测，我们可以更新参数$z$, 这里$p(x) = \int_{z}^{}{p(x,z)dz}$，实际应用中$z$是一个高维的分布，很难计算$p(z|x)$</p>
+</blockquote>
+<h3 id="近似贝叶斯推断"><a href="#近似贝叶斯推断" class="headerlink" title="近似贝叶斯推断_"></a><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1a5411H7eW?from=search&seid=14715651649240686105">近似贝叶斯推断</a>_</h3><p><img src="https://raw.githubusercontent.com/Skylyong/i/main/20210325210910.png"></p>
+<blockquote>
+<p>直接计算$p(z|x)$复杂度很高很难，然后就有了近似计算（推断）。常用的近似计算有：MCMC方法和基于优化的方法，MCMC方法虽然精度高但是数据量大时计算很慢，基于随机梯度的优化方法可以使用并行加速，因此可以大大的加速计算速度。<br>基于随机梯度优化方法的思路为：找到一个简单的分布$q^*(z) \in Q$来近似p(z|x), 目标$q^*(z)$应该是$Q$中，与$p(z|x)$某种距离最小的那个。<br><img src="https://raw.githubusercontent.com/Skylyong/i/main/20210325212515.png"><br>为什么要用KL散步来度量两个分布的距离呢？<br>KL满足可导和凸性，使得它的计算更快；<br>我们没法通过上式求得$q^*(z)$，需要通过下面的转换把优化KL最小问题进行转换为求$q(z)$使得ELBO最大的问题.<br><img src="https://raw.githubusercontent.com/Skylyong/i/main/20210325214048.png"></p>
+</blockquote>
+<p><img src="https://raw.githubusercontent.com/Skylyong/i/main/20210325214709.png"></p>
+<blockquote>
+<p>这里的$log p(x)$是一个固定的常数。</p>
+</blockquote>
+<h3 id="平均场推断"><a href="#平均场推断" class="headerlink" title="平均场推断"></a><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1Ki4y1w7Z9/?spm_id_from=autoNext">平均场推断</a></h3><p><img src="https://raw.githubusercontent.com/Skylyong/i/main/20210325223324.png"></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-Hans">
     <link itemprop="mainEntityOfPage" href="http://example.com/2021/03/28/%E8%AE%B0%E4%B8%80%E6%AC%A1%E7%B3%BB%E7%BB%9F%E5%A5%94%E6%BA%83%E7%9A%84%E5%8F%8D%E6%80%9D%E5%92%8C%E6%80%BB%E7%BB%93/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -502,7 +588,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">4</span>
+          <span class="site-state-item-count">5</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
