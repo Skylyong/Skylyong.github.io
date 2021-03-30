@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="【每日算法】2021年03月31日 多云 不同路径, Leon&#39;s blog">
+    <meta name="keywords" content="英语口语练习电影推荐, Leon&#39;s blog">
     <meta name="description" content="Keep go on">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>【每日算法】2021年03月31日 多云 不同路径 | Leon&#39;s blog</title>
+    <title>英语口语练习电影推荐 | Leon&#39;s blog</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -247,12 +247,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/7.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/9.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">【每日算法】2021年03月31日 多云 不同路径</h1>
+                    <h1 class="description center-align post-title">英语口语练习电影推荐</h1>
                 </div>
             </div>
         </div>
@@ -368,8 +368,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/">
-                                <span class="chip bg-color">动态规划</span>
+                            <a href="/tags/%E7%94%B5%E5%BD%B1/">
+                                <span class="chip bg-color">电影</span>
                             </a>
                         
                     </div>
@@ -380,8 +380,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/" class="post-category">
-                                算法笔记
+                            <a href="/categories/%E5%AD%A6%E4%B9%A0%E8%B5%84%E6%96%99/" class="post-category">
+                                学习资料
                             </a>
                         
                     </div>
@@ -393,7 +393,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2021-03-30
+                    2021-03-31
                 </div>
                 
 
@@ -402,7 +402,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    243
+                    223
                 </div>
                 
 
@@ -429,25 +429,46 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>这道题是LeeCode第<a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/unique-paths/">62</a>题，属于动态规划中的中等难度题目。</p>
-<span id="more"></span>
-
-<h4 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h4><img src="https://raw.githubusercontent.com/Skylyong/i/main/20210330183906.png" style="zoom: 67%;" />
-<img src="https://raw.githubusercontent.com/Skylyong/i/main/20210330184245.png" style="zoom:67%;" />
-
-
-<h4 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h4><p>根据题面，假设机器人在位置(i, j), 不考虑边界条件，则它可以采取的动作有两个：向下(i+1)或者向右(j+1),定义dp[i][j]为机器人从(i,j)点走到点(m-1, n-1)的路径数，则有：dp[i][j] = dp[i+1][j] + dp[i][j+1],<br><img src="https://raw.githubusercontent.com/Skylyong/i/main/20210330191859.png" style="zoom:67%;" /><br>然后我们再来考虑边界条件，当机器人在红框区域(此时i=m-1, j取0<del>n-2)、蓝框区域（此时i取0</del>m-2,j=n-1)和点(m-1, n-2)时为边界，当机器人在边界上时，它到终点的距离都为1.</p>
-<p>最终答案为dp[0][0]。</p>
-<h4 id="实现代码"><a href="#实现代码" class="headerlink" title="实现代码"></a>实现代码</h4><pre class=" language-python"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">Solution</span><span class="token punctuation">:</span>
-    <span class="token keyword">def</span> <span class="token function">uniquePaths</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> m<span class="token punctuation">:</span> int<span class="token punctuation">,</span> n<span class="token punctuation">:</span> int<span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">></span> int<span class="token punctuation">:</span>
-        dp <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token operator">*</span>n<span class="token punctuation">]</span><span class="token operator">*</span>m
-        <span class="token keyword">for</span> i <span class="token keyword">in</span> range<span class="token punctuation">(</span>m<span class="token number">-1</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-            <span class="token keyword">for</span> j <span class="token keyword">in</span> range<span class="token punctuation">(</span>n<span class="token number">-1</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-                <span class="token keyword">if</span> i <span class="token operator">==</span> m<span class="token number">-1</span> <span class="token operator">or</span> j <span class="token operator">==</span> n<span class="token number">-1</span><span class="token punctuation">:</span>
-                    <span class="token keyword">continue</span>
-                dp<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">=</span> dp<span class="token punctuation">[</span>i<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">+</span> dp<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">]</span>
-        <span class="token keyword">return</span> dp<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span>
-</code></pre>
+                <p>我是从喜马拉雅路转粉过来听课的，<a target="_blank" rel="noopener" href="https://www.ximalaya.com/waiyu/19111514/">张老师</a>推荐的东西必然是干货。因此利用周末时间搜集整理了一些老师课上推荐的视频资源，方便自己也分享给大家。</p>
+<h4 id="电影推荐"><a href="#电影推荐" class="headerlink" title="电影推荐"></a>电影推荐</h4><ul>
+<li><p><a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1f1MKRhiGnhXPakdql9BFcQ">The Queen</a> (提取码:gysn)</p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1thHrc_mUaHD8pFyZwI4g2g">The King’s Speech</a> (提取码:gr42）</p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1hIyXIJ53H-p_rsCxR0f22Q">Downton Abbey</a> (提取码:cyb9)</p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1cFcyl3ZZ5TomwZnk0IbbTg">The Holiday</a> (提取码:48ks) 字幕 (提取码:4vix)</p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1PjDRYpgfXw557lkICTZiWQ">Coco</a> (提取码:tkwx)</p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://pan.baidu.com/s/10o4jLTT9etBVNlhE9pLgEQ">Darkest Hours</a> (提取码:okwz)</p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1s406g4lKsv2YPreZ3egBPw">Wonder</a> (提取码:yjog)</p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1cygoZKcHhtBgF3wA46LXHg">Harry Potter</a> (提取码:cg1w)</p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1Nptp0lnqBEsoWiGygB7Qgw">Big Hero 6</a> (提取码:g4q4)</p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1iLHz4MQpkWRUAz6ApnM_yA">Zootopia</a>（提取码:8tmm)</p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://ddrk.me/frozen-2013/">Frozen 1</a></p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://ddrk.me/frozen-2/">Frozen 2</a></p>
+</li>
+</ul>
+<h4 id="电视剧推荐"><a href="#电视剧推荐" class="headerlink" title="电视剧推荐"></a>电视剧推荐</h4><ul>
+<li><p><a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1oLZdVtC2dxQsntKqFpYGzA">Miranda</a> (提取码:ogrp)</p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://ddrk.me/the-it-crowd/">The IT Crowd</a></p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1urGHdiTmz4STpnXnGgnw9Q">Friends 磁力链接</a> (提取码: ldlu)（磁力链接可用迅雷下载，具体操作可自行搜索）</p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://www.zxzj.me/vodsearch/-------------.html?wd=%E6%91%A9%E7%99%BB%E5%AE%B6%E5%BA%AD">Modern Family</a></p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://www.zxzj.me/vodsearch/-------------.html?wd=%E7%94%9F%E6%B4%BB%E5%A4%A7%E7%88%86%E7%82%B8">TBBT 生活大爆炸</a>（高清下载磁力<a href="magnet:?xt=urn:btih:49CF1C0B0305D8F5031CB99840C09F06EABB79F6&dn=The+Big+Bang+Theory+Season+1-11+Complete+720p&tr=udp://tracker.coppersurfer.tk:6969/announce&tr=udp://9.rarbg.to:2920/announce&tr=udp://tracker.opentrackr.org:1337&tr=udp://tracker.internetwarriors.net:1337/announce&tr=udp://tracker.leechers-paradise.org:6969/announce&tr=udp://tracker.coppersurfer.tk:6969/announce&tr=udp://tracker.pirateparty.gr:6969/announce&tr=udp://tracker.cyberia.is:6969/announce">链接</a>）</p>
+</li>
+</ul>
+<p>资料整理不易，如果觉得好的话，记得打赏支持一波，一块钱也是奖励。</p>
 
                 
             </div>
@@ -474,7 +495,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://leongo.cn/2021/03/30/bu-tong-lu-jing/">https://leongo.cn/2021/03/30/bu-tong-lu-jing/</a>
+                    <a href="https://leongo.cn/2021/03/31/ying-yu-kou-yu-lian-xi-dian-ying-tui-jian/">https://leongo.cn/2021/03/31/ying-yu-kou-yu-lian-xi-dian-ying-tui-jian/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -512,8 +533,8 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/">
-                                    <span class="chip bg-color">动态规划</span>
+                                <a href="/tags/%E7%94%B5%E5%BD%B1/">
+                                    <span class="chip bg-color">电影</span>
                                 </a>
                             
                         </div>
@@ -685,17 +706,18 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2021/03/31/ke-cheng-she-ji-zui-xiao-sheng-cheng-shu-ying-yong/">
+                <a href="/2021/03/31/ying-yu-kou-yu-lian-xi-dian-ying-tui-jian/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/4.jpg" class="responsive-img" alt="【课程设计】最小生成树应用">
+                        <img src="/medias/featureimages/9.jpg" class="responsive-img" alt="英语口语练习电影推荐">
                         
-                        <span class="card-title">【课程设计】最小生成树应用</span>
+                        <span class="card-title">英语口语练习电影推荐</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -705,26 +727,27 @@
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2021-03-31
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-03-31
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="post-category">
-                                    学习笔记
+                            <a href="/categories/%E5%AD%A6%E4%B9%A0%E8%B5%84%E6%96%99/" class="post-category">
+                                    学习资料
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E6%A0%91/">
-                        <span class="chip bg-color">树</span>
+                    <a href="/tags/%E7%94%B5%E5%BD%B1/">
+                        <span class="chip bg-color">电影</span>
                     </a>
                     
                 </div>
@@ -738,32 +761,31 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2021/03/29/bian-fen-xue-xi-bi-ji/">
+                <a href="/2021/03/31/xue-xi-shi-pin-zheng-li/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/4.jpg" class="responsive-img" alt="变分学习笔记">
+                        <img src="/medias/featureimages/17.jpg" class="responsive-img" alt="学习视频整理">
                         
-                        <span class="card-title">变分学习笔记</span>
+                        <span class="card-title">学习视频整理</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            变分推断应用举例
-文章LAD题目分析
+                            
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-03-29
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-03-31
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="post-category">
-                                    学习笔记
+                            <a href="/categories/%E5%AD%A6%E4%B9%A0%E8%B5%84%E6%96%99/" class="post-category">
+                                    学习资料
                                 </a>
                             
                             
@@ -773,8 +795,8 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">
-                        <span class="chip bg-color">机器学习</span>
+                    <a href="/tags/%E7%BC%96%E7%A8%8B/">
+                        <span class="chip bg-color">编程</span>
                     </a>
                     
                 </div>
