@@ -402,7 +402,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    174
+                    295
                 </div>
                 
 
@@ -451,6 +451,7 @@
                 dp<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">=</span> grid<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">+</span> min<span class="token punctuation">(</span>dp<span class="token punctuation">[</span>i<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">,</span> dp<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
         <span class="token keyword">return</span> dp<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span>
 </code></pre>
+<h4 id="感想"><a href="#感想" class="headerlink" title="感想"></a>感想</h4><p>一开始声明二维数组的时候用了浅拷贝，改变某一行的值的时候，其他行的值也会跟着改变，但是我这么搞，竟然通过了60多个样例，好像是在第63个样例的时候卡住了（挠头），后面一个个的把dp里面的值打印出来看，才发现原来是用了浅拷贝，导致这样的问题，换成了迭代生成式后，终于AC了。</p>
 
                 
             </div>
