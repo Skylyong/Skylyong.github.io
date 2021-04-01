@@ -402,7 +402,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    34
+                    161
                 </div>
                 
 
@@ -429,10 +429,25 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>参考教程：</p>
+                <h4 id="安装gitlab："><a href="#安装gitlab：" class="headerlink" title="安装gitlab："></a><a target="_blank" rel="noopener" href="https://packages.gitlab.com/gitlab/gitlab-ee/packages/ubuntu/focal/gitlab-ee_13.8.7-ee.0_amd64.deb">安装gitlab</a>：</h4><pre class=" language-bash"><code class="language-bash">curl -s https://packages.gitlab.com/install/repositories/gitlab/gitlab-ee/
+script.deb.sh <span class="token operator">|</span> <span class="token function">sudo</span> <span class="token function">bash</span>
+</code></pre>
+<h4 id="防火墙设置"><a href="#防火墙设置" class="headerlink" title="防火墙设置"></a>防火墙设置</h4><p> 之前已经配置好了，略</p>
+<h4 id="gitlab配置"><a href="#gitlab配置" class="headerlink" title="gitlab配置"></a><a target="_blank" rel="noopener" href="https://docs.gitlab.com/omnibus/settings/configuration.html#configuring-the-external-url-for-gitlab">gitlab配置</a></h4><p>打开/etc/gitlab/gitlab.rb</p>
+<pre class=" language-bash"><code class="language-bash">external_url <span class="token string">'http://gitlab.bytenlp.site'</span>
+<span class="token comment" spellcheck="true"># 系统端口冲突，我把端口改为了85</span>
+nginx<span class="token punctuation">[</span><span class="token string">'listen_port'</span><span class="token punctuation">]</span> <span class="token operator">=</span> 85
+</code></pre>
+<h4 id="让配置生效，并重启gitlab服务"><a href="#让配置生效，并重启gitlab服务" class="headerlink" title="让配置生效，并重启gitlab服务"></a>让配置生效，并重启gitlab服务</h4><pre class=" language-bash"><code class="language-bash"><span class="token comment" spellcheck="true"># 重新配置gitlab</span>
+<span class="token function">sudo</span> gitlab-ctl reconfigure
+<span class="token comment" spellcheck="true"># 重启gitlab</span>
+gitlab-ctl restart 
+</code></pre>
+<h4 id="在浏览器输入”ip-端口号”查看效果，详细参考这里"><a href="#在浏览器输入”ip-端口号”查看效果，详细参考这里" class="headerlink" title="在浏览器输入”ip:端口号”查看效果，详细参考这里"></a>在浏览器输入”ip:端口号”查看效果，详细参考<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/ade38a53b1ac">这里</a></h4><p>参考教程：</p>
 <ul>
-<li><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/bf7b09e234c8">https://www.jianshu.com/p/bf7b09e234c8</a></li>
-<li><a target="_blank" rel="noopener" href="https://lil-xing.top/2019/08/26/GitLab%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/">https://lil-xing.top/2019/08/26/GitLab%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/</a></li>
+<li> <a target="_blank" rel="noopener" href="https://www.jianshu.com/p/bf7b09e234c8">https://www.jianshu.com/p/bf7b09e234c8</a></li>
+<li> <a target="_blank" rel="noopener" href="https://lil-xing.top/2019/08/26/GitLab%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/">https://lil-xing.top/2019/08/26/GitLab%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/</a><br>sudo apt-get install gitlab-ee=13.8.7-ee.0</li>
+<li><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/ade38a53b1ac">https://www.jianshu.com/p/ade38a53b1ac</a></li>
 </ul>
 <p>测试一下</p>
 
