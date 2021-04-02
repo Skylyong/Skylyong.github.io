@@ -1,0 +1,346 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Leon&#39;s blog</title>
+  
+  <subtitle>勇往直前</subtitle>
+  <link href="https://leongo.cn/atom.xml" rel="self"/>
+  
+  <link href="https://leongo.cn/"/>
+  <updated>2021-04-01T05:47:26.290Z</updated>
+  <id>https://leongo.cn/</id>
+  
+  <author>
+    <name>Leon</name>
+    
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>【每日算法】2021年03月31日 小雨 最小路径和</title>
+    <link href="https://leongo.cn/2021/04/01/zui-xiao-lu-jing-he/"/>
+    <id>https://leongo.cn/2021/04/01/zui-xiao-lu-jing-he/</id>
+    <published>2021-03-31T18:08:43.000Z</published>
+    <updated>2021-04-01T05:47:26.290Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;这道题是LeeCode第&lt;a href=&quot;https://leetcode-cn.com/problems/minimum-path-sum/&quot;&gt;64&lt;/a&gt;题，和之前的第62题一样，属于动态规划中的中等难度题目。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="算法笔记" scheme="https://leongo.cn/categories/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/"/>
+    
+    
+    <category term="动态规划" scheme="https://leongo.cn/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>GitLab搭建笔记</title>
+    <link href="https://leongo.cn/2021/03/31/gitlab-da-jian-bi-ji/"/>
+    <id>https://leongo.cn/2021/03/31/gitlab-da-jian-bi-ji/</id>
+    <published>2021-03-31T11:59:24.000Z</published>
+    <updated>2021-04-01T08:43:54.019Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h4 id=&quot;安装gitlab：&quot;&gt;&lt;a href=&quot;#安装gitlab：&quot; class=&quot;headerlink&quot; title=&quot;安装gitlab：&quot;&gt;&lt;/a&gt;&lt;a</summary>
+        
+      
+    
+    
+    
+    <category term="爬坑总结" scheme="https://leongo.cn/categories/%E7%88%AC%E5%9D%91%E6%80%BB%E7%BB%93/"/>
+    
+    
+    <category term="GitLab" scheme="https://leongo.cn/tags/GitLab/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>英语口语练习电影推荐</title>
+    <link href="https://leongo.cn/2021/03/31/ying-yu-kou-yu-lian-xi-dian-ying-tui-jian/"/>
+    <id>https://leongo.cn/2021/03/31/ying-yu-kou-yu-lian-xi-dian-ying-tui-jian/</id>
+    <published>2021-03-30T21:08:40.000Z</published>
+    <updated>2021-03-31T16:28:08.994Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;我是从喜马拉雅路转粉过来听课的，&lt;a href=&quot;https://www.ximalaya.com/waiyu/19111514/&quot;&gt;张老师&lt;/a&gt;推荐的东西必然是干货。因此利用周末时间搜集整理了一些老师课上推荐的视频资源，方便自己也分享给大家。&lt;/p&gt;
+&lt;h4</summary>
+        
+      
+    
+    
+    
+    <category term="学习资料" scheme="https://leongo.cn/categories/%E5%AD%A6%E4%B9%A0%E8%B5%84%E6%96%99/"/>
+    
+    
+    <category term="电影" scheme="https://leongo.cn/tags/%E7%94%B5%E5%BD%B1/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>学习视频整理</title>
+    <link href="https://leongo.cn/2021/03/31/xue-xi-shi-pin-zheng-li/"/>
+    <id>https://leongo.cn/2021/03/31/xue-xi-shi-pin-zheng-li/</id>
+    <published>2021-03-30T21:05:15.000Z</published>
+    <updated>2021-03-30T21:07:47.644Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h4 id=&quot;MIT计算机科学导论&quot;&gt;&lt;a href=&quot;#MIT计算机科学导论&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="学习资料" scheme="https://leongo.cn/categories/%E5%AD%A6%E4%B9%A0%E8%B5%84%E6%96%99/"/>
+    
+    
+    <category term="编程" scheme="https://leongo.cn/tags/%E7%BC%96%E7%A8%8B/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>【课程设计】最小生成树应用</title>
+    <link href="https://leongo.cn/2021/03/31/ke-cheng-she-ji-zui-xiao-sheng-cheng-shu-ying-yong/"/>
+    <id>https://leongo.cn/2021/03/31/ke-cheng-she-ji-zui-xiao-sheng-cheng-shu-ying-yong/</id>
+    <published>2021-03-30T21:01:57.000Z</published>
+    <updated>2021-03-30T21:04:28.410Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h4 id=&quot;需求描述&quot;&gt;&lt;a href=&quot;#需求描述&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="学习笔记" scheme="https://leongo.cn/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+    
+    <category term="树" scheme="https://leongo.cn/tags/%E6%A0%91/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>【每日算法】2021年03月30日 多云 不同路径</title>
+    <link href="https://leongo.cn/2021/03/30/bu-tong-lu-jing/"/>
+    <id>https://leongo.cn/2021/03/30/bu-tong-lu-jing/</id>
+    <published>2021-03-30T10:36:46.000Z</published>
+    <updated>2021-04-01T05:57:11.749Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;这道题是LeeCode第&lt;a href=&quot;https://leetcode-cn.com/problems/unique-paths/&quot;&gt;62&lt;/a&gt;题，属于动态规划中的中等难度题目。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="算法笔记" scheme="https://leongo.cn/categories/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/"/>
+    
+    
+    <category term="动态规划" scheme="https://leongo.cn/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>变分学习笔记</title>
+    <link href="https://leongo.cn/2021/03/29/bian-fen-xue-xi-bi-ji/"/>
+    <id>https://leongo.cn/2021/03/29/bian-fen-xue-xi-bi-ji/</id>
+    <published>2021-03-29T06:35:48.000Z</published>
+    <updated>2021-03-30T19:25:41.272Z</updated>
+    
+    
+    <summary type="html">&lt;h1 id=&quot;变分推断&quot;&gt;&lt;a href=&quot;#变分推断&quot; class=&quot;headerlink&quot; title=&quot;变分推断&quot;&gt;&lt;/a&gt;变分推断&lt;/h1&gt;&lt;h3 id=&quot;应用举例&quot;&gt;&lt;a href=&quot;#应用举例&quot; class=&quot;headerlink&quot; title=&quot;应用举例&quot;&gt;&lt;/a&gt;应用举例&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;文章LAD题目分析&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="学习笔记" scheme="https://leongo.cn/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+    
+    <category term="机器学习" scheme="https://leongo.cn/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>记一次系统奔溃的反思和总结</title>
+    <link href="https://leongo.cn/2021/03/28/ji-yi-ci-xi-tong-ben-kui-de-fan-si-he-zong-jie/"/>
+    <id>https://leongo.cn/2021/03/28/ji-yi-ci-xi-tong-ben-kui-de-fan-si-he-zong-jie/</id>
+    <published>2021-03-28T06:00:07.000Z</published>
+    <updated>2021-03-30T19:50:38.173Z</updated>
+    
+    
+    <summary type="html">&lt;blockquote&gt;
+&lt;p&gt;3月15日，mac电脑无缘无故的崩掉了，本以为是一个小问题，拿去环茂直营店直接给判了死刑，主板全部换掉，顺带还换了屏幕，最悲剧的是最新版本mac的硬盘是直接焊死在主板上面的，换了主板硬盘也没有了，里面的数据也没了。&lt;/p&gt;
+&lt;/blockquote&gt;</summary>
+    
+    
+    
+    <category term="生活总结" scheme="https://leongo.cn/categories/%E7%94%9F%E6%B4%BB%E6%80%BB%E7%BB%93/"/>
+    
+    
+    <category term="装机" scheme="https://leongo.cn/tags/%E8%A3%85%E6%9C%BA/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>GitHub加速方法</title>
+    <link href="https://leongo.cn/2021/03/28/github-jia-su-fang-fa/"/>
+    <id>https://leongo.cn/2021/03/28/github-jia-su-fang-fa/</id>
+    <published>2021-03-28T05:57:49.000Z</published>
+    <updated>2021-03-30T19:51:16.755Z</updated>
+    
+    
+    <summary type="html">&lt;h3 id=&quot;设置代理加速GitHub&quot;&gt;&lt;a href=&quot;#设置代理加速GitHub&quot; class=&quot;headerlink&quot; title=&quot;设置代理加速GitHub&quot;&gt;&lt;/a&gt;设置代理加速GitHub&lt;/h3&gt;&lt;p&gt;由于github网站服务器在国外，国内上传和下载数据速度较慢，假如你已经有具备了科学上网的条件，可以通过设置代理的方式来提高数据传输速度。&lt;/p&gt;
+&lt;p&gt;以下设置均建立在具备科学上网的前提下，下文中的小飞机指某款用于科学上网的工具。&lt;/p&gt;
+&lt;h4 id=&quot;设置http代理&quot;&gt;&lt;a href=&quot;#设置http代理&quot; class=&quot;headerlink&quot; title=&quot;设置http代理&quot;&gt;&lt;/a&gt;设置http代理&lt;/h4&gt;&lt;p&gt;在命令行输入如下的命令&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;bash&quot;&gt;export http_proxy=http://127.0.0.1:1087
+export https_proxy=http://127.0.0.1:1087
+
+#设置http代理，端口号对应的是小飞机的http代理端口号
+git config --global http.proxy http://127.0.0.1:1087
+git config --global https.proxy http://127.0.0.1:1087
+
+#配置github用户名和邮箱
+git config --global user.name github_id
+git config --global user.email github_email
+
+
+#取消代理设置
+git config --global --unset http.proxy
+git config --global --unset https.proxy
+
+#查看代理设置
+git config --list
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;http代理端口查询：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;在小飞机中找到“http代理 设置”选项，然后点击打开，找到如下图所示的监听窗口。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;img src=&quot;https://raw.githubusercontent.com/Skylyong/i/main/20210319193849.png&quot; style=&quot;zoom:67%;&quot; /&gt;
+
+&lt;h4 id=&quot;设置ssh加速&quot;&gt;&lt;a href=&quot;#设置ssh加速&quot; class=&quot;headerlink&quot; title=&quot;设置ssh加速&quot;&gt;&lt;/a&gt;&lt;a href=&quot;https://gist.github.com/chuyik/02d0d37a49edc162546441092efae6a1&quot;&gt;设置ssh&lt;/a&gt;加速&lt;/h4&gt;&lt;p&gt;&lt;code&gt;在~/.ssh/config&lt;/code&gt; 文件（不存在则新建）添加如下内容：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;bash&quot;&gt;Host github.com
+   HostName github.com
+   User git
+   # 走 HTTP 代理，需要 brew install socat
+   # ProxyCommand socat - PROXY:127.0.0.1:%h:%p,proxyport=1087
+   # 走 socks5 代理（如 Shadowsocks）
+   ProxyCommand nc -v -x 127.0.0.1:1086 %h %p
+   #上面1086这个端口号可以在“小飞机”的高级设置中查看
+   # 走 socks5 代理（如 Shadowsocks），Windows 平台没有 nc 命令
+   # ProxyCommand connect -S 127.0.0.1:1086 %h %p
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;本地Socks5监听窗口查询：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;在小飞机中找到“高级设置”，点击打开就可以找到如下图所示的监听窗口。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;img src=&quot;https://raw.githubusercontent.com/Skylyong/i/main/20210319194610.png&quot; style=&quot;zoom:50%;&quot; /&gt;
+
+
+
+
+
+&lt;h3 id=&quot;通过修改hosts解决浏览器打不开github网站的方法&quot;&gt;&lt;a href=&quot;#通过修改hosts解决浏览器打不开github网站的方法&quot; class=&quot;headerlink&quot; title=&quot;通过修改hosts解决浏览器打不开github网站的方法&quot;&gt;&lt;/a&gt;通过修改hosts解决浏览器打不开github网站的方法&lt;/h3&gt;&lt;blockquote&gt;
+&lt;p&gt;假如不具备科学上网的条件，也可以通过修改hosts文件来解决浏览器打不开GitHub的问题，但是通过这种方式只能解决浏览器打开慢的问题，不能够解决在终端克隆项目慢的问题，建议通过代理的方式加速。&lt;/p&gt;
+&lt;/blockquote&gt;</summary>
+    
+    
+    
+    <category term="爬坑总结" scheme="https://leongo.cn/categories/%E7%88%AC%E5%9D%91%E6%80%BB%E7%BB%93/"/>
+    
+    
+    <category term="GitHub" scheme="https://leongo.cn/tags/GitHub/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>ECNU的春</title>
+    <link href="https://leongo.cn/2021/02/22/ecnu-de-chun/"/>
+    <id>https://leongo.cn/2021/02/22/ecnu-de-chun/</id>
+    <published>2021-02-21T18:02:16.000Z</published>
+    <updated>2021-03-30T20:18:17.839Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;最开始令人感受到春气息的是红梅花，红梅花跟腊梅花的区别在于花瓣的颜色和开放的时间不同，腊梅花比红梅花开得更早一些。今年红梅花开的具体日子已经不记得了，只依稀记得那个时候天还很冷，操场上面很少见到跑步运动的人，留校的同学大多都还呆在宿舍，校园里面因此显得十分的冷清。&lt;/p&gt;
+</summary>
+        
+      
+    
+    
+    
+    <category term="生活总结" scheme="https://leongo.cn/categories/%E7%94%9F%E6%B4%BB%E6%80%BB%E7%BB%93/"/>
+    
+    
+    <category term="ECNU" scheme="https://leongo.cn/tags/ECNU/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>hexo个人博客搭建</title>
+    <link href="https://leongo.cn/2021/02/21/build/"/>
+    <id>https://leongo.cn/2021/02/21/build/</id>
+    <published>2021-02-20T17:37:22.000Z</published>
+    <updated>2021-04-01T12:48:14.350Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;前沿： &lt;a href=&quot;file:///Users/lyong/Desktop/Skylyong.github.io-main/2021/02/21/build/index.html&quot;&gt;hexo&lt;/a&gt;和&lt;a</summary>
+        
+      
+    
+    
+    
+    <category term="生活总结" scheme="https://leongo.cn/categories/%E7%94%9F%E6%B4%BB%E6%80%BB%E7%BB%93/"/>
+    
+    
+    <category term="博客" scheme="https://leongo.cn/tags/%E5%8D%9A%E5%AE%A2/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>好用的免费无广告电影网站推荐</title>
+    <link href="https://leongo.cn/2021/02/21/hao-yong-de-mian-fei-wu-guang-gao-dian-ying-wang-zhan-tui-jian/"/>
+    <id>https://leongo.cn/2021/02/21/hao-yong-de-mian-fei-wu-guang-gao-dian-ying-wang-zhan-tui-jian/</id>
+    <published>2021-02-20T17:28:10.000Z</published>
+    <updated>2021-03-30T19:58:24.825Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;今日阳光明媚，中午坐在阳台上面感受着春日暖风拂面，不由得让人想找一部电影伴着暖阳体验一番春日周末的慢生活。相信有不少同学跟我一样，不喜欢充视频网站的会员，更不喜欢看电影之前漫长的广告。好在日常生活中碰到好用的电影网站我都会加在收藏夹中，下面整理一下分享给各位喜欢看电影的同学</summary>
+        
+      
+    
+    
+    
+    <category term="生活总结" scheme="https://leongo.cn/categories/%E7%94%9F%E6%B4%BB%E6%80%BB%E7%BB%93/"/>
+    
+    
+    <category term="电影" scheme="https://leongo.cn/tags/%E7%94%B5%E5%BD%B1/"/>
+    
+  </entry>
+  
+</feed>
