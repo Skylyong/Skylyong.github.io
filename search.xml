@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>机器学习中的各种熵</title>
+      <link href="2021/04/16/ji-qi-xue-xi-zhong-de-ge-chong-shang/"/>
+      <url>2021/04/16/ji-qi-xue-xi-zhong-de-ge-chong-shang/</url>
+      
+        <content type="html"><![CDATA[<h3 id="概念和定义"><a href="#概念和定义" class="headerlink" title="概念和定义"></a>概念和定义</h3><h4 id="熵"><a href="#熵" class="headerlink" title="熵"></a>熵</h4><h4 id="条件熵"><a href="#条件熵" class="headerlink" title="条件熵"></a>条件熵</h4><h4 id="交叉熵"><a href="#交叉熵" class="headerlink" title="交叉熵"></a>交叉熵</h4><h3 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h3><h3 id="参考链接："><a href="#参考链接：" class="headerlink" title="参考链接："></a>参考链接：</h3><ul><li><a href="https://www.cnblogs.com/Arborday/p/10727147.html">https://www.cnblogs.com/Arborday/p/10727147.html</a></li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> 机器学习 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 熵 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>git常用命令</title>
       <link href="2021/04/08/git-chang-yong-ming-ling/"/>
       <url>2021/04/08/git-chang-yong-ming-ling/</url>
