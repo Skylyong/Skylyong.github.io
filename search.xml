@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>jupyter notebook 本地服务器搭建</title>
+      <link href="2021/06/21/jupyter-notebook-ben-di-fu-wu-qi-da-jian/"/>
+      <url>2021/06/21/jupyter-notebook-ben-di-fu-wu-qi-da-jian/</url>
+      
+        <content type="html"><![CDATA[<p>今天在实验室的服务器主机上面搭建了jupyter notebook服务器，记录一下搭建步骤，方便以后查看。</p><h4 id="服务器端操作"><a href="#服务器端操作" class="headerlink" title="服务器端操作"></a>服务器端操作</h4><h5 id="生成Jupyter-Notebook配置文件"><a href="#生成Jupyter-Notebook配置文件" class="headerlink" title="生成Jupyter Notebook配置文件"></a>生成Jupyter Notebook配置文件</h5><pre class=" language-bash"><code class="language-bash">$ jupyter notebook --generate-config</code></pre><h5 id="设置登录密码"><a href="#设置登录密码" class="headerlink" title="设置登录密码"></a>设置登录密码</h5><pre class=" language-bash"><code class="language-bash"><span class="token comment" spellcheck="true"># 在命令行输入python命令，进入python交互界面，输入如下命令</span>from notebook.auth <span class="token function">import</span> <span class="token function">passwd</span>passwd<span class="token punctuation">(</span><span class="token punctuation">)</span>Enter password:Verify password:Out<span class="token punctuation">[</span>2<span class="token punctuation">]</span>: <span class="token string">'sha1:67c9e60bb8b6:9ffede0825894254b2e042ea597d771089e11aed'</span></code></pre><p>将生成的代码添加到配置文件中</p><pre class=" language-bash"><code class="language-bash">c.NotebookApp.password <span class="token operator">=</span> u<span class="token string">'sha1:67c9e60bb8b6:9ffede0825894254b2e042ea597d771089e11aed'</span></code></pre><h5 id="修改配置文件"><a href="#修改配置文件" class="headerlink" title="修改配置文件"></a>修改配置文件</h5><pre class=" language-bash"><code class="language-bash">$ vim ~/.jupyter/jupyter_notebook_config.py</code></pre><p>在配置文件中添加如下内容</p><pre class=" language-bash"><code class="language-bash">c.NotebookApp.allow_origin <span class="token operator">=</span> <span class="token string">'*'</span>c.NotebookApp.ip <span class="token operator">=</span> <span class="token string">'0.0.0.0'</span> <span class="token comment" spellcheck="true">#所有绑定服务器的IP都能访问，若想只在特定ip访问，输入ip地址即可</span>c.NotebookApp.port <span class="token operator">=</span> 2021 <span class="token comment" spellcheck="true">#将端口设置为自己喜欢的吧，默认是8888</span>c.NotebookApp.open_browser <span class="token operator">=</span> False <span class="token comment" spellcheck="true">#我们并不想在服务器上直接打开Jupyter Notebook，所以设置成False</span>c.NotebookApp.notebook_dir <span class="token operator">=</span> <span class="token string">'/home/jupyter_projects'</span> <span class="token comment" spellcheck="true">#这里是设置Jupyter的根目录，若不设置将默认root的根目录，不安全</span>c.NotebookApp.allow_root <span class="token operator">=</span> True <span class="token comment" spellcheck="true"># 为了安全，Jupyter默认不允许以root权限启动jupyter</span>c.NotebookApp.allow_remote_access <span class="token operator">=</span> Truec.NotebookApp.password <span class="token operator">=</span> u<span class="token string">'sha1:67c9e60bb8b6:9ffede0825894254b2e042ea597d771089e11aed'</span></code></pre><h4 id="客服端电脑操作"><a href="#客服端电脑操作" class="headerlink" title="客服端电脑操作"></a>客服端电脑操作</h4><pre class=" language-bash"><code class="language-bash"><span class="token function">ssh</span> username@ipaddress -L 2021:127.0.0.1:2021</code></pre><p>最后在本地浏览器输入地址：127.0.0.1:2021 访问</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 爬坑总结 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> jupyter notebook </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>机器学习中的各种熵</title>
       <link href="2021/04/16/ji-qi-xue-xi-zhong-de-ge-chong-shang/"/>
       <url>2021/04/16/ji-qi-xue-xi-zhong-de-ge-chong-shang/</url>
