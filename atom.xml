@@ -6,7 +6,7 @@
   <link href="https://leongo.cn/atom.xml" rel="self"/>
   
   <link href="https://leongo.cn/"/>
-  <updated>2021-06-20T16:56:36.074Z</updated>
+  <updated>2021-06-30T18:45:32.424Z</updated>
   <id>https://leongo.cn/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Huggingface 预训练模型权重下载的问题</title>
+    <link href="https://leongo.cn/2021/07/01/huggingface-yu-xun-lian-mo-xing-quan-chong-xia-zai-de-wen-ti/"/>
+    <id>https://leongo.cn/2021/07/01/huggingface-yu-xun-lian-mo-xing-quan-chong-xia-zai-de-wen-ti/</id>
+    <published>2021-06-30T17:44:09.000Z</published>
+    <updated>2021-06-30T18:45:32.424Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;blockquote&gt;
+&lt;p&gt;本文转自&lt;a href=&quot;https://www.bilibili.com/read/cv8231417&quot;&gt;Hugging face预训练模型&lt;/a&gt;和&lt;a</summary>
+        
+      
+    
+    
+    
+    
+    <category term="预训练模型" scheme="https://leongo.cn/tags/%E9%A2%84%E8%AE%AD%E7%BB%83%E6%A8%A1%E5%9E%8B/"/>
+    
+  </entry>
   
   <entry>
     <title>jupyter notebook 本地服务器搭建</title>
