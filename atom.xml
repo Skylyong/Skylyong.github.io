@@ -6,7 +6,7 @@
   <link href="https://leongo.cn/atom.xml" rel="self"/>
   
   <link href="https://leongo.cn/"/>
-  <updated>2021-06-30T18:45:32.424Z</updated>
+  <updated>2021-08-05T13:53:36.085Z</updated>
   <id>https://leongo.cn/</id>
   
   <author>
@@ -17,11 +17,60 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>Pytorch学习</title>
+    <link href="https://leongo.cn/2021/08/05/pytorch-xue-xi/"/>
+    <id>https://leongo.cn/2021/08/05/pytorch-xue-xi/</id>
+    <published>2021-08-05T13:50:37.000Z</published>
+    <updated>2021-08-05T13:53:36.085Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;!-- ## Pytorch 框架学习 --&gt;
+
+&lt;p&gt;课程[链接](https: // &lt;a href=&quot;http://www.youtube.com/&quot;&gt;www.youtube.com&lt;/a&gt; / watch?v = c36lUUr864M)&lt;/p&gt;
+&lt;h3</summary>
+        
+      
+    
+    
+    
+    <category term="学习笔记" scheme="https://leongo.cn/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+    
+    <category term="pytorch" scheme="https://leongo.cn/tags/pytorch/"/>
+    
+  </entry>
+  
+  <entry>
+    <title></title>
+    <link href="https://leongo.cn/2021/07/20/li-bao-chun-writing-perfect-papers/"/>
+    <id>https://leongo.cn/2021/07/20/li-bao-chun-writing-perfect-papers/</id>
+    <published>2021-07-20T14:52:09.000Z</published>
+    <updated>2021-07-20T14:52:09.541Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h3 id=&quot;李葆春——Writing-Perfect-Papers&quot;&gt;&lt;a href=&quot;#李葆春——Writing-Perfect-Papers&quot; class=&quot;headerlink&quot; title=&quot;李葆春——Writing Perfect</summary>
+        
+      
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
     <title>Huggingface 预训练模型权重下载的问题</title>
     <link href="https://leongo.cn/2021/07/01/huggingface-yu-xun-lian-mo-xing-quan-chong-xia-zai-de-wen-ti/"/>
     <id>https://leongo.cn/2021/07/01/huggingface-yu-xun-lian-mo-xing-quan-chong-xia-zai-de-wen-ti/</id>
     <published>2021-06-30T17:44:09.000Z</published>
-    <updated>2021-06-30T18:45:32.424Z</updated>
+    <updated>2021-06-30T18:48:11.263Z</updated>
     
     
       
