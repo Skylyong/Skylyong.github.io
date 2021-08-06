@@ -6,7 +6,7 @@
   <link href="https://leongo.cn/atom.xml" rel="self"/>
   
   <link href="https://leongo.cn/"/>
-  <updated>2021-08-05T15:04:48.003Z</updated>
+  <updated>2021-08-06T14:03:52.633Z</updated>
   <id>https://leongo.cn/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Pandas学习</title>
+    <link href="https://leongo.cn/2021/08/06/pandas-xue-xi/"/>
+    <id>https://leongo.cn/2021/08/06/pandas-xue-xi/</id>
+    <published>2021-08-06T13:35:53.000Z</published>
+    <updated>2021-08-06T14:03:52.633Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;blockquote&gt;
+&lt;p&gt;Video url: &lt;a</summary>
+        
+      
+    
+    
+    
+    <category term="学习笔记" scheme="https://leongo.cn/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+    
+    <category term="Pandas" scheme="https://leongo.cn/tags/Pandas/"/>
+    
+  </entry>
   
   <entry>
     <title>Pytorch学习</title>
