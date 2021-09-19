@@ -6,7 +6,7 @@
   <link href="https://leongo.cn/atom.xml" rel="self"/>
   
   <link href="https://leongo.cn/"/>
-  <updated>2021-09-19T15:52:47.176Z</updated>
+  <updated>2021-09-19T16:09:37.877Z</updated>
   <id>https://leongo.cn/</id>
   
   <author>
@@ -15,6 +15,35 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>机器学习参考资料</title>
+    <link href="https://leongo.cn/2021/09/19/ji-qi-xue-xi-can-kao-zi-liao/"/>
+    <id>https://leongo.cn/2021/09/19/ji-qi-xue-xi-can-kao-zi-liao/</id>
+    <published>2021-09-19T15:59:09.000Z</published>
+    <updated>2021-09-19T16:09:37.877Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;机器学习参考资料：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;机器学习参考书籍：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;《神经网络与深度学习》书籍及PPT：&lt;a</summary>
+        
+      
+    
+    
+    
+    <category term="学习资料" scheme="https://leongo.cn/categories/%E5%AD%A6%E4%B9%A0%E8%B5%84%E6%96%99/"/>
+    
+    
+    <category term="机器学习" scheme="https://leongo.cn/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+    
+  </entry>
   
   <entry>
     <title>有用的资源</title>
@@ -488,31 +517,6 @@
     
     
     <category term="电影" scheme="https://leongo.cn/tags/%E7%94%B5%E5%BD%B1/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>学习视频整理</title>
-    <link href="https://leongo.cn/2021/03/31/xue-xi-shi-pin-zheng-li/"/>
-    <id>https://leongo.cn/2021/03/31/xue-xi-shi-pin-zheng-li/</id>
-    <published>2021-03-30T21:05:15.000Z</published>
-    <updated>2021-03-30T21:07:47.000Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h4 id=&quot;MIT计算机科学导论&quot;&gt;&lt;a href=&quot;#MIT计算机科学导论&quot; class=&quot;headerlink&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="学习资料" scheme="https://leongo.cn/categories/%E5%AD%A6%E4%B9%A0%E8%B5%84%E6%96%99/"/>
-    
-    
-    <category term="编程" scheme="https://leongo.cn/tags/%E7%BC%96%E7%A8%8B/"/>
     
   </entry>
   

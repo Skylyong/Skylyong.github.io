@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>机器学习参考资料</title>
+      <link href="2021/09/19/ji-qi-xue-xi-can-kao-zi-liao/"/>
+      <url>2021/09/19/ji-qi-xue-xi-can-kao-zi-liao/</url>
+      
+        <content type="html"><![CDATA[<p>机器学习参考资料：</p><ul><li><p>机器学习参考书籍：</p><ul><li>《神经网络与深度学习》书籍及PPT：<a href="https://nndl.github.io/">https://nndl.github.io/</a></li><li>《统计学习方法》李航著</li><li>《机器学习》周志华著</li><li>《南瓜书》：<a href="https://datawhalechina.github.io/pumpkin-book/%EF%BC%8C">https://datawhalechina.github.io/pumpkin-book/，</a> <a href="https://github.com/datawhalechina/pumpkin-book">https://github.com/datawhalechina/pumpkin-book</a></li><li>《迁移学习》杨强等著</li><li>《联邦学习》杨强等著</li><li>Python Machine Learning： <a href="https://github.com/rasbt/python-machine-learning-book">https://github.com/rasbt/python-machine-learning-book</a></li><li>深度学习：英文版（ <a href="https://www.deeplearningbook.org/%EF%BC%89%E3%80%81%E4%B8%AD%E6%96%87%E7%89%88%EF%BC%88">https://www.deeplearningbook.org/）、中文版（</a> <a href="https://github.com/exacity/deeplearningbook-chinese%EF%BC%89">https://github.com/exacity/deeplearningbook-chinese）</a></li><li>《强化学习Reinforcement Learning（第2版）》[加]Richard S.Sutton [美]Andrew G. Barto著，俞凯等译</li></ul></li><li><p>数学类参考书籍：</p><ul><li>凸优化Convex Optimization（<a href="http://stanford.edu/~boyd/cvxbook/%EF%BC%89%E3%80%81">http://stanford.edu/~boyd/cvxbook/）、</a></li><li>线性代数 <a href="https://ocw.mit.edu/courses/mathematics/18-06sc-linear-algebra-fall-2011/index.htm">https://ocw.mit.edu/courses/mathematics/18-06sc-linear-algebra-fall-2011/index.htm</a></li><li>概率论与统计：1）斯坦福课程CS109 Probability for Computer Scientists： <a href="http://web.stanford.edu/class/cs109/%EF%BC%9B2%EF%BC%89Introduction">http://web.stanford.edu/class/cs109/；2）Introduction</a> to Probability, Statistics, and Random Processes： <a href="https://www.probabilitycourse.com/">https://www.probabilitycourse.com/</a></li></ul></li><li><p>机器学习库/平台：</p><ul><li>SKlearn（<a href="https://scikit-learn.org/stable/%EF%BC%89%EF%BC%8CSKlearn%E7%9A%84User">https://scikit-learn.org/stable/），SKlearn的User</a> Guide里总结了很多机器学习模型，可以学习下<a href="https://scikit-learn.org/stable/user_guide.html%E3%80%82%E4%B8%8A%E9%9D%A2%E6%8F%90%E5%88%B0%E7%9A%84Python">https://scikit-learn.org/stable/user_guide.html。上面提到的Python</a> Machine Learning书籍中就大量使用SKlearn的API。</li><li>Pytorch： <a href="https://pytorch.org/tutorials/">https://pytorch.org/tutorials/</a></li><li>TensorFlow</li><li>Keras（ <a href="https://keras.io/%EF%BC%89%E7%AD%89%E3%80%82">https://keras.io/）等。</a> </li></ul></li><li><p>线上课程：</p><ul><li>吴恩达教授的视频教学课程（ <a href="https://www.coursera.org/learn/machine-learning%EF%BC%89">https://www.coursera.org/learn/machine-learning）</a></li><li>李宏毅-台湾大学（<a href="http://speech.ee.ntu.edu.tw/~tlkagk/courses_ML20.html%EF%BC%89">http://speech.ee.ntu.edu.tw/~tlkagk/courses_ML20.html）</a></li><li>Google的深度学习课程（<a href="https://www.udacity.com/course/intro-to-tensorflow-for-deep-learning--ud187%EF%BC%89">https://www.udacity.com/course/intro-to-tensorflow-for-deep-learning--ud187）</a></li><li>李飞飞教授的计算机视觉课程（<a href="http://cs231n.stanford.edu)/">http://cs231n.stanford.edu）</a></li><li>Richard Socher 的自然语言处理课程（<a href="http://cs224d.stanford.edu)等./">http://cs224d.stanford.edu）等。</a></li></ul></li><li><p>其他资料：</p><ul><li>Machine Learning and Artificial Intelligence and their role in networking： <a href="https://www.bilibili.com/video/av70398058/">https://www.bilibili.com/video/av70398058/</a></li><li>链接：<a href="https://pan.baidu.com/s/1qgYRbtfCLZE8d0MuCSrRLw">https://pan.baidu.com/s/1qgYRbtfCLZE8d0MuCSrRLw</a>  密码:1am4</li><li>链接：<a href="https://pan.baidu.com/s/1YAujUyivMKZcOCUxB9GZlw">https://pan.baidu.com/s/1YAujUyivMKZcOCUxB9GZlw</a> 提取码：wru7</li></ul></li><li><p>博客：</p></li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> 学习资料 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 机器学习 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>有用的资源</title>
       <link href="2021/09/19/you-yong-de-zi-yuan/"/>
       <url>2021/09/19/you-yong-de-zi-yuan/</url>
