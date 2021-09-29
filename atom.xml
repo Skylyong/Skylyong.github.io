@@ -6,7 +6,7 @@
   <link href="https://leongo.cn/atom.xml" rel="self"/>
   
   <link href="https://leongo.cn/"/>
-  <updated>2021-09-19T16:14:04.418Z</updated>
+  <updated>2021-09-29T10:12:46.343Z</updated>
   <id>https://leongo.cn/</id>
   
   <author>
@@ -15,6 +15,36 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>将微信聊天中的语音转换为mp3</title>
+    <link href="https://leongo.cn/2021/09/29/jiang-wei-xin-liao-tian-zhong-de-yu-yin-zhuan-huan-wei-mp3/"/>
+    <id>https://leongo.cn/2021/09/29/jiang-wei-xin-liao-tian-zhong-de-yu-yin-zhuan-huan-wei-mp3/</id>
+    <published>2021-09-29T09:21:06.000Z</published>
+    <updated>2021-09-29T10:12:46.343Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;找到语音文件将其导出&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;找到MAC微信图片，鼠标放在图片上面按下右键调出如下图所示的提示框，然后点击“在Finder中显示”，打开音频、图片等文件在本地保存的位置。&lt;/li&gt;
+&lt;/ul&gt;
+ &lt;img</summary>
+        
+      
+    
+    
+    
+    <category term="生活总结" scheme="https://leongo.cn/categories/%E7%94%9F%E6%B4%BB%E6%80%BB%E7%BB%93/"/>
+    
+    
+    <category term="微信" scheme="https://leongo.cn/tags/%E5%BE%AE%E4%BF%A1/"/>
+    
+  </entry>
   
   <entry>
     <title>机器学习参考资料</title>
@@ -491,32 +521,6 @@
     
     
     <category term="GitLab" scheme="https://leongo.cn/tags/GitLab/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>英语口语练习电影推荐</title>
-    <link href="https://leongo.cn/2021/03/31/ying-yu-kou-yu-lian-xi-dian-ying-tui-jian/"/>
-    <id>https://leongo.cn/2021/03/31/ying-yu-kou-yu-lian-xi-dian-ying-tui-jian/</id>
-    <published>2021-03-30T21:08:40.000Z</published>
-    <updated>2021-05-14T03:20:22.000Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;我是从喜马拉雅路转粉过来听课的，&lt;a href=&quot;https://www.ximalaya.com/waiyu/19111514/&quot;&gt;张老师&lt;/a&gt;推荐的东西必然是干货。因此利用周末时间搜集整理了一些老师课上推荐的视频资源，方便自己也分享给大家。&lt;/p&gt;
-&lt;h4</summary>
-        
-      
-    
-    
-    
-    <category term="学习资料" scheme="https://leongo.cn/categories/%E5%AD%A6%E4%B9%A0%E8%B5%84%E6%96%99/"/>
-    
-    
-    <category term="电影" scheme="https://leongo.cn/tags/%E7%94%B5%E5%BD%B1/"/>
     
   </entry>
   

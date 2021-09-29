@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>将微信聊天中的语音转换为mp3</title>
+      <link href="2021/09/29/jiang-wei-xin-liao-tian-zhong-de-yu-yin-zhuan-huan-wei-mp3/"/>
+      <url>2021/09/29/jiang-wei-xin-liao-tian-zhong-de-yu-yin-zhuan-huan-wei-mp3/</url>
+      
+        <content type="html"><![CDATA[<ol><li><p>找到语音文件将其导出</p><ul><li>找到MAC微信图片，鼠标放在图片上面按下右键调出如下图所示的提示框，然后点击“在Finder中显示”，打开音频、图片等文件在本地保存的位置。</li></ul> <img src="https://raw.githubusercontent.com/Skylyong/i/main/20210929173234.png" alt="image-20210929173226533" style="zoom:50%;" /><p> ​            这个地方需要注意的是，微信保存到本地的记录是按照聊天会话存储的，不同会话的内容保存的位置不一样。我们应该先定位到要获取音频的会话，在该会话中调出“在Finder”中显示才行。</p><ul><li><p>如下图所示Audio目录就是存储会话语音</p><img src="https://raw.githubusercontent.com/Skylyong/i/main/20210929173725.png" alt="image-20210929173725735" style="zoom:45%;" /></li></ul></li></ol><ol start="2"><li><p>将silk格式文件转换为mp3格式文件</p><ul><li><p>安装silk-v3</p><p>silk-v3依赖gcc和FFmpeg来运行，如果没有这两个依赖项，通过如下命令安装依赖：</p><pre class=" language-sh"><code class="language-sh">brew install gccbrew install ffmpeg</code></pre><p>安装好依赖之后，在<a href="https://github.com/kn007/silk-v3-decoder">这里</a>将silk-v3克隆到本地电脑。</p></li><li><p>用silk-v3进行格式转换</p><p>按照<a href="https://github.com/Skylyong/silk-v3-decoder">silk-v3项目说明</a>运行命令，完成格式转换。</p><ul><li><p>转换单个文件</p><pre class=" language-sh"><code class="language-sh">sh converter.sh xxx.slk mp3</code></pre></li><li><p>批量转换文件夹中的多个文件</p><pre class=" language-sh"><code class="language-sh">sh converter.sh inputFolder ouputFolder mp3</code></pre></li></ul></li></ul></li><li><p>参考资料</p></li></ol><p><a href="https://www.jianshu.com/p/fbccd8a52374">微信语音silk格式文件转换处理记录</a></p><p><a href="https://blog.csdn.net/henryhu712/article/details/89852514">将微信语音消息转换为 mp3</a></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 生活总结 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 微信 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>机器学习参考资料</title>
       <link href="2021/09/19/ji-qi-xue-xi-can-kao-zi-liao/"/>
       <url>2021/09/19/ji-qi-xue-xi-can-kao-zi-liao/</url>
