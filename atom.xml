@@ -6,7 +6,7 @@
   <link href="https://leongo.cn/atom.xml" rel="self"/>
   
   <link href="https://leongo.cn/"/>
-  <updated>2022-04-29T08:31:29.106Z</updated>
+  <updated>2022-09-05T06:54:59.866Z</updated>
   <id>https://leongo.cn/</id>
   
   <author>
@@ -15,6 +15,34 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>电磁比赛总结</title>
+    <link href="https://leongo.cn/2022/09/05/dian-ci-bi-sai-zong-jie/"/>
+    <id>https://leongo.cn/2022/09/05/dian-ci-bi-sai-zong-jie/</id>
+    <published>2022-09-05T06:47:54.000Z</published>
+    <updated>2022-09-05T06:54:59.866Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;电磁比赛总结&lt;/p&gt;
+&lt;p&gt;代码总结&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;要会静态分析资源占有率，特别是当服务器内存资源不足的时候，提前做好静态分析，设置合理的运行参数，才能提升效率。比如本次实验过程中，做数据增强预处理数据时需要占用大量内存资源，参数设置过大，会导致运行一半后因为内</summary>
+        
+      
+    
+    
+    
+    <category term="爬坑总结" scheme="https://leongo.cn/categories/%E7%88%AC%E5%9D%91%E6%80%BB%E7%BB%93/"/>
+    
+    
+    <category term="竞赛" scheme="https://leongo.cn/tags/%E7%AB%9E%E8%B5%9B/"/>
+    
+  </entry>
   
   <entry>
     <title>远程访问服务器Jupyter-Notebook</title>
@@ -499,31 +527,6 @@
     
     
     <category term="git" scheme="https://leongo.cn/tags/git/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>NLP知识体系</title>
-    <link href="https://leongo.cn/2021/04/08/nlp-zhi-shi-ti-xi/"/>
-    <id>https://leongo.cn/2021/04/08/nlp-zhi-shi-ti-xi/</id>
-    <published>2021-04-08T02:21:44.000Z</published>
-    <updated>2021-04-08T02:45:09.000Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h3 id=&quot;第一部分：机器学习基础篇&quot;&gt;&lt;a href=&quot;#第一部分：机器学习基础篇&quot; class=&quot;headerlink&quot; title=&quot;第一部分：机器学习基础篇&quot;&gt;&lt;/a&gt;第一部分：机器学习基础篇&lt;/h3&gt;&lt;h4 id=&quot;第一章：自然语言处理概述&quot;&gt;&lt;a</summary>
-        
-      
-    
-    
-    
-    <category term="知识框架" scheme="https://leongo.cn/categories/%E7%9F%A5%E8%AF%86%E6%A1%86%E6%9E%B6/"/>
-    
-    
-    <category term="nlp" scheme="https://leongo.cn/tags/nlp/"/>
     
   </entry>
   
