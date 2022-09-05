@@ -359,7 +359,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    912
+                    910
                 </div>
                 
 
@@ -457,11 +457,11 @@
 <ol start="9">
 <li>使用plt将图片保存到内存中，提高处理效率</li>
 </ol>
-<pre><code> from io import BytesIO
- import matplotlib.pyplot as plt
- 
- p_bytes = BytesIO() #申请内存
- plt.savefig(p_bytes, format=&#39;png&#39;)
+<pre class=" language-python"><code class="language-python"> <span class="token keyword">from</span> io <span class="token keyword">import</span> BytesIO
+ <span class="token keyword">import</span> matplotlib<span class="token punctuation">.</span>pyplot <span class="token keyword">as</span> plt
+ 
+ p_bytes <span class="token operator">=</span> BytesIO<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">#申请内存</span>
+ plt<span class="token punctuation">.</span>savefig<span class="token punctuation">(</span>p_bytes<span class="token punctuation">,</span> format<span class="token operator">=</span><span class="token string">'png'</span><span class="token punctuation">)</span>
 </code></pre>
 <ol start="10">
 <li>关于采样的函数</li>
