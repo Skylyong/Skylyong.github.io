@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>Mac系统制作win10启动U盘</title>
+      <link href="2022/09/07/mac-xi-tong-zhi-zuo-win10-qi-dong-u-pan/"/>
+      <url>2022/09/07/mac-xi-tong-zhi-zuo-win10-qi-dong-u-pan/</url>
+      
+        <content type="html"><![CDATA[<h5 id="Mac系统下制作win10安装盘"><a href="#Mac系统下制作win10安装盘" class="headerlink" title="Mac系统下制作win10安装盘"></a>Mac系统下制作win10安装盘</h5><h6 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h6><ul><li><p>一台mac电脑</p></li><li><p>一个大于8G的U盘</p></li><li><p>win10镜像文件</p></li><li><p>Boot Camp ISO Converter软件（这个软件可以解决FAT32格式的u盘单个文件大小不能超过4GB的问题），下载<a href="https://macdownload.informer.com/boot-camp-iso-converter/download/">链接</a></p></li></ul><h6 id="制作步骤"><a href="#制作步骤" class="headerlink" title="制作步骤"></a>制作步骤</h6><ul><li><p>打开Boot Camp ISO Converter软件对下载好的iso镜像文件进行处理，目的是将镜像文件insta.win分配为大小小于4GB的文件</p></li><li><p>在插入U盘的状态下，打开终端，输入：</p><pre class=" language-bash"><code class="language-bash">diskutil list</code></pre><p>  找到U盘对应的盘符，本例中U盘对应的盘符为：disk2</p></li><li><p>将U盘(disk2)格式化为FAT32格式</p></li></ul><pre class=" language-bash"><code class="language-bash">diskutil eraseDisk FAT32 <span class="token string">"WINDOWS10"</span> MBR disk2</code></pre><ul><li><p>找到经过Boot Camp ISO Converter处理后的镜像文件，然后双击挂载镜像文件</p></li><li><p>输入命令，将挂载的镜像盘拷贝至U盘中(disk2)</p><pre class=" language-bash"><code class="language-bash"><span class="token function">cp</span> -rp /Volumes/CPBA_X64FRE_ZH-CN_DV9/* /Volumes/WINDOWS10/</code></pre><p>这里的CPBA_X64FRE_ZH是刚刚挂载的镜像的名称。</p></li></ul><h6 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a><a href="https://blog.csdn.net/h21396577548/article/details/125572053">参考链接</a></h6>]]></content>
+      
+      
+      <categories>
+          
+          <category> 爬坑总结 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 启动U盘 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>电磁比赛总结</title>
       <link href="2022/09/05/dian-ci-bi-sai-zong-jie/"/>
       <url>2022/09/05/dian-ci-bi-sai-zong-jie/</url>

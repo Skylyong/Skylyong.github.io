@@ -6,7 +6,7 @@
   <link href="https://leongo.cn/atom.xml" rel="self"/>
   
   <link href="https://leongo.cn/"/>
-  <updated>2022-09-05T07:02:56.567Z</updated>
+  <updated>2022-09-07T12:14:57.015Z</updated>
   <id>https://leongo.cn/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Mac系统制作win10启动U盘</title>
+    <link href="https://leongo.cn/2022/09/07/mac-xi-tong-zhi-zuo-win10-qi-dong-u-pan/"/>
+    <id>https://leongo.cn/2022/09/07/mac-xi-tong-zhi-zuo-win10-qi-dong-u-pan/</id>
+    <published>2022-09-07T11:51:54.000Z</published>
+    <updated>2022-09-07T12:14:57.015Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h5 id=&quot;Mac系统下制作win10安装盘&quot;&gt;&lt;a href=&quot;#Mac系统下制作win10安装盘&quot; class=&quot;headerlink&quot; title=&quot;Mac系统下制作win10安装盘&quot;&gt;&lt;/a&gt;Mac系统下制作win10安装盘&lt;/h5&gt;&lt;h6 id=&quot;准备&quot;&gt;&lt;a</summary>
+        
+      
+    
+    
+    
+    <category term="爬坑总结" scheme="https://leongo.cn/categories/%E7%88%AC%E5%9D%91%E6%80%BB%E7%BB%93/"/>
+    
+    
+    <category term="启动U盘" scheme="https://leongo.cn/tags/%E5%90%AF%E5%8A%A8U%E7%9B%98/"/>
+    
+  </entry>
   
   <entry>
     <title>电磁比赛总结</title>
@@ -502,31 +527,6 @@
     
     
     <category term="熵" scheme="https://leongo.cn/tags/%E7%86%B5/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>git常用命令</title>
-    <link href="https://leongo.cn/2021/04/08/git-chang-yong-ming-ling/"/>
-    <id>https://leongo.cn/2021/04/08/git-chang-yong-ming-ling/</id>
-    <published>2021-04-08T09:11:14.000Z</published>
-    <updated>2021-04-08T15:31:25.000Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h4 id=&quot;git基于历史commit创建分支&quot;&gt;&lt;a href=&quot;#git基于历史commit创建分支&quot; class=&quot;headerlink&quot; title=&quot;git基于历史commit创建分支&quot;&gt;&lt;/a&gt;git基于历史commit创建分支&lt;/h4&gt;&lt;pre class=&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="爬坑总结" scheme="https://leongo.cn/categories/%E7%88%AC%E5%9D%91%E6%80%BB%E7%BB%93/"/>
-    
-    
-    <category term="git" scheme="https://leongo.cn/tags/git/"/>
     
   </entry>
   
