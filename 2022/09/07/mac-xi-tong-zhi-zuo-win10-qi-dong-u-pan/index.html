@@ -359,7 +359,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    234
+                    529
                 </div>
                 
 
@@ -415,7 +415,21 @@
 <li><p>输入命令，将挂载的镜像盘拷贝至U盘中(disk2)</p>
 <pre class=" language-bash"><code class="language-bash"><span class="token function">cp</span> -rp /Volumes/CPBA_X64FRE_ZH-CN_DV9/* /Volumes/WINDOWS10/
 </code></pre>
-<p>这里的CPBA_X64FRE_ZH是刚刚挂载的镜像的名称。</p>
+<p>这里的CPBA_X64FRE_ZH是刚刚挂载的镜像的名称,大约等待10分钟，命令运行结束之后，启动盘就做好了。</p>
+</li>
+</ul>
+<h6 id="win10系统安装过程中报错解决方法"><a href="#win10系统安装过程中报错解决方法" class="headerlink" title="win10系统安装过程中报错解决方法"></a>win10系统安装过程中报错解决方法</h6><p>在磁盘格式步骤可能会报“windows无法安装到这个磁盘，选中的磁盘采用的GPT/MBR分区形式”错误，解决方法有2种，这里只列举其中一种方法：</p>
+<ul>
+<li><p>转换磁盘格式为MBR，但是会清除所有磁盘分区</p>
+<p>  在错误提示的时候，不要重启电脑，直接按”Shift+F10”组合键，这个时候会弹出CMD提示框，然后依次输入如下命令：</p>
+<pre class=" language-bash"><code class="language-bash">list disk <span class="token comment" spellcheck="true"># 回车键确定；（会列出所有的磁盘，记住自己硬盘的磁盘号，通过容量大小就可以分辨了，如下图所示，磁盘0就是我们的硬盘，磁盘1就是U盘）</span>
+
+<span class="token keyword">select</span> disk 0 <span class="token comment" spellcheck="true"># 回车键确定；（选择磁盘0，也就是我们的硬盘，就是准备做系统的硬盘）</span>
+
+clean <span class="token comment" spellcheck="true"># 回车键确定；（清空磁盘，相当于格式化全盘）</span>
+
+convert mbr <span class="token comment" spellcheck="true"># 回车键确定；（将该硬盘转换为mbr格式，如果想要将硬盘转化为gpt，那就是输入“convert gpt”）</span>
+</code></pre>
 </li>
 </ul>
 <h6 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a><a target="_blank" rel="noopener" href="https://blog.csdn.net/h21396577548/article/details/125572053">参考链接</a></h6>
