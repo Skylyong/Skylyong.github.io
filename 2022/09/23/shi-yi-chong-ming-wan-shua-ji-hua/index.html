@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="Mac系统制作win10启动U盘, Leon&#39;s blog">
+    <meta name="keywords" content="十一崇明玩耍计划, Leon&#39;s blog">
     <meta name="description" content="Keep go on">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>Mac系统制作win10启动U盘 | Leon&#39;s blog</title>
+    <title>十一崇明玩耍计划 | Leon&#39;s blog</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -204,12 +204,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/2.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/19.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">Mac系统制作win10启动U盘</h1>
+                    <h1 class="description center-align post-title">十一崇明玩耍计划</h1>
                 </div>
             </div>
         </div>
@@ -323,25 +323,12 @@
             <div class="row tag-cate">
                 <div class="col s7">
                     
-                    <div class="article-tag">
-                        
-                            <a href="/tags/%E5%90%AF%E5%8A%A8U%E7%9B%98/">
-                                <span class="chip bg-color">启动U盘</span>
-                            </a>
-                        
-                    </div>
+                          <div class="article-tag">
+                            <span class="chip bg-color">无标签</span>
+                          </div>
                     
                 </div>
                 <div class="col s5 right-align">
-                    
-                    <div class="post-cate">
-                        <i class="fas fa-bookmark fa-fw icon-category"></i>
-                        
-                            <a href="/categories/%E7%88%AC%E5%9D%91%E6%80%BB%E7%BB%93/" class="post-category">
-                                爬坑总结
-                            </a>
-                        
-                    </div>
                     
                 </div>
             </div>
@@ -350,7 +337,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2022-09-07
+                    2022-09-23
                 </div>
                 
 
@@ -359,7 +346,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    529
+                    127
                 </div>
                 
 
@@ -386,51 +373,19 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h5 id="Mac系统下制作win10安装盘"><a href="#Mac系统下制作win10安装盘" class="headerlink" title="Mac系统下制作win10安装盘"></a>Mac系统下制作win10安装盘</h5><h6 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h6><ul>
-<li><p>一台mac电脑</p>
-</li>
-<li><p>一个大于8G的U盘</p>
-</li>
-<li><p>win10镜像文件</p>
-</li>
-<li><p>Boot Camp ISO Converter软件（这个软件可以解决FAT32格式的u盘单个文件大小不能超过4GB的问题），下载<a target="_blank" rel="noopener" href="https://macdownload.informer.com/boot-camp-iso-converter/download/">链接</a></p>
-</li>
-</ul>
-<h6 id="制作步骤"><a href="#制作步骤" class="headerlink" title="制作步骤"></a>制作步骤</h6><ul>
-<li><p>打开Boot Camp ISO Converter软件对下载好的iso镜像文件进行处理，目的是将镜像文件insta.win分配为大小小于4GB的文件</p>
-</li>
-<li><p>在插入U盘的状态下，打开终端，输入：</p>
-<pre class=" language-bash"><code class="language-bash">    diskutil list
-</code></pre>
-<p>  找到U盘对应的盘符，本例中U盘对应的盘符为：disk2</p>
-</li>
-<li><p>将U盘(disk2)格式化为FAT32格式</p>
-<pre class=" language-bash"><code class="language-bash">    diskutil eraseDisk FAT32 <span class="token string">"WINDOWS10"</span> MBR disk2
-</code></pre>
-</li>
-<li><p>找到经过Boot Camp ISO Converter处理后的镜像文件，然后双击挂载镜像文件</p>
-</li>
-<li><p>输入命令，将挂载的镜像盘拷贝至U盘中(disk2)</p>
-<pre class=" language-bash"><code class="language-bash">    <span class="token function">cp</span> -rp /Volumes/CPBA_X64FRE_ZH-CN_DV9/* /Volumes/WINDOWS10/
-</code></pre>
-<p>这里的CPBA_X64FRE_ZH是刚刚挂载的镜像的名称,大约等待10分钟，命令运行结束之后，启动盘就做好了。</p>
-</li>
-</ul>
-<h6 id="win10系统安装过程中报错解决方法"><a href="#win10系统安装过程中报错解决方法" class="headerlink" title="win10系统安装过程中报错解决方法"></a>win10系统安装过程中报错解决方法</h6><p>在磁盘格式步骤可能会报“windows无法安装到这个磁盘，选中的磁盘采用的GPT/MBR分区形式”错误，解决方法有2种，这里只列举其中一种方法：</p>
-<ul>
-<li><p>转换磁盘格式为MBR，但是会清除所有磁盘分区</p>
-<p>  在错误提示的时候，不要重启电脑，直接按”Shift+F10”组合键，这个时候会弹出CMD提示框，然后依次输入如下命令：</p>
-<pre class=" language-bash"><code class="language-bash">list disk <span class="token comment" spellcheck="true"># 回车键确定；（会列出所有的磁盘，记住自己硬盘的磁盘号，通过容量大小就可以分辨了，如下图所示，磁盘0就是我们的硬盘，磁盘1就是U盘）</span>
+                <p>方案一：环崇明全岛</p>
+<img src="https://raw.githubusercontent.com/Skylyong/i/main/20220923215422.png" alt="image-20220923215416767" style="zoom:65%;" />
 
-<span class="token keyword">select</span> disk 0 <span class="token comment" spellcheck="true"># 回车键确定；（选择磁盘0，也就是我们的硬盘，就是准备做系统的硬盘）</span>
+<p>特点： 环全岛、单日骑行100公里以上、2天、住民宿、租车、轮渡</p>
+<p>方案二：环部分崇明岛</p>
+<img src="https://raw.githubusercontent.com/Skylyong/i/main/20220923220204.png" alt="image-20220923220203919" style="zoom:50%;" />
 
-clean <span class="token comment" spellcheck="true"># 回车键确定；（清空磁盘，相当于格式化全盘）</span>
+<p>特点： 环半岛、相对轻松、2天、线路路况好、住民宿</p>
+<p>方案三：环横沙岛+露营or名宿or当日返回</p>
+<img src="https://raw.githubusercontent.com/Skylyong/i/main/20220923220507.png" alt="image-20220923220507764" style="zoom:50%;" />
 
-convert mbr <span class="token comment" spellcheck="true"># 回车键确定；（将该硬盘转换为mbr格式，如果想要将硬盘转化为gpt，那就是输入“convert gpt”）</span>
-</code></pre>
-</li>
-</ul>
-<h6 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a><a target="_blank" rel="noopener" href="https://blog.csdn.net/h21396577548/article/details/125572053">参考链接</a></h6>
+<p>特点：骑行不累、露营、看日落日出星星、最多1.5天（也可当日返回）、租车只需租一天（省钱）、露营装备可提前联系社团租（费用80左右）</p>
+
                 
             </div>
             <hr/>
@@ -456,7 +411,7 @@ convert mbr <span class="token comment" spellcheck="true"># 回车键确定；�
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://leongo.cn/2022/09/07/mac-xi-tong-zhi-zuo-win10-qi-dong-u-pan/">https://leongo.cn/2022/09/07/mac-xi-tong-zhi-zuo-win10-qi-dong-u-pan/</a>
+                    <a href="https://leongo.cn/2022/09/23/shi-yi-chong-ming-wan-shua-ji-hua/">https://leongo.cn/2022/09/23/shi-yi-chong-ming-wan-shua-ji-hua/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -493,11 +448,7 @@ convert mbr <span class="token comment" spellcheck="true"># 回车键确定；�
                 <div class="post-meta__tag-list" style="display: inline-block;">
                     
                         <div class="article-tag">
-                            
-                                <a href="/tags/%E5%90%AF%E5%8A%A8U%E7%9B%98/">
-                                    <span class="chip bg-color">启动U盘</span>
-                                </a>
-                            
+                            <span class="chip bg-color">无标签</span>
                         </div>
                     
                 </div>
@@ -667,9 +618,10 @@ convert mbr <span class="token comment" spellcheck="true"># 回车键确定；�
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
                 <a href="/2022/09/23/shi-yi-chong-ming-wan-shua-ji-hua/">
                     <div class="card-image">
@@ -687,9 +639,9 @@ convert mbr <span class="token comment" spellcheck="true"># 回车键确定；�
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2022-09-23
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-09-23
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-user fa-fw"></i>
@@ -698,6 +650,7 @@ convert mbr <span class="token comment" spellcheck="true"># 回车键确定；�
                         </span>
                     </div>
                 </div>
+
                 
             </div>
         </div>
@@ -708,13 +661,13 @@ convert mbr <span class="token comment" spellcheck="true"># 回车键确定；�
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2022/09/05/dian-ci-bi-sai-zong-jie/">
+                <a href="/2022/09/07/mac-xi-tong-zhi-zuo-win10-qi-dong-u-pan/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/13.jpg" class="responsive-img" alt="电磁比赛总结">
+                        <img src="/medias/featureimages/2.jpg" class="responsive-img" alt="Mac系统制作win10启动U盘">
                         
-                        <span class="card-title">电磁比赛总结</span>
+                        <span class="card-title">Mac系统制作win10启动U盘</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -725,7 +678,7 @@ convert mbr <span class="token comment" spellcheck="true"># 回车键确定；�
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-09-05
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-09-07
                             </span>
                         <span class="publish-author">
                             
@@ -742,8 +695,8 @@ convert mbr <span class="token comment" spellcheck="true"># 回车键确定；�
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E7%AB%9E%E8%B5%9B/">
-                        <span class="chip bg-color">竞赛</span>
+                    <a href="/tags/%E5%90%AF%E5%8A%A8U%E7%9B%98/">
+                        <span class="chip bg-color">启动U盘</span>
                     </a>
                     
                 </div>
