@@ -359,7 +359,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.5k
+                    1.4k
                 </div>
                 
 
@@ -387,37 +387,37 @@
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <h4 id="在mac上使用pybind11实现c-与python互通的demo"><a href="#在mac上使用pybind11实现c-与python互通的demo" class="headerlink" title="在mac上使用pybind11实现c++与python互通的demo"></a>在mac上使用pybind11实现c++与python互通的demo</h4><h5 id="0-问题描述"><a href="#0-问题描述" class="headerlink" title="0. 问题描述"></a>0. 问题描述</h5><p>下面的python代码定义了一个类，类中有一个名为analyze_data的函数，其采用递归的方法解析json格式的data数据，由于处理速度达不到要求，我们希望用c++改写该类，并封装成可供python代码调用的库，以达到加速的效果。</p>
-<pre><code> # 待解析的数据deom
- data_demo = &#123;&quot;resbody&quot;: &#123;&quot;data&quot;: &#123;&quot;name&quot;: &quot;John&quot;, &quot;age&quot;: 30, &quot;address&quot;: &#123;&quot;city&quot;: &quot;New York&quot;, &quot;zipcode&quot;: 10001&#125;&#125;&#125;&#125;
- 
- # 需要转换为c++代码的类
- class AnalyzeDataUtil:
- 
-     def __init__(self, datas):
-         self.datas = datas
- 
-     def analyze_data(self, data, result=&quot;resbody&quot;, depth=0):
-         if depth == 5:
-             return
-         if isinstance(data, dict):
-             for k, v in data.items():
-                 self.analyze_data(v, result + &quot;$%s&quot; % str(k), depth+1)
-         if isinstance(data, (list, tuple)):
-             for i in range(len(data)):
-                 self.analyze_data(data[i], result, depth+1)
-         else:
-             self.datas[result] = str(data)
+<pre class=" language-python"><code class="language-python"> <span class="token comment" spellcheck="true"># 待解析的数据deom</span>
+ data_demo <span class="token operator">=</span> <span class="token operator">&amp;</span><span class="token comment" spellcheck="true">#123;"resbody": &amp;#123;"data": &amp;#123;"name": "John", "age": 30, "address": &amp;#123;"city": "New York", "zipcode": 10001&amp;#125;&amp;#125;&amp;#125;&amp;#125;</span>
+ 
+ <span class="token comment" spellcheck="true"># 需要转换为c++代码的类</span>
+ <span class="token keyword">class</span> <span class="token class-name">AnalyzeDataUtil</span><span class="token punctuation">:</span>
+ 
+     <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> datas<span class="token punctuation">)</span><span class="token punctuation">:</span>
+         self<span class="token punctuation">.</span>datas <span class="token operator">=</span> datas
+ 
+     <span class="token keyword">def</span> <span class="token function">analyze_data</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> data<span class="token punctuation">,</span> result<span class="token operator">=</span><span class="token string">"resbody"</span><span class="token punctuation">,</span> depth<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+         <span class="token keyword">if</span> depth <span class="token operator">==</span> <span class="token number">5</span><span class="token punctuation">:</span>
+             <span class="token keyword">return</span>
+         <span class="token keyword">if</span> isinstance<span class="token punctuation">(</span>data<span class="token punctuation">,</span> dict<span class="token punctuation">)</span><span class="token punctuation">:</span>
+             <span class="token keyword">for</span> k<span class="token punctuation">,</span> v <span class="token keyword">in</span> data<span class="token punctuation">.</span>items<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+                 self<span class="token punctuation">.</span>analyze_data<span class="token punctuation">(</span>v<span class="token punctuation">,</span> result <span class="token operator">+</span> <span class="token string">"$%s"</span> <span class="token operator">%</span> str<span class="token punctuation">(</span>k<span class="token punctuation">)</span><span class="token punctuation">,</span> depth<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">)</span>
+         <span class="token keyword">if</span> isinstance<span class="token punctuation">(</span>data<span class="token punctuation">,</span> <span class="token punctuation">(</span>list<span class="token punctuation">,</span> tuple<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+             <span class="token keyword">for</span> i <span class="token keyword">in</span> range<span class="token punctuation">(</span>len<span class="token punctuation">(</span>data<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+                 self<span class="token punctuation">.</span>analyze_data<span class="token punctuation">(</span>data<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">,</span> result<span class="token punctuation">,</span> depth<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">)</span>
+         <span class="token keyword">else</span><span class="token punctuation">:</span>
+             self<span class="token punctuation">.</span>datas<span class="token punctuation">[</span>result<span class="token punctuation">]</span> <span class="token operator">=</span> str<span class="token punctuation">(</span>data<span class="token punctuation">)</span>
 </code></pre>
 <p><strong>问题分析</strong>：</p>
 <p>根据问题描述，首先，我们要用c++对python定义的类进行改写，由于传入的变量data类型不固定，且涉及到类型判断，一种比较简单的方式是采用pybind11，它针对python的常见数据类型，都有对应的c++实现版本，代码改写工作大大减少。其次，类改写好之后，我们需要打通c++与python之间的隔阂，使用pybind11实现起来也非常方便，只需要在c++源码中添加少量代码即可。最后，我们还需要将c++源码编译成共享库，供下游代码调用。</p>
-<h5 id="1-安装必要的工具和包"><a href="#1-安装必要的工具和包" class="headerlink" title="1. 安装必要的工具和包"></a>1. 安装必要的工具和包</h5><pre><code> brew install cmake
- conda install pybind11
+<h5 id="1-安装必要的工具和包"><a href="#1-安装必要的工具和包" class="headerlink" title="1. 安装必要的工具和包"></a>1. 安装必要的工具和包</h5><pre class=" language-bash"><code class="language-bash"> brew <span class="token function">install</span> cmake
+ conda <span class="token function">install</span> pybind11
 </code></pre>
 <p>注意：安装pybind11的时候要用conda来安装，用pip方式安装，编译的时候会报路径错误。</p>
 <h5 id="2-创建c-源文件"><a href="#2-创建c-源文件" class="headerlink" title="2. 创建c++源文件"></a>2. 创建c++源文件</h5><p>下面的代码实现了AnalyzeDataUtil类的c++版本，第54行到第60行的作用是打通c++与python之间的隔阂。</p>
-<pre><code> //path: analyze_data_util/analyze_data_util.cpp
- #include &lt;pybind11/pybind11.h&gt;
- #include &lt;pybind11/stl.h&gt;
+<pre class=" language-c++"><code class="language-c++"> //path: analyze_data_util/analyze_data_util.cpp
+ #include <pybind11/pybind11.h>
+ #include <pybind11/stl.h>
  
  namespace py = pybind11;
  
@@ -426,37 +426,37 @@
  public:
      AnalyzeDataUtil(py::dict datas) : datas(datas) &#123;&#125;
  
-     void analyze_data(const py::object &amp;data, std::string result = &quot;&quot;, int depth = 0)
+     void analyze_data(const py::object &data, std::string result = "", int depth = 0)
      &#123;
  
          if (depth == 5)
              return;
  
-         if (py::isinstance&lt;py::dict&gt;(data))
+         if (py::isinstance<py::dict>(data))
          &#123;
-             py::dict dict_data = py::cast&lt;py::dict&gt;(data);
+             py::dict dict_data = py::cast<py::dict>(data);
  
-             for (const auto &amp;item : dict_data)
+             for (const auto &item : dict_data)
              &#123;
-                 auto key = py::reinterpret_borrow&lt;py::object&gt;(item.first);
-                 auto value = py::reinterpret_borrow&lt;py::object&gt;(item.second);
-                 analyze_data(value, result + &quot;$&quot; + py::str(key).cast&lt;std::string&gt;(), depth + 1);
+                 auto key = py::reinterpret_borrow<py::object>(item.first);
+                 auto value = py::reinterpret_borrow<py::object>(item.second);
+                 analyze_data(value, result + "$" + py::str(key).cast<std::string>(), depth + 1);
              &#125;
          &#125;
-         if (py::isinstance&lt;py::list&gt;(data) || py::isinstance&lt;py::tuple&gt;(data))
+         if (py::isinstance<py::list>(data) || py::isinstance<py::tuple>(data))
          &#123;
-             py::list list_data = py::cast&lt;py::list&gt;(data);
+             py::list list_data = py::cast<py::list>(data);
  
-             for (const auto &amp;item : list_data)
+             for (const auto &item : list_data)
              &#123;
  
-                 analyze_data(py::cast&lt;py::object&gt;(item), result, depth + 1);
+                 analyze_data(py::cast<py::object>(item), result, depth + 1);
              &#125;
          &#125;
          else
          &#123;
  
-             datas[py::str(result)] = py::str(data).cast&lt;std::string&gt;();
+             datas[py::str(result)] = py::str(data).cast<std::string>();
          &#125;
      &#125;
  
@@ -471,65 +471,65 @@
  
  PYBIND11_MODULE(analyze_data_util, m)
  &#123;
-     py::class_&lt;AnalyzeDataUtil&gt;(m, &quot;AnalyzeDataUtil&quot;)
-         .def(py::init&lt;py::dict&gt;())
-         .def(&quot;analyze_data&quot;, &amp;AnalyzeDataUtil::analyze_data)
-         .def(&quot;get_datas&quot;, &amp;AnalyzeDataUtil::get_datas);
+     py::class_<AnalyzeDataUtil>(m, "AnalyzeDataUtil")
+         .def(py::init<py::dict>())
+         .def("analyze_data", &AnalyzeDataUtil::analyze_data)
+         .def("get_datas", &AnalyzeDataUtil::get_datas);
  &#125;
  
 </code></pre>
 <h5 id="4-创建CMakeLists-txt文件编译C-模块"><a href="#4-创建CMakeLists-txt文件编译C-模块" class="headerlink" title="4. 创建CMakeLists.txt文件编译C++模块"></a>4. 创建CMakeLists.txt文件编译C++模块</h5><p>创建文件analyze_data_util/CMakeLists.txt， 然后将下面的脚本拷贝到文件中。</p>
-<pre><code> cmake_minimum_required(VERSION 3.12)
+<pre class=" language-bash"><code class="language-bash"> cmake_minimum_required<span class="token punctuation">(</span>VERSION 3.12<span class="token punctuation">)</span>
 
- project(analyze_data_util LANGUAGES CXX)
- 
- set(CMAKE_CXX_STANDARD 14)
- 
- find_package(pybind11 REQUIRED)
- 
- pybind11_add_module(analyze_data_util analyze_data_util.cpp)
+ project<span class="token punctuation">(</span>analyze_data_util LANGUAGES CXX<span class="token punctuation">)</span>
+ 
+ set<span class="token punctuation">(</span>CMAKE_CXX_STANDARD 14<span class="token punctuation">)</span>
+ 
+ find_package<span class="token punctuation">(</span>pybind11 REQUIRED<span class="token punctuation">)</span>
+ 
+ pybind11_add_module<span class="token punctuation">(</span>analyze_data_util analyze_data_util.cpp<span class="token punctuation">)</span>
 </code></pre>
-<h5 id="5-编译C-模块"><a href="#5-编译C-模块" class="headerlink" title="5. 编译C++模块"></a>5. 编译C++模块</h5><pre><code> mkdir build
- cd build
- cmake ..
- cmake --build .
+<h5 id="5-编译C-模块"><a href="#5-编译C-模块" class="headerlink" title="5. 编译C++模块"></a>5. 编译C++模块</h5><pre class=" language-bash"><code class="language-bash"> <span class="token function">mkdir</span> build
+ <span class="token function">cd</span> build
+ cmake <span class="token punctuation">..</span>
+ cmake --build <span class="token keyword">.</span>
 </code></pre>
 <p>将工作目录切换到analyze_data_util中，分别执行上面的代码。将会创建共享库文件，在Mac或Linux中名为：analyze_data_util.so，在Windows中为analyze_data_util.pyd</p>
 <h5 id="6-构造接口"><a href="#6-构造接口" class="headerlink" title="6. 构造接口"></a>6. 构造接口</h5><p>因为在c++中不允许直接访问私有成员，因此我们实现了get_datas()方法来间接访问成员，但是这不符合python的使用习惯，因此我们构造一个同名的AnalyzeDataUtil类将这一细节隐藏起来。也可以省去该步奏，但必须通过get_datas()函数访问解析后的数据。</p>
-<pre><code> # path: demo/analyze_data_tool.py
- import analyze_data_util
- 
- # Wrapper for AnalyzeDataUtil class
- class AnalyzeDataUtil:
- 
-     def __init__(self, datas):
-         self.analyzer = analyze_data_util.AnalyzeDataUtil(datas)
-         self.datas = datas
- 
-     def analyze_data(self, data, result=&quot;resbody&quot;, depth=0):   
-         self.analyzer.analyze_data(data, result, depth)
-         self.datas = self.analyzer.get_datas()
+<pre class=" language-python"><code class="language-python"> <span class="token comment" spellcheck="true"># path: demo/analyze_data_tool.py</span>
+ <span class="token keyword">import</span> analyze_data_util
+ 
+ <span class="token comment" spellcheck="true"># Wrapper for AnalyzeDataUtil class</span>
+ <span class="token keyword">class</span> <span class="token class-name">AnalyzeDataUtil</span><span class="token punctuation">:</span>
+ 
+     <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> datas<span class="token punctuation">)</span><span class="token punctuation">:</span>
+         self<span class="token punctuation">.</span>analyzer <span class="token operator">=</span> analyze_data_util<span class="token punctuation">.</span>AnalyzeDataUtil<span class="token punctuation">(</span>datas<span class="token punctuation">)</span>
+         self<span class="token punctuation">.</span>datas <span class="token operator">=</span> datas
+ 
+     <span class="token keyword">def</span> <span class="token function">analyze_data</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> data<span class="token punctuation">,</span> result<span class="token operator">=</span><span class="token string">"resbody"</span><span class="token punctuation">,</span> depth<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">:</span>   
+         self<span class="token punctuation">.</span>analyzer<span class="token punctuation">.</span>analyze_data<span class="token punctuation">(</span>data<span class="token punctuation">,</span> result<span class="token punctuation">,</span> depth<span class="token punctuation">)</span>
+         self<span class="token punctuation">.</span>datas <span class="token operator">=</span> self<span class="token punctuation">.</span>analyzer<span class="token punctuation">.</span>get_datas<span class="token punctuation">(</span><span class="token punctuation">)</span>
 </code></pre>
-<h5 id="7-在python中使用C-模块"><a href="#7-在python中使用C-模块" class="headerlink" title="7. 在python中使用C++模块"></a>7. 在python中使用C++模块</h5><pre><code> # path: demo/test.py
- from analyze_data_tool import AnalyzeDataUtil
- import json
- import time
- import pprint
- 
- print(&#39;示例用法,c++版本:&#39;)
- json_data = &#39;&#123;&quot;resbody&quot;: &#123;&quot;data&quot;: &#123;&quot;name&quot;: &quot;John&quot;, &quot;age&quot;: 30, &quot;address&quot;: &#123;&quot;city&quot;: &quot;New York&quot;, &quot;zipcode&quot;: 10001&#125;&#125;&#125;&#125;&#39;
- data_dict = json.loads(json_data)
- time1 = time.time()
- analyzer2 = AnalyzeDataUtil(&#123;&#125;)
- analyzer2.analyze_data(data_dict, &quot;resbody&quot;, 0)
- time2 = time.time()
- all_keys1 = analyzer2.datas.keys()
- keys_list1 = &#39; &#39;.join(list(all_keys1))
- 
- result = time2 - time1
- formatted_result = f&quot;&#123;result:.10f&#125;&quot;
- pp.pprint(all_keys1)
- print(formatted_result)
+<h5 id="7-在python中使用C-模块"><a href="#7-在python中使用C-模块" class="headerlink" title="7. 在python中使用C++模块"></a>7. 在python中使用C++模块</h5><pre class=" language-python"><code class="language-python"> <span class="token comment" spellcheck="true"># path: demo/test.py</span>
+ <span class="token keyword">from</span> analyze_data_tool <span class="token keyword">import</span> AnalyzeDataUtil
+ <span class="token keyword">import</span> json
+ <span class="token keyword">import</span> time
+ <span class="token keyword">import</span> pprint
+ 
+ <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'示例用法,c++版本:'</span><span class="token punctuation">)</span>
+ json_data <span class="token operator">=</span> <span class="token string">'&amp;#123;"resbody": &amp;#123;"data": &amp;#123;"name": "John", "age": 30, "address": &amp;#123;"city": "New York", "zipcode": 10001&amp;#125;&amp;#125;&amp;#125;&amp;#125;'</span>
+ data_dict <span class="token operator">=</span> json<span class="token punctuation">.</span>loads<span class="token punctuation">(</span>json_data<span class="token punctuation">)</span>
+ time1 <span class="token operator">=</span> time<span class="token punctuation">.</span>time<span class="token punctuation">(</span><span class="token punctuation">)</span>
+ analyzer2 <span class="token operator">=</span> AnalyzeDataUtil<span class="token punctuation">(</span><span class="token operator">&amp;</span><span class="token comment" spellcheck="true">#123;&amp;#125;)</span>
+ analyzer2<span class="token punctuation">.</span>analyze_data<span class="token punctuation">(</span>data_dict<span class="token punctuation">,</span> <span class="token string">"resbody"</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span>
+ time2 <span class="token operator">=</span> time<span class="token punctuation">.</span>time<span class="token punctuation">(</span><span class="token punctuation">)</span>
+ all_keys1 <span class="token operator">=</span> analyzer2<span class="token punctuation">.</span>datas<span class="token punctuation">.</span>keys<span class="token punctuation">(</span><span class="token punctuation">)</span>
+ keys_list1 <span class="token operator">=</span> <span class="token string">' '</span><span class="token punctuation">.</span>join<span class="token punctuation">(</span>list<span class="token punctuation">(</span>all_keys1<span class="token punctuation">)</span><span class="token punctuation">)</span>
+ 
+ result <span class="token operator">=</span> time2 <span class="token operator">-</span> time1
+ formatted_result <span class="token operator">=</span> f<span class="token string">"&amp;#123;result:.10f&amp;#125;"</span>
+ pp<span class="token punctuation">.</span>pprint<span class="token punctuation">(</span>all_keys1<span class="token punctuation">)</span>
+ <span class="token keyword">print</span><span class="token punctuation">(</span>formatted_result<span class="token punctuation">)</span>
 </code></pre>
 <p>创建以上代码，然后将生成的.so or .pyd文件拷贝到demo/目录下，运行python test.py。</p>
 <h5 id="8-后记"><a href="#8-后记" class="headerlink" title="8. 后记"></a>8. 后记</h5><p>虽然上面的解决方案实现了c++与python的互通，但我在对单个文件进行测试比较的时候，得到如下结果：</p>
