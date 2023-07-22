@@ -6,7 +6,7 @@
   <link href="https://leongo.cn/atom.xml" rel="self"/>
   
   <link href="https://leongo.cn/"/>
-  <updated>2022-09-24T12:57:48.719Z</updated>
+  <updated>2023-07-22T18:35:43.907Z</updated>
   <id>https://leongo.cn/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>在mac上使用pybind11实现c++与python互通的demo</title>
+    <link href="https://leongo.cn/2023/07/23/zai-mac-shang-shi-yong-pybind11-shi-xian-c-yu-python-hu-tong-de-demo/"/>
+    <id>https://leongo.cn/2023/07/23/zai-mac-shang-shi-yong-pybind11-shi-xian-c-yu-python-hu-tong-de-demo/</id>
+    <published>2023-07-22T18:28:00.000Z</published>
+    <updated>2023-07-22T18:35:43.907Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h4 id=&quot;在mac上使用pybind11实现c-与python互通的demo&quot;&gt;&lt;a href=&quot;#在mac上使用pybind11实现c-与python互通的demo&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="学习笔记" scheme="https://leongo.cn/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+    
+    <category term="python_c++_互通" scheme="https://leongo.cn/tags/python-c-%E4%BA%92%E9%80%9A/"/>
+    
+  </entry>
   
   <entry>
     <title>足不出沪——十一横沙岛骑营</title>
@@ -497,32 +522,6 @@
     
     
     <category term="预训练模型" scheme="https://leongo.cn/tags/%E9%A2%84%E8%AE%AD%E7%BB%83%E6%A8%A1%E5%9E%8B/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>jupyter notebook 本地服务器搭建</title>
-    <link href="https://leongo.cn/2021/06/21/jupyter-notebook-ben-di-fu-wu-qi-da-jian/"/>
-    <id>https://leongo.cn/2021/06/21/jupyter-notebook-ben-di-fu-wu-qi-da-jian/</id>
-    <published>2021-06-20T16:36:40.000Z</published>
-    <updated>2021-06-20T16:56:36.000Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;今天在实验室的服务器主机上面搭建了jupyter notebook服务器，记录一下搭建步骤，方便以后查看。&lt;/p&gt;
-&lt;h4 id=&quot;服务器端操作&quot;&gt;&lt;a href=&quot;#服务器端操作&quot; class=&quot;headerlink&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="爬坑总结" scheme="https://leongo.cn/categories/%E7%88%AC%E5%9D%91%E6%80%BB%E7%BB%93/"/>
-    
-    
-    <category term="jupyter notebook" scheme="https://leongo.cn/tags/jupyter-notebook/"/>
     
   </entry>
   
