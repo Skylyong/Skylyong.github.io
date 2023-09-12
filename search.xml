@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>ubuntu上安装NIVIDIA驱动和CUDA_Tookit</title>
+      <link href="2023/09/12/ubuntu-shang-an-zhuang-nividia-qu-dong-he-cuda-tookit/"/>
+      <url>2023/09/12/ubuntu-shang-an-zhuang-nividia-qu-dong-he-cuda-tookit/</url>
+      
+        <content type="html"><![CDATA[<p>每一次安装NIVIDIA驱动或CUDA Tookit时，都要经过一番折腾，才能够安装成功，这里把过程记录一下，以便以后可以参考。</p><p>本次安装遇到的最大问题是：pytorch所能支持的最高cuda版本为11.8，而安装后的cuda为最新12.2版本，pytorch没法识别cuda。<br>导致这一问题的主要原因在于两点：</p><ol><li>安装的NIVIDIA驱动版本过高，导致CUDA Tookit版本也过高，无法降级</li><li>使用网络方式安装CUDA Tookit，安装之后得到的是最新版的CUDA Tookit，不是我想要的11.8版本</li></ol><p>接下来是安装过程：</p><ul><li><p>删除已安装的NIVIDIA驱动或CUDA Tookit</p><pre class=" language-bash"><code class="language-bash"> <span class="token function">sudo</span> <span class="token function">rm</span> /etc/apt/sources.list.d/cuda* <span class="token function">sudo</span> <span class="token function">apt-get</span> --purge remove <span class="token string">"*cublas*"</span> <span class="token string">"cuda*"</span> <span class="token string">"nsight*"</span>  <span class="token function">sudo</span> <span class="token function">apt-get</span> --purge remove <span class="token string">"*nvidia*"</span> <span class="token function">sudo</span> <span class="token function">apt-get</span> autoremove <span class="token function">sudo</span> <span class="token function">apt-get</span> autoclean <span class="token function">sudo</span> <span class="token function">rm</span> -rf /usr/local/cuda*</code></pre></li><li><p>查看ubuntu系统版本和驱动器型号，并下载对应驱动安装</p><pre class=" language-bash"><code class="language-bash"><span class="token function">cat</span> /etc/os-release <span class="token comment" spellcheck="true"># 查看系统版本</span>lspci <span class="token operator">|</span> <span class="token function">grep</span> VGA    <span class="token comment" spellcheck="true"># 查看显卡型号</span></code></pre><p>  查看好版本之后，在<a href="https://www.nvidia.com/Download/Find.aspx?lang=en-us">这里</a>下载对应的驱动程序并安装。</p><p>  本次安装，服务器的版本为Ubuntu 22.04.2 LTS，显卡型号为GeForce RTX 3090.</p></li><li><p>查看驱动安装结果</p><p>  驱动程序安装好之后，使用”nividia smi”命令查看安装结果，这里如果显示错误信息，重启系统就好了。</p><p>  需要注意的是，这里出来的cuda的版本号不能大于pytorch所能支持的最大cuda版本号。</p><p>  比如这次安装的时候，pytorch所能支持的最大cuda版本号为11.8，而我安装后，这里显示的版本号是12.2，最终导致无论如何pytorch都不能识别cuda。原因就是因为这里安装的驱动太新，nividia设置成了最新的cuda toolkit,后面安装cuda toolkit软件包的时候不能降级，导致pytorch没法识别。</p><p>  在本次安装过程中，最终成功安装的驱动器版本为<a href="https://www.nvidia.com/download/driverResults.aspx/194569/en-us/">510</a>，安装成功之后查询到的cuda版本为11.04， 由于最新的pytorch支持的cuda版本为11.8，所以后面我们还需要安装11.8版本的cuda toolkit，才能让pytorch使用cuda。</p></li><li><p>安装cuda toolkit</p><p>  在<a href="https://developer.nvidia.com/cuda-toolkit-archive">这里</a>找到对应版本的cuda toolkit，点进去之后，选择操作系统、操作系统版本等信息，下载类型选择第三个，安装包下载好之后，根据提示安装就好了。</p><p>  完成之后，再用”nividia smi”查询cuda信息，这次版本应该就是pytorch支持的了。</p><p>  这里有个疑问，貌似以本次包方式，安装cuda toolkit的时候可以勾选安装nividia驱动程序，也就是说可以省去前面安装驱动这一步。</p><p>  这里遇到的<strong>大坑</strong>是，下载类型一定要选择第三个”runfile(local)”,之前好几次选择第二个”deb(network)”，安装完，一查询cuda信息，得到的都是12.2的版本， 但是pytorch不支持12.2的cuda，所以没法用。</p><p>  本次安装过程中，下载的是11.8版本的cuda toolkit,下载和安装脚本如下</p><pre class=" language-bash"><code class="language-bash"><span class="token function">wget</span> https://developer.download.nvidia.com/compute/cuda/11.8.0/local_installers/cuda_11.8.0_520.61.05_linux.run<span class="token function">sudo</span> sh cuda_11.8.0_520.61.05_linux.run</code></pre></li><li><p>安装对应版本的pytorch</p><p>  在<a href="https://pytorch.org/get-started/locally/">这里</a>找到对应的pytorch版本，然后安装就好了。</p></li></ul><ul><li><p>最后，查看cuda是否能够被pytorch识别</p><pre class=" language-bash"><code class="language-bash"><span class="token function">import</span> torchprint<span class="token punctuation">(</span>torch.cuda.is_available<span class="token punctuation">(</span><span class="token punctuation">))</span></code></pre><p>  如果显示为ture，则表示安装成功。</p></li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> 爬坑总结 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> NIVIDIA驱动 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>在mac上使用pybind11实现c++与python互通的demo</title>
       <link href="2023/07/23/zai-mac-shang-shi-yong-pybind11-shi-xian-c-yu-python-hu-tong-de-demo/"/>
       <url>2023/07/23/zai-mac-shang-shi-yong-pybind11-shi-xian-c-yu-python-hu-tong-de-demo/</url>

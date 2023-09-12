@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="在mac上使用pybind11实现c++与python互通的demo, Leon&#39;s blog">
+    <meta name="keywords" content="ubuntu上安装NIVIDIA驱动和CUDA_Tookit, Leon&#39;s blog">
     <meta name="description" content="Keep go on">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>在mac上使用pybind11实现c++与python互通的demo | Leon&#39;s blog</title>
+    <title>ubuntu上安装NIVIDIA驱动和CUDA_Tookit | Leon&#39;s blog</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -204,12 +204,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/4.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/20.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">在mac上使用pybind11实现c++与python互通的demo</h1>
+                    <h1 class="description center-align post-title">ubuntu上安装NIVIDIA驱动和CUDA_Tookit</h1>
                 </div>
             </div>
         </div>
@@ -325,8 +325,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/python-c-%E4%BA%92%E9%80%9A/">
-                                <span class="chip bg-color">python_c++_互通</span>
+                            <a href="/tags/NIVIDIA%E9%A9%B1%E5%8A%A8/">
+                                <span class="chip bg-color">NIVIDIA驱动</span>
                             </a>
                         
                     </div>
@@ -337,8 +337,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="post-category">
-                                学习笔记
+                            <a href="/categories/%E7%88%AC%E5%9D%91%E6%80%BB%E7%BB%93/" class="post-category">
+                                爬坑总结
                             </a>
                         
                     </div>
@@ -350,7 +350,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2023-07-23
+                    2023-09-12
                 </div>
                 
 
@@ -359,14 +359,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.4k
+                    857
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    6 分
+                    3 分
                 </div>
                 
 
@@ -386,163 +386,58 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h4 id="在mac上使用pybind11实现c-与python互通的demo"><a href="#在mac上使用pybind11实现c-与python互通的demo" class="headerlink" title="在mac上使用pybind11实现c++与python互通的demo"></a>在mac上使用pybind11实现c++与python互通的demo</h4><h5 id="0-问题描述"><a href="#0-问题描述" class="headerlink" title="0. 问题描述"></a>0. 问题描述</h5><p>下面的python代码定义了一个类，类中有一个名为analyze_data的函数，其采用递归的方法解析json格式的data数据，由于处理速度达不到要求，我们希望用c++改写该类，并封装成可供python代码调用的库，以达到加速的效果。</p>
-<pre class=" language-python"><code class="language-python"> <span class="token comment" spellcheck="true"># 待解析的数据deom</span>
- data_demo <span class="token operator">=</span> <span class="token operator">&amp;</span><span class="token comment" spellcheck="true">#123;"resbody": &amp;#123;"data": &amp;#123;"name": "John", "age": 30, "address": &amp;#123;"city": "New York", "zipcode": 10001&amp;#125;&amp;#125;&amp;#125;&amp;#125;</span>
- 
- <span class="token comment" spellcheck="true"># 需要转换为c++代码的类</span>
- <span class="token keyword">class</span> <span class="token class-name">AnalyzeDataUtil</span><span class="token punctuation">:</span>
- 
-     <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> datas<span class="token punctuation">)</span><span class="token punctuation">:</span>
-         self<span class="token punctuation">.</span>datas <span class="token operator">=</span> datas
- 
-     <span class="token keyword">def</span> <span class="token function">analyze_data</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> data<span class="token punctuation">,</span> result<span class="token operator">=</span><span class="token string">"resbody"</span><span class="token punctuation">,</span> depth<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-         <span class="token keyword">if</span> depth <span class="token operator">==</span> <span class="token number">5</span><span class="token punctuation">:</span>
-             <span class="token keyword">return</span>
-         <span class="token keyword">if</span> isinstance<span class="token punctuation">(</span>data<span class="token punctuation">,</span> dict<span class="token punctuation">)</span><span class="token punctuation">:</span>
-             <span class="token keyword">for</span> k<span class="token punctuation">,</span> v <span class="token keyword">in</span> data<span class="token punctuation">.</span>items<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-                 self<span class="token punctuation">.</span>analyze_data<span class="token punctuation">(</span>v<span class="token punctuation">,</span> result <span class="token operator">+</span> <span class="token string">"$%s"</span> <span class="token operator">%</span> str<span class="token punctuation">(</span>k<span class="token punctuation">)</span><span class="token punctuation">,</span> depth<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">)</span>
-         <span class="token keyword">if</span> isinstance<span class="token punctuation">(</span>data<span class="token punctuation">,</span> <span class="token punctuation">(</span>list<span class="token punctuation">,</span> tuple<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-             <span class="token keyword">for</span> i <span class="token keyword">in</span> range<span class="token punctuation">(</span>len<span class="token punctuation">(</span>data<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-                 self<span class="token punctuation">.</span>analyze_data<span class="token punctuation">(</span>data<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">,</span> result<span class="token punctuation">,</span> depth<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">)</span>
-         <span class="token keyword">else</span><span class="token punctuation">:</span>
-             self<span class="token punctuation">.</span>datas<span class="token punctuation">[</span>result<span class="token punctuation">]</span> <span class="token operator">=</span> str<span class="token punctuation">(</span>data<span class="token punctuation">)</span>
-</code></pre>
-<p><strong>问题分析</strong>：</p>
-<p>根据问题描述，首先，我们要用c++对python定义的类进行改写，由于传入的变量data类型不固定，且涉及到类型判断，一种比较简单的方式是采用pybind11，它针对python的常见数据类型，都有对应的c++实现版本，代码改写工作大大减少。其次，类改写好之后，我们需要打通c++与python之间的隔阂，使用pybind11实现起来也非常方便，只需要在c++源码中添加少量代码即可。最后，我们还需要将c++源码编译成共享库，供下游代码调用。</p>
-<h5 id="1-安装必要的工具和包"><a href="#1-安装必要的工具和包" class="headerlink" title="1. 安装必要的工具和包"></a>1. 安装必要的工具和包</h5><pre class=" language-bash"><code class="language-bash"> brew <span class="token function">install</span> cmake
- conda <span class="token function">install</span> pybind11
-</code></pre>
-<p>注意：安装pybind11的时候要用conda来安装，用pip方式安装，编译的时候会报路径错误。</p>
-<h5 id="2-创建c-源文件"><a href="#2-创建c-源文件" class="headerlink" title="2. 创建c++源文件"></a>2. 创建c++源文件</h5><p>下面的代码实现了AnalyzeDataUtil类的c++版本，第54行到第60行的作用是打通c++与python之间的隔阂。</p>
-<pre class=" language-c++"><code class="language-c++"> //path: analyze_data_util/analyze_data_util.cpp
- #include <pybind11/pybind11.h>
- #include <pybind11/stl.h>
- 
- namespace py = pybind11;
- 
- struct AnalyzeDataUtil
- &#123;
- public:
-     AnalyzeDataUtil(py::dict datas) : datas(datas) &#123;&#125;
- 
-     void analyze_data(const py::object &data, std::string result = "", int depth = 0)
-     &#123;
- 
-         if (depth == 5)
-             return;
- 
-         if (py::isinstance<py::dict>(data))
-         &#123;
-             py::dict dict_data = py::cast<py::dict>(data);
- 
-             for (const auto &item : dict_data)
-             &#123;
-                 auto key = py::reinterpret_borrow<py::object>(item.first);
-                 auto value = py::reinterpret_borrow<py::object>(item.second);
-                 analyze_data(value, result + "$" + py::str(key).cast<std::string>(), depth + 1);
-             &#125;
-         &#125;
-         if (py::isinstance<py::list>(data) || py::isinstance<py::tuple>(data))
-         &#123;
-             py::list list_data = py::cast<py::list>(data);
- 
-             for (const auto &item : list_data)
-             &#123;
- 
-                 analyze_data(py::cast<py::object>(item), result, depth + 1);
-             &#125;
-         &#125;
-         else
-         &#123;
- 
-             datas[py::str(result)] = py::str(data).cast<std::string>();
-         &#125;
-     &#125;
- 
-     py::dict get_datas()
-     &#123;
-         return datas;
-     &#125;
- 
- private:
-     py::dict datas;
- &#125;;
- 
- PYBIND11_MODULE(analyze_data_util, m)
- &#123;
-     py::class_<AnalyzeDataUtil>(m, "AnalyzeDataUtil")
-         .def(py::init<py::dict>())
-         .def("analyze_data", &AnalyzeDataUtil::analyze_data)
-         .def("get_datas", &AnalyzeDataUtil::get_datas);
- &#125;
- 
-</code></pre>
-<h5 id="4-创建CMakeLists-txt文件编译C-模块"><a href="#4-创建CMakeLists-txt文件编译C-模块" class="headerlink" title="4. 创建CMakeLists.txt文件编译C++模块"></a>4. 创建CMakeLists.txt文件编译C++模块</h5><p>创建文件analyze_data_util/CMakeLists.txt， 然后将下面的脚本拷贝到文件中。</p>
-<pre class=" language-bash"><code class="language-bash"> cmake_minimum_required<span class="token punctuation">(</span>VERSION 3.12<span class="token punctuation">)</span>
-
- project<span class="token punctuation">(</span>analyze_data_util LANGUAGES CXX<span class="token punctuation">)</span>
- 
- set<span class="token punctuation">(</span>CMAKE_CXX_STANDARD 14<span class="token punctuation">)</span>
- 
- find_package<span class="token punctuation">(</span>pybind11 REQUIRED<span class="token punctuation">)</span>
- 
- pybind11_add_module<span class="token punctuation">(</span>analyze_data_util analyze_data_util.cpp<span class="token punctuation">)</span>
-</code></pre>
-<h5 id="5-编译C-模块"><a href="#5-编译C-模块" class="headerlink" title="5. 编译C++模块"></a>5. 编译C++模块</h5><pre class=" language-bash"><code class="language-bash"> <span class="token function">mkdir</span> build
- <span class="token function">cd</span> build
- cmake <span class="token punctuation">..</span>
- cmake --build <span class="token keyword">.</span>
-</code></pre>
-<p>将工作目录切换到analyze_data_util中，分别执行上面的代码。将会创建共享库文件，在Mac或Linux中名为：analyze_data_util.so，在Windows中为analyze_data_util.pyd</p>
-<h5 id="6-构造接口"><a href="#6-构造接口" class="headerlink" title="6. 构造接口"></a>6. 构造接口</h5><p>因为在c++中不允许直接访问私有成员，因此我们实现了get_datas()方法来间接访问成员，但是这不符合python的使用习惯，因此我们构造一个同名的AnalyzeDataUtil类将这一细节隐藏起来。也可以省去该步奏，但必须通过get_datas()函数访问解析后的数据。</p>
-<pre class=" language-python"><code class="language-python"> <span class="token comment" spellcheck="true"># path: demo/analyze_data_tool.py</span>
- <span class="token keyword">import</span> analyze_data_util
- 
- <span class="token comment" spellcheck="true"># Wrapper for AnalyzeDataUtil class</span>
- <span class="token keyword">class</span> <span class="token class-name">AnalyzeDataUtil</span><span class="token punctuation">:</span>
- 
-     <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> datas<span class="token punctuation">)</span><span class="token punctuation">:</span>
-         self<span class="token punctuation">.</span>analyzer <span class="token operator">=</span> analyze_data_util<span class="token punctuation">.</span>AnalyzeDataUtil<span class="token punctuation">(</span>datas<span class="token punctuation">)</span>
-         self<span class="token punctuation">.</span>datas <span class="token operator">=</span> datas
- 
-     <span class="token keyword">def</span> <span class="token function">analyze_data</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> data<span class="token punctuation">,</span> result<span class="token operator">=</span><span class="token string">"resbody"</span><span class="token punctuation">,</span> depth<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">:</span>   
-         self<span class="token punctuation">.</span>analyzer<span class="token punctuation">.</span>analyze_data<span class="token punctuation">(</span>data<span class="token punctuation">,</span> result<span class="token punctuation">,</span> depth<span class="token punctuation">)</span>
-         self<span class="token punctuation">.</span>datas <span class="token operator">=</span> self<span class="token punctuation">.</span>analyzer<span class="token punctuation">.</span>get_datas<span class="token punctuation">(</span><span class="token punctuation">)</span>
-</code></pre>
-<h5 id="7-在python中使用C-模块"><a href="#7-在python中使用C-模块" class="headerlink" title="7. 在python中使用C++模块"></a>7. 在python中使用C++模块</h5><pre class=" language-python"><code class="language-python"> <span class="token comment" spellcheck="true"># path: demo/test.py</span>
- <span class="token keyword">from</span> analyze_data_tool <span class="token keyword">import</span> AnalyzeDataUtil
- <span class="token keyword">import</span> json
- <span class="token keyword">import</span> time
- <span class="token keyword">import</span> pprint
- 
- <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'示例用法,c++版本:'</span><span class="token punctuation">)</span>
- json_data <span class="token operator">=</span> <span class="token string">'&amp;#123;"resbody": &amp;#123;"data": &amp;#123;"name": "John", "age": 30, "address": &amp;#123;"city": "New York", "zipcode": 10001&amp;#125;&amp;#125;&amp;#125;&amp;#125;'</span>
- data_dict <span class="token operator">=</span> json<span class="token punctuation">.</span>loads<span class="token punctuation">(</span>json_data<span class="token punctuation">)</span>
- time1 <span class="token operator">=</span> time<span class="token punctuation">.</span>time<span class="token punctuation">(</span><span class="token punctuation">)</span>
- analyzer2 <span class="token operator">=</span> AnalyzeDataUtil<span class="token punctuation">(</span><span class="token operator">&amp;</span><span class="token comment" spellcheck="true">#123;&amp;#125;)</span>
- analyzer2<span class="token punctuation">.</span>analyze_data<span class="token punctuation">(</span>data_dict<span class="token punctuation">,</span> <span class="token string">"resbody"</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span>
- time2 <span class="token operator">=</span> time<span class="token punctuation">.</span>time<span class="token punctuation">(</span><span class="token punctuation">)</span>
- all_keys1 <span class="token operator">=</span> analyzer2<span class="token punctuation">.</span>datas<span class="token punctuation">.</span>keys<span class="token punctuation">(</span><span class="token punctuation">)</span>
- keys_list1 <span class="token operator">=</span> <span class="token string">' '</span><span class="token punctuation">.</span>join<span class="token punctuation">(</span>list<span class="token punctuation">(</span>all_keys1<span class="token punctuation">)</span><span class="token punctuation">)</span>
- 
- result <span class="token operator">=</span> time2 <span class="token operator">-</span> time1
- formatted_result <span class="token operator">=</span> f<span class="token string">"&amp;#123;result:.10f&amp;#125;"</span>
- pp<span class="token punctuation">.</span>pprint<span class="token punctuation">(</span>all_keys1<span class="token punctuation">)</span>
- <span class="token keyword">print</span><span class="token punctuation">(</span>formatted_result<span class="token punctuation">)</span>
-</code></pre>
-<p>创建以上代码，然后将生成的.so or .pyd文件拷贝到demo/目录下，运行python test.py。</p>
-<h5 id="8-后记"><a href="#8-后记" class="headerlink" title="8. 后记"></a>8. 后记</h5><p>虽然上面的解决方案实现了c++与python的互通，但我在对单个文件进行测试比较的时候，得到如下结果：</p>
-<p><img src="https://raw.githubusercontent.com/Skylyong/i/main/20230723015325.png" alt="image-20230723015325241"></p>
-<p>从结果中我们发现，对于相同的json文件，c++版本与python版本处理结果是一致的，但对于速度的提升并不理想，对于单个文件的处理c++的版本甚至比python的低，可能是因为python调用c++包的时候占用了更多的时间，因此，处理速度的提升体现不出来。针对这个问题，我们至少可以从以下两个方面进行考虑：首先，从算法层面上来看，我们可以将递归改为动态规划，或者对递归过程进行剪枝处理，因为递归虽然好用，但是效率往往不高，它重复的过程实比较多。其次，我们还可以尝试使用一些能够快速解析json格式的优秀库(比如<a target="_blank" rel="noopener" href="https://rapidjson.org/zh-cn/">RapidJSON</a>)，这或许会比使用我们自己写的粗糙代码效率来的更快。</p>
-<p>最后，虽然上面讲解中涉及到的每个脚本，我都给出了它所在的文件名和位置，但是并不直观，为了方便大家更直观的理解(我跑别人博客代码的时候，经常因为位置放错，浪费时间去调试)，我把工程目录粘贴出来：</p>
-<p><img src="https://raw.githubusercontent.com/Skylyong/i/main/20230723022224.png" alt="image-20230723022223900"></p>
-<p>以上就是使用pybind11实现c++与python互通的demo啦，希望能够帮到你，想要了解更多，可以去看下面的官方文档喔。</p>
+                <p>每一次安装NIVIDIA驱动或CUDA Tookit时，都要经过一番折腾，才能够安装成功，这里把过程记录一下，以便以后可以参考。</p>
+<p>本次安装遇到的最大问题是：pytorch所能支持的最高cuda版本为11.8，而安装后的cuda为最新12.2版本，pytorch没法识别cuda。<br>导致这一问题的主要原因在于两点：</p>
+<ol>
+<li>安装的NIVIDIA驱动版本过高，导致CUDA Tookit版本也过高，无法降级</li>
+<li>使用网络方式安装CUDA Tookit，安装之后得到的是最新版的CUDA Tookit，不是我想要的11.8版本</li>
+</ol>
+<p>接下来是安装过程：</p>
 <ul>
-<li><strong>参考资料</strong><ul>
-<li><strong>pybind11文档：</strong><a target="_blank" rel="noopener" href="https://pybind11.readthedocs.io/en/stable/">https://pybind11.readthedocs.io/en/stable/</a></li>
-<li><strong>pybind11中文文档：</strong><a target="_blank" rel="noopener" href="https://github.com/charlotteLive/pybind11-Chinese-docs">https://github.com/charlotteLive/pybind11-Chinese-docs</a></li>
+<li><p>删除已安装的NIVIDIA驱动或CUDA Tookit</p>
+<pre class=" language-bash"><code class="language-bash"> <span class="token function">sudo</span> <span class="token function">rm</span> /etc/apt/sources.list.d/cuda*
+ <span class="token function">sudo</span> <span class="token function">apt-get</span> --purge remove <span class="token string">"*cublas*"</span> <span class="token string">"cuda*"</span> <span class="token string">"nsight*"</span> 
+ <span class="token function">sudo</span> <span class="token function">apt-get</span> --purge remove <span class="token string">"*nvidia*"</span>
+ <span class="token function">sudo</span> <span class="token function">apt-get</span> autoremove
+ <span class="token function">sudo</span> <span class="token function">apt-get</span> autoclean
+ <span class="token function">sudo</span> <span class="token function">rm</span> -rf /usr/local/cuda*
+</code></pre>
+</li>
+<li><p>查看ubuntu系统版本和驱动器型号，并下载对应驱动安装</p>
+<pre class=" language-bash"><code class="language-bash"><span class="token function">cat</span> /etc/os-release <span class="token comment" spellcheck="true"># 查看系统版本</span>
+
+lspci <span class="token operator">|</span> <span class="token function">grep</span> VGA    <span class="token comment" spellcheck="true"># 查看显卡型号</span>
+</code></pre>
+<p>  查看好版本之后，在<a target="_blank" rel="noopener" href="https://www.nvidia.com/Download/Find.aspx?lang=en-us">这里</a>下载对应的驱动程序并安装。</p>
+<p>  本次安装，服务器的版本为Ubuntu 22.04.2 LTS，显卡型号为GeForce RTX 3090.</p>
+</li>
+<li><p>查看驱动安装结果</p>
+<p>  驱动程序安装好之后，使用”nividia smi”命令查看安装结果，这里如果显示错误信息，重启系统就好了。</p>
+<p>  需要注意的是，这里出来的cuda的版本号不能大于pytorch所能支持的最大cuda版本号。</p>
+<p>  比如这次安装的时候，pytorch所能支持的最大cuda版本号为11.8，而我安装后，这里显示的版本号是12.2，最终导致无论如何pytorch都不能识别cuda。原因就是因为这里安装的驱动太新，nividia设置成了最新的cuda toolkit,后面安装cuda toolkit软件包的时候不能降级，导致pytorch没法识别。</p>
+<p>  在本次安装过程中，最终成功安装的驱动器版本为<a target="_blank" rel="noopener" href="https://www.nvidia.com/download/driverResults.aspx/194569/en-us/">510</a>，安装成功之后查询到的cuda版本为11.04， 由于最新的pytorch支持的cuda版本为11.8，所以后面我们还需要安装11.8版本的cuda toolkit，才能让pytorch使用cuda。</p>
+</li>
+<li><p>安装cuda toolkit</p>
+<p>  在<a target="_blank" rel="noopener" href="https://developer.nvidia.com/cuda-toolkit-archive">这里</a>找到对应版本的cuda toolkit，点进去之后，选择操作系统、操作系统版本等信息，下载类型选择第三个，安装包下载好之后，根据提示安装就好了。</p>
+<p>  完成之后，再用”nividia smi”查询cuda信息，这次版本应该就是pytorch支持的了。</p>
+<p>  这里有个疑问，貌似以本次包方式，安装cuda toolkit的时候可以勾选安装nividia驱动程序，也就是说可以省去前面安装驱动这一步。</p>
+<p>  这里遇到的<strong>大坑</strong>是，下载类型一定要选择第三个”runfile(local)”,之前好几次选择第二个”deb(network)”，安装完，一查询cuda信息，得到的都是12.2的版本， 但是pytorch不支持12.2的cuda，所以没法用。</p>
+<p>  本次安装过程中，下载的是11.8版本的cuda toolkit,下载和安装脚本如下</p>
+<pre class=" language-bash"><code class="language-bash">
+<span class="token function">wget</span> https://developer.download.nvidia.com/compute/cuda/11.8.0/local_installers/cuda_11.8.0_520.61.05_linux.run
+<span class="token function">sudo</span> sh cuda_11.8.0_520.61.05_linux.run
+</code></pre>
+</li>
+<li><p>安装对应版本的pytorch</p>
+<p>  在<a target="_blank" rel="noopener" href="https://pytorch.org/get-started/locally/">这里</a>找到对应的pytorch版本，然后安装就好了。</p>
+</li>
 </ul>
+<ul>
+<li><p>最后，查看cuda是否能够被pytorch识别</p>
+<pre class=" language-bash"><code class="language-bash"><span class="token function">import</span> torch
+print<span class="token punctuation">(</span>torch.cuda.is_available<span class="token punctuation">(</span><span class="token punctuation">))</span>
+</code></pre>
+<p>  如果显示为ture，则表示安装成功。</p>
 </li>
 </ul>
 
@@ -571,7 +466,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://leongo.cn/2023/07/23/zai-mac-shang-shi-yong-pybind11-shi-xian-c-yu-python-hu-tong-de-demo/">https://leongo.cn/2023/07/23/zai-mac-shang-shi-yong-pybind11-shi-xian-c-yu-python-hu-tong-de-demo/</a>
+                    <a href="https://leongo.cn/2023/09/12/ubuntu-shang-an-zhuang-nividia-qu-dong-he-cuda-tookit/">https://leongo.cn/2023/09/12/ubuntu-shang-an-zhuang-nividia-qu-dong-he-cuda-tookit/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -609,8 +504,8 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/python-c-%E4%BA%92%E9%80%9A/">
-                                    <span class="chip bg-color">python_c++_互通</span>
+                                <a href="/tags/NIVIDIA%E9%A9%B1%E5%8A%A8/">
+                                    <span class="chip bg-color">NIVIDIA驱动</span>
                                 </a>
                             
                         </div>
@@ -782,9 +677,10 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
                 <a href="/2023/09/12/ubuntu-shang-an-zhuang-nividia-qu-dong-he-cuda-tookit/">
                     <div class="card-image">
@@ -802,9 +698,9 @@
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2023-09-12
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-09-12
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -817,6 +713,7 @@
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -835,13 +732,13 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2022/09/07/mac-xi-tong-zhi-zuo-win10-qi-dong-u-pan/">
+                <a href="/2023/07/23/zai-mac-shang-shi-yong-pybind11-shi-xian-c-yu-python-hu-tong-de-demo/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/2.jpg" class="responsive-img" alt="Mac系统制作win10启动U盘">
+                        <img src="/medias/featureimages/4.jpg" class="responsive-img" alt="在mac上使用pybind11实现c++与python互通的demo">
                         
-                        <span class="card-title">Mac系统制作win10启动U盘</span>
+                        <span class="card-title">在mac上使用pybind11实现c++与python互通的demo</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -852,14 +749,14 @@
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-09-07
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-07-23
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E7%88%AC%E5%9D%91%E6%80%BB%E7%BB%93/" class="post-category">
-                                    爬坑总结
+                            <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="post-category">
+                                    学习笔记
                                 </a>
                             
                             
@@ -869,8 +766,8 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E5%90%AF%E5%8A%A8U%E7%9B%98/">
-                        <span class="chip bg-color">启动U盘</span>
+                    <a href="/tags/python-c-%E4%BA%92%E9%80%9A/">
+                        <span class="chip bg-color">python_c++_互通</span>
                     </a>
                     
                 </div>
