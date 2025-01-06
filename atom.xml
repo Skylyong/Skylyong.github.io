@@ -1,20 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <title>Leon&#39;s blog</title>
+  <title>Lyong&#39;s blog</title>
   
   <subtitle>勇往直前</subtitle>
   <link href="https://leongo.cn/atom.xml" rel="self"/>
   
   <link href="https://leongo.cn/"/>
-  <updated>2023-09-12T02:43:15.044Z</updated>
+  <updated>2025-01-06T05:35:47.899Z</updated>
   <id>https://leongo.cn/</id>
   
   <author>
-    <name>Leon</name>
+    <name>Lyong</name>
     
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>python多进程示例</title>
+    <link href="https://leongo.cn/2025/01/06/python-duo-jin-cheng-shi-li/"/>
+    <id>https://leongo.cn/2025/01/06/python-duo-jin-cheng-shi-li/</id>
+    <published>2025-01-06T05:34:14.112Z</published>
+    <updated>2025-01-06T05:35:47.899Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;导入依赖的包&lt;/p&gt;
+&lt;pre class=&quot; language-python&quot;&gt;&lt;code class=&quot;language-python&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;from&lt;/span&gt; concurrent&lt;span</summary>
+        
+      
+    
+    
+    
+    <category term="编程经验" scheme="https://leongo.cn/categories/%E7%BC%96%E7%A8%8B%E7%BB%8F%E9%AA%8C/"/>
+    
+    
+    <category term="python" scheme="https://leongo.cn/tags/python/"/>
+    
+  </entry>
   
   <entry>
     <title>ubuntu上安装NIVIDIA驱动和CUDA_Tookit</title>
@@ -124,7 +151,7 @@
     <link href="https://leongo.cn/2022/04/29/yuan-cheng-fang-wen-fu-wu-qi-jupyter-notebook/"/>
     <id>https://leongo.cn/2022/04/29/yuan-cheng-fang-wen-fu-wu-qi-jupyter-notebook/</id>
     <published>2022-04-29T08:24:56.000Z</published>
-    <updated>2022-04-29T08:31:29.106Z</updated>
+    <updated>2024-07-23T09:11:41.697Z</updated>
     
     
       
@@ -502,30 +529,6 @@
     
     
     
-    
-  </entry>
-  
-  <entry>
-    <title>Huggingface 预训练模型权重下载的问题</title>
-    <link href="https://leongo.cn/2021/07/01/huggingface-yu-xun-lian-mo-xing-quan-chong-xia-zai-de-wen-ti/"/>
-    <id>https://leongo.cn/2021/07/01/huggingface-yu-xun-lian-mo-xing-quan-chong-xia-zai-de-wen-ti/</id>
-    <published>2021-06-30T17:44:09.000Z</published>
-    <updated>2021-06-30T18:48:11.000Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;blockquote&gt;
-&lt;p&gt;本文转自&lt;a href=&quot;https://www.bilibili.com/read/cv8231417&quot;&gt;Hugging face预训练模型&lt;/a&gt;和&lt;a</summary>
-        
-      
-    
-    
-    
-    
-    <category term="预训练模型" scheme="https://leongo.cn/tags/%E9%A2%84%E8%AE%AD%E7%BB%83%E6%A8%A1%E5%9E%8B/"/>
     
   </entry>
   
