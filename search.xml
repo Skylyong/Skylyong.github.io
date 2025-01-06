@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>matplotlib 设置显示中文</title>
+      <link href="2025/01/06/matplotlib-xian-shi-zhong-wen/"/>
+      <url>2025/01/06/matplotlib-xian-shi-zhong-wen/</url>
+      
+        <content type="html"><![CDATA[<p>先从网络上下载 <code>SimHei.ttf</code>  文件放在某个位置，然后用下面的代码，设置字体的位置。</p><pre class=" language-python"><code class="language-python"><span class="token keyword">import</span> json<span class="token keyword">import</span> pandas <span class="token keyword">as</span> pd<span class="token comment" spellcheck="true"># 从 data/original/SylvanL/Exam/tcm_exam_1.csv 读取数据</span><span class="token keyword">import</span> matplotlib<span class="token punctuation">.</span>pyplot <span class="token keyword">as</span> plt<span class="token keyword">from</span> matplotlib <span class="token keyword">import</span> font_manager<span class="token keyword">from</span> matplotlib <span class="token keyword">import</span> rcParams<span class="token keyword">import</span> re<span class="token keyword">import</span> matplotlib <span class="token comment" spellcheck="true"># 设置当前目录</span><span class="token keyword">import</span> osos<span class="token punctuation">.</span>chdir<span class="token punctuation">(</span><span class="token string">'/cpfs01/projects-SSD/cfff-bafab61057ac_SSD/zyt_09215/liyong/TCM-EMBEDDING'</span><span class="token punctuation">)</span>my_font <span class="token operator">=</span> font_manager<span class="token punctuation">.</span>FontProperties<span class="token punctuation">(</span>fname<span class="token operator">=</span><span class="token string">"fonts/SimHei.ttf"</span><span class="token punctuation">)</span><span class="token comment" spellcheck="true"># 全局设置字体</span>matplotlib<span class="token punctuation">.</span>rcParams<span class="token punctuation">[</span><span class="token string">'font.sans-serif'</span><span class="token punctuation">]</span><span class="token operator">=</span>my_font<span class="token punctuation">.</span>get_name<span class="token punctuation">(</span><span class="token punctuation">)</span>  <span class="token comment" spellcheck="true"># 用黑体显示中文</span>matplotlib<span class="token punctuation">.</span>rcParams<span class="token punctuation">[</span><span class="token string">'axes.unicode_minus'</span><span class="token punctuation">]</span><span class="token operator">=</span><span class="token boolean">False</span> </code></pre><p>使用</p><p>在需要使用中文的地方，指定上面设置好的字体</p><pre class=" language-python"><code class="language-python">plt<span class="token punctuation">.</span>title<span class="token punctuation">(</span><span class="token string">"描述长度分布"</span><span class="token punctuation">,</span> fontproperties<span class="token operator">=</span>my_font<span class="token punctuation">)</span>plt<span class="token punctuation">.</span>xlabel<span class="token punctuation">(</span><span class="token string">"长度"</span><span class="token punctuation">,</span> fontproperties<span class="token operator">=</span>my_font<span class="token punctuation">)</span>plt<span class="token punctuation">.</span>ylabel<span class="token punctuation">(</span><span class="token string">"数量"</span><span class="token punctuation">,</span> fontproperties<span class="token operator">=</span>my_font<span class="token punctuation">)</span></code></pre><p>enjoy！ </p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 编程经验 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> python </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>python多进程示例</title>
       <link href="2025/01/06/python-duo-jin-cheng-shi-li/"/>
       <url>2025/01/06/python-duo-jin-cheng-shi-li/</url>

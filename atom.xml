@@ -6,7 +6,7 @@
   <link href="https://ailyong.cn/atom.xml" rel="self"/>
   
   <link href="https://ailyong.cn/"/>
-  <updated>2025-01-06T05:35:47.899Z</updated>
+  <updated>2025-01-06T06:09:03.835Z</updated>
   <id>https://ailyong.cn/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>matplotlib 设置显示中文</title>
+    <link href="https://ailyong.cn/2025/01/06/matplotlib-xian-shi-zhong-wen/"/>
+    <id>https://ailyong.cn/2025/01/06/matplotlib-xian-shi-zhong-wen/</id>
+    <published>2025-01-06T06:08:26.345Z</published>
+    <updated>2025-01-06T06:09:03.835Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;先从网络上下载 &lt;code&gt;SimHei.ttf&lt;/code&gt;  文件放在某个位置，然后用下面的代码，设置字体的位置。&lt;/p&gt;
+&lt;pre class=&quot; language-python&quot;&gt;&lt;code class=&quot;language-python&quot;&gt;&lt;span</summary>
+        
+      
+    
+    
+    
+    <category term="编程经验" scheme="https://ailyong.cn/categories/%E7%BC%96%E7%A8%8B%E7%BB%8F%E9%AA%8C/"/>
+    
+    
+    <category term="python" scheme="https://ailyong.cn/tags/python/"/>
+    
+  </entry>
   
   <entry>
     <title>python多进程示例</title>
@@ -508,27 +534,6 @@
     
     
     <category term="pytorch" scheme="https://ailyong.cn/tags/pytorch/"/>
-    
-  </entry>
-  
-  <entry>
-    <title></title>
-    <link href="https://ailyong.cn/2021/07/20/li-bao-chun-writing-perfect-papers/"/>
-    <id>https://ailyong.cn/2021/07/20/li-bao-chun-writing-perfect-papers/</id>
-    <published>2021-07-20T14:52:09.000Z</published>
-    <updated>2021-07-20T14:52:09.000Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h3 id=&quot;李葆春——Writing-Perfect-Papers&quot;&gt;&lt;a href=&quot;#李葆春——Writing-Perfect-Papers&quot; class=&quot;headerlink&quot; title=&quot;李葆春——Writing Perfect</summary>
-        
-      
-    
-    
-    
     
   </entry>
   

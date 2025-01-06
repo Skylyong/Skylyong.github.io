@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="python多进程示例, Lyong&#39;s blog">
+    <meta name="keywords" content="matplotlib 设置显示中文, Lyong&#39;s blog">
     <meta name="description" content="Keep go on">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>python多进程示例 | Lyong&#39;s blog</title>
+    <title>matplotlib 设置显示中文 | Lyong&#39;s blog</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -204,12 +204,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/9.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/6.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">python多进程示例</h1>
+                    <h1 class="description center-align post-title">matplotlib 设置显示中文</h1>
                 </div>
             </div>
         </div>
@@ -359,7 +359,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    267
+                    162
                 </div>
                 
 
@@ -386,44 +386,33 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <ol>
-<li><p>导入依赖的包</p>
-<pre class=" language-python"><code class="language-python"><span class="token keyword">from</span> concurrent<span class="token punctuation">.</span>futures <span class="token keyword">import</span> ProcessPoolExecutor<span class="token punctuation">,</span> as_completed
-</code></pre>
-</li>
-<li><p>定义处理内容的函数，该函数要是全局函数，不能放在函数或者类里面<br>函数的参数只有一个，可以用元组包装起来，然后再解包</p>
-<pre class=" language-python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">process_record</span><span class="token punctuation">(</span>args<span class="token punctuation">)</span><span class="token punctuation">:</span>
- text <span class="token operator">=</span> args<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token string">"text"</span><span class="token punctuation">]</span>
- CONTENT <span class="token operator">=</span> args<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span>
- extract_info <span class="token operator">=</span> inference<span class="token punctuation">(</span>text<span class="token punctuation">,</span> model<span class="token operator">=</span><span class="token string">"deepseek-chat"</span><span class="token punctuation">,</span> CONTENT<span class="token operator">=</span>CONTENT<span class="token punctuation">)</span>
- <span class="token keyword">return</span> <span class="token operator">&amp;</span><span class="token comment" spellcheck="true">#123;</span>
-     <span class="token string">"text"</span><span class="token punctuation">:</span> text<span class="token punctuation">,</span>
-     <span class="token string">"extract_info"</span><span class="token punctuation">:</span> extract_info
- <span class="token operator">&amp;</span><span class="token comment" spellcheck="true">#125;</span>
-</code></pre>
-</li>
-<li><p>使用多进程处理数据<br>在 with 下面一共有两个for，第一个for负责将数据和处理函数放在一个 futures 中， 第二个for负责处理和返回处理结果。</p>
-<pre class=" language-python"><code class="language-python"><span class="token keyword">with</span> ProcessPoolExecutor<span class="token punctuation">(</span>max_workers<span class="token operator">=</span>max_workers<span class="token punctuation">)</span> <span class="token keyword">as</span> executor<span class="token punctuation">:</span>
-     futures <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
-     <span class="token keyword">for</span> d <span class="token keyword">in</span> data<span class="token punctuation">:</span>
-         args <span class="token operator">=</span> <span class="token punctuation">(</span>d<span class="token punctuation">,</span> CONTENT<span class="token punctuation">)</span>
-         futures<span class="token punctuation">.</span>append<span class="token punctuation">(</span>executor<span class="token punctuation">.</span>submit<span class="token punctuation">(</span>process_record<span class="token punctuation">,</span> args<span class="token punctuation">)</span><span class="token punctuation">)</span>
+                <p>先从网络上下载 <code>SimHei.ttf</code>  文件放在某个位置，然后用下面的代码，设置字体的位置。</p>
+<pre class=" language-python"><code class="language-python"><span class="token keyword">import</span> json
+<span class="token keyword">import</span> pandas <span class="token keyword">as</span> pd
+<span class="token comment" spellcheck="true"># 从 data/original/SylvanL/Exam/tcm_exam_1.csv 读取数据</span>
+<span class="token keyword">import</span> matplotlib<span class="token punctuation">.</span>pyplot <span class="token keyword">as</span> plt
+<span class="token keyword">from</span> matplotlib <span class="token keyword">import</span> font_manager
+<span class="token keyword">from</span> matplotlib <span class="token keyword">import</span> rcParams
+<span class="token keyword">import</span> re
+<span class="token keyword">import</span> matplotlib 
+<span class="token comment" spellcheck="true"># 设置当前目录</span>
+<span class="token keyword">import</span> os
+os<span class="token punctuation">.</span>chdir<span class="token punctuation">(</span><span class="token string">'/cpfs01/projects-SSD/cfff-bafab61057ac_SSD/zyt_09215/liyong/TCM-EMBEDDING'</span><span class="token punctuation">)</span>
 
-     <span class="token comment" spellcheck="true"># 使用 as_completed 迭代返回已经完成的任务</span>
-     <span class="token comment" spellcheck="true"># tqdm 用于显示进度条</span>
-     <span class="token keyword">for</span> idx<span class="token punctuation">,</span> future <span class="token keyword">in</span> enumerate<span class="token punctuation">(</span>tqdm<span class="token punctuation">.</span>tqdm<span class="token punctuation">(</span>as_completed<span class="token punctuation">(</span>futures<span class="token punctuation">)</span><span class="token punctuation">,</span> total<span class="token operator">=</span>len<span class="token punctuation">(</span>futures<span class="token punctuation">)</span><span class="token punctuation">,</span> desc<span class="token operator">=</span><span class="token string">"Extracting info"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-         result <span class="token operator">=</span> future<span class="token punctuation">.</span>result<span class="token punctuation">(</span><span class="token punctuation">)</span>
-         new_data<span class="token punctuation">.</span>append<span class="token punctuation">(</span>result<span class="token punctuation">)</span>
+my_font <span class="token operator">=</span> font_manager<span class="token punctuation">.</span>FontProperties<span class="token punctuation">(</span>fname<span class="token operator">=</span><span class="token string">"fonts/SimHei.ttf"</span><span class="token punctuation">)</span>
 
-         <span class="token comment" spellcheck="true"># 每完成 100 个样本，保存一次临时文件</span>
-         <span class="token keyword">if</span> <span class="token punctuation">(</span>idx <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">%</span> <span class="token number">500</span> <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">:</span>
-             <span class="token keyword">with</span> open<span class="token punctuation">(</span>save_path<span class="token punctuation">,</span> <span class="token string">"w"</span><span class="token punctuation">,</span> encoding<span class="token operator">=</span><span class="token string">"utf-8"</span><span class="token punctuation">)</span> <span class="token keyword">as</span> f<span class="token punctuation">:</span>
-                 json<span class="token punctuation">.</span>dump<span class="token punctuation">(</span>new_data<span class="token punctuation">,</span> f<span class="token punctuation">,</span> indent<span class="token operator">=</span><span class="token number">4</span><span class="token punctuation">,</span> ensure_ascii<span class="token operator">=</span><span class="token boolean">False</span><span class="token punctuation">)</span>
-                 <span class="token keyword">print</span><span class="token punctuation">(</span>f<span class="token string">"Extracted information from &amp;#123;idx+1&amp;#125; medical records, and saved to &amp;#123;save_path&amp;#125;"</span><span class="token punctuation">)</span>
+
+<span class="token comment" spellcheck="true"># 全局设置字体</span>
+matplotlib<span class="token punctuation">.</span>rcParams<span class="token punctuation">[</span><span class="token string">'font.sans-serif'</span><span class="token punctuation">]</span><span class="token operator">=</span>my_font<span class="token punctuation">.</span>get_name<span class="token punctuation">(</span><span class="token punctuation">)</span>  <span class="token comment" spellcheck="true"># 用黑体显示中文</span>
+matplotlib<span class="token punctuation">.</span>rcParams<span class="token punctuation">[</span><span class="token string">'axes.unicode_minus'</span><span class="token punctuation">]</span><span class="token operator">=</span><span class="token boolean">False</span> 
 </code></pre>
-</li>
-</ol>
-<p>enjoy ! </p>
+<p>使用</p>
+<p>在需要使用中文的地方，指定上面设置好的字体</p>
+<pre class=" language-python"><code class="language-python">plt<span class="token punctuation">.</span>title<span class="token punctuation">(</span><span class="token string">"描述长度分布"</span><span class="token punctuation">,</span> fontproperties<span class="token operator">=</span>my_font<span class="token punctuation">)</span>
+plt<span class="token punctuation">.</span>xlabel<span class="token punctuation">(</span><span class="token string">"长度"</span><span class="token punctuation">,</span> fontproperties<span class="token operator">=</span>my_font<span class="token punctuation">)</span>
+plt<span class="token punctuation">.</span>ylabel<span class="token punctuation">(</span><span class="token string">"数量"</span><span class="token punctuation">,</span> fontproperties<span class="token operator">=</span>my_font<span class="token punctuation">)</span>
+</code></pre>
+<p>enjoy！ </p>
 
                 
             </div>
@@ -450,7 +439,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://ailyong.cn/2025/01/06/python-duo-jin-cheng-shi-li/">https://ailyong.cn/2025/01/06/python-duo-jin-cheng-shi-li/</a>
+                    <a href="https://ailyong.cn/2025/01/06/matplotlib-xian-shi-zhong-wen/">https://ailyong.cn/2025/01/06/matplotlib-xian-shi-zhong-wen/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -661,9 +650,10 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
                 <a href="/2025/01/06/matplotlib-xian-shi-zhong-wen/">
                     <div class="card-image">
@@ -681,9 +671,9 @@
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2025-01-06
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2025-01-06
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -696,6 +686,7 @@
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -714,13 +705,13 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2023/09/12/ubuntu-shang-an-zhuang-nividia-qu-dong-he-cuda-tookit/">
+                <a href="/2025/01/06/python-duo-jin-cheng-shi-li/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/20.jpg" class="responsive-img" alt="ubuntu上安装NIVIDIA驱动和CUDA_Tookit">
+                        <img src="/medias/featureimages/9.jpg" class="responsive-img" alt="python多进程示例">
                         
-                        <span class="card-title">ubuntu上安装NIVIDIA驱动和CUDA_Tookit</span>
+                        <span class="card-title">python多进程示例</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -731,14 +722,14 @@
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2023-09-12
+                                <i class="far fa-clock fa-fw icon-date"></i>2025-01-06
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E7%88%AC%E5%9D%91%E6%80%BB%E7%BB%93/" class="post-category">
-                                    爬坑总结
+                            <a href="/categories/%E7%BC%96%E7%A8%8B%E7%BB%8F%E9%AA%8C/" class="post-category">
+                                    编程经验
                                 </a>
                             
                             
@@ -748,8 +739,8 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/NIVIDIA%E9%A9%B1%E5%8A%A8/">
-                        <span class="chip bg-color">NIVIDIA驱动</span>
+                    <a href="/tags/python/">
+                        <span class="chip bg-color">python</span>
                     </a>
                     
                 </div>
