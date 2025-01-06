@@ -390,7 +390,7 @@
 <span id="more"></span>
 
 <h4 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h4><p><img src="https://raw.githubusercontent.com/Skylyong/i/main/20210401021549.png"></p>
-<h4 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h4><p>本题的解题思路和之前的第<a target="_blank" rel="noopener" href="https://leongo.cn/2021/03/30/bu-tong-lu-jing/">62题</a>很相似，定义dp[i][j]为从第(i, j)点走到右下角的最短路径，则有dp[i][j] = dp[i+1][j] + dp[i][j+1].</p>
+<h4 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h4><p>本题的解题思路和之前的第<a href="https://ailyong.cn/2021/03/30/bu-tong-lu-jing/">62题</a>很相似，定义dp[i][j]为从第(i, j)点走到右下角的最短路径，则有dp[i][j] = dp[i+1][j] + dp[i][j+1].</p>
 <p>然后我们来考虑边界条件，此题的边际和第62题的边际一样，不同的是边界上面dp值，当在下边界的时候dp[m-1][j] = sum(gird[m-1][j:-1]), 在左边界的时候<br>dp[i][n-1] = sum(grid[i:-1][n-1])， dp[m-1][n-1] = grid[m-1][n-1].</p>
 <p>最终答案为: dp[0][0]</p>
 <h4 id="实现代码"><a href="#实现代码" class="headerlink" title="实现代码"></a>实现代码</h4><pre class=" language-python"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">Solution</span><span class="token punctuation">:</span>
