@@ -6,7 +6,7 @@
   <link href="https://ailyong.cn/atom.xml" rel="self"/>
   
   <link href="https://ailyong.cn/"/>
-  <updated>2025-01-06T06:09:03.835Z</updated>
+  <updated>2025-01-07T08:20:19.981Z</updated>
   <id>https://ailyong.cn/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>sentence-transformers sampler bug 之 set 不一定是无序的</title>
+    <link href="https://ailyong.cn/2025/01/07/sentence-transformers-sampler-bug-zhi-set-bu-yi-ding-shi-wu-xu-de/"/>
+    <id>https://ailyong.cn/2025/01/07/sentence-transformers-sampler-bug-zhi-set-bu-yi-ding-shi-wu-xu-de/</id>
+    <published>2025-01-07T08:12:50.000Z</published>
+    <updated>2025-01-07T08:20:19.981Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h1&gt;&lt;p&gt;问  题： 最近准备训练一个基于对比学习的模型， 用 huggface 的 trainer 训练器，在官方给的源代码中，有一个现成的</summary>
+        
+      
+    
+    
+    
+    <category term="编程" scheme="https://ailyong.cn/categories/%E7%BC%96%E7%A8%8B/"/>
+    
+    
+    <category term="python" scheme="https://ailyong.cn/tags/python/"/>
+    
+  </entry>
   
   <entry>
     <title>matplotlib 设置显示中文</title>
@@ -510,34 +535,6 @@
     
     
     <category term="Pandas" scheme="https://ailyong.cn/tags/Pandas/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Pytorch学习</title>
-    <link href="https://ailyong.cn/2021/08/05/pytorch-xue-xi/"/>
-    <id>https://ailyong.cn/2021/08/05/pytorch-xue-xi/</id>
-    <published>2021-08-05T13:50:37.000Z</published>
-    <updated>2021-08-05T15:04:48.000Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;!-- ## Pytorch 框架学习 --&gt;
-
-&lt;p&gt;课程[链接](https: // &lt;a href=&quot;http://www.youtube.com/&quot;&gt;www.youtube.com&lt;/a&gt; / watch?v = c36lUUr864M)&lt;/p&gt;
-&lt;h3</summary>
-        
-      
-    
-    
-    
-    <category term="学习笔记" scheme="https://ailyong.cn/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
-    
-    
-    <category term="pytorch" scheme="https://ailyong.cn/tags/pytorch/"/>
     
   </entry>
   
