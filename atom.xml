@@ -463,11 +463,11 @@
   </entry>
   
   <entry>
-    <title></title>
+    <title>SVM学习笔记</title>
     <link href="https://ailyong.cn/2021/08/09/svm-xue-xi-bi-ji/"/>
     <id>https://ailyong.cn/2021/08/09/svm-xue-xi-bi-ji/</id>
-    <published>2021-08-08T17:38:34.000Z</published>
-    <updated>2021-08-08T17:38:34.000Z</updated>
+    <published>2021-08-09T13:50:37.000Z</published>
+    <updated>2025-01-07T02:10:42.227Z</updated>
     
     
       
@@ -480,6 +480,10 @@
     
     
     
+    <category term="学习笔记" scheme="https://ailyong.cn/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+    
+    <category term="svm" scheme="https://ailyong.cn/tags/svm/"/>
     
   </entry>
   
