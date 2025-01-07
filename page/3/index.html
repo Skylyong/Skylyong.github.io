@@ -1,1205 +1,2113 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <html lang="zh-CN">
-
-
 <head>
-    <meta charset="utf-8">
-    <meta name="keywords" content="Lyong&#39;s blog">
-    <meta name="description" content="Keep go on">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <meta name="renderer" content="webkit|ie-stand|ie-comp">
-    <meta name="mobile-web-app-capable" content="yes">
-    <meta name="format-detection" content="telephone=no">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <!-- Global site tag (gtag.js) - Google Analytics -->
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.2">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
 
 
-    <title>Lyong&#39;s blog</title>
-    <link rel="icon" type="image/png" href="/favicon.png">
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
 
-    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
-    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
-    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
-    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
-    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
-    <link rel="stylesheet" type="text/css" href="/css/matery.css">
-    <link rel="stylesheet" type="text/css" href="/css/my.css">
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"ailyong.cn","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
 
-    <script src="/libs/jquery/jquery.min.js"></script>
+  <meta name="description" content="Keep go on">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Lyong&#39;s blog">
+<meta property="og:url" content="https://ailyong.cn/page/3/index.html">
+<meta property="og:site_name" content="Lyong&#39;s blog">
+<meta property="og:description" content="Keep go on">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:author" content="Lyong">
+<meta name="twitter:card" content="summary">
 
-<meta name="generator" content="Hexo 5.4.2"><link rel="alternate" href="/atom.xml" title="Lyong's blog" type="application/atom+xml">
+<link rel="canonical" href="https://ailyong.cn/page/3/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : true,
+    isPost : false,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>Lyong's blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="Lyong's blog" type="application/atom+xml">
 <link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
 
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Lyong's blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">勇往直前</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
 
 
 
-<body>
-    <header class="navbar-fixed">
-    <nav id="headNav" class="bg-color nav-transparent">
-        <div id="navContainer" class="nav-wrapper container">
-            <div class="brand-logo">
-                <a href="/" class="waves-effect waves-light">
-                    
-                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
-                    
-                    <span class="logo-span">Lyong&#39;s blog</span>
-                </a>
-            </div>
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content index posts-expand">
             
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://ailyong.cn/2021/04/08/git-chang-yong-ming-ling/">
 
-<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
-<ul class="right nav-menu">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Lyong">
+      <meta itemprop="description" content="Keep go on">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Lyong's blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/04/08/git-chang-yong-ming-ling/" class="post-title-link" itemprop="url">git常用命令</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2021-04-08 17:11:14 / 修改时间：23:31:25" itemprop="dateCreated datePublished" datetime="2021-04-08T17:11:14+08:00">2021-04-08</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%88%AC%E5%9D%91%E6%80%BB%E7%BB%93/" itemprop="url" rel="index"><span itemprop="name">爬坑总结</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h4 id="git基于历史commit创建分支"><a href="#git基于历史commit创建分支" class="headerlink" title="git基于历史commit创建分支"></a>git基于历史commit创建分支</h4><pre class=" language-bash"><code class="language-bash"><span class="token function">git</span> log
+<span class="token function">git</span> branch <span class="token operator">&lt;</span>branch name<span class="token operator">></span> <span class="token operator">&lt;</span>SHA1<span class="token operator">></span> 
+<span class="token function">git</span> checkout <span class="token operator">&lt;</span>branch name<span class="token operator">></span>
+
+<span class="token comment" spellcheck="true">#也可以直接执行下面的命令</span>
+<span class="token function">git</span> checkout -b <span class="token operator">&lt;</span>branch name<span class="token operator">></span> <span class="token operator">&lt;</span>SHA1<span class="token operator">></span> 
+</code></pre>
+<h4 id="git对分支的操作"><a href="#git对分支的操作" class="headerlink" title="git对分支的操作"></a>git对分支的操作</h4><pre class=" language-bash"><code class="language-bash"><span class="token comment" spellcheck="true">#查看远程分支</span>
+<span class="token function">git</span> branch -a
+
+<span class="token comment" spellcheck="true">#查看本地分支</span>
+<span class="token function">git</span> branch
+
+<span class="token comment" spellcheck="true">#创建分支</span>
+<span class="token function">git</span> branch branch_name
+
+<span class="token comment" spellcheck="true">#切换到分支</span>
+<span class="token function">git</span> checkout branch_name
+
+<span class="token comment" spellcheck="true">#删除本地分支</span>
+<span class="token function">git</span> branch -d branch_name
+
+<span class="token comment" spellcheck="true">#重命名本地分支</span>
+<span class="token function">git</span> branch -m old new
+
+<span class="token comment" spellcheck="true">#重命名远程分支：将远程分支删除，然后将本地分支重命名，最后将本地分支推到远程</span>
+<span class="token function">git</span> push --delete origin old <span class="token comment" spellcheck="true">#删除远程分支</span>
+<span class="token function">git</span> branch -m old new <span class="token comment" spellcheck="true">#重命名本地分支</span>
+<span class="token function">git</span> push origin new <span class="token comment" spellcheck="true">#将本地分支推送到远程</span>
+</code></pre>
+<h4 id="git对比两个分支差异"><a href="#git对比两个分支差异" class="headerlink" title="git对比两个分支差异"></a><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/bb97fabb475e">git对比两个分支差异</a></h4>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
   
-  <li class="hide-on-med-and-down nav-item">
-    
-    <a href="/" class="waves-effect waves-light">
-      
-      <i class="fas fa-home" style="zoom: 0.6;"></i>
-      
-      <span>首页</span>
-    </a>
-    
-  </li>
   
-  <li class="hide-on-med-and-down nav-item">
-    
-    <a href="/tags" class="waves-effect waves-light">
-      
-      <i class="fas fa-tags" style="zoom: 0.6;"></i>
-      
-      <span>标签</span>
-    </a>
-    
-  </li>
   
-  <li class="hide-on-med-and-down nav-item">
-    
-    <a href="/categories" class="waves-effect waves-light">
+
       
-      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
-      
-      <span>分类</span>
-    </a>
-    
-  </li>
   
-  <li class="hide-on-med-and-down nav-item">
-    
-    <a href="/archives" class="waves-effect waves-light">
-      
-      <i class="fas fa-archive" style="zoom: 0.6;"></i>
-      
-      <span>归档</span>
-    </a>
-    
-  </li>
   
-  <li class="hide-on-med-and-down nav-item">
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://ailyong.cn/2021/04/08/nlp-zhi-shi-ti-xi/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Lyong">
+      <meta itemprop="description" content="Keep go on">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Lyong's blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/04/08/nlp-zhi-shi-ti-xi/" class="post-title-link" itemprop="url">NLP知识体系</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2021-04-08 10:21:44 / 修改时间：10:45:09" itemprop="dateCreated datePublished" datetime="2021-04-08T10:21:44+08:00">2021-04-08</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%9F%A5%E8%AF%86%E6%A1%86%E6%9E%B6/" itemprop="url" rel="index"><span itemprop="name">知识框架</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
     
-    <a href="/about" class="waves-effect waves-light">
-      
-      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
-      
-      <span>关于</span>
-    </a>
     
-  </li>
-  
-  <li>
-    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
-      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
-    </a>
-  </li>
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h3 id="第一部分：机器学习基础篇"><a href="#第一部分：机器学习基础篇" class="headerlink" title="第一部分：机器学习基础篇"></a>第一部分：机器学习基础篇</h3><h4 id="第一章：自然语言处理概述"><a href="#第一章：自然语言处理概述" class="headerlink" title="第一章：自然语言处理概述"></a>第一章：自然语言处理概述</h4><ul>
+<li><p> 自然语言处理的现状与前景</p>
+</li>
+<li><p>自然语言处理应用</p>
+</li>
+<li><p>自然语言处理经典任务</p>
+</li>
 </ul>
+<h4 id="第二章：数据结构与算法基础"><a href="#第二章：数据结构与算法基础" class="headerlink" title="第二章：数据结构与算法基础"></a>第二章：数据结构与算法基础</h4><ul>
+<li><p>时间复杂度、空间复杂度</p>
+</li>
+<li><p>动态规划</p>
+</li>
+<li><p>贪心算法</p>
+</li>
+<li><p>各种排序算法</p>
+</li>
+</ul>
+<h4 id="第三章：分类与逻辑回归"><a href="#第三章：分类与逻辑回归" class="headerlink" title="第三章：分类与逻辑回归"></a>第三章：分类与逻辑回归</h4><ul>
+<li><p>逻辑回归</p>
+</li>
+<li><p>最大似然估计</p>
+</li>
+<li><p>优化与梯度下降法</p>
+</li>
+<li><p>随机梯度下降法</p>
+</li>
+</ul>
+<h4 id="第四章：模型泛化与调参"><a href="#第四章：模型泛化与调参" class="headerlink" title="第四章：模型泛化与调参"></a>第四章：模型泛化与调参</h4><ul>
+<li><p>理解过拟合、防止过拟合</p>
+</li>
+<li><p>L1与L2正则</p>
+</li>
+<li><p>交叉验证</p>
+</li>
+<li><p>正则与MAP估计</p>
+</li>
+</ul>
+<h3 id="第二部分：文本处理篇"><a href="#第二部分：文本处理篇" class="headerlink" title="第二部分：文本处理篇"></a>第二部分：文本处理篇</h3><h4 id="第五章：文本预处理与表示"><a href="#第五章：文本预处理与表示" class="headerlink" title="第五章：文本预处理与表示"></a>第五章：文本预处理与表示</h4><ul>
+<li><p>各类分词算法</p>
+</li>
+<li><p>词的标准化</p>
+</li>
+<li><p>拼写纠错、停用词</p>
+</li>
+<li><p>独热编码表示</p>
+</li>
+<li><p>tf-idf与相似度</p>
+</li>
+<li><p>分布式表示与词向量</p>
+</li>
+<li><p>词向量可视化与评估</p>
+</li>
+</ul>
+<h4 id="第六章：词向量技术"><a href="#第六章：词向量技术" class="headerlink" title="第六章：词向量技术"></a>第六章：词向量技术</h4><ul>
+<li><p>独热编码的优缺点</p>
+</li>
+<li><p>分布式表示的优点</p>
+</li>
+<li><p>静态词向量与动态词向量</p>
+</li>
+<li><p>SkipGram与CBOW</p>
+</li>
+<li><p>SkipGram详解</p>
+</li>
+<li><p>Negative  Sampling</p>
+</li>
+</ul>
+<h4 id="第七章：语言模型"><a href="#第七章：语言模型" class="headerlink" title="第七章：语言模型"></a>第七章：语言模型</h4><ul>
+<li><p>语言模型的作用</p>
+</li>
+<li><p>马尔科夫假设</p>
+</li>
+<li><p>UniGram, BiGram, NGram模型</p>
+</li>
+<li><p>语言模型的评估</p>
+</li>
+<li><p>语言模型的平滑技术</p>
+</li>
+</ul>
+<h3 id="第三部分：序列模型篇"><a href="#第三部分：序列模型篇" class="headerlink" title="第三部分：序列模型篇"></a>第三部分：序列模型篇</h3><h4 id="第八章：隐马尔科夫模型"><a href="#第八章：隐马尔科夫模型" class="headerlink" title="第八章：隐马尔科夫模型"></a>第八章：隐马尔科夫模型</h4><ul>
+<li><p>HMM的应用</p>
+</li>
+<li><p>HMM的Inference</p>
+</li>
+<li><p>维特比算法</p>
+</li>
+<li><p>前向、后向算法</p>
+</li>
+<li><p>HMM的参数估计详解</p>
+</li>
+</ul>
+<h4 id="第九章：线性条件随机场"><a href="#第九章：线性条件随机场" class="headerlink" title="第九章：线性条件随机场"></a>第九章：线性条件随机场</h4><ul>
+<li><p>有向图与无向图</p>
+</li>
+<li><p>生成模型与判别模型</p>
+</li>
+<li><p>从HMM与MEMM</p>
+</li>
+<li><p>MEMM中的标签偏置</p>
+</li>
+<li><p>Log-Linear模型介绍</p>
+</li>
+<li><p>从Log-Linear到LinearCRF</p>
+</li>
+<li><p>LinearCRF的参数估计</p>
+</li>
+</ul>
+<h3 id="第四部分：深度学习与预训练篇"><a href="#第四部分：深度学习与预训练篇" class="headerlink" title="第四部分：深度学习与预训练篇"></a>第四部分：深度学习与预训练篇</h3><h4 id="第十章：深度学习基础"><a href="#第十章：深度学习基础" class="headerlink" title="第十章：深度学习基础"></a>第十章：深度学习基础</h4><ul>
+<li><p>理解神经网络</p>
+</li>
+<li><p>各种常见的激活函数</p>
+</li>
+<li><p>反向传播算法</p>
+</li>
+<li><p>浅层模型与深度模型对比</p>
+</li>
+<li><p>深度学习中的层次表示</p>
+</li>
+<li><p>深度学习中的过拟合</p>
+</li>
+</ul>
+<h4 id="第十一章：RNN与LSTM"><a href="#第十一章：RNN与LSTM" class="headerlink" title="第十一章：RNN与LSTM"></a>第十一章：RNN与LSTM</h4><ul>
+<li><p>从HMM到RNN模型</p>
+</li>
+<li><p>RNN中的梯度问题</p>
+</li>
+<li><p>梯度消失与LSTM</p>
+</li>
+<li><p>LSTM到GRU</p>
+</li>
+<li><p>双向LSTM</p>
+</li>
+<li><p>双向深度LSTM</p>
+</li>
+</ul>
+<h4 id="第十二章：Seq2Seq模型与注意力机制"><a href="#第十二章：Seq2Seq模型与注意力机制" class="headerlink" title="第十二章：Seq2Seq模型与注意力机制"></a>第十二章：Seq2Seq模型与注意力机制</h4><ul>
+<li><p>Seq2Seq模型</p>
+</li>
+<li><p>Greedy Decoding</p>
+</li>
+<li><p>Beam Search</p>
+</li>
+<li><p>长依赖所存在的问题</p>
+</li>
+<li><p>注意力机制的实现</p>
+</li>
+</ul>
+<h4 id="第十三章：动态词向量与ELMo技术"><a href="#第十三章：动态词向量与ELMo技术" class="headerlink" title="第十三章：动态词向量与ELMo技术"></a>第十三章：动态词向量与ELMo技术</h4><ul>
+<li><p>基于上下文的词向量技术</p>
+</li>
+<li><p>图像识别中的层次表示</p>
+</li>
+<li><p>文本领域中的层次表示</p>
+</li>
+<li><p>ELMo模型</p>
+</li>
+<li><p>ELMo的预训练与测试</p>
+</li>
+<li><p>ELMo的优缺点</p>
+</li>
+</ul>
+<h4 id="第十四章：自注意力机制与Transformer"><a href="#第十四章：自注意力机制与Transformer" class="headerlink" title="第十四章：自注意力机制与Transformer"></a>第十四章：自注意力机制与Transformer</h4><ul>
+<li><p>LSTM模型的缺点</p>
+</li>
+<li><p>Transformer概述</p>
+</li>
+<li><p>理解自注意力机制</p>
+</li>
+<li><p>位置信息的编码</p>
+</li>
+<li><p>理解Encoder和Decoder区别</p>
+</li>
+<li><p>理解Transformer的训练与预测</p>
+</li>
+<li><p>Transformer的缺点</p>
+</li>
+</ul>
+<h4 id="第十五章：BERT与ALBERT"><a href="#第十五章：BERT与ALBERT" class="headerlink" title="第十五章：BERT与ALBERT"></a>第十五章：BERT与ALBERT</h4><ul>
+<li><p>自编码介绍</p>
+</li>
+<li><p>Transformer Encoder</p>
+</li>
+<li><p>Masked语言模型</p>
+</li>
+<li><p>BERT模型</p>
+</li>
+<li><p>BERT的不同训练方式</p>
+</li>
+<li><p>ALBERT </p>
+</li>
+</ul>
+<h4 id="第十六章：BERT的其他变种"><a href="#第十六章：BERT的其他变种" class="headerlink" title="第十六章：BERT的其他变种"></a>第十六章：BERT的其他变种</h4><ul>
+<li><p>RoBERTa模型</p>
+</li>
+<li><p>SpanBERT模型</p>
+</li>
+<li><p>FinBERT模型</p>
+</li>
+<li><p>引入先验知识</p>
+</li>
+<li><p>K-BERT</p>
+</li>
+<li><p>KG-BERT</p>
+</li>
+</ul>
+<h4 id="第十七章：GPT与XLNet"><a href="#第十七章：GPT与XLNet" class="headerlink" title="第十七章：GPT与XLNet"></a>第十七章：GPT与XLNet</h4><ul>
+<li><p>Transformer Encoder回顾</p>
+</li>
+<li><p>GPT-1, GPT-2,  GPT-3</p>
+</li>
+<li><p>ELMo的缺点</p>
+</li>
+<li><p>语言模型下同时考虑上下文</p>
+</li>
+<li><p>Permutation LM</p>
+</li>
+<li><p>双流自注意力机制</p>
+</li>
+</ul>
+<h3 id="第五部分：信息抽取与知识图谱篇"><a href="#第五部分：信息抽取与知识图谱篇" class="headerlink" title="第五部分：信息抽取与知识图谱篇"></a>第五部分：信息抽取与知识图谱篇</h3><h4 id="第十八章：命名识别与实体消歧"><a href="#第十八章：命名识别与实体消歧" class="headerlink" title="第十八章：命名识别与实体消歧"></a>第十八章：命名识别与实体消歧</h4><ul>
+<li><p>信息抽取的应用和关键技术</p>
+</li>
+<li><p>命名实体识别</p>
+</li>
+<li><p>NER识别常用技术</p>
+</li>
+<li><p>实体统一技术</p>
+</li>
+<li><p>实体消歧技术</p>
+</li>
+<li><p>指代消解</p>
+</li>
+</ul>
+<h4 id="第十九章：关系抽取"><a href="#第十九章：关系抽取" class="headerlink" title="第十九章：关系抽取"></a>第十九章：关系抽取</h4><ul>
+<li><p>关系抽取的应用</p>
+</li>
+<li><p>基于规则的方法</p>
+</li>
+<li><p>基于监督学习的方法</p>
+</li>
+<li><p>Bootstrap方法</p>
+</li>
+<li><p>Distant Supervision方法</p>
+</li>
+</ul>
+<h4 id="第二十章：句法分析"><a href="#第二十章：句法分析" class="headerlink" title="第二十章：句法分析"></a>第二十章：句法分析</h4><ul>
+<li><p>句法分析的应用</p>
+</li>
+<li><p>CFG介绍</p>
+</li>
+<li><p>从CFG到PCFG</p>
+</li>
+<li><p>评估语法树</p>
+</li>
+<li><p>寻找最好的语法树</p>
+</li>
+<li><p>CKY算法</p>
+</li>
+</ul>
+<h4 id="第二十一章：依存文法分析"><a href="#第二十一章：依存文法分析" class="headerlink" title="第二十一章：依存文法分析"></a>第二十一章：依存文法分析</h4><ul>
+<li><p>从语法分析到依存文法分析</p>
+</li>
+<li><p>依存文法分析的应用</p>
+</li>
+<li><p>基于图算法的依存文法分析</p>
+</li>
+<li><p>基于Transition-based的依存文法分析</p>
+</li>
+<li><p>依存文法的应用案例</p>
+</li>
+</ul>
+<h4 id="第二十二章：知识图谱"><a href="#第二十二章：知识图谱" class="headerlink" title="第二十二章：知识图谱"></a>第二十二章：知识图谱</h4><ul>
+<li><p>知识图谱的重要性</p>
+</li>
+<li><p>知识图谱中的实体与关系</p>
+</li>
+<li><p>非结构化数据与构造知识图谱</p>
+</li>
+<li><p>知识图谱设计</p>
+</li>
+<li><p>图算法的应用</p>
+</li>
+</ul>
+<h3 id="第六部分：模型压缩与图神经网络篇"><a href="#第六部分：模型压缩与图神经网络篇" class="headerlink" title="第六部分：模型压缩与图神经网络篇"></a>第六部分：模型压缩与图神经网络篇</h3><h4 id="第二十三章：模型的压缩"><a href="#第二十三章：模型的压缩" class="headerlink" title="第二十三章：模型的压缩"></a>第二十三章：模型的压缩</h4><ul>
+<li><p>模型压缩重要性</p>
+</li>
+<li><p>常见的模型压缩总览</p>
+</li>
+<li><p>基于矩阵分解的压缩技术</p>
+</li>
+<li><p>基于蒸馏的压缩技术</p>
+</li>
+<li><p>基于贝叶斯模型的压缩技术</p>
+</li>
+<li><p>模型的量化</p>
+</li>
+</ul>
+<h4 id="第二十四章：基于图的学习"><a href="#第二十四章：基于图的学习" class="headerlink" title="第二十四章：基于图的学习"></a>第二十四章：基于图的学习</h4><ul>
+<li><p>图的表示</p>
+</li>
+<li><p>图与知识图谱</p>
+</li>
+<li><p>关于图的常见算法</p>
+</li>
+<li><p>Deepwalk和Node2vec</p>
+</li>
+<li><p>TransE图嵌入算法</p>
+</li>
+<li><p>DSNE图嵌入算法</p>
+</li>
+</ul>
+<h4 id="第二十五章：图神经网络"><a href="#第二十五章：图神经网络" class="headerlink" title="第二十五章：图神经网络"></a>第二十五章：图神经网络</h4><ul>
+<li><p>卷积神经网络回顾</p>
+</li>
+<li><p>在图中设计卷积操作</p>
+</li>
+<li><p>图中的信息传递</p>
+</li>
+<li><p>图卷积神经网络</p>
+</li>
+<li><p>图卷积神经网络的经典应用</p>
+</li>
+</ul>
+<h4 id="第二十六章：GraphSage与GAT"><a href="#第二十六章：GraphSage与GAT" class="headerlink" title="第二十六章：GraphSage与GAT"></a>第二十六章：GraphSage与GAT</h4><ul>
+<li><p>从GCN到GraphSAge</p>
+</li>
+<li><p>注意力机制回归</p>
+</li>
+<li><p>GAT模型详解</p>
+</li>
+<li><p>GAT与GCN比较</p>
+</li>
+<li><p>对于异构数据的处理</p>
+</li>
+</ul>
+<h4 id="第二十七章：图神经网络的其他应用"><a href="#第二十七章：图神经网络的其他应用" class="headerlink" title="第二十七章：图神经网络的其他应用"></a>第二十七章：图神经网络的其他应用</h4><ul>
+<li><p>Node Classification</p>
+</li>
+<li><p>Graph Classification</p>
+</li>
+<li><p>Link Prediction</p>
+</li>
+<li><p>社区挖掘</p>
+</li>
+<li><p>推荐系统</p>
+</li>
+<li><p>图神经网络的未来发展</p>
+</li>
+</ul>
+<h3 id="部分可练习的案例"><a href="#部分可练习的案例" class="headerlink" title="部分可练习的案例"></a>部分可练习的案例</h3><ol>
+<li>实现一个拼写纠错器</li>
+<li>从零实现Word2Vec词向量</li>
+<li>利用SkipGram做推荐</li>
+<li>从零实现HMM模型</li>
+<li>基于Linear-CRF的词性分类器实现</li>
+<li>从零实现深度学习反向传播算法</li>
+<li>实现AI程序帮助写程序</li>
+<li>实现AI程序帮助写文章</li>
+<li>基于Transformer的机器翻译</li>
+<li>基于KG-BERT的知识图谱学习</li>
+<li>基于知识图谱的风控系统</li>
+<li>基于知识图谱的个性化教学</li>
+<li>利用蒸馏算法压缩Transformer</li>
+<li>利用GCN实现社交推荐</li>
+<li>基于GAT的虚假新闻检测</li>
+</ol>
+<h3 id="项目作业"><a href="#项目作业" class="headerlink" title="项目作业"></a>项目作业</h3><ol>
+<li><p>豆瓣电影评分预测</p>
+<p> 涉及到的知识点：</p>
+<ul>
+<li><p>中文分词技术</p>
+</li>
+<li><p>独热编码、tf-idf</p>
+</li>
+<li><p>分布式表示与Word2Vec</p>
+</li>
+<li><p>BERT向量、句子向量</p>
+</li>
+</ul>
+</li>
+</ol>
+<ol start="2">
+<li><p>智能客服问答系统</p>
+<p> 涉及到的知识点：</p>
+<ul>
+<li><p>问答系统搭建流程</p>
+</li>
+<li><p>文本的向量化表示</p>
+</li>
+<li><p>FastText</p>
+</li>
+<li><p>倒排表</p>
+</li>
+<li><p>问答系统中的召回、排序</p>
+</li>
+</ul>
+</li>
+</ol>
+<ol start="3">
+<li><p>基于Linear-CRF的医疗实体识别</p>
+<p> 涉及到的知识点：</p>
+<ul>
+<li><p>命名实体识别</p>
+</li>
+<li><p>特征工程</p>
+</li>
+<li><p>评估标准</p>
+</li>
+<li><p>过拟合</p>
+</li>
+</ul>
+</li>
+</ol>
+<ol start="4">
+<li><p>基于闲聊的对话系统搭建</p>
+<p> 涉及到的知识点：</p>
+<ul>
+<li><p>常见的对话系统技术</p>
+</li>
+<li><p>闲聊型对话系统框架</p>
+</li>
+<li><p>数据的处理技术</p>
+</li>
+<li><p>BERT的使用</p>
+</li>
+<li><p>Transformer的使用</p>
+</li>
+</ul>
+</li>
+</ol>
+<ol start="5">
+<li><p>搭建基于医疗知识图谱的问答系统</p>
+<p> 涉及到的知识点：</p>
+<ul>
+<li><p>医疗专业词汇的使用</p>
+</li>
+<li><p>获取问句的意图</p>
+</li>
+<li><p>问句的解释、提取关键实体</p>
+</li>
+<li><p>转化为查询语句</p>
+</li>
+</ul>
+</li>
+</ol>
+<ol start="6">
+<li><p>搭建基于医疗知识图谱的问答系统</p>
+<p> 涉及到的知识点：</p>
+<ul>
+<li><p>文本摘要生成介绍</p>
+</li>
+<li><p>关键词提取技术</p>
+</li>
+<li><p>图神经网络的摘要生成</p>
+</li>
+<li><p>基于生成式的摘要提取技术</p>
+</li>
+<li><p>文本摘要质量的评估</p>
+</li>
+</ul>
+</li>
+</ol>
+<h3 id="论文"><a href="#论文" class="headerlink" title="论文"></a>论文</h3><table>
+<thead>
+<tr>
+<th>主题</th>
+<th>论文名称</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>机器学习</td>
+<td>XGBoost: A Scalable Tree Boosting System</td>
+</tr>
+<tr>
+<td>机器学习</td>
+<td>Regularization and Variable Selection via the Elastic Net</td>
+</tr>
+<tr>
+<td>词向量</td>
+<td>Evaluation methods for unsupervised word embeddings</td>
+</tr>
+<tr>
+<td>词向量</td>
+<td>Evaluation methods for unsupervised word embeddings</td>
+</tr>
+<tr>
+<td>词向量</td>
+<td>GloVe: Global Vectors for Word Representation</td>
+</tr>
+<tr>
+<td>词向量</td>
+<td>Deep Contexualized Word Representations</td>
+</tr>
+<tr>
+<td>词向量</td>
+<td>Attention is All You Need</td>
+</tr>
+<tr>
+<td>词向量</td>
+<td>BERT: Pretraining of Deep Bidirectional Transformers for Language Understanding</td>
+</tr>
+<tr>
+<td>词向量</td>
+<td>XLNet: Generalized Autoregressive Pretraining for Language Understanding</td>
+</tr>
+<tr>
+<td>词向量</td>
+<td>KG-BERT: BERT for Knowledge Graph Completion</td>
+</tr>
+<tr>
+<td>词向量</td>
+<td>Language Models are Few-shot Learners</td>
+</tr>
+<tr>
+<td>图学习</td>
+<td>Semi-supervised Classification with Graph Convolutional Networks</td>
+</tr>
+<tr>
+<td>图学习</td>
+<td>Graph Attention Networks</td>
+</tr>
+<tr>
+<td>图学习</td>
+<td>GraphSAGE: Inductive Representation Learning on Large Graphs</td>
+</tr>
+<tr>
+<td>图学习</td>
+<td>Node2Vec: Scalable Feature Learning for Networks</td>
+</tr>
+</tbody></table>
+<p>参考链接: <a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/GPCmLavk7NjHVwgWIb02-g">https://mp.weixin.qq.com/s/GPCmLavk7NjHVwgWIb02-g</a></p>
 
-
-<div id="mobile-nav" class="side-nav sidenav">
-
-    <div class="mobile-head bg-color">
-        
-        <img src="/medias/logo.png" class="logo-img circle responsive-img">
-        
-        <div class="logo-name">Lyong&#39;s blog</div>
-        <div class="logo-desc">
-            
-            Keep go on
-            
-        </div>
+      
     </div>
 
     
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
 
-    <ul class="menu-list mobile-menu-list">
-        
-        <li class="m-nav-item">
-	  
-		<a href="/" class="waves-effect waves-light">
-			
-			    <i class="fa-fw fas fa-home"></i>
-			
-			首页
-		</a>
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://ailyong.cn/2021/04/01/zui-xiao-lu-jing-he/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Lyong">
+      <meta itemprop="description" content="Keep go on">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Lyong's blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
           
-        </li>
-        
-        <li class="m-nav-item">
-	  
-		<a href="/tags" class="waves-effect waves-light">
-			
-			    <i class="fa-fw fas fa-tags"></i>
-			
-			标签
-		</a>
-          
-        </li>
-        
-        <li class="m-nav-item">
-	  
-		<a href="/categories" class="waves-effect waves-light">
-			
-			    <i class="fa-fw fas fa-bookmark"></i>
-			
-			分类
-		</a>
-          
-        </li>
-        
-        <li class="m-nav-item">
-	  
-		<a href="/archives" class="waves-effect waves-light">
-			
-			    <i class="fa-fw fas fa-archive"></i>
-			
-			归档
-		</a>
-          
-        </li>
-        
-        <li class="m-nav-item">
-	  
-		<a href="/about" class="waves-effect waves-light">
-			
-			    <i class="fa-fw fas fa-user-circle"></i>
-			
-			关于
-		</a>
-          
-        </li>
-        
-        
-    </ul>
-</div>
-
-
-        </div>
-
-        
-    </nav>
-
-</header>
-
-    
-    <div class="bg-cover pd-header about-cover">
-    <div class="container">
-    <div class="row">
-    <div class="col s10 offset-s1 m8 offset-m2 l8 offset-l2">
-        <div class="brand">
-            <div class="title center-align">
-                
-                勇往直前
-                
-            </div>
-
-            <div class="description center-align">
-                
-                <span id="subtitle"></span>
-                <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11"></script>
-                <script>
-                    var typed = new Typed("#subtitle", {
-                        strings: [ 
-                            
-                                "往前走，终有抵达的时候",
-                            
-                                "Keep going, there will be strange times",
-                            
-                        ],
-                        startDelay: 300,
-                        typeSpeed: 100,
-                        loop: true,
-                        backSpeed: 50,
-                        showCursor: true
-                    });
-                </script>
-                
-            </div>
-        </div>
-    </div>
-</div>
-
-
-<script>
-    // 每天切换 banner 图.  Switch banner image every day.
-    var bannerUrl = "/medias/banner/" + new Date().getDay() + '.jpg';
-    $('.bg-cover').css('background-image', 'url(' + bannerUrl + ')');
-</script>
-
-
-    </div>
-</div>
-
-
-<main class="content">
-
-    
-
-    
-
-    <!-- 所有文章卡片 -->
-    <article id="articles" class="container articles">
-        <div class="row article-row">
-            
-            <div class="article col s12 m6 l4" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/2021/04/08/git-chang-yong-ming-ling/">
-                        <div class="card-image">
-                            
-                            
-                            <img src="/medias/featureimages/17.jpg" class="responsive-img" alt="git常用命令">
-                            
-                            <span class="card-title">git常用命令</span>
-                        </div>
-                    </a>
-
-                    <div class="card-content article-content">
-                        <div class="summary block-with-text">
-                            
-                                git基于历史commit创建分支git log
-git branch &lt;branch name> &lt;SHA1> 
-git checkout &lt;branch name>
-
-#也可以直接执行下面的命令
-git checkou
-                            
-                        </div>
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-04-08
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fas fa-bookmark fa-fw icon-category"></i>
-                                
-                                <a href="/categories/%E7%88%AC%E5%9D%91%E6%80%BB%E7%BB%93/" class="post-category">
-                                    爬坑总结
-                                </a>
-                                
-                                
-                            </span>
-                        </div>
-                    </div>
-
-                    
-                    <div class="card-action article-tags">
-                        
-                        <a href="/tags/git/">
-                            <span class="chip bg-color">git</span>
-                        </a>
-                        
-                    </div>
-                    
-                </div>
-            </div>
-            
-            <div class="article col s12 m6 l4" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/2021/04/08/nlp-zhi-shi-ti-xi/">
-                        <div class="card-image">
-                            
-                            
-                            <img src="/medias/featureimages/13.jpg" class="responsive-img" alt="NLP知识体系">
-                            
-                            <span class="card-title">NLP知识体系</span>
-                        </div>
-                    </a>
-
-                    <div class="card-content article-content">
-                        <div class="summary block-with-text">
-                            
-                                第一部分：机器学习基础篇第一章：自然语言处理概述
- 自然语言处理的现状与前景
-
-自然语言处理应用
-
-自然语言处理经典任务
-
-
-第二章：数据结构与算法基础
-时间复杂度、空间复杂度
-
-动态规划
-
-贪心算法
-
-各种排序算法
-
-
-第三章：分类与逻辑
-                            
-                        </div>
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-04-08
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fas fa-bookmark fa-fw icon-category"></i>
-                                
-                                <a href="/categories/%E7%9F%A5%E8%AF%86%E6%A1%86%E6%9E%B6/" class="post-category">
-                                    知识框架
-                                </a>
-                                
-                                
-                            </span>
-                        </div>
-                    </div>
-
-                    
-                    <div class="card-action article-tags">
-                        
-                        <a href="/tags/nlp/">
-                            <span class="chip bg-color">nlp</span>
-                        </a>
-                        
-                    </div>
-                    
-                </div>
-            </div>
-            
-            <div class="article col s12 m6 l4" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/2021/04/01/zui-xiao-lu-jing-he/">
-                        <div class="card-image">
-                            
-                            
-                            <img src="/medias/featureimages/3.jpg" class="responsive-img" alt="【每日算法】2021年03月31日 小雨 最小路径和">
-                            
-                            <span class="card-title">【每日算法】2021年03月31日 小雨 最小路径和</span>
-                        </div>
-                    </a>
-
-                    <div class="card-content article-content">
-                        <div class="summary block-with-text">
-                            
-                                这道题是LeeCode第64题，和之前的第62题一样，属于动态规划中的中等难度题目。
-                            
-                        </div>
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-04-01
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fas fa-bookmark fa-fw icon-category"></i>
-                                
-                                <a href="/categories/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/" class="post-category">
-                                    算法笔记
-                                </a>
-                                
-                                
-                            </span>
-                        </div>
-                    </div>
-
-                    
-                    <div class="card-action article-tags">
-                        
-                        <a href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/">
-                            <span class="chip bg-color">动态规划</span>
-                        </a>
-                        
-                    </div>
-                    
-                </div>
-            </div>
-            
-            <div class="article col s12 m6 l4" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/2021/03/31/gitlab-da-jian-bi-ji/">
-                        <div class="card-image">
-                            
-                            
-                            <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="GitLab搭建笔记">
-                            
-                            <span class="card-title">GitLab搭建笔记</span>
-                        </div>
-                    </a>
-
-                    <div class="card-content article-content">
-                        <div class="summary block-with-text">
-                            
-                                安装gitlab：curl -s https://packages.gitlab.com/install/repositories/gitlab/gitlab-ee/
-script.deb.sh | sudo bash
-
-防火墙设置 之前已
-                            
-                        </div>
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-03-31
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fas fa-bookmark fa-fw icon-category"></i>
-                                
-                                <a href="/categories/%E7%88%AC%E5%9D%91%E6%80%BB%E7%BB%93/" class="post-category">
-                                    爬坑总结
-                                </a>
-                                
-                                
-                            </span>
-                        </div>
-                    </div>
-
-                    
-                    <div class="card-action article-tags">
-                        
-                        <a href="/tags/GitLab/">
-                            <span class="chip bg-color">GitLab</span>
-                        </a>
-                        
-                    </div>
-                    
-                </div>
-            </div>
-            
-            <div class="article col s12 m6 l4" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/2021/03/31/ying-yu-kou-yu-lian-xi-dian-ying-tui-jian/">
-                        <div class="card-image">
-                            
-                            
-                            <img src="/medias/featureimages/9.jpg" class="responsive-img" alt="英语口语练习电影推荐">
-                            
-                            <span class="card-title">英语口语练习电影推荐</span>
-                        </div>
-                    </a>
-
-                    <div class="card-content article-content">
-                        <div class="summary block-with-text">
-                            
-                                我是从喜马拉雅路转粉过来听课的，张老师推荐的东西必然是干货。因此利用周末时间搜集整理了一些老师课上推荐的视频资源，方便自己也分享给大家。
-电影推荐
-The Queen (提取码:gysn)
-
-The King’s Speech (提取码:g
-                            
-                        </div>
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-03-31
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fas fa-bookmark fa-fw icon-category"></i>
-                                
-                                <a href="/categories/%E5%AD%A6%E4%B9%A0%E8%B5%84%E6%96%99/" class="post-category">
-                                    学习资料
-                                </a>
-                                
-                                
-                            </span>
-                        </div>
-                    </div>
-
-                    
-                    <div class="card-action article-tags">
-                        
-                        <a href="/tags/%E7%94%B5%E5%BD%B1/">
-                            <span class="chip bg-color">电影</span>
-                        </a>
-                        
-                    </div>
-                    
-                </div>
-            </div>
-            
-            <div class="article col s12 m6 l4" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/2021/03/31/xue-xi-shi-pin-zheng-li/">
-                        <div class="card-image">
-                            
-                            
-                            <img src="/medias/featureimages/17.jpg" class="responsive-img" alt="学习视频整理">
-                            
-                            <span class="card-title">学习视频整理</span>
-                        </div>
-                    </a>
-
-                    <div class="card-content article-content">
-                        <div class="summary block-with-text">
-                            
-                                MIT计算机科学导论MIT计算机科学导论教学视频，中英文字幕可以随意切换，老师发音很好，强推
-
-6.0001基础
-
-6.0002进价
-
-教材
-
-6.0002课后练习
-
-配套ppt
-
-
-没有找到与最新视频配套的slide，只找到15年的.
-线
-                            
-                        </div>
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-03-31
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fas fa-bookmark fa-fw icon-category"></i>
-                                
-                                <a href="/categories/%E5%AD%A6%E4%B9%A0%E8%B5%84%E6%96%99/" class="post-category">
-                                    学习资料
-                                </a>
-                                
-                                
-                            </span>
-                        </div>
-                    </div>
-
-                    
-                    <div class="card-action article-tags">
-                        
-                        <a href="/tags/%E7%BC%96%E7%A8%8B/">
-                            <span class="chip bg-color">编程</span>
-                        </a>
-                        
-                    </div>
-                    
-                </div>
-            </div>
-            
-            <div class="article col s12 m6 l4" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/2021/03/31/ke-cheng-she-ji-zui-xiao-sheng-cheng-shu-ying-yong/">
-                        <div class="card-image">
-                            
-                            
-                            <img src="/medias/featureimages/4.jpg" class="responsive-img" alt="【课程设计】最小生成树应用">
-                            
-                            <span class="card-title">【课程设计】最小生成树应用</span>
-                        </div>
-                    </a>
-
-                    <div class="card-content article-content">
-                        <div class="summary block-with-text">
-                            
-                                需求描述本次课程设计要求在n个城市之间架设n-1条线路，实现这几个城市之间的网络通信，要求网络经济代价最低。具体要求如下：
-问题分析根据设计要求，我们假设城市之间的距离越大架设网线的经济代价越大，因此可以用两个城市之间的距离作为边的权重。
-
-                            
-                        </div>
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-03-31
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fas fa-bookmark fa-fw icon-category"></i>
-                                
-                                <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="post-category">
-                                    学习笔记
-                                </a>
-                                
-                                
-                            </span>
-                        </div>
-                    </div>
-
-                    
-                    <div class="card-action article-tags">
-                        
-                        <a href="/tags/%E6%A0%91/">
-                            <span class="chip bg-color">树</span>
-                        </a>
-                        
-                    </div>
-                    
-                </div>
-            </div>
-            
-            <div class="article col s12 m6 l4" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/2021/03/30/bu-tong-lu-jing/">
-                        <div class="card-image">
-                            
-                            
-                            <img src="/medias/featureimages/14.jpg" class="responsive-img" alt="【每日算法】2021年03月30日 多云 不同路径">
-                            
-                            <span class="card-title">【每日算法】2021年03月30日 多云 不同路径</span>
-                        </div>
-                    </a>
-
-                    <div class="card-content article-content">
-                        <div class="summary block-with-text">
-                            
-                                这道题是LeeCode第62题，属于动态规划中的中等难度题目。
-                            
-                        </div>
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-03-30
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fas fa-bookmark fa-fw icon-category"></i>
-                                
-                                <a href="/categories/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/" class="post-category">
-                                    算法笔记
-                                </a>
-                                
-                                
-                            </span>
-                        </div>
-                    </div>
-
-                    
-                    <div class="card-action article-tags">
-                        
-                        <a href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/">
-                            <span class="chip bg-color">动态规划</span>
-                        </a>
-                        
-                    </div>
-                    
-                </div>
-            </div>
-            
-            <div class="article col s12 m6 l4" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/2021/03/29/bian-fen-xue-xi-bi-ji/">
-                        <div class="card-image">
-                            
-                            
-                            <img src="/medias/featureimages/4.jpg" class="responsive-img" alt="变分学习笔记">
-                            
-                            <span class="card-title">变分学习笔记</span>
-                        </div>
-                    </a>
-
-                    <div class="card-content article-content">
-                        <div class="summary block-with-text">
-                            
-                                变分推断应用举例
-文章LAD题目分析
-                            
-                        </div>
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-03-29
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fas fa-bookmark fa-fw icon-category"></i>
-                                
-                                <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="post-category">
-                                    学习笔记
-                                </a>
-                                
-                                
-                            </span>
-                        </div>
-                    </div>
-
-                    
-                    <div class="card-action article-tags">
-                        
-                        <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">
-                            <span class="chip bg-color">机器学习</span>
-                        </a>
-                        
-                    </div>
-                    
-                </div>
-            </div>
-            
-            <div class="article col s12 m6 l4" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/2021/03/28/ji-yi-ci-xi-tong-ben-kui-de-fan-si-he-zong-jie/">
-                        <div class="card-image">
-                            
-                            
-                            <img src="/medias/featureimages/4.jpg" class="responsive-img" alt="记一次系统奔溃的反思和总结">
-                            
-                            <span class="card-title">记一次系统奔溃的反思和总结</span>
-                        </div>
-                    </a>
-
-                    <div class="card-content article-content">
-                        <div class="summary block-with-text">
-                            
-                                
-3月15日，mac电脑无缘无故的崩掉了，本以为是一个小问题，拿去环茂直营店直接给判了死刑，主板全部换掉，顺带还换了屏幕，最悲剧的是最新版本mac的硬盘是直接焊死在主板上面的，换了主板硬盘也没有了，里面的数据也没了。
-
-                            
-                        </div>
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-03-28
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fas fa-bookmark fa-fw icon-category"></i>
-                                
-                                <a href="/categories/%E7%94%9F%E6%B4%BB%E6%80%BB%E7%BB%93/" class="post-category">
-                                    生活总结
-                                </a>
-                                
-                                
-                            </span>
-                        </div>
-                    </div>
-
-                    
-                    <div class="card-action article-tags">
-                        
-                        <a href="/tags/%E8%A3%85%E6%9C%BA/">
-                            <span class="chip bg-color">装机</span>
-                        </a>
-                        
-                    </div>
-                    
-                </div>
-            </div>
-            
-            <div class="article col s12 m6 l4" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/2021/03/28/github-jia-su-fang-fa/">
-                        <div class="card-image">
-                            
-                            
-                            <img src="/medias/featureimages/22.jpg" class="responsive-img" alt="GitHub加速方法">
-                            
-                            <span class="card-title">GitHub加速方法</span>
-                        </div>
-                    </a>
-
-                    <div class="card-content article-content">
-                        <div class="summary block-with-text">
-                            
-                                设置代理加速GitHub由于github网站服务器在国外，国内上传和下载数据速度较慢，假如你已经有具备了科学上网的条件，可以通过设置代理的方式来提高数据传输速度。
-以下设置均建立在具备科学上网的前提下，下文中的小飞机指某款用于科学上网的工具
-                            
-                        </div>
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-03-28
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fas fa-bookmark fa-fw icon-category"></i>
-                                
-                                <a href="/categories/%E7%88%AC%E5%9D%91%E6%80%BB%E7%BB%93/" class="post-category">
-                                    爬坑总结
-                                </a>
-                                
-                                
-                            </span>
-                        </div>
-                    </div>
-
-                    
-                    <div class="card-action article-tags">
-                        
-                        <a href="/tags/GitHub/">
-                            <span class="chip bg-color">GitHub</span>
-                        </a>
-                        
-                    </div>
-                    
-                </div>
-            </div>
-            
-            <div class="article col s12 m6 l4" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/2021/02/22/ecnu-de-chun/">
-                        <div class="card-image">
-                            
-                            
-                            <img src="/medias/featureimages/22.jpg" class="responsive-img" alt="ECNU的春">
-                            
-                            <span class="card-title">ECNU的春</span>
-                        </div>
-                    </a>
-
-                    <div class="card-content article-content">
-                        <div class="summary block-with-text">
-                            
-                                最开始令人感受到春气息的是红梅花，红梅花跟腊梅花的区别在于花瓣的颜色和开放的时间不同，腊梅花比红梅花开得更早一些。今年红梅花开的具体日子已经不记得了，只依稀记得那个时候天还很冷，操场上面很少见到跑步运动的人，留校的同学大多都还呆在宿舍，校园
-                            
-                        </div>
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-02-22
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fas fa-bookmark fa-fw icon-category"></i>
-                                
-                                <a href="/categories/%E7%94%9F%E6%B4%BB%E6%80%BB%E7%BB%93/" class="post-category">
-                                    生活总结
-                                </a>
-                                
-                                
-                            </span>
-                        </div>
-                    </div>
-
-                    
-                    <div class="card-action article-tags">
-                        
-                        <a href="/tags/ECNU/">
-                            <span class="chip bg-color">ECNU</span>
-                        </a>
-                        
-                    </div>
-                    
-                </div>
-            </div>
-            
-        </div>
-    </article>
-
-</main>
-
-
-<div class="container paging">
-    <div class="row">
-        <div class="col s6 m4 l4">
-            
-            <a href="/page/2/"
-               class="left btn-floating btn-large waves-effect waves-light bg-color">
-                <i class="fas fa-angle-left"></i>
-            </a>
-            
-        </div>
-        <div class="page-info col m4 l4 hide-on-small-only">
-            <div class="center-align b-text-gray">3 / 4</div>
-        </div>
-        <div class="col s6 m4 l4">
-            
-            <a href="/page/4/"
-               class="right btn-floating btn-large waves-effect waves-light bg-color">
-                <i class="fas fa-angle-right"></i>
-            </a>
-            
-        </div>
-    </div>
-</div>
-
-
-
-
-    <footer class="page-footer bg-color">
-    
-        <link rel="stylesheet" href="/libs/aplayer/APlayer.min.css">
-<style>
-    .aplayer .aplayer-lrc p {
-        
-        display: none;
-        
-        font-size: 12px;
-        font-weight: 700;
-        line-height: 16px !important;
-    }
-
-    .aplayer .aplayer-lrc p.aplayer-lrc-current {
-        
-        display: none;
-        
-        font-size: 15px;
-        color: #42b983;
-    }
-
-    
-    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body {
-        left: -66px !important;
-    }
-
-    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body:hover {
-        left: 0px !important;
-    }
-
-    
-</style>
-<div class="">
-    
-    <div class="row">
-        <meting-js class="col l8 offset-l2 m10 offset-m1 s12"
-                   server="netease"
-                   type="playlist"
-                   id="503838841"
-                   fixed='true'
-                   autoplay='false'
-                   theme='#42b983'
-                   loop='all'
-                   order='random'
-                   preload='auto'
-                   volume='0.7'
-                   list-folded='true'
-        >
-        </meting-js>
-    </div>
-</div>
-
-<script src="/libs/aplayer/APlayer.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
-
-    
-    <div class="container row center-align" style="margin-bottom: 0px !important;">
-        <div class="col s12 m8 l8 copy-right">
-            Copyright&nbsp;&copy;
-            
-                <span id="year">2019-2025</span>
-            
-            <span id="year">2019</span>
-            <a href="/about" target="_blank">Lyong</a>
-            <!-- |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a> -->
-            <!-- |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a> -->
-            <br>
-            
-            
-            
-            
-            
-            
-            <span id="busuanzi_container_site_pv">
-                &nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;<span id="busuanzi_value_site_pv"
-                    class="white-color"></span>&nbsp;次
+            <a href="/2021/04/01/zui-xiao-lu-jing-he/" class="post-title-link" itemprop="url">【每日算法】2021年03月31日 小雨 最小路径和</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-04-01 02:08:43" itemprop="dateCreated datePublished" datetime="2021-04-01T02:08:43+08:00">2021-04-01</time>
             </span>
-            
-            
-            <span id="busuanzi_container_site_uv">
-                &nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;<span id="busuanzi_value_site_uv"
-                    class="white-color"></span>&nbsp;人
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2025-01-06 14:02:55" itemprop="dateModified" datetime="2025-01-06T14:02:55+08:00">2025-01-06</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">算法笔记</span></a>
+                </span>
             </span>
-            
-            <br>
-            
-            <br>
-            
+
+          
+
         </div>
-        <div class="col s12 m4 l4 social-link social-statis">
-    <a href="https://github.com/Skylyong" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
-        <i class="fab fa-github"></i>
-    </a>
+      </header>
 
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
-
-    <a href="mailto:lyong_s@foxmail.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
-        <i class="fas fa-envelope-open"></i>
-    </a>
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
-        <i class="fas fa-rss"></i>
-    </a>
-
-</div>
+      
+          <p>这道题是LeeCode第<a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/minimum-path-sum/">64</a>题，和之前的第62题一样，属于动态规划中的中等难度题目。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2021/04/01/zui-xiao-lu-jing-he/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
     </div>
-</footer>
 
-<div class="progress-bar"></div>
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
 
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://ailyong.cn/2021/03/31/gitlab-da-jian-bi-ji/">
 
-    <!-- 搜索遮罩框 -->
-<div id="searchModal" class="modal">
-    <div class="modal-content">
-        <div class="search-header">
-            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
-            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
-                   class="search-input">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Lyong">
+      <meta itemprop="description" content="Keep go on">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Lyong's blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/03/31/gitlab-da-jian-bi-ji/" class="post-title-link" itemprop="url">GitLab搭建笔记</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-03-31 19:59:24" itemprop="dateCreated datePublished" datetime="2021-03-31T19:59:24+08:00">2021-03-31</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-04-01 16:43:54" itemprop="dateModified" datetime="2021-04-01T16:43:54+08:00">2021-04-01</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%88%AC%E5%9D%91%E6%80%BB%E7%BB%93/" itemprop="url" rel="index"><span itemprop="name">爬坑总结</span></a>
+                </span>
+            </span>
+
+          
+
         </div>
-        <div id="searchResult"></div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h4 id="安装gitlab："><a href="#安装gitlab：" class="headerlink" title="安装gitlab："></a><a target="_blank" rel="noopener" href="https://packages.gitlab.com/gitlab/gitlab-ee/packages/ubuntu/focal/gitlab-ee_13.8.7-ee.0_amd64.deb">安装gitlab</a>：</h4><pre class=" language-bash"><code class="language-bash">curl -s https://packages.gitlab.com/install/repositories/gitlab/gitlab-ee/
+script.deb.sh <span class="token operator">|</span> <span class="token function">sudo</span> <span class="token function">bash</span>
+</code></pre>
+<h4 id="防火墙设置"><a href="#防火墙设置" class="headerlink" title="防火墙设置"></a>防火墙设置</h4><p> 之前已经配置好了，略</p>
+<h4 id="gitlab配置"><a href="#gitlab配置" class="headerlink" title="gitlab配置"></a><a target="_blank" rel="noopener" href="https://docs.gitlab.com/omnibus/settings/configuration.html#configuring-the-external-url-for-gitlab">gitlab配置</a></h4><p>打开/etc/gitlab/gitlab.rb</p>
+<pre class=" language-bash"><code class="language-bash">external_url <span class="token string">'http://gitlab.bytenlp.site'</span>
+<span class="token comment" spellcheck="true"># 系统端口冲突，我把端口改为了85</span>
+nginx<span class="token punctuation">[</span><span class="token string">'listen_port'</span><span class="token punctuation">]</span> <span class="token operator">=</span> 85
+</code></pre>
+<h4 id="让配置生效，并重启gitlab服务"><a href="#让配置生效，并重启gitlab服务" class="headerlink" title="让配置生效，并重启gitlab服务"></a>让配置生效，并重启gitlab服务</h4><pre class=" language-bash"><code class="language-bash"><span class="token comment" spellcheck="true"># 重新配置gitlab</span>
+<span class="token function">sudo</span> gitlab-ctl reconfigure
+<span class="token comment" spellcheck="true"># 重启gitlab</span>
+gitlab-ctl restart 
+</code></pre>
+<h4 id="在浏览器输入”ip-端口号”查看效果，详细参考这里"><a href="#在浏览器输入”ip-端口号”查看效果，详细参考这里" class="headerlink" title="在浏览器输入”ip:端口号”查看效果，详细参考这里"></a>在浏览器输入”ip:端口号”查看效果，详细参考<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/ade38a53b1ac">这里</a></h4><p>参考教程：</p>
+<ul>
+<li> <a target="_blank" rel="noopener" href="https://www.jianshu.com/p/bf7b09e234c8">https://www.jianshu.com/p/bf7b09e234c8</a></li>
+<li> <a target="_blank" rel="noopener" href="https://lil-xing.top/2019/08/26/GitLab%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/">https://lil-xing.top/2019/08/26/GitLab%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/</a><br>sudo apt-get install gitlab-ee=13.8.7-ee.0</li>
+<li><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/ade38a53b1ac">https://www.jianshu.com/p/ade38a53b1ac</a></li>
+</ul>
+<p>测试一下</p>
+
+      
     </div>
-</div>
 
-<script type="text/javascript">
-$(function () {
-    var searchFunc = function (path, search_id, content_id) {
-        'use strict';
-        $.ajax({
-            url: path,
-            dataType: "xml",
-            success: function (xmlResponse) {
-                // get the contents from search data
-                var datas = $("entry", xmlResponse).map(function () {
-                    return {
-                        title: $("title", this).text(),
-                        content: $("content", this).text(),
-                        url: $("url", this).text()
-                    };
-                }).get();
-                var $input = document.getElementById(search_id);
-                var $resultContent = document.getElementById(content_id);
-                $input.addEventListener('input', function () {
-                    var str = '<ul class=\"search-result-list\">';
-                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
-                    $resultContent.innerHTML = "";
-                    if (this.value.trim().length <= 0) {
-                        return;
-                    }
-                    // perform local searching
-                    datas.forEach(function (data) {
-                        var isMatch = true;
-                        var data_title = data.title.trim().toLowerCase();
-                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
-                        var data_url = data.url;
-                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
-                        var index_title = -1;
-                        var index_content = -1;
-                        var first_occur = -1;
-                        // only match artiles with not empty titles and contents
-                        if (data_title !== '' && data_content !== '') {
-                            keywords.forEach(function (keyword, i) {
-                                index_title = data_title.indexOf(keyword);
-                                index_content = data_content.indexOf(keyword);
-                                if (index_title < 0 && index_content < 0) {
-                                    isMatch = false;
-                                } else {
-                                    if (index_content < 0) {
-                                        index_content = 0;
-                                    }
-                                    if (i === 0) {
-                                        first_occur = index_content;
-                                    }
-                                }
-                            });
-                        }
-                        // show search results
-                        if (isMatch) {
-                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
-                            var content = data.content.trim().replace(/<[^>]+>/g, "");
-                            if (first_occur >= 0) {
-                                // cut out 100 characters
-                                var start = first_occur - 20;
-                                var end = first_occur + 80;
-                                if (start < 0) {
-                                    start = 0;
-                                }
-                                if (start === 0) {
-                                    end = 100;
-                                }
-                                if (end > content.length) {
-                                    end = content.length;
-                                }
-                                var match_content = content.substr(start, end);
-                                // highlight all keywords
-                                keywords.forEach(function (keyword) {
-                                    var regS = new RegExp(keyword, "gi");
-                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
-                                });
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
 
-                                str += "<p class=\"search-result\">" + match_content + "...</p>"
-                            }
-                            str += "</li>";
-                        }
-                    });
-                    str += "</ul>";
-                    $resultContent.innerHTML = str;
-                });
-            }
-        });
-    };
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://ailyong.cn/2021/03/31/ying-yu-kou-yu-lian-xi-dian-ying-tui-jian/">
 
-    searchFunc('/search.xml', 'searchInput', 'searchResult');
-});
-</script>
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Lyong">
+      <meta itemprop="description" content="Keep go on">
+    </span>
 
-    <!-- 回到顶部按钮 -->
-<div id="backTop" class="top-scroll">
-    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
-        <i class="fas fa-arrow-up"></i>
-    </a>
-</div>
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Lyong's blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/03/31/ying-yu-kou-yu-lian-xi-dian-ying-tui-jian/" class="post-title-link" itemprop="url">英语口语练习电影推荐</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-03-31 05:08:40" itemprop="dateCreated datePublished" datetime="2021-03-31T05:08:40+08:00">2021-03-31</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-05-14 11:20:22" itemprop="dateModified" datetime="2021-05-14T11:20:22+08:00">2021-05-14</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%AD%A6%E4%B9%A0%E8%B5%84%E6%96%99/" itemprop="url" rel="index"><span itemprop="name">学习资料</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>我是从喜马拉雅路转粉过来听课的，<a target="_blank" rel="noopener" href="https://www.ximalaya.com/waiyu/19111514/">张老师</a>推荐的东西必然是干货。因此利用周末时间搜集整理了一些老师课上推荐的视频资源，方便自己也分享给大家。</p>
+<h4 id="电影推荐"><a href="#电影推荐" class="headerlink" title="电影推荐"></a>电影推荐</h4><ul>
+<li><p><a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1f1MKRhiGnhXPakdql9BFcQ">The Queen</a> (提取码:gysn)</p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1thHrc_mUaHD8pFyZwI4g2g">The King’s Speech</a> (提取码:gr42）</p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1hIyXIJ53H-p_rsCxR0f22Q">Downton Abbey</a> (提取码:cyb9)</p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1cFcyl3ZZ5TomwZnk0IbbTg">The Holiday</a> (提取码:48ks) 字幕 (提取码:4vix)</p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1PjDRYpgfXw557lkICTZiWQ">Coco</a> (提取码:tkwx)</p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://pan.baidu.com/s/10o4jLTT9etBVNlhE9pLgEQ">Darkest Hours</a> (提取码:okwz)</p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1s406g4lKsv2YPreZ3egBPw">Wonder</a> (提取码:yjog)</p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1cygoZKcHhtBgF3wA46LXHg">Harry Potter</a> (提取码:cg1w)</p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1Nptp0lnqBEsoWiGygB7Qgw">Big Hero 6</a> (提取码:g4q4)</p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1iLHz4MQpkWRUAz6ApnM_yA">Zootopia</a>（提取码:8tmm)</p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://ddrk.me/frozen-2013/">Frozen 1</a></p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://ddrk.me/frozen-2/">Frozen 2</a></p>
+</li>
+</ul>
+<h4 id="电视剧推荐"><a href="#电视剧推荐" class="headerlink" title="电视剧推荐"></a>电视剧推荐</h4><ul>
+<li><p><a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1oLZdVtC2dxQsntKqFpYGzA">Miranda</a> (提取码:ogrp)</p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://ddrk.me/the-it-crowd/">The IT Crowd</a></p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1urGHdiTmz4STpnXnGgnw9Q">Friends 磁力链接</a> (提取码: ldlu)（磁力链接可用迅雷下载，具体操作可自行搜索）</p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://www.zxzj.me/vodsearch/-------------.html?wd=%E6%91%A9%E7%99%BB%E5%AE%B6%E5%BA%AD">Modern Family</a></p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://www.zxzj.me/vodsearch/-------------.html?wd=%E7%94%9F%E6%B4%BB%E5%A4%A7%E7%88%86%E7%82%B8">TBBT 生活大爆炸</a>（高清下载磁力<a href="magnet:?xt=urn:btih:49CF1C0B0305D8F5031CB99840C09F06EABB79F6&dn=The+Big+Bang+Theory+Season+1-11+Complete+720p&tr=udp://tracker.coppersurfer.tk:6969/announce&tr=udp://9.rarbg.to:2920/announce&tr=udp://tracker.opentrackr.org:1337&tr=udp://tracker.internetwarriors.net:1337/announce&tr=udp://tracker.leechers-paradise.org:6969/announce&tr=udp://tracker.coppersurfer.tk:6969/announce&tr=udp://tracker.pirateparty.gr:6969/announce&tr=udp://tracker.cyberia.is:6969/announce">链接</a>）</p>
+</li>
+</ul>
+<h4 id="科普记录片推荐"><a href="#科普记录片推荐" class="headerlink" title="科普记录片推荐"></a>科普记录片推荐</h4><ul>
+<li><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/av70632732?p=2&spm_id_from=pageDriver">国家地理科普101</a></li>
+</ul>
+<p>资料整理不易，如果觉得好的话，记得打赏支持一波，一块钱也是奖励。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://ailyong.cn/2021/03/31/xue-xi-shi-pin-zheng-li/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Lyong">
+      <meta itemprop="description" content="Keep go on">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Lyong's blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/03/31/xue-xi-shi-pin-zheng-li/" class="post-title-link" itemprop="url">学习视频整理</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2021-03-31 05:05:15 / 修改时间：05:07:47" itemprop="dateCreated datePublished" datetime="2021-03-31T05:05:15+08:00">2021-03-31</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%AD%A6%E4%B9%A0%E8%B5%84%E6%96%99/" itemprop="url" rel="index"><span itemprop="name">学习资料</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h4 id="MIT计算机科学导论"><a href="#MIT计算机科学导论" class="headerlink" title="MIT计算机科学导论"></a>MIT计算机科学导论</h4><p>MIT计算机科学导论教学视频，中英文字幕可以随意切换，老师发音很好，强推</p>
+<ul>
+<li><p><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1sJ411n7aJ?from=search&seid=18376503429056860180">6.0001基础</a></p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/av83124797?spm_id_from=333.788.b_636f6d6d656e74.4">6.0002进价</a></p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://book.douban.com/subject/30155590/">教材</a></p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-0002-introduction-to-computational-thinking-and-data-science-fall-2016/index.htm">6.0002课后练习</a></p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1hqxh8ag#list/path=%2F">配套ppt</a></p>
+</li>
+</ul>
+<p>没有找到与最新视频配套的slide，只找到15年的.</p>
+<h4 id="线性代数"><a href="#线性代数" class="headerlink" title="线性代数"></a>线性代数</h4>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://ailyong.cn/2021/03/31/ke-cheng-she-ji-zui-xiao-sheng-cheng-shu-ying-yong/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Lyong">
+      <meta itemprop="description" content="Keep go on">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Lyong's blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/03/31/ke-cheng-she-ji-zui-xiao-sheng-cheng-shu-ying-yong/" class="post-title-link" itemprop="url">【课程设计】最小生成树应用</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2021-03-31 05:01:57 / 修改时间：05:04:28" itemprop="dateCreated datePublished" datetime="2021-03-31T05:01:57+08:00">2021-03-31</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">学习笔记</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h4 id="需求描述"><a href="#需求描述" class="headerlink" title="需求描述"></a>需求描述</h4><p>本次课程设计要求在n个城市之间架设n-1条线路，实现这几个城市之间的网络通信，要求网络经济代价最低。具体要求如下：<br><img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly91cGxvYWQtaW1hZ2VzLmppYW5zaHUuaW8vdXBsb2FkX2ltYWdlcy8xNzc4Njc2Mi1iN2U3M2JhMjE3ODgyMWVmLmpwZw?x-oss-process=image/format,png"></p>
+<p>问题分析<br>根据设计要求，我们假设城市之间的距离越大架设网线的经济代价越大，因此可以用两个城市之间的距离作为边的权重。</p>
+<p>n个城市之间最多可以生成 1+2+…+(n-1)条边，分别计算出每条边的长度然后对他们进行升序排序，利用并查集得到由n-1条边组成的最小生成树，问题便得到解决。</p>
+<p>为了解决上述问题，需要构建一个城市结构体CITY来表示城市，并且还需要构建EDGE结构体来表示城市与城市的边，并利用随机函数生成城市的坐标。</p>
+<h4 id="实现代码"><a href="#实现代码" class="headerlink" title="实现代码"></a>实现代码</h4><pre class=" language-c"><code class="language-c"><span class="token macro property">#<span class="token directive keyword">include</span><span class="token string">&lt;stdio.h></span></span>
+<span class="token macro property">#<span class="token directive keyword">include</span><span class="token string">&lt;time.h></span></span>
+<span class="token macro property">#<span class="token directive keyword">include</span><span class="token string">&lt;stdlib.h></span></span>
+<span class="token macro property">#<span class="token directive keyword">include</span><span class="token string">&lt;math.h></span></span>
+<span class="token macro property">#<span class="token directive keyword">define</span> MaxSize (10000)</span><span class="token comment" spellcheck="true">//n的取值最大为MaxSize</span>
+<span class="token comment" spellcheck="true">/*---------------------结构体定义---------------------*/</span>
+<span class="token keyword">typedef</span> <span class="token keyword">struct</span> City<span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+    <span class="token comment" spellcheck="true">//城市结构体</span>
+    <span class="token keyword">int</span> id<span class="token punctuation">;</span><span class="token comment" spellcheck="true">//城市ID</span>
+    <span class="token keyword">int</span> x<span class="token punctuation">,</span> y<span class="token punctuation">;</span><span class="token comment" spellcheck="true">//城市的坐标</span>
+<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>CITY<span class="token punctuation">;</span>
+ 
+<span class="token keyword">typedef</span> <span class="token keyword">struct</span> edges<span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+    <span class="token comment" spellcheck="true">//边结构体</span>
+    <span class="token keyword">int</span> s<span class="token punctuation">,</span> e<span class="token punctuation">;</span><span class="token comment" spellcheck="true">//s为起始顶点 e为终止顶点</span>
+    <span class="token keyword">double</span> cost<span class="token punctuation">;</span><span class="token comment" spellcheck="true">//边的权值，即两个顶点之间的距离</span>
+<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>EDGE<span class="token punctuation">;</span>
+ 
+<span class="token comment" spellcheck="true">/*---------------------生成城市并显示---------------------*/</span>
+<span class="token keyword">void</span> <span class="token function">CreateCityPos</span><span class="token punctuation">(</span>CITY <span class="token operator">*</span><span class="token operator">&amp;</span> city<span class="token punctuation">,</span> <span class="token keyword">int</span> n<span class="token punctuation">)</span><span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+    <span class="token comment" spellcheck="true">//随机生成城市坐标</span>
+    city <span class="token operator">=</span> <span class="token punctuation">(</span>CITY<span class="token operator">*</span><span class="token punctuation">)</span><span class="token function">malloc</span><span class="token punctuation">(</span><span class="token keyword">sizeof</span><span class="token punctuation">(</span>CITY<span class="token punctuation">)</span><span class="token operator">*</span> n<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">srand</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token keyword">unsigned</span><span class="token punctuation">)</span><span class="token function">time</span><span class="token punctuation">(</span><span class="token constant">NULL</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//设置随机数的种子</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> n<span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span>
+    <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//随机生成n个城市的x,y坐标值</span>
+        city<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>id <span class="token operator">=</span> i <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">;</span>
+        city<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>x <span class="token operator">=</span> <span class="token function">rand</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">%</span> <span class="token number">100</span><span class="token punctuation">;</span>
+        city<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>y <span class="token operator">=</span> <span class="token function">rand</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">%</span> <span class="token number">100</span><span class="token punctuation">;</span>
+    <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+<span class="token keyword">void</span> <span class="token function">ShowCityPos</span><span class="token punctuation">(</span>CITY<span class="token operator">*</span>city<span class="token punctuation">,</span> <span class="token keyword">int</span> n<span class="token punctuation">)</span>
+<span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//显示城市信息，城市序号、x坐标和y坐标</span>
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"\n各城市的编号及坐标:\n"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> n<span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span>
+    <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+        <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"%d:[%d, %d]\n"</span><span class="token punctuation">,</span> city<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>id<span class="token punctuation">,</span> city<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>x<span class="token punctuation">,</span> city<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>y<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+ 
+<span class="token comment" spellcheck="true">/*---------------------计算城市两两之间的距离，生成边数组---------------------*/</span>
+<span class="token keyword">int</span> <span class="token function">Sum</span><span class="token punctuation">(</span><span class="token keyword">int</span> n<span class="token punctuation">)</span>
+<span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//计算n的前n项和，用于根据顶点确定边的数目 当顶点为n时 则最多可以产生Sum(n-1)条边</span>
+    <span class="token keyword">int</span> sum <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> i <span class="token operator">&lt;=</span> n<span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span>
+        sum <span class="token operator">+</span><span class="token operator">=</span> i<span class="token punctuation">;</span>
+    <span class="token keyword">return</span> sum<span class="token punctuation">;</span>
+<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+ 
+<span class="token keyword">double</span> <span class="token function">CityDist</span><span class="token punctuation">(</span><span class="token keyword">const</span> CITY<span class="token operator">*</span>a<span class="token punctuation">,</span> <span class="token keyword">const</span> CITY<span class="token operator">*</span>b<span class="token punctuation">)</span>
+<span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//计算两个城市之间的距离</span>
+    <span class="token keyword">return</span> <span class="token function">sqrt</span><span class="token punctuation">(</span><span class="token keyword">double</span><span class="token punctuation">(</span><span class="token punctuation">(</span>a<span class="token operator">-></span>x <span class="token operator">-</span> b<span class="token operator">-></span>x<span class="token punctuation">)</span><span class="token operator">*</span><span class="token punctuation">(</span>a<span class="token operator">-></span>x <span class="token operator">-</span> b<span class="token operator">-></span>x<span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token punctuation">(</span>a<span class="token operator">-></span>y <span class="token operator">-</span> b<span class="token operator">-></span>y<span class="token punctuation">)</span><span class="token operator">*</span><span class="token punctuation">(</span>a<span class="token operator">-></span>y <span class="token operator">-</span> b<span class="token operator">-></span>y<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+<span class="token keyword">void</span> <span class="token function">CreateEdges</span><span class="token punctuation">(</span>EDGE<span class="token operator">*</span> <span class="token operator">&amp;</span> e<span class="token punctuation">,</span> CITY<span class="token operator">*</span> city<span class="token punctuation">,</span> <span class="token keyword">int</span> n<span class="token punctuation">)</span>
+<span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//根据城市信息生成城市之间的边</span>
+    e <span class="token operator">=</span> <span class="token punctuation">(</span>EDGE<span class="token operator">*</span><span class="token punctuation">)</span><span class="token function">malloc</span><span class="token punctuation">(</span><span class="token keyword">sizeof</span><span class="token punctuation">(</span>EDGE<span class="token punctuation">)</span><span class="token operator">*</span><span class="token function">Sum</span><span class="token punctuation">(</span>n <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//边的总数为Sum(n-1)</span>
+    <span class="token keyword">int</span> cnt <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> n<span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span>
+    <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> k <span class="token operator">=</span> i <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">;</span> k <span class="token operator">&lt;</span> n<span class="token punctuation">;</span> <span class="token operator">++</span>k<span class="token punctuation">)</span>
+        <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+            <span class="token punctuation">(</span>e <span class="token operator">+</span> cnt<span class="token punctuation">)</span><span class="token operator">-></span>s <span class="token operator">=</span> city<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>id<span class="token punctuation">;</span><span class="token comment" spellcheck="true">//起始顶点</span>
+            <span class="token punctuation">(</span>e <span class="token operator">+</span> cnt<span class="token punctuation">)</span><span class="token operator">-></span>e <span class="token operator">=</span> city<span class="token punctuation">[</span>k<span class="token punctuation">]</span><span class="token punctuation">.</span>id<span class="token punctuation">;</span><span class="token comment" spellcheck="true">//终止顶点</span>
+            <span class="token punctuation">(</span>e <span class="token operator">+</span> cnt<span class="token punctuation">)</span><span class="token operator">-></span>cost <span class="token operator">=</span> <span class="token function">CityDist</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>city<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token operator">&amp;</span>city<span class="token punctuation">[</span>k<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//边的权值</span>
+            <span class="token operator">++</span>cnt<span class="token punctuation">;</span>
+        <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+    <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+<span class="token keyword">void</span> <span class="token function">ShowCityEdges</span><span class="token punctuation">(</span>EDGE<span class="token operator">*</span>edges<span class="token punctuation">,</span> <span class="token keyword">int</span> n<span class="token punctuation">)</span>
+<span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//打印边信息</span>
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"\n各城市间的距离(城市1-城市2:边权值（距离）)\n"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment" spellcheck="true">//show edges:</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> <span class="token function">Sum</span><span class="token punctuation">(</span>n<span class="token number">-1</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span>
+        <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"%d-%d : %f\n"</span><span class="token punctuation">,</span> edges<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>s<span class="token punctuation">,</span> edges<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>e<span class="token punctuation">,</span> edges<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>cost<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+ 
+ 
+ 
+<span class="token comment" spellcheck="true">/*--------------------KrusKal求最小生成树----------------------*/</span>
+<span class="token keyword">int</span> <span class="token function">cmp</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">void</span><span class="token operator">*</span>a<span class="token punctuation">,</span> <span class="token keyword">const</span> <span class="token keyword">void</span> <span class="token operator">*</span>b<span class="token punctuation">)</span>
+<span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//比较函数 比较两条边的权值 用于排序</span>
+    EDGE<span class="token operator">*</span> aa<span class="token punctuation">,</span> <span class="token operator">*</span>bb<span class="token punctuation">;</span>
+    aa <span class="token operator">=</span> <span class="token punctuation">(</span>EDGE<span class="token operator">*</span><span class="token punctuation">)</span>a<span class="token punctuation">;</span> bb <span class="token operator">=</span> <span class="token punctuation">(</span>EDGE<span class="token operator">*</span><span class="token punctuation">)</span>b<span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token punctuation">(</span>aa<span class="token operator">-></span>cost <span class="token operator">-</span> bb<span class="token operator">-></span>cost <span class="token punctuation">)</span><span class="token operator">></span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token number">1</span><span class="token punctuation">;</span>
+    <span class="token keyword">else</span> <span class="token keyword">return</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">;</span>
+<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+ 
+<span class="token comment" spellcheck="true">//最小生成树</span>
+<span class="token keyword">int</span> v<span class="token punctuation">[</span>MaxSize<span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token keyword">int</span> <span class="token function">getRoot</span><span class="token punctuation">(</span><span class="token keyword">int</span> a<span class="token punctuation">)</span>
+<span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//找到根节点</span>
+    <span class="token keyword">while</span> <span class="token punctuation">(</span>a <span class="token operator">!=</span> v<span class="token punctuation">[</span>a<span class="token punctuation">]</span><span class="token punctuation">)</span> a <span class="token operator">=</span> v<span class="token punctuation">[</span>a<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> a<span class="token punctuation">;</span>
+<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+ 
+<span class="token keyword">void</span> <span class="token function">KrusKal</span><span class="token punctuation">(</span>EDGE<span class="token operator">*</span> edges<span class="token punctuation">,</span> <span class="token keyword">int</span> n<span class="token punctuation">)</span>
+<span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//KrusKal算法生成最小生成树</span>
+    <span class="token keyword">int</span> i<span class="token punctuation">;</span>
+    <span class="token keyword">int</span> e<span class="token punctuation">,</span> a<span class="token punctuation">,</span> b<span class="token punctuation">;</span>
+    
+    <span class="token keyword">double</span> sum <span class="token operator">=</span> <span class="token number">0.0</span><span class="token punctuation">;</span>
+    e <span class="token operator">=</span> <span class="token function">Sum</span><span class="token punctuation">(</span>n <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span>i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> n<span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span> <span class="token comment" spellcheck="true">//初始化并查集</span>
+        v<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> i<span class="token punctuation">;</span>
+ 
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"\n最小生成树的边及权值:\n"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span>i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> e<span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span>
+    <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+        a <span class="token operator">=</span> <span class="token function">getRoot</span><span class="token punctuation">(</span>edges<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>s<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        b <span class="token operator">=</span> <span class="token function">getRoot</span><span class="token punctuation">(</span>edges<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>e<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>a <span class="token operator">!=</span> b<span class="token punctuation">)</span>
+        <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//将边并入生成树</span>
+            v<span class="token punctuation">[</span>a<span class="token punctuation">]</span> <span class="token operator">=</span> b<span class="token punctuation">;</span>
+            <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"%d-%d: %f\n"</span><span class="token punctuation">,</span> edges<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>s<span class="token punctuation">,</span> edges<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>e<span class="token punctuation">,</span> edges<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>cost<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//打印并入生成树的边的两个顶点和权值</span>
+            sum <span class="token operator">+</span><span class="token operator">=</span> edges<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>cost<span class="token punctuation">;</span><span class="token comment" spellcheck="true">//计算生成树的总权值</span>
+        <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+    <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"\n生成树总权值sum =%f\n"</span><span class="token punctuation">,</span> sum<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+ 
+<span class="token comment" spellcheck="true">/*------------------------------KrusKal END-------------------------------------*/</span>
+ 
+<span class="token keyword">void</span> <span class="token function">solve</span><span class="token punctuation">(</span><span class="token keyword">int</span> n<span class="token punctuation">)</span>
+<span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+    CITY<span class="token operator">*</span>city<span class="token punctuation">;</span>
+    EDGE<span class="token operator">*</span> edges<span class="token punctuation">;</span>
+    <span class="token function">CreateCityPos</span><span class="token punctuation">(</span>city<span class="token punctuation">,</span> n<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//创建城市</span>
+    <span class="token function">ShowCityPos</span><span class="token punctuation">(</span>city<span class="token punctuation">,</span> n<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//显示城市</span>
+ 
+    <span class="token function">CreateEdges</span><span class="token punctuation">(</span>edges<span class="token punctuation">,</span> city<span class="token punctuation">,</span> n<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//创建边（根据所有城市两两之间的距离来创建）</span>
+    <span class="token function">qsort</span><span class="token punctuation">(</span>edges<span class="token punctuation">,</span> <span class="token function">Sum</span><span class="token punctuation">(</span>n <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token keyword">sizeof</span><span class="token punctuation">(</span>EDGE<span class="token punctuation">)</span><span class="token punctuation">,</span> cmp<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//对边按权值进行升序排序</span>
+    <span class="token function">ShowCityEdges</span><span class="token punctuation">(</span>edges<span class="token punctuation">,</span> n<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//显示排序后的边</span>
+ 
+    <span class="token function">KrusKal</span><span class="token punctuation">(</span>edges<span class="token punctuation">,</span> n<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//用KrusKal算法生成最小生成树</span>
+<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+ 
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+    <span class="token keyword">int</span> n<span class="token punctuation">;</span>
+ 
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"请输入n:"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">scanf</span><span class="token punctuation">(</span><span class="token string">"%d"</span><span class="token punctuation">,</span> <span class="token operator">&amp;</span>n<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>n <span class="token operator">&lt;</span> <span class="token number">2</span><span class="token punctuation">)</span>
+        <span class="token keyword">return</span> <span class="token number">1</span><span class="token punctuation">;</span>
+    <span class="token function">solve</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">;</span>
+ 
+    <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//运行成功 2019年5月21日10:53:07</span>
+ 
+<span class="token comment" spellcheck="true">/*程序说明：
+基本思想：1、首先生成n个城市，每个城市的坐标随机生成，这部分由CreateCityPos（）函数实现；
+    
+         2、计算n个城市两两之间的距离（距离计算由CityDist()完成），并保存到边数组中，这部分由CreateEdges（）函数实现；
+         3、由边数组(edges[])根据KrusKal算法求最小生成树，这部分由KrusKal（）函数实现，要注意的是进行KrusKal算法之前，需要对edges[]中的元素按照
+         权值进行升序排序，因此调用了stdlib.h头文件中的qsort()函数来进行排序。
+*/</span>
+</code></pre>
+<h4 id="运行结果"><a href="#运行结果" class="headerlink" title="运行结果"></a>运行结果</h4><p><img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly91cGxvYWQtaW1hZ2VzLmppYW5zaHUuaW8vdXBsb2FkX2ltYWdlcy8xNzc4Njc2Mi03MjhiZjIyMGNkYzY5NTIyLnBuZw?x-oss-process=image/format,png"></p>
+<p>n为城市的数量，由用户从终端输入。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://ailyong.cn/2021/03/30/bu-tong-lu-jing/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Lyong">
+      <meta itemprop="description" content="Keep go on">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Lyong's blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/03/30/bu-tong-lu-jing/" class="post-title-link" itemprop="url">【每日算法】2021年03月30日 多云 不同路径</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-03-30 18:36:46" itemprop="dateCreated datePublished" datetime="2021-03-30T18:36:46+08:00">2021-03-30</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-04-01 13:57:11" itemprop="dateModified" datetime="2021-04-01T13:57:11+08:00">2021-04-01</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">算法笔记</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>这道题是LeeCode第<a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/unique-paths/">62</a>题，属于动态规划中的中等难度题目。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2021/03/30/bu-tong-lu-jing/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://ailyong.cn/2021/03/29/bian-fen-xue-xi-bi-ji/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Lyong">
+      <meta itemprop="description" content="Keep go on">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Lyong's blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/03/29/bian-fen-xue-xi-bi-ji/" class="post-title-link" itemprop="url">变分学习笔记</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-03-29 14:35:48" itemprop="dateCreated datePublished" datetime="2021-03-29T14:35:48+08:00">2021-03-29</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-03-31 03:25:41" itemprop="dateModified" datetime="2021-03-31T03:25:41+08:00">2021-03-31</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">学习笔记</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="变分推断"><a href="#变分推断" class="headerlink" title="变分推断"></a>变分推断</h1><h3 id="应用举例"><a href="#应用举例" class="headerlink" title="应用举例"></a>应用举例</h3><ul>
+<li><p>文章LAD题目分析</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2021/03/29/bian-fen-xue-xi-bi-ji/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://ailyong.cn/2021/03/28/ji-yi-ci-xi-tong-ben-kui-de-fan-si-he-zong-jie/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Lyong">
+      <meta itemprop="description" content="Keep go on">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Lyong's blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/03/28/ji-yi-ci-xi-tong-ben-kui-de-fan-si-he-zong-jie/" class="post-title-link" itemprop="url">记一次系统奔溃的反思和总结</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-03-28 14:00:07" itemprop="dateCreated datePublished" datetime="2021-03-28T14:00:07+08:00">2021-03-28</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-03-31 03:50:38" itemprop="dateModified" datetime="2021-03-31T03:50:38+08:00">2021-03-31</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%94%9F%E6%B4%BB%E6%80%BB%E7%BB%93/" itemprop="url" rel="index"><span itemprop="name">生活总结</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <blockquote>
+<p>3月15日，mac电脑无缘无故的崩掉了，本以为是一个小问题，拿去环茂直营店直接给判了死刑，主板全部换掉，顺带还换了屏幕，最悲剧的是最新版本mac的硬盘是直接焊死在主板上面的，换了主板硬盘也没有了，里面的数据也没了。</p>
+</blockquote>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2021/03/28/ji-yi-ci-xi-tong-ben-kui-de-fan-si-he-zong-jie/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://ailyong.cn/2021/03/28/github-jia-su-fang-fa/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Lyong">
+      <meta itemprop="description" content="Keep go on">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Lyong's blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/03/28/github-jia-su-fang-fa/" class="post-title-link" itemprop="url">GitHub加速方法</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-03-28 13:57:49" itemprop="dateCreated datePublished" datetime="2021-03-28T13:57:49+08:00">2021-03-28</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-03-31 03:51:16" itemprop="dateModified" datetime="2021-03-31T03:51:16+08:00">2021-03-31</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%88%AC%E5%9D%91%E6%80%BB%E7%BB%93/" itemprop="url" rel="index"><span itemprop="name">爬坑总结</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h3 id="设置代理加速GitHub"><a href="#设置代理加速GitHub" class="headerlink" title="设置代理加速GitHub"></a>设置代理加速GitHub</h3><p>由于github网站服务器在国外，国内上传和下载数据速度较慢，假如你已经有具备了科学上网的条件，可以通过设置代理的方式来提高数据传输速度。</p>
+<p>以下设置均建立在具备科学上网的前提下，下文中的小飞机指某款用于科学上网的工具。</p>
+<h4 id="设置http代理"><a href="#设置http代理" class="headerlink" title="设置http代理"></a>设置http代理</h4><p>在命令行输入如下的命令</p>
+<pre><code class="bash">export http_proxy=http://127.0.0.1:1087
+export https_proxy=http://127.0.0.1:1087
+
+#设置http代理，端口号对应的是小飞机的http代理端口号
+git config --global http.proxy http://127.0.0.1:1087
+git config --global https.proxy http://127.0.0.1:1087
+
+#配置github用户名和邮箱
+git config --global user.name github_id
+git config --global user.email github_email
 
 
-    <script src="/libs/materialize/materialize.min.js"></script>
-    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
-    <script src="/libs/aos/aos.js"></script>
-    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
-    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
-    <script src="/js/matery.js"></script>
+#取消代理设置
+git config --global --unset http.proxy
+git config --global --unset https.proxy
 
-    <!-- Baidu Analytics -->
+#查看代理设置
+git config --list
+</code></pre>
+<p>http代理端口查询：</p>
+<blockquote>
+<p>在小飞机中找到“http代理 设置”选项，然后点击打开，找到如下图所示的监听窗口。</p>
+</blockquote>
+<img src="https://raw.githubusercontent.com/Skylyong/i/main/20210319193849.png" style="zoom:67%;" />
+
+<h4 id="设置ssh加速"><a href="#设置ssh加速" class="headerlink" title="设置ssh加速"></a><a target="_blank" rel="noopener" href="https://gist.github.com/chuyik/02d0d37a49edc162546441092efae6a1">设置ssh</a>加速</h4><p><code>在~/.ssh/config</code> 文件（不存在则新建）添加如下内容：</p>
+<pre><code class="bash">Host github.com
+   HostName github.com
+   User git
+   # 走 HTTP 代理，需要 brew install socat
+   # ProxyCommand socat - PROXY:127.0.0.1:%h:%p,proxyport=1087
+   # 走 socks5 代理（如 Shadowsocks）
+   ProxyCommand nc -v -x 127.0.0.1:1086 %h %p
+   #上面1086这个端口号可以在“小飞机”的高级设置中查看
+   # 走 socks5 代理（如 Shadowsocks），Windows 平台没有 nc 命令
+   # ProxyCommand connect -S 127.0.0.1:1086 %h %p
+</code></pre>
+<p>本地Socks5监听窗口查询：</p>
+<blockquote>
+<p>在小飞机中找到“高级设置”，点击打开就可以找到如下图所示的监听窗口。</p>
+</blockquote>
+<img src="https://raw.githubusercontent.com/Skylyong/i/main/20210319194610.png" style="zoom:50%;" />
+
+
+
+
+
+<h3 id="通过修改hosts解决浏览器打不开github网站的方法"><a href="#通过修改hosts解决浏览器打不开github网站的方法" class="headerlink" title="通过修改hosts解决浏览器打不开github网站的方法"></a>通过修改hosts解决浏览器打不开github网站的方法</h3><blockquote>
+<p>假如不具备科学上网的条件，也可以通过修改hosts文件来解决浏览器打不开GitHub的问题，但是通过这种方式只能解决浏览器打开慢的问题，不能够解决在终端克隆项目慢的问题，建议通过代理的方式加速。</p>
+</blockquote>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2021/03/28/github-jia-su-fang-fa/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://ailyong.cn/2021/02/22/ecnu-de-chun/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Lyong">
+      <meta itemprop="description" content="Keep go on">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Lyong's blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/02/22/ecnu-de-chun/" class="post-title-link" itemprop="url">ECNU的春</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-02-22 02:02:16" itemprop="dateCreated datePublished" datetime="2021-02-22T02:02:16+08:00">2021-02-22</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-03-31 04:18:17" itemprop="dateModified" datetime="2021-03-31T04:18:17+08:00">2021-03-31</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%94%9F%E6%B4%BB%E6%80%BB%E7%BB%93/" itemprop="url" rel="index"><span itemprop="name">生活总结</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>最开始令人感受到春气息的是红梅花，红梅花跟腊梅花的区别在于花瓣的颜色和开放的时间不同，腊梅花比红梅花开得更早一些。今年红梅花开的具体日子已经不记得了，只依稀记得那个时候天还很冷，操场上面很少见到跑步运动的人，留校的同学大多都还呆在宿舍，校园里面因此显得十分的冷清。</p>
+<!-- style="border-radius: 0.3125em;
+    box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);"  -->
+<center>
+    <img src="https://raw.githubusercontent.com/Skylyong/i/main/IMG_6820.JPG"  >
+    <div style="color:orange; border-bottom: 1px solid #d9d9d9;
+    display: inline-block;
+    color: #999;
+    padding: 2px;">夏雨路附近的红梅花</div>
+</center>
+
+<br>
+
+<p>红梅花开之后好一段时间，早樱也开了，学校里面开放最早的早樱是电竞中心前面的两颗樱树，那段时间有点忙，等我看到的时候花期已经接近了尾声。</p>
+<!-- style="border-radius: 0.3125em;
+    box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);"  -->
+
+<center>
+    <img 
+    src="https://raw.githubusercontent.com/Skylyong/i/main/WechatIMG7.jpeg" >
+    <div style="color:orange; border-bottom: 1px solid #d9d9d9;
+    display: inline-block;
+    color: #999;
+    padding: 2px;">电竞中心前的早樱花</div>
+</center>
+
+<br>
+
+
+
+<p>再往后，天气也慢慢的变得暖和了，校园里面人也多了起来。这段时间的天空往往是湖蓝色的，阳光变得温柔灿烂，晨曦和晚霞尤为美丽动人，傍晚坐在丽娃河边的木凳上欣赏天边美丽的云儿，时不时还能听到大胆的鱼儿蹦出水面的叮咚声，好不惬意。但是阳光却是没有多少温度，路上行人依然裹着厚厚的羽绒服。这个时候玉兰也开始吐出了花骨朵，不多久雪白的玉兰花就完全开放了，挂在高高的没有一丝绿叶的玉兰树上，让人不由得停下脚步来欣赏这份生命的倔强。除了雪白的白玉兰，这园子里面还有紫玉兰，紫玉兰开花比白玉兰稍微晚些，但是并不影响它与白玉兰争鲜斗艳。</p>
+<!-- style="border-radius: 0.3125em;
+    box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);"  -->
+<p><img src="https://raw.githubusercontent.com/Skylyong/i/main/WechatIMG9.jpeg"></p>
+<center>
+    <!-- <img 
+    src="https://raw.githubusercontent.com/Skylyong/i/main/WechatIMG9.jpeg" > -->
+    <div style="color:orange; border-bottom: 0.5px solid #d9d9d9;
+    display: inline-block;
+    color: #999;
+    padding: 0.5px;">5舍后面的白玉兰</div>
+</center>
+
+<br>
+
+
+<p>约莫三月中下旬的时候，这园子里面迎来了它的主角——樱花。</p>
+<p>（未完待续…）</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+
+  
+  <nav class="pagination">
+    <a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/4/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+  </nav>
+
+
+
+          </div>
+          
 
 <script>
-    var _hmt = _hmt || [];
-    (function () {
-        var hm = document.createElement("script");
-        hm.src = "https://hm.baidu.com/hm.js?9a8ff6f1dff94383b5c386933d0a21c3";
-        var s = document.getElementsByTagName("script")[0];
-        s.parentNode.insertBefore(hm, s);
-    })();
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
 </script>
 
-    <!-- Baidu Push -->
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
 
-<script>
-    (function () {
-        var bp = document.createElement('script');
-        var curProtocol = window.location.protocol.split(':')[0];
-        if (curProtocol === 'https') {
-            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
-        } else {
-            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
-        }
-        var s = document.getElementsByTagName("script")[0];
-        s.parentNode.insertBefore(bp, s);
-    })();
-</script>
+  <aside class="sidebar">
+    <div class="sidebar-inner">
 
-    
-    <script src="/libs/others/clicklove.js" async="async"></script>
-    
-    
-    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
-    
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
 
-    
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
 
-    
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Lyong</p>
+  <div class="site-description" itemprop="description">Keep go on</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">38</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+        <span class="site-state-item-count">13</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+        <span class="site-state-item-count">28</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
 
-    <!--腾讯兔小巢-->
-    
-    
 
-    
 
-    
+      </div>
 
-    
-    <script src="/libs/instantpage/instantpage.js" type="module"></script>
-    
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2025</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Lyong</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
 
 </body>
-
 </html>

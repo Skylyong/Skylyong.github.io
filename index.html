@@ -1,1426 +1,1846 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <html lang="zh-CN">
-
-
 <head>
-    <meta charset="utf-8">
-    <meta name="keywords" content="Lyong&#39;s blog">
-    <meta name="description" content="Keep go on">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <meta name="renderer" content="webkit|ie-stand|ie-comp">
-    <meta name="mobile-web-app-capable" content="yes">
-    <meta name="format-detection" content="telephone=no">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <!-- Global site tag (gtag.js) - Google Analytics -->
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.2">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
 
 
-    <title>Lyong&#39;s blog</title>
-    <link rel="icon" type="image/png" href="/favicon.png">
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
 
-    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
-    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
-    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
-    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
-    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
-    <link rel="stylesheet" type="text/css" href="/css/matery.css">
-    <link rel="stylesheet" type="text/css" href="/css/my.css">
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"ailyong.cn","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
 
-    <script src="/libs/jquery/jquery.min.js"></script>
+  <meta name="description" content="Keep go on">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Lyong&#39;s blog">
+<meta property="og:url" content="https://ailyong.cn/index.html">
+<meta property="og:site_name" content="Lyong&#39;s blog">
+<meta property="og:description" content="Keep go on">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:author" content="Lyong">
+<meta name="twitter:card" content="summary">
 
-<meta name="generator" content="Hexo 5.4.2"><link rel="alternate" href="/atom.xml" title="Lyong's blog" type="application/atom+xml">
+<link rel="canonical" href="https://ailyong.cn/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : true,
+    isPost : false,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>Lyong's blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="Lyong's blog" type="application/atom+xml">
 <link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
 
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Lyong's blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">勇往直前</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
 
 
 
-<body>
-    <header class="navbar-fixed">
-    <nav id="headNav" class="bg-color nav-transparent">
-        <div id="navContainer" class="nav-wrapper container">
-            <div class="brand-logo">
-                <a href="/" class="waves-effect waves-light">
-                    
-                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
-                    
-                    <span class="logo-span">Lyong&#39;s blog</span>
-                </a>
-            </div>
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content index posts-expand">
             
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://ailyong.cn/2025/01/06/matplotlib-xian-shi-zhong-wen/">
 
-<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
-<ul class="right nav-menu">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Lyong">
+      <meta itemprop="description" content="Keep go on">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Lyong's blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2025/01/06/matplotlib-xian-shi-zhong-wen/" class="post-title-link" itemprop="url">matplotlib 设置显示中文</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2025-01-06 14:08:26 / 修改时间：14:09:03" itemprop="dateCreated datePublished" datetime="2025-01-06T14:08:26+08:00">2025-01-06</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%BC%96%E7%A8%8B%E7%BB%8F%E9%AA%8C/" itemprop="url" rel="index"><span itemprop="name">编程经验</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>先从网络上下载 <code>SimHei.ttf</code>  文件放在某个位置，然后用下面的代码，设置字体的位置。</p>
+<pre class=" language-python"><code class="language-python"><span class="token keyword">import</span> json
+<span class="token keyword">import</span> pandas <span class="token keyword">as</span> pd
+<span class="token comment" spellcheck="true"># 从 data/original/SylvanL/Exam/tcm_exam_1.csv 读取数据</span>
+<span class="token keyword">import</span> matplotlib<span class="token punctuation">.</span>pyplot <span class="token keyword">as</span> plt
+<span class="token keyword">from</span> matplotlib <span class="token keyword">import</span> font_manager
+<span class="token keyword">from</span> matplotlib <span class="token keyword">import</span> rcParams
+<span class="token keyword">import</span> re
+<span class="token keyword">import</span> matplotlib 
+<span class="token comment" spellcheck="true"># 设置当前目录</span>
+<span class="token keyword">import</span> os
+os<span class="token punctuation">.</span>chdir<span class="token punctuation">(</span><span class="token string">'/cpfs01/projects-SSD/cfff-bafab61057ac_SSD/zyt_09215/liyong/TCM-EMBEDDING'</span><span class="token punctuation">)</span>
+
+my_font <span class="token operator">=</span> font_manager<span class="token punctuation">.</span>FontProperties<span class="token punctuation">(</span>fname<span class="token operator">=</span><span class="token string">"fonts/SimHei.ttf"</span><span class="token punctuation">)</span>
+
+
+<span class="token comment" spellcheck="true"># 全局设置字体</span>
+matplotlib<span class="token punctuation">.</span>rcParams<span class="token punctuation">[</span><span class="token string">'font.sans-serif'</span><span class="token punctuation">]</span><span class="token operator">=</span>my_font<span class="token punctuation">.</span>get_name<span class="token punctuation">(</span><span class="token punctuation">)</span>  <span class="token comment" spellcheck="true"># 用黑体显示中文</span>
+matplotlib<span class="token punctuation">.</span>rcParams<span class="token punctuation">[</span><span class="token string">'axes.unicode_minus'</span><span class="token punctuation">]</span><span class="token operator">=</span><span class="token boolean">False</span> 
+</code></pre>
+<p>使用</p>
+<p>在需要使用中文的地方，指定上面设置好的字体</p>
+<pre class=" language-python"><code class="language-python">plt<span class="token punctuation">.</span>title<span class="token punctuation">(</span><span class="token string">"描述长度分布"</span><span class="token punctuation">,</span> fontproperties<span class="token operator">=</span>my_font<span class="token punctuation">)</span>
+plt<span class="token punctuation">.</span>xlabel<span class="token punctuation">(</span><span class="token string">"长度"</span><span class="token punctuation">,</span> fontproperties<span class="token operator">=</span>my_font<span class="token punctuation">)</span>
+plt<span class="token punctuation">.</span>ylabel<span class="token punctuation">(</span><span class="token string">"数量"</span><span class="token punctuation">,</span> fontproperties<span class="token operator">=</span>my_font<span class="token punctuation">)</span>
+</code></pre>
+<p>enjoy！ </p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
   
-  <li class="hide-on-med-and-down nav-item">
-    
-    <a href="/" class="waves-effect waves-light">
-      
-      <i class="fas fa-home" style="zoom: 0.6;"></i>
-      
-      <span>首页</span>
-    </a>
-    
-  </li>
   
-  <li class="hide-on-med-and-down nav-item">
-    
-    <a href="/tags" class="waves-effect waves-light">
-      
-      <i class="fas fa-tags" style="zoom: 0.6;"></i>
-      
-      <span>标签</span>
-    </a>
-    
-  </li>
   
-  <li class="hide-on-med-and-down nav-item">
-    
-    <a href="/categories" class="waves-effect waves-light">
+
       
-      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
-      
-      <span>分类</span>
-    </a>
-    
-  </li>
   
-  <li class="hide-on-med-and-down nav-item">
-    
-    <a href="/archives" class="waves-effect waves-light">
-      
-      <i class="fas fa-archive" style="zoom: 0.6;"></i>
-      
-      <span>归档</span>
-    </a>
-    
-  </li>
   
-  <li class="hide-on-med-and-down nav-item">
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://ailyong.cn/2025/01/06/python-duo-jin-cheng-shi-li/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Lyong">
+      <meta itemprop="description" content="Keep go on">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Lyong's blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2025/01/06/python-duo-jin-cheng-shi-li/" class="post-title-link" itemprop="url">python多进程示例</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2025-01-06 13:34:14 / 修改时间：13:35:47" itemprop="dateCreated datePublished" datetime="2025-01-06T13:34:14+08:00">2025-01-06</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%BC%96%E7%A8%8B%E7%BB%8F%E9%AA%8C/" itemprop="url" rel="index"><span itemprop="name">编程经验</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
     
-    <a href="/about" class="waves-effect waves-light">
-      
-      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
-      
-      <span>关于</span>
-    </a>
     
-  </li>
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <ol>
+<li><p>导入依赖的包</p>
+<pre class=" language-python"><code class="language-python"><span class="token keyword">from</span> concurrent<span class="token punctuation">.</span>futures <span class="token keyword">import</span> ProcessPoolExecutor<span class="token punctuation">,</span> as_completed
+</code></pre>
+</li>
+<li><p>定义处理内容的函数，该函数要是全局函数，不能放在函数或者类里面<br>函数的参数只有一个，可以用元组包装起来，然后再解包</p>
+<pre class=" language-python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">process_record</span><span class="token punctuation">(</span>args<span class="token punctuation">)</span><span class="token punctuation">:</span>
+ text <span class="token operator">=</span> args<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token string">"text"</span><span class="token punctuation">]</span>
+ CONTENT <span class="token operator">=</span> args<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span>
+ extract_info <span class="token operator">=</span> inference<span class="token punctuation">(</span>text<span class="token punctuation">,</span> model<span class="token operator">=</span><span class="token string">"deepseek-chat"</span><span class="token punctuation">,</span> CONTENT<span class="token operator">=</span>CONTENT<span class="token punctuation">)</span>
+ <span class="token keyword">return</span> <span class="token operator">&amp;</span><span class="token comment" spellcheck="true">#123;</span>
+     <span class="token string">"text"</span><span class="token punctuation">:</span> text<span class="token punctuation">,</span>
+     <span class="token string">"extract_info"</span><span class="token punctuation">:</span> extract_info
+ <span class="token operator">&amp;</span><span class="token comment" spellcheck="true">#125;</span>
+</code></pre>
+</li>
+<li><p>使用多进程处理数据<br>在 with 下面一共有两个for，第一个for负责将数据和处理函数放在一个 futures 中， 第二个for负责处理和返回处理结果。</p>
+<pre class=" language-python"><code class="language-python"><span class="token keyword">with</span> ProcessPoolExecutor<span class="token punctuation">(</span>max_workers<span class="token operator">=</span>max_workers<span class="token punctuation">)</span> <span class="token keyword">as</span> executor<span class="token punctuation">:</span>
+     futures <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+     <span class="token keyword">for</span> d <span class="token keyword">in</span> data<span class="token punctuation">:</span>
+         args <span class="token operator">=</span> <span class="token punctuation">(</span>d<span class="token punctuation">,</span> CONTENT<span class="token punctuation">)</span>
+         futures<span class="token punctuation">.</span>append<span class="token punctuation">(</span>executor<span class="token punctuation">.</span>submit<span class="token punctuation">(</span>process_record<span class="token punctuation">,</span> args<span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+     <span class="token comment" spellcheck="true"># 使用 as_completed 迭代返回已经完成的任务</span>
+     <span class="token comment" spellcheck="true"># tqdm 用于显示进度条</span>
+     <span class="token keyword">for</span> idx<span class="token punctuation">,</span> future <span class="token keyword">in</span> enumerate<span class="token punctuation">(</span>tqdm<span class="token punctuation">.</span>tqdm<span class="token punctuation">(</span>as_completed<span class="token punctuation">(</span>futures<span class="token punctuation">)</span><span class="token punctuation">,</span> total<span class="token operator">=</span>len<span class="token punctuation">(</span>futures<span class="token punctuation">)</span><span class="token punctuation">,</span> desc<span class="token operator">=</span><span class="token string">"Extracting info"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+         result <span class="token operator">=</span> future<span class="token punctuation">.</span>result<span class="token punctuation">(</span><span class="token punctuation">)</span>
+         new_data<span class="token punctuation">.</span>append<span class="token punctuation">(</span>result<span class="token punctuation">)</span>
+
+         <span class="token comment" spellcheck="true"># 每完成 100 个样本，保存一次临时文件</span>
+         <span class="token keyword">if</span> <span class="token punctuation">(</span>idx <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">%</span> <span class="token number">500</span> <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">:</span>
+             <span class="token keyword">with</span> open<span class="token punctuation">(</span>save_path<span class="token punctuation">,</span> <span class="token string">"w"</span><span class="token punctuation">,</span> encoding<span class="token operator">=</span><span class="token string">"utf-8"</span><span class="token punctuation">)</span> <span class="token keyword">as</span> f<span class="token punctuation">:</span>
+                 json<span class="token punctuation">.</span>dump<span class="token punctuation">(</span>new_data<span class="token punctuation">,</span> f<span class="token punctuation">,</span> indent<span class="token operator">=</span><span class="token number">4</span><span class="token punctuation">,</span> ensure_ascii<span class="token operator">=</span><span class="token boolean">False</span><span class="token punctuation">)</span>
+                 <span class="token keyword">print</span><span class="token punctuation">(</span>f<span class="token string">"Extracted information from &amp;#123;idx+1&amp;#125; medical records, and saved to &amp;#123;save_path&amp;#125;"</span><span class="token punctuation">)</span>
+</code></pre>
+</li>
+</ol>
+<p>enjoy ! </p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
   
-  <li>
-    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
-      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
-    </a>
-  </li>
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://ailyong.cn/2023/09/12/ubuntu-shang-an-zhuang-nividia-qu-dong-he-cuda-tookit/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Lyong">
+      <meta itemprop="description" content="Keep go on">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Lyong's blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2023/09/12/ubuntu-shang-an-zhuang-nividia-qu-dong-he-cuda-tookit/" class="post-title-link" itemprop="url">ubuntu上安装NIVIDIA驱动和CUDA_Tookit</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2023-09-12 09:37:44 / 修改时间：10:43:15" itemprop="dateCreated datePublished" datetime="2023-09-12T09:37:44+08:00">2023-09-12</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%88%AC%E5%9D%91%E6%80%BB%E7%BB%93/" itemprop="url" rel="index"><span itemprop="name">爬坑总结</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>每一次安装NIVIDIA驱动或CUDA Tookit时，都要经过一番折腾，才能够安装成功，这里把过程记录一下，以便以后可以参考。</p>
+<p>本次安装遇到的最大问题是：pytorch所能支持的最高cuda版本为11.8，而安装后的cuda为最新12.2版本，pytorch没法识别cuda。<br>导致这一问题的主要原因在于两点：</p>
+<ol>
+<li>安装的NIVIDIA驱动版本过高，导致CUDA Tookit版本也过高，无法降级</li>
+<li>使用网络方式安装CUDA Tookit，安装之后得到的是最新版的CUDA Tookit，不是我想要的11.8版本</li>
+</ol>
+<p>接下来是安装过程：</p>
+<ul>
+<li><p>删除已安装的NIVIDIA驱动或CUDA Tookit</p>
+<pre class=" language-bash"><code class="language-bash"> <span class="token function">sudo</span> <span class="token function">rm</span> /etc/apt/sources.list.d/cuda*
+ <span class="token function">sudo</span> <span class="token function">apt-get</span> --purge remove <span class="token string">"*cublas*"</span> <span class="token string">"cuda*"</span> <span class="token string">"nsight*"</span> 
+ <span class="token function">sudo</span> <span class="token function">apt-get</span> --purge remove <span class="token string">"*nvidia*"</span>
+ <span class="token function">sudo</span> <span class="token function">apt-get</span> autoremove
+ <span class="token function">sudo</span> <span class="token function">apt-get</span> autoclean
+ <span class="token function">sudo</span> <span class="token function">rm</span> -rf /usr/local/cuda*
+</code></pre>
+</li>
+<li><p>查看ubuntu系统版本和驱动器型号，并下载对应驱动安装</p>
+<pre class=" language-bash"><code class="language-bash"><span class="token function">cat</span> /etc/os-release <span class="token comment" spellcheck="true"># 查看系统版本</span>
+
+lspci <span class="token operator">|</span> <span class="token function">grep</span> VGA    <span class="token comment" spellcheck="true"># 查看显卡型号</span>
+</code></pre>
+<p>  查看好版本之后，在<a target="_blank" rel="noopener" href="https://www.nvidia.com/Download/Find.aspx?lang=en-us">这里</a>下载对应的驱动程序并安装。</p>
+<p>  本次安装，服务器的版本为Ubuntu 22.04.2 LTS，显卡型号为GeForce RTX 3090.</p>
+</li>
+<li><p>查看驱动安装结果</p>
+<p>  驱动程序安装好之后，使用”nividia smi”命令查看安装结果，这里如果显示错误信息，重启系统就好了。</p>
+<p>  需要注意的是，这里出来的cuda的版本号不能大于pytorch所能支持的最大cuda版本号。</p>
+<p>  比如这次安装的时候，pytorch所能支持的最大cuda版本号为11.8，而我安装后，这里显示的版本号是12.2，最终导致无论如何pytorch都不能识别cuda。原因就是因为这里安装的驱动太新，nividia设置成了最新的cuda toolkit,后面安装cuda toolkit软件包的时候不能降级，导致pytorch没法识别。</p>
+<p>  在本次安装过程中，最终成功安装的驱动器版本为<a target="_blank" rel="noopener" href="https://www.nvidia.com/download/driverResults.aspx/194569/en-us/">510</a>，安装成功之后查询到的cuda版本为11.04， 由于最新的pytorch支持的cuda版本为11.8，所以后面我们还需要安装11.8版本的cuda toolkit，才能让pytorch使用cuda。</p>
+</li>
+<li><p>安装cuda toolkit</p>
+<p>  在<a target="_blank" rel="noopener" href="https://developer.nvidia.com/cuda-toolkit-archive">这里</a>找到对应版本的cuda toolkit，点进去之后，选择操作系统、操作系统版本等信息，下载类型选择第三个，安装包下载好之后，根据提示安装就好了。</p>
+<p>  完成之后，再用”nividia smi”查询cuda信息，这次版本应该就是pytorch支持的了。</p>
+<p>  这里有个疑问，貌似以本次包方式，安装cuda toolkit的时候可以勾选安装nividia驱动程序，也就是说可以省去前面安装驱动这一步。</p>
+<p>  这里遇到的<strong>大坑</strong>是，下载类型一定要选择第三个”runfile(local)”,之前好几次选择第二个”deb(network)”，安装完，一查询cuda信息，得到的都是12.2的版本， 但是pytorch不支持12.2的cuda，所以没法用。</p>
+<p>  本次安装过程中，下载的是11.8版本的cuda toolkit,下载和安装脚本如下</p>
+<pre class=" language-bash"><code class="language-bash">
+<span class="token function">wget</span> https://developer.download.nvidia.com/compute/cuda/11.8.0/local_installers/cuda_11.8.0_520.61.05_linux.run
+<span class="token function">sudo</span> sh cuda_11.8.0_520.61.05_linux.run
+</code></pre>
+</li>
+<li><p>安装对应版本的pytorch</p>
+<p>  在<a target="_blank" rel="noopener" href="https://pytorch.org/get-started/locally/">这里</a>找到对应的pytorch版本，然后安装就好了。</p>
+</li>
+</ul>
+<ul>
+<li><p>最后，查看cuda是否能够被pytorch识别</p>
+<pre class=" language-bash"><code class="language-bash"><span class="token function">import</span> torch
+print<span class="token punctuation">(</span>torch.cuda.is_available<span class="token punctuation">(</span><span class="token punctuation">))</span>
+</code></pre>
+<p>  如果显示为ture，则表示安装成功。</p>
+</li>
 </ul>
 
-
-<div id="mobile-nav" class="side-nav sidenav">
-
-    <div class="mobile-head bg-color">
-        
-        <img src="/medias/logo.png" class="logo-img circle responsive-img">
-        
-        <div class="logo-name">Lyong&#39;s blog</div>
-        <div class="logo-desc">
-            
-            Keep go on
-            
-        </div>
+      
     </div>
 
     
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
 
-    <ul class="menu-list mobile-menu-list">
-        
-        <li class="m-nav-item">
-	  
-		<a href="/" class="waves-effect waves-light">
-			
-			    <i class="fa-fw fas fa-home"></i>
-			
-			首页
-		</a>
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://ailyong.cn/2023/07/23/zai-mac-shang-shi-yong-pybind11-shi-xian-c-yu-python-hu-tong-de-demo/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Lyong">
+      <meta itemprop="description" content="Keep go on">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Lyong's blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
           
-        </li>
-        
-        <li class="m-nav-item">
-	  
-		<a href="/tags" class="waves-effect waves-light">
-			
-			    <i class="fa-fw fas fa-tags"></i>
-			
-			标签
-		</a>
+            <a href="/2023/07/23/zai-mac-shang-shi-yong-pybind11-shi-xian-c-yu-python-hu-tong-de-demo/" class="post-title-link" itemprop="url">在mac上使用pybind11实现c++与python互通的demo</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2023-07-23 02:28:00 / 修改时间：03:08:34" itemprop="dateCreated datePublished" datetime="2023-07-23T02:28:00+08:00">2023-07-23</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">学习笔记</span></a>
+                </span>
+            </span>
+
           
-        </li>
-        
-        <li class="m-nav-item">
-	  
-		<a href="/categories" class="waves-effect waves-light">
-			
-			    <i class="fa-fw fas fa-bookmark"></i>
-			
-			分类
-		</a>
-          
-        </li>
-        
-        <li class="m-nav-item">
-	  
-		<a href="/archives" class="waves-effect waves-light">
-			
-			    <i class="fa-fw fas fa-archive"></i>
-			
-			归档
-		</a>
-          
-        </li>
-        
-        <li class="m-nav-item">
-	  
-		<a href="/about" class="waves-effect waves-light">
-			
-			    <i class="fa-fw fas fa-user-circle"></i>
-			
-			关于
-		</a>
-          
-        </li>
-        
-        
-    </ul>
-</div>
-
 
         </div>
-
-        
-    </nav>
-
-</header>
-
-    
-<style>
-    .carousel-control {
-        width: 45px;
-        height: 45px;
-        line-height: 55px;
-        border-radius: 45px;
-        background: transparent;
-        cursor: pointer;
-        z-index: 100;
-    }
-
-    #prev-cover {
-        position: absolute;
-        top: 48%;
-        left: 8px;
-    }
-
-    #next-cover {
-        position: absolute;
-        top: 48%;
-        right: 8px;;
-    }
-
-    #prev-cover i {
-        margin-right: 3px;
-    }
-
-    #next-cover i {
-        margin-left: 3px;
-    }
-
-    .carousel-control:hover {
-        background-color: rgba(0, 0, 0, .4);
-    }
-
-    .carousel-control i {
-        color: #fff;
-        font-size: 2.4rem;
-    }
-</style>
-
-
-
-<div class="carousel carousel-slider center index-cover" data-indicators="true" style="margin-top: -64px;">
-    
-
-    <div class="carousel-item red white-text bg-cover about-cover">
-        <div class="container">
-            <div class="row">
-    <div class="col s10 offset-s1 m8 offset-m2 l8 offset-l2">
-        <div class="brand">
-            <div class="title center-align">
-                
-                勇往直前
-                
-            </div>
-
-            <div class="description center-align">
-                
-                <span id="subtitle"></span>
-                <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11"></script>
-                <script>
-                    var typed = new Typed("#subtitle", {
-                        strings: [ 
-                            
-                                "往前走，终有抵达的时候",
-                            
-                                "Keep going, there will be strange times",
-                            
-                        ],
-                        startDelay: 300,
-                        typeSpeed: 100,
-                        loop: true,
-                        backSpeed: 50,
-                        showCursor: true
-                    });
-                </script>
-                
-            </div>
-        </div>
-    </div>
-</div>
-
-
-<script>
-    // 每天切换 banner 图.  Switch banner image every day.
-    var bannerUrl = "/medias/banner/" + new Date().getDay() + '.jpg';
-    $('.bg-cover').css('background-image', 'url(' + bannerUrl + ')');
-</script>
-
-
-
-            <div class="cover-btns">
-                <a href="#indexCard" class="waves-effect waves-light btn">
-                    <i class="fa fa-angle-double-down"></i>开始阅读
-                </a>
-
-                
-            </div>
-            <div class="cover-social-link">
-    <a href="https://github.com/Skylyong" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
-        <i class="fab fa-github"></i>
-    </a>
-
-
-
-    <a href="mailto:lyong_s@foxmail.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
-        <i class="fas fa-envelope-open"></i>
-    </a>
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
-        <i class="fas fa-rss"></i>
-    </a>
-
-</div>
-        </div>
-    </div>
-
-    
-</div>
-
-<script>
-    $(function () {
-        let coverSlider = $('.carousel');
-
-        //用户触摸轮播自动 restartPlay 是否生效
-        let initUserPressedOrDraggedActive = false
-
-        //用户触摸轮播自动 restartPlay
-        function initUserPressedOrDragged(instance) {
-            setInterval(() => {
-                if (instance.pressed || instance.dragged) {
-                    // console.log('initUserPressedOrDragged: ',instance.pressed,instance.dragged)
-                    restartPlay()
-                }
-            }, 1000)
-        }
-
-        coverSlider.carousel({
-            duration: Number('120'),
-            fullWidth: true,
-            indicators: 'true' === 'true',
-            onCycleTo() {
-                if (!initUserPressedOrDraggedActive) {
-                    // console.log('initUserPressedOrDraggedActive')
-                    initUserPressedOrDragged(this)
-                    initUserPressedOrDraggedActive = true
-                }
-            },
-        })
-
-        let carouselIntervalId;
-        
-        // Loop to call the next cover article picture.
-        let autoCarousel = function () {
-            carouselIntervalId = setInterval(function () {
-                coverSlider.carousel('next');
-            }, 5000);
-        };
-        autoCarousel();
-        
-
-        function restartPlay() {
-            
-            clearInterval(carouselIntervalId);
-            autoCarousel();
-            
-        };
-
-        
-        // prev and next cover post.
-        $('#prev-cover').click(function () {
-            coverSlider.carousel('prev');
-            restartPlay();
-        });
-        $('#next-cover').click(function () {
-            coverSlider.carousel('next');
-            restartPlay();
-        });
-        
-    });
-</script>
-
-
-
-<main class="content">
-
-    
-    <div id="indexCard" class="index-card">
-        <div class="container ">
-            <div class="card">
-                <div class="card-content">
-                    
-                        <div class="dream">
-    
-    <div class="title center-align">
-        <i class="far fa-lightbulb"></i>&nbsp;&nbsp;我的梦想
-    </div>
-    
-    <div class="row">
-        <div class="col l8 offset-l2 m10 offset-m1 s10 offset-s1 center-align text">
-            不是每个人都应该像我这样去建造一座水晶大教堂，但是每个人都应该拥有自己的梦想，设计自己的梦想，追求自己的梦想，实现自己的梦想。梦想是生命的灵魂，是心灵的灯塔，是引导人走向成功的信仰。有了崇高的梦想，只要矢志不渝地追求，梦想就会成为现实，奋斗就会变成壮举，生命就会创造奇迹。——罗伯·舒乐
-        </div>
-    </div>
-</div>
-
-                    
-
-                    
-
-                    
-
-                    
-                    <div id="recommend-sections" class="recommend">
-                        
-
-
-
-
-
-<div class="title"><i class="far fa-thumbs-up"></i>&nbsp;&nbsp;推荐文章</div>
-
-<div class="row">
+      </header>
 
     
     
-    <div class="col s12" >
-        
-            <div class="post-card" style="background-image: url('/medias/featureimages/9.jpg')">
-            
-            <div class="post-body">
-                <div class="post-categories">
-                    
-                        
-                            <a href="/categories/%E5%AD%A6%E4%B9%A0%E8%B5%84%E6%96%99/" class="category">学习资料</a>
-                        
-                    
-                </div>
-                <a href="/2021/03/31/ying-yu-kou-yu-lian-xi-dian-ying-tui-jian/">
-                    <h3 class="post-title">英语口语练习电影推荐</h3>
-                </a>
-                <p class="post-description">我是从喜马拉雅路转粉过来听课的，张老师推荐的东西必然是干货。因此利用周末时间搜集整理了一些老师课上推荐的视频资源，方便自己也分享给大家。
-电影推荐
-The Queen (</p>
-                <a href="/2021/03/31/ying-yu-kou-yu-lian-xi-dian-ying-tui-jian/" class="read-more btn waves-effect waves-light" style="background: linear-gradient(to right, #FF5E3A 0%, #FF2A68 100%)" target="_blank">
-                    <i class="icon far fa-eye fa-fw"></i>阅读更多
-                </a>
-            </div>
-        </div>
-    </div>
     
+    <div class="post-body" itemprop="articleBody">
 
-</div>
-
-
-                    </div>
-                    
-                </div>
-            </div>
-        </div>
-    </div>
-    
-
-    
-
-    <!-- 所有文章卡片 -->
-    <article id="articles" class="container articles">
-        <div class="row article-row">
-            
-            <div class="article col s12 m6 l4" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/2025/01/06/matplotlib-xian-shi-zhong-wen/">
-                        <div class="card-image">
-                            
-                            
-                            <img src="/medias/featureimages/6.jpg" class="responsive-img" alt="matplotlib 设置显示中文">
-                            
-                            <span class="card-title">matplotlib 设置显示中文</span>
-                        </div>
-                    </a>
-
-                    <div class="card-content article-content">
-                        <div class="summary block-with-text">
-                            
-                                先从网络上下载 SimHei.ttf  文件放在某个位置，然后用下面的代码，设置字体的位置。
-import json
-import pandas as pd
-# 从 data/original/SylvanL/Exam/tcm_exam_1
-                            
-                        </div>
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2025-01-06
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fas fa-bookmark fa-fw icon-category"></i>
-                                
-                                <a href="/categories/%E7%BC%96%E7%A8%8B%E7%BB%8F%E9%AA%8C/" class="post-category">
-                                    编程经验
-                                </a>
-                                
-                                
-                            </span>
-                        </div>
-                    </div>
-
-                    
-                    <div class="card-action article-tags">
-                        
-                        <a href="/tags/python/">
-                            <span class="chip bg-color">python</span>
-                        </a>
-                        
-                    </div>
-                    
-                </div>
-            </div>
-            
-            <div class="article col s12 m6 l4" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/2025/01/06/python-duo-jin-cheng-shi-li/">
-                        <div class="card-image">
-                            
-                            
-                            <img src="/medias/featureimages/9.jpg" class="responsive-img" alt="python多进程示例">
-                            
-                            <span class="card-title">python多进程示例</span>
-                        </div>
-                    </a>
-
-                    <div class="card-content article-content">
-                        <div class="summary block-with-text">
-                            
-                                
-导入依赖的包
-from concurrent.futures import ProcessPoolExecutor, as_completed
-
-
-定义处理内容的函数，该函数要是全局函数，不能放在函数或者类里面函数的参数只有一个，可以用元
-                            
-                        </div>
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2025-01-06
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fas fa-bookmark fa-fw icon-category"></i>
-                                
-                                <a href="/categories/%E7%BC%96%E7%A8%8B%E7%BB%8F%E9%AA%8C/" class="post-category">
-                                    编程经验
-                                </a>
-                                
-                                
-                            </span>
-                        </div>
-                    </div>
-
-                    
-                    <div class="card-action article-tags">
-                        
-                        <a href="/tags/python/">
-                            <span class="chip bg-color">python</span>
-                        </a>
-                        
-                    </div>
-                    
-                </div>
-            </div>
-            
-            <div class="article col s12 m6 l4" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/2023/09/12/ubuntu-shang-an-zhuang-nividia-qu-dong-he-cuda-tookit/">
-                        <div class="card-image">
-                            
-                            
-                            <img src="/medias/featureimages/20.jpg" class="responsive-img" alt="ubuntu上安装NIVIDIA驱动和CUDA_Tookit">
-                            
-                            <span class="card-title">ubuntu上安装NIVIDIA驱动和CUDA_Tookit</span>
-                        </div>
-                    </a>
-
-                    <div class="card-content article-content">
-                        <div class="summary block-with-text">
-                            
-                                每一次安装NIVIDIA驱动或CUDA Tookit时，都要经过一番折腾，才能够安装成功，这里把过程记录一下，以便以后可以参考。
-本次安装遇到的最大问题是：pytorch所能支持的最高cuda版本为11.8，而安装后的cuda为最新12.2
-                            
-                        </div>
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2023-09-12
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fas fa-bookmark fa-fw icon-category"></i>
-                                
-                                <a href="/categories/%E7%88%AC%E5%9D%91%E6%80%BB%E7%BB%93/" class="post-category">
-                                    爬坑总结
-                                </a>
-                                
-                                
-                            </span>
-                        </div>
-                    </div>
-
-                    
-                    <div class="card-action article-tags">
-                        
-                        <a href="/tags/NIVIDIA%E9%A9%B1%E5%8A%A8/">
-                            <span class="chip bg-color">NIVIDIA驱动</span>
-                        </a>
-                        
-                    </div>
-                    
-                </div>
-            </div>
-            
-            <div class="article col s12 m6 l4" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/2023/07/23/zai-mac-shang-shi-yong-pybind11-shi-xian-c-yu-python-hu-tong-de-demo/">
-                        <div class="card-image">
-                            
-                            
-                            <img src="/medias/featureimages/4.jpg" class="responsive-img" alt="在mac上使用pybind11实现c++与python互通的demo">
-                            
-                            <span class="card-title">在mac上使用pybind11实现c++与python互通的demo</span>
-                        </div>
-                    </a>
-
-                    <div class="card-content article-content">
-                        <div class="summary block-with-text">
-                            
-                                在mac上使用pybind11实现c++与python互通的demo0. 问题描述下面的python代码定义了一个类，类中有一个名为analyze_data的函数，其采用递归的方法解析json格式的data数据，由于处理速度达不到要求，我们
-                            
-                        </div>
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2023-07-23
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fas fa-bookmark fa-fw icon-category"></i>
-                                
-                                <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="post-category">
-                                    学习笔记
-                                </a>
-                                
-                                
-                            </span>
-                        </div>
-                    </div>
-
-                    
-                    <div class="card-action article-tags">
-                        
-                        <a href="/tags/python-c-%E4%BA%92%E9%80%9A/">
-                            <span class="chip bg-color">python_c++_互通</span>
-                        </a>
-                        
-                    </div>
-                    
-                </div>
-            </div>
-            
-            <div class="article col s12 m6 l4" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/2022/09/07/mac-xi-tong-zhi-zuo-win10-qi-dong-u-pan/">
-                        <div class="card-image">
-                            
-                            
-                            <img src="/medias/featureimages/2.jpg" class="responsive-img" alt="Mac系统制作win10启动U盘">
-                            
-                            <span class="card-title">Mac系统制作win10启动U盘</span>
-                        </div>
-                    </a>
-
-                    <div class="card-content article-content">
-                        <div class="summary block-with-text">
-                            
-                                Mac系统下制作win10安装盘准备
-一台mac电脑
-
-一个大于8G的U盘
-
-win10镜像文件
-
-Boot Camp ISO Converter软件（这个软件可以解决FAT32格式的u盘单个文件大小不能超过4GB的问题），下载链接
-
-
-制
-                            
-                        </div>
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-09-07
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fas fa-bookmark fa-fw icon-category"></i>
-                                
-                                <a href="/categories/%E7%88%AC%E5%9D%91%E6%80%BB%E7%BB%93/" class="post-category">
-                                    爬坑总结
-                                </a>
-                                
-                                
-                            </span>
-                        </div>
-                    </div>
-
-                    
-                    <div class="card-action article-tags">
-                        
-                        <a href="/tags/%E5%90%AF%E5%8A%A8U%E7%9B%98/">
-                            <span class="chip bg-color">启动U盘</span>
-                        </a>
-                        
-                    </div>
-                    
-                </div>
-            </div>
-            
-            <div class="article col s12 m6 l4" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/2022/09/05/dian-ci-bi-sai-zong-jie/">
-                        <div class="card-image">
-                            
-                            
-                            <img src="/medias/featureimages/13.jpg" class="responsive-img" alt="电磁比赛总结">
-                            
-                            <span class="card-title">电磁比赛总结</span>
-                        </div>
-                    </a>
-
-                    <div class="card-content article-content">
-                        <div class="summary block-with-text">
-                            
-                                电磁比赛总结
-代码总结
-
-要会静态分析资源占有率，特别是当服务器内存资源不足的时候，提前做好静态分析，设置合理的运行参数，才能提升效率。比如本次实验过程中，做数据增强预处理数据时需要占用大量内存资源，参数设置过大，会导致运行一半后因为内存不
-                            
-                        </div>
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-09-05
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fas fa-bookmark fa-fw icon-category"></i>
-                                
-                                <a href="/categories/%E7%88%AC%E5%9D%91%E6%80%BB%E7%BB%93/" class="post-category">
-                                    爬坑总结
-                                </a>
-                                
-                                
-                            </span>
-                        </div>
-                    </div>
-
-                    
-                    <div class="card-action article-tags">
-                        
-                        <a href="/tags/%E7%AB%9E%E8%B5%9B/">
-                            <span class="chip bg-color">竞赛</span>
-                        </a>
-                        
-                    </div>
-                    
-                </div>
-            </div>
-            
-            <div class="article col s12 m6 l4" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/2022/04/29/yuan-cheng-fang-wen-fu-wu-qi-jupyter-notebook/">
-                        <div class="card-image">
-                            
-                            
-                            <img src="/medias/featureimages/1.jpg" class="responsive-img" alt="远程访问服务器Jupyter-Notebook">
-                            
-                            <span class="card-title">远程访问服务器Jupyter-Notebook</span>
-                        </div>
-                    </a>
-
-                    <div class="card-content article-content">
-                        <div class="summary block-with-text">
-                            
-                                方法： ssh远程使用jupyter notebook在远程服务器上，启动jupyter notebooks服务：
-jupyter notebook --no-browser --port=8889
-
-在本地终端中启动SSH：
-ssh -N
-                            
-                        </div>
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-04-29
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fas fa-bookmark fa-fw icon-category"></i>
-                                
-                                <a href="/categories/%E7%88%AC%E5%9D%91%E6%80%BB%E7%BB%93/" class="post-category">
-                                    爬坑总结
-                                </a>
-                                
-                                
-                            </span>
-                        </div>
-                    </div>
-
-                    
-                    <div class="card-action article-tags">
-                        
-                        <a href="/tags/jupyter-notebook/">
-                            <span class="chip bg-color">jupyter notebook</span>
-                        </a>
-                        
-                    </div>
-                    
-                </div>
-            </div>
-            
-            <div class="article col s12 m6 l4" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/2021/12/10/c-duo-xian-cheng-bian-cheng/">
-                        <div class="card-image">
-                            
-                            
-                            <img src="/medias/featureimages/8.jpg" class="responsive-img" alt="C++多线程编程">
-                            
-                            <span class="card-title">C++多线程编程</span>
-                        </div>
-                    </a>
-
-                    <div class="card-content article-content">
-                        <div class="summary block-with-text">
-                            
-                                常用线程函数
-join() :
-
-阻塞主线程，让主线程等待子线程执行完，当子线程执行完毕，这个join（）就执行完毕，主线程继续执行
-
-
-detach() :
-
-从主线程中将子线程分离，主线程不必等待子线程执行完，一旦detach()之后子
-                            
-                        </div>
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-12-10
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fas fa-user fa-fw"></i>
-                                Lyong
-                                
-                            </span>
-                        </div>
-                    </div>
-
-                    
-                </div>
-            </div>
-            
-            <div class="article col s12 m6 l4" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/2021/09/29/jiang-wei-xin-liao-tian-zhong-de-yu-yin-zhuan-huan-wei-mp3/">
-                        <div class="card-image">
-                            
-                            
-                            <img src="/medias/featureimages/1.jpg" class="responsive-img" alt="将微信聊天中的语音转换为mp3">
-                            
-                            <span class="card-title">将微信聊天中的语音转换为mp3</span>
-                        </div>
-                    </a>
-
-                    <div class="card-content article-content">
-                        <div class="summary block-with-text">
-                            
-                                
-找到语音文件将其导出
-
-找到MAC微信图片，鼠标放在图片上面按下右键调出如下图所示的提示框，然后点击“在Finder中显示”，打开音频、图片等文件在本地保存的位置。
-
+      
+          <h4 id="在mac上使用pybind11实现c-与python互通的demo"><a href="#在mac上使用pybind11实现c-与python互通的demo" class="headerlink" title="在mac上使用pybind11实现c++与python互通的demo"></a>在mac上使用pybind11实现c++与python互通的demo</h4><h5 id="0-问题描述"><a href="#0-问题描述" class="headerlink" title="0. 问题描述"></a>0. 问题描述</h5><p>下面的python代码定义了一个类，类中有一个名为analyze_data的函数，其采用递归的方法解析json格式的data数据，由于处理速度达不到要求，我们希望用c++改写该类，并封装成可供python代码调用的库，以达到加速的效果。</p>
+<pre class=" language-python"><code class="language-python"> <span class="token comment" spellcheck="true"># 待解析的数据deom</span>
+ data_demo <span class="token operator">=</span> <span class="token operator">&amp;</span><span class="token comment" spellcheck="true">#123;"resbody": &amp;#123;"data": &amp;#123;"name": "John", "age": 30, "address": &amp;#123;"city": "New York", "zipcode": 10001&amp;#125;&amp;#125;&amp;#125;&amp;#125;</span>
  
+ <span class="token comment" spellcheck="true"># 需要转换为c++代码的类</span>
+ <span class="token keyword">class</span> <span class="token class-name">AnalyzeDataUtil</span><span class="token punctuation">:</span>
+ 
+     <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> datas<span class="token punctuation">)</span><span class="token punctuation">:</span>
+         self<span class="token punctuation">.</span>datas <span class="token operator">=</span> datas
+ 
+     <span class="token keyword">def</span> <span class="token function">analyze_data</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> data<span class="token punctuation">,</span> result<span class="token operator">=</span><span class="token string">"resbody"</span><span class="token punctuation">,</span> depth<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+         <span class="token keyword">if</span> depth <span class="token operator">==</span> <span class="token number">5</span><span class="token punctuation">:</span>
+             <span class="token keyword">return</span>
+         <span class="token keyword">if</span> isinstance<span class="token punctuation">(</span>data<span class="token punctuation">,</span> dict<span class="token punctuation">)</span><span class="token punctuation">:</span>
+             <span class="token keyword">for</span> k<span class="token punctuation">,</span> v <span class="token keyword">in</span> data<span class="token punctuation">.</span>items<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+                 self<span class="token punctuation">.</span>analyze_data<span class="token punctuation">(</span>v<span class="token punctuation">,</span> result <span class="token operator">+</span> <span class="token string">"$%s"</span> <span class="token operator">%</span> str<span class="token punctuation">(</span>k<span class="token punctuation">)</span><span class="token punctuation">,</span> depth<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">)</span>
+         <span class="token keyword">if</span> isinstance<span class="token punctuation">(</span>data<span class="token punctuation">,</span> <span class="token punctuation">(</span>list<span class="token punctuation">,</span> tuple<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+             <span class="token keyword">for</span> i <span class="token keyword">in</span> range<span class="token punctuation">(</span>len<span class="token punctuation">(</span>data<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+                 self<span class="token punctuation">.</span>analyze_data<span class="token punctuation">(</span>data<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">,</span> result<span class="token punctuation">,</span> depth<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">)</span>
+         <span class="token keyword">else</span><span class="token punctuation">:</span>
+             self<span class="token punctuation">.</span>datas<span class="token punctuation">[</span>result<span class="token punctuation">]</span> <span class="token operator">=</span> str<span class="token punctuation">(</span>data<span class="token punctuation">)</span>
+</code></pre>
+<p><strong>问题分析</strong>：</p>
+<p>根据问题描述，首先，我们要用c++对python定义的类进行改写，由于传入的变量data类型不固定，且涉及到类型判断，一种比较简单的方式是采用pybind11，它针对python的常见数据类型，都有对应的c++实现版本，代码改写工作大大减少。其次，类改写好之后，我们需要打通c++与python之间的隔阂，使用pybind11实现起来也非常方便，只需要在c++源码中添加少量代码即可。最后，我们还需要将c++源码编译成共享库，供下游代码调用。</p>
+<h5 id="1-安装必要的工具和包"><a href="#1-安装必要的工具和包" class="headerlink" title="1. 安装必要的工具和包"></a>1. 安装必要的工具和包</h5><pre class=" language-bash"><code class="language-bash"> brew <span class="token function">install</span> cmake
+ conda <span class="token function">install</span> pybind11
+</code></pre>
+<p>注意：安装pybind11的时候要用conda来安装，用pip方式安装，编译的时候会报路径错误。</p>
+<h5 id="2-创建c-源文件"><a href="#2-创建c-源文件" class="headerlink" title="2. 创建c++源文件"></a>2. 创建c++源文件</h5><p>下面的代码实现了AnalyzeDataUtil类的c++版本，第54行到第60行的作用是打通c++与python之间的隔阂。</p>
+<pre class=" language-c++"><code class="language-c++"> //path: analyze_data_util/analyze_data_util.cpp
+ #include <pybind11/pybind11.h>
+ #include <pybind11/stl.h>
+ 
+ namespace py = pybind11;
+ 
+ struct AnalyzeDataUtil
+ &#123;
+ public:
+     AnalyzeDataUtil(py::dict datas) : datas(datas) &#123;&#125;
+ 
+     void analyze_data(const py::object &data, std::string result = "", int depth = 0)
+     &#123;
+ 
+         if (depth == 5)
+             return;
+ 
+         if (py::isinstance<py::dict>(data))
+         &#123;
+             py::dict dict_data = py::cast<py::dict>(data);
+ 
+             for (const auto &item : dict_data)
+             &#123;
+                 auto key = py::reinterpret_borrow<py::object>(item.first);
+                 auto value = py::reinterpret_borrow<py::object>(item.second);
+                 analyze_data(value, result + "$" + py::str(key).cast<std::string>(), depth + 1);
+             &#125;
+         &#125;
+         if (py::isinstance<py::list>(data) || py::isinstance<py::tuple>(data))
+         &#123;
+             py::list list_data = py::cast<py::list>(data);
+ 
+             for (const auto &item : list_data)
+             &#123;
+ 
+                 analyze_data(py::cast<py::object>(item), result, depth + 1);
+             &#125;
+         &#125;
+         else
+         &#123;
+ 
+             datas[py::str(result)] = py::str(data).cast<std::string>();
+         &#125;
+     &#125;
+ 
+     py::dict get_datas()
+     &#123;
+         return datas;
+     &#125;
+ 
+ private:
+     py::dict datas;
+ &#125;;
+ 
+ PYBIND11_MODULE(analyze_data_util, m)
+ &#123;
+     py::class_<AnalyzeDataUtil>(m, "AnalyzeDataUtil")
+         .def(py::init<py::dict>())
+         .def("analyze_data", &AnalyzeDataUtil::analyze_data)
+         .def("get_datas", &AnalyzeDataUtil::get_datas);
+ &#125;
+ 
+</code></pre>
+<h5 id="4-创建CMakeLists-txt文件编译C-模块"><a href="#4-创建CMakeLists-txt文件编译C-模块" class="headerlink" title="4. 创建CMakeLists.txt文件编译C++模块"></a>4. 创建CMakeLists.txt文件编译C++模块</h5><p>创建文件analyze_data_util/CMakeLists.txt， 然后将下面的脚本拷贝到文件中。</p>
+<pre class=" language-bash"><code class="language-bash"> cmake_minimum_required<span class="token punctuation">(</span>VERSION 3.12<span class="token punctuation">)</span>
 
- ​            这个地方需要注意的是，微信保存到本地
-                            
-                        </div>
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-09-29
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fas fa-bookmark fa-fw icon-category"></i>
-                                
-                                <a href="/categories/%E7%94%9F%E6%B4%BB%E6%80%BB%E7%BB%93/" class="post-category">
-                                    生活总结
-                                </a>
-                                
-                                
-                            </span>
-                        </div>
-                    </div>
+ project<span class="token punctuation">(</span>analyze_data_util LANGUAGES CXX<span class="token punctuation">)</span>
+ 
+ set<span class="token punctuation">(</span>CMAKE_CXX_STANDARD 14<span class="token punctuation">)</span>
+ 
+ find_package<span class="token punctuation">(</span>pybind11 REQUIRED<span class="token punctuation">)</span>
+ 
+ pybind11_add_module<span class="token punctuation">(</span>analyze_data_util analyze_data_util.cpp<span class="token punctuation">)</span>
+</code></pre>
+<h5 id="5-编译C-模块"><a href="#5-编译C-模块" class="headerlink" title="5. 编译C++模块"></a>5. 编译C++模块</h5><pre class=" language-bash"><code class="language-bash"> <span class="token function">mkdir</span> build
+ <span class="token function">cd</span> build
+ cmake <span class="token punctuation">..</span>
+ cmake --build <span class="token keyword">.</span>
+</code></pre>
+<p>将工作目录切换到analyze_data_util中，分别执行上面的代码。将会创建共享库文件，在Mac或Linux中名为：analyze_data_util.so，在Windows中为analyze_data_util.pyd</p>
+<h5 id="6-构造接口"><a href="#6-构造接口" class="headerlink" title="6. 构造接口"></a>6. 构造接口</h5><p>因为在c++中不允许直接访问私有成员，因此我们实现了get_datas()方法来间接访问成员，但是这不符合python的使用习惯，因此我们构造一个同名的AnalyzeDataUtil类将这一细节隐藏起来。也可以省去该步奏，但必须通过get_datas()函数访问解析后的数据。</p>
+<pre class=" language-python"><code class="language-python"> <span class="token comment" spellcheck="true"># path: demo/analyze_data_tool.py</span>
+ <span class="token keyword">import</span> analyze_data_util
+ 
+ <span class="token comment" spellcheck="true"># Wrapper for AnalyzeDataUtil class</span>
+ <span class="token keyword">class</span> <span class="token class-name">AnalyzeDataUtil</span><span class="token punctuation">:</span>
+ 
+     <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> datas<span class="token punctuation">)</span><span class="token punctuation">:</span>
+         self<span class="token punctuation">.</span>analyzer <span class="token operator">=</span> analyze_data_util<span class="token punctuation">.</span>AnalyzeDataUtil<span class="token punctuation">(</span>datas<span class="token punctuation">)</span>
+         self<span class="token punctuation">.</span>datas <span class="token operator">=</span> datas
+ 
+     <span class="token keyword">def</span> <span class="token function">analyze_data</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> data<span class="token punctuation">,</span> result<span class="token operator">=</span><span class="token string">"resbody"</span><span class="token punctuation">,</span> depth<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">:</span>   
+         self<span class="token punctuation">.</span>analyzer<span class="token punctuation">.</span>analyze_data<span class="token punctuation">(</span>data<span class="token punctuation">,</span> result<span class="token punctuation">,</span> depth<span class="token punctuation">)</span>
+         self<span class="token punctuation">.</span>datas <span class="token operator">=</span> self<span class="token punctuation">.</span>analyzer<span class="token punctuation">.</span>get_datas<span class="token punctuation">(</span><span class="token punctuation">)</span>
+</code></pre>
+<h5 id="7-在python中使用C-模块"><a href="#7-在python中使用C-模块" class="headerlink" title="7. 在python中使用C++模块"></a>7. 在python中使用C++模块</h5><pre class=" language-python"><code class="language-python"> <span class="token comment" spellcheck="true"># path: demo/test.py</span>
+ <span class="token keyword">from</span> analyze_data_tool <span class="token keyword">import</span> AnalyzeDataUtil
+ <span class="token keyword">import</span> json
+ <span class="token keyword">import</span> time
+ <span class="token keyword">import</span> pprint
+ 
+ <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'示例用法,c++版本:'</span><span class="token punctuation">)</span>
+ json_data <span class="token operator">=</span> <span class="token string">'&amp;#123;"resbody": &amp;#123;"data": &amp;#123;"name": "John", "age": 30, "address": &amp;#123;"city": "New York", "zipcode": 10001&amp;#125;&amp;#125;&amp;#125;&amp;#125;'</span>
+ data_dict <span class="token operator">=</span> json<span class="token punctuation">.</span>loads<span class="token punctuation">(</span>json_data<span class="token punctuation">)</span>
+ time1 <span class="token operator">=</span> time<span class="token punctuation">.</span>time<span class="token punctuation">(</span><span class="token punctuation">)</span>
+ analyzer2 <span class="token operator">=</span> AnalyzeDataUtil<span class="token punctuation">(</span><span class="token operator">&amp;</span><span class="token comment" spellcheck="true">#123;&amp;#125;)</span>
+ analyzer2<span class="token punctuation">.</span>analyze_data<span class="token punctuation">(</span>data_dict<span class="token punctuation">,</span> <span class="token string">"resbody"</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span>
+ time2 <span class="token operator">=</span> time<span class="token punctuation">.</span>time<span class="token punctuation">(</span><span class="token punctuation">)</span>
+ all_keys1 <span class="token operator">=</span> analyzer2<span class="token punctuation">.</span>datas<span class="token punctuation">.</span>keys<span class="token punctuation">(</span><span class="token punctuation">)</span>
+ keys_list1 <span class="token operator">=</span> <span class="token string">' '</span><span class="token punctuation">.</span>join<span class="token punctuation">(</span>list<span class="token punctuation">(</span>all_keys1<span class="token punctuation">)</span><span class="token punctuation">)</span>
+ 
+ result <span class="token operator">=</span> time2 <span class="token operator">-</span> time1
+ formatted_result <span class="token operator">=</span> f<span class="token string">"&amp;#123;result:.10f&amp;#125;"</span>
+ pp<span class="token punctuation">.</span>pprint<span class="token punctuation">(</span>all_keys1<span class="token punctuation">)</span>
+ <span class="token keyword">print</span><span class="token punctuation">(</span>formatted_result<span class="token punctuation">)</span>
+</code></pre>
+<p>创建以上代码，然后将生成的.so or .pyd文件拷贝到demo/目录下，运行python test.py。</p>
+<h5 id="8-后记"><a href="#8-后记" class="headerlink" title="8. 后记"></a>8. 后记</h5><p>虽然上面的解决方案实现了c++与python的互通，但我在对单个文件进行测试比较的时候，得到如下结果：</p>
+<p><img src="https://raw.githubusercontent.com/Skylyong/i/main/20230723015325.png" alt="image-20230723015325241"></p>
+<p>从结果中我们发现，对于相同的json文件，c++版本与python版本处理结果是一致的，但对于速度的提升并不理想，对于单个文件的处理c++的版本甚至比python的低，可能是因为python调用c++包的时候占用了更多的时间，因此，处理速度的提升体现不出来。针对这个问题，我们至少可以从以下两个方面进行考虑：首先，从算法层面上来看，我们可以将递归改为动态规划，或者对递归过程进行剪枝处理，因为递归虽然好用，但是效率往往不高，它重复的过程实比较多。其次，我们还可以尝试使用一些能够快速解析json格式的优秀库(比如<a target="_blank" rel="noopener" href="https://rapidjson.org/zh-cn/">RapidJSON</a>)，这或许会比使用我们自己写的粗糙代码效率来的更快。</p>
+<p>最后，虽然上面讲解中涉及到的每个脚本，我都给出了它所在的文件名和位置，但是并不直观，为了方便大家更直观的理解(我跑别人博客代码的时候，经常因为位置放错，浪费时间去调试)，我把工程目录粘贴出来：</p>
+<p><img src="https://raw.githubusercontent.com/Skylyong/i/main/20230723022224.png" alt="image-20230723022223900"></p>
+<p>以上就是使用pybind11实现c++与python互通的demo啦，希望能够帮到你，想要了解更多，可以去看下面的官方文档喔。</p>
+<ul>
+<li><strong>参考资料</strong><ul>
+<li><strong>pybind11文档：</strong><a target="_blank" rel="noopener" href="https://pybind11.readthedocs.io/en/stable/">https://pybind11.readthedocs.io/en/stable/</a></li>
+<li><strong>pybind11中文文档：</strong><a target="_blank" rel="noopener" href="https://github.com/charlotteLive/pybind11-Chinese-docs">https://github.com/charlotteLive/pybind11-Chinese-docs</a></li>
+</ul>
+</li>
+</ul>
 
-                    
-                    <div class="card-action article-tags">
-                        
-                        <a href="/tags/%E5%BE%AE%E4%BF%A1/">
-                            <span class="chip bg-color">微信</span>
-                        </a>
-                        
-                    </div>
-                    
-                </div>
-            </div>
-            
-            <div class="article col s12 m6 l4" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/2021/09/19/ji-qi-xue-xi-can-kao-zi-liao/">
-                        <div class="card-image">
-                            
-                            
-                            <img src="/medias/featureimages/22.jpg" class="responsive-img" alt="机器学习参考资料">
-                            
-                            <span class="card-title">机器学习参考资料</span>
-                        </div>
-                    </a>
-
-                    <div class="card-content article-content">
-                        <div class="summary block-with-text">
-                            
-                                机器学习参考资料：
-
-机器学习参考书籍：
-
-《神经网络与深度学习》书籍及PPT：https://nndl.github.io/
-《统计学习方法》李航著
-《机器学习》周志华著
-《南瓜书》：https://datawhalechina.gith
-                            
-                        </div>
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-09-19
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fas fa-bookmark fa-fw icon-category"></i>
-                                
-                                <a href="/categories/%E5%AD%A6%E4%B9%A0%E8%B5%84%E6%96%99/" class="post-category">
-                                    学习资料
-                                </a>
-                                
-                                
-                            </span>
-                        </div>
-                    </div>
-
-                    
-                    <div class="card-action article-tags">
-                        
-                        <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">
-                            <span class="chip bg-color">机器学习</span>
-                        </a>
-                        
-                    </div>
-                    
-                </div>
-            </div>
-            
-            <div class="article col s12 m6 l4" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/2021/09/19/you-yong-de-zi-yuan/">
-                        <div class="card-image">
-                            
-                            
-                            <img src="/medias/featureimages/23.jpg" class="responsive-img" alt="有用的资源">
-                            
-                            <span class="card-title">有用的资源</span>
-                        </div>
-                    </a>
-
-                    <div class="card-content article-content">
-                        <div class="summary block-with-text">
-                            
-                                有用的资源
-
-
-
-How to Read a Paper, by Prof. Srinivasan Keshav.
-
-A Research to Engineering Workflow, by Dr. Dustin Tran.
-
-Math
-                            
-                        </div>
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-09-19
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fas fa-bookmark fa-fw icon-category"></i>
-                                
-                                <a href="/categories/%E5%AD%A6%E4%B9%A0%E8%B5%84%E6%96%99/" class="post-category">
-                                    学习资料
-                                </a>
-                                
-                                
-                            </span>
-                        </div>
-                    </div>
-
-                    
-                    <div class="card-action article-tags">
-                        
-                        <a href="/tags/%E8%B5%84%E6%BA%90/">
-                            <span class="chip bg-color">资源</span>
-                        </a>
-                        
-                    </div>
-                    
-                </div>
-            </div>
-            
-            <div class="article col s12 m6 l4" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/2021/08/14/wei-xin-biao-qian-zheng-li/">
-                        <div class="card-image">
-                            
-                            
-                            <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="微信标签整理">
-                            
-                            <span class="card-title">微信标签整理</span>
-                        </div>
-                    </a>
-
-                    <div class="card-content article-content">
-                        <div class="summary block-with-text">
-                            
-                                
-最近对微信通讯录做了一次比较彻底的整理，记录一下。
-
-我根据兴趣、人生阶段、亲疏关系和生活四个维度来分类，每个维度的具体分类标签如下：
-
-按兴趣： 兴趣-户外，兴趣-跑步，兴趣-阅读，兴趣-美食等
-按人生阶段划分为：中学，本科，研究生，兼
-                            
-                        </div>
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-08-14
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fas fa-bookmark fa-fw icon-category"></i>
-                                
-                                <a href="/categories/%E6%80%BB%E7%BB%93/" class="post-category">
-                                    总结
-                                </a>
-                                
-                                
-                            </span>
-                        </div>
-                    </div>
-
-                    
-                    <div class="card-action article-tags">
-                        
-                        <a href="/tags/%E5%BE%AE%E4%BF%A1/">
-                            <span class="chip bg-color">微信</span>
-                        </a>
-                        
-                    </div>
-                    
-                </div>
-            </div>
-            
-        </div>
-    </article>
-
-</main>
-
-
-<div class="container paging">
-    <div class="row">
-        <div class="col s6 m4 l4">
-            
-            <a class="left btn-floating btn-large disabled">
-                <i class="fas fa-angle-left"></i>
-            </a>
-            
-        </div>
-        <div class="page-info col m4 l4 hide-on-small-only">
-            <div class="center-align b-text-gray">1 / 4</div>
-        </div>
-        <div class="col s6 m4 l4">
-            
-            <a href="/page/2/"
-               class="right btn-floating btn-large waves-effect waves-light bg-color">
-                <i class="fas fa-angle-right"></i>
-            </a>
-            
-        </div>
+      
     </div>
-</div>
-
-
-
-
-    <footer class="page-footer bg-color">
-    
-        <link rel="stylesheet" href="/libs/aplayer/APlayer.min.css">
-<style>
-    .aplayer .aplayer-lrc p {
-        
-        display: none;
-        
-        font-size: 12px;
-        font-weight: 700;
-        line-height: 16px !important;
-    }
-
-    .aplayer .aplayer-lrc p.aplayer-lrc-current {
-        
-        display: none;
-        
-        font-size: 15px;
-        color: #42b983;
-    }
 
     
-    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body {
-        left: -66px !important;
-    }
-
-    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body:hover {
-        left: 0px !important;
-    }
-
     
-</style>
-<div class="">
     
-    <div class="row">
-        <meting-js class="col l8 offset-l2 m10 offset-m1 s12"
-                   server="netease"
-                   type="playlist"
-                   id="503838841"
-                   fixed='true'
-                   autoplay='false'
-                   theme='#42b983'
-                   loop='all'
-                   order='random'
-                   preload='auto'
-                   volume='0.7'
-                   list-folded='true'
-        >
-        </meting-js>
-    </div>
-</div>
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
 
-<script src="/libs/aplayer/APlayer.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://ailyong.cn/2022/09/07/mac-xi-tong-zhi-zuo-win10-qi-dong-u-pan/">
 
-    
-    <div class="container row center-align" style="margin-bottom: 0px !important;">
-        <div class="col s12 m8 l8 copy-right">
-            Copyright&nbsp;&copy;
-            
-                <span id="year">2019-2025</span>
-            
-            <span id="year">2019</span>
-            <a href="/about" target="_blank">Lyong</a>
-            <!-- |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a> -->
-            <!-- |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a> -->
-            <br>
-            
-            
-            
-            
-            
-            
-            <span id="busuanzi_container_site_pv">
-                &nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;<span id="busuanzi_value_site_pv"
-                    class="white-color"></span>&nbsp;次
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Lyong">
+      <meta itemprop="description" content="Keep go on">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Lyong's blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/09/07/mac-xi-tong-zhi-zuo-win10-qi-dong-u-pan/" class="post-title-link" itemprop="url">Mac系统制作win10启动U盘</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2022-09-07 19:51:54 / 修改时间：20:29:52" itemprop="dateCreated datePublished" datetime="2022-09-07T19:51:54+08:00">2022-09-07</time>
             </span>
-            
-            
-            <span id="busuanzi_container_site_uv">
-                &nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;<span id="busuanzi_value_site_uv"
-                    class="white-color"></span>&nbsp;人
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%88%AC%E5%9D%91%E6%80%BB%E7%BB%93/" itemprop="url" rel="index"><span itemprop="name">爬坑总结</span></a>
+                </span>
             </span>
-            
-            <br>
-            
-            <br>
-            
+
+          
+
         </div>
-        <div class="col s12 m4 l4 social-link social-statis">
-    <a href="https://github.com/Skylyong" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
-        <i class="fab fa-github"></i>
-    </a>
+      </header>
 
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
+      
+          <h5 id="Mac系统下制作win10安装盘"><a href="#Mac系统下制作win10安装盘" class="headerlink" title="Mac系统下制作win10安装盘"></a>Mac系统下制作win10安装盘</h5><h6 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h6><ul>
+<li><p>一台mac电脑</p>
+</li>
+<li><p>一个大于8G的U盘</p>
+</li>
+<li><p>win10镜像文件</p>
+</li>
+<li><p>Boot Camp ISO Converter软件（这个软件可以解决FAT32格式的u盘单个文件大小不能超过4GB的问题），下载<a target="_blank" rel="noopener" href="https://macdownload.informer.com/boot-camp-iso-converter/download/">链接</a></p>
+</li>
+</ul>
+<h6 id="制作步骤"><a href="#制作步骤" class="headerlink" title="制作步骤"></a>制作步骤</h6><ul>
+<li><p>打开Boot Camp ISO Converter软件对下载好的iso镜像文件进行处理，目的是将镜像文件insta.win分配为大小小于4GB的文件</p>
+</li>
+<li><p>在插入U盘的状态下，打开终端，输入：</p>
+<pre class=" language-bash"><code class="language-bash">    diskutil list
+</code></pre>
+<p>  找到U盘对应的盘符，本例中U盘对应的盘符为：disk2</p>
+</li>
+<li><p>将U盘(disk2)格式化为FAT32格式</p>
+<pre class=" language-bash"><code class="language-bash">    diskutil eraseDisk FAT32 <span class="token string">"WINDOWS10"</span> MBR disk2
+</code></pre>
+</li>
+<li><p>找到经过Boot Camp ISO Converter处理后的镜像文件，然后双击挂载镜像文件</p>
+</li>
+<li><p>输入命令，将挂载的镜像盘拷贝至U盘中(disk2)</p>
+<pre class=" language-bash"><code class="language-bash">    <span class="token function">cp</span> -rp /Volumes/CPBA_X64FRE_ZH-CN_DV9/* /Volumes/WINDOWS10/
+</code></pre>
+<p>这里的CPBA_X64FRE_ZH是刚刚挂载的镜像的名称,大约等待10分钟，命令运行结束之后，启动盘就做好了。</p>
+</li>
+</ul>
+<h6 id="win10系统安装过程中报错解决方法"><a href="#win10系统安装过程中报错解决方法" class="headerlink" title="win10系统安装过程中报错解决方法"></a>win10系统安装过程中报错解决方法</h6><p>在磁盘格式步骤可能会报“windows无法安装到这个磁盘，选中的磁盘采用的GPT/MBR分区形式”错误，解决方法有2种，这里只列举其中一种方法：</p>
+<ul>
+<li><p>转换磁盘格式为MBR，但是会清除所有磁盘分区</p>
+<p>  在错误提示的时候，不要重启电脑，直接按”Shift+F10”组合键，这个时候会弹出CMD提示框，然后依次输入如下命令：</p>
+<pre class=" language-bash"><code class="language-bash">list disk <span class="token comment" spellcheck="true"># 回车键确定；（会列出所有的磁盘，记住自己硬盘的磁盘号，通过容量大小就可以分辨了，如下图所示，磁盘0就是我们的硬盘，磁盘1就是U盘）</span>
 
-    <a href="mailto:lyong_s@foxmail.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
-        <i class="fas fa-envelope-open"></i>
-    </a>
+<span class="token keyword">select</span> disk 0 <span class="token comment" spellcheck="true"># 回车键确定；（选择磁盘0，也就是我们的硬盘，就是准备做系统的硬盘）</span>
 
+clean <span class="token comment" spellcheck="true"># 回车键确定；（清空磁盘，相当于格式化全盘）</span>
 
-
-
-
-
-
-
-
-
-
-
-
-    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
-        <i class="fas fa-rss"></i>
-    </a>
-
-</div>
+convert mbr <span class="token comment" spellcheck="true"># 回车键确定；（将该硬盘转换为mbr格式，如果想要将硬盘转化为gpt，那就是输入“convert gpt”）</span>
+</code></pre>
+</li>
+</ul>
+<h6 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a><a target="_blank" rel="noopener" href="https://blog.csdn.net/h21396577548/article/details/125572053">参考链接</a></h6>
+      
     </div>
-</footer>
 
-<div class="progress-bar"></div>
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
 
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://ailyong.cn/2022/09/05/dian-ci-bi-sai-zong-jie/">
 
-    <!-- 搜索遮罩框 -->
-<div id="searchModal" class="modal">
-    <div class="modal-content">
-        <div class="search-header">
-            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
-            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
-                   class="search-input">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Lyong">
+      <meta itemprop="description" content="Keep go on">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Lyong's blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/09/05/dian-ci-bi-sai-zong-jie/" class="post-title-link" itemprop="url">电磁比赛总结</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2022-09-05 14:47:54 / 修改时间：15:02:56" itemprop="dateCreated datePublished" datetime="2022-09-05T14:47:54+08:00">2022-09-05</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%88%AC%E5%9D%91%E6%80%BB%E7%BB%93/" itemprop="url" rel="index"><span itemprop="name">爬坑总结</span></a>
+                </span>
+            </span>
+
+          
+
         </div>
-        <div id="searchResult"></div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>电磁比赛总结</p>
+<p>代码总结</p>
+<ol>
+<li>要会静态分析资源占有率，特别是当服务器内存资源不足的时候，提前做好静态分析，设置合理的运行参数，才能提升效率。比如本次实验过程中，做数据增强预处理数据时需要占用大量内存资源，参数设置过大，会导致运行一半后因为内存不足，进程被killed掉，参数设置过小效率又变得很低。</li>
+<li>当数据很多，需要占用大量内存时，不要将数据转换为pandas的DataFrame对象，因为它会吃掉更多的内存，此外使用apply方法对数据进行逐行处理的时候，即使使用了加速方法，也没有将数据存储为list然后使用多进程方法处理高效。在本次实验中，后者的速度至少是前者的5倍。</li>
+<li>尽量使用class对代码进行封装，而不是使用一个个单独的函数</li>
+<li>尽量保证函数的功能单一，这样的函数更容易被复用，多写几个函数没有关系</li>
+<li>几种常用的保存/读取数据方式：</li>
+</ol>
+<pre class=" language-python"><code class="language-python">  <span class="token keyword">import</span> pickle
+  <span class="token keyword">import</span> json
+ 
+ <span class="token comment" spellcheck="true"># 使用pickle </span>
+ pickle<span class="token punctuation">.</span>dump<span class="token punctuation">(</span>data<span class="token punctuation">,</span> file<span class="token operator">=</span>open<span class="token punctuation">(</span>file_name<span class="token punctuation">,</span><span class="token string">"wb"</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+ data <span class="token operator">=</span> pickle<span class="token punctuation">.</span>load<span class="token punctuation">(</span>file<span class="token operator">=</span>open<span class="token punctuation">(</span>file_name<span class="token punctuation">,</span> <span class="token string">"rb"</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+ 
+ <span class="token comment" spellcheck="true"># 使用json</span>
+ json<span class="token punctuation">.</span>dump<span class="token punctuation">(</span>data<span class="token punctuation">,</span> file<span class="token operator">=</span>open<span class="token punctuation">(</span>file_name<span class="token punctuation">,</span><span class="token string">"w"</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+ data <span class="token operator">=</span> json<span class="token punctuation">.</span>load<span class="token punctuation">(</span>file<span class="token operator">=</span>open<span class="token punctuation">(</span>file_name<span class="token punctuation">,</span> <span class="token string">"r"</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+</code></pre>
+<ol start="6">
+<li>使用coment来可视化训练过程</li>
+</ol>
+<pre class=" language-python"><code class="language-python">  <span class="token keyword">from</span> comet_ml <span class="token keyword">import</span> Experiment
+ 
+ experiment <span class="token operator">=</span> Experiment<span class="token punctuation">(</span>project_name<span class="token operator">=</span>args<span class="token punctuation">.</span>project_name<span class="token punctuation">,</span>
+                         api_key<span class="token operator">=</span>args<span class="token punctuation">.</span>api_key<span class="token punctuation">)</span>
+ 
+ experiment<span class="token punctuation">.</span>log_parameters<span class="token punctuation">(</span>vars<span class="token punctuation">(</span>args<span class="token punctuation">)</span><span class="token punctuation">)</span>
+ 
+ <span class="token keyword">with</span> experiment<span class="token punctuation">.</span>train<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+     experiment<span class="token punctuation">.</span>log_metric<span class="token punctuation">(</span><span class="token string">'epoch_loss'</span><span class="token punctuation">,</span> train_loss<span class="token punctuation">,</span> step<span class="token operator">=</span>epoch<span class="token punctuation">)</span>
+ 
+ <span class="token keyword">with</span> experiment<span class="token punctuation">.</span>validate<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+     experiment<span class="token punctuation">.</span>log_metric<span class="token punctuation">(</span><span class="token string">'epoch_loss'</span><span class="token punctuation">,</span> val_loss<span class="token punctuation">,</span> step<span class="token operator">=</span>epoch<span class="token punctuation">)</span>
+ 
+ experiment<span class="token punctuation">.</span>end<span class="token punctuation">(</span><span class="token punctuation">)</span>
+</code></pre>
+<ol start="7">
+<li>使用argparse来构建超参数管理入口</li>
+</ol>
+<pre class=" language-python"><code class="language-python">  <span class="token keyword">import</span> argparse
+  parser <span class="token operator">=</span> argparse<span class="token punctuation">.</span>ArgumentParser<span class="token punctuation">(</span><span class="token punctuation">)</span>
+ 
+   parser<span class="token punctuation">.</span>add_argument<span class="token punctuation">(</span><span class="token string">"--drop_data_rate"</span><span class="token punctuation">,</span> default<span class="token operator">=</span><span class="token number">0.9</span><span class="token punctuation">,</span> type<span class="token operator">=</span>float<span class="token punctuation">,</span>required<span class="token operator">=</span><span class="token boolean">False</span><span class="token punctuation">)</span>
+ 
+   args <span class="token operator">=</span> parser<span class="token punctuation">.</span>parse_args<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">#将参数变成可调用对象</span>
+ 
+   pp<span class="token punctuation">.</span>pprint<span class="token punctuation">(</span>vars<span class="token punctuation">(</span>args<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true"># 打印参数</span>
+ 
+   <span class="token keyword">def</span> <span class="token function">str2bool</span><span class="token punctuation">(</span>v<span class="token punctuation">)</span><span class="token punctuation">:</span>
+     <span class="token keyword">if</span> v<span class="token punctuation">.</span>lower<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">in</span> <span class="token punctuation">(</span><span class="token string">'yes'</span><span class="token punctuation">,</span> <span class="token string">'true'</span><span class="token punctuation">,</span> <span class="token string">'t'</span><span class="token punctuation">,</span> <span class="token string">'y'</span><span class="token punctuation">,</span> <span class="token string">'1'</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+         <span class="token keyword">return</span> <span class="token boolean">True</span>
+     <span class="token keyword">elif</span> v<span class="token punctuation">.</span>lower<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">in</span> <span class="token punctuation">(</span><span class="token string">'no'</span><span class="token punctuation">,</span> <span class="token string">'false'</span><span class="token punctuation">,</span> <span class="token string">'f'</span><span class="token punctuation">,</span> <span class="token string">'n'</span><span class="token punctuation">,</span> <span class="token string">'0'</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+         <span class="token keyword">return</span> <span class="token boolean">False</span>
+     <span class="token keyword">else</span><span class="token punctuation">:</span>
+         <span class="token keyword">raise</span> argparse<span class="token punctuation">.</span>ArgumentTypeError<span class="token punctuation">(</span><span class="token string">'Unsupported value encountered.'</span><span class="token punctuation">)</span>
+</code></pre>
+<p>注： 使用add_argument()添加参数的时候有一个大坑，=当添加参数的type为bool的时候，不能设置type=bool，需要自定义str2bool函数，然后设置type=str2bool。</p>
+<ol start="8">
+<li>使用multiprocessing提高处理速度：凡是能够并行处理且数据量巨大的任务，应尽量使用多进程编程</li>
+</ol>
+<pre class=" language-python"><code class="language-python"> <span class="token keyword">from</span> multiprocessing <span class="token keyword">import</span> Pool
+ <span class="token keyword">from</span> tqdm <span class="token keyword">import</span> tqdm
+ 
+  <span class="token keyword">with</span> Pool<span class="token punctuation">(</span>n_workers<span class="token punctuation">)</span> <span class="token keyword">as</span> p<span class="token punctuation">:</span> <span class="token comment" spellcheck="true"># n_workers表示进程数</span>
+     result <span class="token operator">=</span> list<span class="token punctuation">(</span>tqdm<span class="token punctuation">(</span>p<span class="token punctuation">.</span>imap<span class="token punctuation">(</span>function<span class="token punctuation">,</span> data<span class="token punctuation">)</span><span class="token punctuation">,</span> total<span class="token operator">=</span>len<span class="token punctuation">(</span>data<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true"># 这里使用tqdm显示进度条，需要调用imap，如果不用显示进度条调用map函数</span>
+</code></pre>
+<ol start="9">
+<li>使用plt将图片保存到内存中，提高处理效率</li>
+</ol>
+<pre class=" language-python"><code class="language-python"> <span class="token keyword">from</span> io <span class="token keyword">import</span> BytesIO
+ <span class="token keyword">import</span> matplotlib<span class="token punctuation">.</span>pyplot <span class="token keyword">as</span> plt
+ 
+ p_bytes <span class="token operator">=</span> BytesIO<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">#申请内存</span>
+ plt<span class="token punctuation">.</span>savefig<span class="token punctuation">(</span>p_bytes<span class="token punctuation">,</span> format<span class="token operator">=</span><span class="token string">'png'</span><span class="token punctuation">)</span>
+</code></pre>
+<ol start="10">
+<li>关于采样的函数</li>
+</ol>
+<pre class=" language-python"><code class="language-python"> <span class="token keyword">import</span> numpy <span class="token keyword">as</span> np
+ <span class="token keyword">import</span> random
+ 
+ indents <span class="token operator">=</span> np<span class="token punctuation">.</span>random<span class="token punctuation">.</span>choice<span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">,</span> n<span class="token punctuation">,</span>replace<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">,</span>p<span class="token operator">=</span><span class="token punctuation">[</span>pro1<span class="token punctuation">,</span> pro2<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true"># 有放回的从[0,1]中取n个值，取0的概率为pro1，取1的概率为pro2</span>
+ 
+ random<span class="token punctuation">.</span>shuffle<span class="token punctuation">(</span>data<span class="token punctuation">)</span>
+ sample_resulut <span class="token operator">=</span> random<span class="token punctuation">.</span>sample<span class="token punctuation">(</span>data<span class="token punctuation">,</span> n<span class="token punctuation">)</span>
+</code></pre>
+<p>11.PIL库读取图片</p>
+<pre class=" language-python"><code class="language-python"> <span class="token keyword">import</span> PIL
+ 
+ img <span class="token operator">=</span> PIL<span class="token punctuation">.</span>Image<span class="token punctuation">.</span>open<span class="token punctuation">(</span>image_byte<span class="token punctuation">)</span>
+ img <span class="token operator">=</span> img<span class="token punctuation">.</span>convert<span class="token punctuation">(</span><span class="token string">'RGB'</span><span class="token punctuation">)</span>
+</code></pre>
+<ol start="12">
+<li>plt 画散点图和图片画布设置</li>
+</ol>
+<pre class=" language-python"><code class="language-python"> <span class="token keyword">import</span> matplotlib<span class="token punctuation">.</span>pyplot <span class="token keyword">as</span> plt
+ 
+ plt<span class="token punctuation">.</span>rcParams<span class="token punctuation">[</span><span class="token string">'figure.figsize'</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true"># 设置图片大小</span>
+ 
+ plt<span class="token punctuation">.</span>rcParams<span class="token punctuation">[</span><span class="token string">'savefig.dpi'</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">56</span> <span class="token comment" spellcheck="true">#设置像素</span>
+ plt<span class="token punctuation">.</span>rcParams<span class="token punctuation">[</span><span class="token string">'figure.dpi'</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">56</span> <span class="token comment" spellcheck="true">#设置像素</span>
+ plt<span class="token punctuation">.</span>axis<span class="token punctuation">(</span><span class="token string">'off'</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">#关闭坐标</span>
+ 
+ <span class="token comment" spellcheck="true"># 多张子图</span>
+ fig<span class="token punctuation">,</span> axs <span class="token operator">=</span> plt<span class="token punctuation">.</span>subplots<span class="token punctuation">(</span>n<span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span>
+ <span class="token keyword">for</span> idx<span class="token punctuation">,</span> dim <span class="token keyword">in</span> enumerate<span class="token punctuation">(</span>range<span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+     axs<span class="token punctuation">[</span>idx<span class="token punctuation">]</span><span class="token punctuation">.</span>axis<span class="token punctuation">(</span><span class="token string">'off'</span><span class="token punctuation">)</span>
+     axs<span class="token punctuation">[</span>idx<span class="token punctuation">]</span><span class="token punctuation">.</span>scatter<span class="token punctuation">(</span>x<span class="token punctuation">,</span> y<span class="token punctuation">,</span> s<span class="token operator">=</span><span class="token number">0.1</span><span class="token punctuation">)</span>
+ 
+ <span class="token comment" spellcheck="true"># 单张子图</span>
+ fig<span class="token punctuation">,</span> axs <span class="token operator">=</span> plt<span class="token punctuation">.</span>subplots<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span>
+ axs<span class="token punctuation">.</span>axis<span class="token punctuation">(</span><span class="token string">'off'</span><span class="token punctuation">)</span>
+ axs<span class="token punctuation">.</span>scatter<span class="token punctuation">(</span>x<span class="token punctuation">,</span> y<span class="token punctuation">,</span> s<span class="token operator">=</span><span class="token number">0.1</span><span class="token punctuation">)</span>
+ 
+ plt<span class="token punctuation">.</span>savefig<span class="token punctuation">(</span>file_name<span class="token punctuation">)</span> <span class="token comment" spellcheck="true"># 保存到磁盘</span>
+ p_bytes <span class="token operator">=</span> BytesIO<span class="token punctuation">(</span><span class="token punctuation">)</span>
+ plt<span class="token punctuation">.</span>savefig<span class="token punctuation">(</span>p_bytes<span class="token punctuation">,</span> format<span class="token operator">=</span><span class="token string">'png'</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true"># 保存到内存</span>
+ plt<span class="token punctuation">.</span>cla<span class="token punctuation">(</span><span class="token punctuation">)</span>
+ plt<span class="token punctuation">.</span>close<span class="token punctuation">(</span><span class="token string">'all'</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true"># 清空缓存</span>
+</code></pre>
+
+      
     </div>
-</div>
 
-<script type="text/javascript">
-$(function () {
-    var searchFunc = function (path, search_id, content_id) {
-        'use strict';
-        $.ajax({
-            url: path,
-            dataType: "xml",
-            success: function (xmlResponse) {
-                // get the contents from search data
-                var datas = $("entry", xmlResponse).map(function () {
-                    return {
-                        title: $("title", this).text(),
-                        content: $("content", this).text(),
-                        url: $("url", this).text()
-                    };
-                }).get();
-                var $input = document.getElementById(search_id);
-                var $resultContent = document.getElementById(content_id);
-                $input.addEventListener('input', function () {
-                    var str = '<ul class=\"search-result-list\">';
-                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
-                    $resultContent.innerHTML = "";
-                    if (this.value.trim().length <= 0) {
-                        return;
-                    }
-                    // perform local searching
-                    datas.forEach(function (data) {
-                        var isMatch = true;
-                        var data_title = data.title.trim().toLowerCase();
-                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
-                        var data_url = data.url;
-                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
-                        var index_title = -1;
-                        var index_content = -1;
-                        var first_occur = -1;
-                        // only match artiles with not empty titles and contents
-                        if (data_title !== '' && data_content !== '') {
-                            keywords.forEach(function (keyword, i) {
-                                index_title = data_title.indexOf(keyword);
-                                index_content = data_content.indexOf(keyword);
-                                if (index_title < 0 && index_content < 0) {
-                                    isMatch = false;
-                                } else {
-                                    if (index_content < 0) {
-                                        index_content = 0;
-                                    }
-                                    if (i === 0) {
-                                        first_occur = index_content;
-                                    }
-                                }
-                            });
-                        }
-                        // show search results
-                        if (isMatch) {
-                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
-                            var content = data.content.trim().replace(/<[^>]+>/g, "");
-                            if (first_occur >= 0) {
-                                // cut out 100 characters
-                                var start = first_occur - 20;
-                                var end = first_occur + 80;
-                                if (start < 0) {
-                                    start = 0;
-                                }
-                                if (start === 0) {
-                                    end = 100;
-                                }
-                                if (end > content.length) {
-                                    end = content.length;
-                                }
-                                var match_content = content.substr(start, end);
-                                // highlight all keywords
-                                keywords.forEach(function (keyword) {
-                                    var regS = new RegExp(keyword, "gi");
-                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
-                                });
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
 
-                                str += "<p class=\"search-result\">" + match_content + "...</p>"
-                            }
-                            str += "</li>";
-                        }
-                    });
-                    str += "</ul>";
-                    $resultContent.innerHTML = str;
-                });
-            }
-        });
-    };
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://ailyong.cn/2022/04/29/yuan-cheng-fang-wen-fu-wu-qi-jupyter-notebook/">
 
-    searchFunc('/search.xml', 'searchInput', 'searchResult');
-});
-</script>
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Lyong">
+      <meta itemprop="description" content="Keep go on">
+    </span>
 
-    <!-- 回到顶部按钮 -->
-<div id="backTop" class="top-scroll">
-    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
-        <i class="fas fa-arrow-up"></i>
-    </a>
-</div>
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Lyong's blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/04/29/yuan-cheng-fang-wen-fu-wu-qi-jupyter-notebook/" class="post-title-link" itemprop="url">远程访问服务器Jupyter-Notebook</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2022-04-29 16:24:56" itemprop="dateCreated datePublished" datetime="2022-04-29T16:24:56+08:00">2022-04-29</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2024-07-23 17:11:41" itemprop="dateModified" datetime="2024-07-23T17:11:41+08:00">2024-07-23</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%88%AC%E5%9D%91%E6%80%BB%E7%BB%93/" itemprop="url" rel="index"><span itemprop="name">爬坑总结</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h4 id="方法：-ssh远程使用jupyter-notebook"><a href="#方法：-ssh远程使用jupyter-notebook" class="headerlink" title="方法： ssh远程使用jupyter notebook"></a>方法： ssh远程使用jupyter notebook</h4><p>在远程服务器上，启动jupyter notebooks服务：</p>
+<pre class=" language-bash"><code class="language-bash">jupyter notebook --no-browser --port<span class="token operator">=</span>8889
+</code></pre>
+<p>在本地终端中启动SSH：</p>
+<pre class=" language-bash"><code class="language-bash"><span class="token function">ssh</span> -N -f -L localhost:8888:localhost:8889 username@serverIP
+</code></pre>
+<p>其中： -N 告诉SSH没有命令要被远程执行； -f 告诉SSH在后台执行； -L 是指定port forwarding的配置，远端端口是8889，本地的端口号的8888。</p>
+<p>注意：username@serverIP替换成服务器的对应账号。</p>
+<p>最后打开浏览器，访问：<a target="_blank" rel="noopener" href="http://localhost:8888/">http://localhost:8888/</a></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://ailyong.cn/2021/12/10/c-duo-xian-cheng-bian-cheng/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Lyong">
+      <meta itemprop="description" content="Keep go on">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Lyong's blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/12/10/c-duo-xian-cheng-bian-cheng/" class="post-title-link" itemprop="url">C++多线程编程</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-12-10 22:48:07" itemprop="dateCreated datePublished" datetime="2021-12-10T22:48:07+08:00">2021-12-10</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-12-11 15:50:01" itemprop="dateModified" datetime="2021-12-11T15:50:01+08:00">2021-12-11</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h4 id="常用线程函数"><a href="#常用线程函数" class="headerlink" title="常用线程函数"></a>常用线程函数</h4><ul>
+<li><p>join() :</p>
+<blockquote>
+<p>阻塞主线程，让主线程等待子线程执行完，当子线程执行完毕，这个join（）就执行完毕，主线程继续执行</p>
+</blockquote>
+</li>
+<li><p>detach() :</p>
+<blockquote>
+<p>从主线程中将子线程分离，主线程不必等待子线程执行完，一旦detach()之后子线程将失去与主线程的关联，<br>此时这个子线程就会驻留在后台运行，被c++运行时接管，当这个子线程执行完成后，由运行时库负责清理线程相关的资源。</p>
+</blockquote>
+</li>
+</ul>
+<h4 id="线程创建方法"><a href="#线程创建方法" class="headerlink" title="线程创建方法"></a>线程创建方法</h4><ul>
+<li><p>通过函数创建线程</p>
+<pre class=" language-c++"><code class="language-c++">#include <iostream>
+#include <thread>
+using  namespace  std;
+void do_something()&#123;
+    cout << "线程开始"<< endl;
+    //do something
+    cout << "线程结束" << endl;
+&#125;
+int main()&#123;
+    thread myjob (do_something); 
+    myjob.join(); //阻塞主线程，等待子线程结束
+    cout << "The End" <<endl;
+    return 0;
+&#125;
+</code></pre>
+</li>
+<li><p>通过类创建线程</p>
+<pre class=" language-c++"><code class="language-c++">#include <iostream>
+#include <thread>
+using  namespace  std;
+
+class  myClass&#123;
+private:
+    int data;
+public:
+    myClass(int d):data(d)&#123;
+        cout << "构造函数" <<endl;
+    &#125;
+    myClass(const myClass&myClass1):data(myClass1.data)&#123;
+        cout << "拷贝构造函数" <<endl;
+    &#125;
+    ~myClass()&#123;
+        cout << "析构函数" <<endl;
+    &#125;
+    void operator()()&#123;
+        //线程的入口
+        cout << "线程开始" <<endl;
+//        do something
+        cout << "线程结束" << endl;
+    &#125;
+&#125;;
 
 
-    <script src="/libs/materialize/materialize.min.js"></script>
-    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
-    <script src="/libs/aos/aos.js"></script>
-    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
-    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
-    <script src="/js/matery.js"></script>
+int main()&#123;
+    int a = 10;
+    myClass myclass(a);
+    thread myjob (myclass); // 复制一次myclass
+    myjob.join();
+    cout << "The End" <<endl;
+    return 0;
+&#125;
+</code></pre>
+</li>
+<li><p>通过lambda表达式创建线程</p>
+<pre class=" language-c++"><code class="language-c++">#include <iostream>
+#include <thread>
+using  namespace  std;
 
-    <!-- Baidu Analytics -->
+int main()&#123;
+    auto myLambdaThread = []&#123;
+        cout << "线程开始" << endl;
+//        do something
+        cout << "线程结束" << endl;
+    &#125;;
+    thread myjob (myLambdaThread);
+    myjob.join();
+    cout << "The End" <<endl;
+    return 0;
+    
+&#125;
+</code></pre>
+<h4 id="传递临时对象作为线程参数"><a href="#传递临时对象作为线程参数" class="headerlink" title="传递临时对象作为线程参数"></a>传递临时对象作为线程参数</h4></li>
+</ul>
+<pre class=" language-c++"><code class="language-c++">#include <iostream>
+#include <thread>
+using  namespace  std;
+void do_something_with_parameters(const int& a, char *buff)&#123;
+    cout << a << endl;
+    cout << buff << endl;//传指针危险
+&#125;
+int main()&#123;
+    int val = 1;
+    char buff[] = "this is a test!";
+    thread myjob (do_something_with_parameters, val, buff);
+    myjob.join(); //阻塞主线程，等待子线程结束
+    cout << "The End" <<endl;
+    return 0;
+&#125;
+</code></pre>
+<h4 id="线程id"><a href="#线程id" class="headerlink" title="线程id"></a>线程id</h4><pre class=" language-bash"><code class="language-bash">获取线程id：get_id（）
+获取当前线程id：std::this_thread::get_id<span class="token punctuation">(</span><span class="token punctuation">)</span>
+</code></pre>
+<h4 id="线程间的值传递"><a href="#线程间的值传递" class="headerlink" title="线程间的值传递"></a>线程间的值传递</h4><pre class=" language-bash"><code class="language-bash">std::ref<span class="token punctuation">(</span><span class="token punctuation">)</span>
+std::move<span class="token punctuation">(</span><span class="token punctuation">)</span>
+</code></pre>
+<h4 id="最多可以使用的线程数"><a href="#最多可以使用的线程数" class="headerlink" title="最多可以使用的线程数"></a>最多可以使用的线程数</h4><pre class=" language-ba"><code class="language-ba">std::thread::hardware_concurrency()
+</code></pre>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://ailyong.cn/2021/09/29/jiang-wei-xin-liao-tian-zhong-de-yu-yin-zhuan-huan-wei-mp3/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Lyong">
+      <meta itemprop="description" content="Keep go on">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Lyong's blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/09/29/jiang-wei-xin-liao-tian-zhong-de-yu-yin-zhuan-huan-wei-mp3/" class="post-title-link" itemprop="url">将微信聊天中的语音转换为mp3</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2021-09-29 17:21:06 / 修改时间：18:12:46" itemprop="dateCreated datePublished" datetime="2021-09-29T17:21:06+08:00">2021-09-29</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%94%9F%E6%B4%BB%E6%80%BB%E7%BB%93/" itemprop="url" rel="index"><span itemprop="name">生活总结</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <ol>
+<li><p>找到语音文件将其导出</p>
+<ul>
+<li>找到MAC微信图片，鼠标放在图片上面按下右键调出如下图所示的提示框，然后点击“在Finder中显示”，打开音频、图片等文件在本地保存的位置。</li>
+</ul>
+ <img src="https://raw.githubusercontent.com/Skylyong/i/main/20210929173234.png" alt="image-20210929173226533" style="zoom:50%;" />
+
+<p> ​            这个地方需要注意的是，微信保存到本地的记录是按照聊天会话存储的，不同会话的内容保存的位置不一样。我们应该先定位到要获取音频的会话，在该会话中调出“在Finder”中显示才行。</p>
+<ul>
+<li><p>如下图所示Audio目录就是存储会话语音</p>
+<img src="https://raw.githubusercontent.com/Skylyong/i/main/20210929173725.png" alt="image-20210929173725735" style="zoom:45%;" /></li>
+</ul>
+</li>
+</ol>
+<ol start="2">
+<li><p>将silk格式文件转换为mp3格式文件</p>
+<ul>
+<li><p>安装silk-v3</p>
+<p>silk-v3依赖gcc和FFmpeg来运行，如果没有这两个依赖项，通过如下命令安装依赖：</p>
+<pre class=" language-sh"><code class="language-sh">brew install gcc
+brew install ffmpeg
+</code></pre>
+<p>安装好依赖之后，在<a target="_blank" rel="noopener" href="https://github.com/kn007/silk-v3-decoder">这里</a>将silk-v3克隆到本地电脑。</p>
+</li>
+<li><p>用silk-v3进行格式转换</p>
+<p>按照<a target="_blank" rel="noopener" href="https://github.com/Skylyong/silk-v3-decoder">silk-v3项目说明</a>运行命令，完成格式转换。</p>
+<ul>
+<li><p>转换单个文件</p>
+<pre class=" language-sh"><code class="language-sh">sh converter.sh xxx.slk mp3
+</code></pre>
+</li>
+<li><p>批量转换文件夹中的多个文件</p>
+<pre class=" language-sh"><code class="language-sh">sh converter.sh inputFolder ouputFolder mp3
+</code></pre>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>参考资料</p>
+</li>
+</ol>
+<p><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/fbccd8a52374">微信语音silk格式文件转换处理记录</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/henryhu712/article/details/89852514">将微信语音消息转换为 mp3</a></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://ailyong.cn/2021/09/19/ji-qi-xue-xi-can-kao-zi-liao/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Lyong">
+      <meta itemprop="description" content="Keep go on">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Lyong's blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/09/19/ji-qi-xue-xi-can-kao-zi-liao/" class="post-title-link" itemprop="url">机器学习参考资料</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-09-19 23:59:09" itemprop="dateCreated datePublished" datetime="2021-09-19T23:59:09+08:00">2021-09-19</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-10-28 21:50:44" itemprop="dateModified" datetime="2021-10-28T21:50:44+08:00">2021-10-28</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%AD%A6%E4%B9%A0%E8%B5%84%E6%96%99/" itemprop="url" rel="index"><span itemprop="name">学习资料</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>机器学习参考资料：</p>
+<ul>
+<li><p>机器学习参考书籍：</p>
+<ul>
+<li>《神经网络与深度学习》书籍及PPT：<a target="_blank" rel="noopener" href="https://nndl.github.io/">https://nndl.github.io/</a></li>
+<li>《统计学习方法》李航著</li>
+<li>《机器学习》周志华著</li>
+<li>《南瓜书》：<a target="_blank" rel="noopener" href="https://datawhalechina.github.io/pumpkin-book/%EF%BC%8C">https://datawhalechina.github.io/pumpkin-book/，</a> <a target="_blank" rel="noopener" href="https://github.com/datawhalechina/pumpkin-book">https://github.com/datawhalechina/pumpkin-book</a></li>
+<li>《迁移学习》杨强等著</li>
+<li>《联邦学习》杨强等著</li>
+<li>Python Machine Learning： <a target="_blank" rel="noopener" href="https://github.com/rasbt/python-machine-learning-book">https://github.com/rasbt/python-machine-learning-book</a></li>
+<li>深度学习：英文版（ <a target="_blank" rel="noopener" href="https://www.deeplearningbook.org/%EF%BC%89%E3%80%81%E4%B8%AD%E6%96%87%E7%89%88%EF%BC%88">https://www.deeplearningbook.org/）、中文版（</a> <a target="_blank" rel="noopener" href="https://github.com/exacity/deeplearningbook-chinese%EF%BC%89">https://github.com/exacity/deeplearningbook-chinese）</a></li>
+<li>《强化学习Reinforcement Learning（第2版）》[加]Richard S.Sutton [美]Andrew G. Barto著，俞凯等译</li>
+</ul>
+</li>
+<li><p>数学类参考书籍：</p>
+<ul>
+<li>凸优化Convex Optimization（<a target="_blank" rel="noopener" href="http://stanford.edu/~boyd/cvxbook/%EF%BC%89%E3%80%81">http://stanford.edu/~boyd/cvxbook/）、</a></li>
+<li>线性代数 <a target="_blank" rel="noopener" href="https://ocw.mit.edu/courses/mathematics/18-06sc-linear-algebra-fall-2011/index.htm">https://ocw.mit.edu/courses/mathematics/18-06sc-linear-algebra-fall-2011/index.htm</a></li>
+<li>概率论与统计：1）斯坦福课程CS109 Probability for Computer Scientists： <a target="_blank" rel="noopener" href="http://web.stanford.edu/class/cs109/%EF%BC%9B2%EF%BC%89Introduction">http://web.stanford.edu/class/cs109/；2）Introduction</a> to Probability, Statistics, and Random Processes： <a target="_blank" rel="noopener" href="https://www.probabilitycourse.com/">https://www.probabilitycourse.com/</a></li>
+</ul>
+</li>
+<li><p>机器学习库/平台：</p>
+<ul>
+<li>SKlearn（<a target="_blank" rel="noopener" href="https://scikit-learn.org/stable/%EF%BC%89%EF%BC%8CSKlearn%E7%9A%84User">https://scikit-learn.org/stable/），SKlearn的User</a> Guide里总结了很多机器学习模型，可以学习下<a target="_blank" rel="noopener" href="https://scikit-learn.org/stable/user_guide.html%E3%80%82%E4%B8%8A%E9%9D%A2%E6%8F%90%E5%88%B0%E7%9A%84Python">https://scikit-learn.org/stable/user_guide.html。上面提到的Python</a> Machine Learning书籍中就大量使用SKlearn的API。</li>
+<li>Pytorch： <a target="_blank" rel="noopener" href="https://pytorch.org/tutorials/">https://pytorch.org/tutorials/</a></li>
+<li>TensorFlow</li>
+<li>Keras（ <a target="_blank" rel="noopener" href="https://keras.io/%EF%BC%89%E7%AD%89%E3%80%82">https://keras.io/）等。</a> </li>
+</ul>
+</li>
+<li><p>线上课程：</p>
+<ul>
+<li>吴恩达教授的视频教学课程（ <a target="_blank" rel="noopener" href="https://www.coursera.org/learn/machine-learning%EF%BC%89">https://www.coursera.org/learn/machine-learning）</a></li>
+<li>李宏毅-台湾大学（<a target="_blank" rel="noopener" href="http://speech.ee.ntu.edu.tw/~tlkagk/courses_ML20.html%EF%BC%89">http://speech.ee.ntu.edu.tw/~tlkagk/courses_ML20.html）</a></li>
+<li>Google的深度学习课程（<a target="_blank" rel="noopener" href="https://www.udacity.com/course/intro-to-tensorflow-for-deep-learning--ud187%EF%BC%89">https://www.udacity.com/course/intro-to-tensorflow-for-deep-learning--ud187）</a></li>
+<li>李飞飞教授的计算机视觉课程（<a target="_blank" rel="noopener" href="http://cs231n.stanford.edu)/">http://cs231n.stanford.edu）</a></li>
+<li>Richard Socher 的自然语言处理课程（<a target="_blank" rel="noopener" href="http://cs224d.stanford.edu/">http://cs224d.stanford.edu</a>)</li>
+<li> University of Chicago Mathematical Foundations of Machine Learning(<a target="_blank" rel="noopener" href="https://voices.uchicago.edu/willett/teaching/mathematical-foundations-of-machine-learning-fall-2020/">https://voices.uchicago.edu/willett/teaching/mathematical-foundations-of-machine-learning-fall-2020/</a>)</li>
+</ul>
+</li>
+<li><p>其他资料：</p>
+<ul>
+<li>Machine Learning and Artificial Intelligence and their role in networking： <a target="_blank" rel="noopener" href="https://www.bilibili.com/video/av70398058/">https://www.bilibili.com/video/av70398058/</a></li>
+<li>链接：<a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1qgYRbtfCLZE8d0MuCSrRLw">https://pan.baidu.com/s/1qgYRbtfCLZE8d0MuCSrRLw</a>  密码:1am4</li>
+<li>链接：<a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1YAujUyivMKZcOCUxB9GZlw">https://pan.baidu.com/s/1YAujUyivMKZcOCUxB9GZlw</a> 提取码：wru7<!-- + 博客： --></li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>声明： 内容摘自<a target="_blank" rel="noopener" href="https://tingwang1122.github.io/">王老师</a>的个人主页。</p>
+</blockquote>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://ailyong.cn/2021/09/19/you-yong-de-zi-yuan/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Lyong">
+      <meta itemprop="description" content="Keep go on">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Lyong's blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/09/19/you-yong-de-zi-yuan/" class="post-title-link" itemprop="url">有用的资源</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-09-19 23:28:51" itemprop="dateCreated datePublished" datetime="2021-09-19T23:28:51+08:00">2021-09-19</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2025-01-06 14:02:47" itemprop="dateModified" datetime="2025-01-06T14:02:47+08:00">2025-01-06</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%AD%A6%E4%B9%A0%E8%B5%84%E6%96%99/" itemprop="url" rel="index"><span itemprop="name">学习资料</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>有用的资源</p>
+<!-- <br> -->
+
+<ul>
+<li><p><a target="_blank" rel="noopener" href="https://github.com/Skylyong/Skylyong.github.io/tree/main/files/paper-reading.pdf">How to Read a Paper</a>, by <a target="_blank" rel="noopener" href="http://blizzard.cs.uwaterloo.ca/keshav/wiki/index.php/Main_Page">Prof. Srinivasan Keshav</a>.</p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="http://dustintran.com/blog/a-research-to-engineering-workflow">A Research to Engineering Workflow</a>, by <a target="_blank" rel="noopener" href="http://dustintran.com/">Dr. Dustin Tran</a>.</p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://github.com/Skylyong/Skylyong.github.io/tree/main/files/mathwriting.pdf">Mathematical Writing</a>, by <a target="_blank" rel="noopener" href="https://www-cs-faculty.stanford.edu/~knuth/">Donald E. Knuth</a>,<a target="_blank" rel="noopener" href="https://larrabee.soe.ucsc.edu/">Tracy Larrabee</a> and <a target="_blank" rel="noopener" href="http://www.math.utah.edu/~roberts/">Paul M. Roberts</a>.</p>
+</li>
+</ul>
+<!-- + [Whitesides' Group: Writing a Paper](), by [George M. Whitesides](https://gmwgroup.harvard.edu/people/george-m-whitesides). -->
+
+<ul>
+<li><p><a target="_blank" rel="noopener" href="https://github.com/Skylyong/Skylyong.github.io/tree/main/files/review-writing.pdf">Writing reviews for systems conferences</a>, by <a target="_blank" rel="noopener" href="http://people.inf.ethz.ch/troscoe/">Timothy Roscoe</a>.</p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://github.com/Skylyong/Skylyong.github.io/tree/main/files/how-to-write-a-paper.pdf">How to write a paper</a>, by <a target="_blank" rel="noopener" href="http://www-edc.eng.cam.ac.uk/people/mfa2.html">Mike Ashby</a>.</p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://github.com/Skylyong/Skylyong.github.io/tree/main/files/Leading_Paper_Discussions.pdf">Pointers for Leading Paper Discussions</a>, by <a target="_blank" rel="noopener" href="https://www2.eecs.berkeley.edu/Faculty/Homepages/katz.html">Randy H. Katz</a>.</p>
+</li>
+<li><p><a href="https://ailyong.cn/2021/09/19/ji-qi-xue-xi-can-kao-zi-liao/">Machine Learning Materials for Beginners</a>.</p>
+</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://ailyong.cn/2021/08/14/wei-xin-biao-qian-zheng-li/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Lyong">
+      <meta itemprop="description" content="Keep go on">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Lyong's blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/08/14/wei-xin-biao-qian-zheng-li/" class="post-title-link" itemprop="url">微信标签整理</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2021-08-14 01:06:28 / 修改时间：01:08:04" itemprop="dateCreated datePublished" datetime="2021-08-14T01:06:28+08:00">2021-08-14</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%80%BB%E7%BB%93/" itemprop="url" rel="index"><span itemprop="name">总结</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <blockquote>
+<p>最近对微信通讯录做了一次比较彻底的整理，记录一下。</p>
+</blockquote>
+<p>我根据兴趣、人生阶段、亲疏关系和生活四个维度来分类，每个维度的具体分类标签如下：</p>
+<ul>
+<li>按兴趣： 兴趣-户外，兴趣-跑步，兴趣-阅读，兴趣-美食等</li>
+<li>按人生阶段划分为：中学，本科，研究生，兼职等，每一个阶段又可以做进一步划分。<ul>
+<li>中学-同学，中学-校友，中学-老师</li>
+<li>本科-同学，本科-校友，本科-老师</li>
+<li>研究生-同学，研究生-校友，研究生-老师</li>
+<li>兼职-同事，兼职-同行</li>
+</ul>
+</li>
+<li>按亲疏关系可分为：<ul>
+<li>家人</li>
+<li>亲戚</li>
+<li>朋友</li>
+<li>有缘相逢</li>
+</ul>
+</li>
+<li>生活涉及的东西比较杂，我是把“照相、打印和水电等”都放在了“生活便利”这一个标签里面，然后在名字上面做备注，比如“张三|打印”。此外，我把医生、法律人士做了单独的标签，最后加了一个“大佬”标签，方便时刻关注大佬的动态、向大佬靠齐。<ul>
+<li>生活便利</li>
+<li>生活-医务</li>
+<li>生活-法律</li>
+<li>大佬</li>
+</ul>
+</li>
+</ul>
+<p>分好之后才感觉这种二级分类有点繁琐，先用一段时间看看，不行的话再做优化。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+
+  
+  <nav class="pagination">
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+  </nav>
+
+
+
+          </div>
+          
 
 <script>
-    var _hmt = _hmt || [];
-    (function () {
-        var hm = document.createElement("script");
-        hm.src = "https://hm.baidu.com/hm.js?9a8ff6f1dff94383b5c386933d0a21c3";
-        var s = document.getElementsByTagName("script")[0];
-        s.parentNode.insertBefore(hm, s);
-    })();
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
 </script>
 
-    <!-- Baidu Push -->
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
 
-<script>
-    (function () {
-        var bp = document.createElement('script');
-        var curProtocol = window.location.protocol.split(':')[0];
-        if (curProtocol === 'https') {
-            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
-        } else {
-            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
-        }
-        var s = document.getElementsByTagName("script")[0];
-        s.parentNode.insertBefore(bp, s);
-    })();
-</script>
+  <aside class="sidebar">
+    <div class="sidebar-inner">
 
-    
-    <script src="/libs/others/clicklove.js" async="async"></script>
-    
-    
-    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
-    
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
 
-    
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
 
-    
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Lyong</p>
+  <div class="site-description" itemprop="description">Keep go on</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">38</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+        <span class="site-state-item-count">13</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+        <span class="site-state-item-count">28</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
 
-    <!--腾讯兔小巢-->
-    
-    
 
-    
 
-    
+      </div>
 
-    
-    <script src="/libs/instantpage/instantpage.js" type="module"></script>
-    
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2025</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Lyong</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
 
 </body>
-
 </html>
