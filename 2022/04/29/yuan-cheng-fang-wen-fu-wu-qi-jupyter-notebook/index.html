@@ -387,11 +387,11 @@
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <h4 id="方法：-ssh远程使用jupyter-notebook"><a href="#方法：-ssh远程使用jupyter-notebook" class="headerlink" title="方法： ssh远程使用jupyter notebook"></a>方法： ssh远程使用jupyter notebook</h4><p>在远程服务器上，启动jupyter notebooks服务：</p>
-<pre class=" language-bash"><code class="language-bash">jupyter notebook --no-browser --port<span class="token operator">=</span>8889
-</code></pre>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">jupyter notebook --no-browser --port=8889</span><br></pre></td></tr></table></figure>
+
 <p>在本地终端中启动SSH：</p>
-<pre class=" language-bash"><code class="language-bash"><span class="token function">ssh</span> -N -f -L localhost:8888:localhost:8889 username@serverIP
-</code></pre>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh -N -f -L localhost:8888:localhost:8889 username@serverIP</span><br></pre></td></tr></table></figure>
+
 <p>其中： -N 告诉SSH没有命令要被远程执行； -f 告诉SSH在后台执行； -L 是指定port forwarding的配置，远端端口是8889，本地的端口号的8888。</p>
 <p>注意：username@serverIP替换成服务器的对应账号。</p>
 <p>最后打开浏览器，访问：<a target="_blank" rel="noopener" href="http://localhost:8888/">http://localhost:8888/</a></p>

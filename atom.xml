@@ -79,7 +79,7 @@
         
         
     <summary type="html">&lt;p&gt;先从网络上下载 &lt;code&gt;SimHei.ttf&lt;/code&gt;  文件放在某个位置，然后用下面的代码，设置字体的位置。&lt;/p&gt;
-&lt;pre class=&quot; language-python&quot;&gt;&lt;code class=&quot;language-python&quot;&gt;&lt;span</summary>
+&lt;figure class=&quot;highlight python&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td</summary>
         
       
     
@@ -106,7 +106,7 @@
         
     <summary type="html">&lt;ol&gt;
 &lt;li&gt;&lt;p&gt;导入依赖的包&lt;/p&gt;
-&lt;pre class=&quot; language-python&quot;&gt;&lt;code class=&quot;language-python&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;from&lt;/span&gt; concurrent&lt;span</summary>
+&lt;figure class=&quot;highlight python&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td</summary>
         
       
     

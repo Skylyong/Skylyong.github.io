@@ -359,7 +359,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    460
+                    531
                 </div>
                 
 
@@ -393,93 +393,70 @@
 </blockquote>
 <h3 id="1-Loading-data-into-Pandas"><a href="#1-Loading-data-into-Pandas" class="headerlink" title="1. Loading data into Pandas"></a>1. Loading data into Pandas</h3><blockquote>
 <p>1.1 Loading data from csv format file</p>
-<pre class=" language-python"><code class="language-python"><span class="token comment" spellcheck="true"># read data from csv format file</span>
-df <span class="token operator">=</span> pd<span class="token punctuation">.</span>read_csv<span class="token punctuation">(</span><span class="token string">'pokemon_data.csv'</span><span class="token punctuation">)</span>
-<span class="token keyword">print</span><span class="token punctuation">(</span>df<span class="token punctuation">.</span>head<span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># read data from csv format file</span></span><br><span class="line">df = pd.read_csv(<span class="string">&#x27;pokemon_data.csv&#x27;</span>)</span><br><span class="line"><span class="built_in">print</span>(df.head(<span class="number">3</span>))</span><br></pre></td></tr></table></figure>
 </blockquote>
 <blockquote>
 <p> 1.2 Loading data from txt format file</p>
 </blockquote>
 <blockquote>
-<pre class=" language-python"><code class="language-python"><span class="token comment" spellcheck="true"># read data from txt format file</span>
-df_txt <span class="token operator">=</span> pd<span class="token punctuation">.</span>read_csv<span class="token punctuation">(</span><span class="token string">'pokemon_data.txt'</span><span class="token punctuation">,</span> delimiter<span class="token operator">=</span><span class="token string">'\t'</span><span class="token punctuation">)</span>
-<span class="token keyword">print</span><span class="token punctuation">(</span>df_txt<span class="token punctuation">.</span>head<span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># read data from txt format file</span></span><br><span class="line">df_txt = pd.read_csv(<span class="string">&#x27;pokemon_data.txt&#x27;</span>, delimiter=<span class="string">&#x27;\t&#x27;</span>)</span><br><span class="line"><span class="built_in">print</span>(df_txt.head(<span class="number">3</span>))</span><br></pre></td></tr></table></figure>
 </blockquote>
 <h3 id="2-Read-Data-in-Pandas"><a href="#2-Read-Data-in-Pandas" class="headerlink" title="2. Read Data in Pandas"></a>2. Read Data in Pandas</h3><blockquote>
 <p>2.1 Read head</p>
-<pre class=" language-python"><code class="language-python"><span class="token keyword">print</span><span class="token punctuation">(</span>df<span class="token punctuation">.</span>columns<span class="token punctuation">)</span>
-</code></pre>
-<p>2.2 Read each Column</p>
-<pre class=" language-python"><code class="language-python"><span class="token keyword">print</span><span class="token punctuation">(</span>df<span class="token punctuation">[</span><span class="token string">'Name'</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">:</span><span class="token number">5</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
-<span class="token keyword">print</span><span class="token punctuation">(</span>df<span class="token punctuation">.</span>Name<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">:</span><span class="token number">5</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
-<span class="token keyword">print</span><span class="token punctuation">(</span>df<span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token string">'Name'</span><span class="token punctuation">,</span> <span class="token string">'Type 1'</span><span class="token punctuation">,</span> <span class="token string">'HP'</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">:</span><span class="token number">5</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
-</code></pre>
-<p>2.3 Read each Row</p>
-<pre class=" language-python"><code class="language-python"><span class="token comment" spellcheck="true"># print the top 4 rows</span>
-<span class="token keyword">print</span><span class="token punctuation">(</span>df<span class="token punctuation">.</span>head<span class="token punctuation">(</span><span class="token number">4</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(df.columns)</span><br></pre></td></tr></table></figure>
 
-<span class="token keyword">print</span><span class="token punctuation">(</span>df<span class="token punctuation">.</span>iloc<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
-<span class="token keyword">for</span> index<span class="token punctuation">,</span> row <span class="token keyword">in</span> df<span class="token punctuation">.</span>iterrows<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-    <span class="token keyword">print</span><span class="token punctuation">(</span>index<span class="token punctuation">,</span> row<span class="token punctuation">[</span><span class="token string">'Name'</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
-</code></pre>
+<p>2.2 Read each Column</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(df[<span class="string">&#x27;Name&#x27;</span>][<span class="number">0</span>:<span class="number">5</span>])</span><br><span class="line"><span class="built_in">print</span>(df.Name[<span class="number">0</span>:<span class="number">5</span>])</span><br><span class="line"><span class="built_in">print</span>(df[[<span class="string">&#x27;Name&#x27;</span>, <span class="string">&#x27;Type 1&#x27;</span>, <span class="string">&#x27;HP&#x27;</span>]][<span class="number">0</span>:<span class="number">5</span>])</span><br></pre></td></tr></table></figure>
+
+<p>2.3 Read each Row</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># print the top 4 rows</span></span><br><span class="line"><span class="built_in">print</span>(df.head(<span class="number">4</span>))</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(df.iloc[<span class="number">0</span>])</span><br><span class="line"><span class="keyword">for</span> index, row <span class="keyword">in</span> df.iterrows():</span><br><span class="line">    <span class="built_in">print</span>(index, row[<span class="string">&#x27;Name&#x27;</span>])</span><br></pre></td></tr></table></figure>
+
 <p>2.4 Read a specific location(R,C)</p>
-<pre class=" language-python"><code class="language-python"><span class="token keyword">print</span><span class="token punctuation">(</span>df<span class="token punctuation">.</span>iloc<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
-</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(df.iloc[<span class="number">2</span>,<span class="number">1</span>])</span><br></pre></td></tr></table></figure>
+
+
 </blockquote>
 <h3 id="3-Sorting-Describing-Data"><a href="#3-Sorting-Describing-Data" class="headerlink" title="3. Sorting/Describing Data"></a>3. Sorting/Describing Data</h3><blockquote>
 <p> 3.1 View data describe</p>
-<pre class=" language-python"><code class="language-python"><span class="token keyword">print</span><span class="token punctuation">(</span>df<span class="token punctuation">.</span>describe<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(df.describe())</span><br></pre></td></tr></table></figure>
+
 <p>3.2 Sorting</p>
-<pre class=" language-python"><code class="language-python">sort_res <span class="token operator">=</span> df<span class="token punctuation">.</span>sort_values<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token string">'Name'</span><span class="token punctuation">,</span><span class="token string">'HP'</span><span class="token punctuation">]</span><span class="token punctuation">,</span> ascending<span class="token operator">=</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
-</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sort_res = df.sort_values([<span class="string">&#x27;Name&#x27;</span>,<span class="string">&#x27;HP&#x27;</span>], ascending=[<span class="number">1</span>, <span class="number">0</span>])</span><br></pre></td></tr></table></figure>
+
+
 </blockquote>
 <h3 id="4-Making-changes-to-the-data"><a href="#4-Making-changes-to-the-data" class="headerlink" title="4. Making changes to the data"></a>4. Making changes to the data</h3><blockquote>
 <p>4.1 Create a new column</p>
-<pre class=" language-python"><code class="language-python">df<span class="token punctuation">[</span><span class="token string">'Total'</span><span class="token punctuation">]</span> <span class="token operator">=</span> df<span class="token punctuation">[</span><span class="token string">'HP'</span><span class="token punctuation">]</span> <span class="token operator">+</span> df<span class="token punctuation">[</span><span class="token string">'Attack'</span><span class="token punctuation">]</span>
-df<span class="token punctuation">[</span><span class="token string">'Total'</span><span class="token punctuation">]</span> <span class="token operator">=</span> df<span class="token punctuation">.</span>iloc<span class="token punctuation">[</span><span class="token punctuation">:</span><span class="token punctuation">,</span><span class="token number">4</span><span class="token punctuation">:</span><span class="token number">10</span><span class="token punctuation">]</span><span class="token punctuation">.</span>sum<span class="token punctuation">(</span>axis<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">)</span>
-</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">df[<span class="string">&#x27;Total&#x27;</span>] = df[<span class="string">&#x27;HP&#x27;</span>] + df[<span class="string">&#x27;Attack&#x27;</span>]</span><br><span class="line">df[<span class="string">&#x27;Total&#x27;</span>] = df.iloc[:,<span class="number">4</span>:<span class="number">10</span>].<span class="built_in">sum</span>(axis=<span class="number">1</span>)</span><br></pre></td></tr></table></figure>
 <p>4.2 Delete one column</p>
-<pre class=" language-python"><code class="language-python">df <span class="token operator">=</span> df<span class="token punctuation">.</span>drop<span class="token punctuation">(</span>columns<span class="token operator">=</span><span class="token punctuation">[</span><span class="token string">'Total'</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
-</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df = df.drop(columns=[<span class="string">&#x27;Total&#x27;</span>])</span><br></pre></td></tr></table></figure>
+
+
 </blockquote>
 <h3 id="5-Save-data-to-file"><a href="#5-Save-data-to-file" class="headerlink" title="5. Save data to file"></a>5. Save data to file</h3><blockquote>
-<pre class=" language-python"><code class="language-python">df<span class="token punctuation">.</span>to_csv<span class="token punctuation">(</span><span class="token string">'new_data.csv'</span><span class="token punctuation">,</span> index<span class="token operator">=</span><span class="token boolean">False</span><span class="token punctuation">,</span> sep<span class="token operator">=</span><span class="token string">'\t'</span><span class="token punctuation">)</span>
-</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df.to_csv(<span class="string">&#x27;new_data.csv&#x27;</span>, index=<span class="literal">False</span>, sep=<span class="string">&#x27;\t&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+
 </blockquote>
 <h3 id="6-Filtering-Data"><a href="#6-Filtering-Data" class="headerlink" title="6. Filtering Data"></a>6. Filtering Data</h3><blockquote>
-<pre class=" language-python"><code class="language-python"><span class="token comment" spellcheck="true"># 过滤出满足条件的数据，过滤出来的数据会保留原来的序号</span>
-new_df <span class="token operator">=</span> df<span class="token punctuation">.</span>loc<span class="token punctuation">[</span><span class="token punctuation">(</span>df<span class="token punctuation">[</span><span class="token string">'Type 1'</span><span class="token punctuation">]</span> <span class="token operator">==</span> <span class="token string">'Grass'</span><span class="token punctuation">)</span> <span class="token operator">&amp;</span> <span class="token punctuation">(</span>df<span class="token punctuation">[</span><span class="token string">'Type 2'</span><span class="token punctuation">]</span> <span class="token operator">==</span> <span class="token string">'Poison'</span><span class="token punctuation">)</span><span class="token punctuation">]</span>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 过滤出满足条件的数据，过滤出来的数据会保留原来的序号</span></span><br><span class="line">new_df = df.loc[(df[<span class="string">&#x27;Type 1&#x27;</span>] == <span class="string">&#x27;Grass&#x27;</span>) &amp; (df[<span class="string">&#x27;Type 2&#x27;</span>] == <span class="string">&#x27;Poison&#x27;</span>)]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 将过滤出来的数据的序号进行重置</span></span><br><span class="line">new_df.reset_index(drop=<span class="literal">True</span>, inplace=<span class="literal">True</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 过滤出“Name”列中包含“Mega”字段的数据</span></span><br><span class="line">new_df = df.loc[~df[<span class="string">&#x27;Name&#x27;</span>].<span class="built_in">str</span>.contains(<span class="string">&#x27;Mega&#x27;</span>)]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 过滤出“Type 1”列中包含“first”和“grass”字段是数据，并且不区别大小写</span></span><br><span class="line">df.loc[df[<span class="string">&#x27;Type 1&#x27;</span>].<span class="built_in">str</span>.contains(<span class="string">&#x27;fire|Grass&#x27;</span>,flags=re.I, regex=<span class="literal">True</span>)] <span class="comment"># Ignore case</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 用正则表达式过滤“Name”列中满足条件的数据</span></span><br><span class="line">df.loc[df[<span class="string">&#x27;Name&#x27;</span>].<span class="built_in">str</span>.contains(<span class="string">&#x27;^pi[a-z]*&#x27;</span>, flags=re.I, regex=<span class="literal">True</span>)]</span><br></pre></td></tr></table></figure>
 
-<span class="token comment" spellcheck="true"># 将过滤出来的数据的序号进行重置</span>
-new_df<span class="token punctuation">.</span>reset_index<span class="token punctuation">(</span>drop<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">,</span> inplace<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span>
 
-<span class="token comment" spellcheck="true"># 过滤出“Name”列中包含“Mega”字段的数据</span>
-new_df <span class="token operator">=</span> df<span class="token punctuation">.</span>loc<span class="token punctuation">[</span><span class="token operator">~</span>df<span class="token punctuation">[</span><span class="token string">'Name'</span><span class="token punctuation">]</span><span class="token punctuation">.</span>str<span class="token punctuation">.</span>contains<span class="token punctuation">(</span><span class="token string">'Mega'</span><span class="token punctuation">)</span><span class="token punctuation">]</span>
-
-<span class="token comment" spellcheck="true"># 过滤出“Type 1”列中包含“first”和“grass”字段是数据，并且不区别大小写</span>
-df<span class="token punctuation">.</span>loc<span class="token punctuation">[</span>df<span class="token punctuation">[</span><span class="token string">'Type 1'</span><span class="token punctuation">]</span><span class="token punctuation">.</span>str<span class="token punctuation">.</span>contains<span class="token punctuation">(</span><span class="token string">'fire|Grass'</span><span class="token punctuation">,</span>flags<span class="token operator">=</span>re<span class="token punctuation">.</span>I<span class="token punctuation">,</span> regex<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span><span class="token punctuation">]</span> <span class="token comment" spellcheck="true"># Ignore case</span>
-
-<span class="token comment" spellcheck="true"># 用正则表达式过滤“Name”列中满足条件的数据</span>
-df<span class="token punctuation">.</span>loc<span class="token punctuation">[</span>df<span class="token punctuation">[</span><span class="token string">'Name'</span><span class="token punctuation">]</span><span class="token punctuation">.</span>str<span class="token punctuation">.</span>contains<span class="token punctuation">(</span><span class="token string">'^pi[a-z]*'</span><span class="token punctuation">,</span> flags<span class="token operator">=</span>re<span class="token punctuation">.</span>I<span class="token punctuation">,</span> regex<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span><span class="token punctuation">]</span>
-</code></pre>
 </blockquote>
 <h3 id="7-Conditional-changes"><a href="#7-Conditional-changes" class="headerlink" title="7. Conditional changes"></a>7. Conditional changes</h3><blockquote>
-<pre class=" language-python"><code class="language-python"><span class="token comment" spellcheck="true"># 把type 1 列中满足条件(等于'Fire')的内容改为Flamer</span>
-df<span class="token punctuation">.</span>loc<span class="token punctuation">[</span>df<span class="token punctuation">[</span><span class="token string">'Type 1'</span><span class="token punctuation">]</span> <span class="token operator">==</span> <span class="token string">'Fire'</span><span class="token punctuation">,</span> <span class="token string">'Type 1'</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token string">'Flamer'</span>
-</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 把type 1 列中满足条件(等于&#x27;Fire&#x27;)的内容改为Flamer</span></span><br><span class="line">df.loc[df[<span class="string">&#x27;Type 1&#x27;</span>] == <span class="string">&#x27;Fire&#x27;</span>, <span class="string">&#x27;Type 1&#x27;</span>] = <span class="string">&#x27;Flamer&#x27;</span></span><br></pre></td></tr></table></figure>
+
+
 </blockquote>
 <h3 id="8-Aggregate-Statistics-Groupby"><a href="#8-Aggregate-Statistics-Groupby" class="headerlink" title="8. Aggregate Statistics(Groupby)"></a>8. Aggregate Statistics(Groupby)</h3><blockquote>
-<pre class=" language-python"><code class="language-python">res <span class="token operator">=</span> df<span class="token punctuation">.</span>groupby<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token string">'Type 1'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">.</span>mean<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>sort_values<span class="token punctuation">(</span><span class="token string">'HP'</span><span class="token punctuation">,</span> ascending<span class="token operator">=</span><span class="token boolean">False</span><span class="token punctuation">)</span>
-</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">res = df.groupby([<span class="string">&#x27;Type 1&#x27;</span>]).mean().sort_values(<span class="string">&#x27;HP&#x27;</span>, ascending=<span class="literal">False</span>)</span><br></pre></td></tr></table></figure>
+
+
 </blockquote>
 <h3 id="9-Working-with-large-amounts-of-data"><a href="#9-Working-with-large-amounts-of-data" class="headerlink" title="9. Working with large amounts of data"></a>9. Working with large amounts of data</h3><blockquote>
-<pre class=" language-python"><code class="language-python"><span class="token comment" spellcheck="true"># 分批读取数据，一次读100行</span>
-<span class="token keyword">for</span> df <span class="token keyword">in</span> pd<span class="token punctuation">.</span>read_csv<span class="token punctuation">(</span><span class="token string">'pokemon_data.csv'</span><span class="token punctuation">,</span> chunk_size<span class="token operator">=</span><span class="token number">100</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-    <span class="token keyword">print</span><span class="token punctuation">(</span>df<span class="token punctuation">)</span>
-</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 分批读取数据，一次读100行</span></span><br><span class="line"><span class="keyword">for</span> df <span class="keyword">in</span> pd.read_csv(<span class="string">&#x27;pokemon_data.csv&#x27;</span>, chunk_size=<span class="number">100</span>):</span><br><span class="line">    <span class="built_in">print</span>(df)</span><br></pre></td></tr></table></figure>
+
+
 </blockquote>
 
                 

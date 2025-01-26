@@ -359,7 +359,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    184
+                    188
                 </div>
                 
 
@@ -386,36 +386,9 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h4 id="git基于历史commit创建分支"><a href="#git基于历史commit创建分支" class="headerlink" title="git基于历史commit创建分支"></a>git基于历史commit创建分支</h4><pre class=" language-bash"><code class="language-bash"><span class="token function">git</span> log
-<span class="token function">git</span> branch <span class="token operator">&lt;</span>branch name<span class="token operator">></span> <span class="token operator">&lt;</span>SHA1<span class="token operator">></span> 
-<span class="token function">git</span> checkout <span class="token operator">&lt;</span>branch name<span class="token operator">></span>
+                <h4 id="git基于历史commit创建分支"><a href="#git基于历史commit创建分支" class="headerlink" title="git基于历史commit创建分支"></a>git基于历史commit创建分支</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">log</span></span><br><span class="line">git branch &lt;branch name&gt; &lt;SHA1&gt; </span><br><span class="line">git checkout &lt;branch name&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment">#也可以直接执行下面的命令</span></span><br><span class="line">git checkout -b &lt;branch name&gt; &lt;SHA1&gt; </span><br></pre></td></tr></table></figure>
+<h4 id="git对分支的操作"><a href="#git对分支的操作" class="headerlink" title="git对分支的操作"></a>git对分支的操作</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#查看远程分支</span></span><br><span class="line">git branch -a</span><br><span class="line"></span><br><span class="line"><span class="comment">#查看本地分支</span></span><br><span class="line">git branch</span><br><span class="line"></span><br><span class="line"><span class="comment">#创建分支</span></span><br><span class="line">git branch branch_name</span><br><span class="line"></span><br><span class="line"><span class="comment">#切换到分支</span></span><br><span class="line">git checkout branch_name</span><br><span class="line"></span><br><span class="line"><span class="comment">#删除本地分支</span></span><br><span class="line">git branch -d branch_name</span><br><span class="line"></span><br><span class="line"><span class="comment">#重命名本地分支</span></span><br><span class="line">git branch -m old new</span><br><span class="line"></span><br><span class="line"><span class="comment">#重命名远程分支：将远程分支删除，然后将本地分支重命名，最后将本地分支推到远程</span></span><br><span class="line">git push --delete origin old <span class="comment">#删除远程分支</span></span><br><span class="line">git branch -m old new <span class="comment">#重命名本地分支</span></span><br><span class="line">git push origin new <span class="comment">#将本地分支推送到远程</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
-<span class="token comment" spellcheck="true">#也可以直接执行下面的命令</span>
-<span class="token function">git</span> checkout -b <span class="token operator">&lt;</span>branch name<span class="token operator">></span> <span class="token operator">&lt;</span>SHA1<span class="token operator">></span> 
-</code></pre>
-<h4 id="git对分支的操作"><a href="#git对分支的操作" class="headerlink" title="git对分支的操作"></a>git对分支的操作</h4><pre class=" language-bash"><code class="language-bash"><span class="token comment" spellcheck="true">#查看远程分支</span>
-<span class="token function">git</span> branch -a
-
-<span class="token comment" spellcheck="true">#查看本地分支</span>
-<span class="token function">git</span> branch
-
-<span class="token comment" spellcheck="true">#创建分支</span>
-<span class="token function">git</span> branch branch_name
-
-<span class="token comment" spellcheck="true">#切换到分支</span>
-<span class="token function">git</span> checkout branch_name
-
-<span class="token comment" spellcheck="true">#删除本地分支</span>
-<span class="token function">git</span> branch -d branch_name
-
-<span class="token comment" spellcheck="true">#重命名本地分支</span>
-<span class="token function">git</span> branch -m old new
-
-<span class="token comment" spellcheck="true">#重命名远程分支：将远程分支删除，然后将本地分支重命名，最后将本地分支推到远程</span>
-<span class="token function">git</span> push --delete origin old <span class="token comment" spellcheck="true">#删除远程分支</span>
-<span class="token function">git</span> branch -m old new <span class="token comment" spellcheck="true">#重命名本地分支</span>
-<span class="token function">git</span> push origin new <span class="token comment" spellcheck="true">#将本地分支推送到远程</span>
-</code></pre>
 <h4 id="git对比两个分支差异"><a href="#git对比两个分支差异" class="headerlink" title="git对比两个分支差异"></a><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/bb97fabb475e">git对比两个分支差异</a></h4>
                 
             </div>

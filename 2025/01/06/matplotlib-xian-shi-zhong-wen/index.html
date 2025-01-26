@@ -359,7 +359,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    162
+                    170
                 </div>
                 
 
@@ -387,31 +387,12 @@
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <p>先从网络上下载 <code>SimHei.ttf</code>  文件放在某个位置，然后用下面的代码，设置字体的位置。</p>
-<pre class=" language-python"><code class="language-python"><span class="token keyword">import</span> json
-<span class="token keyword">import</span> pandas <span class="token keyword">as</span> pd
-<span class="token comment" spellcheck="true"># 从 data/original/SylvanL/Exam/tcm_exam_1.csv 读取数据</span>
-<span class="token keyword">import</span> matplotlib<span class="token punctuation">.</span>pyplot <span class="token keyword">as</span> plt
-<span class="token keyword">from</span> matplotlib <span class="token keyword">import</span> font_manager
-<span class="token keyword">from</span> matplotlib <span class="token keyword">import</span> rcParams
-<span class="token keyword">import</span> re
-<span class="token keyword">import</span> matplotlib 
-<span class="token comment" spellcheck="true"># 设置当前目录</span>
-<span class="token keyword">import</span> os
-os<span class="token punctuation">.</span>chdir<span class="token punctuation">(</span><span class="token string">'/cpfs01/projects-SSD/cfff-bafab61057ac_SSD/zyt_09215/liyong/TCM-EMBEDDING'</span><span class="token punctuation">)</span>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> json</span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="comment"># 从 data/original/SylvanL/Exam/tcm_exam_1.csv 读取数据</span></span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"><span class="keyword">from</span> matplotlib <span class="keyword">import</span> font_manager</span><br><span class="line"><span class="keyword">from</span> matplotlib <span class="keyword">import</span> rcParams</span><br><span class="line"><span class="keyword">import</span> re</span><br><span class="line"><span class="keyword">import</span> matplotlib </span><br><span class="line"><span class="comment"># 设置当前目录</span></span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line">os.chdir(<span class="string">&#x27;/cpfs01/projects-SSD/cfff-bafab61057ac_SSD/zyt_09215/liyong/TCM-EMBEDDING&#x27;</span>)</span><br><span class="line"></span><br><span class="line">my_font = font_manager.FontProperties(fname=<span class="string">&quot;fonts/SimHei.ttf&quot;</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 全局设置字体</span></span><br><span class="line">matplotlib.rcParams[<span class="string">&#x27;font.sans-serif&#x27;</span>]=my_font.get_name()  <span class="comment"># 用黑体显示中文</span></span><br><span class="line">matplotlib.rcParams[<span class="string">&#x27;axes.unicode_minus&#x27;</span>]=<span class="literal">False</span> </span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
-my_font <span class="token operator">=</span> font_manager<span class="token punctuation">.</span>FontProperties<span class="token punctuation">(</span>fname<span class="token operator">=</span><span class="token string">"fonts/SimHei.ttf"</span><span class="token punctuation">)</span>
-
-
-<span class="token comment" spellcheck="true"># 全局设置字体</span>
-matplotlib<span class="token punctuation">.</span>rcParams<span class="token punctuation">[</span><span class="token string">'font.sans-serif'</span><span class="token punctuation">]</span><span class="token operator">=</span>my_font<span class="token punctuation">.</span>get_name<span class="token punctuation">(</span><span class="token punctuation">)</span>  <span class="token comment" spellcheck="true"># 用黑体显示中文</span>
-matplotlib<span class="token punctuation">.</span>rcParams<span class="token punctuation">[</span><span class="token string">'axes.unicode_minus'</span><span class="token punctuation">]</span><span class="token operator">=</span><span class="token boolean">False</span> 
-</code></pre>
 <p>使用</p>
 <p>在需要使用中文的地方，指定上面设置好的字体</p>
-<pre class=" language-python"><code class="language-python">plt<span class="token punctuation">.</span>title<span class="token punctuation">(</span><span class="token string">"描述长度分布"</span><span class="token punctuation">,</span> fontproperties<span class="token operator">=</span>my_font<span class="token punctuation">)</span>
-plt<span class="token punctuation">.</span>xlabel<span class="token punctuation">(</span><span class="token string">"长度"</span><span class="token punctuation">,</span> fontproperties<span class="token operator">=</span>my_font<span class="token punctuation">)</span>
-plt<span class="token punctuation">.</span>ylabel<span class="token punctuation">(</span><span class="token string">"数量"</span><span class="token punctuation">,</span> fontproperties<span class="token operator">=</span>my_font<span class="token punctuation">)</span>
-</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">plt.title(<span class="string">&quot;描述长度分布&quot;</span>, fontproperties=my_font)</span><br><span class="line">plt.xlabel(<span class="string">&quot;长度&quot;</span>, fontproperties=my_font)</span><br><span class="line">plt.ylabel(<span class="string">&quot;数量&quot;</span>, fontproperties=my_font)</span><br></pre></td></tr></table></figure>
+
 <p>enjoy！ </p>
 
                 
