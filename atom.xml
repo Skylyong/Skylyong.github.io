@@ -6,7 +6,7 @@
   <link href="https://ailyong.cn/atom.xml" rel="self"/>
   
   <link href="https://ailyong.cn/"/>
-  <updated>2025-01-07T08:44:45.933Z</updated>
+  <updated>2025-01-26T13:11:52.500Z</updated>
   <id>https://ailyong.cn/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>搭建Webdav服务器实现Obsidian和Zotero多端同步</title>
+    <link href="https://ailyong.cn/2025/01/26/da-jian-webdav-fu-wu-qi-shi-xian-obsidian-he-zotero-duo-duan-tong-bu/"/>
+    <id>https://ailyong.cn/2025/01/26/da-jian-webdav-fu-wu-qi-shi-xian-obsidian-he-zotero-duo-duan-tong-bu/</id>
+    <published>2025-01-26T13:08:21.000Z</published>
+    <updated>2025-01-26T13:11:52.500Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;前-言&quot;&gt;&lt;a href=&quot;#前-言&quot; class=&quot;headerlink&quot; title=&quot;前 言&quot;&gt;&lt;/a&gt;前</summary>
+        
+      
+    
+    
+    
+    <category term="总结" scheme="https://ailyong.cn/categories/%E6%80%BB%E7%BB%93/"/>
+    
+    
+    <category term="干货" scheme="https://ailyong.cn/tags/%E5%B9%B2%E8%B4%A7/"/>
+    
+  </entry>
   
   <entry>
     <title>sentence-transformers sampler bug 之 set 不一定是无序的</title>
@@ -509,32 +534,6 @@
     
     
     <category term="svm" scheme="https://ailyong.cn/tags/svm/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Pandas学习</title>
-    <link href="https://ailyong.cn/2021/08/06/pandas-xue-xi/"/>
-    <id>https://ailyong.cn/2021/08/06/pandas-xue-xi/</id>
-    <published>2021-08-06T13:35:53.000Z</published>
-    <updated>2021-08-06T14:12:48.000Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;blockquote&gt;
-&lt;p&gt;Video url: &lt;a</summary>
-        
-      
-    
-    
-    
-    <category term="学习笔记" scheme="https://ailyong.cn/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
-    
-    
-    <category term="Pandas" scheme="https://ailyong.cn/tags/Pandas/"/>
     
   </entry>
   
