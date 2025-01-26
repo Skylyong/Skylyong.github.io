@@ -426,9 +426,7 @@ sudo htdigest &#x2F;etc&#x2F;apache2&#x2F;webdav.passwd &quot;WebDAV Realm&quot;
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">sudo vim &#x2F;etc&#x2F;apache2&#x2F;sites-available&#x2F;000-default.conf<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p>往配置文件中添加以下完整配置内容</p>
-</li>
-</ol>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">&lt;VirtualHost *:443&gt;
+ <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">&lt;VirtualHost *:443&gt;
 ServerAdmin webmaster@localhost
 DocumentRoot &#x2F;var&#x2F;www&#x2F;webdav
 
@@ -485,10 +483,9 @@ Require all granted
 ErrorLog $&#123;APACHE_LOG_DIR&#125;&#x2F;error.log
 CustomLog $&#123;APACHE_LOG_DIR&#125;&#x2F;access.log combined
 &lt;&#x2F;VirtualHost&gt;
-# vim: syntax&#x3D;apache ts&#x3D;4 sw&#x3D;4 sts&#x3D;4 sr noet<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<ol start="6">
-<li>重启Apache2并测试</li>
+# vim: syntax&#x3D;apache ts&#x3D;4 sw&#x3D;4 sts&#x3D;4 sr noet<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
+<li><p>重启Apache2并测试</p>
+</li>
 </ol>
 <pre class="line-numbers language-none"><code class="language-none">sudo systemctl restart apache2<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
