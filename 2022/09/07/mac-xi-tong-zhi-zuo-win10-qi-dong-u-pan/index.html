@@ -359,14 +359,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    531
+                    537
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    1 分
+                    2 分
                 </div>
                 
 
@@ -380,6 +380,9 @@
         </div>
         <hr class="clearfix">
 
+        
+        <!-- 是否加载使用自带的 prismjs. -->
+        <link rel="stylesheet" href="/libs/prism/prism.css">
         
 
         
@@ -400,16 +403,16 @@
 <li><p>打开Boot Camp ISO Converter软件对下载好的iso镜像文件进行处理，目的是将镜像文件insta.win分配为大小小于4GB的文件</p>
 </li>
 <li><p>在插入U盘的状态下，打开终端，输入：</p>
-  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">diskutil list</span><br></pre></td></tr></table></figure>
+  <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">diskutil list<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p>  找到U盘对应的盘符，本例中U盘对应的盘符为：disk2</p>
 </li>
 <li><p>将U盘(disk2)格式化为FAT32格式</p>
-  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">diskutil eraseDisk FAT32 <span class="string">&quot;WINDOWS10&quot;</span> MBR disk2</span><br></pre></td></tr></table></figure></li>
+  <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">diskutil eraseDisk FAT32 &quot;WINDOWS10&quot; MBR disk2<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
 <li><p>找到经过Boot Camp ISO Converter处理后的镜像文件，然后双击挂载镜像文件</p>
 </li>
 <li><p>输入命令，将挂载的镜像盘拷贝至U盘中(disk2)</p>
-  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cp -rp /Volumes/CPBA_X64FRE_ZH-CN_DV9/* /Volumes/WINDOWS10/</span><br></pre></td></tr></table></figure>
+  <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">cp -rp &#x2F;Volumes&#x2F;CPBA_X64FRE_ZH-CN_DV9&#x2F;* &#x2F;Volumes&#x2F;WINDOWS10&#x2F;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>这里的CPBA_X64FRE_ZH是刚刚挂载的镜像的名称,大约等待10分钟，命令运行结束之后，启动盘就做好了。</p>
 </li>
 </ul>
@@ -417,7 +420,13 @@
 <ul>
 <li><p>转换磁盘格式为MBR，但是会清除所有磁盘分区</p>
 <p>  在错误提示的时候，不要重启电脑，直接按”Shift+F10”组合键，这个时候会弹出CMD提示框，然后依次输入如下命令：</p>
-  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">list disk <span class="comment"># 回车键确定；（会列出所有的磁盘，记住自己硬盘的磁盘号，通过容量大小就可以分辨了，如下图所示，磁盘0就是我们的硬盘，磁盘1就是U盘）</span></span><br><span class="line"></span><br><span class="line">select disk 0 <span class="comment"># 回车键确定；（选择磁盘0，也就是我们的硬盘，就是准备做系统的硬盘）</span></span><br><span class="line"></span><br><span class="line">clean <span class="comment"># 回车键确定；（清空磁盘，相当于格式化全盘）</span></span><br><span class="line"></span><br><span class="line">convert mbr <span class="comment"># 回车键确定；（将该硬盘转换为mbr格式，如果想要将硬盘转化为gpt，那就是输入“convert gpt”）</span></span><br></pre></td></tr></table></figure></li>
+  <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">list disk # 回车键确定；（会列出所有的磁盘，记住自己硬盘的磁盘号，通过容量大小就可以分辨了，如下图所示，磁盘0就是我们的硬盘，磁盘1就是U盘）
+
+select disk 0 # 回车键确定；（选择磁盘0，也就是我们的硬盘，就是准备做系统的硬盘）
+
+clean # 回车键确定；（清空磁盘，相当于格式化全盘）
+
+convert mbr # 回车键确定；（将该硬盘转换为mbr格式，如果想要将硬盘转化为gpt，那就是输入“convert gpt”）<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
 </ul>
 <h6 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a><a target="_blank" rel="noopener" href="https://blog.csdn.net/h21396577548/article/details/125572053">参考链接</a></h6>
                 

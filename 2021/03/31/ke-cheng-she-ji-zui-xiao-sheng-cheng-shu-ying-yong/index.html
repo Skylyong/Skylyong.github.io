@@ -359,14 +359,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.3k
+                    1.4k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    5 分
+                    6 分
                 </div>
                 
 
@@ -381,6 +381,9 @@
         <hr class="clearfix">
 
         
+        <!-- 是否加载使用自带的 prismjs. -->
+        <link rel="stylesheet" href="/libs/prism/prism.css">
+        
 
         
 
@@ -390,7 +393,161 @@
 <p>问题分析<br>根据设计要求，我们假设城市之间的距离越大架设网线的经济代价越大，因此可以用两个城市之间的距离作为边的权重。</p>
 <p>n个城市之间最多可以生成 1+2+…+(n-1)条边，分别计算出每条边的长度然后对他们进行升序排序，利用并查集得到由n-1条边组成的最小生成树，问题便得到解决。</p>
 <p>为了解决上述问题，需要构建一个城市结构体CITY来表示城市，并且还需要构建EDGE结构体来表示城市与城市的边，并利用随机函数生成城市的坐标。</p>
-<h4 id="实现代码"><a href="#实现代码" class="headerlink" title="实现代码"></a>实现代码</h4><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;time.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;math.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MaxSize (10000)<span class="comment">//n的取值最大为MaxSize</span></span></span><br><span class="line"><span class="comment">/*---------------------结构体定义---------------------*/</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">City</span>&#123;</span></span><br><span class="line">    <span class="comment">//城市结构体</span></span><br><span class="line">    <span class="keyword">int</span> id;<span class="comment">//城市ID</span></span><br><span class="line">    <span class="keyword">int</span> x, y;<span class="comment">//城市的坐标</span></span><br><span class="line">&#125;CITY;</span><br><span class="line"> </span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">edges</span>&#123;</span></span><br><span class="line">    <span class="comment">//边结构体</span></span><br><span class="line">    <span class="keyword">int</span> s, e;<span class="comment">//s为起始顶点 e为终止顶点</span></span><br><span class="line">    <span class="keyword">double</span> cost;<span class="comment">//边的权值，即两个顶点之间的距离</span></span><br><span class="line">&#125;EDGE;</span><br><span class="line"> </span><br><span class="line"><span class="comment">/*---------------------生成城市并显示---------------------*/</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">CreateCityPos</span><span class="params">(CITY *&amp; city, <span class="keyword">int</span> n)</span></span>&#123;</span><br><span class="line">    <span class="comment">//随机生成城市坐标</span></span><br><span class="line">    city = (CITY*)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(CITY)* n);</span><br><span class="line">    srand((<span class="keyword">unsigned</span>)time(<span class="literal">NULL</span>));<span class="comment">//设置随机数的种子</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; ++i)</span><br><span class="line">    &#123;<span class="comment">//随机生成n个城市的x,y坐标值</span></span><br><span class="line">        city[i].id = i + <span class="number">1</span>;</span><br><span class="line">        city[i].x = rand() % <span class="number">100</span>;</span><br><span class="line">        city[i].y = rand() % <span class="number">100</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">ShowCityPos</span><span class="params">(CITY*city, <span class="keyword">int</span> n)</span></span></span><br><span class="line"><span class="function"></span>&#123;<span class="comment">//显示城市信息，城市序号、x坐标和y坐标</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;\n各城市的编号及坐标:\n&quot;</span>);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; ++i)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;%d:[%d, %d]\n&quot;</span>, city[i].id, city[i].x, city[i].y);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="comment">/*---------------------计算城市两两之间的距离，生成边数组---------------------*/</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">Sum</span><span class="params">(<span class="keyword">int</span> n)</span></span></span><br><span class="line"><span class="function"></span>&#123;<span class="comment">//计算n的前n项和，用于根据顶点确定边的数目 当顶点为n时 则最多可以产生Sum(n-1)条边</span></span><br><span class="line">    <span class="keyword">int</span> sum = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; ++i)</span><br><span class="line">        sum += i;</span><br><span class="line">    <span class="keyword">return</span> sum;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">double</span> <span class="title">CityDist</span><span class="params">(<span class="keyword">const</span> CITY*a, <span class="keyword">const</span> CITY*b)</span></span></span><br><span class="line"><span class="function"></span>&#123;<span class="comment">//计算两个城市之间的距离</span></span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">sqrt</span>(<span class="keyword">double</span>((a-&gt;x - b-&gt;x)*(a-&gt;x - b-&gt;x) + (a-&gt;y - b-&gt;y)*(a-&gt;y - b-&gt;y)));</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">CreateEdges</span><span class="params">(EDGE* &amp; e, CITY* city, <span class="keyword">int</span> n)</span></span></span><br><span class="line"><span class="function"></span>&#123;<span class="comment">//根据城市信息生成城市之间的边</span></span><br><span class="line">    e = (EDGE*)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(EDGE)*Sum(n - <span class="number">1</span>));<span class="comment">//边的总数为Sum(n-1)</span></span><br><span class="line">    <span class="keyword">int</span> cnt = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; ++i)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> k = i + <span class="number">1</span>; k &lt; n; ++k)</span><br><span class="line">        &#123;</span><br><span class="line">            (e + cnt)-&gt;s = city[i].id;<span class="comment">//起始顶点</span></span><br><span class="line">            (e + cnt)-&gt;e = city[k].id;<span class="comment">//终止顶点</span></span><br><span class="line">            (e + cnt)-&gt;cost = CityDist(&amp;city[i], &amp;city[k]);<span class="comment">//边的权值</span></span><br><span class="line">            ++cnt;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">ShowCityEdges</span><span class="params">(EDGE*edges, <span class="keyword">int</span> n)</span></span></span><br><span class="line"><span class="function"></span>&#123;<span class="comment">//打印边信息</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;\n各城市间的距离(城市1-城市2:边权值（距离）)\n&quot;</span>);</span><br><span class="line">    <span class="comment">//show edges:</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; Sum(n<span class="number">-1</span>); ++i)</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;%d-%d : %f\n&quot;</span>, edges[i].s, edges[i].e, edges[i].cost);</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line"><span class="comment">/*--------------------KrusKal求最小生成树----------------------*/</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">cmp</span><span class="params">(<span class="keyword">const</span> <span class="keyword">void</span>*a, <span class="keyword">const</span> <span class="keyword">void</span> *b)</span></span></span><br><span class="line"><span class="function"></span>&#123;<span class="comment">//比较函数 比较两条边的权值 用于排序</span></span><br><span class="line">    EDGE* aa, *bb;</span><br><span class="line">    aa = (EDGE*)a; bb = (EDGE*)b;</span><br><span class="line">    <span class="keyword">if</span> ((aa-&gt;cost - bb-&gt;cost )&gt; <span class="number">0</span>) <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="comment">//最小生成树</span></span><br><span class="line"><span class="keyword">int</span> v[MaxSize];</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">getRoot</span><span class="params">(<span class="keyword">int</span> a)</span></span></span><br><span class="line"><span class="function"></span>&#123;<span class="comment">//找到根节点</span></span><br><span class="line">    <span class="keyword">while</span> (a != v[a]) a = v[a];</span><br><span class="line">    <span class="keyword">return</span> a;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">KrusKal</span><span class="params">(EDGE* edges, <span class="keyword">int</span> n)</span></span></span><br><span class="line"><span class="function"></span>&#123;<span class="comment">//KrusKal算法生成最小生成树</span></span><br><span class="line">    <span class="keyword">int</span> i;</span><br><span class="line">    <span class="keyword">int</span> e, a, b;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">double</span> sum = <span class="number">0.0</span>;</span><br><span class="line">    e = Sum(n - <span class="number">1</span>);</span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; n; ++i) <span class="comment">//初始化并查集</span></span><br><span class="line">        v[i] = i;</span><br><span class="line"> </span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;\n最小生成树的边及权值:\n&quot;</span>);</span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; e; ++i)</span><br><span class="line">    &#123;</span><br><span class="line">        a = getRoot(edges[i].s);</span><br><span class="line">        b = getRoot(edges[i].e);</span><br><span class="line">        <span class="keyword">if</span> (a != b)</span><br><span class="line">        &#123;<span class="comment">//将边并入生成树</span></span><br><span class="line">            v[a] = b;</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">&quot;%d-%d: %f\n&quot;</span>, edges[i].s, edges[i].e, edges[i].cost);<span class="comment">//打印并入生成树的边的两个顶点和权值</span></span><br><span class="line">            sum += edges[i].cost;<span class="comment">//计算生成树的总权值</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;\n生成树总权值sum =%f\n&quot;</span>, sum);</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="comment">/*------------------------------KrusKal END-------------------------------------*/</span></span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">solve</span><span class="params">(<span class="keyword">int</span> n)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    CITY*city;</span><br><span class="line">    EDGE* edges;</span><br><span class="line">    CreateCityPos(city, n);<span class="comment">//创建城市</span></span><br><span class="line">    ShowCityPos(city, n);<span class="comment">//显示城市</span></span><br><span class="line"> </span><br><span class="line">    CreateEdges(edges, city, n);<span class="comment">//创建边（根据所有城市两两之间的距离来创建）</span></span><br><span class="line">    qsort(edges, Sum(n - <span class="number">1</span>), <span class="keyword">sizeof</span>(EDGE), cmp);<span class="comment">//对边按权值进行升序排序</span></span><br><span class="line">    ShowCityEdges(edges, n);<span class="comment">//显示排序后的边</span></span><br><span class="line"> </span><br><span class="line">    KrusKal(edges, n);<span class="comment">//用KrusKal算法生成最小生成树</span></span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> n;</span><br><span class="line"> </span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;请输入n:&quot;</span>);</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>, &amp;n);</span><br><span class="line">    <span class="keyword">if</span> (n &lt; <span class="number">2</span>)</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">    solve(n);</span><br><span class="line"> </span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;<span class="comment">//运行成功 2019年5月21日10:53:07</span></span><br><span class="line"> </span><br><span class="line"><span class="comment">/*程序说明：</span></span><br><span class="line"><span class="comment">基本思想：1、首先生成n个城市，每个城市的坐标随机生成，这部分由CreateCityPos（）函数实现；</span></span><br><span class="line"><span class="comment">    </span></span><br><span class="line"><span class="comment">         2、计算n个城市两两之间的距离（距离计算由CityDist()完成），并保存到边数组中，这部分由CreateEdges（）函数实现；</span></span><br><span class="line"><span class="comment">         3、由边数组(edges[])根据KrusKal算法求最小生成树，这部分由KrusKal（）函数实现，要注意的是进行KrusKal算法之前，需要对edges[]中的元素按照</span></span><br><span class="line"><span class="comment">         权值进行升序排序，因此调用了stdlib.h头文件中的qsort()函数来进行排序。</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
+<h4 id="实现代码"><a href="#实现代码" class="headerlink" title="实现代码"></a>实现代码</h4><pre class="line-numbers language-c" data-language="c"><code class="language-c">#include&lt;stdio.h&gt;
+#include&lt;time.h&gt;
+#include&lt;stdlib.h&gt;
+#include&lt;math.h&gt;
+#define MaxSize (10000)&#x2F;&#x2F;n的取值最大为MaxSize
+&#x2F;*---------------------结构体定义---------------------*&#x2F;
+typedef struct City&#123;
+    &#x2F;&#x2F;城市结构体
+    int id;&#x2F;&#x2F;城市ID
+    int x, y;&#x2F;&#x2F;城市的坐标
+&#125;CITY;
+ 
+typedef struct edges&#123;
+    &#x2F;&#x2F;边结构体
+    int s, e;&#x2F;&#x2F;s为起始顶点 e为终止顶点
+    double cost;&#x2F;&#x2F;边的权值，即两个顶点之间的距离
+&#125;EDGE;
+ 
+&#x2F;*---------------------生成城市并显示---------------------*&#x2F;
+void CreateCityPos(CITY *&amp; city, int n)&#123;
+    &#x2F;&#x2F;随机生成城市坐标
+    city &#x3D; (CITY*)malloc(sizeof(CITY)* n);
+    srand((unsigned)time(NULL));&#x2F;&#x2F;设置随机数的种子
+    for (int i &#x3D; 0; i &lt; n; ++i)
+    &#123;&#x2F;&#x2F;随机生成n个城市的x,y坐标值
+        city[i].id &#x3D; i + 1;
+        city[i].x &#x3D; rand() % 100;
+        city[i].y &#x3D; rand() % 100;
+    &#125;
+&#125;
+void ShowCityPos(CITY*city, int n)
+&#123;&#x2F;&#x2F;显示城市信息，城市序号、x坐标和y坐标
+    printf(&quot;\n各城市的编号及坐标:\n&quot;);
+    for (int i &#x3D; 0; i &lt; n; ++i)
+    &#123;
+        printf(&quot;%d:[%d, %d]\n&quot;, city[i].id, city[i].x, city[i].y);
+    &#125;
+&#125;
+ 
+&#x2F;*---------------------计算城市两两之间的距离，生成边数组---------------------*&#x2F;
+int Sum(int n)
+&#123;&#x2F;&#x2F;计算n的前n项和，用于根据顶点确定边的数目 当顶点为n时 则最多可以产生Sum(n-1)条边
+    int sum &#x3D; 0;
+    for (int i &#x3D; 1; i &lt;&#x3D; n; ++i)
+        sum +&#x3D; i;
+    return sum;
+&#125;
+ 
+double CityDist(const CITY*a, const CITY*b)
+&#123;&#x2F;&#x2F;计算两个城市之间的距离
+    return sqrt(double((a-&gt;x - b-&gt;x)*(a-&gt;x - b-&gt;x) + (a-&gt;y - b-&gt;y)*(a-&gt;y - b-&gt;y)));
+&#125;
+void CreateEdges(EDGE* &amp; e, CITY* city, int n)
+&#123;&#x2F;&#x2F;根据城市信息生成城市之间的边
+    e &#x3D; (EDGE*)malloc(sizeof(EDGE)*Sum(n - 1));&#x2F;&#x2F;边的总数为Sum(n-1)
+    int cnt &#x3D; 0;
+    for (int i &#x3D; 0; i &lt; n; ++i)
+    &#123;
+        for (int k &#x3D; i + 1; k &lt; n; ++k)
+        &#123;
+            (e + cnt)-&gt;s &#x3D; city[i].id;&#x2F;&#x2F;起始顶点
+            (e + cnt)-&gt;e &#x3D; city[k].id;&#x2F;&#x2F;终止顶点
+            (e + cnt)-&gt;cost &#x3D; CityDist(&amp;city[i], &amp;city[k]);&#x2F;&#x2F;边的权值
+            ++cnt;
+        &#125;
+    &#125;
+&#125;
+void ShowCityEdges(EDGE*edges, int n)
+&#123;&#x2F;&#x2F;打印边信息
+    printf(&quot;\n各城市间的距离(城市1-城市2:边权值（距离）)\n&quot;);
+    &#x2F;&#x2F;show edges:
+    for (int i &#x3D; 0; i &lt; Sum(n-1); ++i)
+        printf(&quot;%d-%d : %f\n&quot;, edges[i].s, edges[i].e, edges[i].cost);
+&#125;
+ 
+ 
+ 
+&#x2F;*--------------------KrusKal求最小生成树----------------------*&#x2F;
+int cmp(const void*a, const void *b)
+&#123;&#x2F;&#x2F;比较函数 比较两条边的权值 用于排序
+    EDGE* aa, *bb;
+    aa &#x3D; (EDGE*)a; bb &#x3D; (EDGE*)b;
+    if ((aa-&gt;cost - bb-&gt;cost )&gt; 0) return 1;
+    else return -1;
+&#125;
+ 
+&#x2F;&#x2F;最小生成树
+int v[MaxSize];
+int getRoot(int a)
+&#123;&#x2F;&#x2F;找到根节点
+    while (a !&#x3D; v[a]) a &#x3D; v[a];
+    return a;
+&#125;
+ 
+void KrusKal(EDGE* edges, int n)
+&#123;&#x2F;&#x2F;KrusKal算法生成最小生成树
+    int i;
+    int e, a, b;
+    
+    double sum &#x3D; 0.0;
+    e &#x3D; Sum(n - 1);
+    for (i &#x3D; 0; i &lt; n; ++i) &#x2F;&#x2F;初始化并查集
+        v[i] &#x3D; i;
+ 
+    printf(&quot;\n最小生成树的边及权值:\n&quot;);
+    for (i &#x3D; 0; i &lt; e; ++i)
+    &#123;
+        a &#x3D; getRoot(edges[i].s);
+        b &#x3D; getRoot(edges[i].e);
+        if (a !&#x3D; b)
+        &#123;&#x2F;&#x2F;将边并入生成树
+            v[a] &#x3D; b;
+            printf(&quot;%d-%d: %f\n&quot;, edges[i].s, edges[i].e, edges[i].cost);&#x2F;&#x2F;打印并入生成树的边的两个顶点和权值
+            sum +&#x3D; edges[i].cost;&#x2F;&#x2F;计算生成树的总权值
+        &#125;
+    &#125;
+    printf(&quot;\n生成树总权值sum &#x3D;%f\n&quot;, sum);
+&#125;
+ 
+&#x2F;*------------------------------KrusKal END-------------------------------------*&#x2F;
+ 
+void solve(int n)
+&#123;
+    CITY*city;
+    EDGE* edges;
+    CreateCityPos(city, n);&#x2F;&#x2F;创建城市
+    ShowCityPos(city, n);&#x2F;&#x2F;显示城市
+ 
+    CreateEdges(edges, city, n);&#x2F;&#x2F;创建边（根据所有城市两两之间的距离来创建）
+    qsort(edges, Sum(n - 1), sizeof(EDGE), cmp);&#x2F;&#x2F;对边按权值进行升序排序
+    ShowCityEdges(edges, n);&#x2F;&#x2F;显示排序后的边
+ 
+    KrusKal(edges, n);&#x2F;&#x2F;用KrusKal算法生成最小生成树
+&#125;
+ 
+int main()
+&#123;
+    int n;
+ 
+    printf(&quot;请输入n:&quot;);
+    scanf(&quot;%d&quot;, &amp;n);
+    if (n &lt; 2)
+        return 1;
+    solve(n);
+ 
+    return 0;
+&#125;&#x2F;&#x2F;运行成功 2019年5月21日10:53:07
+ 
+&#x2F;*程序说明：
+基本思想：1、首先生成n个城市，每个城市的坐标随机生成，这部分由CreateCityPos（）函数实现；
+    
+         2、计算n个城市两两之间的距离（距离计算由CityDist()完成），并保存到边数组中，这部分由CreateEdges（）函数实现；
+         3、由边数组(edges[])根据KrusKal算法求最小生成树，这部分由KrusKal（）函数实现，要注意的是进行KrusKal算法之前，需要对edges[]中的元素按照
+         权值进行升序排序，因此调用了stdlib.h头文件中的qsort()函数来进行排序。
+*&#x2F;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h4 id="运行结果"><a href="#运行结果" class="headerlink" title="运行结果"></a>运行结果</h4><p><img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly91cGxvYWQtaW1hZ2VzLmppYW5zaHUuaW8vdXBsb2FkX2ltYWdlcy8xNzc4Njc2Mi03MjhiZjIyMGNkYzY5NTIyLnBuZw?x-oss-process=image/format,png"></p>
 <p>n为城市的数量，由用户从终端输入。</p>
 

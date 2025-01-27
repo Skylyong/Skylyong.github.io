@@ -359,7 +359,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    861
+                    881
                 </div>
                 
 
@@ -381,6 +381,9 @@
         <hr class="clearfix">
 
         
+        <!-- 是否加载使用自带的 prismjs. -->
+        <link rel="stylesheet" href="/libs/prism/prism.css">
+        
 
         
 
@@ -395,9 +398,17 @@
 <p>接下来是安装过程：</p>
 <ul>
 <li><p>删除已安装的NIVIDIA驱动或CUDA Tookit</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">sudo rm /etc/apt/sources.list.d/cuda*</span><br><span class="line">sudo apt-get --purge remove <span class="string">&quot;*cublas*&quot;</span> <span class="string">&quot;cuda*&quot;</span> <span class="string">&quot;nsight*&quot;</span> </span><br><span class="line">sudo apt-get --purge remove <span class="string">&quot;*nvidia*&quot;</span></span><br><span class="line">sudo apt-get autoremove</span><br><span class="line">sudo apt-get autoclean</span><br><span class="line">sudo rm -rf /usr/<span class="built_in">local</span>/cuda*</span><br></pre></td></tr></table></figure></li>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">sudo rm &#x2F;etc&#x2F;apt&#x2F;sources.list.d&#x2F;cuda*
+sudo apt-get --purge remove &quot;*cublas*&quot; &quot;cuda*&quot; &quot;nsight*&quot; 
+sudo apt-get --purge remove &quot;*nvidia*&quot;
+sudo apt-get autoremove
+sudo apt-get autoclean
+sudo rm -rf &#x2F;usr&#x2F;local&#x2F;cuda*<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
 <li><p>查看ubuntu系统版本和驱动器型号，并下载对应驱动安装</p>
-  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">cat /etc/os-release <span class="comment"># 查看系统版本</span></span><br><span class="line"></span><br><span class="line">lspci | grep VGA    <span class="comment"># 查看显卡型号</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+  <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">cat &#x2F;etc&#x2F;os-release # 查看系统版本
+
+lspci | grep VGA    # 查看显卡型号
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 
 <p>  查看好版本之后，在<a target="_blank" rel="noopener" href="https://www.nvidia.com/Download/Find.aspx?lang=en-us">这里</a>下载对应的驱动程序并安装。</p>
 <p>  本次安装，服务器的版本为Ubuntu 22.04.2 LTS，显卡型号为GeForce RTX 3090.</p>
@@ -414,14 +425,18 @@
 <p>  这里有个疑问，貌似以本次包方式，安装cuda toolkit的时候可以勾选安装nividia驱动程序，也就是说可以省去前面安装驱动这一步。</p>
 <p>  这里遇到的<strong>大坑</strong>是，下载类型一定要选择第三个”runfile(local)”,之前好几次选择第二个”deb(network)”，安装完，一查询cuda信息，得到的都是12.2的版本， 但是pytorch不支持12.2的cuda，所以没法用。</p>
 <p>  本次安装过程中，下载的是11.8版本的cuda toolkit,下载和安装脚本如下</p>
-  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">wget https://developer.download.nvidia.com/compute/cuda/11.8.0/local_installers/cuda_11.8.0_520.61.05_linux.run</span><br><span class="line">sudo sh cuda_11.8.0_520.61.05_linux.run</span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
+  <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">
+wget https:&#x2F;&#x2F;developer.download.nvidia.com&#x2F;compute&#x2F;cuda&#x2F;11.8.0&#x2F;local_installers&#x2F;cuda_11.8.0_520.61.05_linux.run
+sudo sh cuda_11.8.0_520.61.05_linux.run
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre></li>
 <li><p>安装对应版本的pytorch</p>
 <p>  在<a target="_blank" rel="noopener" href="https://pytorch.org/get-started/locally/">这里</a>找到对应的pytorch版本，然后安装就好了。</p>
 </li>
 </ul>
 <ul>
 <li><p>最后，查看cuda是否能够被pytorch识别</p>
-  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">import torch</span><br><span class="line"><span class="built_in">print</span>(torch.cuda.is_available())</span><br></pre></td></tr></table></figure>
+  <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">import torch
+print(torch.cuda.is_available())<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <p>  如果显示为ture，则表示安装成功。</p>
 </li>
 </ul>

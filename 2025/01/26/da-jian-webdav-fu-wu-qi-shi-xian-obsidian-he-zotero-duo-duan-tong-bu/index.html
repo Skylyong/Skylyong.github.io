@@ -359,7 +359,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.9k
+                    2k
                 </div>
                 
 
@@ -381,6 +381,9 @@
         <hr class="clearfix">
 
         
+        <!-- 是否加载使用自带的 prismjs. -->
+        <link rel="stylesheet" href="/libs/prism/prism.css">
+        
 
         
 
@@ -399,25 +402,92 @@
 <h1 id="安装Apache2并配置webdav协议"><a href="#安装Apache2并配置webdav协议" class="headerlink" title="安装Apache2并配置webdav协议"></a><a target="_blank" rel="noopener" href="https://reintech.io/blog/installing-configuring-webdav-server-ubuntu-22">安装Apache2并配置webdav协议</a></h1><p>这里，我们对一般的WebDav配置进行了扩展，以达到多用户的要求，详细内容体现在配置文件里面。</p>
 <ol>
 <li><p>安装 Apache2 HTTP 服务并开通webdav协议</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">sudo apt update</span><br><span class="line">sudo apt install apache2</span><br><span class="line">sudo systemctl <span class="built_in">enable</span> apache2</span><br><span class="line">sudo systemctl start apache2</span><br><span class="line">sudo a2enmod dav dav_fs auth_digest</span><br><span class="line">sudo systemctl restart apache2</span><br></pre></td></tr></table></figure></li>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">sudo apt update
+sudo apt install apache2
+sudo systemctl enable apache2
+sudo systemctl start apache2
+sudo a2enmod dav dav_fs auth_digest
+sudo systemctl restart apache2<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
 <li><p>创建WebDav文件夹，设置权限</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">sudo mkdir -p /var/www/webdav/user1</span><br><span class="line">sudo mkdir -p /var/www/webdav/user2</span><br><span class="line">sudo mkdir -p /var/www/webdav/shared</span><br><span class="line">sudo chown -R www-data:www-data /var/www/webdav</span><br><span class="line">sudo chmod -R 775 /var/www/webdav</span><br></pre></td></tr></table></figure></li>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">sudo mkdir -p &#x2F;var&#x2F;www&#x2F;webdav&#x2F;user1
+sudo mkdir -p &#x2F;var&#x2F;www&#x2F;webdav&#x2F;user2
+sudo mkdir -p &#x2F;var&#x2F;www&#x2F;webdav&#x2F;shared
+sudo chown -R www-data:www-data &#x2F;var&#x2F;www&#x2F;webdav
+sudo chmod -R 775 &#x2F;var&#x2F;www&#x2F;webdav<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
 </ol>
 <p>通过上面的设置，webdav服务在服务器上面的路径为: /var/www/webdav<br>, 可以改为自己的。</p>
 <ol start="3">
 <li><p>创建用户认证文件<br>根据提示输入密码并确认</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo htdigest -c /etc/apache2/webdav.passwd <span class="string">&quot;WebDAV Realm&quot;</span> user1</span><br><span class="line">sudo htdigest /etc/apache2/webdav.passwd <span class="string">&quot;WebDAV Realm&quot;</span> user2</span><br></pre></td></tr></table></figure></li>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">sudo htdigest -c &#x2F;etc&#x2F;apache2&#x2F;webdav.passwd &quot;WebDAV Realm&quot; user1
+sudo htdigest &#x2F;etc&#x2F;apache2&#x2F;webdav.passwd &quot;WebDAV Realm&quot; user2<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre></li>
 <li><p>获取SSL证书<br>由于iso要求只能以https协议方式进行文件传输，所以要使得搭建的webdav服务能够用于电脑端和iPhone、ipad同步，必须配置SSL证书，以启用https协议。<br>SSL证书有两种获取方式，一种是自签名证书，该种证书只适合测试环境，不适合生产环境，因为简单笔者一开始采用的是该种方式，但经过了大量尝试，最终得到的自签名证书，并不能用于iso端。因此，不推荐自签名证书。<br>网络上的SSL证书颁发机构，一般仅针对于域名进行证书颁发，但是国内域名备案流程繁琐。笔者经过大量的查询，最终找到了一家可以为ip地址颁发免费证书的机构 <a target="_blank" rel="noopener" href="https://app.zerossl.com/dashboard">ZeroSSL</a>，虽然一次申请使用期仅为三个月，但是足以解决燃煤之急。<br>ZeroSSL的网站上有较为详细的证书申请及使用方法，这里不做赘述。</p>
 </li>
 <li><p>配置WebDav<br>完成上述操作之后，我们开始对WebDav服务进行配置，打开配置文件</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo vim /etc/apache2/sites-available/000-default.conf</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">sudo vim &#x2F;etc&#x2F;apache2&#x2F;sites-available&#x2F;000-default.conf<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p>往配置文件中添加以下完整配置内容</p>
- <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></td><td class="code"><pre><span class="line">&lt;VirtualHost *:443&gt;</span><br><span class="line">ServerAdmin webmaster@localhost</span><br><span class="line">DocumentRoot /var/www/webdav</span><br><span class="line"></span><br><span class="line"><span class="comment"># 设置ssl证书，路径表示证书的存放位置</span></span><br><span class="line"><span class="comment"># ServerName webdav.local</span></span><br><span class="line">SSLEngine on</span><br><span class="line">SSLCertificateFile /etc/ssl/certs/certificate.crt</span><br><span class="line">SSLCertificateKeyFile /etc/ssl/private/private.key</span><br><span class="line">SSLCertificateChainFile /etc/ssl/certs/ca_bundle.crt</span><br><span class="line"></span><br><span class="line">Alias /webdav /var/www/webdav</span><br><span class="line">&lt;Directory /home/webdav&gt;</span><br><span class="line">Options Indexes FollowSymLinks</span><br><span class="line">AllowOverride None</span><br><span class="line"><span class="comment"># Require all granted</span></span><br><span class="line"><span class="comment"># Dav On</span></span><br><span class="line">&lt;/Directory&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&lt;Location /webdav/user1&gt;</span><br><span class="line">AuthType Digest</span><br><span class="line">AuthName <span class="string">&quot;WebDAV Realm&quot;</span></span><br><span class="line">AuthDigestProvider file</span><br><span class="line">AuthUserFile /etc/apache2/webdav.passwd</span><br><span class="line">Require user user1</span><br><span class="line">Dav On</span><br><span class="line">&lt;/Location&gt;</span><br><span class="line"></span><br><span class="line">&lt;Location /webdav/user2&gt;</span><br><span class="line">AuthType Digest</span><br><span class="line">AuthName <span class="string">&quot;WebDAV Realm&quot;</span></span><br><span class="line">AuthDigestProvider file</span><br><span class="line">AuthUserFile /etc/apache2/webdav.passwd</span><br><span class="line">Require user user2</span><br><span class="line">Dav On</span><br><span class="line">&lt;/Location&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 设置共享路径的权限</span></span><br><span class="line">&lt;Location /webdav/shared&gt;</span><br><span class="line">Dav On</span><br><span class="line">Allow from all</span><br><span class="line">&lt;LimitExcept OPTIONS GET&gt;</span><br><span class="line">AuthType Digest</span><br><span class="line">AuthName <span class="string">&quot;WebDAV Realm&quot;</span></span><br><span class="line">AuthDigestProvider file</span><br><span class="line">AuthUserFile /etc/apache2/webdav.passwd</span><br><span class="line">Require valid-user</span><br><span class="line">&lt;/LimitExcept&gt;</span><br><span class="line">&lt;LimitExcept PUT POST DELETE MOVE&gt;</span><br><span class="line">Require all granted</span><br><span class="line">&lt;/LimitExcept&gt;</span><br><span class="line">&lt;/Location&gt;</span><br><span class="line"></span><br><span class="line">ErrorLog <span class="variable">$&#123;APACHE_LOG_DIR&#125;</span>/error.log</span><br><span class="line">CustomLog <span class="variable">$&#123;APACHE_LOG_DIR&#125;</span>/access.log combined</span><br><span class="line">&lt;/VirtualHost&gt;</span><br><span class="line"><span class="comment"># vim: syntax=apache ts=4 sw=4 sts=4 sr noet</span></span><br></pre></td></tr></table></figure></li>
+ <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">&lt;VirtualHost *:443&gt;
+ServerAdmin webmaster@localhost
+DocumentRoot &#x2F;var&#x2F;www&#x2F;webdav
+
+# 设置ssl证书，路径表示证书的存放位置
+# ServerName webdav.local
+SSLEngine on
+SSLCertificateFile &#x2F;etc&#x2F;ssl&#x2F;certs&#x2F;certificate.crt
+SSLCertificateKeyFile &#x2F;etc&#x2F;ssl&#x2F;private&#x2F;private.key
+SSLCertificateChainFile &#x2F;etc&#x2F;ssl&#x2F;certs&#x2F;ca_bundle.crt
+
+Alias &#x2F;webdav &#x2F;var&#x2F;www&#x2F;webdav
+&lt;Directory &#x2F;home&#x2F;webdav&gt;
+Options Indexes FollowSymLinks
+AllowOverride None
+# Require all granted
+# Dav On
+&lt;&#x2F;Directory&gt;
+
+
+&lt;Location &#x2F;webdav&#x2F;user1&gt;
+AuthType Digest
+AuthName &quot;WebDAV Realm&quot;
+AuthDigestProvider file
+AuthUserFile &#x2F;etc&#x2F;apache2&#x2F;webdav.passwd
+Require user user1
+Dav On
+&lt;&#x2F;Location&gt;
+
+&lt;Location &#x2F;webdav&#x2F;user2&gt;
+AuthType Digest
+AuthName &quot;WebDAV Realm&quot;
+AuthDigestProvider file
+AuthUserFile &#x2F;etc&#x2F;apache2&#x2F;webdav.passwd
+Require user user2
+Dav On
+&lt;&#x2F;Location&gt;
+
+# 设置共享路径的权限
+&lt;Location &#x2F;webdav&#x2F;shared&gt;
+Dav On
+Allow from all
+&lt;LimitExcept OPTIONS GET&gt;
+AuthType Digest
+AuthName &quot;WebDAV Realm&quot;
+AuthDigestProvider file
+AuthUserFile &#x2F;etc&#x2F;apache2&#x2F;webdav.passwd
+Require valid-user
+&lt;&#x2F;LimitExcept&gt;
+&lt;LimitExcept PUT POST DELETE MOVE&gt;
+Require all granted
+&lt;&#x2F;LimitExcept&gt;
+&lt;&#x2F;Location&gt;
+
+ErrorLog $&#123;APACHE_LOG_DIR&#125;&#x2F;error.log
+CustomLog $&#123;APACHE_LOG_DIR&#125;&#x2F;access.log combined
+&lt;&#x2F;VirtualHost&gt;
+# vim: syntax&#x3D;apache ts&#x3D;4 sw&#x3D;4 sts&#x3D;4 sr noet<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
 <li><p>重启Apache2并测试</p>
 </li>
 </ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl restart apache2</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-none"><code class="language-none">sudo systemctl restart apache2<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p>如果使用云服务器，需要在安全组中开通443端口，才能够正常访问服务。</p>
 <ul>
@@ -674,18 +744,17 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="far fa-dot-circle"></i>&nbsp;本篇
-            </div>
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2025/01/26/da-jian-webdav-fu-wu-qi-shi-xian-obsidian-he-zotero-duo-duan-tong-bu/">
+                <a href="/2025/01/27/2024-nian-di-zong-jie/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/22.jpg" class="responsive-img" alt="搭建Webdav服务器实现Obsidian和Zotero多端同步">
+                        <img src="/medias/featureimages/23.jpg" class="responsive-img" alt="2024年底总结">
                         
-                        <span class="card-title">搭建Webdav服务器实现Obsidian和Zotero多端同步</span>
+                        <span class="card-title">2024年底总结</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -695,27 +764,26 @@
                         
                     </div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2025-01-26
-                            </span>
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2025-01-27
+                        </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E6%80%BB%E7%BB%93/" class="post-category">
-                                    总结
+                            <a href="/categories/%E7%94%9F%E6%B4%BB%E6%83%85%E6%84%9F/" class="post-category">
+                                    生活情感
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
-
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E5%B9%B2%E8%B4%A7/">
-                        <span class="chip bg-color">干货</span>
+                    <a href="/tags/%E6%80%BB%E7%BB%93/">
+                        <span class="chip bg-color">总结</span>
                     </a>
                     
                 </div>

@@ -359,7 +359,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    615
+                    637
                 </div>
                 
 
@@ -381,6 +381,9 @@
         <hr class="clearfix">
 
         
+        <!-- 是否加载使用自带的 prismjs. -->
+        <link rel="stylesheet" href="/libs/prism/prism.css">
+        
 
         
 
@@ -389,7 +392,25 @@
                 <h3 id="设置代理加速GitHub"><a href="#设置代理加速GitHub" class="headerlink" title="设置代理加速GitHub"></a>设置代理加速GitHub</h3><p>由于github网站服务器在国外，国内上传和下载数据速度较慢，假如你已经有具备了科学上网的条件，可以通过设置代理的方式来提高数据传输速度。</p>
 <p>以下设置均建立在具备科学上网的前提下，下文中的小飞机指某款用于科学上网的工具。</p>
 <h4 id="设置http代理"><a href="#设置http代理" class="headerlink" title="设置http代理"></a>设置http代理</h4><p>在命令行输入如下的命令</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> http_proxy=http://127.0.0.1:1087</span><br><span class="line"><span class="built_in">export</span> https_proxy=http://127.0.0.1:1087</span><br><span class="line"></span><br><span class="line"><span class="comment">#设置http代理，端口号对应的是小飞机的http代理端口号</span></span><br><span class="line">git config --global http.proxy http://127.0.0.1:1087</span><br><span class="line">git config --global https.proxy http://127.0.0.1:1087</span><br><span class="line"></span><br><span class="line"><span class="comment">#配置github用户名和邮箱</span></span><br><span class="line">git config --global user.name github_id</span><br><span class="line">git config --global user.email github_email</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">#取消代理设置</span></span><br><span class="line">git config --global --<span class="built_in">unset</span> http.proxy</span><br><span class="line">git config --global --<span class="built_in">unset</span> https.proxy</span><br><span class="line"></span><br><span class="line"><span class="comment">#查看代理设置</span></span><br><span class="line">git config --list</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">export http_proxy&#x3D;http:&#x2F;&#x2F;127.0.0.1:1087
+export https_proxy&#x3D;http:&#x2F;&#x2F;127.0.0.1:1087
+
+#设置http代理，端口号对应的是小飞机的http代理端口号
+git config --global http.proxy http:&#x2F;&#x2F;127.0.0.1:1087
+git config --global https.proxy http:&#x2F;&#x2F;127.0.0.1:1087
+
+#配置github用户名和邮箱
+git config --global user.name github_id
+git config --global user.email github_email
+
+
+#取消代理设置
+git config --global --unset http.proxy
+git config --global --unset https.proxy
+
+#查看代理设置
+git config --list
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>http代理端口查询：</p>
 <blockquote>
@@ -398,7 +419,16 @@
 <img src="https://raw.githubusercontent.com/Skylyong/i/main/20210319193849.png" style="zoom:67%;" />
 
 <h4 id="设置ssh加速"><a href="#设置ssh加速" class="headerlink" title="设置ssh加速"></a><a target="_blank" rel="noopener" href="https://gist.github.com/chuyik/02d0d37a49edc162546441092efae6a1">设置ssh</a>加速</h4><p><code>在~/.ssh/config</code> 文件（不存在则新建）添加如下内容：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">Host github.com</span><br><span class="line">   HostName github.com</span><br><span class="line">   User git</span><br><span class="line">   <span class="comment"># 走 HTTP 代理，需要 brew install socat</span></span><br><span class="line">   <span class="comment"># ProxyCommand socat - PROXY:127.0.0.1:%h:%p,proxyport=1087</span></span><br><span class="line">   <span class="comment"># 走 socks5 代理（如 Shadowsocks）</span></span><br><span class="line">   ProxyCommand nc -v -x 127.0.0.1:1086 %h %p</span><br><span class="line">   <span class="comment">#上面1086这个端口号可以在“小飞机”的高级设置中查看</span></span><br><span class="line">   <span class="comment"># 走 socks5 代理（如 Shadowsocks），Windows 平台没有 nc 命令</span></span><br><span class="line">   <span class="comment"># ProxyCommand connect -S 127.0.0.1:1086 %h %p</span></span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">Host github.com
+   HostName github.com
+   User git
+   # 走 HTTP 代理，需要 brew install socat
+   # ProxyCommand socat - PROXY:127.0.0.1:%h:%p,proxyport&#x3D;1087
+   # 走 socks5 代理（如 Shadowsocks）
+   ProxyCommand nc -v -x 127.0.0.1:1086 %h %p
+   #上面1086这个端口号可以在“小飞机”的高级设置中查看
+   # 走 socks5 代理（如 Shadowsocks），Windows 平台没有 nc 命令
+   # ProxyCommand connect -S 127.0.0.1:1086 %h %p<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>本地Socks5监听窗口查询：</p>
 <blockquote>
@@ -415,7 +445,12 @@
 </blockquote>
 <span id="more"></span>
 <p>首先从这个<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/36154464">网站</a>给出的链接中获取(也可以直接用下面的数据)到如下格式的数据：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">140.82.113.4 github.com</span><br><span class="line">199.232.69.194 github.global.ssl.fastly.net</span><br><span class="line">185.199.108.153 assets-cdn.github.com</span><br><span class="line">185.199.110.153 assets-cdn.github.com</span><br><span class="line">185.199.111.153 assets-cdn.github.com</span><br><span class="line">185.199.109.153 assets-cdn.github.com</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">140.82.113.4 github.com
+199.232.69.194 github.global.ssl.fastly.net
+185.199.108.153 assets-cdn.github.com
+185.199.110.153 assets-cdn.github.com
+185.199.111.153 assets-cdn.github.com
+185.199.109.153 assets-cdn.github.com<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>然后将这些数据添加到hosts（mac中的路径为：/private/ect/hosts）文件中就可以了。</p>
 

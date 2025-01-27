@@ -359,7 +359,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    170
+                    194
                 </div>
                 
 
@@ -381,17 +381,40 @@
         <hr class="clearfix">
 
         
+        <!-- 是否加载使用自带的 prismjs. -->
+        <link rel="stylesheet" href="/libs/prism/prism.css">
+        
 
         
 
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <p>先从网络上下载 <code>SimHei.ttf</code>  文件放在某个位置，然后用下面的代码，设置字体的位置。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> json</span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="comment"># 从 data/original/SylvanL/Exam/tcm_exam_1.csv 读取数据</span></span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"><span class="keyword">from</span> matplotlib <span class="keyword">import</span> font_manager</span><br><span class="line"><span class="keyword">from</span> matplotlib <span class="keyword">import</span> rcParams</span><br><span class="line"><span class="keyword">import</span> re</span><br><span class="line"><span class="keyword">import</span> matplotlib </span><br><span class="line"><span class="comment"># 设置当前目录</span></span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line">os.chdir(<span class="string">&#x27;/cpfs01/projects-SSD/cfff-bafab61057ac_SSD/zyt_09215/liyong/TCM-EMBEDDING&#x27;</span>)</span><br><span class="line"></span><br><span class="line">my_font = font_manager.FontProperties(fname=<span class="string">&quot;fonts/SimHei.ttf&quot;</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 全局设置字体</span></span><br><span class="line">matplotlib.rcParams[<span class="string">&#x27;font.sans-serif&#x27;</span>]=my_font.get_name()  <span class="comment"># 用黑体显示中文</span></span><br><span class="line">matplotlib.rcParams[<span class="string">&#x27;axes.unicode_minus&#x27;</span>]=<span class="literal">False</span> </span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">import json
+import pandas as pd
+# 从 data&#x2F;original&#x2F;SylvanL&#x2F;Exam&#x2F;tcm_exam_1.csv 读取数据
+import matplotlib.pyplot as plt
+from matplotlib import font_manager
+from matplotlib import rcParams
+import re
+import matplotlib 
+# 设置当前目录
+import os
+os.chdir(&#39;&#x2F;cpfs01&#x2F;projects-SSD&#x2F;cfff-bafab61057ac_SSD&#x2F;zyt_09215&#x2F;liyong&#x2F;TCM-EMBEDDING&#39;)
+
+my_font &#x3D; font_manager.FontProperties(fname&#x3D;&quot;fonts&#x2F;SimHei.ttf&quot;)
+
+
+# 全局设置字体
+matplotlib.rcParams[&#39;font.sans-serif&#39;]&#x3D;my_font.get_name()  # 用黑体显示中文
+matplotlib.rcParams[&#39;axes.unicode_minus&#39;]&#x3D;False 
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>使用</p>
 <p>在需要使用中文的地方，指定上面设置好的字体</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">plt.title(<span class="string">&quot;描述长度分布&quot;</span>, fontproperties=my_font)</span><br><span class="line">plt.xlabel(<span class="string">&quot;长度&quot;</span>, fontproperties=my_font)</span><br><span class="line">plt.ylabel(<span class="string">&quot;数量&quot;</span>, fontproperties=my_font)</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">plt.title(&quot;描述长度分布&quot;, fontproperties&#x3D;my_font)
+plt.xlabel(&quot;长度&quot;, fontproperties&#x3D;my_font)
+plt.ylabel(&quot;数量&quot;, fontproperties&#x3D;my_font)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 
 <p>enjoy！ </p>
 

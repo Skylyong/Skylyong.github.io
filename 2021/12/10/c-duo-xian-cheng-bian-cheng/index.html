@@ -346,7 +346,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    595
+                    611
                 </div>
                 
 
@@ -368,6 +368,9 @@
         <hr class="clearfix">
 
         
+        <!-- 是否加载使用自带的 prismjs. -->
+        <link rel="stylesheet" href="/libs/prism/prism.css">
+        
 
         
 
@@ -387,22 +390,99 @@
 </ul>
 <h4 id="线程创建方法"><a href="#线程创建方法" class="headerlink" title="线程创建方法"></a>线程创建方法</h4><ul>
 <li><p>通过函数创建线程</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;thread&gt;</span></span></span><br><span class="line"><span class="keyword">using</span>  <span class="keyword">namespace</span>  std;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">do_something</span><span class="params">()</span></span>&#123;</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;线程开始&quot;</span>&lt;&lt; endl;</span><br><span class="line">    <span class="comment">//do something</span></span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;线程结束&quot;</span> &lt;&lt; endl;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="function">thread <span class="title">myjob</span> <span class="params">(do_something)</span></span>; </span><br><span class="line">    myjob.<span class="built_in">join</span>(); <span class="comment">//阻塞主线程，等待子线程结束</span></span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;The End&quot;</span> &lt;&lt;endl;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include &lt;iostream&gt;
+#include &lt;thread&gt;
+using  namespace  std;
+void do_something()&#123;
+    cout &lt;&lt; &quot;线程开始&quot;&lt;&lt; endl;
+    &#x2F;&#x2F;do something
+    cout &lt;&lt; &quot;线程结束&quot; &lt;&lt; endl;
+&#125;
+int main()&#123;
+    thread myjob (do_something); 
+    myjob.join(); &#x2F;&#x2F;阻塞主线程，等待子线程结束
+    cout &lt;&lt; &quot;The End&quot; &lt;&lt;endl;
+    return 0;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
 <li><p>通过类创建线程</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;thread&gt;</span></span></span><br><span class="line"><span class="keyword">using</span>  <span class="keyword">namespace</span>  std;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span>  <span class="title">myClass</span>&#123;</span></span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="keyword">int</span> data;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">myClass</span>(<span class="keyword">int</span> d):<span class="built_in">data</span>(d)&#123;</span><br><span class="line">        cout &lt;&lt; <span class="string">&quot;构造函数&quot;</span> &lt;&lt;endl;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">myClass</span>(<span class="keyword">const</span> myClass&amp;myClass1):<span class="built_in">data</span>(myClass1.data)&#123;</span><br><span class="line">        cout &lt;&lt; <span class="string">&quot;拷贝构造函数&quot;</span> &lt;&lt;endl;</span><br><span class="line">    &#125;</span><br><span class="line">    ~<span class="built_in">myClass</span>()&#123;</span><br><span class="line">        cout &lt;&lt; <span class="string">&quot;析构函数&quot;</span> &lt;&lt;endl;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">operator</span><span class="params">()</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="comment">//线程的入口</span></span><br><span class="line">        cout &lt;&lt; <span class="string">&quot;线程开始&quot;</span> &lt;&lt;endl;</span><br><span class="line"><span class="comment">//        do something</span></span><br><span class="line">        cout &lt;&lt; <span class="string">&quot;线程结束&quot;</span> &lt;&lt; endl;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> a = <span class="number">10</span>;</span><br><span class="line">    <span class="function">myClass <span class="title">myclass</span><span class="params">(a)</span></span>;</span><br><span class="line">    <span class="function">thread <span class="title">myjob</span> <span class="params">(myclass)</span></span>; <span class="comment">// 复制一次myclass</span></span><br><span class="line">    myjob.<span class="built_in">join</span>();</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;The End&quot;</span> &lt;&lt;endl;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include &lt;iostream&gt;
+#include &lt;thread&gt;
+using  namespace  std;
+
+class  myClass&#123;
+private:
+    int data;
+public:
+    myClass(int d):data(d)&#123;
+        cout &lt;&lt; &quot;构造函数&quot; &lt;&lt;endl;
+    &#125;
+    myClass(const myClass&amp;myClass1):data(myClass1.data)&#123;
+        cout &lt;&lt; &quot;拷贝构造函数&quot; &lt;&lt;endl;
+    &#125;
+    ~myClass()&#123;
+        cout &lt;&lt; &quot;析构函数&quot; &lt;&lt;endl;
+    &#125;
+    void operator()()&#123;
+        &#x2F;&#x2F;线程的入口
+        cout &lt;&lt; &quot;线程开始&quot; &lt;&lt;endl;
+&#x2F;&#x2F;        do something
+        cout &lt;&lt; &quot;线程结束&quot; &lt;&lt; endl;
+    &#125;
+&#125;;
+
+
+int main()&#123;
+    int a &#x3D; 10;
+    myClass myclass(a);
+    thread myjob (myclass); &#x2F;&#x2F; 复制一次myclass
+    myjob.join();
+    cout &lt;&lt; &quot;The End&quot; &lt;&lt;endl;
+    return 0;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
 <li><p>通过lambda表达式创建线程</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;thread&gt;</span></span></span><br><span class="line"><span class="keyword">using</span>  <span class="keyword">namespace</span>  std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">auto</span> myLambdaThread = []&#123;</span><br><span class="line">        cout &lt;&lt; <span class="string">&quot;线程开始&quot;</span> &lt;&lt; endl;</span><br><span class="line"><span class="comment">//        do something</span></span><br><span class="line">        cout &lt;&lt; <span class="string">&quot;线程结束&quot;</span> &lt;&lt; endl;</span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="function">thread <span class="title">myjob</span> <span class="params">(myLambdaThread)</span></span>;</span><br><span class="line">    myjob.<span class="built_in">join</span>();</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;The End&quot;</span> &lt;&lt;endl;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include &lt;iostream&gt;
+#include &lt;thread&gt;
+using  namespace  std;
+
+int main()&#123;
+    auto myLambdaThread &#x3D; []&#123;
+        cout &lt;&lt; &quot;线程开始&quot; &lt;&lt; endl;
+&#x2F;&#x2F;        do something
+        cout &lt;&lt; &quot;线程结束&quot; &lt;&lt; endl;
+    &#125;;
+    thread myjob (myLambdaThread);
+    myjob.join();
+    cout &lt;&lt; &quot;The End&quot; &lt;&lt;endl;
+    return 0;
+    
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h4 id="传递临时对象作为线程参数"><a href="#传递临时对象作为线程参数" class="headerlink" title="传递临时对象作为线程参数"></a>传递临时对象作为线程参数</h4></li>
 </ul>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;thread&gt;</span></span></span><br><span class="line"><span class="keyword">using</span>  <span class="keyword">namespace</span>  std;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">do_something_with_parameters</span><span class="params">(<span class="keyword">const</span> <span class="keyword">int</span>&amp; a, <span class="keyword">char</span> *buff)</span></span>&#123;</span><br><span class="line">    cout &lt;&lt; a &lt;&lt; endl;</span><br><span class="line">    cout &lt;&lt; buff &lt;&lt; endl;<span class="comment">//传指针危险</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> val = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">char</span> buff[] = <span class="string">&quot;this is a test!&quot;</span>;</span><br><span class="line">    <span class="function">thread <span class="title">myjob</span> <span class="params">(do_something_with_parameters, val, buff)</span></span>;</span><br><span class="line">    myjob.<span class="built_in">join</span>(); <span class="comment">//阻塞主线程，等待子线程结束</span></span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;The End&quot;</span> &lt;&lt;endl;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include &lt;iostream&gt;
+#include &lt;thread&gt;
+using  namespace  std;
+void do_something_with_parameters(const int&amp; a, char *buff)&#123;
+    cout &lt;&lt; a &lt;&lt; endl;
+    cout &lt;&lt; buff &lt;&lt; endl;&#x2F;&#x2F;传指针危险
+&#125;
+int main()&#123;
+    int val &#x3D; 1;
+    char buff[] &#x3D; &quot;this is a test!&quot;;
+    thread myjob (do_something_with_parameters, val, buff);
+    myjob.join(); &#x2F;&#x2F;阻塞主线程，等待子线程结束
+    cout &lt;&lt; &quot;The End&quot; &lt;&lt;endl;
+    return 0;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h4 id="线程id"><a href="#线程id" class="headerlink" title="线程id"></a>线程id</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">获取线程id：get_id（）</span><br><span class="line">获取当前线程id：std::this_thread::get_id()</span><br></pre></td></tr></table></figure>
+<h4 id="线程id"><a href="#线程id" class="headerlink" title="线程id"></a>线程id</h4><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">获取线程id：get_id（）
+获取当前线程id：std::this_thread::get_id()<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
-<h4 id="线程间的值传递"><a href="#线程间的值传递" class="headerlink" title="线程间的值传递"></a>线程间的值传递</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">std::ref()</span><br><span class="line">std::move()</span><br></pre></td></tr></table></figure>
+<h4 id="线程间的值传递"><a href="#线程间的值传递" class="headerlink" title="线程间的值传递"></a>线程间的值传递</h4><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">std::ref()
+std::move()<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
 
 
-<h4 id="最多可以使用的线程数"><a href="#最多可以使用的线程数" class="headerlink" title="最多可以使用的线程数"></a>最多可以使用的线程数</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">std::thread::hardware_concurrency()</span><br></pre></td></tr></table></figure>
+<h4 id="最多可以使用的线程数"><a href="#最多可以使用的线程数" class="headerlink" title="最多可以使用的线程数"></a>最多可以使用的线程数</h4><pre class="line-numbers language-ba" data-language="ba"><code class="language-ba">std::thread::hardware_concurrency()<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 
                 

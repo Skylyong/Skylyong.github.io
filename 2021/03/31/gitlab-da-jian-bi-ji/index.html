@@ -359,7 +359,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    162
+                    175
                 </div>
                 
 
@@ -381,16 +381,26 @@
         <hr class="clearfix">
 
         
+        <!-- 是否加载使用自带的 prismjs. -->
+        <link rel="stylesheet" href="/libs/prism/prism.css">
+        
 
         
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h4 id="安装gitlab："><a href="#安装gitlab：" class="headerlink" title="安装gitlab："></a><a target="_blank" rel="noopener" href="https://packages.gitlab.com/gitlab/gitlab-ee/packages/ubuntu/focal/gitlab-ee_13.8.7-ee.0_amd64.deb">安装gitlab</a>：</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">curl -s https://packages.gitlab.com/install/repositories/gitlab/gitlab-ee/</span><br><span class="line">script.deb.sh | sudo bash</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+                <h4 id="安装gitlab："><a href="#安装gitlab：" class="headerlink" title="安装gitlab："></a><a target="_blank" rel="noopener" href="https://packages.gitlab.com/gitlab/gitlab-ee/packages/ubuntu/focal/gitlab-ee_13.8.7-ee.0_amd64.deb">安装gitlab</a>：</h4><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">curl -s https:&#x2F;&#x2F;packages.gitlab.com&#x2F;install&#x2F;repositories&#x2F;gitlab&#x2F;gitlab-ee&#x2F;
+script.deb.sh | sudo bash
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <h4 id="防火墙设置"><a href="#防火墙设置" class="headerlink" title="防火墙设置"></a>防火墙设置</h4><p> 之前已经配置好了，略</p>
 <h4 id="gitlab配置"><a href="#gitlab配置" class="headerlink" title="gitlab配置"></a><a target="_blank" rel="noopener" href="https://docs.gitlab.com/omnibus/settings/configuration.html#configuring-the-external-url-for-gitlab">gitlab配置</a></h4><p>打开/etc/gitlab/gitlab.rb</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">external_url <span class="string">&#x27;http://gitlab.bytenlp.site&#x27;</span></span><br><span class="line"><span class="comment"># 系统端口冲突，我把端口改为了85</span></span><br><span class="line">nginx[<span class="string">&#x27;listen_port&#x27;</span>] = 85</span><br></pre></td></tr></table></figure>
-<h4 id="让配置生效，并重启gitlab服务"><a href="#让配置生效，并重启gitlab服务" class="headerlink" title="让配置生效，并重启gitlab服务"></a>让配置生效，并重启gitlab服务</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 重新配置gitlab</span></span><br><span class="line">sudo gitlab-ctl reconfigure</span><br><span class="line"><span class="comment"># 重启gitlab</span></span><br><span class="line">gitlab-ctl restart </span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">external_url &#39;http:&#x2F;&#x2F;gitlab.bytenlp.site&#39;
+# 系统端口冲突，我把端口改为了85
+nginx[&#39;listen_port&#39;] &#x3D; 85<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<h4 id="让配置生效，并重启gitlab服务"><a href="#让配置生效，并重启gitlab服务" class="headerlink" title="让配置生效，并重启gitlab服务"></a>让配置生效，并重启gitlab服务</h4><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"># 重新配置gitlab
+sudo gitlab-ctl reconfigure
+# 重启gitlab
+gitlab-ctl restart <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 <h4 id="在浏览器输入”ip-端口号”查看效果，详细参考这里"><a href="#在浏览器输入”ip-端口号”查看效果，详细参考这里" class="headerlink" title="在浏览器输入”ip:端口号”查看效果，详细参考这里"></a>在浏览器输入”ip:端口号”查看效果，详细参考<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/ade38a53b1ac">这里</a></h4><p>参考教程：</p>
 <ul>
 <li> <a target="_blank" rel="noopener" href="https://www.jianshu.com/p/bf7b09e234c8">https://www.jianshu.com/p/bf7b09e234c8</a></li>

@@ -359,14 +359,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    531
+                    560
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    2 分
+                    3 分
                 </div>
                 
 
@@ -381,6 +381,9 @@
         <hr class="clearfix">
 
         
+        <!-- 是否加载使用自带的 prismjs. -->
+        <link rel="stylesheet" href="/libs/prism/prism.css">
+        
 
         
 
@@ -393,68 +396,96 @@
 </blockquote>
 <h3 id="1-Loading-data-into-Pandas"><a href="#1-Loading-data-into-Pandas" class="headerlink" title="1. Loading data into Pandas"></a>1. Loading data into Pandas</h3><blockquote>
 <p>1.1 Loading data from csv format file</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># read data from csv format file</span></span><br><span class="line">df = pd.read_csv(<span class="string">&#x27;pokemon_data.csv&#x27;</span>)</span><br><span class="line"><span class="built_in">print</span>(df.head(<span class="number">3</span>))</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"># read data from csv format file
+df &#x3D; pd.read_csv(&#39;pokemon_data.csv&#39;)
+print(df.head(3))<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 </blockquote>
 <blockquote>
 <p> 1.2 Loading data from txt format file</p>
 </blockquote>
 <blockquote>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># read data from txt format file</span></span><br><span class="line">df_txt = pd.read_csv(<span class="string">&#x27;pokemon_data.txt&#x27;</span>, delimiter=<span class="string">&#x27;\t&#x27;</span>)</span><br><span class="line"><span class="built_in">print</span>(df_txt.head(<span class="number">3</span>))</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"># read data from txt format file
+df_txt &#x3D; pd.read_csv(&#39;pokemon_data.txt&#39;, delimiter&#x3D;&#39;\t&#39;)
+print(df_txt.head(3))<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 </blockquote>
 <h3 id="2-Read-Data-in-Pandas"><a href="#2-Read-Data-in-Pandas" class="headerlink" title="2. Read Data in Pandas"></a>2. Read Data in Pandas</h3><blockquote>
 <p>2.1 Read head</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(df.columns)</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">print(df.columns)<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p>2.2 Read each Column</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(df[<span class="string">&#x27;Name&#x27;</span>][<span class="number">0</span>:<span class="number">5</span>])</span><br><span class="line"><span class="built_in">print</span>(df.Name[<span class="number">0</span>:<span class="number">5</span>])</span><br><span class="line"><span class="built_in">print</span>(df[[<span class="string">&#x27;Name&#x27;</span>, <span class="string">&#x27;Type 1&#x27;</span>, <span class="string">&#x27;HP&#x27;</span>]][<span class="number">0</span>:<span class="number">5</span>])</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">print(df[&#39;Name&#39;][0:5])
+print(df.Name[0:5])
+print(df[[&#39;Name&#39;, &#39;Type 1&#39;, &#39;HP&#39;]][0:5])<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 
 <p>2.3 Read each Row</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># print the top 4 rows</span></span><br><span class="line"><span class="built_in">print</span>(df.head(<span class="number">4</span>))</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(df.iloc[<span class="number">0</span>])</span><br><span class="line"><span class="keyword">for</span> index, row <span class="keyword">in</span> df.iterrows():</span><br><span class="line">    <span class="built_in">print</span>(index, row[<span class="string">&#x27;Name&#x27;</span>])</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"># print the top 4 rows
+print(df.head(4))
+
+print(df.iloc[0])
+for index, row in df.iterrows():
+    print(index, row[&#39;Name&#39;])<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>2.4 Read a specific location(R,C)</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(df.iloc[<span class="number">2</span>,<span class="number">1</span>])</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">print(df.iloc[2,1])<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 
 </blockquote>
 <h3 id="3-Sorting-Describing-Data"><a href="#3-Sorting-Describing-Data" class="headerlink" title="3. Sorting/Describing Data"></a>3. Sorting/Describing Data</h3><blockquote>
 <p> 3.1 View data describe</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(df.describe())</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">print(df.describe())<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p>3.2 Sorting</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sort_res = df.sort_values([<span class="string">&#x27;Name&#x27;</span>,<span class="string">&#x27;HP&#x27;</span>], ascending=[<span class="number">1</span>, <span class="number">0</span>])</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">sort_res &#x3D; df.sort_values([&#39;Name&#39;,&#39;HP&#39;], ascending&#x3D;[1, 0])<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 
 </blockquote>
 <h3 id="4-Making-changes-to-the-data"><a href="#4-Making-changes-to-the-data" class="headerlink" title="4. Making changes to the data"></a>4. Making changes to the data</h3><blockquote>
 <p>4.1 Create a new column</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">df[<span class="string">&#x27;Total&#x27;</span>] = df[<span class="string">&#x27;HP&#x27;</span>] + df[<span class="string">&#x27;Attack&#x27;</span>]</span><br><span class="line">df[<span class="string">&#x27;Total&#x27;</span>] = df.iloc[:,<span class="number">4</span>:<span class="number">10</span>].<span class="built_in">sum</span>(axis=<span class="number">1</span>)</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">df[&#39;Total&#39;] &#x3D; df[&#39;HP&#39;] + df[&#39;Attack&#39;]
+df[&#39;Total&#39;] &#x3D; df.iloc[:,4:10].sum(axis&#x3D;1)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <p>4.2 Delete one column</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df = df.drop(columns=[<span class="string">&#x27;Total&#x27;</span>])</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">df &#x3D; df.drop(columns&#x3D;[&#39;Total&#39;])<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 
 </blockquote>
 <h3 id="5-Save-data-to-file"><a href="#5-Save-data-to-file" class="headerlink" title="5. Save data to file"></a>5. Save data to file</h3><blockquote>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df.to_csv(<span class="string">&#x27;new_data.csv&#x27;</span>, index=<span class="literal">False</span>, sep=<span class="string">&#x27;\t&#x27;</span>)</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">df.to_csv(&#39;new_data.csv&#39;, index&#x3D;False, sep&#x3D;&#39;\t&#39;)<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 
 </blockquote>
 <h3 id="6-Filtering-Data"><a href="#6-Filtering-Data" class="headerlink" title="6. Filtering Data"></a>6. Filtering Data</h3><blockquote>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 过滤出满足条件的数据，过滤出来的数据会保留原来的序号</span></span><br><span class="line">new_df = df.loc[(df[<span class="string">&#x27;Type 1&#x27;</span>] == <span class="string">&#x27;Grass&#x27;</span>) &amp; (df[<span class="string">&#x27;Type 2&#x27;</span>] == <span class="string">&#x27;Poison&#x27;</span>)]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 将过滤出来的数据的序号进行重置</span></span><br><span class="line">new_df.reset_index(drop=<span class="literal">True</span>, inplace=<span class="literal">True</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 过滤出“Name”列中包含“Mega”字段的数据</span></span><br><span class="line">new_df = df.loc[~df[<span class="string">&#x27;Name&#x27;</span>].<span class="built_in">str</span>.contains(<span class="string">&#x27;Mega&#x27;</span>)]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 过滤出“Type 1”列中包含“first”和“grass”字段是数据，并且不区别大小写</span></span><br><span class="line">df.loc[df[<span class="string">&#x27;Type 1&#x27;</span>].<span class="built_in">str</span>.contains(<span class="string">&#x27;fire|Grass&#x27;</span>,flags=re.I, regex=<span class="literal">True</span>)] <span class="comment"># Ignore case</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 用正则表达式过滤“Name”列中满足条件的数据</span></span><br><span class="line">df.loc[df[<span class="string">&#x27;Name&#x27;</span>].<span class="built_in">str</span>.contains(<span class="string">&#x27;^pi[a-z]*&#x27;</span>, flags=re.I, regex=<span class="literal">True</span>)]</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"># 过滤出满足条件的数据，过滤出来的数据会保留原来的序号
+new_df &#x3D; df.loc[(df[&#39;Type 1&#39;] &#x3D;&#x3D; &#39;Grass&#39;) &amp; (df[&#39;Type 2&#39;] &#x3D;&#x3D; &#39;Poison&#39;)]
+
+# 将过滤出来的数据的序号进行重置
+new_df.reset_index(drop&#x3D;True, inplace&#x3D;True)
+
+# 过滤出“Name”列中包含“Mega”字段的数据
+new_df &#x3D; df.loc[~df[&#39;Name&#39;].str.contains(&#39;Mega&#39;)]
+
+# 过滤出“Type 1”列中包含“first”和“grass”字段是数据，并且不区别大小写
+df.loc[df[&#39;Type 1&#39;].str.contains(&#39;fire|Grass&#39;,flags&#x3D;re.I, regex&#x3D;True)] # Ignore case
+
+# 用正则表达式过滤“Name”列中满足条件的数据
+df.loc[df[&#39;Name&#39;].str.contains(&#39;^pi[a-z]*&#39;, flags&#x3D;re.I, regex&#x3D;True)]<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 
 </blockquote>
 <h3 id="7-Conditional-changes"><a href="#7-Conditional-changes" class="headerlink" title="7. Conditional changes"></a>7. Conditional changes</h3><blockquote>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 把type 1 列中满足条件(等于&#x27;Fire&#x27;)的内容改为Flamer</span></span><br><span class="line">df.loc[df[<span class="string">&#x27;Type 1&#x27;</span>] == <span class="string">&#x27;Fire&#x27;</span>, <span class="string">&#x27;Type 1&#x27;</span>] = <span class="string">&#x27;Flamer&#x27;</span></span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"># 把type 1 列中满足条件(等于&#39;Fire&#39;)的内容改为Flamer
+df.loc[df[&#39;Type 1&#39;] &#x3D;&#x3D; &#39;Fire&#39;, &#39;Type 1&#39;] &#x3D; &#39;Flamer&#39;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
 
 </blockquote>
 <h3 id="8-Aggregate-Statistics-Groupby"><a href="#8-Aggregate-Statistics-Groupby" class="headerlink" title="8. Aggregate Statistics(Groupby)"></a>8. Aggregate Statistics(Groupby)</h3><blockquote>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">res = df.groupby([<span class="string">&#x27;Type 1&#x27;</span>]).mean().sort_values(<span class="string">&#x27;HP&#x27;</span>, ascending=<span class="literal">False</span>)</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">res &#x3D; df.groupby([&#39;Type 1&#39;]).mean().sort_values(&#39;HP&#39;, ascending&#x3D;False)<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 
 </blockquote>
 <h3 id="9-Working-with-large-amounts-of-data"><a href="#9-Working-with-large-amounts-of-data" class="headerlink" title="9. Working with large amounts of data"></a>9. Working with large amounts of data</h3><blockquote>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 分批读取数据，一次读100行</span></span><br><span class="line"><span class="keyword">for</span> df <span class="keyword">in</span> pd.read_csv(<span class="string">&#x27;pokemon_data.csv&#x27;</span>, chunk_size=<span class="number">100</span>):</span><br><span class="line">    <span class="built_in">print</span>(df)</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"># 分批读取数据，一次读100行
+for df in pd.read_csv(&#39;pokemon_data.csv&#39;, chunk_size&#x3D;100):
+    print(df)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 
 
 </blockquote>

@@ -359,7 +359,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    920
+                    947
                 </div>
                 
 
@@ -381,6 +381,9 @@
         <hr class="clearfix">
 
         
+        <!-- 是否加载使用自带的 prismjs. -->
+        <link rel="stylesheet" href="/libs/prism/prism.css">
+        
 
         
 
@@ -395,41 +398,118 @@
 <li>尽量保证函数的功能单一，这样的函数更容易被复用，多写几个函数没有关系</li>
 <li>几种常用的保存/读取数据方式：</li>
 </ol>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">  <span class="keyword">import</span> pickle</span><br><span class="line">  <span class="keyword">import</span> json</span><br><span class="line"> </span><br><span class="line"> <span class="comment"># 使用pickle </span></span><br><span class="line"> pickle.dump(data, file=<span class="built_in">open</span>(file_name,<span class="string">&quot;wb&quot;</span>))</span><br><span class="line"> data = pickle.load(file=<span class="built_in">open</span>(file_name, <span class="string">&quot;rb&quot;</span>))</span><br><span class="line"> </span><br><span class="line"> <span class="comment"># 使用json</span></span><br><span class="line"> json.dump(data, file=<span class="built_in">open</span>(file_name,<span class="string">&quot;w&quot;</span>))</span><br><span class="line"> data = json.load(file=<span class="built_in">open</span>(file_name, <span class="string">&quot;r&quot;</span>))</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">  import pickle
+  import json
+ 
+ # 使用pickle 
+ pickle.dump(data, file&#x3D;open(file_name,&quot;wb&quot;))
+ data &#x3D; pickle.load(file&#x3D;open(file_name, &quot;rb&quot;))
+ 
+ # 使用json
+ json.dump(data, file&#x3D;open(file_name,&quot;w&quot;))
+ data &#x3D; json.load(file&#x3D;open(file_name, &quot;r&quot;))<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <ol start="6">
 <li>使用coment来可视化训练过程</li>
 </ol>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">  <span class="keyword">from</span> comet_ml <span class="keyword">import</span> Experiment</span><br><span class="line"> </span><br><span class="line"> experiment = Experiment(project_name=args.project_name,</span><br><span class="line">                         api_key=args.api_key)</span><br><span class="line"> </span><br><span class="line"> experiment.log_parameters(<span class="built_in">vars</span>(args))</span><br><span class="line"> </span><br><span class="line"> <span class="keyword">with</span> experiment.train():</span><br><span class="line">     experiment.log_metric(<span class="string">&#x27;epoch_loss&#x27;</span>, train_loss, step=epoch)</span><br><span class="line"> </span><br><span class="line"> <span class="keyword">with</span> experiment.validate():</span><br><span class="line">     experiment.log_metric(<span class="string">&#x27;epoch_loss&#x27;</span>, val_loss, step=epoch)</span><br><span class="line"> </span><br><span class="line"> experiment.end()</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">  from comet_ml import Experiment
+ 
+ experiment &#x3D; Experiment(project_name&#x3D;args.project_name,
+                         api_key&#x3D;args.api_key)
+ 
+ experiment.log_parameters(vars(args))
+ 
+ with experiment.train():
+     experiment.log_metric(&#39;epoch_loss&#39;, train_loss, step&#x3D;epoch)
+ 
+ with experiment.validate():
+     experiment.log_metric(&#39;epoch_loss&#39;, val_loss, step&#x3D;epoch)
+ 
+ experiment.end()<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <ol start="7">
 <li>使用argparse来构建超参数管理入口</li>
 </ol>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">  <span class="keyword">import</span> argparse</span><br><span class="line">  parser = argparse.ArgumentParser()</span><br><span class="line"> </span><br><span class="line">   parser.add_argument(<span class="string">&quot;--drop_data_rate&quot;</span>, default=<span class="number">0.9</span>, <span class="built_in">type</span>=<span class="built_in">float</span>,required=<span class="literal">False</span>)</span><br><span class="line"> </span><br><span class="line">   args = parser.parse_args() <span class="comment">#将参数变成可调用对象</span></span><br><span class="line"> </span><br><span class="line">   pp.pprint(<span class="built_in">vars</span>(args)) <span class="comment"># 打印参数</span></span><br><span class="line"> </span><br><span class="line">   <span class="function"><span class="keyword">def</span> <span class="title">str2bool</span>(<span class="params">v</span>):</span></span><br><span class="line">     <span class="keyword">if</span> v.lower() <span class="keyword">in</span> (<span class="string">&#x27;yes&#x27;</span>, <span class="string">&#x27;true&#x27;</span>, <span class="string">&#x27;t&#x27;</span>, <span class="string">&#x27;y&#x27;</span>, <span class="string">&#x27;1&#x27;</span>):</span><br><span class="line">         <span class="keyword">return</span> <span class="literal">True</span></span><br><span class="line">     <span class="keyword">elif</span> v.lower() <span class="keyword">in</span> (<span class="string">&#x27;no&#x27;</span>, <span class="string">&#x27;false&#x27;</span>, <span class="string">&#x27;f&#x27;</span>, <span class="string">&#x27;n&#x27;</span>, <span class="string">&#x27;0&#x27;</span>):</span><br><span class="line">         <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">     <span class="keyword">else</span>:</span><br><span class="line">         <span class="keyword">raise</span> argparse.ArgumentTypeError(<span class="string">&#x27;Unsupported value encountered.&#x27;</span>)</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">  import argparse
+  parser &#x3D; argparse.ArgumentParser()
+ 
+   parser.add_argument(&quot;--drop_data_rate&quot;, default&#x3D;0.9, type&#x3D;float,required&#x3D;False)
+ 
+   args &#x3D; parser.parse_args() #将参数变成可调用对象
+ 
+   pp.pprint(vars(args)) # 打印参数
+ 
+   def str2bool(v):
+     if v.lower() in (&#39;yes&#39;, &#39;true&#39;, &#39;t&#39;, &#39;y&#39;, &#39;1&#39;):
+         return True
+     elif v.lower() in (&#39;no&#39;, &#39;false&#39;, &#39;f&#39;, &#39;n&#39;, &#39;0&#39;):
+         return False
+     else:
+         raise argparse.ArgumentTypeError(&#39;Unsupported value encountered.&#39;)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>注： 使用add_argument()添加参数的时候有一个大坑，=当添加参数的type为bool的时候，不能设置type=bool，需要自定义str2bool函数，然后设置type=str2bool。</p>
 <ol start="8">
 <li>使用multiprocessing提高处理速度：凡是能够并行处理且数据量巨大的任务，应尽量使用多进程编程</li>
 </ol>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"> <span class="keyword">from</span> multiprocessing <span class="keyword">import</span> Pool</span><br><span class="line"> <span class="keyword">from</span> tqdm <span class="keyword">import</span> tqdm</span><br><span class="line"> </span><br><span class="line">  <span class="keyword">with</span> Pool(n_workers) <span class="keyword">as</span> p: <span class="comment"># n_workers表示进程数</span></span><br><span class="line">     result = <span class="built_in">list</span>(tqdm(p.imap(function, data), total=<span class="built_in">len</span>(data))) <span class="comment"># 这里使用tqdm显示进度条，需要调用imap，如果不用显示进度条调用map函数</span></span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"> from multiprocessing import Pool
+ from tqdm import tqdm
+ 
+  with Pool(n_workers) as p: # n_workers表示进程数
+     result &#x3D; list(tqdm(p.imap(function, data), total&#x3D;len(data))) # 这里使用tqdm显示进度条，需要调用imap，如果不用显示进度条调用map函数<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <ol start="9">
 <li>使用plt将图片保存到内存中，提高处理效率</li>
 </ol>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"> <span class="keyword">from</span> io <span class="keyword">import</span> BytesIO</span><br><span class="line"> <span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"> </span><br><span class="line"> p_bytes = BytesIO() <span class="comment">#申请内存</span></span><br><span class="line"> plt.savefig(p_bytes, <span class="built_in">format</span>=<span class="string">&#x27;png&#x27;</span>)</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"> from io import BytesIO
+ import matplotlib.pyplot as plt
+ 
+ p_bytes &#x3D; BytesIO() #申请内存
+ plt.savefig(p_bytes, format&#x3D;&#39;png&#39;)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <ol start="10">
 <li>关于采样的函数</li>
 </ol>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"> <span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"> <span class="keyword">import</span> random</span><br><span class="line"> </span><br><span class="line"> indents = np.random.choice(<span class="number">2</span>, n,replace=<span class="literal">True</span>,p=[pro1, pro2]) <span class="comment"># 有放回的从[0,1]中取n个值，取0的概率为pro1，取1的概率为pro2</span></span><br><span class="line"> </span><br><span class="line"> random.shuffle(data)</span><br><span class="line"> sample_resulut = random.sample(data, n)</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"> import numpy as np
+ import random
+ 
+ indents &#x3D; np.random.choice(2, n,replace&#x3D;True,p&#x3D;[pro1, pro2]) # 有放回的从[0,1]中取n个值，取0的概率为pro1，取1的概率为pro2
+ 
+ random.shuffle(data)
+ sample_resulut &#x3D; random.sample(data, n)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>11.PIL库读取图片</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"> <span class="keyword">import</span> PIL</span><br><span class="line"> </span><br><span class="line"> img = PIL.Image.<span class="built_in">open</span>(image_byte)</span><br><span class="line"> img = img.convert(<span class="string">&#x27;RGB&#x27;</span>)</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"> import PIL
+ 
+ img &#x3D; PIL.Image.open(image_byte)
+ img &#x3D; img.convert(&#39;RGB&#39;)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 
 <ol start="12">
 <li>plt 画散点图和图片画布设置</li>
 </ol>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"> <span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"> </span><br><span class="line"> plt.rcParams[<span class="string">&#x27;figure.figsize&#x27;</span>] = (<span class="number">4</span>, <span class="number">4</span>) <span class="comment"># 设置图片大小</span></span><br><span class="line"> </span><br><span class="line"> plt.rcParams[<span class="string">&#x27;savefig.dpi&#x27;</span>] = <span class="number">56</span> <span class="comment">#设置像素</span></span><br><span class="line"> plt.rcParams[<span class="string">&#x27;figure.dpi&#x27;</span>] = <span class="number">56</span> <span class="comment">#设置像素</span></span><br><span class="line"> plt.axis(<span class="string">&#x27;off&#x27;</span>) <span class="comment">#关闭坐标</span></span><br><span class="line"> </span><br><span class="line"> <span class="comment"># 多张子图</span></span><br><span class="line"> fig, axs = plt.subplots(n, <span class="number">1</span>)</span><br><span class="line"> <span class="keyword">for</span> idx, dim <span class="keyword">in</span> <span class="built_in">enumerate</span>(<span class="built_in">range</span>(n)):</span><br><span class="line">     axs[idx].axis(<span class="string">&#x27;off&#x27;</span>)</span><br><span class="line">     axs[idx].scatter(x, y, s=<span class="number">0.1</span>)</span><br><span class="line"> </span><br><span class="line"> <span class="comment"># 单张子图</span></span><br><span class="line"> fig, axs = plt.subplots(<span class="number">1</span>, <span class="number">1</span>)</span><br><span class="line"> axs.axis(<span class="string">&#x27;off&#x27;</span>)</span><br><span class="line"> axs.scatter(x, y, s=<span class="number">0.1</span>)</span><br><span class="line"> </span><br><span class="line"> plt.savefig(file_name) <span class="comment"># 保存到磁盘</span></span><br><span class="line"> p_bytes = BytesIO()</span><br><span class="line"> plt.savefig(p_bytes, <span class="built_in">format</span>=<span class="string">&#x27;png&#x27;</span>) <span class="comment"># 保存到内存</span></span><br><span class="line"> plt.cla()</span><br><span class="line"> plt.close(<span class="string">&#x27;all&#x27;</span>) <span class="comment"># 清空缓存</span></span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"> import matplotlib.pyplot as plt
+ 
+ plt.rcParams[&#39;figure.figsize&#39;] &#x3D; (4, 4) # 设置图片大小
+ 
+ plt.rcParams[&#39;savefig.dpi&#39;] &#x3D; 56 #设置像素
+ plt.rcParams[&#39;figure.dpi&#39;] &#x3D; 56 #设置像素
+ plt.axis(&#39;off&#39;) #关闭坐标
+ 
+ # 多张子图
+ fig, axs &#x3D; plt.subplots(n, 1)
+ for idx, dim in enumerate(range(n)):
+     axs[idx].axis(&#39;off&#39;)
+     axs[idx].scatter(x, y, s&#x3D;0.1)
+ 
+ # 单张子图
+ fig, axs &#x3D; plt.subplots(1, 1)
+ axs.axis(&#39;off&#39;)
+ axs.scatter(x, y, s&#x3D;0.1)
+ 
+ plt.savefig(file_name) # 保存到磁盘
+ p_bytes &#x3D; BytesIO()
+ plt.savefig(p_bytes, format&#x3D;&#39;png&#39;) # 保存到内存
+ plt.cla()
+ plt.close(&#39;all&#39;) # 清空缓存<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
                 
             </div>

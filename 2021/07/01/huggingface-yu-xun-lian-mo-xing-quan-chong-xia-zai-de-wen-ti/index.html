@@ -350,7 +350,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    420
+                    431
                 </div>
                 
 
@@ -372,6 +372,9 @@
         <hr class="clearfix">
 
         
+        <!-- 是否加载使用自带的 prismjs. -->
+        <link rel="stylesheet" href="/libs/prism/prism.css">
+        
 
         
 
@@ -383,9 +386,12 @@
 <p>Hugging face是一个专注于NLP的公司，拥有一个开源的预训练模型库 Transformers ，里面囊括了非常多的模型例如 BERT GPT 等.</p>
 <h4 id="模型库"><a href="#模型库" class="headerlink" title="模型库"></a>模型库</h4><p>官网的模型库的地址如下：<a target="_blank" rel="noopener" href="https://huggingface.co/models">https://huggingface.co/models</a> </p>
 <h4 id="使用模型"><a href="#使用模型" class="headerlink" title="使用模型"></a>使用模型</h4><p>首先需要安装transformers库，使用以下命令安装：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install transformers</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">pip install transformers<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>接下来在代码中调用 <font color=red> AutoTokenizer.from_pretrained</font> 和 <font color=red> AutoModel.from_pretrained </font>即可, 例如：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> transformers <span class="keyword">import</span> *</span><br><span class="line">model_name = <span class="string">&#x27;hfl/chinese-xlnet-base&#x27;</span></span><br><span class="line">tokenizer = AutoTokenizer.from_pretrained(model_name)</span><br><span class="line">model = AutoModel.from_pretrained(model_name)</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">from transformers import *
+model_name &#x3D; &#39;hfl&#x2F;chinese-xlnet-base&#39;
+tokenizer &#x3D; AutoTokenizer.from_pretrained(model_name)
+model &#x3D; AutoModel.from_pretrained(model_name)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 <p>运行后系统会自动下载相关的模型文件并存放在电脑中。使用Windows模型保存的路径在 <font color=red> C:\Users[用户名].cache\torch\transformers</font>目录下，根据模型的不同下载的东西也不相同</p>
 <p>使用Linux模型保存的路径在 <font color=red> ~/.cache/torch/transformers/ </font>目录下。</p>
 <h4 id="存在的问题"><a href="#存在的问题" class="headerlink" title="存在的问题"></a>存在的问题</h4><p>这些前提是你的电脑有网络可以直接使用代码下载相应的模型文件，但是问题是有些机器是没有外网连接权限或者下载速度非常慢。</p>
@@ -396,7 +402,10 @@
 <p>把弹窗内的文件全部下载下来</p>
 <p>我们假设文件保存在<font color=red> E:\models\hfl\chinese-xlnet-base\ </font>目录下</p>
 <p>我们只需要把<font color=red>model_name </font>修改为下载的文件夹即可</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> transformers <span class="keyword">import</span> *</span><br><span class="line">model_name = <span class="string">&#x27;E:/models/hfl/chinese-xlnet-base/&#x27;</span></span><br><span class="line">tokenizer = AutoTokenizer.from_pretrained(model_name)</span><br><span class="line">model = AutoModel.from_pretrained(model_name)</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">from transformers import *
+model_name &#x3D; &#39;E:&#x2F;models&#x2F;hfl&#x2F;chinese-xlnet-base&#x2F;&#39;
+tokenizer &#x3D; AutoTokenizer.from_pretrained(model_name)
+model &#x3D; AutoModel.from_pretrained(model_name)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>这样问题就解决了。</p>
 

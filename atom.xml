@@ -6,7 +6,7 @@
   <link href="https://ailyong.cn/atom.xml" rel="self"/>
   
   <link href="https://ailyong.cn/"/>
-  <updated>2025-01-26T13:30:55.049Z</updated>
+  <updated>2025-01-27T10:30:30.513Z</updated>
   <id>https://ailyong.cn/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>2024年底总结</title>
+    <link href="https://ailyong.cn/2025/01/27/2024-nian-di-zong-jie/"/>
+    <id>https://ailyong.cn/2025/01/27/2024-nian-di-zong-jie/</id>
+    <published>2025-01-27T09:54:36.000Z</published>
+    <updated>2025-01-27T10:30:30.513Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;最近一年以来，很少在技术博客上面更新文章了，一方面是很长一段时间以来，因为感情的事情，一直&lt;br&gt;处在低谷期，另一方面是因为博客文章的更新是一个比较耗费时间和精力的事情，并且没有比较好的读者反馈，而我开通了微信公众号，并且在上面更新一些关于户外爬山的文章，所以在技术博客上面</summary>
+        
+      
+    
+    
+    
+    <category term="生活情感" scheme="https://ailyong.cn/categories/%E7%94%9F%E6%B4%BB%E6%83%85%E6%84%9F/"/>
+    
+    
+    <category term="总结" scheme="https://ailyong.cn/tags/%E6%80%BB%E7%BB%93/"/>
+    
+  </entry>
   
   <entry>
     <title>搭建Webdav服务器实现Obsidian和Zotero多端同步</title>
@@ -79,7 +104,7 @@
         
         
     <summary type="html">&lt;p&gt;先从网络上下载 &lt;code&gt;SimHei.ttf&lt;/code&gt;  文件放在某个位置，然后用下面的代码，设置字体的位置。&lt;/p&gt;
-&lt;figure class=&quot;highlight python&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td</summary>
+&lt;pre class=&quot;line-numbers language-python&quot; data-language=&quot;python&quot;&gt;&lt;code</summary>
         
       
     
@@ -106,7 +131,7 @@
         
     <summary type="html">&lt;ol&gt;
 &lt;li&gt;&lt;p&gt;导入依赖的包&lt;/p&gt;
-&lt;figure class=&quot;highlight python&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td</summary>
+&lt;pre class=&quot;line-numbers language-python&quot; data-language=&quot;python&quot;&gt;&lt;code class=&quot;language-python&quot;&gt;from</summary>
         
       
     
@@ -509,31 +534,6 @@
     
     
     <category term="图" scheme="https://ailyong.cn/tags/%E5%9B%BE/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>SVM学习笔记</title>
-    <link href="https://ailyong.cn/2021/08/09/svm-xue-xi-bi-ji/"/>
-    <id>https://ailyong.cn/2021/08/09/svm-xue-xi-bi-ji/</id>
-    <published>2021-08-09T13:50:37.000Z</published>
-    <updated>2025-01-07T02:10:42.227Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h2 id=&quot;SVM学习笔记&quot;&gt;&lt;a href=&quot;#SVM学习笔记&quot; class=&quot;headerlink&quot; title=&quot;SVM学习笔记&quot;&gt;&lt;/a&gt;SVM学习笔记&lt;/h2&gt;&lt;p&gt;&lt;a</summary>
-        
-      
-    
-    
-    
-    <category term="学习笔记" scheme="https://ailyong.cn/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
-    
-    
-    <category term="svm" scheme="https://ailyong.cn/tags/svm/"/>
     
   </entry>
   

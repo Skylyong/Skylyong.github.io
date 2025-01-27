@@ -359,7 +359,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    315
+                    316
                 </div>
                 
 
@@ -380,6 +380,9 @@
         </div>
         <hr class="clearfix">
 
+        
+        <!-- 是否加载使用自带的 prismjs. -->
+        <link rel="stylesheet" href="/libs/prism/prism.css">
         
 
         
@@ -405,7 +408,8 @@
 <ul>
 <li><p>安装silk-v3</p>
 <p>silk-v3依赖gcc和FFmpeg来运行，如果没有这两个依赖项，通过如下命令安装依赖：</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">brew install gcc</span><br><span class="line">brew install ffmpeg</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-sh" data-language="sh"><code class="language-sh">brew install gcc
+brew install ffmpeg<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
 <p>安装好依赖之后，在<a target="_blank" rel="noopener" href="https://github.com/kn007/silk-v3-decoder">这里</a>将silk-v3克隆到本地电脑。</p>
 </li>
@@ -413,9 +417,9 @@
 <p>按照<a target="_blank" rel="noopener" href="https://github.com/Skylyong/silk-v3-decoder">silk-v3项目说明</a>运行命令，完成格式转换。</p>
 <ul>
 <li><p>转换单个文件</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sh converter.sh xxx.slk mp3</span><br></pre></td></tr></table></figure></li>
+<pre class="line-numbers language-sh" data-language="sh"><code class="language-sh">sh converter.sh xxx.slk mp3<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
 <li><p>批量转换文件夹中的多个文件</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sh converter.sh inputFolder ouputFolder mp3</span><br></pre></td></tr></table></figure></li>
+<pre class="line-numbers language-sh" data-language="sh"><code class="language-sh">sh converter.sh inputFolder ouputFolder mp3<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
 </ul>
 </li>
 </ul>

@@ -359,7 +359,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    277
+                    293
                 </div>
                 
 
@@ -381,6 +381,9 @@
         <hr class="clearfix">
 
         
+        <!-- 是否加载使用自带的 prismjs. -->
+        <link rel="stylesheet" href="/libs/prism/prism.css">
+        
 
         
 
@@ -388,11 +391,34 @@
             <div id="articleContent">
                 <ol>
 <li><p>导入依赖的包</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> concurrent.futures <span class="keyword">import</span> ProcessPoolExecutor, as_completed</span><br></pre></td></tr></table></figure></li>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">from concurrent.futures import ProcessPoolExecutor, as_completed<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
 <li><p>定义处理内容的函数，该函数要是全局函数，不能放在函数或者类里面<br>函数的参数只有一个，可以用元组包装起来，然后再解包</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">process_record</span>(<span class="params">args</span>):</span></span><br><span class="line">    text = args[<span class="number">0</span>][<span class="string">&quot;text&quot;</span>]</span><br><span class="line">    CONTENT = args[<span class="number">1</span>]</span><br><span class="line">    extract_info = inference(text, model=<span class="string">&quot;deepseek-chat&quot;</span>, CONTENT=CONTENT)</span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">        <span class="string">&quot;text&quot;</span>: text,</span><br><span class="line">        <span class="string">&quot;extract_info&quot;</span>: extract_info</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></li>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">def process_record(args):
+    text &#x3D; args[0][&quot;text&quot;]
+    CONTENT &#x3D; args[1]
+    extract_info &#x3D; inference(text, model&#x3D;&quot;deepseek-chat&quot;, CONTENT&#x3D;CONTENT)
+    return &#123;
+        &quot;text&quot;: text,
+        &quot;extract_info&quot;: extract_info
+    &#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
 <li><p>使用多进程处理数据<br>在 with 下面一共有两个for，第一个for负责将数据和处理函数放在一个 futures 中， 第二个for负责处理和返回处理结果。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">with</span> ProcessPoolExecutor(max_workers=max_workers) <span class="keyword">as</span> executor:</span><br><span class="line">       futures = []</span><br><span class="line">       <span class="keyword">for</span> d <span class="keyword">in</span> data:</span><br><span class="line">           args = (d, CONTENT)</span><br><span class="line">           futures.append(executor.submit(process_record, args))</span><br><span class="line"></span><br><span class="line">       <span class="comment"># 使用 as_completed 迭代返回已经完成的任务</span></span><br><span class="line">       <span class="comment"># tqdm 用于显示进度条</span></span><br><span class="line">       <span class="keyword">for</span> idx, future <span class="keyword">in</span> <span class="built_in">enumerate</span>(tqdm.tqdm(as_completed(futures), total=<span class="built_in">len</span>(futures), desc=<span class="string">&quot;Extracting info&quot;</span>)):</span><br><span class="line">           result = future.result()</span><br><span class="line">           new_data.append(result)</span><br><span class="line"></span><br><span class="line">           <span class="comment"># 每完成 100 个样本，保存一次临时文件</span></span><br><span class="line">           <span class="keyword">if</span> (idx + <span class="number">1</span>) % <span class="number">500</span> == <span class="number">0</span>:</span><br><span class="line">               <span class="keyword">with</span> <span class="built_in">open</span>(save_path, <span class="string">&quot;w&quot;</span>, encoding=<span class="string">&quot;utf-8&quot;</span>) <span class="keyword">as</span> f:</span><br><span class="line">                   json.dump(new_data, f, indent=<span class="number">4</span>, ensure_ascii=<span class="literal">False</span>)</span><br><span class="line">                   <span class="built_in">print</span>(<span class="string">f&quot;Extracted information from <span class="subst">&#123;idx+<span class="number">1</span>&#125;</span> medical records, and saved to <span class="subst">&#123;save_path&#125;</span>&quot;</span>)</span><br></pre></td></tr></table></figure></li>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">with ProcessPoolExecutor(max_workers&#x3D;max_workers) as executor:
+       futures &#x3D; []
+       for d in data:
+           args &#x3D; (d, CONTENT)
+           futures.append(executor.submit(process_record, args))
+
+       # 使用 as_completed 迭代返回已经完成的任务
+       # tqdm 用于显示进度条
+       for idx, future in enumerate(tqdm.tqdm(as_completed(futures), total&#x3D;len(futures), desc&#x3D;&quot;Extracting info&quot;)):
+           result &#x3D; future.result()
+           new_data.append(result)
+
+           # 每完成 100 个样本，保存一次临时文件
+           if (idx + 1) % 500 &#x3D;&#x3D; 0:
+               with open(save_path, &quot;w&quot;, encoding&#x3D;&quot;utf-8&quot;) as f:
+                   json.dump(new_data, f, indent&#x3D;4, ensure_ascii&#x3D;False)
+                   print(f&quot;Extracted information from &#123;idx+1&#125; medical records, and saved to &#123;save_path&#125;&quot;)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
 </ol>
 <p>enjoy ! </p>
 

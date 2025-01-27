@@ -359,7 +359,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    539
+                    541
                 </div>
                 
 
@@ -380,6 +380,9 @@
         </div>
         <hr class="clearfix">
 
+        
+        <!-- 是否加载使用自带的 prismjs. -->
+        <link rel="stylesheet" href="/libs/prism/prism.css">
         
 
         
@@ -408,7 +411,9 @@
 <li><p>发布博客用如下三个命令：</p>
 </li>
 </ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hexo clean</span><br><span class="line">hexo g</span><br><span class="line">hexo d</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">hexo clean
+hexo g
+hexo d<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 
 <h4 id="增加功能"><a href="#增加功能" class="headerlink" title="增加功能"></a>增加功能</h4><p>今天为博客增加了<a target="_blank" rel="noopener" href="http://www.yangyong.xyz/2018/01/03/add-hexo-next-post-views/">记录阅读次数</a>和<a target="_blank" rel="noopener" href="https://vic.kim/2019/05/22/Hexo%20Next%20%E4%B8%BB%E9%A2%98%E4%B8%AD%E6%B7%BB%E5%8A%A0%E6%9C%AC%E5%9C%B0%E6%90%9C%E7%B4%A2%E5%8A%9F%E8%83%BD/">站内搜索</a>的功能。其中添加记录阅读次数功能相对麻烦，需要注册<a target="_blank" rel="noopener" href="https://console.leancloud.cn/">leancloud</a>的账号，并且按照教程进行相应设置，如果遇到不能够正常显示阅读次数，要安装相关插件；站内搜索功能比较简单，按照链接中的教程一步步操作就好了。</p>
 <h4 id="设置github免费图床"><a href="#设置github免费图床" class="headerlink" title="设置github免费图床"></a>设置github免费图床</h4><p>首先在<a target="_blank" rel="noopener" href="https://github.com/Molunerfinn/PicGo/releases">这里</a>下载对应版本的PicGo(我选择的是2.2.2版本)，然后根据这个<a target="_blank" rel="noopener" href="https://learnku.com/articles/48574">教程</a>设置图床，设置好图床后就可以把本地的图片上传到github服务器，生成链接，方便写markdown的时候引用。</p>

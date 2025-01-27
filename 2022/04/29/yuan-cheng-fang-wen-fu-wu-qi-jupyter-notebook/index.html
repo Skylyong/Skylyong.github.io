@@ -359,7 +359,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    121
+                    122
                 </div>
                 
 
@@ -381,16 +381,19 @@
         <hr class="clearfix">
 
         
+        <!-- 是否加载使用自带的 prismjs. -->
+        <link rel="stylesheet" href="/libs/prism/prism.css">
+        
 
         
 
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <h4 id="方法：-ssh远程使用jupyter-notebook"><a href="#方法：-ssh远程使用jupyter-notebook" class="headerlink" title="方法： ssh远程使用jupyter notebook"></a>方法： ssh远程使用jupyter notebook</h4><p>在远程服务器上，启动jupyter notebooks服务：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">jupyter notebook --no-browser --port=8889</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">jupyter notebook --no-browser --port&#x3D;8889<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p>在本地终端中启动SSH：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh -N -f -L localhost:8888:localhost:8889 username@serverIP</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">ssh -N -f -L localhost:8888:localhost:8889 username@serverIP<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p>其中： -N 告诉SSH没有命令要被远程执行； -f 告诉SSH在后台执行； -L 是指定port forwarding的配置，远端端口是8889，本地的端口号的8888。</p>
 <p>注意：username@serverIP替换成服务器的对应账号。</p>

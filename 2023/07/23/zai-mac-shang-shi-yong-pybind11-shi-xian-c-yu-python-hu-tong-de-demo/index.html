@@ -359,14 +359,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.5k
+                    1.6k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    6 分
+                    7 分
                 </div>
                 
 
@@ -381,32 +381,158 @@
         <hr class="clearfix">
 
         
+        <!-- 是否加载使用自带的 prismjs. -->
+        <link rel="stylesheet" href="/libs/prism/prism.css">
+        
 
         
 
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <h4 id="在mac上使用pybind11实现c-与python互通的demo"><a href="#在mac上使用pybind11实现c-与python互通的demo" class="headerlink" title="在mac上使用pybind11实现c++与python互通的demo"></a>在mac上使用pybind11实现c++与python互通的demo</h4><h5 id="0-问题描述"><a href="#0-问题描述" class="headerlink" title="0. 问题描述"></a>0. 问题描述</h5><p>下面的python代码定义了一个类，类中有一个名为analyze_data的函数，其采用递归的方法解析json格式的data数据，由于处理速度达不到要求，我们希望用c++改写该类，并封装成可供python代码调用的库，以达到加速的效果。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"> <span class="comment"># 待解析的数据deom</span></span><br><span class="line"> data_demo = &#123;<span class="string">&quot;resbody&quot;</span>: &#123;<span class="string">&quot;data&quot;</span>: &#123;<span class="string">&quot;name&quot;</span>: <span class="string">&quot;John&quot;</span>, <span class="string">&quot;age&quot;</span>: <span class="number">30</span>, <span class="string">&quot;address&quot;</span>: &#123;<span class="string">&quot;city&quot;</span>: <span class="string">&quot;New York&quot;</span>, <span class="string">&quot;zipcode&quot;</span>: <span class="number">10001</span>&#125;&#125;&#125;&#125;</span><br><span class="line"> </span><br><span class="line"> <span class="comment"># 需要转换为c++代码的类</span></span><br><span class="line"> <span class="class"><span class="keyword">class</span> <span class="title">AnalyzeDataUtil</span>:</span></span><br><span class="line"> </span><br><span class="line">     <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self, datas</span>):</span></span><br><span class="line">         self.datas = datas</span><br><span class="line"> </span><br><span class="line">     <span class="function"><span class="keyword">def</span> <span class="title">analyze_data</span>(<span class="params">self, data, result=<span class="string">&quot;resbody&quot;</span>, depth=<span class="number">0</span></span>):</span></span><br><span class="line">         <span class="keyword">if</span> depth == <span class="number">5</span>:</span><br><span class="line">             <span class="keyword">return</span></span><br><span class="line">         <span class="keyword">if</span> <span class="built_in">isinstance</span>(data, <span class="built_in">dict</span>):</span><br><span class="line">             <span class="keyword">for</span> k, v <span class="keyword">in</span> data.items():</span><br><span class="line">                 self.analyze_data(v, result + <span class="string">&quot;$%s&quot;</span> % <span class="built_in">str</span>(k), depth+<span class="number">1</span>)</span><br><span class="line">         <span class="keyword">if</span> <span class="built_in">isinstance</span>(data, (<span class="built_in">list</span>, <span class="built_in">tuple</span>)):</span><br><span class="line">             <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(data)):</span><br><span class="line">                 self.analyze_data(data[i], result, depth+<span class="number">1</span>)</span><br><span class="line">         <span class="keyword">else</span>:</span><br><span class="line">             self.datas[result] = <span class="built_in">str</span>(data)</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"> # 待解析的数据deom
+ data_demo &#x3D; &#123;&quot;resbody&quot;: &#123;&quot;data&quot;: &#123;&quot;name&quot;: &quot;John&quot;, &quot;age&quot;: 30, &quot;address&quot;: &#123;&quot;city&quot;: &quot;New York&quot;, &quot;zipcode&quot;: 10001&#125;&#125;&#125;&#125;
+ 
+ # 需要转换为c++代码的类
+ class AnalyzeDataUtil:
+ 
+     def __init__(self, datas):
+         self.datas &#x3D; datas
+ 
+     def analyze_data(self, data, result&#x3D;&quot;resbody&quot;, depth&#x3D;0):
+         if depth &#x3D;&#x3D; 5:
+             return
+         if isinstance(data, dict):
+             for k, v in data.items():
+                 self.analyze_data(v, result + &quot;$%s&quot; % str(k), depth+1)
+         if isinstance(data, (list, tuple)):
+             for i in range(len(data)):
+                 self.analyze_data(data[i], result, depth+1)
+         else:
+             self.datas[result] &#x3D; str(data)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p><strong>问题分析</strong>：</p>
 <p>根据问题描述，首先，我们要用c++对python定义的类进行改写，由于传入的变量data类型不固定，且涉及到类型判断，一种比较简单的方式是采用pybind11，它针对python的常见数据类型，都有对应的c++实现版本，代码改写工作大大减少。其次，类改写好之后，我们需要打通c++与python之间的隔阂，使用pybind11实现起来也非常方便，只需要在c++源码中添加少量代码即可。最后，我们还需要将c++源码编译成共享库，供下游代码调用。</p>
-<h5 id="1-安装必要的工具和包"><a href="#1-安装必要的工具和包" class="headerlink" title="1. 安装必要的工具和包"></a>1. 安装必要的工具和包</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"> brew install cmake</span><br><span class="line"> conda install pybind11</span><br></pre></td></tr></table></figure>
+<h5 id="1-安装必要的工具和包"><a href="#1-安装必要的工具和包" class="headerlink" title="1. 安装必要的工具和包"></a>1. 安装必要的工具和包</h5><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"> brew install cmake
+ conda install pybind11<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
 <p>注意：安装pybind11的时候要用conda来安装，用pip方式安装，编译的时候会报路径错误。</p>
 <h5 id="2-创建c-源文件"><a href="#2-创建c-源文件" class="headerlink" title="2. 创建c++源文件"></a>2. 创建c++源文件</h5><p>下面的代码实现了AnalyzeDataUtil类的c++版本，第54行到第60行的作用是打通c++与python之间的隔阂。</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><span class="line"> <span class="comment">//path: analyze_data_util/analyze_data_util.cpp</span></span><br><span class="line"> <span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;pybind11/pybind11.h&gt;</span></span></span><br><span class="line"> <span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;pybind11/stl.h&gt;</span></span></span><br><span class="line"> </span><br><span class="line"> <span class="keyword">namespace</span> py = pybind11;</span><br><span class="line"> </span><br><span class="line"> <span class="class"><span class="keyword">struct</span> <span class="title">AnalyzeDataUtil</span></span></span><br><span class="line"><span class="class"> &#123;</span></span><br><span class="line"> <span class="keyword">public</span>:</span><br><span class="line">     <span class="built_in">AnalyzeDataUtil</span>(py::dict datas) : <span class="built_in">datas</span>(datas) &#123;&#125;</span><br><span class="line"> </span><br><span class="line">     <span class="function"><span class="keyword">void</span> <span class="title">analyze_data</span><span class="params">(<span class="keyword">const</span> py::object &amp;data, std::string result = <span class="string">&quot;&quot;</span>, <span class="keyword">int</span> depth = <span class="number">0</span>)</span></span></span><br><span class="line"><span class="function">     </span>&#123;</span><br><span class="line"> </span><br><span class="line">         <span class="keyword">if</span> (depth == <span class="number">5</span>)</span><br><span class="line">             <span class="keyword">return</span>;</span><br><span class="line"> </span><br><span class="line">         <span class="keyword">if</span> (py::isinstance&lt;py::dict&gt;(data))</span><br><span class="line">         &#123;</span><br><span class="line">             py::dict dict_data = py::cast&lt;py::dict&gt;(data);</span><br><span class="line"> </span><br><span class="line">             <span class="keyword">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;item : dict_data)</span><br><span class="line">             &#123;</span><br><span class="line">                 <span class="keyword">auto</span> key = py::reinterpret_borrow&lt;py::object&gt;(item.first);</span><br><span class="line">                 <span class="keyword">auto</span> value = py::reinterpret_borrow&lt;py::object&gt;(item.second);</span><br><span class="line">                 <span class="built_in">analyze_data</span>(value, result + <span class="string">&quot;$&quot;</span> + py::<span class="built_in">str</span>(key).cast&lt;std::string&gt;(), depth + <span class="number">1</span>);</span><br><span class="line">             &#125;</span><br><span class="line">         &#125;</span><br><span class="line">         <span class="keyword">if</span> (py::isinstance&lt;py::list&gt;(data) || py::isinstance&lt;py::tuple&gt;(data))</span><br><span class="line">         &#123;</span><br><span class="line">             py::list list_data = py::cast&lt;py::list&gt;(data);</span><br><span class="line"> </span><br><span class="line">             <span class="keyword">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;item : list_data)</span><br><span class="line">             &#123;</span><br><span class="line"> </span><br><span class="line">                 <span class="built_in">analyze_data</span>(py::cast&lt;py::object&gt;(item), result, depth + <span class="number">1</span>);</span><br><span class="line">             &#125;</span><br><span class="line">         &#125;</span><br><span class="line">         <span class="keyword">else</span></span><br><span class="line">         &#123;</span><br><span class="line"> </span><br><span class="line">             datas[py::<span class="built_in">str</span>(result)] = py::<span class="built_in">str</span>(data).cast&lt;std::string&gt;();</span><br><span class="line">         &#125;</span><br><span class="line">     &#125;</span><br><span class="line"> </span><br><span class="line">     <span class="function">py::dict <span class="title">get_datas</span><span class="params">()</span></span></span><br><span class="line"><span class="function">     </span>&#123;</span><br><span class="line">         <span class="keyword">return</span> datas;</span><br><span class="line">     &#125;</span><br><span class="line"> </span><br><span class="line"> <span class="keyword">private</span>:</span><br><span class="line">     py::dict datas;</span><br><span class="line"> &#125;;</span><br><span class="line"> </span><br><span class="line"> <span class="built_in">PYBIND11_MODULE</span>(analyze_data_util, m)</span><br><span class="line"> &#123;</span><br><span class="line">     py::class_&lt;AnalyzeDataUtil&gt;(m, <span class="string">&quot;AnalyzeDataUtil&quot;</span>)</span><br><span class="line">         .<span class="built_in">def</span>(py::init&lt;py::dict&gt;())</span><br><span class="line">         .<span class="built_in">def</span>(<span class="string">&quot;analyze_data&quot;</span>, &amp;AnalyzeDataUtil::analyze_data)</span><br><span class="line">         .<span class="built_in">def</span>(<span class="string">&quot;get_datas&quot;</span>, &amp;AnalyzeDataUtil::get_datas);</span><br><span class="line"> &#125;</span><br><span class="line"> </span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++"> &#x2F;&#x2F;path: analyze_data_util&#x2F;analyze_data_util.cpp
+ #include &lt;pybind11&#x2F;pybind11.h&gt;
+ #include &lt;pybind11&#x2F;stl.h&gt;
+ 
+ namespace py &#x3D; pybind11;
+ 
+ struct AnalyzeDataUtil
+ &#123;
+ public:
+     AnalyzeDataUtil(py::dict datas) : datas(datas) &#123;&#125;
+ 
+     void analyze_data(const py::object &amp;data, std::string result &#x3D; &quot;&quot;, int depth &#x3D; 0)
+     &#123;
+ 
+         if (depth &#x3D;&#x3D; 5)
+             return;
+ 
+         if (py::isinstance&lt;py::dict&gt;(data))
+         &#123;
+             py::dict dict_data &#x3D; py::cast&lt;py::dict&gt;(data);
+ 
+             for (const auto &amp;item : dict_data)
+             &#123;
+                 auto key &#x3D; py::reinterpret_borrow&lt;py::object&gt;(item.first);
+                 auto value &#x3D; py::reinterpret_borrow&lt;py::object&gt;(item.second);
+                 analyze_data(value, result + &quot;$&quot; + py::str(key).cast&lt;std::string&gt;(), depth + 1);
+             &#125;
+         &#125;
+         if (py::isinstance&lt;py::list&gt;(data) || py::isinstance&lt;py::tuple&gt;(data))
+         &#123;
+             py::list list_data &#x3D; py::cast&lt;py::list&gt;(data);
+ 
+             for (const auto &amp;item : list_data)
+             &#123;
+ 
+                 analyze_data(py::cast&lt;py::object&gt;(item), result, depth + 1);
+             &#125;
+         &#125;
+         else
+         &#123;
+ 
+             datas[py::str(result)] &#x3D; py::str(data).cast&lt;std::string&gt;();
+         &#125;
+     &#125;
+ 
+     py::dict get_datas()
+     &#123;
+         return datas;
+     &#125;
+ 
+ private:
+     py::dict datas;
+ &#125;;
+ 
+ PYBIND11_MODULE(analyze_data_util, m)
+ &#123;
+     py::class_&lt;AnalyzeDataUtil&gt;(m, &quot;AnalyzeDataUtil&quot;)
+         .def(py::init&lt;py::dict&gt;())
+         .def(&quot;analyze_data&quot;, &amp;AnalyzeDataUtil::analyze_data)
+         .def(&quot;get_datas&quot;, &amp;AnalyzeDataUtil::get_datas);
+ &#125;
+ <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <h5 id="4-创建CMakeLists-txt文件编译C-模块"><a href="#4-创建CMakeLists-txt文件编译C-模块" class="headerlink" title="4. 创建CMakeLists.txt文件编译C++模块"></a>4. 创建CMakeLists.txt文件编译C++模块</h5><p>创建文件analyze_data_util/CMakeLists.txt， 然后将下面的脚本拷贝到文件中。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"> cmake_minimum_required(VERSION 3.12)</span><br><span class="line"></span><br><span class="line"> project(analyze_data_util LANGUAGES CXX)</span><br><span class="line"> </span><br><span class="line"> <span class="built_in">set</span>(CMAKE_CXX_STANDARD 14)</span><br><span class="line"> </span><br><span class="line"> find_package(pybind11 REQUIRED)</span><br><span class="line"> </span><br><span class="line"> pybind11_add_module(analyze_data_util analyze_data_util.cpp)</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"> cmake_minimum_required(VERSION 3.12)
 
-<h5 id="5-编译C-模块"><a href="#5-编译C-模块" class="headerlink" title="5. 编译C++模块"></a>5. 编译C++模块</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"> mkdir build</span><br><span class="line"> <span class="built_in">cd</span> build</span><br><span class="line"> cmake ..</span><br><span class="line"> cmake --build .</span><br></pre></td></tr></table></figure>
+ project(analyze_data_util LANGUAGES CXX)
+ 
+ set(CMAKE_CXX_STANDARD 14)
+ 
+ find_package(pybind11 REQUIRED)
+ 
+ pybind11_add_module(analyze_data_util analyze_data_util.cpp)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h5 id="5-编译C-模块"><a href="#5-编译C-模块" class="headerlink" title="5. 编译C++模块"></a>5. 编译C++模块</h5><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"> mkdir build
+ cd build
+ cmake ..
+ cmake --build .<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>将工作目录切换到analyze_data_util中，分别执行上面的代码。将会创建共享库文件，在Mac或Linux中名为：analyze_data_util.so，在Windows中为analyze_data_util.pyd</p>
 <h5 id="6-构造接口"><a href="#6-构造接口" class="headerlink" title="6. 构造接口"></a>6. 构造接口</h5><p>因为在c++中不允许直接访问私有成员，因此我们实现了get_datas()方法来间接访问成员，但是这不符合python的使用习惯，因此我们构造一个同名的AnalyzeDataUtil类将这一细节隐藏起来。也可以省去该步奏，但必须通过get_datas()函数访问解析后的数据。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"> <span class="comment"># path: demo/analyze_data_tool.py</span></span><br><span class="line"> <span class="keyword">import</span> analyze_data_util</span><br><span class="line"> </span><br><span class="line"> <span class="comment"># Wrapper for AnalyzeDataUtil class</span></span><br><span class="line"> <span class="class"><span class="keyword">class</span> <span class="title">AnalyzeDataUtil</span>:</span></span><br><span class="line"> </span><br><span class="line">     <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self, datas</span>):</span></span><br><span class="line">         self.analyzer = analyze_data_util.AnalyzeDataUtil(datas)</span><br><span class="line">         self.datas = datas</span><br><span class="line"> </span><br><span class="line">     <span class="function"><span class="keyword">def</span> <span class="title">analyze_data</span>(<span class="params">self, data, result=<span class="string">&quot;resbody&quot;</span>, depth=<span class="number">0</span></span>):</span>   </span><br><span class="line">         self.analyzer.analyze_data(data, result, depth)</span><br><span class="line">         self.datas = self.analyzer.get_datas()</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"> # path: demo&#x2F;analyze_data_tool.py
+ import analyze_data_util
+ 
+ # Wrapper for AnalyzeDataUtil class
+ class AnalyzeDataUtil:
+ 
+     def __init__(self, datas):
+         self.analyzer &#x3D; analyze_data_util.AnalyzeDataUtil(datas)
+         self.datas &#x3D; datas
+ 
+     def analyze_data(self, data, result&#x3D;&quot;resbody&quot;, depth&#x3D;0):   
+         self.analyzer.analyze_data(data, result, depth)
+         self.datas &#x3D; self.analyzer.get_datas()<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h5 id="7-在python中使用C-模块"><a href="#7-在python中使用C-模块" class="headerlink" title="7. 在python中使用C++模块"></a>7. 在python中使用C++模块</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"> <span class="comment"># path: demo/test.py</span></span><br><span class="line"> <span class="keyword">from</span> analyze_data_tool <span class="keyword">import</span> AnalyzeDataUtil</span><br><span class="line"> <span class="keyword">import</span> json</span><br><span class="line"> <span class="keyword">import</span> time</span><br><span class="line"> <span class="keyword">import</span> pprint</span><br><span class="line"> </span><br><span class="line"> <span class="built_in">print</span>(<span class="string">&#x27;示例用法,c++版本:&#x27;</span>)</span><br><span class="line"> json_data = <span class="string">&#x27;&#123;&quot;resbody&quot;: &#123;&quot;data&quot;: &#123;&quot;name&quot;: &quot;John&quot;, &quot;age&quot;: 30, &quot;address&quot;: &#123;&quot;city&quot;: &quot;New York&quot;, &quot;zipcode&quot;: 10001&#125;&#125;&#125;&#125;&#x27;</span></span><br><span class="line"> data_dict = json.loads(json_data)</span><br><span class="line"> time1 = time.time()</span><br><span class="line"> analyzer2 = AnalyzeDataUtil(&#123;&#125;)</span><br><span class="line"> analyzer2.analyze_data(data_dict, <span class="string">&quot;resbody&quot;</span>, <span class="number">0</span>)</span><br><span class="line"> time2 = time.time()</span><br><span class="line"> all_keys1 = analyzer2.datas.keys()</span><br><span class="line"> keys_list1 = <span class="string">&#x27; &#x27;</span>.join(<span class="built_in">list</span>(all_keys1))</span><br><span class="line"> </span><br><span class="line"> result = time2 - time1</span><br><span class="line"> formatted_result = <span class="string">f&quot;<span class="subst">&#123;result:<span class="number">.10</span>f&#125;</span>&quot;</span></span><br><span class="line"> pp.pprint(all_keys1)</span><br><span class="line"> <span class="built_in">print</span>(formatted_result)</span><br></pre></td></tr></table></figure>
+<h5 id="7-在python中使用C-模块"><a href="#7-在python中使用C-模块" class="headerlink" title="7. 在python中使用C++模块"></a>7. 在python中使用C++模块</h5><pre class="line-numbers language-python" data-language="python"><code class="language-python"> # path: demo&#x2F;test.py
+ from analyze_data_tool import AnalyzeDataUtil
+ import json
+ import time
+ import pprint
+ 
+ print(&#39;示例用法,c++版本:&#39;)
+ json_data &#x3D; &#39;&#123;&quot;resbody&quot;: &#123;&quot;data&quot;: &#123;&quot;name&quot;: &quot;John&quot;, &quot;age&quot;: 30, &quot;address&quot;: &#123;&quot;city&quot;: &quot;New York&quot;, &quot;zipcode&quot;: 10001&#125;&#125;&#125;&#125;&#39;
+ data_dict &#x3D; json.loads(json_data)
+ time1 &#x3D; time.time()
+ analyzer2 &#x3D; AnalyzeDataUtil(&#123;&#125;)
+ analyzer2.analyze_data(data_dict, &quot;resbody&quot;, 0)
+ time2 &#x3D; time.time()
+ all_keys1 &#x3D; analyzer2.datas.keys()
+ keys_list1 &#x3D; &#39; &#39;.join(list(all_keys1))
+ 
+ result &#x3D; time2 - time1
+ formatted_result &#x3D; f&quot;&#123;result:.10f&#125;&quot;
+ pp.pprint(all_keys1)
+ print(formatted_result)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>创建以上代码，然后将生成的.so or .pyd文件拷贝到demo/目录下，运行python test.py。</p>
 <h5 id="8-后记"><a href="#8-后记" class="headerlink" title="8. 后记"></a>8. 后记</h5><p>虽然上面的解决方案实现了c++与python的互通，但我在对单个文件进行测试比较的时候，得到如下结果：</p>
