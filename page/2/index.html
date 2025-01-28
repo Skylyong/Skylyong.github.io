@@ -274,7 +274,7 @@
         <!-- 副标题 -->
         <p class="intro-subtitle">
             <!-- 主页副标题  -->
-                    因为热爱，所以记录
+                    因为热爱，所以记录!
             <!-- 文章页  -->
         </p>
         <!-- 文章页 meta -->
@@ -407,6 +407,47 @@
             <img class="loading" src="/assets/loading.svg" style="display: block; margin: 6rem auto 0 auto; width: 6rem; height: 6rem;" alt="loading">
             <div class="container container-unloaded">
                 <main class="main index-page">
+            
+        <article class="index-post">
+            <a class="abstract-title" href="/2021/09/29/jiang-wei-xin-liao-tian-zhong-de-yu-yin-zhuan-huan-wei-mp3/">
+                <span class="abstract-title-text">将微信聊天中的语音转换为mp3</span>
+            </a>
+            <div class="abstract-content">
+                
+找到语音文件将其导出
+
+找到MAC微信图片，鼠标放在图片上面按下右键调出如下图所示的提示框，然后点击“在Finder中显示”，打开音频、图片等文件在本地保存的位置。
+
+ 
+
+ ​            这个地方需要注意的是，微信保存到本地的记录是按照聊天会话存储的，不同会话的内容保存的位置不一样。我们应该先定位到要获取音频的会话，在该会话中调出“在Finder”中显示才行。
+
+如下图所示Audio目录就是存储会话语音
+
+
+
+
+
+将silk格式文件转换为mp3格式文件
+
+安装silk-v3
+silk-v3依赖gcc和FFmpeg来运行，如果没有这两个依赖项，通过如下命令安装依赖：
+bre...
+            </div>
+            <!-- read more -->
+            <div class="abstract-post-meta">
+                <!-- date -->
+                <div class="abstract-date" title="Last updated: 2021/09/29">
+                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2021/09/29</span>
+                </div>
+                <!-- tags -->
+                    <div class="abstract-tags" >
+        <a class="post-tag" href="javascript:void(0);" data-tags="微信">微信</a>
+</div>
+
+            </div>
+        </article>
+        <div class="index-post-divider"></div>
             
         <article class="index-post">
             <a class="abstract-title" href="/2021/09/19/ji-qi-xue-xi-can-kao-zi-liao/">
@@ -818,24 +859,6 @@ x = torch.rand(3, 5, dtype=torch.float, requires_g...
             </div>
         </article>
         <div class="index-post-divider"></div>
-            
-        <article class="index-post">
-            <a class="abstract-title" href="/2021/07/20/li-bao-chun-writing-perfect-papers/">
-                <span class="abstract-title-text">[Untitled Post]</span>
-            </a>
-            <div class="abstract-content">
-                李葆春——Writing Perfect Papers
-            </div>
-            <!-- read more -->
-            <div class="abstract-post-meta">
-                <!-- date -->
-                <div class="abstract-date" title="Last updated: 2021/07/20">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2021/07/20</span>
-                </div>
-                <!-- tags -->
-            </div>
-        </article>
-        <div class="index-post-divider"></div>
     <!-- paginator  -->
         <nav class="page-nav">
             <a class="extend prev" rel="prev" href="/">&lt; PREV</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/3/">NEXT &gt;</a>
@@ -933,15 +956,20 @@ x = torch.rand(3, 5, dtype=torch.float, requires_g...
         
         
         
+        
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 41
+        Total : 42
         </div>
         <!-- search  -->
     </div>
     <div class="post-archive">
             <div class="archive-year"> 2025 </div>
             <ul class="year-list">
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/28</span>
+            <a class="archive-post-title" href="/2025/01/28/bo-ke-wei-hu-ri-zhi/">博客维护日志.md</a>
+        </li>
         <li class="archive-post-item">
             <span class="archive-post-date">01/27</span>
             <a class="archive-post-title" href="/2025/01/27/2024-nian-di-zong-jie/">2024年底总结</a>
@@ -1129,13 +1157,13 @@ x = torch.rand(3, 5, dtype=torch.float, requires_g...
                 <span class="iconfont-archer">&#xe606;</span>
                 GitHub
             </span>
-            <span class="sidebar-tag-name" data-tags="Google访问助手">
-                <span class="iconfont-archer">&#xe606;</span>
-                Google访问助手
-            </span>
             <span class="sidebar-tag-name" data-tags="GitLab">
                 <span class="iconfont-archer">&#xe606;</span>
                 GitLab
+            </span>
+            <span class="sidebar-tag-name" data-tags="Google访问助手">
+                <span class="iconfont-archer">&#xe606;</span>
+                Google访问助手
             </span>
             <span class="sidebar-tag-name" data-tags="预训练模型">
                 <span class="iconfont-archer">&#xe606;</span>
@@ -1185,10 +1213,6 @@ x = torch.rand(3, 5, dtype=torch.float, requires_g...
                 <span class="iconfont-archer">&#xe606;</span>
                 动态规划
             </span>
-            <span class="sidebar-tag-name" data-tags="机器学习">
-                <span class="iconfont-archer">&#xe606;</span>
-                机器学习
-            </span>
             <span class="sidebar-tag-name" data-tags="图">
                 <span class="iconfont-archer">&#xe606;</span>
                 图
@@ -1196,6 +1220,10 @@ x = torch.rand(3, 5, dtype=torch.float, requires_g...
             <span class="sidebar-tag-name" data-tags="python_c++_互通">
                 <span class="iconfont-archer">&#xe606;</span>
                 python_c++_互通
+            </span>
+            <span class="sidebar-tag-name" data-tags="机器学习">
+                <span class="iconfont-archer">&#xe606;</span>
+                机器学习
             </span>
             <span class="sidebar-tag-name" data-tags="电影">
                 <span class="iconfont-archer">&#xe606;</span>

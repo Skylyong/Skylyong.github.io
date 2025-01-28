@@ -6,7 +6,7 @@
   <link href="https://ailyong.cn/atom.xml" rel="self"/>
   
   <link href="https://ailyong.cn/"/>
-  <updated>2025-01-28T08:15:13.740Z</updated>
+  <updated>2025-01-28T08:18:02.394Z</updated>
   <id>https://ailyong.cn/</id>
   
   <author>
@@ -15,6 +15,19 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>博客维护日志.md</title>
+    <link href="https://ailyong.cn/2025/01/28/bo-ke-wei-hu-ri-zhi/"/>
+    <id>https://ailyong.cn/2025/01/28/bo-ke-wei-hu-ri-zhi/</id>
+    <published>2025-01-28T08:17:28.000Z</published>
+    <updated>2025-01-28T08:18:02.394Z</updated>
+    
+    
+    
+    
+    
+  </entry>
   
   <entry>
     <title>2024年底总结</title>
@@ -509,31 +522,6 @@
     
     
     <category term="机器学习" scheme="https://ailyong.cn/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>【课程设计】图的创建和遍历</title>
-    <link href="https://ailyong.cn/2021/08/13/tu-de-chuang-jian-he-bian-li/"/>
-    <id>https://ailyong.cn/2021/08/13/tu-de-chuang-jian-he-bian-li/</id>
-    <published>2021-08-13T14:41:02.000Z</published>
-    <updated>2021-08-13T14:47:11.000Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h3 id=&quot;问题描述&quot;&gt;&lt;a href=&quot;#问题描述&quot; class=&quot;headerlink&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="算法" scheme="https://ailyong.cn/categories/%E7%AE%97%E6%B3%95/"/>
-    
-    
-    <category term="图" scheme="https://ailyong.cn/tags/%E5%9B%BE/"/>
     
   </entry>
   
