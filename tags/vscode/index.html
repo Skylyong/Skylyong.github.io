@@ -13,7 +13,7 @@
     <meta name="description" content="Keep go on">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Lyong&#39;s blog">
-<meta property="og:url" content="https://ailyong.cn/tags/GitLab/index.html">
+<meta property="og:url" content="https://ailyong.cn/tags/vscode/index.html">
 <meta property="og:site_name" content="Lyong&#39;s blog">
 <meta property="og:description" content="Keep go on">
 <meta property="og:locale" content="zh_CN">
@@ -402,28 +402,31 @@
                 <main class="main index-page">
             
         <article class="index-post">
-            <a class="abstract-title" href="/2021/03/31/gitlab-da-jian-bi-ji/">
-                <span class="abstract-title-text">GitLab搭建笔记</span>
+            <a class="abstract-title" href="/2025/01/28/vscode-kai-fa-ji-qiao-ji-lu/">
+                <span class="abstract-title-text">vscode开发技巧记录</span>
             </a>
             <div class="abstract-content">
-                安装gitlab：curl -s https:&#x2F;&#x2F;packages.gitlab.com&#x2F;install&#x2F;repositories&#x2F;gitlab&#x2F;gitlab-ee&#x2F;
-script.deb.sh | sudo bash
+                日常编写代码中，vscode是用的最多的编辑器，经常会遇见一些问题，定期总结一下，方便以后查阅。
+1. 在不能连接外网的远程服务器上用copilot
+打开settings.json文件在里面添加如下内容：
 
-防火墙设置 之前已经配置好了，略
-gitlab配置打开/etc/gitlab/gitlab.rb
-external_url &#39;http:&#x2F;&#x2F;gitlab.bytenlp.site&#39;
-# 系统端口冲突，我把端口改为了85
-nginx[&#39;listen_port&...
+&quot;remote.extensionKind&quot;: &#123;
+       &quot;GitHub.copilot&quot;: [&quot;ui&quot;],
+       &quot;GitHub.copilot-chat&quot;: [&quot;ui&quot;],
+   &#125;,
+
+2. 在vscode中启用latex的pdf预览
+按下 C...
             </div>
             <!-- read more -->
             <div class="abstract-post-meta">
                 <!-- date -->
-                <div class="abstract-date" title="Last updated: 2021/04/01">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2021/03/31</span>
+                <div class="abstract-date" title="Last updated: 2025/01/28">
+                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2025/01/28</span>
                 </div>
                 <!-- tags -->
                     <div class="abstract-tags" >
-        <a class="post-tag" href="javascript:void(0);" data-tags="GitLab">GitLab</a>
+        <a class="post-tag" href="javascript:void(0);" data-tags="vscode">vscode</a>
 </div>
 
             </div>

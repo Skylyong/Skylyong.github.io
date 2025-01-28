@@ -402,6 +402,38 @@
                 <main class="main index-page">
             
         <article class="index-post">
+            <a class="abstract-title" href="/2025/01/28/vscode-kai-fa-ji-qiao-ji-lu/">
+                <span class="abstract-title-text">vscode开发技巧记录</span>
+            </a>
+            <div class="abstract-content">
+                日常编写代码中，vscode是用的最多的编辑器，经常会遇见一些问题，定期总结一下，方便以后查阅。
+1. 在不能连接外网的远程服务器上用copilot
+打开settings.json文件在里面添加如下内容：
+
+&quot;remote.extensionKind&quot;: &#123;
+       &quot;GitHub.copilot&quot;: [&quot;ui&quot;],
+       &quot;GitHub.copilot-chat&quot;: [&quot;ui&quot;],
+   &#125;,
+
+2. 在vscode中启用latex的pdf预览
+按下 C...
+            </div>
+            <!-- read more -->
+            <div class="abstract-post-meta">
+                <!-- date -->
+                <div class="abstract-date" title="Last updated: 2025/01/28">
+                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2025/01/28</span>
+                </div>
+                <!-- tags -->
+                    <div class="abstract-tags" >
+        <a class="post-tag" href="javascript:void(0);" data-tags="vscode">vscode</a>
+</div>
+
+            </div>
+        </article>
+        <div class="index-post-divider"></div>
+            
+        <article class="index-post">
             <a class="abstract-title" href="/2025/01/28/bo-ke-wei-hu-ri-zhi/">
                     <span class="iconfont-archer stick-top">&#xe63d;</span>
                 <span class="abstract-title-text">博客维护日志</span>
@@ -677,33 +709,6 @@ Boot Camp ISO Converter软件（这个软件可以解决FAT32格式的u盘单个
             </div>
         </article>
         <div class="index-post-divider"></div>
-            
-        <article class="index-post">
-            <a class="abstract-title" href="/2022/09/05/dian-ci-bi-sai-zong-jie/">
-                <span class="abstract-title-text">电磁比赛总结</span>
-            </a>
-            <div class="abstract-content">
-                电磁比赛总结
-代码总结
-
-要会静态分析资源占有率，特别是当服务器内存资源不足的时候，提前做好静态分析，设置合理的运行参数，才能提升效率。比如本次实验过程中，做数据增强预处理数据时需要占用大量内存资源，参数设置过大，会导致运行一半后因为内存不足，进程被killed掉，参数设置过小效率又变得很低。
-当数据很多，需要占用大量内存时，不要将数据转换为pandas的DataFrame对象，因为它会吃掉更多的内存，此外使用apply方法对数据进行逐行处理的时候，即使使用了加速方法，也没有将数据存储为list然后使用多进程方法处理高效。在本次实验中，后者的速度至少是前者的5倍。
-尽量使用class对代...
-            </div>
-            <!-- read more -->
-            <div class="abstract-post-meta">
-                <!-- date -->
-                <div class="abstract-date" title="Last updated: 2022/09/05">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2022/09/05</span>
-                </div>
-                <!-- tags -->
-                    <div class="abstract-tags" >
-        <a class="post-tag" href="javascript:void(0);" data-tags="竞赛">竞赛</a>
-</div>
-
-            </div>
-        </article>
-        <div class="index-post-divider"></div>
     <!-- paginator  -->
         <nav class="page-nav">
             <span class="page-number current">1</span><a class="page-number" href="/archives/page/2/">2</a><a class="page-number" href="/archives/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/5/">5</a><a class="extend next" rel="next" href="/archives/page/2/">NEXT &gt;</a>
@@ -784,15 +789,20 @@ Boot Camp ISO Converter软件（这个软件可以解决FAT32格式的u盘单个
         
         
         
+        
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 42
+        Total : 43
         </div>
         <!-- search  -->
     </div>
     <div class="post-archive">
             <div class="archive-year"> 2025 </div>
             <ul class="year-list">
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/28</span>
+            <a class="archive-post-title" href="/2025/01/28/vscode-kai-fa-ji-qiao-ji-lu/">vscode开发技巧记录</a>
+        </li>
         <li class="archive-post-item">
             <span class="archive-post-date">01/28</span>
             <a class="archive-post-title" href="/2025/01/28/bo-ke-wei-hu-ri-zhi/">博客维护日志</a>
@@ -1008,6 +1018,10 @@ Boot Camp ISO Converter软件（这个软件可以解决FAT32格式的u盘单个
                 <span class="iconfont-archer">&#xe606;</span>
                 Pandas
             </span>
+            <span class="sidebar-tag-name" data-tags="svm">
+                <span class="iconfont-archer">&#xe606;</span>
+                svm
+            </span>
             <span class="sidebar-tag-name" data-tags="博客">
                 <span class="iconfont-archer">&#xe606;</span>
                 博客
@@ -1015,6 +1029,10 @@ Boot Camp ISO Converter软件（这个软件可以解决FAT32格式的u盘单个
             <span class="sidebar-tag-name" data-tags="ECNU">
                 <span class="iconfont-archer">&#xe606;</span>
                 ECNU
+            </span>
+            <span class="sidebar-tag-name" data-tags="pytorch">
+                <span class="iconfont-archer">&#xe606;</span>
+                pytorch
             </span>
             <span class="sidebar-tag-name" data-tags="git">
                 <span class="iconfont-archer">&#xe606;</span>
@@ -1044,9 +1062,17 @@ Boot Camp ISO Converter软件（这个软件可以解决FAT32格式的u盘单个
                 <span class="iconfont-archer">&#xe606;</span>
                 机器学习
             </span>
+            <span class="sidebar-tag-name" data-tags="python_c++_互通">
+                <span class="iconfont-archer">&#xe606;</span>
+                python_c++_互通
+            </span>
             <span class="sidebar-tag-name" data-tags="图">
                 <span class="iconfont-archer">&#xe606;</span>
                 图
+            </span>
+            <span class="sidebar-tag-name" data-tags="vscode">
+                <span class="iconfont-archer">&#xe606;</span>
+                vscode
             </span>
             <span class="sidebar-tag-name" data-tags="电影">
                 <span class="iconfont-archer">&#xe606;</span>
@@ -1055,10 +1081,6 @@ Boot Camp ISO Converter软件（这个软件可以解决FAT32格式的u盘单个
             <span class="sidebar-tag-name" data-tags="编程">
                 <span class="iconfont-archer">&#xe606;</span>
                 编程
-            </span>
-            <span class="sidebar-tag-name" data-tags="python_c++_互通">
-                <span class="iconfont-archer">&#xe606;</span>
-                python_c++_互通
             </span>
             <span class="sidebar-tag-name" data-tags="微信">
                 <span class="iconfont-archer">&#xe606;</span>
@@ -1072,29 +1094,21 @@ Boot Camp ISO Converter软件（这个软件可以解决FAT32格式的u盘单个
                 <span class="iconfont-archer">&#xe606;</span>
                 教师资格证
             </span>
-            <span class="sidebar-tag-name" data-tags="资源">
-                <span class="iconfont-archer">&#xe606;</span>
-                资源
-            </span>
             <span class="sidebar-tag-name" data-tags="熵">
                 <span class="iconfont-archer">&#xe606;</span>
                 熵
             </span>
-            <span class="sidebar-tag-name" data-tags="竞赛">
+            <span class="sidebar-tag-name" data-tags="资源">
                 <span class="iconfont-archer">&#xe606;</span>
-                竞赛
+                资源
             </span>
             <span class="sidebar-tag-name" data-tags="装机">
                 <span class="iconfont-archer">&#xe606;</span>
                 装机
             </span>
-            <span class="sidebar-tag-name" data-tags="svm">
+            <span class="sidebar-tag-name" data-tags="竞赛">
                 <span class="iconfont-archer">&#xe606;</span>
-                svm
-            </span>
-            <span class="sidebar-tag-name" data-tags="pytorch">
-                <span class="iconfont-archer">&#xe606;</span>
-                pytorch
+                竞赛
             </span>
     </div>
     <div class="iconfont-archer sidebar-tags-empty">&#xe678;</div>
@@ -1146,6 +1160,10 @@ Boot Camp ISO Converter软件（这个软件可以解决FAT32格式的u盘单个
             <span class="iconfont-archer">&#xe60a;</span>
             算法
         </span>
+        <span class="sidebar-category-name" data-categories="编程开发">
+            <span class="iconfont-archer">&#xe60a;</span>
+            编程开发
+        </span>
         <span class="sidebar-category-name" data-categories="学习资料">
             <span class="iconfont-archer">&#xe60a;</span>
             学习资料
@@ -1154,13 +1172,13 @@ Boot Camp ISO Converter软件（这个软件可以解决FAT32格式的u盘单个
             <span class="iconfont-archer">&#xe60a;</span>
             收藏
         </span>
-        <span class="sidebar-category-name" data-categories="数据集">
-            <span class="iconfont-archer">&#xe60a;</span>
-            数据集
-        </span>
         <span class="sidebar-category-name" data-categories="总结">
             <span class="iconfont-archer">&#xe60a;</span>
             总结
+        </span>
+        <span class="sidebar-category-name" data-categories="数据集">
+            <span class="iconfont-archer">&#xe60a;</span>
+            数据集
         </span>
         <span class="sidebar-category-name" data-categories="机器学习">
             <span class="iconfont-archer">&#xe60a;</span>

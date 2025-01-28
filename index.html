@@ -409,6 +409,38 @@
                 <main class="main index-page">
             
         <article class="index-post">
+            <a class="abstract-title" href="/2025/01/28/vscode-kai-fa-ji-qiao-ji-lu/">
+                <span class="abstract-title-text">vscode开发技巧记录</span>
+            </a>
+            <div class="abstract-content">
+                日常编写代码中，vscode是用的最多的编辑器，经常会遇见一些问题，定期总结一下，方便以后查阅。
+1. 在不能连接外网的远程服务器上用copilot
+打开settings.json文件在里面添加如下内容：
+
+&quot;remote.extensionKind&quot;: &#123;
+       &quot;GitHub.copilot&quot;: [&quot;ui&quot;],
+       &quot;GitHub.copilot-chat&quot;: [&quot;ui&quot;],
+   &#125;,
+
+2. 在vscode中启用latex的pdf预览
+按下 C...
+            </div>
+            <!-- read more -->
+            <div class="abstract-post-meta">
+                <!-- date -->
+                <div class="abstract-date" title="Last updated: 2025/01/28">
+                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2025/01/28</span>
+                </div>
+                <!-- tags -->
+                    <div class="abstract-tags" >
+        <a class="post-tag" href="javascript:void(0);" data-tags="vscode">vscode</a>
+</div>
+
+            </div>
+        </article>
+        <div class="index-post-divider"></div>
+            
+        <article class="index-post">
             <a class="abstract-title" href="/2025/01/28/bo-ke-wei-hu-ri-zhi/">
                     <span class="iconfont-archer stick-top">&#xe63d;</span>
                 <span class="abstract-title-text">博客维护日志</span>
@@ -740,41 +772,6 @@ ssh -N -f -L localhost:8888:localhost:8889 username@serverIP
             </div>
         </article>
         <div class="index-post-divider"></div>
-            
-        <article class="index-post">
-            <a class="abstract-title" href="/2021/12/10/c-duo-xian-cheng-bian-cheng/">
-                <span class="abstract-title-text">C++多线程编程</span>
-            </a>
-            <div class="abstract-content">
-                常用线程函数
-join() :
-
-阻塞主线程，让主线程等待子线程执行完，当子线程执行完毕，这个join（）就执行完毕，主线程继续执行
-
-
-detach() :
-
-从主线程中将子线程分离，主线程不必等待子线程执行完，一旦detach()之后子线程将失去与主线程的关联，此时这个子线程就会驻留在后台运行，被c++运行时接管，当这个子线程执行完成后，由运行时库负责清理线程相关的资源。
-
-
-
-线程创建方法
-通过函数创建线程
-#include &lt;iostream&gt;
-#include &lt;thread&gt;
-using  namespace  std;
-void do_somethi...
-            </div>
-            <!-- read more -->
-            <div class="abstract-post-meta">
-                <!-- date -->
-                <div class="abstract-date" title="Last updated: 2021/12/11">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2021/12/10</span>
-                </div>
-                <!-- tags -->
-            </div>
-        </article>
-        <div class="index-post-divider"></div>
     <!-- paginator  -->
         <nav class="page-nav">
             <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/">NEXT &gt;</a>
@@ -873,15 +870,20 @@ void do_somethi...
         
         
         
+        
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 42
+        Total : 43
         </div>
         <!-- search  -->
     </div>
     <div class="post-archive">
             <div class="archive-year"> 2025 </div>
             <ul class="year-list">
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/28</span>
+            <a class="archive-post-title" href="/2025/01/28/vscode-kai-fa-ji-qiao-ji-lu/">vscode开发技巧记录</a>
+        </li>
         <li class="archive-post-item">
             <span class="archive-post-date">01/28</span>
             <a class="archive-post-title" href="/2025/01/28/bo-ke-wei-hu-ri-zhi/">博客维护日志</a>
@@ -1097,6 +1099,10 @@ void do_somethi...
                 <span class="iconfont-archer">&#xe606;</span>
                 Pandas
             </span>
+            <span class="sidebar-tag-name" data-tags="svm">
+                <span class="iconfont-archer">&#xe606;</span>
+                svm
+            </span>
             <span class="sidebar-tag-name" data-tags="博客">
                 <span class="iconfont-archer">&#xe606;</span>
                 博客
@@ -1104,6 +1110,10 @@ void do_somethi...
             <span class="sidebar-tag-name" data-tags="ECNU">
                 <span class="iconfont-archer">&#xe606;</span>
                 ECNU
+            </span>
+            <span class="sidebar-tag-name" data-tags="pytorch">
+                <span class="iconfont-archer">&#xe606;</span>
+                pytorch
             </span>
             <span class="sidebar-tag-name" data-tags="git">
                 <span class="iconfont-archer">&#xe606;</span>
@@ -1133,9 +1143,17 @@ void do_somethi...
                 <span class="iconfont-archer">&#xe606;</span>
                 机器学习
             </span>
+            <span class="sidebar-tag-name" data-tags="python_c++_互通">
+                <span class="iconfont-archer">&#xe606;</span>
+                python_c++_互通
+            </span>
             <span class="sidebar-tag-name" data-tags="图">
                 <span class="iconfont-archer">&#xe606;</span>
                 图
+            </span>
+            <span class="sidebar-tag-name" data-tags="vscode">
+                <span class="iconfont-archer">&#xe606;</span>
+                vscode
             </span>
             <span class="sidebar-tag-name" data-tags="电影">
                 <span class="iconfont-archer">&#xe606;</span>
@@ -1144,10 +1162,6 @@ void do_somethi...
             <span class="sidebar-tag-name" data-tags="编程">
                 <span class="iconfont-archer">&#xe606;</span>
                 编程
-            </span>
-            <span class="sidebar-tag-name" data-tags="python_c++_互通">
-                <span class="iconfont-archer">&#xe606;</span>
-                python_c++_互通
             </span>
             <span class="sidebar-tag-name" data-tags="微信">
                 <span class="iconfont-archer">&#xe606;</span>
@@ -1161,29 +1175,21 @@ void do_somethi...
                 <span class="iconfont-archer">&#xe606;</span>
                 教师资格证
             </span>
-            <span class="sidebar-tag-name" data-tags="资源">
-                <span class="iconfont-archer">&#xe606;</span>
-                资源
-            </span>
             <span class="sidebar-tag-name" data-tags="熵">
                 <span class="iconfont-archer">&#xe606;</span>
                 熵
             </span>
-            <span class="sidebar-tag-name" data-tags="竞赛">
+            <span class="sidebar-tag-name" data-tags="资源">
                 <span class="iconfont-archer">&#xe606;</span>
-                竞赛
+                资源
             </span>
             <span class="sidebar-tag-name" data-tags="装机">
                 <span class="iconfont-archer">&#xe606;</span>
                 装机
             </span>
-            <span class="sidebar-tag-name" data-tags="svm">
+            <span class="sidebar-tag-name" data-tags="竞赛">
                 <span class="iconfont-archer">&#xe606;</span>
-                svm
-            </span>
-            <span class="sidebar-tag-name" data-tags="pytorch">
-                <span class="iconfont-archer">&#xe606;</span>
-                pytorch
+                竞赛
             </span>
     </div>
     <div class="iconfont-archer sidebar-tags-empty">&#xe678;</div>
@@ -1235,6 +1241,10 @@ void do_somethi...
             <span class="iconfont-archer">&#xe60a;</span>
             算法
         </span>
+        <span class="sidebar-category-name" data-categories="编程开发">
+            <span class="iconfont-archer">&#xe60a;</span>
+            编程开发
+        </span>
         <span class="sidebar-category-name" data-categories="学习资料">
             <span class="iconfont-archer">&#xe60a;</span>
             学习资料
@@ -1243,13 +1253,13 @@ void do_somethi...
             <span class="iconfont-archer">&#xe60a;</span>
             收藏
         </span>
-        <span class="sidebar-category-name" data-categories="数据集">
-            <span class="iconfont-archer">&#xe60a;</span>
-            数据集
-        </span>
         <span class="sidebar-category-name" data-categories="总结">
             <span class="iconfont-archer">&#xe60a;</span>
             总结
+        </span>
+        <span class="sidebar-category-name" data-categories="数据集">
+            <span class="iconfont-archer">&#xe60a;</span>
+            数据集
         </span>
         <span class="sidebar-category-name" data-categories="机器学习">
             <span class="iconfont-archer">&#xe60a;</span>
