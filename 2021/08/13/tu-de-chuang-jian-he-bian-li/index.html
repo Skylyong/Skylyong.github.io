@@ -1,0 +1,1412 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <!-- title -->
+<!-- keywords -->
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="author" content="🍆">
+    <meta name="renderer" content="webkit">
+    <meta name="copyright" content="🍆">
+        <meta name="keywords" content="hexo,hexo-theme,hexo-blog">
+    <meta name="description" content="Keep go on">
+    <meta name="description" content="问题描述本课程设计主要完成邻接矩阵和邻接表两种不同存储方式的图的建立和遍历，其中遍历部分分别进行了DFS和BFS两种不同形式的遍历。 实现代码#include&lt;stdio.h&gt; #include&lt;stdlib.h&gt; #include&lt;string.h&gt;  #include&lt;stack&gt; #include&lt;queue&gt; using name">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【课程设计】图的创建和遍历">
+<meta property="og:url" content="https://ailyong.cn/2021/08/13/tu-de-chuang-jian-he-bian-li/index.html">
+<meta property="og:site_name" content="Lyong&#39;s blog">
+<meta property="og:description" content="问题描述本课程设计主要完成邻接矩阵和邻接表两种不同存储方式的图的建立和遍历，其中遍历部分分别进行了DFS和BFS两种不同形式的遍历。 实现代码#include&lt;stdio.h&gt; #include&lt;stdlib.h&gt; #include&lt;string.h&gt;  #include&lt;stack&gt; #include&lt;queue&gt; using name">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://raw.githubusercontent.com/Skylyong/i/main/20210813224449.png">
+<meta property="article:published_time" content="2021-08-13T14:41:02.000Z">
+<meta property="article:modified_time" content="2021-08-13T14:47:11.000Z">
+<meta property="article:author" content="🍆">
+<meta property="article:tag" content="图">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/Skylyong/i/main/20210813224449.png">
+    <meta http-equiv="Cache-control" content="no-cache">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <link rel="icon" href="/assets/favicon.ico">
+    <title>【课程设计】图的创建和遍历 · 茄子的个人空间</title>
+    <!-- /*! loadCSS. [c]2017 Filament Group, Inc. MIT License */
+/* This file is meant as a standalone workflow for
+- testing support for link[rel=preload]
+- enabling async CSS loading in browsers that do not support rel=preload
+- applying rel preload css once loaded, whether supported or not.
+*/ -->
+<script>
+    (function (w) {
+        'use strict'
+        // rel=preload support test
+        if (!w.loadCSS) {
+            w.loadCSS = function () {}
+        }
+        // define on the loadCSS obj
+        var rp = (loadCSS.relpreload = {})
+        // rel=preload feature support test
+        // runs once and returns a function for compat purposes
+        rp.support = (function () {
+            var ret
+            try {
+                ret = w.document.createElement('link').relList.supports('preload')
+            } catch (e) {
+                ret = false
+            }
+            return function () {
+                return ret
+            }
+        })()
+
+        // if preload isn't supported, get an asynchronous load by using a non-matching media attribute
+        // then change that media back to its intended value on load
+        rp.bindMediaToggle = function (link) {
+            // remember existing media attr for ultimate state, or default to 'all'
+            var finalMedia = link.media || 'all'
+
+            function enableStylesheet() {
+                link.media = finalMedia
+            }
+
+            // bind load handlers to enable media
+            if (link.addEventListener) {
+                link.addEventListener('load', enableStylesheet)
+            } else if (link.attachEvent) {
+                link.attachEvent('onload', enableStylesheet)
+            }
+
+            // Set rel and non-applicable media type to start an async request
+            // note: timeout allows this to happen async to let rendering continue in IE
+            setTimeout(function () {
+                link.rel = 'stylesheet'
+                link.media = 'only x'
+            })
+            // also enable media after 3 seconds,
+            // which will catch very old browsers (android 2.x, old firefox) that don't support onload on link
+            setTimeout(enableStylesheet, 3000)
+        }
+
+        // loop through link elements in DOM
+        rp.poly = function () {
+            // double check this to prevent external calls from running
+            if (rp.support()) {
+                return
+            }
+            var links = w.document.getElementsByTagName('link')
+            for (var i = 0; i < links.length; i++) {
+                var link = links[i]
+                // qualify links to those with rel=preload and as=style attrs
+                if (
+                    link.rel === 'preload' &&
+                    link.getAttribute('as') === 'style' &&
+                    !link.getAttribute('data-loadcss')
+                ) {
+                    // prevent rerunning on link
+                    link.setAttribute('data-loadcss', true)
+                    // bind listeners to toggle media back
+                    rp.bindMediaToggle(link)
+                }
+            }
+        }
+
+        // if unsupported, run the polyfill
+        if (!rp.support()) {
+            // run once at least
+            rp.poly()
+
+            // rerun poly on an interval until onload
+            var run = w.setInterval(rp.poly, 500)
+            if (w.addEventListener) {
+                w.addEventListener('load', function () {
+                    rp.poly()
+                    w.clearInterval(run)
+                })
+            } else if (w.attachEvent) {
+                w.attachEvent('onload', function () {
+                    rp.poly()
+                    w.clearInterval(run)
+                })
+            }
+        }
+
+        // commonjs
+        if (typeof exports !== 'undefined') {
+            exports.loadCSS = loadCSS
+        } else {
+            w.loadCSS = loadCSS
+        }
+    })(typeof global !== 'undefined' ? global : this)
+</script>
+
+    <style type="text/css">
+    @font-face {
+        font-family: 'Oswald-Regular';
+        src: url("/font/Oswald-Regular.ttf");
+    }
+
+    body {
+        margin: 0;
+    }
+
+    header,
+    footer,
+    .footer-fixed-btn,
+    .sidebar,
+    .container,
+    .site-intro-meta,
+    .toc-wrapper {
+        display: none;
+    }
+
+    .site-intro {
+        position: relative;
+        z-index: 3;
+        width: 100%;
+        /* height: 50vh; */
+        overflow: hidden;
+    }
+
+    .site-intro-placeholder {
+        position: absolute;
+        z-index: -2;
+        top: 0;
+        left: 0;
+        width: calc(100% + 300px);
+        height: 100%;
+        background: repeating-linear-gradient(
+            -45deg,
+            #444 0,
+            #444 80px,
+            #333 80px,
+            #333 160px
+        );
+        background-position: center center;
+        transform: translate3d(-226px, 0, 0);
+        animation: gradient-move 2.5s ease-out 0s infinite;
+    }
+
+    @keyframes gradient-move {
+        0% {
+            transform: translate3d(-226px, 0, 0);
+        }
+        100% {
+            transform: translate3d(0, 0, 0);
+        }
+    }
+</style>
+
+    <link id="stylesheet-fancybox" rel="preload" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.36/dist/fancybox/fancybox.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <link id="stylesheet-base" rel="preload" href="/css/style.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <link id="stylesheet-mobile" rel="preload" href="/css/mobile.css" as="style" onload="this.onload=null;this.rel='stylesheet';this.media='screen and (max-width: 960px)'">
+    <link id="stylesheet-theme-dark" rel="preload" href="/css/dark.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" as="script">
+    <link rel="preload" href="/scripts/main.js" as="script">
+    <link rel="preload" href="/font/Oswald-Regular.ttf" as="font" crossorigin>
+    <link rel="preload" href="https://at.alicdn.com/t/font_327081_1dta1rlogw17zaor.woff" as="font" crossorigin>
+    <!-- algolia -->
+    <!-- 百度统计  -->
+    <!-- 谷歌统计  -->
+    <!-- Google tag (gtag.js) -->
+<meta name="generator" content="Hexo 5.4.2"><link rel="alternate" href="/atom.xml" title="Lyong's blog" type="application/atom+xml">
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+    <script type="text/javascript">
+        if (typeof window.$ == undefined) {
+            console.warn('jquery load from jsdelivr failed, will load local script')
+            document.write('<script src="/lib/jquery.min.js" />')
+        }
+    </script>
+        <body class="post-body">
+        <!-- header -->
+        <header class="header header-mobile">
+    <!-- top read progress line -->
+    <div class="header-element">
+        <div class="read-progress"></div>
+    </div>
+    <!-- sidebar menu button -->
+    <div class="header-element">
+        <div class="header-sidebar-menu">
+            <div style="padding-left: 1px;">&#xe775;</div>
+        </div>
+    </div>
+    <!-- header actions -->
+    <div class="header-actions">
+        <!-- theme mode switch button -->
+        <span class="header-theme-btn header-element">
+            <i class="fas fa-adjust"></i>
+        </span>
+        <!-- back to home page text -->
+        <span class="home-link header-element">
+            <a href="/">茄子的个人空间</a>
+        </span>
+    </div>
+    <!-- toggle banner -->
+    <div class="banner">
+        <div class="blog-title header-element">
+            <a href="/">茄子的个人空间</a>
+        </div>
+        <div class="post-title header-element">
+            <a href="#" class="post-name">【课程设计】图的创建和遍历</a>
+        </div>
+    </div>
+</header>
+
+        <!-- fixed footer -->
+        <footer class="footer-fixed">
+    <!-- donate button -->
+    <div class="donate-popup donate-popup--hidden">
+    <div class="donate-popup__title">Buy Me A Coffee</div>
+    <div class="donate-popup__content">
+        <div class="donate-popup__content-description">谢谢你的鼓励和支持！</div>
+        <img
+            class="donate-popup__content-qrCode"
+            title="Wechat"
+            alt="Wechat"
+            src="/assets/donate-wechat.png"
+        ></img>
+        <img
+            class="donate-popup__content-qrCode"
+            title="Alipay"
+            alt="Alipay"
+            src="/assets/donate-alipay.jpg"
+        ></img>
+    </div>
+</div>
+
+    <div
+        title="Donate to the author"
+        class="footer-fixed-btn footer-fixed-btn--hidden donate-btn"
+    >
+        <i class="fas fa-donate"></i>
+    </div>
+
+    <!-- back to top button -->
+    <div class="footer-fixed-btn footer-fixed-btn--hidden back-top">
+        <div>&#xe639;</div>
+    </div>
+</footer>
+
+        <!-- wrapper -->
+        <div class="wrapper">
+            <div class="site-intro" style="    height:50vh;
+">
+    <!-- 主页  -->
+    <!-- 404页  -->
+    <div class="site-intro-placeholder"></div>
+    <div class="site-intro-img" style="background-image: url(/intro/post-bg.jpg)"></div>
+    <div class="site-intro-meta">
+        <!-- 标题  -->
+        <h1 class="intro-title">
+            <!-- 主页  -->
+                【课程设计】图的创建和遍历
+            <!-- 404 -->
+        </h1>
+        <!-- 副标题 -->
+        <p class="intro-subtitle">
+            <!-- 主页副标题  -->
+            <!-- 404 -->
+        </p>
+        <!-- 文章页 meta -->
+            <div class="post-intros">
+                <!-- 文章页标签  -->
+                    <div class="post-intro-tags" >
+        <a class="post-tag" href="javascript:void(0);" data-tags="图">图</a>
+</div>
+
+                <!-- 文章字数统计 -->
+                    <div class="post-intro-read">
+                        <span>字数统计: <span class="post-count word-count">1.7k</span>阅读时长: <span class="post-count reading-time">9 min</span></span>
+                    </div>
+                <div class="post-intro-meta">
+                    <!-- 撰写日期 -->
+                    <span class="iconfont-archer post-intro-calander">&#xe676;</span>
+                    <span class="post-intro-time">2021/08/13</span>
+                    <!-- busuanzi -->
+                        <span id="busuanzi_container_page_pv" class="busuanzi-pv">
+                            <span class="iconfont-archer post-intro-busuanzi">&#xe602;</span>
+                            <span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    <!-- 文章分享 -->
+                    <span class="share-wrapper">
+                        <span class="iconfont-archer share-icon">&#xe71d;</span>
+                        <span class="share-text">Share</span>
+                        <ul class="share-list">
+                            <li class="iconfont-archer share-qr" data-type="qr">&#xe75b;
+                                <div class="share-qrcode"></div>
+                            </li>
+                            <li class="iconfont-archer" data-type="weibo">&#xe619;</li>
+                            <li class="iconfont-archer" data-type="qzone">&#xe62e;</li>
+                            <li class="iconfont-archer" data-type="twitter">&#xe634;</li>
+                            <li class="iconfont-archer" data-type="facebook">&#xe67a;</li>
+                        </ul>
+                    </span>
+                </div>
+            </div>
+    </div>
+</div>
+
+            <script>
+  // get user agent
+  function getBrowserVersions() {
+    var u = window.navigator.userAgent
+    return {
+      userAgent: u,
+      trident: u.indexOf('Trident') > -1, //IE内核
+      presto: u.indexOf('Presto') > -1, //opera内核
+      webKit: u.indexOf('AppleWebKit') > -1, //苹果、谷歌内核
+      gecko: u.indexOf('Gecko') > -1 && u.indexOf('KHTML') == -1, //火狐内核
+      mobile: !!u.match(/AppleWebKit.*Mobile.*/), //是否为移动终端
+      ios: !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/), //ios终端
+      android: u.indexOf('Android') > -1 || u.indexOf('Linux') > -1, //android终端或者uc浏览器
+      iPhone: u.indexOf('iPhone') > -1 || u.indexOf('Mac') > -1, //是否为iPhone或者安卓QQ浏览器
+      iPad: u.indexOf('iPad') > -1, //是否为iPad
+      webApp: u.indexOf('Safari') == -1, //是否为web应用程序，没有头部与底部
+      weixin: u.indexOf('MicroMessenger') == -1, //是否为微信浏览器
+      uc: u.indexOf('UCBrowser') > -1, //是否为android下的UC浏览器
+    }
+  }
+  var browser = {
+    versions: getBrowserVersions(),
+  }
+  console.log('userAgent: ' + browser.versions.userAgent)
+
+  // callback
+  function fontLoaded() {
+    console.log('font loaded')
+    if (document.getElementsByClassName('site-intro-meta')) {
+      document
+        .getElementsByClassName('intro-title')[0]
+        .classList.add('intro-fade-in')
+      document
+        .getElementsByClassName('intro-subtitle')[0]
+        .classList.add('intro-fade-in')
+      var postIntros = document.getElementsByClassName('post-intros')[0]
+      if (postIntros) {
+        postIntros.classList.add('post-fade-in')
+      }
+    }
+  }
+
+  // UC不支持跨域，所以直接显示
+  function asyncCb() {
+    if (browser.versions.uc) {
+      console.log('UCBrowser')
+      fontLoaded()
+    } else {
+      WebFont.load({
+        custom: {
+          families: ['Oswald-Regular'],
+        },
+        loading: function () {
+          // 所有字体开始加载
+          // console.log('font loading');
+        },
+        active: function () {
+          // 所有字体已渲染
+          fontLoaded()
+        },
+        inactive: function () {
+          // 字体预加载失败，无效字体或浏览器不支持加载
+          console.log('inactive: timeout')
+          fontLoaded()
+        },
+        timeout: 5000, // Set the timeout to two seconds
+      })
+    }
+  }
+
+  function asyncErr() {
+    console.warn('script load from CDN failed, will load local script')
+  }
+
+  // load webfont-loader async, and add callback function
+  function async(u, cb, err) {
+    var d = document,
+      t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0]
+    o.src = u
+    if (cb) {
+      o.addEventListener(
+        'load',
+        function (e) {
+          cb(null, e)
+        },
+        false
+      )
+    }
+    if (err) {
+      o.addEventListener(
+        'error',
+        function (e) {
+          err(null, e)
+        },
+        false
+      )
+    }
+    s.parentNode.insertBefore(o, s)
+  }
+
+  var asyncLoadWithFallBack = function (arr, success, reject) {
+    var currReject = function () {
+      reject()
+      arr.shift()
+      if (arr.length) async(arr[0], success, currReject)
+    }
+
+    async(arr[0], success, currReject)
+  }
+
+  asyncLoadWithFallBack(
+    [
+      'https://cdn.jsdelivr.net/npm/webfontloader@1.6.28/webfontloader.min.js',
+      'https://cdn.bootcss.com/webfont/1.6.28/webfontloader.js',
+      "/lib/webfontloader.min.js",
+    ],
+    asyncCb,
+    asyncErr
+  )
+</script>
+
+            <img class="loading" src="/assets/loading.svg" style="display: block; margin: 6rem auto 0 auto; width: 6rem; height: 6rem;" alt="loading">
+            <div class="container container-unloaded">
+                <main class="main post-page">
+    <article class="article-entry">
+        <h3 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h3><p>本课程设计主要完成邻接矩阵和邻接表两种不同存储方式的图的建立和遍历，其中遍历部分分别进行了DFS和BFS两种不同形式的遍历。</p>
+<h3 id="实现代码"><a href="#实现代码" class="headerlink" title="实现代码"></a>实现代码</h3><pre class="line-numbers language-python" data-language="python"><code class="language-python">#include&lt;stdio.h&gt;
+#include&lt;stdlib.h&gt;
+#include&lt;string.h&gt; 
+#include&lt;stack&gt;
+#include&lt;queue&gt;
+using namespace std;
+ 
+&#x2F;********************************图的存储结构定义***********************&#x2F;
+#define MaxVerNum 30           
+#define Vextype char
+#define EdgeInfoType int
+ 
+#define INF 999      &#x2F;&#x2F;无穷大 
+#define MAXSIZE 100
+ 
+typedef  struct
+&#123;
+    Vextype  vexs[MaxVerNum];
+    EdgeInfoType edges[MaxVerNum][MaxVerNum];
+    int n, e;
+&#125;MGragh;
+ 
+typedef  struct node
+&#123;
+    int adjvex;
+    EdgeInfoType  Info;
+    struct node * next;
+&#125;EdgeNode;
+ 
+typedef struct vnode
+&#123;
+    Vextype  vertex;
+    EdgeNode *firstedge;
+&#125;VertexNode;
+ 
+typedef  struct
+&#123;
+    VertexNode  adjlist[MaxVerNum];
+    int   n, e;
+&#125;ALGraph;
+ 
+int visited[MaxVerNum];   &#x2F;&#x2F;顶点访问标记 
+ 
+&#x2F;*建立图G的邻接矩阵  *&#x2F;
+int returnId(MGragh *g, char c)&#123;
+&#x2F;&#x2F;返回c在数组中的下标
+    for (int i &#x3D; 0; i&lt;MaxVerNum; ++i)
+    &#123;
+        if (g-&gt;vexs[i] &#x3D;&#x3D; c) return i;
+    &#125;
+    return -1;
+&#125;
+void CreateGraph(MGragh *g)
+&#123;
+    scanf(&quot;%d %d\n&quot;, &amp;(g-&gt;n), &amp;(g-&gt;e));
+ 
+    char c;
+    int i &#x3D; 0;
+    while (1)
+    &#123;
+        while ((c &#x3D; getchar()) &#x3D;&#x3D; &#39; &#39;);
+        if (c &#x3D;&#x3D; &#39;\n&#39;) break;
+        g-&gt;vexs[i++] &#x3D; c;
+    &#125;
+    Vextype s, e;
+    EdgeInfoType cost;
+ 
+    for (i &#x3D; 0; i&lt;g-&gt;n; i++)
+    &#123;
+        for (int j &#x3D; 0; j&lt;g-&gt;n; j++)
+        &#123;
+            g-&gt;edges[i][j] &#x3D; 0;
+        &#125;
+    &#125;
+ 
+    for (int i &#x3D; 0; i&lt;g-&gt;e; ++i)
+    &#123;
+        scanf(&quot;%c %c %d\n&quot;, &amp;s, &amp;e, &amp;cost);
+        g-&gt;edges[returnId(g, s)][returnId(g, e)] &#x3D; cost;
+    &#125;
+ 
+&#125;
+ 
+&#x2F;* 根据图的邻接矩阵建立图的邻接表 *&#x2F;
+void CreateALGraph(MGragh *mg, ALGraph *alg)
+&#123;
+    alg-&gt;n &#x3D; mg-&gt;n; alg-&gt;e &#x3D; mg-&gt;e;
+    for (int i &#x3D; 0; i&lt;alg-&gt;n; ++i)
+    &#123;
+        alg-&gt;adjlist[i].vertex &#x3D; mg-&gt;vexs[i];
+    &#125;
+    int i, j;
+    EdgeNode *s;
+    for (int i &#x3D; 0; i &lt; alg-&gt;n; ++i)
+    &#123;
+        for (int j &#x3D; 0; j &lt; alg-&gt;n; ++j)
+        &#123;
+            if (mg-&gt;edges[i][j] !&#x3D; 0)
+            &#123;
+                s &#x3D; (EdgeNode*)malloc(sizeof(EdgeNode));
+                s-&gt;adjvex &#x3D; j;
+                s-&gt;Info &#x3D; mg-&gt;edges[i][j];
+                s-&gt;next &#x3D; NULL;
+                EdgeNode*p &#x3D; alg-&gt;adjlist[i].firstedge;
+                s-&gt;next &#x3D; p;
+                alg-&gt;adjlist[i].firstedge &#x3D; s;
+            &#125;
+        &#125;
+    &#125;
+&#125;
+ 
+&#x2F;&#x2F;打印图(邻接矩阵) 
+void printGragh(MGragh *g)
+&#123;
+    printf(&quot;\n图G的邻接矩阵\n&quot;);
+    printf(&quot;顶点：\n&quot;);
+    for (int i &#x3D; 0; i&lt;g-&gt;n; i++)
+    &#123;
+        printf(&quot;%c\t&quot;, g-&gt;vexs[i]);
+    &#125;
+    printf(&quot;\n邻接矩阵：\n&quot;);
+    for (int i &#x3D; 0; i&lt;g-&gt;n; i++)
+    &#123;
+        for (int j &#x3D; 0; j&lt;g-&gt;n; j++)
+        &#123;
+            printf(&quot;%d\t&quot;, g-&gt;edges[i][j]);
+        &#125;
+        printf(&quot;\n&quot;);
+    &#125;
+&#125;
+ 
+&#x2F;&#x2F;打印图(邻接表) 
+void printALGragh(ALGraph *g)
+&#123;
+    printf(&quot;\n图G的邻接表\n&quot;);
+ 
+    for (int i &#x3D; 0; i&lt;g-&gt;n; i++)
+    &#123;
+        printf(&quot;%c:&quot;, g-&gt;adjlist[i].vertex);
+ 
+        EdgeNode* edge &#x3D; g-&gt;adjlist[i].firstedge;
+        while (edge)
+        &#123;
+            printf(&quot;--&gt;&quot;);
+            printf(&quot;%d:%d\t&quot;, edge-&gt;adjvex, edge-&gt;Info);
+            edge &#x3D; edge-&gt;next;
+        &#125;
+        printf(&quot;%\n&quot;);
+    &#125;
+ 
+&#125;
+ 
+ 
+ 
+&#x2F;**********************DFS*********************&#x2F;
+&#x2F;&#x2F;从顶点v开始图(邻接矩阵)的深度遍历 
+void DFS_MG(MGragh *g, int v)
+&#123;
+    int j;
+    visited[v] &#x3D; 1;
+    printf(&quot;%c &quot;, g-&gt;vexs[v]);
+ 
+    for (j &#x3D; 0; j&lt;g-&gt;n; ++j)
+    &#123;
+        if (g-&gt;edges[v][j] !&#x3D; 0  &amp;&amp;  !visited[j])
+            DFS_MG(g, j);
+    &#125;
+ 
+&#125;
+ 
+&#x2F;&#x2F;图的(邻接矩阵)的深度遍历 
+void DFSTranverse_MG(MGragh *g)
+&#123;
+    int i;
+    for (i &#x3D; 0; i&lt;g-&gt;n; ++i)&#123;
+        visited[i] &#x3D; 0;  &#x2F;&#x2F;初始化访问数组visited的元素值为false
+    &#125;
+    for (i &#x3D; 0; i&lt;g-&gt;n; ++i)&#123;
+        if (!visited[i])&#123; &#x2F;&#x2F;节点尚未访问
+            DFS_MG(g, i);
+        &#125;
+    &#125;
+&#125;
+ 
+&#x2F;&#x2F;从顶点v开始图(邻接表)的深度遍历
+void DFS_ALG(ALGraph *g, int v)
+&#123;
+    visited[v] &#x3D; 1;
+    printf(&quot;%c &quot;, g-&gt;adjlist[v].vertex);
+ 
+    EdgeNode *p &#x3D;g-&gt;adjlist[v].firstedge;
+    while (p)&#123;
+        if (!visited[p-&gt;adjvex])&#123;
+            DFS_ALG(g, p-&gt;adjvex); &#x2F;&#x2F;递归深度遍历
+        &#125;
+        p &#x3D; p-&gt;next;
+    &#125;
+ 
+&#125;
+ 
+&#x2F;&#x2F;图(邻接表)的深度遍历
+void DFSTranverse_ALG(ALGraph *g)
+&#123;
+    int i;
+    for (i &#x3D; 0; i&lt;g-&gt;n; ++i)&#123;
+        visited[i] &#x3D; 0;  &#x2F;&#x2F;初始化访问数组visited的元素值为false
+    &#125;
+    for (i &#x3D; 0; i&lt;g-&gt;n; ++i)&#123;
+        if (!visited[i])&#123; &#x2F;&#x2F;节点尚未访问
+            DFS_ALG(g, i);
+        &#125;
+    &#125;
+&#125;
+ 
+&#x2F;**************************BFS****************************&#x2F;
+ 
+&#x2F;&#x2F;从顶点v开始图(邻接矩阵)的广度遍历 
+void BFS_MG(MGragh *g, int v)
+&#123;
+ 
+    int j;
+    queue&lt;int&gt; Q;
+    visited[v] &#x3D; 1;
+    printf(&quot;%c &quot;, g-&gt;vexs[v]);
+ 
+    Q.push(v);
+ 
+    while (!Q.empty())
+    &#123;
+            
+        v &#x3D; Q.front();
+        Q.pop();
+ 
+        for (j &#x3D; 0; j&lt;g-&gt;n; ++j)
+        &#123;
+            if (!visited[j] &amp;&amp; g-&gt;edges[v][j] !&#x3D;0)&#x2F;&#x2F; INFINITY)
+            &#123;
+                visited[j] &#x3D; 1;
+                printf(&quot;%c &quot;, g-&gt;vexs[j]);
+                Q.push(j);
+            &#125;
+        &#125;
+    &#125;
+&#125;
+ 
+&#x2F;&#x2F;图(邻接矩阵)的广度遍历
+void BFSTranverse_MG(MGragh *g)
+&#123;
+    int i;
+    for (i &#x3D; 0; i&lt;g-&gt;n; ++i)&#123;
+        visited[i] &#x3D; 0;  &#x2F;&#x2F;初始化访问数组visited的元素值为false
+    &#125;
+    for (i &#x3D; 0; i&lt;g-&gt;n; ++i)&#123;
+        if (!visited[i])&#123; &#x2F;&#x2F;节点尚未访问
+            BFS_MG(g, i);
+        &#125;
+    &#125;
+&#125;
+ 
+&#x2F;&#x2F;从顶点v开始图(邻接表)的广度遍历 
+void BFS_ALG(ALGraph *g, int v)
+&#123;
+    queue&lt;int &gt; Q;
+    visited[v] &#x3D; 1;
+    printf(&quot;%c &quot;, g-&gt;adjlist[v].vertex);
+            
+    Q.push(v);
+    while (!Q.empty())&#123;     
+        v &#x3D; Q.front();
+        Q.pop();
+        EdgeNode *p &#x3D; g-&gt;adjlist[v].firstedge;
+        while (p)&#123;
+            if (!visited[p-&gt;adjvex])&#123;
+            visited[p-&gt;adjvex] &#x3D; 1;
+            printf(&quot;%c &quot;, g-&gt;adjlist[p-&gt;adjvex].vertex);            
+            Q.push(p-&gt;adjvex);
+            &#125;
+            p &#x3D; p-&gt;next;
+        &#125;
+    &#125;
+ 
+&#125;
+ 
+&#x2F;&#x2F;图(邻接表)的广度遍历 
+void BFSTranverse_ALG(ALGraph *g)
+&#123;
+    int i;
+    for (i &#x3D; 0; i&lt;g-&gt;n; ++i)&#123;
+        visited[i] &#x3D; 0;  &#x2F;&#x2F;初始化访问数组visited的元素值为false
+    &#125;
+    for (i &#x3D; 0; i&lt;g-&gt;n; ++i)&#123;
+        if (!visited[i])&#123; &#x2F;&#x2F;节点尚未访问
+            BFS_ALG(g, i);
+        &#125;
+    &#125;
+&#125;
+ 
+&#x2F;************************初始化与销毁********************************&#x2F;
+MGragh *init_MGraph()
+&#123;
+    MGragh *mg &#x3D; (MGragh *)malloc(sizeof(MGragh));
+    if (mg)
+    &#123;
+        mg-&gt;n &#x3D; 0;
+        mg-&gt;e &#x3D; 0;
+    &#125;
+ 
+    return mg;
+&#125;
+ 
+ALGraph *init_ALGraph()
+&#123;
+    ALGraph *alg &#x3D; (ALGraph *)malloc(sizeof(ALGraph));
+    if (alg)
+    &#123;
+        alg-&gt;n &#x3D; 0;
+        alg-&gt;e &#x3D; 0;
+        for (int i &#x3D; 0; i&lt;MaxVerNum; i++)
+            alg-&gt;adjlist[i].firstedge &#x3D; NULL;
+    &#125;
+ 
+    return alg;
+&#125;
+ 
+void destroy_MGraph(MGragh **g)
+&#123;
+    if (*g)
+    &#123;
+        free(*g);
+        *g &#x3D; NULL;
+    &#125;
+&#125;
+ 
+void destroy_ALGraph(ALGraph **g)
+&#123;
+    for (int i &#x3D; 0; i &lt; (*g)-&gt;n; ++i)
+    &#123;
+        EdgeNode *p &#x3D; (*g)-&gt;adjlist[i].firstedge;
+        while (p)
+        &#123;
+            EdgeNode *q &#x3D; p-&gt;next;
+            free(p);
+            p &#x3D; q;
+        &#125;
+    &#125;
+ 
+    if (*g)
+    &#123;
+        free(*g);
+        *g &#x3D; NULL;
+    &#125;
+&#125;
+ 
+&#x2F;****main函数*************&#x2F;
+int main()
+&#123;
+    freopen(&quot;数据.txt&quot;, &quot;r&quot;, stdin);
+    &#x2F;&#x2F;创建图（邻接矩阵） 
+    MGragh *mG &#x3D; init_MGraph();
+    CreateGraph(mG);
+    printGragh(mG);
+ 
+    &#x2F;&#x2F;创建图（邻接表） 
+    ALGraph *alG &#x3D; init_ALGraph();
+    CreateALGraph(mG, alG);
+    printALGragh(alG);
+ 
+    
+    &#x2F;&#x2F;DFS遍历
+    printf(&quot;\nDFS遍历:\n&quot;);
+    printf(&quot;邻接矩阵:\n&quot;);
+    DFSTranverse_MG(mG);
+    printf(&quot;\n邻接表:\n&quot;);
+    DFSTranverse_ALG(alG);
+ 
+    &#x2F;&#x2F;BFS遍历
+    printf(&quot;\n\nBFS遍历:\n&quot;);
+    printf(&quot;邻接矩阵:\n&quot;);
+    BFSTranverse_MG(mG);
+    printf(&quot;\n邻接表:\n&quot;);
+    BFSTranverse_ALG(alG);
+ 
+    &#x2F;&#x2F;销毁图
+    destroy_MGraph(&amp;mG);
+    destroy_ALGraph(&amp;alG);
+    
+&#125;
+&#x2F;&#x2F;运行成功 2019年5月14日0:19:36<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="运行结果"><a href="#运行结果" class="headerlink" title="运行结果"></a>运行结果</h3><img src="https://raw.githubusercontent.com/Skylyong/i/main/20210813224449.png" alt="img" style="zoom: 67%;" />
+
+
+    </article>
+    <!-- license -->
+        <div class="license-wrapper">
+            <p>原文作者：<a href="https://ailyong.cn">🍆</a>
+            <p>原文链接：<a href="https://ailyong.cn/2021/08/13/tu-de-chuang-jian-he-bian-li/">https://ailyong.cn/2021/08/13/tu-de-chuang-jian-he-bian-li/</a>
+            <p>发表日期：<a href="https://ailyong.cn/2021/08/13/tu-de-chuang-jian-he-bian-li/">August 13th 2021, 10:41:02 pm</a>
+            <p>更新日期：<a href="https://ailyong.cn/2021/08/13/tu-de-chuang-jian-he-bian-li/">August 13th 2021, 10:47:11 pm</a>
+            <p>版权声明：本文采用<a rel="license noopener" target="_blank" href="http://creativecommons.org/licenses/by-nc/4.0/">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可</p>
+        </div>
+    <!-- paginator -->
+    <ul class="post-paginator">
+        <li class="next">
+                <div class="nextSlogan">Next Post</div>
+                <a href="/2021/08/13/chang-yong-shu-ju-ji-zheng-li/" title="常用数据集整理">
+                    <div class="nextTitle">常用数据集整理</div>
+                </a>
+        </li>
+        <li class="previous">
+                <div class="prevSlogan">Previous Post</div>
+                <a href="/2021/08/09/svm-xue-xi-bi-ji/" title="SVM学习笔记">
+                    <div class="prevTitle">SVM学习笔记</div>
+                </a>
+        </li>
+    </ul>
+    <!-- comment -->
+        <div class="post-comment">
+            <!-- 来必力 City 版安装代码 -->
+
+            
+            
+            
+            <!-- utteranc评论 -->
+
+            <!-- partial('_partial/comment/changyan') -->
+            <!--PC版-->
+
+            
+            
+            
+        </div>
+    <!-- timeliness note -->
+    <!-- idea from: https://hexo.fluid-dev.com/posts/hexo-injector/#%E6%96%87%E7%AB%A0%E6%97%B6%E6%95%88%E6%80%A7%E6%8F%90%E7%A4%BA -->
+    <!-- Mathjax -->
+</main>
+
+                <!-- profile -->
+            </div>
+            <footer class="footer footer-unloaded">
+    <!-- social  -->
+        <div class="social">
+                            <a href="mailto:lyong_s@foxmail.com" class="iconfont-archer email" title="email" ></a>
+                <a href="//github.com/Skylyong" class="iconfont-archer github" target="_blank" title="github"></a>
+
+        </div>
+    <!-- powered by Hexo  -->
+    <div class="copyright">
+        <span id="hexo-power">Powered by <a href="https://hexo.io/" target="_blank">Hexo</a></span><span class="iconfont-archer power">&#xe635;</span><span id="theme-info">theme <a href="https://github.com/fi3ework/hexo-theme-archer" target="_blank">Archer</a></span>
+    </div>
+    <!-- website approve for Chinese user -->
+    <!-- 不蒜子  -->
+        <div class="busuanzi-container">
+                <span id="busuanzi_container_site_pv">PV: <span id="busuanzi_value_site_pv"></span> :)</span>
+        </div>
+</footer>
+
+        </div>
+        <!-- toc -->
+            <div class="toc-wrapper toc-wrapper-loding" style=    top:50vh;
+>
+                <div class="toc-catalog">
+                    <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
+                </div>
+                <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%97%AE%E9%A2%98%E6%8F%8F%E8%BF%B0"><span class="toc-number">1.</span> <span class="toc-text">问题描述</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9E%E7%8E%B0%E4%BB%A3%E7%A0%81"><span class="toc-number">2.</span> <span class="toc-text">实现代码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%90%E8%A1%8C%E7%BB%93%E6%9E%9C"><span class="toc-number">3.</span> <span class="toc-text">运行结果</span></a></li></ol>
+            </div>
+        <!-- sidebar -->
+        <div class="sidebar sidebar-hide">
+    <ul class="sidebar-tabs sidebar-tabs-active-0">
+        <li class="sidebar-tab-archives"><span class="iconfont-archer">&#xe67d;</span><span class="tab-name">Archive</span></li>
+        <li class="sidebar-tab-tags"><span class="iconfont-archer">&#xe61b;</span><span class="tab-name">Tag</span></li>
+        <li class="sidebar-tab-categories"><span class="iconfont-archer">&#xe666;</span><span class="tab-name">Cate</span></li>
+    </ul>
+    <div class="sidebar-content sidebar-content-show-archive">
+        <div class="sidebar-panel-archives">
+    <!-- 在 ejs 中将 archive 按照时间排序 -->
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+    <div class="total-and-search">
+        <div class="total-archive">
+        Total : 42
+        </div>
+        <!-- search  -->
+    </div>
+    <div class="post-archive">
+            <div class="archive-year"> 2025 </div>
+            <ul class="year-list">
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/28</span>
+            <a class="archive-post-title" href="/2025/01/28/bo-ke-wei-hu-ri-zhi/">博客维护日志.md</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/27</span>
+            <a class="archive-post-title" href="/2025/01/27/2024-nian-di-zong-jie/">2024年底总结</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/26</span>
+            <a class="archive-post-title" href="/2025/01/26/da-jian-webdav-fu-wu-qi-shi-xian-obsidian-he-zotero-duo-duan-tong-bu/">搭建Webdav服务器实现Obsidian和Zotero多端同步</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/07</span>
+            <a class="archive-post-title" href="/2025/01/07/sentence-transformers-sampler-bug-zhi-set-bu-yi-ding-shi-wu-xu-de/">sentence-transformers sampler bug 之 set 不一定是无序的</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/06</span>
+            <a class="archive-post-title" href="/2025/01/06/matplotlib-xian-shi-zhong-wen/">matplotlib 设置显示中文</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/06</span>
+            <a class="archive-post-title" href="/2025/01/06/python-duo-jin-cheng-shi-li/">python多进程示例</a>
+        </li>
+                </ul>
+            <div class="archive-year"> 2023 </div>
+            <ul class="year-list">
+        <li class="archive-post-item">
+            <span class="archive-post-date">09/12</span>
+            <a class="archive-post-title" href="/2023/09/12/ubuntu-shang-an-zhuang-nividia-qu-dong-he-cuda-tookit/">ubuntu上安装NIVIDIA驱动和CUDA_Tookit</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">07/23</span>
+            <a class="archive-post-title" href="/2023/07/23/zai-mac-shang-shi-yong-pybind11-shi-xian-c-yu-python-hu-tong-de-demo/">在mac上使用pybind11实现c++与python互通的demo</a>
+        </li>
+                </ul>
+            <div class="archive-year"> 2022 </div>
+            <ul class="year-list">
+        <li class="archive-post-item">
+            <span class="archive-post-date">09/07</span>
+            <a class="archive-post-title" href="/2022/09/07/mac-xi-tong-zhi-zuo-win10-qi-dong-u-pan/">Mac系统制作win10启动U盘</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">09/05</span>
+            <a class="archive-post-title" href="/2022/09/05/dian-ci-bi-sai-zong-jie/">电磁比赛总结</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/29</span>
+            <a class="archive-post-title" href="/2022/04/29/yuan-cheng-fang-wen-fu-wu-qi-jupyter-notebook/">远程访问服务器Jupyter-Notebook</a>
+        </li>
+                </ul>
+            <div class="archive-year"> 2021 </div>
+            <ul class="year-list">
+        <li class="archive-post-item">
+            <span class="archive-post-date">12/10</span>
+            <a class="archive-post-title" href="/2021/12/10/c-duo-xian-cheng-bian-cheng/">C++多线程编程</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">09/29</span>
+            <a class="archive-post-title" href="/2021/09/29/jiang-wei-xin-liao-tian-zhong-de-yu-yin-zhuan-huan-wei-mp3/">将微信聊天中的语音转换为mp3</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">09/19</span>
+            <a class="archive-post-title" href="/2021/09/19/you-yong-de-zi-yuan/">有用的资源</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">09/19</span>
+            <a class="archive-post-title" href="/2021/09/19/ji-qi-xue-xi-can-kao-zi-liao/">机器学习参考资料</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/14</span>
+            <a class="archive-post-title" href="/2021/08/14/wei-xin-biao-qian-zheng-li/">微信标签整理</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/14</span>
+            <a class="archive-post-title" href="/2021/08/14/gong-ju-xiang/">工具箱</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/13</span>
+            <a class="archive-post-title" href="/2021/08/13/jiao-shi-zi-ge-zheng-kao-shi-xue-xi-bi-ji/">教师资格证考试学习笔记</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/13</span>
+            <a class="archive-post-title" href="/2021/08/13/google-fang-wen-zhu-shou-an-zhuang/">Google访问助手安装</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/13</span>
+            <a class="archive-post-title" href="/2021/08/13/tu-de-chuang-jian-he-bian-li/">【课程设计】图的创建和遍历</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/13</span>
+            <a class="archive-post-title" href="/2021/08/13/chang-yong-shu-ju-ji-zheng-li/">常用数据集整理</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/09</span>
+            <a class="archive-post-title" href="/2021/08/09/svm-xue-xi-bi-ji/">SVM学习笔记</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/06</span>
+            <a class="archive-post-title" href="/2021/08/06/pandas-xue-xi/">Pandas学习</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/05</span>
+            <a class="archive-post-title" href="/2021/08/05/pytorch-xue-xi/">Pytorch学习</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">07/20</span>
+            <a class="archive-post-title" href="/2021/07/20/li-bao-chun-writing-perfect-papers/">[Untitled Post]</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">07/01</span>
+            <a class="archive-post-title" href="/2021/07/01/huggingface-yu-xun-lian-mo-xing-quan-chong-xia-zai-de-wen-ti/">Huggingface 预训练模型权重下载的问题</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">06/21</span>
+            <a class="archive-post-title" href="/2021/06/21/jupyter-notebook-ben-di-fu-wu-qi-da-jian/">jupyter notebook 本地服务器搭建</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/16</span>
+            <a class="archive-post-title" href="/2021/04/16/ji-qi-xue-xi-zhong-de-ge-chong-shang/">机器学习中的各种熵</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/08</span>
+            <a class="archive-post-title" href="/2021/04/08/git-chang-yong-ming-ling/">git常用命令</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/08</span>
+            <a class="archive-post-title" href="/2021/04/08/nlp-zhi-shi-ti-xi/">NLP知识体系</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/01</span>
+            <a class="archive-post-title" href="/2021/04/01/zui-xiao-lu-jing-he/">【每日算法】2021年03月31日 小雨 最小路径和</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/31</span>
+            <a class="archive-post-title" href="/2021/03/31/gitlab-da-jian-bi-ji/">GitLab搭建笔记</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/31</span>
+            <a class="archive-post-title" href="/2021/03/31/ke-cheng-she-ji-zui-xiao-sheng-cheng-shu-ying-yong/">【课程设计】最小生成树应用</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/31</span>
+            <a class="archive-post-title" href="/2021/03/31/xue-xi-shi-pin-zheng-li/">学习视频整理</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/31</span>
+            <a class="archive-post-title" href="/2021/03/31/ying-yu-kou-yu-lian-xi-dian-ying-tui-jian/">英语口语练习电影推荐</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/30</span>
+            <a class="archive-post-title" href="/2021/03/30/bu-tong-lu-jing/">【每日算法】2021年03月30日 多云 不同路径</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/29</span>
+            <a class="archive-post-title" href="/2021/03/29/bian-fen-xue-xi-bi-ji/">变分学习笔记</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/28</span>
+            <a class="archive-post-title" href="/2021/03/28/ji-yi-ci-xi-tong-ben-kui-de-fan-si-he-zong-jie/">记一次系统奔溃的反思和总结</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/28</span>
+            <a class="archive-post-title" href="/2021/03/28/github-jia-su-fang-fa/">GitHub加速方法</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/22</span>
+            <a class="archive-post-title" href="/2021/02/22/ecnu-de-chun/">ECNU的春</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/21</span>
+            <a class="archive-post-title" href="/2021/02/21/build/">hexo个人博客搭建</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/21</span>
+            <a class="archive-post-title" href="/2021/02/21/hao-yong-de-mian-fei-wu-guang-gao-dian-ying-wang-zhan-tui-jian/">好用的免费无广告电影网站推荐</a>
+        </li>
+            </ul>
+    </div>
+</div>
+
+        <div class="sidebar-panel-tags">
+    <div class="sidebar-tags-name">
+            <span class="sidebar-tag-name" data-tags="总结">
+                <span class="iconfont-archer">&#xe606;</span>
+                总结
+            </span>
+            <span class="sidebar-tag-name" data-tags="GitHub">
+                <span class="iconfont-archer">&#xe606;</span>
+                GitHub
+            </span>
+            <span class="sidebar-tag-name" data-tags="GitLab">
+                <span class="iconfont-archer">&#xe606;</span>
+                GitLab
+            </span>
+            <span class="sidebar-tag-name" data-tags="Google访问助手">
+                <span class="iconfont-archer">&#xe606;</span>
+                Google访问助手
+            </span>
+            <span class="sidebar-tag-name" data-tags="预训练模型">
+                <span class="iconfont-archer">&#xe606;</span>
+                预训练模型
+            </span>
+            <span class="sidebar-tag-name" data-tags="启动U盘">
+                <span class="iconfont-archer">&#xe606;</span>
+                启动U盘
+            </span>
+            <span class="sidebar-tag-name" data-tags="nlp">
+                <span class="iconfont-archer">&#xe606;</span>
+                nlp
+            </span>
+            <span class="sidebar-tag-name" data-tags="Pandas">
+                <span class="iconfont-archer">&#xe606;</span>
+                Pandas
+            </span>
+            <span class="sidebar-tag-name" data-tags="博客">
+                <span class="iconfont-archer">&#xe606;</span>
+                博客
+            </span>
+            <span class="sidebar-tag-name" data-tags="ECNU">
+                <span class="iconfont-archer">&#xe606;</span>
+                ECNU
+            </span>
+            <span class="sidebar-tag-name" data-tags="git">
+                <span class="iconfont-archer">&#xe606;</span>
+                git
+            </span>
+            <span class="sidebar-tag-name" data-tags="jupyter notebook">
+                <span class="iconfont-archer">&#xe606;</span>
+                jupyter notebook
+            </span>
+            <span class="sidebar-tag-name" data-tags="python">
+                <span class="iconfont-archer">&#xe606;</span>
+                python
+            </span>
+            <span class="sidebar-tag-name" data-tags="NIVIDIA驱动">
+                <span class="iconfont-archer">&#xe606;</span>
+                NIVIDIA驱动
+            </span>
+            <span class="sidebar-tag-name" data-tags="树">
+                <span class="iconfont-archer">&#xe606;</span>
+                树
+            </span>
+            <span class="sidebar-tag-name" data-tags="动态规划">
+                <span class="iconfont-archer">&#xe606;</span>
+                动态规划
+            </span>
+            <span class="sidebar-tag-name" data-tags="机器学习">
+                <span class="iconfont-archer">&#xe606;</span>
+                机器学习
+            </span>
+            <span class="sidebar-tag-name" data-tags="图">
+                <span class="iconfont-archer">&#xe606;</span>
+                图
+            </span>
+            <span class="sidebar-tag-name" data-tags="python_c++_互通">
+                <span class="iconfont-archer">&#xe606;</span>
+                python_c++_互通
+            </span>
+            <span class="sidebar-tag-name" data-tags="电影">
+                <span class="iconfont-archer">&#xe606;</span>
+                电影
+            </span>
+            <span class="sidebar-tag-name" data-tags="编程">
+                <span class="iconfont-archer">&#xe606;</span>
+                编程
+            </span>
+            <span class="sidebar-tag-name" data-tags="微信">
+                <span class="iconfont-archer">&#xe606;</span>
+                微信
+            </span>
+            <span class="sidebar-tag-name" data-tags="干货">
+                <span class="iconfont-archer">&#xe606;</span>
+                干货
+            </span>
+            <span class="sidebar-tag-name" data-tags="教师资格证">
+                <span class="iconfont-archer">&#xe606;</span>
+                教师资格证
+            </span>
+            <span class="sidebar-tag-name" data-tags="资源">
+                <span class="iconfont-archer">&#xe606;</span>
+                资源
+            </span>
+            <span class="sidebar-tag-name" data-tags="熵">
+                <span class="iconfont-archer">&#xe606;</span>
+                熵
+            </span>
+            <span class="sidebar-tag-name" data-tags="竞赛">
+                <span class="iconfont-archer">&#xe606;</span>
+                竞赛
+            </span>
+            <span class="sidebar-tag-name" data-tags="装机">
+                <span class="iconfont-archer">&#xe606;</span>
+                装机
+            </span>
+            <span class="sidebar-tag-name" data-tags="pytorch">
+                <span class="iconfont-archer">&#xe606;</span>
+                pytorch
+            </span>
+            <span class="sidebar-tag-name" data-tags="svm">
+                <span class="iconfont-archer">&#xe606;</span>
+                svm
+            </span>
+    </div>
+    <div class="iconfont-archer sidebar-tags-empty">&#xe678;</div>
+    <div class="tag-load-fail" style="display: none; color: #ccc; font-size: 0.6rem;">
+        缺失模块，请参考主题文档进行安装配置：https://github.com/fi3ework/hexo-theme-archer#%E5%AE%89%E8%A3%85%E4%B8%BB%E9%A2%98
+    </div> 
+    <div class="sidebar-tags-list"></div>
+</div>
+
+        <div class="sidebar-panel-categories">
+    <div class="sidebar-categories-name">
+        <span class="sidebar-category-name" data-categories="生活情感">
+            <span class="iconfont-archer">&#xe60a;</span>
+            生活情感
+        </span>
+        <span class="sidebar-category-name" data-categories="爬坑总结">
+            <span class="iconfont-archer">&#xe60a;</span>
+            爬坑总结
+        </span>
+        <span class="sidebar-category-name" data-categories="干货">
+            <span class="iconfont-archer">&#xe60a;</span>
+            干货
+        </span>
+        <span class="sidebar-category-name" data-categories="知识框架">
+            <span class="iconfont-archer">&#xe60a;</span>
+            知识框架
+        </span>
+        <span class="sidebar-category-name" data-categories="学习笔记">
+            <span class="iconfont-archer">&#xe60a;</span>
+            学习笔记
+        </span>
+        <span class="sidebar-category-name" data-categories="生活总结">
+            <span class="iconfont-archer">&#xe60a;</span>
+            生活总结
+        </span>
+        <span class="sidebar-category-name" data-categories="编程经验">
+            <span class="iconfont-archer">&#xe60a;</span>
+            编程经验
+        </span>
+        <span class="sidebar-category-name" data-categories="编程">
+            <span class="iconfont-archer">&#xe60a;</span>
+            编程
+        </span>
+        <span class="sidebar-category-name" data-categories="算法笔记">
+            <span class="iconfont-archer">&#xe60a;</span>
+            算法笔记
+        </span>
+        <span class="sidebar-category-name" data-categories="算法">
+            <span class="iconfont-archer">&#xe60a;</span>
+            算法
+        </span>
+        <span class="sidebar-category-name" data-categories="学习资料">
+            <span class="iconfont-archer">&#xe60a;</span>
+            学习资料
+        </span>
+        <span class="sidebar-category-name" data-categories="数据集">
+            <span class="iconfont-archer">&#xe60a;</span>
+            数据集
+        </span>
+        <span class="sidebar-category-name" data-categories="总结">
+            <span class="iconfont-archer">&#xe60a;</span>
+            总结
+        </span>
+        <span class="sidebar-category-name" data-categories="收藏">
+            <span class="iconfont-archer">&#xe60a;</span>
+            收藏
+        </span>
+        <span class="sidebar-category-name" data-categories="机器学习">
+            <span class="iconfont-archer">&#xe60a;</span>
+            机器学习
+        </span>
+    </div>
+    <div class="iconfont-archer sidebar-categories-empty">&#xe678;</div>
+    <div class="sidebar-categories-list"></div>
+</div>
+
+    </div>
+</div>
+
+        <!-- site-meta -->
+        <script>
+    var siteMetaRoot = "/"
+    if (siteMetaRoot === "undefined") {
+        siteMetaRoot = '/'
+    }
+    var siteMeta = {
+        url: "https://ailyong.cn",
+        root: siteMetaRoot,
+        author: "🍆"
+    }
+</script>
+
+        <!-- import experimental options here -->
+        <!-- Custom Font -->
+
+        <!-- main func -->
+        <script src="/scripts/main.js"></script>
+        <!-- fancybox -->
+        <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.36/dist/fancybox/fancybox.umd.js" onload="window.Fancybox.bind('[data-fancybox]')" defer></script>
+        <!-- algolia -->
+        <!-- busuanzi -->
+            <script src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async></script>
+        <!-- async load share.js -->
+            <script src="/scripts/share.js" async></script>
+        <!-- mermaid -->
+            <script src='https://cdn.jsdelivr.net/npm/mermaid@8.11.0/dist/mermaid.min.js' onload="window.mermaid.initialize({theme: 'dark'})" async></script>
+    </body>
+</html>

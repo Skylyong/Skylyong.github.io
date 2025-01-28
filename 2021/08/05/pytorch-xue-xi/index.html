@@ -1,0 +1,2472 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <!-- title -->
+<!-- keywords -->
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="author" content="🍆">
+    <meta name="renderer" content="webkit">
+    <meta name="copyright" content="🍆">
+        <meta name="keywords" content="hexo,hexo-theme,hexo-blog">
+    <meta name="description" content="Keep go on">
+    <meta name="description" content="课程[链接](https: &#x2F;&#x2F; www.youtube.com &#x2F; watch?v &#x3D; c36lUUr864M) 1. Tensor1.1 How to create tensor 构造tensor的方法主要有六种，分别如下：  x &#x3D; torch.ones(3, 5, dtype&#x3D;torch.float, requires_grad &#x3D; True )  x &#x3D; torch.zeros(3,">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Pytorch学习">
+<meta property="og:url" content="https://ailyong.cn/2021/08/05/pytorch-xue-xi/index.html">
+<meta property="og:site_name" content="Lyong&#39;s blog">
+<meta property="og:description" content="课程[链接](https: &#x2F;&#x2F; www.youtube.com &#x2F; watch?v &#x3D; c36lUUr864M) 1. Tensor1.1 How to create tensor 构造tensor的方法主要有六种，分别如下：  x &#x3D; torch.ones(3, 5, dtype&#x3D;torch.float, requires_grad &#x3D; True )  x &#x3D; torch.zeros(3,">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://raw.githubusercontent.com/Skylyong/i/main/20210805210347.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Skylyong/i/main/20210805213343.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Skylyong/i/main/20210805230250.png">
+<meta property="article:published_time" content="2021-08-05T13:50:37.000Z">
+<meta property="article:modified_time" content="2021-08-05T15:04:48.000Z">
+<meta property="article:author" content="🍆">
+<meta property="article:tag" content="pytorch">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/Skylyong/i/main/20210805210347.png">
+    <meta http-equiv="Cache-control" content="no-cache">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <link rel="icon" href="/assets/favicon.ico">
+    <title>Pytorch学习 · 茄子的个人空间</title>
+    <!-- /*! loadCSS. [c]2017 Filament Group, Inc. MIT License */
+/* This file is meant as a standalone workflow for
+- testing support for link[rel=preload]
+- enabling async CSS loading in browsers that do not support rel=preload
+- applying rel preload css once loaded, whether supported or not.
+*/ -->
+<script>
+    (function (w) {
+        'use strict'
+        // rel=preload support test
+        if (!w.loadCSS) {
+            w.loadCSS = function () {}
+        }
+        // define on the loadCSS obj
+        var rp = (loadCSS.relpreload = {})
+        // rel=preload feature support test
+        // runs once and returns a function for compat purposes
+        rp.support = (function () {
+            var ret
+            try {
+                ret = w.document.createElement('link').relList.supports('preload')
+            } catch (e) {
+                ret = false
+            }
+            return function () {
+                return ret
+            }
+        })()
+
+        // if preload isn't supported, get an asynchronous load by using a non-matching media attribute
+        // then change that media back to its intended value on load
+        rp.bindMediaToggle = function (link) {
+            // remember existing media attr for ultimate state, or default to 'all'
+            var finalMedia = link.media || 'all'
+
+            function enableStylesheet() {
+                link.media = finalMedia
+            }
+
+            // bind load handlers to enable media
+            if (link.addEventListener) {
+                link.addEventListener('load', enableStylesheet)
+            } else if (link.attachEvent) {
+                link.attachEvent('onload', enableStylesheet)
+            }
+
+            // Set rel and non-applicable media type to start an async request
+            // note: timeout allows this to happen async to let rendering continue in IE
+            setTimeout(function () {
+                link.rel = 'stylesheet'
+                link.media = 'only x'
+            })
+            // also enable media after 3 seconds,
+            // which will catch very old browsers (android 2.x, old firefox) that don't support onload on link
+            setTimeout(enableStylesheet, 3000)
+        }
+
+        // loop through link elements in DOM
+        rp.poly = function () {
+            // double check this to prevent external calls from running
+            if (rp.support()) {
+                return
+            }
+            var links = w.document.getElementsByTagName('link')
+            for (var i = 0; i < links.length; i++) {
+                var link = links[i]
+                // qualify links to those with rel=preload and as=style attrs
+                if (
+                    link.rel === 'preload' &&
+                    link.getAttribute('as') === 'style' &&
+                    !link.getAttribute('data-loadcss')
+                ) {
+                    // prevent rerunning on link
+                    link.setAttribute('data-loadcss', true)
+                    // bind listeners to toggle media back
+                    rp.bindMediaToggle(link)
+                }
+            }
+        }
+
+        // if unsupported, run the polyfill
+        if (!rp.support()) {
+            // run once at least
+            rp.poly()
+
+            // rerun poly on an interval until onload
+            var run = w.setInterval(rp.poly, 500)
+            if (w.addEventListener) {
+                w.addEventListener('load', function () {
+                    rp.poly()
+                    w.clearInterval(run)
+                })
+            } else if (w.attachEvent) {
+                w.attachEvent('onload', function () {
+                    rp.poly()
+                    w.clearInterval(run)
+                })
+            }
+        }
+
+        // commonjs
+        if (typeof exports !== 'undefined') {
+            exports.loadCSS = loadCSS
+        } else {
+            w.loadCSS = loadCSS
+        }
+    })(typeof global !== 'undefined' ? global : this)
+</script>
+
+    <style type="text/css">
+    @font-face {
+        font-family: 'Oswald-Regular';
+        src: url("/font/Oswald-Regular.ttf");
+    }
+
+    body {
+        margin: 0;
+    }
+
+    header,
+    footer,
+    .footer-fixed-btn,
+    .sidebar,
+    .container,
+    .site-intro-meta,
+    .toc-wrapper {
+        display: none;
+    }
+
+    .site-intro {
+        position: relative;
+        z-index: 3;
+        width: 100%;
+        /* height: 50vh; */
+        overflow: hidden;
+    }
+
+    .site-intro-placeholder {
+        position: absolute;
+        z-index: -2;
+        top: 0;
+        left: 0;
+        width: calc(100% + 300px);
+        height: 100%;
+        background: repeating-linear-gradient(
+            -45deg,
+            #444 0,
+            #444 80px,
+            #333 80px,
+            #333 160px
+        );
+        background-position: center center;
+        transform: translate3d(-226px, 0, 0);
+        animation: gradient-move 2.5s ease-out 0s infinite;
+    }
+
+    @keyframes gradient-move {
+        0% {
+            transform: translate3d(-226px, 0, 0);
+        }
+        100% {
+            transform: translate3d(0, 0, 0);
+        }
+    }
+</style>
+
+    <link id="stylesheet-fancybox" rel="preload" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.36/dist/fancybox/fancybox.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <link id="stylesheet-base" rel="preload" href="/css/style.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <link id="stylesheet-mobile" rel="preload" href="/css/mobile.css" as="style" onload="this.onload=null;this.rel='stylesheet';this.media='screen and (max-width: 960px)'">
+    <link id="stylesheet-theme-dark" rel="preload" href="/css/dark.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" as="script">
+    <link rel="preload" href="/scripts/main.js" as="script">
+    <link rel="preload" href="/font/Oswald-Regular.ttf" as="font" crossorigin>
+    <link rel="preload" href="https://at.alicdn.com/t/font_327081_1dta1rlogw17zaor.woff" as="font" crossorigin>
+    <!-- algolia -->
+    <!-- 百度统计  -->
+    <!-- 谷歌统计  -->
+    <!-- Google tag (gtag.js) -->
+<meta name="generator" content="Hexo 5.4.2"><link rel="alternate" href="/atom.xml" title="Lyong's blog" type="application/atom+xml">
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+    <script type="text/javascript">
+        if (typeof window.$ == undefined) {
+            console.warn('jquery load from jsdelivr failed, will load local script')
+            document.write('<script src="/lib/jquery.min.js" />')
+        }
+    </script>
+        <body class="post-body">
+        <!-- header -->
+        <header class="header header-mobile">
+    <!-- top read progress line -->
+    <div class="header-element">
+        <div class="read-progress"></div>
+    </div>
+    <!-- sidebar menu button -->
+    <div class="header-element">
+        <div class="header-sidebar-menu">
+            <div style="padding-left: 1px;">&#xe775;</div>
+        </div>
+    </div>
+    <!-- header actions -->
+    <div class="header-actions">
+        <!-- theme mode switch button -->
+        <span class="header-theme-btn header-element">
+            <i class="fas fa-adjust"></i>
+        </span>
+        <!-- back to home page text -->
+        <span class="home-link header-element">
+            <a href="/">茄子的个人空间</a>
+        </span>
+    </div>
+    <!-- toggle banner -->
+    <div class="banner">
+        <div class="blog-title header-element">
+            <a href="/">茄子的个人空间</a>
+        </div>
+        <div class="post-title header-element">
+            <a href="#" class="post-name">Pytorch学习</a>
+        </div>
+    </div>
+</header>
+
+        <!-- fixed footer -->
+        <footer class="footer-fixed">
+    <!-- donate button -->
+    <div class="donate-popup donate-popup--hidden">
+    <div class="donate-popup__title">Buy Me A Coffee</div>
+    <div class="donate-popup__content">
+        <div class="donate-popup__content-description">谢谢你的鼓励和支持！</div>
+        <img
+            class="donate-popup__content-qrCode"
+            title="Wechat"
+            alt="Wechat"
+            src="/assets/donate-wechat.png"
+        ></img>
+        <img
+            class="donate-popup__content-qrCode"
+            title="Alipay"
+            alt="Alipay"
+            src="/assets/donate-alipay.jpg"
+        ></img>
+    </div>
+</div>
+
+    <div
+        title="Donate to the author"
+        class="footer-fixed-btn footer-fixed-btn--hidden donate-btn"
+    >
+        <i class="fas fa-donate"></i>
+    </div>
+
+    <!-- back to top button -->
+    <div class="footer-fixed-btn footer-fixed-btn--hidden back-top">
+        <div>&#xe639;</div>
+    </div>
+</footer>
+
+        <!-- wrapper -->
+        <div class="wrapper">
+            <div class="site-intro" style="    height:50vh;
+">
+    <!-- 主页  -->
+    <!-- 404页  -->
+    <div class="site-intro-placeholder"></div>
+    <div class="site-intro-img" style="background-image: url(/intro/post-bg.jpg)"></div>
+    <div class="site-intro-meta">
+        <!-- 标题  -->
+        <h1 class="intro-title">
+            <!-- 主页  -->
+                Pytorch学习
+            <!-- 404 -->
+        </h1>
+        <!-- 副标题 -->
+        <p class="intro-subtitle">
+            <!-- 主页副标题  -->
+            <!-- 404 -->
+        </p>
+        <!-- 文章页 meta -->
+            <div class="post-intros">
+                <!-- 文章页标签  -->
+                    <div class="post-intro-tags" >
+        <a class="post-tag" href="javascript:void(0);" data-tags="pytorch">pytorch</a>
+</div>
+
+                <!-- 文章字数统计 -->
+                    <div class="post-intro-read">
+                        <span>字数统计: <span class="post-count word-count">7.1k</span>阅读时长: <span class="post-count reading-time">40 min</span></span>
+                    </div>
+                <div class="post-intro-meta">
+                    <!-- 撰写日期 -->
+                    <span class="iconfont-archer post-intro-calander">&#xe676;</span>
+                    <span class="post-intro-time">2021/08/05</span>
+                    <!-- busuanzi -->
+                        <span id="busuanzi_container_page_pv" class="busuanzi-pv">
+                            <span class="iconfont-archer post-intro-busuanzi">&#xe602;</span>
+                            <span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    <!-- 文章分享 -->
+                    <span class="share-wrapper">
+                        <span class="iconfont-archer share-icon">&#xe71d;</span>
+                        <span class="share-text">Share</span>
+                        <ul class="share-list">
+                            <li class="iconfont-archer share-qr" data-type="qr">&#xe75b;
+                                <div class="share-qrcode"></div>
+                            </li>
+                            <li class="iconfont-archer" data-type="weibo">&#xe619;</li>
+                            <li class="iconfont-archer" data-type="qzone">&#xe62e;</li>
+                            <li class="iconfont-archer" data-type="twitter">&#xe634;</li>
+                            <li class="iconfont-archer" data-type="facebook">&#xe67a;</li>
+                        </ul>
+                    </span>
+                </div>
+            </div>
+    </div>
+</div>
+
+            <script>
+  // get user agent
+  function getBrowserVersions() {
+    var u = window.navigator.userAgent
+    return {
+      userAgent: u,
+      trident: u.indexOf('Trident') > -1, //IE内核
+      presto: u.indexOf('Presto') > -1, //opera内核
+      webKit: u.indexOf('AppleWebKit') > -1, //苹果、谷歌内核
+      gecko: u.indexOf('Gecko') > -1 && u.indexOf('KHTML') == -1, //火狐内核
+      mobile: !!u.match(/AppleWebKit.*Mobile.*/), //是否为移动终端
+      ios: !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/), //ios终端
+      android: u.indexOf('Android') > -1 || u.indexOf('Linux') > -1, //android终端或者uc浏览器
+      iPhone: u.indexOf('iPhone') > -1 || u.indexOf('Mac') > -1, //是否为iPhone或者安卓QQ浏览器
+      iPad: u.indexOf('iPad') > -1, //是否为iPad
+      webApp: u.indexOf('Safari') == -1, //是否为web应用程序，没有头部与底部
+      weixin: u.indexOf('MicroMessenger') == -1, //是否为微信浏览器
+      uc: u.indexOf('UCBrowser') > -1, //是否为android下的UC浏览器
+    }
+  }
+  var browser = {
+    versions: getBrowserVersions(),
+  }
+  console.log('userAgent: ' + browser.versions.userAgent)
+
+  // callback
+  function fontLoaded() {
+    console.log('font loaded')
+    if (document.getElementsByClassName('site-intro-meta')) {
+      document
+        .getElementsByClassName('intro-title')[0]
+        .classList.add('intro-fade-in')
+      document
+        .getElementsByClassName('intro-subtitle')[0]
+        .classList.add('intro-fade-in')
+      var postIntros = document.getElementsByClassName('post-intros')[0]
+      if (postIntros) {
+        postIntros.classList.add('post-fade-in')
+      }
+    }
+  }
+
+  // UC不支持跨域，所以直接显示
+  function asyncCb() {
+    if (browser.versions.uc) {
+      console.log('UCBrowser')
+      fontLoaded()
+    } else {
+      WebFont.load({
+        custom: {
+          families: ['Oswald-Regular'],
+        },
+        loading: function () {
+          // 所有字体开始加载
+          // console.log('font loading');
+        },
+        active: function () {
+          // 所有字体已渲染
+          fontLoaded()
+        },
+        inactive: function () {
+          // 字体预加载失败，无效字体或浏览器不支持加载
+          console.log('inactive: timeout')
+          fontLoaded()
+        },
+        timeout: 5000, // Set the timeout to two seconds
+      })
+    }
+  }
+
+  function asyncErr() {
+    console.warn('script load from CDN failed, will load local script')
+  }
+
+  // load webfont-loader async, and add callback function
+  function async(u, cb, err) {
+    var d = document,
+      t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0]
+    o.src = u
+    if (cb) {
+      o.addEventListener(
+        'load',
+        function (e) {
+          cb(null, e)
+        },
+        false
+      )
+    }
+    if (err) {
+      o.addEventListener(
+        'error',
+        function (e) {
+          err(null, e)
+        },
+        false
+      )
+    }
+    s.parentNode.insertBefore(o, s)
+  }
+
+  var asyncLoadWithFallBack = function (arr, success, reject) {
+    var currReject = function () {
+      reject()
+      arr.shift()
+      if (arr.length) async(arr[0], success, currReject)
+    }
+
+    async(arr[0], success, currReject)
+  }
+
+  asyncLoadWithFallBack(
+    [
+      'https://cdn.jsdelivr.net/npm/webfontloader@1.6.28/webfontloader.min.js',
+      'https://cdn.bootcss.com/webfont/1.6.28/webfontloader.js',
+      "/lib/webfontloader.min.js",
+    ],
+    asyncCb,
+    asyncErr
+  )
+</script>
+
+            <img class="loading" src="/assets/loading.svg" style="display: block; margin: 6rem auto 0 auto; width: 6rem; height: 6rem;" alt="loading">
+            <div class="container container-unloaded">
+                <main class="main post-page">
+    <article class="article-entry">
+        <!-- ## Pytorch 框架学习 -->
+
+<p>课程[链接](https: // <a target="_blank" rel="noopener" href="http://www.youtube.com/">www.youtube.com</a> / watch?v = c36lUUr864M)</p>
+<h3 id="1-Tensor"><a href="#1-Tensor" class="headerlink" title="1. Tensor"></a>1. Tensor</h3><h4 id="1-1-How-to-create-tensor"><a href="#1-1-How-to-create-tensor" class="headerlink" title="1.1 How to create tensor"></a>1.1 How to create tensor</h4><blockquote>
+<p>构造tensor的方法主要有六种，分别如下：</p>
+<ol>
+<li><p>x = torch.ones(3, 5, dtype=torch.float, requires_grad = True )</p>
+</li>
+<li><p>x = torch.zeros(3, 5, dtype=torch.float, requires_grad = True )</p>
+</li>
+<li><p>x = torch.rand(3, 5, dtype=torch.float, requires_grad = True )</p>
+</li>
+<li><p>x = torch.empty(3, 5, dtype=torch.float, requires_grad = True )</p>
+</li>
+<li><p>x = torch.tensor([1,2,3], dtype=torch.float, requires_grad = True )</p>
+</li>
+<li><p>x_numpy = np.array([1,2,3])<br>x = torch.from_numpy(x_numpy)</p>
+</li>
+</ol>
+</blockquote>
+<h4 id="1-2-对Tensor的各种操作"><a href="#1-2-对Tensor的各种操作" class="headerlink" title="1.2 对Tensor的各种操作"></a>1.2 对Tensor的各种操作</h4><blockquote>
+<ol>
+<li><p>查看数据类型：x.dtype</p>
+</li>
+<li><p>查看size：x.size()</p>
+</li>
+<li><p>如果tensor只有一个值，查看实数值：x.item()</p>
+</li>
+<li><p>改变tensor的形状大小：x = x.view(num_row, num_col)</p>
+</li>
+<li><p>将tensor转为numpy: z = x.detach().numpy()</p>
+</li>
+</ol>
+<p> ​       注意：numpy只能存放到cpu上面,并且不能是包含梯度的tensor，转换之后共享相同的内存</p>
+<ol start="6">
+<li>构造新的不包含梯度的tensor：z = x.detach()</li>
+</ol>
+<ol start="7">
+<li>对tensor进行各种转换： .to() eg: x.to(int)</li>
+</ol>
+</blockquote>
+<h4 id="1-3-基本运算"><a href="#1-3-基本运算" class="headerlink" title="1.3 基本运算"></a>1.3 基本运算</h4><blockquote>
+<ol>
+<li>add: z = x+y</li>
+<li>minus: z = x-y</li>
+<li>multi: z = x*y</li>
+<li>div: z = x/y</li>
+<li>切片操作：切片操作十分灵活，用到的时候查询文档</li>
+</ol>
+</blockquote>
+<h3 id="2-Autograd"><a href="#2-Autograd" class="headerlink" title="2. Autograd"></a>2. Autograd</h3><h4 id="2-1-Calculate-the-gradients"><a href="#2-1-Calculate-the-gradients" class="headerlink" title="2.1 Calculate the gradients"></a>2.1 Calculate the gradients</h4><blockquote>
+<p>用 z.backward() 来计算z关于变量的梯度，如果正向计算出来的z是一个实数值，则backward的参数为默认值就好，如果z是一个向量，则调用backward()的时候需要传入一个与z的size相同的向量.</p>
+<p>  如下面的示例所示。</p>
+  <pre class="line-numbers language-python" data-language="python"><code class="language-python">x &#x3D; torch.randn(3, dtype&#x3D;float, requires_grad &#x3D; True)
+y&#x3D;x*x+2*x+5
+z &#x3D; torch.mean(y)
+z.backward() # dz&#x2F;dx jacobian matrix to get the grad
+# z.backward()这一步是用雅可比矩阵来计算梯度，如果正向计算出来的z是
+# 一个实数值，则backward的参数为默认值就好，如果z是一个向量，则调用
+# backward()的时候需要传入一个与z的size相同的向量
+# 
+# y &#x3D; x*x*2+x
+# v &#x3D; torch.tensor([1.00,0.10,0.200], dtype&#x3D;torch.float32)
+# y.backward(v)
+# 
+print(x.grad)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</blockquote>
+<h4 id="2-2-How-to-prevent-pytorch-from-tracking-the-history-and-calculating-this-grad-fn-attribute"><a href="#2-2-How-to-prevent-pytorch-from-tracking-the-history-and-calculating-this-grad-fn-attribute" class="headerlink" title="2.2 How to prevent pytorch from tracking the history and calculating this grad fn attribute."></a>2.2 How to prevent pytorch from tracking the history and calculating this grad fn attribute.</h4><blockquote>
+<p>一共有三种方法让tensor不被计算图追踪梯度，分别是：</p>
+<p>1） x.requires_grad_(False)</p>
+<p>2） x.detach()</p>
+<p>3） with torch.no_grad(): pass</p>
+<p>具体示例如下所示：</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">x &#x3D; torch.randn(3, requires_grad &#x3D; True)
+print(x)
+# 让张量x不在追踪梯度的方法有三种
+# x.requires_grad_(False)
+# x.detach()
+# with torch.no_grad():
+
+with torch.no_grad():
+    y &#x3D; x+2
+    print(x) # x with grad
+    print(y) # y without grad<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+</blockquote>
+<h4 id="2-3-梯度累积"><a href="#2-3-梯度累积" class="headerlink" title="2.3 梯度累积"></a>2.3 梯度累积</h4><blockquote>
+<p>调用backward()来计算梯度的时候，当前轮次的梯度，是之前所有轮次梯度的累积和，在梯度下降学习中这是我们不想看到的，可以调用zero_()函数来将梯度变为0.</p>
+<p>示例如下：</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">weights &#x3D; torch.ones(3, requires_grad&#x3D;True)
+
+for epoch in range(2):
+    model_output &#x3D; (weights*3).sum()
+    model_output.backward()
+    print(weights.grad)
+#     weights.grad.zero_()
+    
+# 输出结果为：
+# tensor([3., 3., 3.])
+# tensor([6., 6., 6.])
+# 第一个epoch为3，第二个epoch为6，说明梯度在累加
+# 因为梯度累积是我们不希望看到的，所以每次迭代的时候我们希望梯度
+# 能够清零，梯度清零用.grad.zero_()函数<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+</blockquote>
+<h3 id="3-Backpropagation"><a href="#3-Backpropagation" class="headerlink" title="3. Backpropagation"></a>3. Backpropagation</h3><blockquote>
+<p>调用backward()函数来进行反向传播，计算梯度，示例如下：</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">x &#x3D; torch.tensor(1, dtype&#x3D;torch.float32, requires_grad&#x3D;False)
+y &#x3D; torch.tensor(2, dtype&#x3D;torch.float32, requires_grad&#x3D;False)
+w &#x3D; torch.tensor(1, dtype&#x3D;torch.float32, requires_grad&#x3D;True)
+
+loss &#x3D; (x*w-y)**2
+
+print(loss)
+
+loss.backward()
+print(w.grad)
+
+## output:
+# tensor(1., grad_fn&#x3D;&lt;PowBackward0&gt;)
+# tensor(-2.)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+</blockquote>
+<h3 id="4-Optimize-model-with-automatic-gradient-computation"><a href="#4-Optimize-model-with-automatic-gradient-computation" class="headerlink" title="4. Optimize model with automatic gradient computation"></a>4. Optimize model with automatic gradient computation</h3><h4 id="4-1-用numpy实现回归算法"><a href="#4-1-用numpy实现回归算法" class="headerlink" title="4.1 用numpy实现回归算法"></a>4.1 用numpy实现回归算法</h4><blockquote>
+<p>实现回归算法分为如下几步：</p>
+<p>​    1） 数据准备</p>
+<p>​    2）定义function</p>
+<p>​    3）定义loss function</p>
+<p>​    4） 定义梯度计算公式</p>
+<p>​    5） 编写training loop部分代码</p>
+<p>实现代码如下：</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"># f &#x3D; w * x 
+
+# f &#x3D; 2 * x
+# 1. 用numpy手动实现
+
+# prepare dataset
+X &#x3D; np.array([1,2,3,4,5,6,7], dtype&#x3D;np.float32)
+y &#x3D; np.array([2,4,6,8,9,13,20], dtype&#x3D;np.float32)
+
+w &#x3D; 0.0
+
+# model prediction
+def forward(x):
+    return w*x
+
+# loss &#x3D; MSE
+def loss(y, y_pred):
+    return ((y_pred - y)**2).mean()
+
+# gradient
+def gradient(x,y,y_pred):
+    return (2*x*(y_pred - y)).mean()
+
+print(f&#39;Prediction before training: f(5) &#x3D; &#123;forward(5):.5f&#125;&#39;)
+
+# Training
+learning_rate &#x3D; 0.1
+n_iters &#x3D; 10
+
+for i in range(n_iters):
+    y_pred &#x3D; forward(X)
+    l &#x3D; loss(y, y_pred)
+    dw &#x3D; gradient(x, y, y_pred)
+    w -&#x3D; learning_rate*dw
+    print(f&#39;epoch &#123;i+1&#125;: w &#x3D; &#123;w:.3f&#125;, loss &#x3D; &#123;l:.10f&#125;&#39;)
+print(f&#39;Prediction after training: f(5) &#x3D; &#123;forward(5):.5f&#125;&#39;)
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+</blockquote>
+<h4 id="4-2-用pytorch替换数据类型和梯度计算"><a href="#4-2-用pytorch替换数据类型和梯度计算" class="headerlink" title="4.2 用pytorch替换数据类型和梯度计算"></a>4.2 用pytorch替换数据类型和梯度计算</h4><blockquote>
+<p>代码实现思路与4.1一样，没有做任何变化。</p>
+<p>示例代码如下：</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"># 2. Do with pytorch
+X &#x3D; torch.tensor([1,2,3,4,5,6,10], dtype&#x3D;torch.float32)
+y &#x3D; torch.tensor([2,4,6,8,10,12,20], dtype&#x3D;torch.float32)
+
+w &#x3D; torch.tensor(0.0, dtype&#x3D;torch.float32, requires_grad &#x3D; True)
+
+# model prediction
+def forward(x):
+    return w*x
+
+# loss &#x3D; MSE
+def loss(y, y_pred):
+    return ((y_pred - y)**2).mean()
+
+print(f&#39;Prediction before training: f(5) &#x3D; &#123;forward(5):.5f&#125;&#39;)
+
+# Training
+learning_rate &#x3D; 0.0001
+n_iters &#x3D; 10000
+
+for i in range(n_iters):
+    y_pred &#x3D; forward(X)
+    
+    l &#x3D; loss(y, y_pred)
+    
+    l.backward()
+    
+    with torch.no_grad():
+        w -&#x3D; learning_rate*w.grad
+    
+    w.grad.zero_()
+    
+    if (i+1) %1000 &#x3D;&#x3D; 0:
+        print(f&#39;epoch &#123;i+1&#125;: w &#x3D; &#123;w:.3f&#125;, loss &#x3D; &#123;l:.10f&#125;&#39;)
+print(f&#39;Prediction after training: f(5) &#x3D; &#123;forward(5):.5f&#125;&#39;)
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+</blockquote>
+<h4 id="4-3-用pytorch来做梯度计算和优化"><a href="#4-3-用pytorch来做梯度计算和优化" class="headerlink" title="4.3 用pytorch来做梯度计算和优化"></a>4.3 用pytorch来做梯度计算和优化</h4><blockquote>
+<p>4.2 我们用了backward()函数来自动计算梯度，但是梯度下降优化算法依然是我们在4.1版本中的手工编写的公式，这里我们在之前的基础上面更进一步，用pytorch框架中的optimizer来替换掉手工编写的梯度下降方法，代码如下：</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"># 1） Design model (input, output size, forward pass)
+# 2) Construct loss and optimizer
+# 3) Training loop
+#    - forward pass: compute prediction
+#    - backward pass: gradients
+#    - update weight
+
+import torch.nn as nn
+
+X &#x3D; torch.tensor([[1],[2],[3],[4],[5],[6],[10]], dtype&#x3D;torch.float32)
+y &#x3D; torch.tensor([[2],[4],[6],[8],[10],[12],[20]], dtype&#x3D;torch.float32)
+x_test &#x3D; torch.tensor([5], dtype&#x3D;torch.float32)
+
+n_samples, n_features &#x3D; X.shape
+print(n_samples, n_features)
+
+input_size &#x3D; n_features
+output_size &#x3D; n_features
+
+model &#x3D; nn.Linear(input_size, output_size)
+
+
+print(f&#39;Prediction before training: f(5) &#x3D; &#123;model(x_test).item():.5f&#125;&#39;)
+
+# Training
+learning_rate &#x3D; 0.01
+n_iters &#x3D; 1000
+
+loss &#x3D; nn.MSELoss()
+optimizer &#x3D; torch.optim.SGD(model.parameters(), lr&#x3D;learning_rate)
+
+for i in range(n_iters):
+    y_pred &#x3D; model(X)
+    
+    l &#x3D; loss(y, y_pred)
+    
+    l.backward()
+    optimizer.step()
+    
+    
+#     w.grad.zero_()
+    optimizer.zero_grad()
+    
+    if (i+1) %1000 &#x3D;&#x3D; 0:
+        [w, b] &#x3D; model.parameters()
+        print(f&#39;epoch &#123;i+1&#125;: w &#x3D; &#123;w[0][0].item():.3f&#125;, loss &#x3D; &#123;l:.10f&#125;&#39;)
+print(f&#39;Prediction after training: f(5) &#x3D; &#123;model(x_test).item():.5f&#125;&#39;)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</blockquote>
+<h4 id="4-4-定义更加复杂的模型"><a href="#4-4-定义更加复杂的模型" class="headerlink" title="4.4 定义更加复杂的模型"></a>4.4 定义更加复杂的模型</h4><blockquote>
+<p>4.3 及其之前的工作，我们对model的定义都及其的简单，这里我们对model进行改进，通过自定义一个LinearRegress对象来定义一个包含两层全连接的网络建模我们的model，隐藏层的激活函数我们选用了relu()激活函数。代码如下：</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"># 1） Design model (input, output size, forward pass)
+# 2) Construct loss and optimizer
+# 3) Training loop
+#    - forward pass: compute prediction
+#    - backward pass: gradients
+#    - update weight
+
+import torch.nn as nn
+
+X &#x3D; torch.tensor([[1],[2],[3],[4],[5],[6],[10]], dtype&#x3D;torch.float32)
+y &#x3D; torch.tensor([[2],[4],[6],[8],[10],[12],[20]], dtype&#x3D;torch.float32)
+x_test &#x3D; torch.tensor([5], dtype&#x3D;torch.float32)
+
+n_samples, n_features &#x3D; X.shape
+print(n_samples, n_features)
+
+input_size &#x3D; n_features
+output_size &#x3D; n_features
+
+# model &#x3D; nn.Linear(input_size, output_size)
+
+class LinearRegress(nn.Module):
+    def __init__(self, input_size, output_size):
+        super(LinearRegress, self).__init__()
+        # define layers
+        self.lin1 &#x3D; nn.Linear(input_size, 2)
+        self.lin2 &#x3D; nn.Linear(2, output_size)
+    def forward(self, x):
+        x &#x3D;  self.lin1(x)
+        x &#x3D; torch.relu(x)
+        return self.lin2(x)
+        
+
+model &#x3D; LinearRegress(input_size, output_size)
+
+
+print(f&#39;Prediction before training: f(5) &#x3D; &#123;model(x_test).item():.5f&#125;&#39;)
+
+# Training
+learning_rate &#x3D; 0.01
+n_iters &#x3D; 1000
+
+loss &#x3D; nn.MSELoss()
+optimizer &#x3D; torch.optim.SGD(model.parameters(), lr&#x3D;learning_rate)
+
+for i in range(n_iters):
+    y_pred &#x3D; model(X)
+    
+    l &#x3D; loss(y, y_pred)
+    
+    l.backward()
+    optimizer.step()
+    
+    
+#     w.grad.zero_()
+    optimizer.zero_grad()
+    
+    if (i+1) %1000 &#x3D;&#x3D; 0:
+#         [w, b] &#x3D; model.parameters()
+#         print(f&#39;epoch &#123;i+1&#125;: parameters &#x3D; &#123;model.parameters()&#125;, loss &#x3D; &#123;l:.10f&#125;&#39;)
+        for parameters in model.parameters():
+            print(parameters)
+        
+print(f&#39;Prediction after training: f(5) &#x3D; &#123;model(x_test).item():.5f&#125;&#39;)
+
+# Now pytorch can do most of the work for us, of course we still have to design our model
+# and have to know which loss and optimizer we want to use but we don&#39;t have to worry about
+# the underlying algorithms anymore.<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+</blockquote>
+<h4 id="4-5-综合示例1"><a href="#4-5-综合示例1" class="headerlink" title="4.5 综合示例1"></a>4.5 综合示例1</h4><blockquote>
+<p>学习完了4.1-4.3的内容，我们对如何手工建模一个模型有了初步的了解，并且知道了pytorch建模深度学习的一般过程，以及它对应的每一个部分的作用，下面我们通过一个综合的示例来加深对所学知识的理解。</p>
+<p>在该示例中，我们首先调用sklearn的datasets库来构建带噪声的逻辑回归数据集，然后构造一个线性模型，并对线性模型进行训练。代码如下：</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"># 5. 综合示例1
+
+import torch
+import torch.nn as nn
+import numpy as np
+from sklearn import datasets
+import matplotlib.pyplot as plt
+
+# 0) create data
+x_numpy, y_numpy &#x3D; datasets.make_regression(n_samples&#x3D;500, n_features&#x3D;1, noise&#x3D;20, random_state&#x3D;1)
+
+x,y &#x3D; torch.from_numpy(x_numpy.astype(np.float32)), torch.from_numpy(y_numpy.astype(np.float32))
+# print(x.shape)
+# print(y.shape)
+y &#x3D; y.view(y.shape[0], -1)
+# print(y.shape)
+n_sample, n_features &#x3D; x.shape
+
+# 1) model
+input_size &#x3D; n_features
+output_size &#x3D; 1
+model &#x3D; nn.Linear(input_size, output_size)
+
+# 2）loss and optimizer
+learning_rate &#x3D; 0.01
+criterion &#x3D; nn.MSELoss()
+optimizer &#x3D; torch.optim.SGD(model.parameters(), lr&#x3D;learning_rate)
+
+# 3) training loop
+num_epochs &#x3D; 1000
+num_iter &#x3D; 100
+for epoch in range(num_epochs):
+ # foreard pass and loss
+ y_pred &#x3D; model(x)
+ loss &#x3D; criterion(y_pred, y)
+ # backward pass
+ loss.backward()
+ # updata
+ optimizer.step()
+
+ optimizer.zero_grad()
+
+ if(epoch+1)%num_iter &#x3D;&#x3D; 0:
+     print(f&#39;epoch:&#123;epoch+1&#125;, loss&#x3D;&#123;loss.item():.4f&#125;&#39;)
+# plot
+predicted &#x3D; model(x).detach().numpy()
+plt.plot(x_numpy, y_numpy, &#39;ro&#39;)
+plt.plot(x_numpy, predicted, &#39;b&#39;)
+plt.show()<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>运行结果如下：</p>
+<img src="https://raw.githubusercontent.com/Skylyong/i/main/20210805210347.png" alt="image-20210805210341931" style="zoom:50%;" />
+</blockquote>
+<h4 id="4-6-综合示例2"><a href="#4-6-综合示例2" class="headerlink" title="4.6  综合示例2"></a>4.6  综合示例2</h4><blockquote>
+<p>之前的示例中我们没有对训练后的模型进行测试，在这个例子中我们增加了模型测试，并且调用sklearn中内置的“乳腺癌”数据集来完成示例，并且对输入特征做了归一化处理。</p>
+<p>代码如下：</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"># 5. 综合示例2
+
+import torch
+import torch.nn as nn
+import numpy as np
+from sklearn import datasets
+from sklearn.preprocessing import StandardScaler
+from sklearn.model_selection import train_test_split
+
+# 0) prepare data
+bc &#x3D; datasets.load_breast_cancer()
+X,y &#x3D; bc.data, bc.target
+
+n_samples, n_features &#x3D; X.shape
+# print(X.shape)
+# print(y.shape)
+
+X_train, X_test, y_train, y_test &#x3D; train_test_split(X,y,test_size&#x3D;0.2, random_state&#x3D;1234)
+# scale 对每一列的特征做均值方差归一化处理，如果不做的话学习出来的模型的准确率大大降低
+sc &#x3D; StandardScaler()
+# print(&#39;X_test before transform:&#39;, X_test)
+X_train &#x3D; sc.fit_transform(X_train)
+X_test &#x3D; sc.fit_transform(X_test)
+# print(&#39;X_test after transform:&#39;, X_test.mean(), X_test.std())
+
+X_train &#x3D; torch.from_numpy(X_train.astype(np.float32))
+X_test &#x3D; torch.from_numpy(X_test.astype(np.float32))
+y_train &#x3D; torch.from_numpy(y_train.astype(np.float32))
+y_test &#x3D; torch.from_numpy(y_test.astype(np.float32))
+
+y_train &#x3D; y_train.view(y_train.shape[0], 1)
+y_test &#x3D; y_test.view(y_test.shape[0], 1)
+
+# 1) model
+# f &#x3D; wx + b, sigmoid at the end
+class LogisticRegression(nn.Module):
+    def __init__(self, n_input_features):
+        super(LogisticRegression, self).__init__()
+        self.linear &#x3D; nn.Linear(n_input_features, 1)
+        
+    def forward(self, x):
+        y_pred &#x3D; torch.sigmoid(self.linear(x))
+        return y_pred
+    
+model &#x3D; LogisticRegression(n_features)
+
+# 2) loss and optimizer
+learning_rate &#x3D; 0.001
+
+criterion &#x3D; nn.BCELoss()
+optimizer &#x3D; torch.optim.SGD(model.parameters(), lr &#x3D; learning_rate)
+# 3) training loop
+num_epochs &#x3D; 1000
+for epoch in range(num_epochs):
+    # foreard pass and loss
+    y_pred &#x3D; model(X_train)
+    loss &#x3D; criterion(y_pred, y_train)
+    # backward pass
+    loss.backward()
+    
+    # updates
+    optimizer.step()
+    
+    optimizer.zero_grad()
+    
+    if(epoch+1) % 100 &#x3D;&#x3D; 0:
+        print(f&#39;epoch:&#123;epoch+1&#125;, loss &#x3D; &#123;loss.item():.4f&#125;&#39;)
+        
+with torch.no_grad():
+    y_pred &#x3D; model(X_test)
+    y_pred_cls &#x3D; y_pred.round() # 对sigmoid出来的值进行四舍五入
+#     print(f&#39;y_pred&#x3D;&#123;y_pred&#125;, y_pred_cls&#x3D;&#123;y_pred_cls&#125;&#39;)
+    acc &#x3D; y_pred_cls.eq(y_test).sum()&#x2F;float(y_test.shape[0])
+    print(f&#39;acc &#x3D; &#123;acc:.4f&#125;&#39;)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+</blockquote>
+<h3 id="5-Dataset-and-Dataload-Class"><a href="#5-Dataset-and-Dataload-Class" class="headerlink" title="5. Dataset and Dataload Class"></a>5. Dataset and Dataload Class</h3><h4 id="5-1-Dataset-and-Dataload"><a href="#5-1-Dataset-and-Dataload" class="headerlink" title="5.1 Dataset and Dataload"></a>5.1 Dataset and Dataload</h4><blockquote>
+<p>pytorch中由dataset类管理数据集，可以通过继承dataset类来自定义数据集，代码模板如下：</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">class MyDataset(Dataset):
+def __init__(self):
+ pass
+
+def __getitem__(self, index):
+ return a signel data
+
+def __len__(self):
+ return length of dataset<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>定义好dataset之后，可以通过DataLoader来构造可供训练的迭代器，代码如下：</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">dataloader &#x3D; DataLoader(dataset&#x3D;dataset, batch_size&#x3D;4, shuffle&#x3D;True, num_workers&#x3D;2)<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+
+
+<p>示例如下所示：</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">&#39;&#39;&#39;
+epoch &#x3D; 1 forward and backward pass of ALL training samples
+
+bach_size &#x3D; number of training samples in one forward &amp; backward pass
+
+number of iterations &#x3D; number of passes, each pass using [batch_size] number of samples
+
+e.g. 100 samples, batch_size &#x3D; 20 --&gt; 100&#x2F;20 &#x3D; 5 iterations for 1 epoch
+&#39;&#39;&#39;
+
+import torch
+import torchvision
+from torch.utils.data import Dataset, DataLoader
+import numpy as np
+import math
+import os
+
+if not os.getcwd().endswith(&#39;pytorchLearning&#39;):
+ os.chdir(os.getcwd()+&#39;&#x2F;Desktop&#x2F;pytorchLearning&#39;)
+# print (os.getcwd())
+
+class WineDataset(Dataset):
+
+ def __init__(self):
+     # data loading
+     xy &#x3D; np.loadtxt(&#39;.&#x2F;data&#x2F;wine&#x2F;wine.csv&#39;, delimiter&#x3D;&#39;,&#39;, dtype&#x3D;np.float32, skiprows&#x3D;1)
+     self.x &#x3D; torch.from_numpy(xy[:,1:])
+     self.y &#x3D; torch.from_numpy(xy[:, [0]])
+     self.n_samples &#x3D; xy.shape[0]
+
+ def __getitem__(self, index):
+     return self.x[index], self.y[index]
+
+ def __len__(self):
+     return self.n_samples
+# # How we can use dataset
+# dataset &#x3D; WineDataset()
+# first_data &#x3D; dataset[0]
+# features, label &#x3D; first_data
+# print(features, label)
+#
+# # How we can use dataload
+# dataloader &#x3D; DataLoader(dataset&#x3D;dataset, batch_size&#x3D;4, shuffle&#x3D;True, num_workers&#x3D;2)
+#
+# dataiter &#x3D; iter(dataloader)
+# data &#x3D; dataiter.next()
+# features, label &#x3D; data
+# print(features, label)
+
+dataset &#x3D; WineDataset()
+dataloader &#x3D; DataLoader(dataset&#x3D;dataset, batch_size&#x3D;4, shuffle&#x3D;True, num_workers&#x3D;2)
+
+# training loop
+num_epochs&#x3D;2
+total_samples &#x3D; len(dataset)
+n_iterations &#x3D; math.ceil(total_samples&#x2F;4)
+print(total_samples, n_iterations)
+
+for epoch in range(num_epochs):
+ for i,(inputs, label) in enumerate(dataloader):
+     # forward backward, update
+     if (i+1) % 5 &#x3D;&#x3D; 0:
+         print(f&#39;epoch &#123;epoch+1&#125;&#x2F;&#123;num_epochs&#125;, step &#123;i+1&#125;&#x2F;&#123;n_iterations&#125;, inputs &#123;inputs.shape&#125;&#39;)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+</blockquote>
+<h4 id="5-2-Transforms-for-the-dataset"><a href="#5-2-Transforms-for-the-dataset" class="headerlink" title="5.2 Transforms for the dataset"></a>5.2 Transforms for the dataset</h4><blockquote>
+<p>pytorch通过传入transforms类来对输入的数据进行某种变化，transforms类可以调用库定义好的，也可以根据需要自定义。</p>
+<p>示例代码如下：</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">&#39;&#39;&#39;
+Transforms can be applied to PIL images, tensor, ndarrays, or custom data
+during criterion of the dataset
+
+complete list of built-in transforms:
+https:&#x2F;&#x2F;pytorch.org&#x2F;docs&#x2F;stable&#x2F;torchvision&#x2F;transforms.html
+
+On images
+---------
+CenterCrop, Grayscale, Pad, RandomAffine,
+RandomCrop, RandomHorizontalFlip, RandomHorizon
+Resize, scale
+
+On Tensors
+----------
+LinearTransformation, Normalize, RandomErasing
+
+Conversion
+----------
+ToPILIamage: from tensor or ndarray
+ToTensor: from numpy.ndarray or PILImage
+
+Generic
+-------
+Use Lambda
+
+Custom
+------
+Write own Class
+
+Compose mutiple Transforms
+--------------------------
+composed &#x3D; transforms.Compose([Rescale(256),
+                                RandomCrop(224)])
+torchvision.transforms.Rescale(256)
+torchvision.transforms.ToTensor()
+&#39;&#39;&#39;
+import torch
+import torchvision
+from torch.utils.data import Dataset
+import numpy as np
+
+
+class WineDataset(Dataset):
+
+    def __init__(self, transform&#x3D;None):
+        xy &#x3D; np.loadtxt(&#39;.&#x2F;data&#x2F;wine&#x2F;wine.csv&#39;, delimiter&#x3D;&#39;,&#39;, dtype&#x3D;np.float32, skiprows&#x3D;1)
+        self.n_samples &#x3D; xy.shape[0]
+
+        # note that we do not convert to tensor here
+        self.x &#x3D; xy[:,1:]
+        self.y &#x3D; xy[:, [0]]
+
+        self.transform &#x3D; transform
+
+    def __getitem__(self, index):
+        sample &#x3D; self.x[index], self.y[index]
+
+        if self.transform:
+            sample &#x3D; self.transform(sample)
+
+        return sample
+
+    def __len__(self):
+        return self.n_samples
+
+class ToTensor:
+    def __call__(self, sample):
+        inputs, targets &#x3D; sample
+        return torch.from_numpy(inputs), torch.from_numpy(targets)
+
+class MulTransform:
+    def __init__(self, factor):
+        self.factor &#x3D; factor
+
+    def __call__(self, sample):
+        inputs, target &#x3D; sample
+        inputs *&#x3D; self.factor
+        return inputs, target
+
+dataset &#x3D; WineDataset(transform&#x3D;ToTensor())
+first_data &#x3D; dataset[0]
+features, label &#x3D; first_data
+print(features)
+print(type(features), type(label))
+
+
+composed &#x3D; torchvision.transforms.Compose([ToTensor(), MulTransform(2)]) # 把两个transforms合并一起应用
+dataset &#x3D; WineDataset(transform&#x3D;composed)
+first_data &#x3D; dataset[0]
+features, label &#x3D; first_data
+print(features)
+print(type(features), type(label))<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</blockquote>
+<h3 id="6-Softmax-and-Cross-Entropy"><a href="#6-Softmax-and-Cross-Entropy" class="headerlink" title="6. Softmax and Cross-Entropy"></a>6. Softmax and Cross-Entropy</h3><h4 id="6-1-Softmax"><a href="#6-1-Softmax" class="headerlink" title="6.1 Softmax"></a>6.1 Softmax</h4><pre class="line-numbers language-python" data-language="python"><code class="language-python"># Softmax
+import torch
+import torch.nn as nn
+import numpy as np
+
+def softmax(x):
+    return np.exp(x) &#x2F; np.sum(np.exp(x), axis&#x3D;0)
+
+x &#x3D; np.array([-2, 1, 0.1])
+outputs &#x3D; softmax(x)
+print(&#39;softmax numpy:&#39;, outputs)
+
+x &#x3D; torch.from_numpy(x)
+outputs &#x3D; torch.softmax(x, axis&#x3D;0)
+print(&#39;softmax torch:&#39;, outputs)
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
+<h4 id="6-2-Cross-entropy"><a href="#6-2-Cross-entropy" class="headerlink" title="6.2 Cross entropy"></a>6.2 Cross entropy</h4><pre class="line-numbers language-python" data-language="python"><code class="language-python"># Cross entropy
+
+def cross_entropy(actual, predicted):
+    return -np.sum(actual*np.log(predicted)).mean()
+
+# y must be one hot encoded
+# if class 0: [1 0 0]
+# if class 1: [0 1 0]
+# if class 2: [0 0 1]
+Y &#x3D; np.array([1,0,0])
+
+# y_pred has probabilities
+y_pred_good &#x3D; np.array([0.7,0.2,0.1])
+y_pred_bad &#x3D; np.array([0.1, 0.3, 0.6])
+l1 &#x3D; cross_entropy(Y, y_pred_good)
+l2 &#x3D; cross_entropy(Y, y_pred_bad)
+print(f&#39;Loss1 numpy:&#123;l1:.4f&#125;&#39;)
+print(f&#39;Loss2 numpy:&#123;l2:.4f&#125;&#39;)
+
+
+# cross entropy by pytorch
+# in pytorch: Use nn.CrossEntropyLoss()
+# No softmax at the end!
+loss &#x3D; nn.CrossEntropyLoss()
+
+# nsamples x nclasses &#x3D; 1x3
+y &#x3D; torch.tensor([0])
+y_pred_good &#x3D; torch.tensor([[2.0, 1.0, 0.1]])
+y_pred_bad &#x3D; torch.tensor([[0.5, 2.0, 0.3]])
+
+l1 &#x3D; loss(y_pred_good, y)
+l2 &#x3D; loss(y_pred_bad, y)
+print(f&#39;Loss1 numpy:&#123;l1:.4f&#125;&#39;)
+print(f&#39;Loss2 numpy:&#123;l2:.4f&#125;&#39;)
+
+_, prediction1 &#x3D; torch.max(y_pred_good, 1)
+_, prediction2 &#x3D; torch.max(y_pred_bad, 1)
+print(prediction1)
+print(prediction2)
+
+
+# 3 samples
+y &#x3D; torch.tensor([2,0,1])
+y_pred_good &#x3D; torch.tensor([[0.1, 1.0, 2.0],
+                            [2.0, 1.0, 0.5 ],
+                            [0.1, 2.0, 1.0]])
+y_pred_bad &#x3D; torch.tensor([[2.0, 1.0, 0.1],
+                            [1.0, 0.1, 2.0 ],
+                            [0.1, 1.0, 2.0]])
+
+l1 &#x3D; loss(y_pred_good, y)
+l2 &#x3D; loss(y_pred_bad, y)
+print(f&#39;Loss1 numpy:&#123;l1.item():.4f&#125;&#39;)
+print(f&#39;Loss2 numpy:&#123;l2.item():.4f&#125;&#39;)
+
+_, prediction1 &#x3D; torch.max(y_pred_good, 1)
+_, prediction2 &#x3D; torch.max(y_pred_bad, 1)
+print(prediction1)
+print(prediction2)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
+<h3 id="7-Activation-function"><a href="#7-Activation-function" class="headerlink" title="7. Activation function"></a>7. Activation function</h3><blockquote>
+<p>Activation functions apply a non-linear transform and decide whether a neural should be activated or not.</p>
+<h4 id="Most-popular-activation-functions"><a href="#Most-popular-activation-functions" class="headerlink" title="Most popular activation functions"></a>Most popular activation functions</h4><ol>
+<li>Step function –&gt; Not used in practice</li>
+<li>Sigmoid</li>
+<li>TanH</li>
+<li>ReLU</li>
+<li>Leaky ReLU</li>
+<li>Softmax</li>
+</ol>
+</blockquote>
+<h3 id="8-综合练习-MNIST"><a href="#8-综合练习-MNIST" class="headerlink" title="8. 综合练习 MNIST"></a>8. 综合练习 MNIST</h3><blockquote>
+<ol>
+<li><p>MNIST</p>
+</li>
+<li><p>DataLoader, Transformation</p>
+</li>
+<li><p>Multilayer Neural Net, activation function</p>
+</li>
+<li><p>Loss and Optimizer</p>
+</li>
+<li><p>Tra</p>
+<p>代码如下：</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">import torch
+import torch.nn as nn
+import torchvision
+import torchvision.transforms as transforms
+import matplotlib.pyplot as plt
+import torch.nn.functional as F
+import math
+                                 
+# device config
+from torch.optim import optimizer
+                                 
+device &#x3D;torch.device(&#39;cuda&#39; if torch.cuda.is_available() else &#39;cpu&#39;)
+                                 
+# hyper parameters
+input_size &#x3D; 784 # 28x28
+hidden_size &#x3D; 128
+num_classes &#x3D; 10
+num_epochs &#x3D; 2
+batch_size &#x3D; 100
+learning_rate &#x3D; 0.001
+                                 
+# MNIST DataSet
+train_dataset &#x3D; torchvision.datasets.MNIST(root&#x3D;&#39;.&#x2F;data&#39;, train&#x3D;True,
+                                           transform&#x3D;transforms.ToTensor(),download&#x3D;True)
+test_dataset &#x3D; torchvision.datasets.MNIST(root&#x3D;&#39;.&#x2F;data&#39;, train&#x3D;False,
+                                           transform&#x3D;transforms.ToTensor())
+train_loader &#x3D; torch.utils.data.DataLoader(dataset&#x3D;train_dataset,batch_size&#x3D;batch_size,
+                                           shuffle&#x3D;True)
+test_loader &#x3D; torch.utils.data.DataLoader(dataset&#x3D;test_dataset,batch_size&#x3D;batch_size,
+                                           shuffle&#x3D;False)
+examples &#x3D; iter(train_loader)
+features, label &#x3D; examples.next()
+print(features.shape)
+print(label.shape)
+                                 
+for i in range(6):
+    plt.subplot(2,3, i+1)
+    plt.imshow(features[i][0], cmap&#x3D;&#39;gray&#39;)
+plt.show()
+                                 
+# model
+class NeuralNet(nn.Module):
+    def __init__(self, input_size, hidden_size, num_classes):
+        super(NeuralNet, self).__init__()
+        self.l1 &#x3D; nn.Linear(input_size, hidden_size)
+        self.l2 &#x3D; nn.Linear(hidden_size, num_classes)
+                                 
+    def forward(self, x):
+        out &#x3D; F.relu(self.l1(x))
+        out &#x3D; self.l2(out)
+        return out
+                                 
+model &#x3D; NeuralNet(input_size, hidden_size, num_classes)
+# loss and optimizer
+criterion &#x3D; nn.CrossEntropyLoss()
+optimizer &#x3D; torch.optim.Adam(model.parameters(), lr&#x3D;learning_rate)
+                                 
+# training loop
+n_total_steps &#x3D; len(train_loader)
+for epoch in range(num_epochs):
+    for i, (images, label) in enumerate(train_loader):
+        # 100, 1, 28, 28
+        # 100, 784
+        images &#x3D; images.reshape(-1, 28*28).to(device)
+        label &#x3D; label.to(device)
+                                 
+        # forward
+        outputs &#x3D; model(images)
+        loss &#x3D; criterion(outputs, label)
+                                 
+        # backward
+        loss.backward()
+        optimizer.step()
+        optimizer.zero_grad()
+                                 
+        if (i+1) % 100 &#x3D;&#x3D;0:
+            print(f&#39;epoch &#123;epoch+1&#125; &#x2F; &#123;num_epochs&#125;, step &#123;i+1&#125; &#x2F; &#123;n_total_steps&#125;, loss &#123;loss.item():.4f&#125;&#39;)
+                                 
+# test
+with torch.no_grad():
+    n_correct &#x3D; 0
+    n_sample &#x3D; 0
+    for images, label in test_loader:
+        images &#x3D; images.reshape(-1, 28*28).to(device)
+        label &#x3D; label.to(device)
+        outputs &#x3D; model(images)
+        # print(outputs)
+                                 
+        # value, index
+        _, prdiction &#x3D; torch.max(outputs, 1)
+        n_correct +&#x3D; torch.sum(torch.eq(prdiction, label)).item()
+        n_sample +&#x3D; label.shape[0]
+                                 
+    print(f&#39;Acc: &#123;100.0*n_correct &#x2F; n_sample&#125;&#39;)
+                                 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>运行结果：</p>
+<img src="https://raw.githubusercontent.com/Skylyong/i/main/20210805213343.png" alt="image-20210805213343033" style="zoom:50%;" /></li>
+</ol>
+</blockquote>
+<h3 id="9-Convolutional-Neural-Net-CNN"><a href="#9-Convolutional-Neural-Net-CNN" class="headerlink" title="9.  Convolutional Neural Net(CNN)"></a>9.  Convolutional Neural Net(CNN)</h3><blockquote>
+<p>这里我们通过构造CNN模型并对图片进行分类，采用“CIFAR10”数据集，然后自定义Model，调用“交叉熵损失函数”和“SGD”优化器来对模型训练，模型训练结束之后对分类器的分类准确率进行了测试。</p>
+<p>实验代码如下：</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">import torch
+import torch.nn as nn
+import torchvision
+import torchvision.transforms as transforms
+import matplotlib.pyplot as plt
+import numpy as np
+import torch.nn.functional as F
+
+# device config
+device &#x3D;torch.device(&#39;cuda&#39; if torch.cuda.is_available() else &#39;cpu&#39;)
+
+# hyper parameters
+num_epochs &#x3D; 4
+batch_size &#x3D; 4
+learning_rate &#x3D;0.001
+
+# dataset has PILImage images of range[0,1]
+# We transform them to Tensor of normalised range[-1, 1]
+transform &#x3D; transforms.Compose(
+    [
+        transforms.ToTensor(),
+        transforms.Normalize((0.5, 0.5, 0.5),(0.5, 0.5, 0.5))
+    ]
+)
+
+train_dataset &#x3D; torchvision.datasets.CIFAR10(root&#x3D;&#39;.&#x2F;data&#39;, train&#x3D;True,
+                                             download&#x3D;True, transform&#x3D;transform)
+test_dataset &#x3D; torchvision.datasets.CIFAR10(root&#x3D;&#39;.&#x2F;data&#39;, train&#x3D;False,
+                                             download&#x3D;True, transform&#x3D;transform)
+train_loader &#x3D; torch.utils.data.DataLoader(dataset&#x3D;train_dataset, batch_size&#x3D;batch_size,
+                                           shuffle&#x3D;True)
+test_loader &#x3D; torch.utils.data.DataLoader(dataset&#x3D;test_dataset, batch_size&#x3D;batch_size,
+                                           shuffle&#x3D;False)
+
+classes &#x3D;(&#39;plane&#39;, &#39;car&#39;,&#39;bird&#39;,&#39;cat&#39;,&#39;deer&#39;,&#39;dog&#39;,&#39;frog&#39;,
+          &#39;horse&#39;,&#39;ship&#39;,&#39;truck&#39;)
+
+def imshow(img):
+    img &#x3D; img &#x2F; 2 + 0.5  # unnormalize
+    npimg &#x3D; img.numpy()
+    plt.imshow(np.transpose(npimg, (1, 2, 0)))
+    plt.show()
+
+# model
+class ConvNet(nn.Module):
+    def __init__(self):
+        super(ConvNet, self).__init__()
+        self.conv1 &#x3D; nn.Conv2d(3,6,5)
+        self.pool &#x3D; nn.MaxPool2d(2,2)
+        self.conv2 &#x3D; nn.Conv2d(6,16,5)
+        self.fc1 &#x3D; nn.Linear(16*5*5, 120)
+        self.fc2 &#x3D; nn.Linear(120, 84)
+        self.fc3 &#x3D; nn.Linear(84, 10)
+
+    def forward(self,x):
+        x &#x3D; self.pool( F.relu(self.conv1(x)))
+        x &#x3D; self.pool(F.relu(self.conv2(x)))
+        x &#x3D; x.view(-1,16*5*5)
+        x &#x3D; F.relu(self.fc1(x))
+        x &#x3D; F.relu(self.fc2(x))
+        x &#x3D; self.fc3(x)
+        return x
+
+
+model &#x3D; ConvNet().to(device)
+criterion &#x3D; nn.CrossEntropyLoss()
+optimizer &#x3D; torch.optim.SGD(model.parameters(), lr&#x3D;learning_rate)
+
+n_total_steps &#x3D; len(train_loader)
+for epoch in range(num_epochs):
+    for i,(images, labels) in enumerate(train_loader):
+        # origin shape:[4,3,32,32] &#x3D; 4,3, 1024
+        # input_layer:3 input channels, 6 output channels, 5 kernel size
+        images &#x3D; images.to(device)
+        labels &#x3D; labels.to(device)
+
+        # Forward pass
+        outputs &#x3D; model(images)
+        loss &#x3D; criterion(outputs, labels)
+
+        # Backward and optimizer
+        optimizer.zero_grad()
+        loss.backward()
+        optimizer.step()
+
+        if (i+1) % 2000 &#x3D;&#x3D; 0:
+            print(f&#39;Epoch [&#123;epoch+1&#125;&#x2F;&#123;num_epochs&#125;], Step [&#123;i+1&#125;&#x2F;&#123;n_total_steps&#125;], Loss: &#123;loss.item():.4f&#125;&#39;)
+
+# test
+with torch.no_grad():
+    n_correct &#x3D; 0
+    n_samples &#x3D; 0
+    n_class_correct &#x3D; [0 for i in range(10)]
+    n_class_samples &#x3D; [0 for i in range(10)]
+    for images, labels in test_loader:
+        images &#x3D; images.to(device)
+        labels &#x3D; labels.to(device)
+        outputs &#x3D; model(images)
+        # max returns (value ,index)
+        _, predicted &#x3D; torch.max(outputs, 1)
+        n_samples +&#x3D; labels.size(0)
+        n_correct +&#x3D; (predicted &#x3D;&#x3D; labels).sum().item()
+
+        for i in range(batch_size):
+            label &#x3D; labels[i]
+            pred &#x3D; predicted[i]
+            if (label &#x3D;&#x3D; pred):
+                n_class_correct[label] +&#x3D; 1
+            n_class_samples[label] +&#x3D; 1
+
+    acc &#x3D; 100.0 * n_correct &#x2F; n_samples
+    print(f&#39;Accuracy of the network: &#123;acc&#125; %&#39;)
+
+    for i in range(10):
+        acc &#x3D; 100.0 * n_class_correct[i] &#x2F; n_class_samples[i]
+        print(f&#39;Accuracy of &#123;classes[i]&#125;: &#123;acc&#125; %&#39;)
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+</blockquote>
+<h3 id="10-Transfer-Learning"><a href="#10-Transfer-Learning" class="headerlink" title="10. Transfer Learning"></a>10. Transfer Learning</h3><blockquote>
+<p>这里我们学习迁移学习，主要学习如下三个知识点：</p>
+<ol>
+<li><p>ImageFolder: how we can use ImageFolder</p>
+</li>
+<li><p>Scheduler: how we use a scheduler to change the learning rate</p>
+</li>
+<li><p>Transfer Learning</p>
+<p>迁移学习是指在某一个任务上训练好模型，然后将训练好的模型迁移到另外一个任务中，固定模型的某些参数，对另外一些参数进行学习，以便模型能够适应新的任务。</p>
+<p>实验代码如下：</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"># Transfer Learning
+                                 
+# 1) ImageFolder: how we can use ImageFolder
+# 2) Scheduler: how we use a scheduler to change the learning rate
+# 3) Transfer Learning:
+import torch
+import torch.nn as nn
+import torch.optim as optim
+from torch.optim import lr_scheduler
+import numpy as np
+import torchvision
+from torchvision import datasets, models, transforms
+import matplotlib.pyplot as plt
+import time
+import os
+import copy
+                                 
+# device config
+device &#x3D;torch.device(&#39;cuda&#39; if torch.cuda.is_available() else &#39;cpu&#39;)
+                                 
+mean &#x3D; np.array([0.485, 0.456, 0.406])
+std &#x3D; np.array([0.229, 0.224, 0.225])
+                                 
+data_transforms &#x3D; &#123;
+    &#39;train&#39;:transforms.Compose([
+        transforms.RandomResizedCrop(224),
+        transforms.RandomHorizontalFlip(),
+        transforms.ToTensor(),
+        transforms.Normalize(mean, std)
+    ]),
+    &#39;val&#39;:transforms.Compose([
+        transforms.Resize(256),
+        transforms.CenterCrop(224),
+        transforms.ToTensor(),
+        transforms.Normalize(mean, std)
+    ])
+&#125;
+                                 
+# import data
+data_dir &#x3D; &#39;data&#x2F;hymenoptera_data&#39;
+sets &#x3D; [&#39;train&#39;, &#39;val&#39;]
+image_datasets &#x3D; &#123;x:datasets.ImageFolder(os.path.join(data_dir, x),
+                                         data_transforms[x])
+                    for x in sets&#125;
+dataloaders &#x3D; &#123;x: torch.utils.data.DataLoader(image_datasets[x], batch_size&#x3D;4,
+                                            shuffle&#x3D;True, num_workers&#x3D;0)
+               for x in sets&#125;
+dataset_sizes &#x3D; &#123;x: len(image_datasets[x]) for x in sets&#125;
+class_names &#x3D; image_datasets[&#39;train&#39;].classes
+print(class_names)
+                             
+def imshow(inp, title):
+    &quot;&quot;&quot;Imshow for Tensor.&quot;&quot;&quot;
+    inp &#x3D; inp.numpy().transpose((1, 2, 0))
+    inp &#x3D; std * inp + mean
+    inp &#x3D; np.clip(inp, 0, 1)
+    plt.imshow(inp)
+    plt.title(title)
+    plt.show()
+                              
+# Get a batch of training data
+inputs, classes &#x3D; next(iter(dataloaders[&#39;train&#39;]))
+                              
+# Make a grid from batch
+out &#x3D; torchvision.utils.make_grid(inputs)
+                              
+imshow(out, title&#x3D;[class_names[x] for x in classes])
+                              
+def train_model(model, criterion, optimizer, scheduler, num_epochs&#x3D;25):
+    since &#x3D; time.time()
+                              
+    best_model_wts &#x3D; copy.deepcopy(model.state_dict())
+    best_acc &#x3D; 0.0
+                                  
+    for epoch in range(num_epochs):
+        print(f&#39;Epoch &#123;epoch+1&#125; &#x2F; &#123;num_epochs&#125;&#39;)
+        print(&#39;-&#39;*15)
+                                  
+        # Each epoch has a training and validation phase
+        for phase in sets:
+            if phase &#x3D;&#x3D;&#39;train&#39;:
+                model.train()
+            else:
+                model.eval()
+                                  
+            running_loss &#x3D; 0.0
+            running_correct &#x3D; 0.0
+                                  
+            # Iterate over data.
+            for inputs, labels in dataloaders[phase]:
+                inputs &#x3D; inputs.to(device)
+                labels &#x3D; labels.to(device)
+                                  
+                # forward
+                # track history if only training
+                with torch.set_grad_enabled(phase &#x3D;&#x3D; &#39;train&#39;):
+                    outputs &#x3D; model(inputs)
+                    loss &#x3D; criterion(outputs, labels)
+                    _, preds &#x3D; torch.max(outputs, 1)
+                                  
+                    # backward + optimizer only if in training phase
+                    if phase &#x3D;&#x3D; &#39;train&#39;:
+                        optimizer.zero_grad()
+                        loss.backward()
+                        optimizer.step()
+                                  
+                # statistics
+                running_loss +&#x3D; loss.item()*inputs.size(0)
+                running_correct +&#x3D; torch.sum(preds &#x3D;&#x3D; labels.data)
+                                  
+            if phase &#x3D;&#x3D; &#39;train&#39;:
+                scheduler.step()
+                                  
+            epoch_loss &#x3D; running_loss &#x2F; dataset_sizes[phase]
+            epoch_acc &#x3D; running_correct.double() &#x2F; dataset_sizes[phase]
+                                  
+            print(f&#39;&#123;phase&#125; Loss: &#123;epoch_loss:.4f&#125; Acc: &#123;epoch_acc:.4f&#125;&#39;)
+                                  
+            # deep copy the model to
+            if phase &#x3D;&#x3D; &#39;val&#39; and epoch_acc &gt; best_acc:
+                best_acc &#x3D; epoch_acc
+                best_model_wts &#x3D; copy.deepcopy(model.state_dict())
+                                  
+    time_elapsed &#x3D; time.time()-since
+    print(f&#39;Training complete in &#123;time_elapsed&#x2F;&#x2F;60:.0f&#125;m &#123;time_elapsed%60:.0fs&#125;&#39;)
+    print(f&#39;Best val Acc: &#123;best_acc:4f&#125;&#39;)
+                                  
+    #load best model weights
+    model.load_state_dic(best_model_wts)
+    return model
+                              
+model &#x3D; models.resnet18(pretrained&#x3D;True)
+                              
+# Here, we need to freeze all the network except the final layer.
+# We need to set requires_grad &#x3D;&#x3D; False to freeze the parameters so that the gradients are not computed in backward()
+for param in model.parameters():
+    param.requires_grad &#x3D; False
+                              
+num_ftrs &#x3D; model.fc.in_features
+                              
+model.fc &#x3D; nn.Linear(num_ftrs, 2)
+model.to(device)
+                              
+criterion &#x3D; nn.CrossEntropyLoss()
+                              
+# Observe that all parameters are being optimized
+optimizer &#x3D; optim.SGD(model.parameters(), lr&#x3D;0.001)
+                              
+# scheduler
+step_lr_schedule &#x3D; lr_scheduler.StepLR(optimizer, step_size&#x3D;7, gamma&#x3D;0.1) # Every 7 step， learning rate multiple by 0.1
+                              
+model &#x3D; train_model(model, criterion, optimizer, step_lr_schedule, num_epochs&#x3D;7)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
+</ol>
+</blockquote>
+<h3 id="11-Tensorboard"><a href="#11-Tensorboard" class="headerlink" title="11. Tensorboard"></a>11. Tensorboard</h3><blockquote>
+<p>Tensorbard是很好的可视化工具，具体可以参考如下的代码。</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"># Tensorboard
+
+import torch
+import torch.nn as nn
+import torchvision
+import torchvision.transforms as transforms
+import matplotlib.pyplot as plt
+
+############## TENSORBOARD ########################
+import sys
+import torch.nn.functional as F
+from torch.utils.tensorboard import SummaryWriter
+
+# default &#96;log_dir&#96; is &quot;runs&quot; - we&#39;ll be more specific here
+writer &#x3D; SummaryWriter(&#39;runs&#x2F;mnist1&#39;)
+###################################################
+
+# Device configuration
+device &#x3D; torch.device(&#39;cuda&#39; if torch.cuda.is_available() else &#39;cpu&#39;)
+
+# Hyper-parameters
+input_size &#x3D; 784  # 28x28
+hidden_size &#x3D; 500
+num_classes &#x3D; 10
+num_epochs &#x3D; 1
+batch_size &#x3D; 64
+learning_rate &#x3D; 0.001
+
+# MNIST dataset
+train_dataset &#x3D; torchvision.datasets.MNIST(root&#x3D;&#39;.&#x2F;data&#39;,
+                                           train&#x3D;True,
+                                           transform&#x3D;transforms.ToTensor(),
+                                           download&#x3D;True)
+
+test_dataset &#x3D; torchvision.datasets.MNIST(root&#x3D;&#39;.&#x2F;data&#39;,
+                                          train&#x3D;False,
+                                          transform&#x3D;transforms.ToTensor())
+
+# Data loader
+train_loader &#x3D; torch.utils.data.DataLoader(dataset&#x3D;train_dataset,
+                                           batch_size&#x3D;batch_size,
+                                           shuffle&#x3D;True)
+
+test_loader &#x3D; torch.utils.data.DataLoader(dataset&#x3D;test_dataset,
+                                          batch_size&#x3D;batch_size,
+                                          shuffle&#x3D;False)
+
+examples &#x3D; iter(test_loader)
+example_data, example_targets &#x3D; examples.next()
+
+for i in range(6):
+    plt.subplot(2, 3, i + 1)
+    plt.imshow(example_data[i][0], cmap&#x3D;&#39;gray&#39;)
+# plt.show()
+
+############## TENSORBOARD ########################
+img_grid &#x3D; torchvision.utils.make_grid(example_data)
+writer.add_image(&#39;mnist_images&#39;, img_grid)
+
+
+# writer.close()
+# sys.exit()
+###################################################
+
+# Fully connected neural network with one hidden layer
+class NeuralNet(nn.Module):
+    def __init__(self, input_size, hidden_size, num_classes):
+        super(NeuralNet, self).__init__()
+        self.input_size &#x3D; input_size
+        self.l1 &#x3D; nn.Linear(input_size, hidden_size)
+        self.relu &#x3D; nn.ReLU()
+        self.l2 &#x3D; nn.Linear(hidden_size, num_classes)
+
+    def forward(self, x):
+        out &#x3D; self.l1(x)
+        out &#x3D; self.relu(out)
+        out &#x3D; self.l2(out)
+        # no activation and no softmax at the end
+        return out
+
+
+model &#x3D; NeuralNet(input_size, hidden_size, num_classes).to(device)
+
+# Loss and optimizer
+criterion &#x3D; nn.CrossEntropyLoss()
+optimizer &#x3D; torch.optim.Adam(model.parameters(), lr&#x3D;learning_rate)
+
+############## TENSORBOARD ########################
+writer.add_graph(model, example_data.reshape(-1, 28 * 28))
+# writer.close()
+# sys.exit()
+###################################################
+
+# Train the model
+running_loss &#x3D; 0.0
+running_correct &#x3D; 0
+n_total_steps &#x3D; len(train_loader)
+for epoch in range(num_epochs):
+    for i, (images, labels) in enumerate(train_loader):
+        # origin shape: [100, 1, 28, 28]
+        # resized: [100, 784]
+        images &#x3D; images.reshape(-1, 28 * 28).to(device)
+        labels &#x3D; labels.to(device)
+
+        # Forward pass
+        outputs &#x3D; model(images)
+        loss &#x3D; criterion(outputs, labels)
+
+        # Backward and optimize
+        optimizer.zero_grad()
+        loss.backward()
+        optimizer.step()
+
+        running_loss +&#x3D; loss.item()
+
+        _, predicted &#x3D; torch.max(outputs.data, 1)
+        running_correct +&#x3D; (predicted &#x3D;&#x3D; labels).sum().item()
+        if (i + 1) % 100 &#x3D;&#x3D; 0:
+            print(f&#39;Epoch [&#123;epoch + 1&#125;&#x2F;&#123;num_epochs&#125;], Step [&#123;i + 1&#125;&#x2F;&#123;n_total_steps&#125;], Loss: &#123;loss.item():.4f&#125;&#39;)
+            ############## TENSORBOARD ########################
+            writer.add_scalar(&#39;training loss&#39;, running_loss &#x2F; 100, epoch * n_total_steps + i)
+            running_accuracy &#x3D; running_correct &#x2F; 100 &#x2F; predicted.size(0)
+            writer.add_scalar(&#39;accuracy&#39;, running_accuracy, epoch * n_total_steps + i)
+            running_correct &#x3D; 0
+            running_loss &#x3D; 0.0
+            ###################################################
+
+# Test the model
+# In test phase, we don&#39;t need to compute gradients (for memory efficiency)
+class_labels &#x3D; []
+class_preds &#x3D; []
+with torch.no_grad():
+    n_correct &#x3D; 0
+    n_samples &#x3D; 0
+    for images, labels in test_loader:
+        images &#x3D; images.reshape(-1, 28 * 28).to(device)
+        labels &#x3D; labels.to(device)
+        outputs &#x3D; model(images)
+        # max returns (value ,index)
+        values, predicted &#x3D; torch.max(outputs.data, 1)
+        n_samples +&#x3D; labels.size(0)
+        n_correct +&#x3D; (predicted &#x3D;&#x3D; labels).sum().item()
+
+        class_probs_batch &#x3D; [F.softmax(output, dim&#x3D;0) for output in outputs]
+
+        class_preds.append(class_probs_batch)
+        class_labels.append(predicted)
+
+    # 10000, 10, and 10000, 1
+    # stack concatenates tensors along a new dimension
+    # cat concatenates tensors in the given dimension
+    class_preds &#x3D; torch.cat([torch.stack(batch) for batch in class_preds])
+    class_labels &#x3D; torch.cat(class_labels)
+
+    acc &#x3D; 100.0 * n_correct &#x2F; n_samples
+    print(f&#39;Accuracy of the network on the 10000 test images: &#123;acc&#125; %&#39;)
+
+    ############## TENSORBOARD ########################
+    classes &#x3D; range(10)
+    for i in classes:
+        labels_i &#x3D; class_labels &#x3D;&#x3D; i
+        preds_i &#x3D; class_preds[:, i]
+        writer.add_pr_curve(str(i), labels_i, preds_i, global_step&#x3D;0)
+        writer.close()
+    ###################################################<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+</blockquote>
+<h3 id="12-Saving-and-Loading-model"><a href="#12-Saving-and-Loading-model" class="headerlink" title="12. Saving and Loading model"></a>12. Saving and Loading model</h3><blockquote>
+ <pre class="line-numbers language-none"><code class="language-none">
+2 DIFFERENT WAYS OF SAVING
+# 1) lazy way: save whole model
+torch.save(model, PATH)
+
+# model class must be defined somewhere
+model &#x3D; torch.load(PATH)
+model.eval()
+
+# 2) recommended way: save only the state_dict
+torch.save(model.state_dict(), PATH)
+
+# model must be created again with parameters
+model &#x3D; Model(*args, **kwargs)
+model.load_state_dict(torch.load(PATH))
+model.eval()<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p> 示例代码如下:</p>
+ <pre class="line-numbers language-python" data-language="python"><code class="language-python">import torch
+import torch.nn as nn
+
+class Model(nn.Module):
+def __init__(self, n_input_features):
+    super(Model, self).__init__()
+    self.linear &#x3D; nn.Linear(n_input_features, 1)
+
+def forward(self, x):
+    y_pred &#x3D; torch.sigmoid(self.linear(x))
+    return y_pred
+
+model &#x3D; Model(n_input_features&#x3D;6)
+# train your model...
+
+####################save all ######################################
+for param in model.parameters():
+print(param)
+
+# save and load entire model
+
+FILE &#x3D; &quot;model.pth&quot;
+torch.save(model, FILE)
+
+loaded_model &#x3D; torch.load(FILE)
+loaded_model.eval()
+
+for param in loaded_model.parameters():
+print(param)
+
+
+############save only state dict #########################
+
+# save only state dict
+FILE &#x3D; &quot;model.pth&quot;
+torch.save(model.state_dict(), FILE)
+
+print(model.state_dict())
+loaded_model &#x3D; Model(n_input_features&#x3D;6)
+loaded_model.load_state_dict(torch.load(FILE)) # it takes the loaded dictionary, not the path file itself
+loaded_model.eval()
+
+print(loaded_model.state_dict())
+
+
+###########load checkpoint#####################
+learning_rate &#x3D; 0.01
+optimizer &#x3D; torch.optim.SGD(model.parameters(), lr&#x3D;learning_rate)
+
+checkpoint &#x3D; &#123;
+&quot;epoch&quot;: 90,
+&quot;model_state&quot;: model.state_dict(),
+&quot;optim_state&quot;: optimizer.state_dict()
+&#125;
+print(optimizer.state_dict())
+FILE &#x3D; &quot;checkpoint.pth&quot;
+torch.save(checkpoint, FILE)
+
+model &#x3D; Model(n_input_features&#x3D;6)
+optimizer &#x3D; optimizer &#x3D; torch.optim.SGD(model.parameters(), lr&#x3D;0)
+
+checkpoint &#x3D; torch.load(FILE)
+model.load_state_dict(checkpoint[&#39;model_state&#39;])
+optimizer.load_state_dict(checkpoint[&#39;optim_state&#39;])
+epoch &#x3D; checkpoint[&#39;epoch&#39;]
+
+model.eval()
+# - or -
+# model.train()
+
+print(optimizer.state_dict())
+
+# Remember that you must call model.eval() to set dropout and batch normalization layers 
+# to evaluation mode before running inference. Failing to do this will yield 
+# inconsistent inference results. If you wish to resuming training, 
+# call model.train() to ensure these layers are in training mode.
+
+&quot;&quot;&quot; SAVING ON GPU&#x2F;CPU 
+
+# 1) Save on GPU, Load on CPU
+device &#x3D; torch.device(&quot;cuda&quot;)
+model.to(device)
+torch.save(model.state_dict(), PATH)
+
+device &#x3D; torch.device(&#39;cpu&#39;)
+model &#x3D; Model(*args, **kwargs)
+model.load_state_dict(torch.load(PATH, map_location&#x3D;device))
+
+# 2) Save on GPU, Load on GPU
+device &#x3D; torch.device(&quot;cuda&quot;)
+model.to(device)
+torch.save(model.state_dict(), PATH)
+
+model &#x3D; Model(*args, **kwargs)
+model.load_state_dict(torch.load(PATH))
+model.to(device)
+
+# Note: Be sure to use the .to(torch.device(&#39;cuda&#39;)) function 
+# on all model inputs, too!
+
+# 3) Save on CPU, Load on GPU
+torch.save(model.state_dict(), PATH)
+
+device &#x3D; torch.device(&quot;cuda&quot;)
+model &#x3D; Model(*args, **kwargs)
+model.load_state_dict(torch.load(PATH, map_location&#x3D;&quot;cuda:0&quot;))  # Choose whatever GPU device number you want
+model.to(device)
+
+# This loads the model to a given GPU device. 
+# Next, be sure to call model.to(torch.device(&#39;cuda&#39;)) to convert the model’s parameter tensors to CUDA tensors
+&quot;&quot;&quot;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</blockquote>
+<h3 id="13-Summary"><a href="#13-Summary" class="headerlink" title="13. Summary"></a>13. Summary</h3><img src="https://raw.githubusercontent.com/Skylyong/i/main/20210805230250.png" alt="pytorch" style="zoom:50%;" />
+
+
+    </article>
+    <!-- license -->
+        <div class="license-wrapper">
+            <p>原文作者：<a href="https://ailyong.cn">🍆</a>
+            <p>原文链接：<a href="https://ailyong.cn/2021/08/05/pytorch-xue-xi/">https://ailyong.cn/2021/08/05/pytorch-xue-xi/</a>
+            <p>发表日期：<a href="https://ailyong.cn/2021/08/05/pytorch-xue-xi/">August 5th 2021, 9:50:37 pm</a>
+            <p>更新日期：<a href="https://ailyong.cn/2021/08/05/pytorch-xue-xi/">August 5th 2021, 11:04:48 pm</a>
+            <p>版权声明：本文采用<a rel="license noopener" target="_blank" href="http://creativecommons.org/licenses/by-nc/4.0/">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可</p>
+        </div>
+    <!-- paginator -->
+    <ul class="post-paginator">
+        <li class="next">
+                <div class="nextSlogan">Next Post</div>
+                <a href="/2021/08/06/pandas-xue-xi/" title="Pandas学习">
+                    <div class="nextTitle">Pandas学习</div>
+                </a>
+        </li>
+        <li class="previous">
+                <div class="prevSlogan">Previous Post</div>
+                <a href="/2021/07/20/li-bao-chun-writing-perfect-papers/" title="">
+                    <div class="prevTitle">[Untitled Post]</div>
+                </a>
+        </li>
+    </ul>
+    <!-- comment -->
+        <div class="post-comment">
+            <!-- 来必力 City 版安装代码 -->
+
+            
+            
+            
+            <!-- utteranc评论 -->
+
+            <!-- partial('_partial/comment/changyan') -->
+            <!--PC版-->
+
+            
+            
+            
+        </div>
+    <!-- timeliness note -->
+    <!-- idea from: https://hexo.fluid-dev.com/posts/hexo-injector/#%E6%96%87%E7%AB%A0%E6%97%B6%E6%95%88%E6%80%A7%E6%8F%90%E7%A4%BA -->
+    <!-- Mathjax -->
+</main>
+
+                <!-- profile -->
+            </div>
+            <footer class="footer footer-unloaded">
+    <!-- social  -->
+        <div class="social">
+                            <a href="mailto:lyong_s@foxmail.com" class="iconfont-archer email" title="email" ></a>
+                <a href="//github.com/Skylyong" class="iconfont-archer github" target="_blank" title="github"></a>
+
+        </div>
+    <!-- powered by Hexo  -->
+    <div class="copyright">
+        <span id="hexo-power">Powered by <a href="https://hexo.io/" target="_blank">Hexo</a></span><span class="iconfont-archer power">&#xe635;</span><span id="theme-info">theme <a href="https://github.com/fi3ework/hexo-theme-archer" target="_blank">Archer</a></span>
+    </div>
+    <!-- website approve for Chinese user -->
+    <!-- 不蒜子  -->
+        <div class="busuanzi-container">
+                <span id="busuanzi_container_site_pv">PV: <span id="busuanzi_value_site_pv"></span> :)</span>
+        </div>
+</footer>
+
+        </div>
+        <!-- toc -->
+            <div class="toc-wrapper toc-wrapper-loding" style=    top:50vh;
+>
+                <div class="toc-catalog">
+                    <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
+                </div>
+                <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-Tensor"><span class="toc-number">1.</span> <span class="toc-text">1. Tensor</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-1-How-to-create-tensor"><span class="toc-number">1.1.</span> <span class="toc-text">1.1 How to create tensor</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-2-%E5%AF%B9Tensor%E7%9A%84%E5%90%84%E7%A7%8D%E6%93%8D%E4%BD%9C"><span class="toc-number">1.2.</span> <span class="toc-text">1.2 对Tensor的各种操作</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-3-%E5%9F%BA%E6%9C%AC%E8%BF%90%E7%AE%97"><span class="toc-number">1.3.</span> <span class="toc-text">1.3 基本运算</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-Autograd"><span class="toc-number">2.</span> <span class="toc-text">2. Autograd</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-1-Calculate-the-gradients"><span class="toc-number">2.1.</span> <span class="toc-text">2.1 Calculate the gradients</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-2-How-to-prevent-pytorch-from-tracking-the-history-and-calculating-this-grad-fn-attribute"><span class="toc-number">2.2.</span> <span class="toc-text">2.2 How to prevent pytorch from tracking the history and calculating this grad fn attribute.</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-3-%E6%A2%AF%E5%BA%A6%E7%B4%AF%E7%A7%AF"><span class="toc-number">2.3.</span> <span class="toc-text">2.3 梯度累积</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-Backpropagation"><span class="toc-number">3.</span> <span class="toc-text">3. Backpropagation</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-Optimize-model-with-automatic-gradient-computation"><span class="toc-number">4.</span> <span class="toc-text">4. Optimize model with automatic gradient computation</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#4-1-%E7%94%A8numpy%E5%AE%9E%E7%8E%B0%E5%9B%9E%E5%BD%92%E7%AE%97%E6%B3%95"><span class="toc-number">4.1.</span> <span class="toc-text">4.1 用numpy实现回归算法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-2-%E7%94%A8pytorch%E6%9B%BF%E6%8D%A2%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E5%92%8C%E6%A2%AF%E5%BA%A6%E8%AE%A1%E7%AE%97"><span class="toc-number">4.2.</span> <span class="toc-text">4.2 用pytorch替换数据类型和梯度计算</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-3-%E7%94%A8pytorch%E6%9D%A5%E5%81%9A%E6%A2%AF%E5%BA%A6%E8%AE%A1%E7%AE%97%E5%92%8C%E4%BC%98%E5%8C%96"><span class="toc-number">4.3.</span> <span class="toc-text">4.3 用pytorch来做梯度计算和优化</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-4-%E5%AE%9A%E4%B9%89%E6%9B%B4%E5%8A%A0%E5%A4%8D%E6%9D%82%E7%9A%84%E6%A8%A1%E5%9E%8B"><span class="toc-number">4.4.</span> <span class="toc-text">4.4 定义更加复杂的模型</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-5-%E7%BB%BC%E5%90%88%E7%A4%BA%E4%BE%8B1"><span class="toc-number">4.5.</span> <span class="toc-text">4.5 综合示例1</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-6-%E7%BB%BC%E5%90%88%E7%A4%BA%E4%BE%8B2"><span class="toc-number">4.6.</span> <span class="toc-text">4.6  综合示例2</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-Dataset-and-Dataload-Class"><span class="toc-number">5.</span> <span class="toc-text">5. Dataset and Dataload Class</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#5-1-Dataset-and-Dataload"><span class="toc-number">5.1.</span> <span class="toc-text">5.1 Dataset and Dataload</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-2-Transforms-for-the-dataset"><span class="toc-number">5.2.</span> <span class="toc-text">5.2 Transforms for the dataset</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-Softmax-and-Cross-Entropy"><span class="toc-number">6.</span> <span class="toc-text">6. Softmax and Cross-Entropy</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#6-1-Softmax"><span class="toc-number">6.1.</span> <span class="toc-text">6.1 Softmax</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6-2-Cross-entropy"><span class="toc-number">6.2.</span> <span class="toc-text">6.2 Cross entropy</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-Activation-function"><span class="toc-number">7.</span> <span class="toc-text">7. Activation function</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Most-popular-activation-functions"><span class="toc-number">7.1.</span> <span class="toc-text">Most popular activation functions</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-%E7%BB%BC%E5%90%88%E7%BB%83%E4%B9%A0-MNIST"><span class="toc-number">8.</span> <span class="toc-text">8. 综合练习 MNIST</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#9-Convolutional-Neural-Net-CNN"><span class="toc-number">9.</span> <span class="toc-text">9.  Convolutional Neural Net(CNN)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#10-Transfer-Learning"><span class="toc-number">10.</span> <span class="toc-text">10. Transfer Learning</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#11-Tensorboard"><span class="toc-number">11.</span> <span class="toc-text">11. Tensorboard</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#12-Saving-and-Loading-model"><span class="toc-number">12.</span> <span class="toc-text">12. Saving and Loading model</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#13-Summary"><span class="toc-number">13.</span> <span class="toc-text">13. Summary</span></a></li></ol>
+            </div>
+        <!-- sidebar -->
+        <div class="sidebar sidebar-hide">
+    <ul class="sidebar-tabs sidebar-tabs-active-0">
+        <li class="sidebar-tab-archives"><span class="iconfont-archer">&#xe67d;</span><span class="tab-name">Archive</span></li>
+        <li class="sidebar-tab-tags"><span class="iconfont-archer">&#xe61b;</span><span class="tab-name">Tag</span></li>
+        <li class="sidebar-tab-categories"><span class="iconfont-archer">&#xe666;</span><span class="tab-name">Cate</span></li>
+    </ul>
+    <div class="sidebar-content sidebar-content-show-archive">
+        <div class="sidebar-panel-archives">
+    <!-- 在 ejs 中将 archive 按照时间排序 -->
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+    <div class="total-and-search">
+        <div class="total-archive">
+        Total : 42
+        </div>
+        <!-- search  -->
+    </div>
+    <div class="post-archive">
+            <div class="archive-year"> 2025 </div>
+            <ul class="year-list">
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/28</span>
+            <a class="archive-post-title" href="/2025/01/28/bo-ke-wei-hu-ri-zhi/">博客维护日志.md</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/27</span>
+            <a class="archive-post-title" href="/2025/01/27/2024-nian-di-zong-jie/">2024年底总结</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/26</span>
+            <a class="archive-post-title" href="/2025/01/26/da-jian-webdav-fu-wu-qi-shi-xian-obsidian-he-zotero-duo-duan-tong-bu/">搭建Webdav服务器实现Obsidian和Zotero多端同步</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/07</span>
+            <a class="archive-post-title" href="/2025/01/07/sentence-transformers-sampler-bug-zhi-set-bu-yi-ding-shi-wu-xu-de/">sentence-transformers sampler bug 之 set 不一定是无序的</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/06</span>
+            <a class="archive-post-title" href="/2025/01/06/matplotlib-xian-shi-zhong-wen/">matplotlib 设置显示中文</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/06</span>
+            <a class="archive-post-title" href="/2025/01/06/python-duo-jin-cheng-shi-li/">python多进程示例</a>
+        </li>
+                </ul>
+            <div class="archive-year"> 2023 </div>
+            <ul class="year-list">
+        <li class="archive-post-item">
+            <span class="archive-post-date">09/12</span>
+            <a class="archive-post-title" href="/2023/09/12/ubuntu-shang-an-zhuang-nividia-qu-dong-he-cuda-tookit/">ubuntu上安装NIVIDIA驱动和CUDA_Tookit</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">07/23</span>
+            <a class="archive-post-title" href="/2023/07/23/zai-mac-shang-shi-yong-pybind11-shi-xian-c-yu-python-hu-tong-de-demo/">在mac上使用pybind11实现c++与python互通的demo</a>
+        </li>
+                </ul>
+            <div class="archive-year"> 2022 </div>
+            <ul class="year-list">
+        <li class="archive-post-item">
+            <span class="archive-post-date">09/07</span>
+            <a class="archive-post-title" href="/2022/09/07/mac-xi-tong-zhi-zuo-win10-qi-dong-u-pan/">Mac系统制作win10启动U盘</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">09/05</span>
+            <a class="archive-post-title" href="/2022/09/05/dian-ci-bi-sai-zong-jie/">电磁比赛总结</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/29</span>
+            <a class="archive-post-title" href="/2022/04/29/yuan-cheng-fang-wen-fu-wu-qi-jupyter-notebook/">远程访问服务器Jupyter-Notebook</a>
+        </li>
+                </ul>
+            <div class="archive-year"> 2021 </div>
+            <ul class="year-list">
+        <li class="archive-post-item">
+            <span class="archive-post-date">12/10</span>
+            <a class="archive-post-title" href="/2021/12/10/c-duo-xian-cheng-bian-cheng/">C++多线程编程</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">09/29</span>
+            <a class="archive-post-title" href="/2021/09/29/jiang-wei-xin-liao-tian-zhong-de-yu-yin-zhuan-huan-wei-mp3/">将微信聊天中的语音转换为mp3</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">09/19</span>
+            <a class="archive-post-title" href="/2021/09/19/you-yong-de-zi-yuan/">有用的资源</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">09/19</span>
+            <a class="archive-post-title" href="/2021/09/19/ji-qi-xue-xi-can-kao-zi-liao/">机器学习参考资料</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/14</span>
+            <a class="archive-post-title" href="/2021/08/14/wei-xin-biao-qian-zheng-li/">微信标签整理</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/14</span>
+            <a class="archive-post-title" href="/2021/08/14/gong-ju-xiang/">工具箱</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/13</span>
+            <a class="archive-post-title" href="/2021/08/13/jiao-shi-zi-ge-zheng-kao-shi-xue-xi-bi-ji/">教师资格证考试学习笔记</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/13</span>
+            <a class="archive-post-title" href="/2021/08/13/google-fang-wen-zhu-shou-an-zhuang/">Google访问助手安装</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/13</span>
+            <a class="archive-post-title" href="/2021/08/13/tu-de-chuang-jian-he-bian-li/">【课程设计】图的创建和遍历</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/13</span>
+            <a class="archive-post-title" href="/2021/08/13/chang-yong-shu-ju-ji-zheng-li/">常用数据集整理</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/09</span>
+            <a class="archive-post-title" href="/2021/08/09/svm-xue-xi-bi-ji/">SVM学习笔记</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/06</span>
+            <a class="archive-post-title" href="/2021/08/06/pandas-xue-xi/">Pandas学习</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/05</span>
+            <a class="archive-post-title" href="/2021/08/05/pytorch-xue-xi/">Pytorch学习</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">07/20</span>
+            <a class="archive-post-title" href="/2021/07/20/li-bao-chun-writing-perfect-papers/">[Untitled Post]</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">07/01</span>
+            <a class="archive-post-title" href="/2021/07/01/huggingface-yu-xun-lian-mo-xing-quan-chong-xia-zai-de-wen-ti/">Huggingface 预训练模型权重下载的问题</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">06/21</span>
+            <a class="archive-post-title" href="/2021/06/21/jupyter-notebook-ben-di-fu-wu-qi-da-jian/">jupyter notebook 本地服务器搭建</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/16</span>
+            <a class="archive-post-title" href="/2021/04/16/ji-qi-xue-xi-zhong-de-ge-chong-shang/">机器学习中的各种熵</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/08</span>
+            <a class="archive-post-title" href="/2021/04/08/git-chang-yong-ming-ling/">git常用命令</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/08</span>
+            <a class="archive-post-title" href="/2021/04/08/nlp-zhi-shi-ti-xi/">NLP知识体系</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/01</span>
+            <a class="archive-post-title" href="/2021/04/01/zui-xiao-lu-jing-he/">【每日算法】2021年03月31日 小雨 最小路径和</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/31</span>
+            <a class="archive-post-title" href="/2021/03/31/gitlab-da-jian-bi-ji/">GitLab搭建笔记</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/31</span>
+            <a class="archive-post-title" href="/2021/03/31/ke-cheng-she-ji-zui-xiao-sheng-cheng-shu-ying-yong/">【课程设计】最小生成树应用</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/31</span>
+            <a class="archive-post-title" href="/2021/03/31/xue-xi-shi-pin-zheng-li/">学习视频整理</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/31</span>
+            <a class="archive-post-title" href="/2021/03/31/ying-yu-kou-yu-lian-xi-dian-ying-tui-jian/">英语口语练习电影推荐</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/30</span>
+            <a class="archive-post-title" href="/2021/03/30/bu-tong-lu-jing/">【每日算法】2021年03月30日 多云 不同路径</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/29</span>
+            <a class="archive-post-title" href="/2021/03/29/bian-fen-xue-xi-bi-ji/">变分学习笔记</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/28</span>
+            <a class="archive-post-title" href="/2021/03/28/ji-yi-ci-xi-tong-ben-kui-de-fan-si-he-zong-jie/">记一次系统奔溃的反思和总结</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/28</span>
+            <a class="archive-post-title" href="/2021/03/28/github-jia-su-fang-fa/">GitHub加速方法</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/22</span>
+            <a class="archive-post-title" href="/2021/02/22/ecnu-de-chun/">ECNU的春</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/21</span>
+            <a class="archive-post-title" href="/2021/02/21/build/">hexo个人博客搭建</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/21</span>
+            <a class="archive-post-title" href="/2021/02/21/hao-yong-de-mian-fei-wu-guang-gao-dian-ying-wang-zhan-tui-jian/">好用的免费无广告电影网站推荐</a>
+        </li>
+            </ul>
+    </div>
+</div>
+
+        <div class="sidebar-panel-tags">
+    <div class="sidebar-tags-name">
+            <span class="sidebar-tag-name" data-tags="总结">
+                <span class="iconfont-archer">&#xe606;</span>
+                总结
+            </span>
+            <span class="sidebar-tag-name" data-tags="GitHub">
+                <span class="iconfont-archer">&#xe606;</span>
+                GitHub
+            </span>
+            <span class="sidebar-tag-name" data-tags="GitLab">
+                <span class="iconfont-archer">&#xe606;</span>
+                GitLab
+            </span>
+            <span class="sidebar-tag-name" data-tags="Google访问助手">
+                <span class="iconfont-archer">&#xe606;</span>
+                Google访问助手
+            </span>
+            <span class="sidebar-tag-name" data-tags="预训练模型">
+                <span class="iconfont-archer">&#xe606;</span>
+                预训练模型
+            </span>
+            <span class="sidebar-tag-name" data-tags="启动U盘">
+                <span class="iconfont-archer">&#xe606;</span>
+                启动U盘
+            </span>
+            <span class="sidebar-tag-name" data-tags="nlp">
+                <span class="iconfont-archer">&#xe606;</span>
+                nlp
+            </span>
+            <span class="sidebar-tag-name" data-tags="Pandas">
+                <span class="iconfont-archer">&#xe606;</span>
+                Pandas
+            </span>
+            <span class="sidebar-tag-name" data-tags="博客">
+                <span class="iconfont-archer">&#xe606;</span>
+                博客
+            </span>
+            <span class="sidebar-tag-name" data-tags="ECNU">
+                <span class="iconfont-archer">&#xe606;</span>
+                ECNU
+            </span>
+            <span class="sidebar-tag-name" data-tags="git">
+                <span class="iconfont-archer">&#xe606;</span>
+                git
+            </span>
+            <span class="sidebar-tag-name" data-tags="jupyter notebook">
+                <span class="iconfont-archer">&#xe606;</span>
+                jupyter notebook
+            </span>
+            <span class="sidebar-tag-name" data-tags="python">
+                <span class="iconfont-archer">&#xe606;</span>
+                python
+            </span>
+            <span class="sidebar-tag-name" data-tags="NIVIDIA驱动">
+                <span class="iconfont-archer">&#xe606;</span>
+                NIVIDIA驱动
+            </span>
+            <span class="sidebar-tag-name" data-tags="树">
+                <span class="iconfont-archer">&#xe606;</span>
+                树
+            </span>
+            <span class="sidebar-tag-name" data-tags="动态规划">
+                <span class="iconfont-archer">&#xe606;</span>
+                动态规划
+            </span>
+            <span class="sidebar-tag-name" data-tags="机器学习">
+                <span class="iconfont-archer">&#xe606;</span>
+                机器学习
+            </span>
+            <span class="sidebar-tag-name" data-tags="图">
+                <span class="iconfont-archer">&#xe606;</span>
+                图
+            </span>
+            <span class="sidebar-tag-name" data-tags="python_c++_互通">
+                <span class="iconfont-archer">&#xe606;</span>
+                python_c++_互通
+            </span>
+            <span class="sidebar-tag-name" data-tags="电影">
+                <span class="iconfont-archer">&#xe606;</span>
+                电影
+            </span>
+            <span class="sidebar-tag-name" data-tags="编程">
+                <span class="iconfont-archer">&#xe606;</span>
+                编程
+            </span>
+            <span class="sidebar-tag-name" data-tags="微信">
+                <span class="iconfont-archer">&#xe606;</span>
+                微信
+            </span>
+            <span class="sidebar-tag-name" data-tags="干货">
+                <span class="iconfont-archer">&#xe606;</span>
+                干货
+            </span>
+            <span class="sidebar-tag-name" data-tags="教师资格证">
+                <span class="iconfont-archer">&#xe606;</span>
+                教师资格证
+            </span>
+            <span class="sidebar-tag-name" data-tags="资源">
+                <span class="iconfont-archer">&#xe606;</span>
+                资源
+            </span>
+            <span class="sidebar-tag-name" data-tags="熵">
+                <span class="iconfont-archer">&#xe606;</span>
+                熵
+            </span>
+            <span class="sidebar-tag-name" data-tags="竞赛">
+                <span class="iconfont-archer">&#xe606;</span>
+                竞赛
+            </span>
+            <span class="sidebar-tag-name" data-tags="装机">
+                <span class="iconfont-archer">&#xe606;</span>
+                装机
+            </span>
+            <span class="sidebar-tag-name" data-tags="pytorch">
+                <span class="iconfont-archer">&#xe606;</span>
+                pytorch
+            </span>
+            <span class="sidebar-tag-name" data-tags="svm">
+                <span class="iconfont-archer">&#xe606;</span>
+                svm
+            </span>
+    </div>
+    <div class="iconfont-archer sidebar-tags-empty">&#xe678;</div>
+    <div class="tag-load-fail" style="display: none; color: #ccc; font-size: 0.6rem;">
+        缺失模块，请参考主题文档进行安装配置：https://github.com/fi3ework/hexo-theme-archer#%E5%AE%89%E8%A3%85%E4%B8%BB%E9%A2%98
+    </div> 
+    <div class="sidebar-tags-list"></div>
+</div>
+
+        <div class="sidebar-panel-categories">
+    <div class="sidebar-categories-name">
+        <span class="sidebar-category-name" data-categories="生活情感">
+            <span class="iconfont-archer">&#xe60a;</span>
+            生活情感
+        </span>
+        <span class="sidebar-category-name" data-categories="爬坑总结">
+            <span class="iconfont-archer">&#xe60a;</span>
+            爬坑总结
+        </span>
+        <span class="sidebar-category-name" data-categories="干货">
+            <span class="iconfont-archer">&#xe60a;</span>
+            干货
+        </span>
+        <span class="sidebar-category-name" data-categories="知识框架">
+            <span class="iconfont-archer">&#xe60a;</span>
+            知识框架
+        </span>
+        <span class="sidebar-category-name" data-categories="学习笔记">
+            <span class="iconfont-archer">&#xe60a;</span>
+            学习笔记
+        </span>
+        <span class="sidebar-category-name" data-categories="生活总结">
+            <span class="iconfont-archer">&#xe60a;</span>
+            生活总结
+        </span>
+        <span class="sidebar-category-name" data-categories="编程经验">
+            <span class="iconfont-archer">&#xe60a;</span>
+            编程经验
+        </span>
+        <span class="sidebar-category-name" data-categories="编程">
+            <span class="iconfont-archer">&#xe60a;</span>
+            编程
+        </span>
+        <span class="sidebar-category-name" data-categories="算法笔记">
+            <span class="iconfont-archer">&#xe60a;</span>
+            算法笔记
+        </span>
+        <span class="sidebar-category-name" data-categories="算法">
+            <span class="iconfont-archer">&#xe60a;</span>
+            算法
+        </span>
+        <span class="sidebar-category-name" data-categories="学习资料">
+            <span class="iconfont-archer">&#xe60a;</span>
+            学习资料
+        </span>
+        <span class="sidebar-category-name" data-categories="数据集">
+            <span class="iconfont-archer">&#xe60a;</span>
+            数据集
+        </span>
+        <span class="sidebar-category-name" data-categories="总结">
+            <span class="iconfont-archer">&#xe60a;</span>
+            总结
+        </span>
+        <span class="sidebar-category-name" data-categories="收藏">
+            <span class="iconfont-archer">&#xe60a;</span>
+            收藏
+        </span>
+        <span class="sidebar-category-name" data-categories="机器学习">
+            <span class="iconfont-archer">&#xe60a;</span>
+            机器学习
+        </span>
+    </div>
+    <div class="iconfont-archer sidebar-categories-empty">&#xe678;</div>
+    <div class="sidebar-categories-list"></div>
+</div>
+
+    </div>
+</div>
+
+        <!-- site-meta -->
+        <script>
+    var siteMetaRoot = "/"
+    if (siteMetaRoot === "undefined") {
+        siteMetaRoot = '/'
+    }
+    var siteMeta = {
+        url: "https://ailyong.cn",
+        root: siteMetaRoot,
+        author: "🍆"
+    }
+</script>
+
+        <!-- import experimental options here -->
+        <!-- Custom Font -->
+
+        <!-- main func -->
+        <script src="/scripts/main.js"></script>
+        <!-- fancybox -->
+        <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.36/dist/fancybox/fancybox.umd.js" onload="window.Fancybox.bind('[data-fancybox]')" defer></script>
+        <!-- algolia -->
+        <!-- busuanzi -->
+            <script src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async></script>
+        <!-- async load share.js -->
+            <script src="/scripts/share.js" async></script>
+        <!-- mermaid -->
+            <script src='https://cdn.jsdelivr.net/npm/mermaid@8.11.0/dist/mermaid.min.js' onload="window.mermaid.initialize({theme: 'dark'})" async></script>
+    </body>
+</html>
