@@ -5,9 +5,9 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <meta name="author" content="🍆">
+    <meta name="author" content="茄子">
     <meta name="renderer" content="webkit">
-    <meta name="copyright" content="🍆">
+    <meta name="copyright" content="茄子">
         <meta name="keywords" content="hexo,hexo-theme,hexo-blog">
     <meta name="description" content="Keep go on">
     <meta name="description" content="前言问  题： 最近准备训练一个基于对比学习的模型， 用 huggface 的 trainer 训练器，在官方给的源代码中，有一个现成的 sampler 用于数据采样，我需要改写这个 sampler 以保证能够用于自己的数据上。 实验改完之后，发现采样出来的 indices 竟然是有序的，实际在一个批次中需要打乱样本的顺序，仔细阅读了官方给的源码，发现问题出在如下图所示的 第187行。这里先用 t">
@@ -23,7 +23,7 @@
 <meta property="og:image" content="https://raw.githubusercontent.com/Skylyong/i/main/20250107164427.png">
 <meta property="article:published_time" content="2025-01-07T08:12:50.000Z">
 <meta property="article:modified_time" content="2025-01-07T08:44:45.933Z">
-<meta property="article:author" content="🍆">
+<meta property="article:author" content="茄子">
 <meta property="article:tag" content="python">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://raw.githubusercontent.com/Skylyong/i/main/20250107163459.png">
@@ -489,7 +489,7 @@
     </article>
     <!-- license -->
         <div class="license-wrapper">
-            <p>原文作者：<a href="https://ailyong.cn">🍆</a>
+            <p>原文作者：<a href="https://ailyong.cn">茄子</a>
             <p>原文链接：<a href="https://ailyong.cn/2025/01/07/sentence-transformers-sampler-bug-zhi-set-bu-yi-ding-shi-wu-xu-de/">https://ailyong.cn/2025/01/07/sentence-transformers-sampler-bug-zhi-set-bu-yi-ding-shi-wu-xu-de/</a>
             <p>发表日期：<a href="https://ailyong.cn/2025/01/07/sentence-transformers-sampler-bug-zhi-set-bu-yi-ding-shi-wu-xu-de/">January 7th 2025, 4:12:50 pm</a>
             <p>更新日期：<a href="https://ailyong.cn/2025/01/07/sentence-transformers-sampler-bug-zhi-set-bu-yi-ding-shi-wu-xu-de/">January 7th 2025, 4:44:45 pm</a>
@@ -692,11 +692,11 @@
         </li>
         <li class="archive-post-item">
             <span class="archive-post-date">08/14</span>
-            <a class="archive-post-title" href="/2021/08/14/wei-xin-biao-qian-zheng-li/">微信标签整理</a>
+            <a class="archive-post-title" href="/2021/08/14/gong-ju-xiang/">工具箱</a>
         </li>
         <li class="archive-post-item">
             <span class="archive-post-date">08/14</span>
-            <a class="archive-post-title" href="/2021/08/14/gong-ju-xiang/">工具箱</a>
+            <a class="archive-post-title" href="/2021/08/14/wei-xin-biao-qian-zheng-li/">微信标签整理</a>
         </li>
         <li class="archive-post-item">
             <span class="archive-post-date">08/13</span>
@@ -832,13 +832,13 @@
                 <span class="iconfont-archer">&#xe606;</span>
                 nlp
             </span>
-            <span class="sidebar-tag-name" data-tags="Pandas">
-                <span class="iconfont-archer">&#xe606;</span>
-                Pandas
-            </span>
             <span class="sidebar-tag-name" data-tags="博客">
                 <span class="iconfont-archer">&#xe606;</span>
                 博客
+            </span>
+            <span class="sidebar-tag-name" data-tags="Pandas">
+                <span class="iconfont-archer">&#xe606;</span>
+                Pandas
             </span>
             <span class="sidebar-tag-name" data-tags="ECNU">
                 <span class="iconfont-archer">&#xe606;</span>
@@ -876,10 +876,6 @@
                 <span class="iconfont-archer">&#xe606;</span>
                 图
             </span>
-            <span class="sidebar-tag-name" data-tags="python_c++_互通">
-                <span class="iconfont-archer">&#xe606;</span>
-                python_c++_互通
-            </span>
             <span class="sidebar-tag-name" data-tags="电影">
                 <span class="iconfont-archer">&#xe606;</span>
                 电影
@@ -887,6 +883,10 @@
             <span class="sidebar-tag-name" data-tags="编程">
                 <span class="iconfont-archer">&#xe606;</span>
                 编程
+            </span>
+            <span class="sidebar-tag-name" data-tags="python_c++_互通">
+                <span class="iconfont-archer">&#xe606;</span>
+                python_c++_互通
             </span>
             <span class="sidebar-tag-name" data-tags="微信">
                 <span class="iconfont-archer">&#xe606;</span>
@@ -950,13 +950,13 @@
             <span class="iconfont-archer">&#xe60a;</span>
             知识框架
         </span>
-        <span class="sidebar-category-name" data-categories="学习笔记">
-            <span class="iconfont-archer">&#xe60a;</span>
-            学习笔记
-        </span>
         <span class="sidebar-category-name" data-categories="生活总结">
             <span class="iconfont-archer">&#xe60a;</span>
             生活总结
+        </span>
+        <span class="sidebar-category-name" data-categories="学习笔记">
+            <span class="iconfont-archer">&#xe60a;</span>
+            学习笔记
         </span>
         <span class="sidebar-category-name" data-categories="编程经验">
             <span class="iconfont-archer">&#xe60a;</span>
@@ -978,6 +978,10 @@
             <span class="iconfont-archer">&#xe60a;</span>
             学习资料
         </span>
+        <span class="sidebar-category-name" data-categories="收藏">
+            <span class="iconfont-archer">&#xe60a;</span>
+            收藏
+        </span>
         <span class="sidebar-category-name" data-categories="数据集">
             <span class="iconfont-archer">&#xe60a;</span>
             数据集
@@ -985,10 +989,6 @@
         <span class="sidebar-category-name" data-categories="总结">
             <span class="iconfont-archer">&#xe60a;</span>
             总结
-        </span>
-        <span class="sidebar-category-name" data-categories="收藏">
-            <span class="iconfont-archer">&#xe60a;</span>
-            收藏
         </span>
         <span class="sidebar-category-name" data-categories="机器学习">
             <span class="iconfont-archer">&#xe60a;</span>
@@ -1011,7 +1011,7 @@
     var siteMeta = {
         url: "https://ailyong.cn",
         root: siteMetaRoot,
-        author: "🍆"
+        author: "茄子"
     }
 </script>
 
