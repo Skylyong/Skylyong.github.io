@@ -3,11 +3,11 @@
   <title>Lyong&#39;s blog</title>
   
   <subtitle>Keep go on</subtitle>
-  <link href="https://ailyong.cn/atom.xml" rel="self"/>
+  <link href="https://eggplant.wiki/atom.xml" rel="self"/>
   
-  <link href="https://ailyong.cn/"/>
+  <link href="https://eggplant.wiki/"/>
   <updated>2025-01-28T13:27:28.661Z</updated>
-  <id>https://ailyong.cn/</id>
+  <id>https://eggplant.wiki/</id>
   
   <author>
     <name>茄子</name>
@@ -18,8 +18,8 @@
   
   <entry>
     <title>vscode开发技巧记录</title>
-    <link href="https://ailyong.cn/2025/01/28/vscode-kai-fa-ji-qiao-ji-lu/"/>
-    <id>https://ailyong.cn/2025/01/28/vscode-kai-fa-ji-qiao-ji-lu/</id>
+    <link href="https://eggplant.wiki/2025/01/28/vscode-kai-fa-ji-qiao-ji-lu/"/>
+    <id>https://eggplant.wiki/2025/01/28/vscode-kai-fa-ji-qiao-ji-lu/</id>
     <published>2025-01-28T09:13:43.000Z</published>
     <updated>2025-01-28T13:27:28.661Z</updated>
     
@@ -35,17 +35,17 @@
     
     
     
-    <category term="编程开发" scheme="https://ailyong.cn/categories/%E7%BC%96%E7%A8%8B%E5%BC%80%E5%8F%91/"/>
+    <category term="编程开发" scheme="https://eggplant.wiki/categories/%E7%BC%96%E7%A8%8B%E5%BC%80%E5%8F%91/"/>
     
     
-    <category term="vscode" scheme="https://ailyong.cn/tags/vscode/"/>
+    <category term="vscode" scheme="https://eggplant.wiki/tags/vscode/"/>
     
   </entry>
   
   <entry>
     <title>博客维护日志</title>
-    <link href="https://ailyong.cn/2025/01/28/bo-ke-wei-hu-ri-zhi/"/>
-    <id>https://ailyong.cn/2025/01/28/bo-ke-wei-hu-ri-zhi/</id>
+    <link href="https://eggplant.wiki/2025/01/28/bo-ke-wei-hu-ri-zhi/"/>
+    <id>https://eggplant.wiki/2025/01/28/bo-ke-wei-hu-ri-zhi/</id>
     <published>2025-01-28T08:17:28.000Z</published>
     <updated>2025-02-01T07:47:33.795Z</updated>
     
@@ -68,8 +68,8 @@
   
   <entry>
     <title>2024年底总结</title>
-    <link href="https://ailyong.cn/2025/01/27/2024-nian-di-zong-jie/"/>
-    <id>https://ailyong.cn/2025/01/27/2024-nian-di-zong-jie/</id>
+    <link href="https://eggplant.wiki/2025/01/27/2024-nian-di-zong-jie/"/>
+    <id>https://eggplant.wiki/2025/01/27/2024-nian-di-zong-jie/</id>
     <published>2025-01-27T09:54:36.000Z</published>
     <updated>2025-01-28T09:09:59.081Z</updated>
     
@@ -84,17 +84,17 @@
     
     
     
-    <category term="生活情感" scheme="https://ailyong.cn/categories/%E7%94%9F%E6%B4%BB%E6%83%85%E6%84%9F/"/>
+    <category term="生活情感" scheme="https://eggplant.wiki/categories/%E7%94%9F%E6%B4%BB%E6%83%85%E6%84%9F/"/>
     
     
-    <category term="总结" scheme="https://ailyong.cn/tags/%E6%80%BB%E7%BB%93/"/>
+    <category term="总结" scheme="https://eggplant.wiki/tags/%E6%80%BB%E7%BB%93/"/>
     
   </entry>
   
   <entry>
     <title>搭建Webdav服务器实现Obsidian和Zotero多端同步</title>
-    <link href="https://ailyong.cn/2025/01/26/da-jian-webdav-fu-wu-qi-shi-xian-obsidian-he-zotero-duo-duan-tong-bu/"/>
-    <id>https://ailyong.cn/2025/01/26/da-jian-webdav-fu-wu-qi-shi-xian-obsidian-he-zotero-duo-duan-tong-bu/</id>
+    <link href="https://eggplant.wiki/2025/01/26/da-jian-webdav-fu-wu-qi-shi-xian-obsidian-he-zotero-duo-duan-tong-bu/"/>
+    <id>https://eggplant.wiki/2025/01/26/da-jian-webdav-fu-wu-qi-shi-xian-obsidian-he-zotero-duo-duan-tong-bu/</id>
     <published>2025-01-26T13:08:21.000Z</published>
     <updated>2025-01-26T13:30:55.049Z</updated>
     
@@ -109,17 +109,17 @@
     
     
     
-    <category term="总结" scheme="https://ailyong.cn/categories/%E6%80%BB%E7%BB%93/"/>
+    <category term="总结" scheme="https://eggplant.wiki/categories/%E6%80%BB%E7%BB%93/"/>
     
     
-    <category term="干货" scheme="https://ailyong.cn/tags/%E5%B9%B2%E8%B4%A7/"/>
+    <category term="干货" scheme="https://eggplant.wiki/tags/%E5%B9%B2%E8%B4%A7/"/>
     
   </entry>
   
   <entry>
     <title>sentence-transformers sampler bug 之 set 不一定是无序的</title>
-    <link href="https://ailyong.cn/2025/01/07/sentence-transformers-sampler-bug-zhi-set-bu-yi-ding-shi-wu-xu-de/"/>
-    <id>https://ailyong.cn/2025/01/07/sentence-transformers-sampler-bug-zhi-set-bu-yi-ding-shi-wu-xu-de/</id>
+    <link href="https://eggplant.wiki/2025/01/07/sentence-transformers-sampler-bug-zhi-set-bu-yi-ding-shi-wu-xu-de/"/>
+    <id>https://eggplant.wiki/2025/01/07/sentence-transformers-sampler-bug-zhi-set-bu-yi-ding-shi-wu-xu-de/</id>
     <published>2025-01-07T08:12:50.000Z</published>
     <updated>2025-01-07T08:44:45.933Z</updated>
     
@@ -134,17 +134,17 @@
     
     
     
-    <category term="编程" scheme="https://ailyong.cn/categories/%E7%BC%96%E7%A8%8B/"/>
+    <category term="编程" scheme="https://eggplant.wiki/categories/%E7%BC%96%E7%A8%8B/"/>
     
     
-    <category term="python" scheme="https://ailyong.cn/tags/python/"/>
+    <category term="python" scheme="https://eggplant.wiki/tags/python/"/>
     
   </entry>
   
   <entry>
     <title>matplotlib 设置显示中文</title>
-    <link href="https://ailyong.cn/2025/01/06/matplotlib-xian-shi-zhong-wen/"/>
-    <id>https://ailyong.cn/2025/01/06/matplotlib-xian-shi-zhong-wen/</id>
+    <link href="https://eggplant.wiki/2025/01/06/matplotlib-xian-shi-zhong-wen/"/>
+    <id>https://eggplant.wiki/2025/01/06/matplotlib-xian-shi-zhong-wen/</id>
     <published>2025-01-06T06:08:26.345Z</published>
     <updated>2025-01-06T06:09:03.835Z</updated>
     
@@ -160,17 +160,17 @@
     
     
     
-    <category term="编程经验" scheme="https://ailyong.cn/categories/%E7%BC%96%E7%A8%8B%E7%BB%8F%E9%AA%8C/"/>
+    <category term="编程经验" scheme="https://eggplant.wiki/categories/%E7%BC%96%E7%A8%8B%E7%BB%8F%E9%AA%8C/"/>
     
     
-    <category term="python" scheme="https://ailyong.cn/tags/python/"/>
+    <category term="python" scheme="https://eggplant.wiki/tags/python/"/>
     
   </entry>
   
   <entry>
     <title>python多进程示例</title>
-    <link href="https://ailyong.cn/2025/01/06/python-duo-jin-cheng-shi-li/"/>
-    <id>https://ailyong.cn/2025/01/06/python-duo-jin-cheng-shi-li/</id>
+    <link href="https://eggplant.wiki/2025/01/06/python-duo-jin-cheng-shi-li/"/>
+    <id>https://eggplant.wiki/2025/01/06/python-duo-jin-cheng-shi-li/</id>
     <published>2025-01-06T05:34:14.112Z</published>
     <updated>2025-01-06T05:35:47.899Z</updated>
     
@@ -187,17 +187,17 @@
     
     
     
-    <category term="编程经验" scheme="https://ailyong.cn/categories/%E7%BC%96%E7%A8%8B%E7%BB%8F%E9%AA%8C/"/>
+    <category term="编程经验" scheme="https://eggplant.wiki/categories/%E7%BC%96%E7%A8%8B%E7%BB%8F%E9%AA%8C/"/>
     
     
-    <category term="python" scheme="https://ailyong.cn/tags/python/"/>
+    <category term="python" scheme="https://eggplant.wiki/tags/python/"/>
     
   </entry>
   
   <entry>
     <title>ubuntu上安装NIVIDIA驱动和CUDA_Tookit</title>
-    <link href="https://ailyong.cn/2023/09/12/ubuntu-shang-an-zhuang-nividia-qu-dong-he-cuda-tookit/"/>
-    <id>https://ailyong.cn/2023/09/12/ubuntu-shang-an-zhuang-nividia-qu-dong-he-cuda-tookit/</id>
+    <link href="https://eggplant.wiki/2023/09/12/ubuntu-shang-an-zhuang-nividia-qu-dong-he-cuda-tookit/"/>
+    <id>https://eggplant.wiki/2023/09/12/ubuntu-shang-an-zhuang-nividia-qu-dong-he-cuda-tookit/</id>
     <published>2023-09-12T01:37:44.000Z</published>
     <updated>2023-09-12T02:43:15.044Z</updated>
     
@@ -212,17 +212,17 @@
     
     
     
-    <category term="爬坑总结" scheme="https://ailyong.cn/categories/%E7%88%AC%E5%9D%91%E6%80%BB%E7%BB%93/"/>
+    <category term="爬坑总结" scheme="https://eggplant.wiki/categories/%E7%88%AC%E5%9D%91%E6%80%BB%E7%BB%93/"/>
     
     
-    <category term="NIVIDIA驱动" scheme="https://ailyong.cn/tags/NIVIDIA%E9%A9%B1%E5%8A%A8/"/>
+    <category term="NIVIDIA驱动" scheme="https://eggplant.wiki/tags/NIVIDIA%E9%A9%B1%E5%8A%A8/"/>
     
   </entry>
   
   <entry>
     <title>在mac上使用pybind11实现c++与python互通的demo</title>
-    <link href="https://ailyong.cn/2023/07/23/zai-mac-shang-shi-yong-pybind11-shi-xian-c-yu-python-hu-tong-de-demo/"/>
-    <id>https://ailyong.cn/2023/07/23/zai-mac-shang-shi-yong-pybind11-shi-xian-c-yu-python-hu-tong-de-demo/</id>
+    <link href="https://eggplant.wiki/2023/07/23/zai-mac-shang-shi-yong-pybind11-shi-xian-c-yu-python-hu-tong-de-demo/"/>
+    <id>https://eggplant.wiki/2023/07/23/zai-mac-shang-shi-yong-pybind11-shi-xian-c-yu-python-hu-tong-de-demo/</id>
     <published>2023-07-22T18:28:00.000Z</published>
     <updated>2023-07-22T19:08:34.765Z</updated>
     
@@ -237,17 +237,17 @@
     
     
     
-    <category term="学习笔记" scheme="https://ailyong.cn/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    <category term="学习笔记" scheme="https://eggplant.wiki/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
     
     
-    <category term="python_c++_互通" scheme="https://ailyong.cn/tags/python-c-%E4%BA%92%E9%80%9A/"/>
+    <category term="python_c++_互通" scheme="https://eggplant.wiki/tags/python-c-%E4%BA%92%E9%80%9A/"/>
     
   </entry>
   
   <entry>
     <title>Mac系统制作win10启动U盘</title>
-    <link href="https://ailyong.cn/2022/09/07/mac-xi-tong-zhi-zuo-win10-qi-dong-u-pan/"/>
-    <id>https://ailyong.cn/2022/09/07/mac-xi-tong-zhi-zuo-win10-qi-dong-u-pan/</id>
+    <link href="https://eggplant.wiki/2022/09/07/mac-xi-tong-zhi-zuo-win10-qi-dong-u-pan/"/>
+    <id>https://eggplant.wiki/2022/09/07/mac-xi-tong-zhi-zuo-win10-qi-dong-u-pan/</id>
     <published>2022-09-07T11:51:54.000Z</published>
     <updated>2022-09-07T12:29:52.512Z</updated>
     
@@ -262,17 +262,17 @@
     
     
     
-    <category term="爬坑总结" scheme="https://ailyong.cn/categories/%E7%88%AC%E5%9D%91%E6%80%BB%E7%BB%93/"/>
+    <category term="爬坑总结" scheme="https://eggplant.wiki/categories/%E7%88%AC%E5%9D%91%E6%80%BB%E7%BB%93/"/>
     
     
-    <category term="启动U盘" scheme="https://ailyong.cn/tags/%E5%90%AF%E5%8A%A8U%E7%9B%98/"/>
+    <category term="启动U盘" scheme="https://eggplant.wiki/tags/%E5%90%AF%E5%8A%A8U%E7%9B%98/"/>
     
   </entry>
   
   <entry>
     <title>电磁比赛总结</title>
-    <link href="https://ailyong.cn/2022/09/05/dian-ci-bi-sai-zong-jie/"/>
-    <id>https://ailyong.cn/2022/09/05/dian-ci-bi-sai-zong-jie/</id>
+    <link href="https://eggplant.wiki/2022/09/05/dian-ci-bi-sai-zong-jie/"/>
+    <id>https://eggplant.wiki/2022/09/05/dian-ci-bi-sai-zong-jie/</id>
     <published>2022-09-05T06:47:54.000Z</published>
     <updated>2022-09-05T07:02:56.567Z</updated>
     
@@ -290,17 +290,17 @@
     
     
     
-    <category term="爬坑总结" scheme="https://ailyong.cn/categories/%E7%88%AC%E5%9D%91%E6%80%BB%E7%BB%93/"/>
+    <category term="爬坑总结" scheme="https://eggplant.wiki/categories/%E7%88%AC%E5%9D%91%E6%80%BB%E7%BB%93/"/>
     
     
-    <category term="竞赛" scheme="https://ailyong.cn/tags/%E7%AB%9E%E8%B5%9B/"/>
+    <category term="竞赛" scheme="https://eggplant.wiki/tags/%E7%AB%9E%E8%B5%9B/"/>
     
   </entry>
   
   <entry>
     <title>远程访问服务器Jupyter-Notebook</title>
-    <link href="https://ailyong.cn/2022/04/29/yuan-cheng-fang-wen-fu-wu-qi-jupyter-notebook/"/>
-    <id>https://ailyong.cn/2022/04/29/yuan-cheng-fang-wen-fu-wu-qi-jupyter-notebook/</id>
+    <link href="https://eggplant.wiki/2022/04/29/yuan-cheng-fang-wen-fu-wu-qi-jupyter-notebook/"/>
+    <id>https://eggplant.wiki/2022/04/29/yuan-cheng-fang-wen-fu-wu-qi-jupyter-notebook/</id>
     <published>2022-04-29T08:24:56.000Z</published>
     <updated>2024-07-23T09:11:41.697Z</updated>
     
@@ -315,17 +315,17 @@
     
     
     
-    <category term="爬坑总结" scheme="https://ailyong.cn/categories/%E7%88%AC%E5%9D%91%E6%80%BB%E7%BB%93/"/>
+    <category term="爬坑总结" scheme="https://eggplant.wiki/categories/%E7%88%AC%E5%9D%91%E6%80%BB%E7%BB%93/"/>
     
     
-    <category term="jupyter notebook" scheme="https://ailyong.cn/tags/jupyter-notebook/"/>
+    <category term="jupyter notebook" scheme="https://eggplant.wiki/tags/jupyter-notebook/"/>
     
   </entry>
   
   <entry>
     <title>C++多线程编程</title>
-    <link href="https://ailyong.cn/2021/12/10/c-duo-xian-cheng-bian-cheng/"/>
-    <id>https://ailyong.cn/2021/12/10/c-duo-xian-cheng-bian-cheng/</id>
+    <link href="https://eggplant.wiki/2021/12/10/c-duo-xian-cheng-bian-cheng/"/>
+    <id>https://eggplant.wiki/2021/12/10/c-duo-xian-cheng-bian-cheng/</id>
     <published>2021-12-10T14:48:07.000Z</published>
     <updated>2021-12-11T07:50:01.752Z</updated>
     
@@ -346,8 +346,8 @@
   
   <entry>
     <title>将微信聊天中的语音转换为mp3</title>
-    <link href="https://ailyong.cn/2021/09/29/jiang-wei-xin-liao-tian-zhong-de-yu-yin-zhuan-huan-wei-mp3/"/>
-    <id>https://ailyong.cn/2021/09/29/jiang-wei-xin-liao-tian-zhong-de-yu-yin-zhuan-huan-wei-mp3/</id>
+    <link href="https://eggplant.wiki/2021/09/29/jiang-wei-xin-liao-tian-zhong-de-yu-yin-zhuan-huan-wei-mp3/"/>
+    <id>https://eggplant.wiki/2021/09/29/jiang-wei-xin-liao-tian-zhong-de-yu-yin-zhuan-huan-wei-mp3/</id>
     <published>2021-09-29T09:21:06.000Z</published>
     <updated>2021-09-29T10:12:46.343Z</updated>
     
@@ -367,17 +367,17 @@
     
     
     
-    <category term="生活总结" scheme="https://ailyong.cn/categories/%E7%94%9F%E6%B4%BB%E6%80%BB%E7%BB%93/"/>
+    <category term="生活总结" scheme="https://eggplant.wiki/categories/%E7%94%9F%E6%B4%BB%E6%80%BB%E7%BB%93/"/>
     
     
-    <category term="微信" scheme="https://ailyong.cn/tags/%E5%BE%AE%E4%BF%A1/"/>
+    <category term="微信" scheme="https://eggplant.wiki/tags/%E5%BE%AE%E4%BF%A1/"/>
     
   </entry>
   
   <entry>
     <title>机器学习参考资料</title>
-    <link href="https://ailyong.cn/2021/09/19/ji-qi-xue-xi-can-kao-zi-liao/"/>
-    <id>https://ailyong.cn/2021/09/19/ji-qi-xue-xi-can-kao-zi-liao/</id>
+    <link href="https://eggplant.wiki/2021/09/19/ji-qi-xue-xi-can-kao-zi-liao/"/>
+    <id>https://eggplant.wiki/2021/09/19/ji-qi-xue-xi-can-kao-zi-liao/</id>
     <published>2021-09-19T15:59:09.000Z</published>
     <updated>2021-10-28T13:50:44.951Z</updated>
     
@@ -396,17 +396,17 @@
     
     
     
-    <category term="学习资料" scheme="https://ailyong.cn/categories/%E5%AD%A6%E4%B9%A0%E8%B5%84%E6%96%99/"/>
+    <category term="学习资料" scheme="https://eggplant.wiki/categories/%E5%AD%A6%E4%B9%A0%E8%B5%84%E6%96%99/"/>
     
     
-    <category term="机器学习" scheme="https://ailyong.cn/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+    <category term="机器学习" scheme="https://eggplant.wiki/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
     
   </entry>
   
   <entry>
     <title>有用的资源</title>
-    <link href="https://ailyong.cn/2021/09/19/you-yong-de-zi-yuan/"/>
-    <id>https://ailyong.cn/2021/09/19/you-yong-de-zi-yuan/</id>
+    <link href="https://eggplant.wiki/2021/09/19/you-yong-de-zi-yuan/"/>
+    <id>https://eggplant.wiki/2021/09/19/you-yong-de-zi-yuan/</id>
     <published>2021-09-19T15:28:51.000Z</published>
     <updated>2025-01-06T06:02:47.635Z</updated>
     
@@ -425,17 +425,17 @@
     
     
     
-    <category term="学习资料" scheme="https://ailyong.cn/categories/%E5%AD%A6%E4%B9%A0%E8%B5%84%E6%96%99/"/>
+    <category term="学习资料" scheme="https://eggplant.wiki/categories/%E5%AD%A6%E4%B9%A0%E8%B5%84%E6%96%99/"/>
     
     
-    <category term="资源" scheme="https://ailyong.cn/tags/%E8%B5%84%E6%BA%90/"/>
+    <category term="资源" scheme="https://eggplant.wiki/tags/%E8%B5%84%E6%BA%90/"/>
     
   </entry>
   
   <entry>
     <title>微信标签整理</title>
-    <link href="https://ailyong.cn/2021/08/14/wei-xin-biao-qian-zheng-li/"/>
-    <id>https://ailyong.cn/2021/08/14/wei-xin-biao-qian-zheng-li/</id>
+    <link href="https://eggplant.wiki/2021/08/14/wei-xin-biao-qian-zheng-li/"/>
+    <id>https://eggplant.wiki/2021/08/14/wei-xin-biao-qian-zheng-li/</id>
     <published>2021-08-13T17:06:28.000Z</published>
     <updated>2021-08-13T17:08:04.000Z</updated>
     
@@ -455,17 +455,17 @@
     
     
     
-    <category term="总结" scheme="https://ailyong.cn/categories/%E6%80%BB%E7%BB%93/"/>
+    <category term="总结" scheme="https://eggplant.wiki/categories/%E6%80%BB%E7%BB%93/"/>
     
     
-    <category term="微信" scheme="https://ailyong.cn/tags/%E5%BE%AE%E4%BF%A1/"/>
+    <category term="微信" scheme="https://eggplant.wiki/tags/%E5%BE%AE%E4%BF%A1/"/>
     
   </entry>
   
   <entry>
     <title>工具箱</title>
-    <link href="https://ailyong.cn/2021/08/14/gong-ju-xiang/"/>
-    <id>https://ailyong.cn/2021/08/14/gong-ju-xiang/</id>
+    <link href="https://eggplant.wiki/2021/08/14/gong-ju-xiang/"/>
+    <id>https://eggplant.wiki/2021/08/14/gong-ju-xiang/</id>
     <published>2021-08-13T17:01:38.000Z</published>
     <updated>2025-01-06T06:02:40.612Z</updated>
     
@@ -482,17 +482,17 @@
     
     
     
-    <category term="收藏" scheme="https://ailyong.cn/categories/%E6%94%B6%E8%97%8F/"/>
+    <category term="收藏" scheme="https://eggplant.wiki/categories/%E6%94%B6%E8%97%8F/"/>
     
     
-    <category term="干货" scheme="https://ailyong.cn/tags/%E5%B9%B2%E8%B4%A7/"/>
+    <category term="干货" scheme="https://eggplant.wiki/tags/%E5%B9%B2%E8%B4%A7/"/>
     
   </entry>
   
   <entry>
     <title>教师资格证考试学习笔记</title>
-    <link href="https://ailyong.cn/2021/08/13/jiao-shi-zi-ge-zheng-kao-shi-xue-xi-bi-ji/"/>
-    <id>https://ailyong.cn/2021/08/13/jiao-shi-zi-ge-zheng-kao-shi-xue-xi-bi-ji/</id>
+    <link href="https://eggplant.wiki/2021/08/13/jiao-shi-zi-ge-zheng-kao-shi-xue-xi-bi-ji/"/>
+    <id>https://eggplant.wiki/2021/08/13/jiao-shi-zi-ge-zheng-kao-shi-xue-xi-bi-ji/</id>
     <published>2021-08-13T15:00:04.000Z</published>
     <updated>2021-08-13T16:52:25.000Z</updated>
     
@@ -508,14 +508,14 @@
     
     
     
-    <category term="教师资格证" scheme="https://ailyong.cn/tags/%E6%95%99%E5%B8%88%E8%B5%84%E6%A0%BC%E8%AF%81/"/>
+    <category term="教师资格证" scheme="https://eggplant.wiki/tags/%E6%95%99%E5%B8%88%E8%B5%84%E6%A0%BC%E8%AF%81/"/>
     
   </entry>
   
   <entry>
     <title>Google访问助手安装</title>
-    <link href="https://ailyong.cn/2021/08/13/google-fang-wen-zhu-shou-an-zhuang/"/>
-    <id>https://ailyong.cn/2021/08/13/google-fang-wen-zhu-shou-an-zhuang/</id>
+    <link href="https://eggplant.wiki/2021/08/13/google-fang-wen-zhu-shou-an-zhuang/"/>
+    <id>https://eggplant.wiki/2021/08/13/google-fang-wen-zhu-shou-an-zhuang/</id>
     <published>2021-08-13T14:54:55.000Z</published>
     <updated>2021-08-13T14:58:03.000Z</updated>
     
@@ -530,10 +530,10 @@
     
     
     
-    <category term="干货" scheme="https://ailyong.cn/categories/%E5%B9%B2%E8%B4%A7/"/>
+    <category term="干货" scheme="https://eggplant.wiki/categories/%E5%B9%B2%E8%B4%A7/"/>
     
     
-    <category term="Google访问助手" scheme="https://ailyong.cn/tags/Google%E8%AE%BF%E9%97%AE%E5%8A%A9%E6%89%8B/"/>
+    <category term="Google访问助手" scheme="https://eggplant.wiki/tags/Google%E8%AE%BF%E9%97%AE%E5%8A%A9%E6%89%8B/"/>
     
   </entry>
   
