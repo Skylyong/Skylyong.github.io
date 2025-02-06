@@ -409,6 +409,35 @@
                 <main class="main index-page">
             
         <article class="index-post">
+            <a class="abstract-title" href="/2022/04/29/yuan-cheng-fang-wen-fu-wu-qi-jupyter-notebook/">
+                <span class="abstract-title-text">远程访问服务器Jupyter-Notebook</span>
+            </a>
+            <div class="abstract-content">
+                方法： ssh远程使用jupyter notebook在远程服务器上，启动jupyter notebooks服务：
+jupyter notebook --no-browser --port&#x3D;8889
+
+在本地终端中启动SSH：
+ssh -N -f -L localhost:8888:localhost:8889 username@serverIP
+
+其中： -N 告诉SSH没有命令要被远程执行； -f 告诉SSH在后台执行； -L 是指定port forwarding的配置，远端端口是8889，本地的端口号的8888。
+注意：username@serverIP替换成服务器的对应...
+            </div>
+            <!-- read more -->
+            <div class="abstract-post-meta">
+                <!-- date -->
+                <div class="abstract-date" title="Last updated: 2024/07/23">
+                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2022/04/29</span>
+                </div>
+                <!-- tags -->
+                    <div class="abstract-tags" >
+        <a class="post-tag" href="javascript:void(0);" data-tags="jupyter notebook">jupyter notebook</a>
+</div>
+
+            </div>
+        </article>
+        <div class="index-post-divider"></div>
+            
+        <article class="index-post">
             <a class="abstract-title" href="/2021/12/10/c-duo-xian-cheng-bian-cheng/">
                 <span class="abstract-title-text">C++多线程编程</span>
             </a>
@@ -772,35 +801,6 @@ https://www.svm-tutorial.com/2014/11/svm-understanding-math-part-1/
             </div>
         </article>
         <div class="index-post-divider"></div>
-            
-        <article class="index-post">
-            <a class="abstract-title" href="/2021/08/06/pandas-xue-xi/">
-                <span class="abstract-title-text">Pandas学习</span>
-            </a>
-            <div class="abstract-content">
-                
-Video url: https://www.youtube.com/watch?v=vmEHCJofslg
-Pandas document: https://pandas.pydata.org/pandas-docs/stable/reference/index.html#api
-Pracice Pandas:   https://stratascratch.com/?via=keith
-
-1. Loading data into Pandas
-1.1 Loading data from csv format file
-# read data from csv format file...
-            </div>
-            <!-- read more -->
-            <div class="abstract-post-meta">
-                <!-- date -->
-                <div class="abstract-date" title="Last updated: 2021/08/06">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2021/08/06</span>
-                </div>
-                <!-- tags -->
-                    <div class="abstract-tags" >
-        <a class="post-tag" href="javascript:void(0);" data-tags="Pandas">Pandas</a>
-</div>
-
-            </div>
-        </article>
-        <div class="index-post-divider"></div>
     <!-- paginator  -->
         <nav class="page-nav">
             <a class="extend prev" rel="prev" href="/">&lt; PREV</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/3/">NEXT &gt;</a>
@@ -897,9 +897,10 @@ Pracice Pandas:   https://stratascratch.com/?via=keith
         
         
         
+        
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 40
+        Total : 41
         </div>
         <!-- search  -->
     </div>
@@ -917,6 +918,10 @@ Pracice Pandas:   https://stratascratch.com/?via=keith
         <li class="archive-post-item">
             <span class="archive-post-date">01/27</span>
             <a class="archive-post-title" href="/2025/01/27/2024-nian-di-zong-jie/">2024年底总结</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/27</span>
+            <a class="archive-post-title" href="/2025/01/27/zai-cheng-gong-de-ri-zi-lao-yu-he/">在呈贡的日子——捞鱼河</a>
         </li>
         <li class="archive-post-item">
             <span class="archive-post-date">01/26</span>
@@ -1113,13 +1118,13 @@ Pracice Pandas:   https://stratascratch.com/?via=keith
                 <span class="iconfont-archer">&#xe606;</span>
                 Pandas
             </span>
-            <span class="sidebar-tag-name" data-tags="pytorch">
-                <span class="iconfont-archer">&#xe606;</span>
-                pytorch
-            </span>
             <span class="sidebar-tag-name" data-tags="svm">
                 <span class="iconfont-archer">&#xe606;</span>
                 svm
+            </span>
+            <span class="sidebar-tag-name" data-tags="pytorch">
+                <span class="iconfont-archer">&#xe606;</span>
+                pytorch
             </span>
             <span class="sidebar-tag-name" data-tags="git">
                 <span class="iconfont-archer">&#xe606;</span>
@@ -1165,6 +1170,10 @@ Pracice Pandas:   https://stratascratch.com/?via=keith
                 <span class="iconfont-archer">&#xe606;</span>
                 python_c++_互通
             </span>
+            <span class="sidebar-tag-name" data-tags="呈贡">
+                <span class="iconfont-archer">&#xe606;</span>
+                呈贡
+            </span>
             <span class="sidebar-tag-name" data-tags="电影">
                 <span class="iconfont-archer">&#xe606;</span>
                 电影
@@ -1181,13 +1190,13 @@ Pracice Pandas:   https://stratascratch.com/?via=keith
                 <span class="iconfont-archer">&#xe606;</span>
                 干货
             </span>
-            <span class="sidebar-tag-name" data-tags="资源">
-                <span class="iconfont-archer">&#xe606;</span>
-                资源
-            </span>
             <span class="sidebar-tag-name" data-tags="熵">
                 <span class="iconfont-archer">&#xe606;</span>
                 熵
+            </span>
+            <span class="sidebar-tag-name" data-tags="资源">
+                <span class="iconfont-archer">&#xe606;</span>
+                资源
             </span>
             <span class="sidebar-tag-name" data-tags="竞赛">
                 <span class="iconfont-archer">&#xe606;</span>
@@ -1259,10 +1268,6 @@ Pracice Pandas:   https://stratascratch.com/?via=keith
             <span class="iconfont-archer">&#xe60a;</span>
             学习资料
         </span>
-        <span class="sidebar-category-name" data-categories="数据集">
-            <span class="iconfont-archer">&#xe60a;</span>
-            数据集
-        </span>
         <span class="sidebar-category-name" data-categories="收藏">
             <span class="iconfont-archer">&#xe60a;</span>
             收藏
@@ -1270,6 +1275,10 @@ Pracice Pandas:   https://stratascratch.com/?via=keith
         <span class="sidebar-category-name" data-categories="总结">
             <span class="iconfont-archer">&#xe60a;</span>
             总结
+        </span>
+        <span class="sidebar-category-name" data-categories="数据集">
+            <span class="iconfont-archer">&#xe60a;</span>
+            数据集
         </span>
         <span class="sidebar-category-name" data-categories="机器学习">
             <span class="iconfont-archer">&#xe60a;</span>
