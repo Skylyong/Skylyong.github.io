@@ -10,19 +10,21 @@
     <meta name="copyright" content="茄子">
         <meta name="keywords" content="hexo,hexo-theme,hexo-blog">
     <meta name="description" content="Keep go on">
-    <meta name="description" content="Keep go on">
+    <meta name="description" content="来自云南某山村的程序员一枚，目前在上海工作学习，兴趣是探索世界，记录生活，分享技术。爱好徒步，摄影，户外运动，喜欢研究新技术，关注前沿科技，热爱自由。">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Lyong&#39;s blog">
-<meta property="og:url" content="https://eggplant.wiki/archives/2022/09/index.html">
+<meta property="og:title" content="关于我">
+<meta property="og:url" content="https://eggplant.wiki/news/index.html">
 <meta property="og:site_name" content="Lyong&#39;s blog">
-<meta property="og:description" content="Keep go on">
+<meta property="og:description" content="来自云南某山村的程序员一枚，目前在上海工作学习，兴趣是探索世界，记录生活，分享技术。爱好徒步，摄影，户外运动，喜欢研究新技术，关注前沿科技，热爱自由。">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-03-30T18:23:40.000Z">
+<meta property="article:modified_time" content="2025-02-10T05:52:12.994Z">
 <meta property="article:author" content="茄子">
 <meta name="twitter:card" content="summary">
     <meta http-equiv="Cache-control" content="no-cache">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <link rel="icon" href="/assets/favicon.ico">
-    <title>茄子的个人空间</title>
+    <title>关于我 · 茄子的个人空间</title>
     <!-- /*! loadCSS. [c]2017 Filament Group, Inc. MIT License */
 /* This file is meant as a standalone workflow for
 - testing support for link[rel=preload]
@@ -211,6 +213,7 @@
             document.write('<script src="/lib/jquery.min.js" />')
         }
     </script>
+        <body class="about-body">
         <!-- header -->
         <header class="header header-mobile">
     <!-- top read progress line -->
@@ -240,7 +243,7 @@
             <a href="/">茄子的个人空间</a>
         </div>
         <div class="post-title header-element">
-            <a href="#" class="post-name"></a>
+            <a href="#" class="post-name">关于我</a>
         </div>
     </div>
 </header>
@@ -257,14 +260,16 @@
 
         <!-- wrapper -->
         <div class="wrapper">
-            <div class="site-intro" style="">
+            <div class="site-intro" style="    height:50vh;
+">
     <!-- 主页  -->
     <div class="site-intro-placeholder"></div>
-    <div class="site-intro-img" style="background-image: url(/)"></div>
+    <div class="site-intro-img" style="background-image: url(/intro/about-bg.jpg)"></div>
     <div class="site-intro-meta">
         <!-- 标题  -->
         <h1 class="intro-title">
             <!-- 主页  -->
+                关于我
         </h1>
         <!-- 副标题 -->
         <p class="intro-subtitle">
@@ -399,76 +404,12 @@
 
             <img class="loading" src="/assets/loading.svg" style="display: block; margin: 6rem auto 0 auto; width: 6rem; height: 6rem;" alt="loading">
             <div class="container container-unloaded">
-                <main class="main index-page">
-            
-        <article class="index-post">
-            <a class="abstract-title" href="/2022/09/07/mac-xi-tong-zhi-zuo-win10-qi-dong-u-pan/">
-                <span class="abstract-title-text">Mac系统制作win10启动U盘</span>
-            </a>
-            <div class="abstract-content">
-                Mac系统下制作win10安装盘准备
-一台mac电脑
+                <!-- 不可以删除，否则会调用 post 的 layout -->
+<main class="main about-page">
+    <article class="article-entry">
+        <p>来自云南某山村的程序员一枚，目前在上海工作学习，兴趣是探索世界，记录生活，分享技术。<br>爱好徒步，摄影，户外运动，喜欢研究新技术，关注前沿科技，热爱自由。</p>
 
-一个大于8G的U盘
-
-win10镜像文件
-
-Boot Camp ISO Converter软件（这个软件可以解决FAT32格式的u盘单个文件大小不能超过4GB的问题），下载链接
-
-
-制作步骤
-打开Boot Camp ISO Converter软件对下载好的iso镜像文件进行处理，目的是将镜像文件insta.win分配为大小小于4GB的文件
-
-在插入U盘的状态下，打开终端，输入：
-  diskutil list
-
-  找到U盘对应的盘符，本例中U盘对应的盘符为：disk2
-
-将U盘(disk2)格式化为FAT32格式
-  diskut...
-            </div>
-            <!-- read more -->
-            <div class="abstract-post-meta">
-                <!-- date -->
-                <div class="abstract-date" title="Last updated: 2022/09/07">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2022/09/07</span>
-                </div>
-                <!-- tags -->
-                    <div class="abstract-tags" >
-        <a class="post-tag" href="javascript:void(0);" data-tags="启动U盘">启动U盘</a>
-</div>
-
-            </div>
-        </article>
-        <div class="index-post-divider"></div>
-            
-        <article class="index-post">
-            <a class="abstract-title" href="/2022/09/05/dian-ci-bi-sai-zong-jie/">
-                <span class="abstract-title-text">电磁比赛总结</span>
-            </a>
-            <div class="abstract-content">
-                电磁比赛总结
-代码总结
-
-要会静态分析资源占有率，特别是当服务器内存资源不足的时候，提前做好静态分析，设置合理的运行参数，才能提升效率。比如本次实验过程中，做数据增强预处理数据时需要占用大量内存资源，参数设置过大，会导致运行一半后因为内存不足，进程被killed掉，参数设置过小效率又变得很低。
-当数据很多，需要占用大量内存时，不要将数据转换为pandas的DataFrame对象，因为它会吃掉更多的内存，此外使用apply方法对数据进行逐行处理的时候，即使使用了加速方法，也没有将数据存储为list然后使用多进程方法处理高效。在本次实验中，后者的速度至少是前者的5倍。
-尽量使用class对代...
-            </div>
-            <!-- read more -->
-            <div class="abstract-post-meta">
-                <!-- date -->
-                <div class="abstract-date" title="Last updated: 2022/09/05">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2022/09/05</span>
-                </div>
-                <!-- tags -->
-                    <div class="abstract-tags" >
-        <a class="post-tag" href="javascript:void(0);" data-tags="竞赛">竞赛</a>
-</div>
-
-            </div>
-        </article>
-        <div class="index-post-divider"></div>
-    <!-- paginator  -->
+    </article>
 </main>
 
                 <!-- profile -->
