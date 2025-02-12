@@ -6,7 +6,7 @@
   <link href="https://eggplant.wiki/atom.xml" rel="self"/>
   
   <link href="https://eggplant.wiki/"/>
-  <updated>2025-02-06T09:14:42.974Z</updated>
+  <updated>2025-02-12T09:36:03.102Z</updated>
   <id>https://eggplant.wiki/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>通过docker部署doccano标注工具</title>
+    <link href="https://eggplant.wiki/2025/02/12/tong-guo-docker-bu-shu-doccano-biao-zhu-gong-ju/"/>
+    <id>https://eggplant.wiki/2025/02/12/tong-guo-docker-bu-shu-doccano-biao-zhu-gong-ju/</id>
+    <published>2025-02-12T09:15:42.000Z</published>
+    <updated>2025-02-12T09:36:03.102Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;上半年使用了 &lt;code&gt;doccano&lt;/code&gt; 标注工具对命名实体识别任务做了标注，感觉很好用。&lt;br&gt;最近准备将其部署到服务器上，通过 &lt;code&gt;docker&lt;/code&gt;</summary>
+        
+      
+    
+    
+    
+    <category term="总结" scheme="https://eggplant.wiki/categories/%E6%80%BB%E7%BB%93/"/>
+    
+    
+    <category term="docker, doccano" scheme="https://eggplant.wiki/tags/docker-doccano/"/>
+    
+  </entry>
   
   <entry>
     <title>在呈贡的日子——复习资料不见了</title>
@@ -511,33 +536,6 @@
     
     
     <category term="微信" scheme="https://eggplant.wiki/tags/%E5%BE%AE%E4%BF%A1/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>工具箱</title>
-    <link href="https://eggplant.wiki/2021/08/14/gong-ju-xiang/"/>
-    <id>https://eggplant.wiki/2021/08/14/gong-ju-xiang/</id>
-    <published>2021-08-13T17:01:38.000Z</published>
-    <updated>2025-01-06T06:02:40.612Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;ul&gt;
-&lt;li&gt;&lt;a href=&quot;https://www.jibing57.com/2019/03/24/share-ShadowsocksX-NG-to-iOS/&quot;&gt;Mac下共享ShadowsocksX-NG的梯子给iOS&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a</summary>
-        
-      
-    
-    
-    
-    <category term="收藏" scheme="https://eggplant.wiki/categories/%E6%94%B6%E8%97%8F/"/>
-    
-    
-    <category term="干货" scheme="https://eggplant.wiki/tags/%E5%B9%B2%E8%B4%A7/"/>
     
   </entry>
   

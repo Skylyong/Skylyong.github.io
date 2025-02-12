@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>通过docker部署doccano标注工具</title>
+      <link href="2025/02/12/tong-guo-docker-bu-shu-doccano-biao-zhu-gong-ju/"/>
+      <url>2025/02/12/tong-guo-docker-bu-shu-doccano-biao-zhu-gong-ju/</url>
+      
+        <content type="html"><![CDATA[<p>上半年使用了 <code>doccano</code> 标注工具对命名实体识别任务做了标注，感觉很好用。<br>最近准备将其部署到服务器上，通过 <code>docker</code> 容器的方式进行，以便于以后可以快速部署。</p><p>许久不用也是遇到了不少问题，主要是部署好系统后，上传数据一直转圈，没有反应，后面发现是因为没有启动 <code>doccano task</code>,<br>而task需要和 <code>doccano webserver</code> 一起启动， <code>openai</code> 给我的建议是启动两个 <code>docker</code> 服务，我还是选用了常规的 <code>screen</code> 方式。</p><p>下面是自己编写的可以使用的 <code>docker-compose</code> 文件，记录在此，方便以后调用。</p><pre class="line-numbers language-yaml" data-language="yaml"><code class="language-yaml">version: &#39;3.8&#39;services:  doccano:    image: docker-0.unsee.tech&#x2F;python:3.9    container_name: doccano    restart: unless-stopped    volumes:      - .&#x2F;doccano_data:&#x2F;app&#x2F;doccano_data    ports:      - &quot;8000:8000&quot;    environment:      - PIP_NO_CACHE_DIR&#x3D;off    command: &gt;      sh -c &quot;apt-get update &amp;&amp; apt-get install -y screen &amp;&amp;             pip install --no-cache-dir doccano &amp;&amp;             pip install numpy&#x3D;&#x3D;1.24.0 pandas&#x3D;&#x3D;1.5.3 &amp;&amp;             doccano init &amp;&amp;             doccano createuser --username admin --password admin &amp;&amp;             screen -dmS doccano_server doccano webserver --port 8000 &amp;&amp;             screen -dmS doccano_task doccano task &amp;&amp;             tail -f &#x2F;dev&#x2F;null&quot;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>]]></content>
+      
+      
+      <categories>
+          
+          <category> 总结 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> docker, doccano </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>在呈贡的日子——复习资料不见了</title>
       <link href="2025/02/06/zai-cheng-gong-de-ri-zi-fu-xi-zi-liao-bu-jian-liao/"/>
       <url>2025/02/06/zai-cheng-gong-de-ri-zi-fu-xi-zi-liao-bu-jian-liao/</url>
