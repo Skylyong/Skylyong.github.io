@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>python日常开发杂记</title>
+      <link href="2025/02/19/python-ri-chang-kai-fa-za-ji/"/>
+      <url>2025/02/19/python-ri-chang-kai-fa-za-ji/</url>
+      
+        <content type="html"><![CDATA[<h1 id="mac系统-pandas存储为csv-在excel中打开乱码"><a href="#mac系统-pandas存储为csv-在excel中打开乱码" class="headerlink" title="mac系统 pandas存储为csv 在excel中打开乱码"></a>mac系统 pandas存储为csv 在excel中打开乱码</h1><blockquote><p>在使用pandas存储数据为csv文件后，在excel中打开会出现乱码问题，解决方法如下：<br>指定编码格式为<code>utf-8-sig</code>，即可解决问题。</p></blockquote><pre class="line-numbers language-python" data-language="python"><code class="language-python">df.to_csv(&#39;output.csv&#39;, index&#x3D;False, encoding&#x3D;&#39;utf-8-sig&#39;)<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><h1 id="api-调用大模型时，指定返回json格式数据"><a href="#api-调用大模型时，指定返回json格式数据" class="headerlink" title="api 调用大模型时，指定返回json格式数据"></a>api 调用大模型时，指定返回json格式数据</h1><blockquote><p>解决方法如下： 指定 response_format 为 <code>&#123;&quot;type&quot;:&quot;json_object&quot;&#125;</code>，但是这个方法在deepseek中不适用。</p></blockquote><pre class="line-numbers language-python" data-language="python"><code class="language-python">client &#x3D; openai &#x3D; OpenAI(api_key&#x3D;gpt_api_key,        base_url&#x3D;gpt_base_url        )response &#x3D; client.chat.completions.create(                model&#x3D; model,                messages&#x3D;[                    &#123;&quot;role&quot;: &quot;system&quot;, &quot;content&quot;: &quot;你是一名中医药专家&quot;&#125;,                    &#123;&quot;role&quot;: &quot;user&quot;, &quot;content&quot;: prompt&#125;                ],                max_tokens&#x3D;2048,                response_format&#x3D;&#123;&quot;type&quot;:&quot;json_object&quot;&#125;            )<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><blockquote><p> openAi 官方解释：</p><p> <img src="https://raw.githubusercontent.com/Skylyong/i/main/20250219171031.png" alt="image-20250219171024040"></p><p> 参考链接：<a href="https://beta.openai.com/docs/api-reference/completions/create">openai官方文档</a></p></blockquote>]]></content>
+      
+      
+      <categories>
+          
+          <category> 编程开发 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> python </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>通过docker部署doccano标注工具</title>
       <link href="2025/02/12/tong-guo-docker-bu-shu-doccano-biao-zhu-gong-ju/"/>
       <url>2025/02/12/tong-guo-docker-bu-shu-doccano-biao-zhu-gong-ju/</url>

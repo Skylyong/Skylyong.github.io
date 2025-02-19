@@ -13,7 +13,7 @@
     <meta name="description" content="Keep go on">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Lyong&#39;s blog">
-<meta property="og:url" content="https://eggplant.wiki/tags/NIVIDIA%E9%A9%B1%E5%8A%A8/index.html">
+<meta property="og:url" content="https://eggplant.wiki/archives/2025/page/2/index.html">
 <meta property="og:site_name" content="Lyong&#39;s blog">
 <meta property="og:description" content="Keep go on">
 <meta property="og:locale" content="zh_CN">
@@ -402,36 +402,37 @@
                 <main class="main index-page">
             
         <article class="index-post">
-            <a class="abstract-title" href="/2023/09/12/ubuntu-shang-an-zhuang-nividia-qu-dong-he-cuda-tookit/">
-                <span class="abstract-title-text">ubuntu上安装NIVIDIA驱动和CUDA_Tookit</span>
+            <a class="abstract-title" href="/2025/01/06/python-duo-jin-cheng-shi-li/">
+                <span class="abstract-title-text">python多进程示例</span>
             </a>
             <div class="abstract-content">
-                每一次安装NIVIDIA驱动或CUDA Tookit时，都要经过一番折腾，才能够安装成功，这里把过程记录一下，以便以后可以参考。
-本次安装遇到的最大问题是：pytorch所能支持的最高cuda版本为11.8，而安装后的cuda为最新12.2版本，pytorch没法识别cuda。导致这一问题的主要原因在于两点：
-
-安装的NIVIDIA驱动版本过高，导致CUDA Tookit版本也过高，无法降级
-使用网络方式安装CUDA Tookit，安装之后得到的是最新版的CUDA Tookit，不是我想要的11.8版本
-
-接下来是安装过程：
-
-删除已安装的NIVIDIA驱动或CUDA Tookit
-su...
+                
+导入依赖的包
+from concurrent.futures import ProcessPoolExecutor, as_completed
+定义处理内容的函数，该函数要是全局函数，不能放在函数或者类里面函数的参数只有一个，可以用元组包装起来，然后再解包
+def process_record(args):
+    text &#x3D; args[0][&quot;text&quot;]
+    CONTENT &#x3D; args[1]
+    extract_info &#x3D; inference(text, model&#x3D;&quot;deepseek-chat&q...
             </div>
             <!-- read more -->
             <div class="abstract-post-meta">
                 <!-- date -->
-                <div class="abstract-date" title="Last updated: 2023/09/12">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2023/09/12</span>
+                <div class="abstract-date" title="Last updated: 2025/01/06">
+                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2025/01/06</span>
                 </div>
                 <!-- tags -->
                     <div class="abstract-tags" >
-        <a class="post-tag" href="javascript:void(0);" data-tags="NIVIDIA驱动">NIVIDIA驱动</a>
+        <a class="post-tag" href="javascript:void(0);" data-tags="python">python</a>
 </div>
 
             </div>
         </article>
         <div class="index-post-divider"></div>
     <!-- paginator  -->
+        <nav class="page-nav">
+            <a class="extend prev" rel="prev" href="/archives/2025/">&lt; PREV</a><a class="page-number" href="/archives/2025/">1</a><span class="page-number current">2</span>
+        </nav>
 </main>
 
                 <!-- profile -->
