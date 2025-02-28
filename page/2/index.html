@@ -409,6 +409,37 @@
                 <main class="main index-page">
             
         <article class="index-post">
+            <a class="abstract-title" href="/2023/09/12/ubuntu-shang-an-zhuang-nividia-qu-dong-he-cuda-tookit/">
+                <span class="abstract-title-text">ubuntu上安装NIVIDIA驱动和CUDA_Tookit</span>
+            </a>
+            <div class="abstract-content">
+                每一次安装NIVIDIA驱动或CUDA Tookit时，都要经过一番折腾，才能够安装成功，这里把过程记录一下，以便以后可以参考。
+本次安装遇到的最大问题是：pytorch所能支持的最高cuda版本为11.8，而安装后的cuda为最新12.2版本，pytorch没法识别cuda。导致这一问题的主要原因在于两点：
+
+安装的NIVIDIA驱动版本过高，导致CUDA Tookit版本也过高，无法降级
+使用网络方式安装CUDA Tookit，安装之后得到的是最新版的CUDA Tookit，不是我想要的11.8版本
+
+接下来是安装过程：
+
+删除已安装的NIVIDIA驱动或CUDA Tookit
+su...
+            </div>
+            <!-- read more -->
+            <div class="abstract-post-meta">
+                <!-- date -->
+                <div class="abstract-date" title="Last updated: 2023/09/12">
+                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2023/09/12</span>
+                </div>
+                <!-- tags -->
+                    <div class="abstract-tags" >
+        <a class="post-tag" href="javascript:void(0);" data-tags="NIVIDIA驱动">NIVIDIA驱动</a>
+</div>
+
+            </div>
+        </article>
+        <div class="index-post-divider"></div>
+            
+        <article class="index-post">
             <a class="abstract-title" href="/2023/07/23/zai-mac-shang-shi-yong-pybind11-shi-xian-c-yu-python-hu-tong-de-demo/">
                 <span class="abstract-title-text">在mac上使用pybind11实现c++与python互通的demo</span>
             </a>
@@ -787,34 +818,6 @@ google上网助手
             </div>
         </article>
         <div class="index-post-divider"></div>
-            
-        <article class="index-post">
-            <a class="abstract-title" href="/2021/08/13/chang-yong-shu-ju-ji-zheng-li/">
-                <span class="abstract-title-text">常用数据集整理</span>
-            </a>
-            <div class="abstract-content">
-                常用数据集整理前沿：所谓”巧妇难为无米之炊“，作为人工智能领域的学习者，免不了要跟数据打交道，有时候我们不得不耗费大量的精力来收集相关数据集。因此， 整理一些常用的数据集，以便不时之需。
-对话数据集nlp方向的生物医学
-Symcat’s database
-mz database
-dxy database
-
-
-            </div>
-            <!-- read more -->
-            <div class="abstract-post-meta">
-                <!-- date -->
-                <div class="abstract-date" title="Last updated: 2021/08/13">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2021/08/13</span>
-                </div>
-                <!-- tags -->
-                    <div class="abstract-tags" >
-        <a class="post-tag" href="javascript:void(0);" data-tags="机器学习">机器学习</a>
-</div>
-
-            </div>
-        </article>
-        <div class="index-post-divider"></div>
     <!-- paginator  -->
         <nav class="page-nav">
             <a class="extend prev" rel="prev" href="/">&lt; PREV</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/3/">NEXT &gt;</a>
@@ -923,15 +926,20 @@ dxy database
         
         
         
+        
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 44
+        Total : 45
         </div>
         <!-- search  -->
     </div>
     <div class="post-archive">
             <div class="archive-year"> 2025 </div>
             <ul class="year-list">
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/27</span>
+            <a class="archive-post-title" href="/2025/02/27/ai-jing-sai-ping-tai/">Ai竞赛平台</a>
+        </li>
         <li class="archive-post-item">
             <span class="archive-post-date">02/19</span>
             <a class="archive-post-title" href="/2025/02/19/python-ri-chang-kai-fa-za-ji/">python日常开发杂记</a>
@@ -1246,6 +1254,10 @@ dxy database
             <span class="sidebar-tag-name" data-tags="docker, doccano">
                 <span class="iconfont-archer">&#xe606;</span>
                 docker, doccano
+            </span>
+            <span class="sidebar-tag-name" data-tags="ai竞赛">
+                <span class="iconfont-archer">&#xe606;</span>
+                ai竞赛
             </span>
     </div>
     <div class="iconfont-archer sidebar-tags-empty">&#xe678;</div>

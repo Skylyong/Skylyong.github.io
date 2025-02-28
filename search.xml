@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>Ai竞赛平台</title>
+      <link href="2025/02/27/ai-jing-sai-ping-tai/"/>
+      <url>2025/02/27/ai-jing-sai-ping-tai/</url>
+      
+        <content type="html"><![CDATA[<p>最近对常见的Ai竞赛平台做了整理，记录如下：</p><ul><li>Kaggle:  <a href="https://www.kaggle.com/">https://www.kaggle.com/</a></li><li>AIcrowd: <a href="https://www.aicrowd.com/">https://www.aicrowd.com/</a></li><li>Codalab :  <a href="https://codalab.lisn.upsaclay.fr/">https://codalab.lisn.upsaclay.fr/</a></li><li>DrivenData: <a href="https://www.drivendata.org/">https://www.drivendata.org/</a></li><li>Grand Challenge: <a href="https://grand-challenge.org/">https://grand-challenge.org/</a></li><li>Topcoder:  <a href="https://www.topcoder.com/challenges">https://www.topcoder.com/challenges</a></li><li>Zindi: <a href="https://zindi.africa/">https://zindi.africa/</a></li><li>天池:  <a href="https://tianchi.aliyun.com/">https://tianchi.aliyun.com/</a></li><li>DataCastle: <a href="http://www.dcjingsai.com/">http://www.dcjingsai.com/</a></li><li>AI Studio:  <a href="https://aistudio.baidu.com/">https://aistudio.baidu.com/</a></li></ul><p>各赛事平台的特点汇总如下：</p><p><img src="https://raw.githubusercontent.com/Skylyong/i/main/20250228094452.png" alt="image-20250228094442500"></p><p>注： 上面的信息来自于大模型，但对给出的链接做了人工验证，其中除 Topcoder 平台页面显示不全以外，其他平台给出的链接地址均可以正常访问。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 总结 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> ai竞赛 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>python日常开发杂记</title>
       <link href="2025/02/19/python-ri-chang-kai-fa-za-ji/"/>
       <url>2025/02/19/python-ri-chang-kai-fa-za-ji/</url>

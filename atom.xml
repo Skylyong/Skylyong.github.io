@@ -6,7 +6,7 @@
   <link href="https://eggplant.wiki/atom.xml" rel="self"/>
   
   <link href="https://eggplant.wiki/"/>
-  <updated>2025-02-19T09:10:42.301Z</updated>
+  <updated>2025-02-28T01:47:05.140Z</updated>
   <id>https://eggplant.wiki/</id>
   
   <author>
@@ -15,6 +15,34 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Ai竞赛平台</title>
+    <link href="https://eggplant.wiki/2025/02/27/ai-jing-sai-ping-tai/"/>
+    <id>https://eggplant.wiki/2025/02/27/ai-jing-sai-ping-tai/</id>
+    <published>2025-02-27T15:18:38.000Z</published>
+    <updated>2025-02-28T01:47:05.140Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;最近对常见的Ai竞赛平台做了整理，记录如下：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Kaggle:  &lt;a href=&quot;https://www.kaggle.com/&quot;&gt;https://www.kaggle.com/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;AIcrowd: &lt;a</summary>
+        
+      
+    
+    
+    
+    <category term="总结" scheme="https://eggplant.wiki/categories/%E6%80%BB%E7%BB%93/"/>
+    
+    
+    <category term="ai竞赛" scheme="https://eggplant.wiki/tags/ai%E7%AB%9E%E8%B5%9B/"/>
+    
+  </entry>
   
   <entry>
     <title>python日常开发杂记</title>
@@ -502,35 +530,6 @@
     
     
     <category term="机器学习" scheme="https://eggplant.wiki/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>有用的资源</title>
-    <link href="https://eggplant.wiki/2021/09/19/you-yong-de-zi-yuan/"/>
-    <id>https://eggplant.wiki/2021/09/19/you-yong-de-zi-yuan/</id>
-    <published>2021-09-19T15:28:51.000Z</published>
-    <updated>2025-01-06T06:02:47.635Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;有用的资源&lt;/p&gt;
-&lt;!-- &lt;br&gt; --&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;&lt;a href=&quot;https://github.com/Skylyong/Skylyong.github.io/tree/main/files/paper-reading.pdf&quot;&gt;How to</summary>
-        
-      
-    
-    
-    
-    <category term="学习资料" scheme="https://eggplant.wiki/categories/%E5%AD%A6%E4%B9%A0%E8%B5%84%E6%96%99/"/>
-    
-    
-    <category term="资源" scheme="https://eggplant.wiki/tags/%E8%B5%84%E6%BA%90/"/>
     
   </entry>
   
