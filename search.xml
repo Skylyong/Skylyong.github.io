@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>基于编辑距离的文本层次聚类</title>
+      <link href="2025/03/06/ji-yu-bian-ji-ju-chi-de-wen-ben-ceng-ci-ju-lei/"/>
+      <url>2025/03/06/ji-yu-bian-ji-ju-chi-de-wen-ben-ceng-ci-ju-lei/</url>
+      
+        <content type="html"><![CDATA[<p>在自然语言处理（NLP）和数据清洗过程中，处理相似文本的聚类问题是一个常见的挑战。例如，在搜索日志、医学术语、客户查询等文本数据中，我们经常会遇到拼写相似或近似表达的词汇。为了更好地对这些数据进行分类和管理，我们可以使用 编辑距离（Levenshtein Distance） 结合 层次聚类（Hierarchical Clustering） 进行文本聚类。</p><p>本文介绍了一种基于 Python 的 编辑距离层次聚类 方法，并提供了一个完整的实现代码。该方法的核心思想是：</p><ul><li><p>计算编辑距离矩阵：通过 Levenshtein 距离衡量文本之间的相似性。</p></li><li><p>层次聚类：使用层次聚类，将相似的文本归类到相同的簇中。</p></li><li><p>排序和输出：按照聚类结果对数据进行排序，并将结果保存为 CSV 文件，便于后续分析。</p></li></ul><br>下面是实现代码:<pre class="line-numbers language-python" data-language="python"><code class="language-python">from scipy.cluster.hierarchy import linkage, fclusterfrom scipy.spatial.distance import pdist, squareformimport Levenshtein  # 用于计算编辑距离import numpy as npimport pandas as pdclass EditDistanceClustering:    def __init__(self, input_csv: str, output_csv: str, column_name: str, threshold: int &#x3D; 5):        &quot;&quot;&quot;        初始化类        :param input_csv: 输入CSV文件路径        :param output_csv: 输出CSV文件路径        :param column_name: 需要聚类的列名        :param threshold: 距离阈值，决定簇的划分        &quot;&quot;&quot;        self.input_csv: str &#x3D; input_csv        self.output_csv: str &#x3D; output_csv        self.column_name: str &#x3D; column_name        self.threshold: int &#x3D; threshold        self.df: pd.DataFrame | None &#x3D; None  # 初始化DataFrame变量        def read_csv(self) -&gt; None:        &quot;&quot;&quot;读取CSV文件到DataFrame中&quot;&quot;&quot;        self.df &#x3D; pd.read_csv(self.input_csv)        def lev_distance(self, s1: str, s2: str) -&gt; int:        &quot;&quot;&quot;        计算两个字符串之间的Levenshtein编辑距离        :param s1: 第一个字符串        :param s2: 第二个字符串        :return: 编辑距离        &quot;&quot;&quot;        return Levenshtein.distance(s1, s2)    def compute_edit_distance_matrix(self) -&gt; np.ndarray:        &quot;&quot;&quot;        计算字符串列表的编辑距离矩阵        :return: 计算得到的编辑距离矩阵（二维数组）        &quot;&quot;&quot;        # 获取指定列的所有字符串并转换为列表        strings: list[str] &#x3D; self.df[self.column_name].astype(str).tolist()        # 将字符串列表转换为NumPy数组，并调整为二维格式        strings_array: np.ndarray &#x3D; np.array(strings).reshape(-1, 1)        # 计算编辑距离矩阵        return squareform(pdist(strings_array, lambda u, v: self.lev_distance(u[0], v[0])))        def cluster_and_sort(self) -&gt; None:        &quot;&quot;&quot;        执行层次聚类，并根据聚类结果排序        &quot;&quot;&quot;        # 计算编辑距离矩阵        distance_matrix: np.ndarray &#x3D; self.compute_edit_distance_matrix()        # 使用层次聚类方法（Ward方法）进行聚类        linkage_matrix: np.ndarray &#x3D; linkage(distance_matrix, method&#x3D;&#39;ward&#39;)        # 根据设定的阈值进行聚类划分        clusters: np.ndarray &#x3D; fcluster(linkage_matrix, self.threshold, criterion&#x3D;&#39;distance&#39;)        # 将簇编号添加到DataFrame中        self.df[&#39;Cluster&#39;] &#x3D; clusters        # 按簇编号排序，并去掉Cluster列        self.df &#x3D; self.df.sort_values(by&#x3D;[&#39;Cluster&#39;]).drop(columns&#x3D;[&#39;Cluster&#39;])        def save_csv(self) -&gt; None:        &quot;&quot;&quot;将处理后的DataFrame保存回CSV文件&quot;&quot;&quot;        self.df.to_csv(self.output_csv, index&#x3D;False, encoding&#x3D;&#39;utf-8-sig&#39;)        def run(self) -&gt; None:        &quot;&quot;&quot;        运行完整的数据处理流程，包括读取CSV、聚类排序、保存CSV        &quot;&quot;&quot;        self.read_csv()        self.cluster_and_sort()        self.save_csv()# 示例用法if __name__ &#x3D;&#x3D; &quot;__main__&quot;:    # 指定输入和输出CSV文件路径以及需要聚类的列    clustering: EditDistanceClustering &#x3D; EditDistanceClustering(        &#39;data&#x2F;second_fine_grained_tasks_new.csv&#39;,         &#39;data&#x2F;second_fine_grained_tasks_new_sorted1.csv&#39;,         &#39;细粒度_任务相关查询&#39;    )    # 运行聚类流程    clustering.run()<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>]]></content>
+      
+      
+      <categories>
+          
+          <category> 自然语言处理 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 文本聚类 编辑距离 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Ai竞赛平台</title>
       <link href="2025/02/27/ai-jing-sai-ping-tai/"/>
       <url>2025/02/27/ai-jing-sai-ping-tai/</url>

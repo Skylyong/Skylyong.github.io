@@ -409,6 +409,35 @@
                 <main class="main index-page">
             
         <article class="index-post">
+            <a class="abstract-title" href="/2025/01/06/python-duo-jin-cheng-shi-li/">
+                <span class="abstract-title-text">python多进程示例</span>
+            </a>
+            <div class="abstract-content">
+                
+导入依赖的包
+from concurrent.futures import ProcessPoolExecutor, as_completed
+定义处理内容的函数，该函数要是全局函数，不能放在函数或者类里面函数的参数只有一个，可以用元组包装起来，然后再解包
+def process_record(args):
+    text &#x3D; args[0][&quot;text&quot;]
+    CONTENT &#x3D; args[1]
+    extract_info &#x3D; inference(text, model&#x3D;&quot;deepseek-chat&q...
+            </div>
+            <!-- read more -->
+            <div class="abstract-post-meta">
+                <!-- date -->
+                <div class="abstract-date" title="Last updated: 2025/01/06">
+                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2025/01/06</span>
+                </div>
+                <!-- tags -->
+                    <div class="abstract-tags" >
+        <a class="post-tag" href="javascript:void(0);" data-tags="python">python</a>
+</div>
+
+            </div>
+        </article>
+        <div class="index-post-divider"></div>
+            
+        <article class="index-post">
             <a class="abstract-title" href="/2023/09/12/ubuntu-shang-an-zhuang-nividia-qu-dong-he-cuda-tookit/">
                 <span class="abstract-title-text">ubuntu上安装NIVIDIA驱动和CUDA_Tookit</span>
             </a>
@@ -780,44 +809,6 @@ Mac系统制作win10启动U盘
             </div>
         </article>
         <div class="index-post-divider"></div>
-            
-        <article class="index-post">
-            <a class="abstract-title" href="/2021/08/13/google-fang-wen-zhu-shou-an-zhuang/">
-                <span class="abstract-title-text">Google访问助手安装</span>
-            </a>
-            <div class="abstract-content">
-                Google访问助手安装今天用图书馆电脑的时候发现不能访问google，非常不方便搜索文献，因此研究了一下google上网助手，记录一下。
-
-IGG谷歌访问助手
-该助手具有如下特点：
-
-免费提供谷歌搜索
-微软onedrive加速
-不包含YouTube，谷歌网盘
-
-
-
-google上网助手
-该助手具备IGG谷歌访问助手的特点，但是安装的时候需要登录Chrome商店才能够下载，如果没有KX上网，建议读者选择安装“IGG谷歌访问助手”方式访问谷歌。
-
-
-
-
-            </div>
-            <!-- read more -->
-            <div class="abstract-post-meta">
-                <!-- date -->
-                <div class="abstract-date" title="Last updated: 2021/08/13">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2021/08/13</span>
-                </div>
-                <!-- tags -->
-                    <div class="abstract-tags" >
-        <a class="post-tag" href="javascript:void(0);" data-tags="Google访问助手">Google访问助手</a>
-</div>
-
-            </div>
-        </article>
-        <div class="index-post-divider"></div>
     <!-- paginator  -->
         <nav class="page-nav">
             <a class="extend prev" rel="prev" href="/">&lt; PREV</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/3/">NEXT &gt;</a>
@@ -927,15 +918,20 @@ google上网助手
         
         
         
+        
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 45
+        Total : 46
         </div>
         <!-- search  -->
     </div>
     <div class="post-archive">
             <div class="archive-year"> 2025 </div>
             <ul class="year-list">
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/06</span>
+            <a class="archive-post-title" href="/2025/03/06/ji-yu-bian-ji-ju-chi-de-wen-ben-ceng-ci-ju-lei/">基于编辑距离的文本层次聚类</a>
+        </li>
         <li class="archive-post-item">
             <span class="archive-post-date">02/27</span>
             <a class="archive-post-title" href="/2025/02/27/ai-jing-sai-ping-tai/">Ai竞赛平台</a>
@@ -1259,6 +1255,10 @@ google上网助手
                 <span class="iconfont-archer">&#xe606;</span>
                 ai竞赛
             </span>
+            <span class="sidebar-tag-name" data-tags="文本聚类 编辑距离">
+                <span class="iconfont-archer">&#xe606;</span>
+                文本聚类 编辑距离
+            </span>
     </div>
     <div class="iconfont-archer sidebar-tags-empty">&#xe678;</div>
     <div class="tag-load-fail" style="display: none; color: #ccc; font-size: 0.6rem;">
@@ -1336,6 +1336,10 @@ google上网助手
         <span class="sidebar-category-name" data-categories="机器学习">
             <span class="iconfont-archer">&#xe60a;</span>
             机器学习
+        </span>
+        <span class="sidebar-category-name" data-categories="自然语言处理">
+            <span class="iconfont-archer">&#xe60a;</span>
+            自然语言处理
         </span>
     </div>
     <div class="iconfont-archer sidebar-categories-empty">&#xe678;</div>

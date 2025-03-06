@@ -6,7 +6,7 @@
   <link href="https://eggplant.wiki/atom.xml" rel="self"/>
   
   <link href="https://eggplant.wiki/"/>
-  <updated>2025-02-28T01:47:05.140Z</updated>
+  <updated>2025-03-06T11:26:56.632Z</updated>
   <id>https://eggplant.wiki/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>基于编辑距离的文本层次聚类</title>
+    <link href="https://eggplant.wiki/2025/03/06/ji-yu-bian-ji-ju-chi-de-wen-ben-ceng-ci-ju-lei/"/>
+    <id>https://eggplant.wiki/2025/03/06/ji-yu-bian-ji-ju-chi-de-wen-ben-ceng-ci-ju-lei/</id>
+    <published>2025-03-06T11:23:45.000Z</published>
+    <updated>2025-03-06T11:26:56.632Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;在自然语言处理（NLP）和数据清洗过程中，处理相似文本的聚类问题是一个常见的挑战。例如，在搜索日志、医学术语、客户查询等文本数据中，我们经常会遇到拼写相似或近似表达的词汇。为了更好地对这些数据进行分类和管理，我们可以使用 编辑距离（Levenshtein</summary>
+        
+      
+    
+    
+    
+    <category term="自然语言处理" scheme="https://eggplant.wiki/categories/%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80%E5%A4%84%E7%90%86/"/>
+    
+    
+    <category term="文本聚类 编辑距离" scheme="https://eggplant.wiki/tags/%E6%96%87%E6%9C%AC%E8%81%9A%E7%B1%BB-%E7%BC%96%E8%BE%91%E8%B7%9D%E7%A6%BB/"/>
+    
+  </entry>
   
   <entry>
     <title>Ai竞赛平台</title>
@@ -501,35 +526,6 @@
     
     
     <category term="微信" scheme="https://eggplant.wiki/tags/%E5%BE%AE%E4%BF%A1/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>机器学习参考资料</title>
-    <link href="https://eggplant.wiki/2021/09/19/ji-qi-xue-xi-can-kao-zi-liao/"/>
-    <id>https://eggplant.wiki/2021/09/19/ji-qi-xue-xi-can-kao-zi-liao/</id>
-    <published>2021-09-19T15:59:09.000Z</published>
-    <updated>2021-10-28T13:50:44.951Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;机器学习参考资料：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;机器学习参考书籍：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;《神经网络与深度学习》书籍及PPT：&lt;a</summary>
-        
-      
-    
-    
-    
-    <category term="学习资料" scheme="https://eggplant.wiki/categories/%E5%AD%A6%E4%B9%A0%E8%B5%84%E6%96%99/"/>
-    
-    
-    <category term="机器学习" scheme="https://eggplant.wiki/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
     
   </entry>
   

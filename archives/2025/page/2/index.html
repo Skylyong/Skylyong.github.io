@@ -402,6 +402,32 @@
                 <main class="main index-page">
             
         <article class="index-post">
+            <a class="abstract-title" href="/2025/01/07/sentence-transformers-sampler-bug-zhi-set-bu-yi-ding-shi-wu-xu-de/">
+                <span class="abstract-title-text">sentence-transformers sampler bug 之 set 不一定是无序的</span>
+            </a>
+            <div class="abstract-content">
+                前言问  题： 最近准备训练一个基于对比学习的模型， 用 huggface 的 trainer 训练器，在官方给的源代码中，有一个现成的 sampler 用于数据采样，我需要改写这个 sampler 以保证能够用于自己的数据上。
+实验改完之后，发现采样出来的 indices 竟然是有序的，实际在一个批次中需要打乱样本的顺序，仔细阅读了官方给的源码，发现问题出在如下图所示的 第187行。这里先用 torch.randperm生成了一个乱序的下标，然后转换为set。按理说set是无序的，转换之后也是无序的，看起来很正确。
+
+当我做了小测试后，发现并不是：
+从上面的结果，可以看到：torch....
+            </div>
+            <!-- read more -->
+            <div class="abstract-post-meta">
+                <!-- date -->
+                <div class="abstract-date" title="Last updated: 2025/01/07">
+                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2025/01/07</span>
+                </div>
+                <!-- tags -->
+                    <div class="abstract-tags" >
+        <a class="post-tag" href="javascript:void(0);" data-tags="python">python</a>
+</div>
+
+            </div>
+        </article>
+        <div class="index-post-divider"></div>
+            
+        <article class="index-post">
             <a class="abstract-title" href="/2025/01/06/matplotlib-xian-shi-zhong-wen/">
                 <span class="abstract-title-text">matplotlib 设置显示中文</span>
             </a>
@@ -544,15 +570,20 @@ def process_record(args):
         
         
         
+        
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 45
+        Total : 46
         </div>
         <!-- search  -->
     </div>
     <div class="post-archive">
             <div class="archive-year"> 2025 </div>
             <ul class="year-list">
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/06</span>
+            <a class="archive-post-title" href="/2025/03/06/ji-yu-bian-ji-ju-chi-de-wen-ben-ceng-ci-ju-lei/">基于编辑距离的文本层次聚类</a>
+        </li>
         <li class="archive-post-item">
             <span class="archive-post-date">02/27</span>
             <a class="archive-post-title" href="/2025/02/27/ai-jing-sai-ping-tai/">Ai竞赛平台</a>
@@ -876,6 +907,10 @@ def process_record(args):
                 <span class="iconfont-archer">&#xe606;</span>
                 ai竞赛
             </span>
+            <span class="sidebar-tag-name" data-tags="文本聚类 编辑距离">
+                <span class="iconfont-archer">&#xe606;</span>
+                文本聚类 编辑距离
+            </span>
     </div>
     <div class="iconfont-archer sidebar-tags-empty">&#xe678;</div>
     <div class="tag-load-fail" style="display: none; color: #ccc; font-size: 0.6rem;">
@@ -953,6 +988,10 @@ def process_record(args):
         <span class="sidebar-category-name" data-categories="机器学习">
             <span class="iconfont-archer">&#xe60a;</span>
             机器学习
+        </span>
+        <span class="sidebar-category-name" data-categories="自然语言处理">
+            <span class="iconfont-archer">&#xe60a;</span>
+            自然语言处理
         </span>
     </div>
     <div class="iconfont-archer sidebar-categories-empty">&#xe678;</div>

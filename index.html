@@ -409,6 +409,33 @@
                 <main class="main index-page">
             
         <article class="index-post">
+            <a class="abstract-title" href="/2025/03/06/ji-yu-bian-ji-ju-chi-de-wen-ben-ceng-ci-ju-lei/">
+                <span class="abstract-title-text">基于编辑距离的文本层次聚类</span>
+            </a>
+            <div class="abstract-content">
+                在自然语言处理（NLP）和数据清洗过程中，处理相似文本的聚类问题是一个常见的挑战。例如，在搜索日志、医学术语、客户查询等文本数据中，我们经常会遇到拼写相似或近似表达的词汇。为了更好地对这些数据进行分类和管理，我们可以使用 编辑距离（Levenshtein Distance） 结合 层次聚类（Hierarchical Clustering） 进行文本聚类。
+本文介绍了一种基于 Python 的 编辑距离层次聚类 方法，并提供了一个完整的实现代码。该方法的核心思想是：
+
+计算编辑距离矩阵：通过 Levenshtein 距离衡量文本之间的相似性。
+
+层次聚类：使用层次聚类，将相似的文本归类到相...
+            </div>
+            <!-- read more -->
+            <div class="abstract-post-meta">
+                <!-- date -->
+                <div class="abstract-date" title="Last updated: 2025/03/06">
+                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2025/03/06</span>
+                </div>
+                <!-- tags -->
+                    <div class="abstract-tags" >
+        <a class="post-tag" href="javascript:void(0);" data-tags="文本聚类 编辑距离">文本聚类 编辑距离</a>
+</div>
+
+            </div>
+        </article>
+        <div class="index-post-divider"></div>
+            
+        <article class="index-post">
             <a class="abstract-title" href="/2025/02/27/ai-jing-sai-ping-tai/">
                 <span class="abstract-title-text">Ai竞赛平台</span>
             </a>
@@ -725,35 +752,6 @@ import os...
             </div>
         </article>
         <div class="index-post-divider"></div>
-            
-        <article class="index-post">
-            <a class="abstract-title" href="/2025/01/06/python-duo-jin-cheng-shi-li/">
-                <span class="abstract-title-text">python多进程示例</span>
-            </a>
-            <div class="abstract-content">
-                
-导入依赖的包
-from concurrent.futures import ProcessPoolExecutor, as_completed
-定义处理内容的函数，该函数要是全局函数，不能放在函数或者类里面函数的参数只有一个，可以用元组包装起来，然后再解包
-def process_record(args):
-    text &#x3D; args[0][&quot;text&quot;]
-    CONTENT &#x3D; args[1]
-    extract_info &#x3D; inference(text, model&#x3D;&quot;deepseek-chat&q...
-            </div>
-            <!-- read more -->
-            <div class="abstract-post-meta">
-                <!-- date -->
-                <div class="abstract-date" title="Last updated: 2025/01/06">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2025/01/06</span>
-                </div>
-                <!-- tags -->
-                    <div class="abstract-tags" >
-        <a class="post-tag" href="javascript:void(0);" data-tags="python">python</a>
-</div>
-
-            </div>
-        </article>
-        <div class="index-post-divider"></div>
     <!-- paginator  -->
         <nav class="page-nav">
             <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/">NEXT &gt;</a>
@@ -863,15 +861,20 @@ def process_record(args):
         
         
         
+        
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 45
+        Total : 46
         </div>
         <!-- search  -->
     </div>
     <div class="post-archive">
             <div class="archive-year"> 2025 </div>
             <ul class="year-list">
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/06</span>
+            <a class="archive-post-title" href="/2025/03/06/ji-yu-bian-ji-ju-chi-de-wen-ben-ceng-ci-ju-lei/">基于编辑距离的文本层次聚类</a>
+        </li>
         <li class="archive-post-item">
             <span class="archive-post-date">02/27</span>
             <a class="archive-post-title" href="/2025/02/27/ai-jing-sai-ping-tai/">Ai竞赛平台</a>
@@ -1195,6 +1198,10 @@ def process_record(args):
                 <span class="iconfont-archer">&#xe606;</span>
                 ai竞赛
             </span>
+            <span class="sidebar-tag-name" data-tags="文本聚类 编辑距离">
+                <span class="iconfont-archer">&#xe606;</span>
+                文本聚类 编辑距离
+            </span>
     </div>
     <div class="iconfont-archer sidebar-tags-empty">&#xe678;</div>
     <div class="tag-load-fail" style="display: none; color: #ccc; font-size: 0.6rem;">
@@ -1272,6 +1279,10 @@ def process_record(args):
         <span class="sidebar-category-name" data-categories="机器学习">
             <span class="iconfont-archer">&#xe60a;</span>
             机器学习
+        </span>
+        <span class="sidebar-category-name" data-categories="自然语言处理">
+            <span class="iconfont-archer">&#xe60a;</span>
+            自然语言处理
         </span>
     </div>
     <div class="iconfont-archer sidebar-categories-empty">&#xe678;</div>
