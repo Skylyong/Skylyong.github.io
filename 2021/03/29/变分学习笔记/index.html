@@ -1,0 +1,1166 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <!-- title -->
+<!-- keywords -->
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="author" content="茄子">
+    <meta name="renderer" content="webkit">
+    <meta name="copyright" content="茄子">
+        <meta name="keywords" content="hexo,hexo-theme,hexo-blog">
+    <meta name="description" content="Keep go on">
+    <meta name="description" content="变分推断应用举例 文章LAD题目分析">
+<meta property="og:type" content="article">
+<meta property="og:title" content="变分学习笔记">
+<meta property="og:url" content="https://eggplant.wiki/2021/03/29/%E5%8F%98%E5%88%86%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/index.html">
+<meta property="og:site_name" content="Lyong&#39;s blog">
+<meta property="og:description" content="变分推断应用举例 文章LAD题目分析">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://raw.githubusercontent.com/Skylyong/i/main/20210325161624.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Skylyong/i/main/20210325162352.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Skylyong/i/main/20210325162622.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Skylyong/i/main/20210325162730.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Skylyong/i/main/20210325164141.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Skylyong/i/main/20210325210910.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Skylyong/i/main/20210325212515.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Skylyong/i/main/20210325214048.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Skylyong/i/main/20210325214709.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Skylyong/i/main/20210325223324.png">
+<meta property="article:published_time" content="2021-03-29T06:35:48.000Z">
+<meta property="article:modified_time" content="2021-03-30T19:25:41.000Z">
+<meta property="article:author" content="茄子">
+<meta property="article:tag" content="机器学习">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/Skylyong/i/main/20210325161624.png">
+    <meta http-equiv="Cache-control" content="no-cache">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <link rel="icon" href="/assets/favicon.ico">
+    <title>变分学习笔记 · 茄子的个人空间</title>
+    <!-- /*! loadCSS. [c]2017 Filament Group, Inc. MIT License */
+/* This file is meant as a standalone workflow for
+- testing support for link[rel=preload]
+- enabling async CSS loading in browsers that do not support rel=preload
+- applying rel preload css once loaded, whether supported or not.
+*/ -->
+<script>
+    (function (w) {
+        'use strict'
+        // rel=preload support test
+        if (!w.loadCSS) {
+            w.loadCSS = function () {}
+        }
+        // define on the loadCSS obj
+        var rp = (loadCSS.relpreload = {})
+        // rel=preload feature support test
+        // runs once and returns a function for compat purposes
+        rp.support = (function () {
+            var ret
+            try {
+                ret = w.document.createElement('link').relList.supports('preload')
+            } catch (e) {
+                ret = false
+            }
+            return function () {
+                return ret
+            }
+        })()
+
+        // if preload isn't supported, get an asynchronous load by using a non-matching media attribute
+        // then change that media back to its intended value on load
+        rp.bindMediaToggle = function (link) {
+            // remember existing media attr for ultimate state, or default to 'all'
+            var finalMedia = link.media || 'all'
+
+            function enableStylesheet() {
+                link.media = finalMedia
+            }
+
+            // bind load handlers to enable media
+            if (link.addEventListener) {
+                link.addEventListener('load', enableStylesheet)
+            } else if (link.attachEvent) {
+                link.attachEvent('onload', enableStylesheet)
+            }
+
+            // Set rel and non-applicable media type to start an async request
+            // note: timeout allows this to happen async to let rendering continue in IE
+            setTimeout(function () {
+                link.rel = 'stylesheet'
+                link.media = 'only x'
+            })
+            // also enable media after 3 seconds,
+            // which will catch very old browsers (android 2.x, old firefox) that don't support onload on link
+            setTimeout(enableStylesheet, 3000)
+        }
+
+        // loop through link elements in DOM
+        rp.poly = function () {
+            // double check this to prevent external calls from running
+            if (rp.support()) {
+                return
+            }
+            var links = w.document.getElementsByTagName('link')
+            for (var i = 0; i < links.length; i++) {
+                var link = links[i]
+                // qualify links to those with rel=preload and as=style attrs
+                if (
+                    link.rel === 'preload' &&
+                    link.getAttribute('as') === 'style' &&
+                    !link.getAttribute('data-loadcss')
+                ) {
+                    // prevent rerunning on link
+                    link.setAttribute('data-loadcss', true)
+                    // bind listeners to toggle media back
+                    rp.bindMediaToggle(link)
+                }
+            }
+        }
+
+        // if unsupported, run the polyfill
+        if (!rp.support()) {
+            // run once at least
+            rp.poly()
+
+            // rerun poly on an interval until onload
+            var run = w.setInterval(rp.poly, 500)
+            if (w.addEventListener) {
+                w.addEventListener('load', function () {
+                    rp.poly()
+                    w.clearInterval(run)
+                })
+            } else if (w.attachEvent) {
+                w.attachEvent('onload', function () {
+                    rp.poly()
+                    w.clearInterval(run)
+                })
+            }
+        }
+
+        // commonjs
+        if (typeof exports !== 'undefined') {
+            exports.loadCSS = loadCSS
+        } else {
+            w.loadCSS = loadCSS
+        }
+    })(typeof global !== 'undefined' ? global : this)
+</script>
+
+    <style type="text/css">
+    @font-face {
+        font-family: 'Oswald-Regular';
+        src: url("/font/Oswald-Regular.ttf");
+    }
+
+    body {
+        margin: 0;
+    }
+
+    header,
+    footer,
+    .footer-fixed-btn,
+    .sidebar,
+    .container,
+    .site-intro-meta,
+    .toc-wrapper {
+        display: none;
+    }
+
+    .site-intro {
+        position: relative;
+        z-index: 3;
+        width: 100%;
+        /* height: 50vh; */
+        overflow: hidden;
+    }
+
+    .site-intro-placeholder {
+        position: absolute;
+        z-index: -2;
+        top: 0;
+        left: 0;
+        width: calc(100% + 300px);
+        height: 100%;
+        background: repeating-linear-gradient(
+            -45deg,
+            #444 0,
+            #444 80px,
+            #333 80px,
+            #333 160px
+        );
+        background-position: center center;
+        transform: translate3d(-226px, 0, 0);
+        animation: gradient-move 2.5s ease-out 0s infinite;
+    }
+
+    @keyframes gradient-move {
+        0% {
+            transform: translate3d(-226px, 0, 0);
+        }
+        100% {
+            transform: translate3d(0, 0, 0);
+        }
+    }
+</style>
+
+    <link id="stylesheet-fancybox" rel="preload" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.36/dist/fancybox/fancybox.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <link id="stylesheet-base" rel="preload" href="/css/style.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <link id="stylesheet-mobile" rel="preload" href="/css/mobile.css" as="style" onload="this.onload=null;this.rel='stylesheet';this.media='screen and (max-width: 960px)'">
+    <link id="stylesheet-theme-dark" rel="preload" href="/css/dark.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" as="script">
+    <link rel="preload" href="/scripts/main.js" as="script">
+    <link rel="preload" href="/font/Oswald-Regular.ttf" as="font" crossorigin>
+    <link rel="preload" href="https://at.alicdn.com/t/font_327081_1dta1rlogw17zaor.woff" as="font" crossorigin>
+    <!-- algolia -->
+        <script>
+            var hits = JSON.parse('{"per_page":10}')
+            var labels = JSON.parse('{"input_placeholder":"Search for Posts","hits_empty":"我们没有找到任何搜索结果: ${query}","hits_stats":"找到${hits}条结果 （用时 ${time} ms）"}')
+
+            var algolia = {
+                applicationID: '',
+                apiKey: '2bcb8a706f5955c9f74cea13e540fb1b',
+                indexName: 'my-hexo-blog',
+                hits: hits,
+                labels: labels
+            }
+        </script>
+    <!-- 百度统计  -->
+    <!-- 谷歌统计  -->
+    <!-- Google tag (gtag.js) -->
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+    <script type="text/javascript">
+        if (typeof window.$ == undefined) {
+            console.warn('jquery load from jsdelivr failed, will load local script')
+            document.write('<script src="/lib/jquery.min.js" />')
+        }
+    </script>
+        <body class="post-body">
+        <!-- header -->
+        <header class="header header-mobile">
+    <!-- top read progress line -->
+    <div class="header-element">
+        <div class="read-progress"></div>
+    </div>
+    <!-- sidebar menu button -->
+    <div class="header-element">
+        <div class="header-sidebar-menu">
+            <div style="padding-left: 1px;">&#xe775;</div>
+        </div>
+    </div>
+    <!-- header actions -->
+    <div class="header-actions">
+        <!-- theme mode switch button -->
+        <span class="header-theme-btn header-element">
+            <i class="fas fa-adjust"></i>
+        </span>
+        <!-- back to home page text -->
+        <span class="home-link header-element">
+            <a href="/">茄子的个人空间</a>
+        </span>
+    </div>
+    <!-- toggle banner -->
+    <div class="banner">
+        <div class="blog-title header-element">
+            <a href="/">茄子的个人空间</a>
+        </div>
+        <div class="post-title header-element">
+            <a href="#" class="post-name">变分学习笔记</a>
+        </div>
+    </div>
+</header>
+
+        <!-- fixed footer -->
+        <footer class="footer-fixed">
+    <!-- donate button -->
+    <div class="donate-popup donate-popup--hidden">
+    <div class="donate-popup__title">Buy Me A Coffee</div>
+    <div class="donate-popup__content">
+        <div class="donate-popup__content-description">谢谢你的鼓励和支持！</div>
+        <img
+            class="donate-popup__content-qrCode"
+            title="Wechat"
+            alt="Wechat"
+            src="/assets/donate-wechat.png"
+        ></img>
+        <img
+            class="donate-popup__content-qrCode"
+            title="Alipay"
+            alt="Alipay"
+            src="/assets/donate-alipay.png"
+        ></img>
+    </div>
+</div>
+
+    <div
+        title="Donate to the author"
+        class="footer-fixed-btn footer-fixed-btn--hidden donate-btn"
+    >
+        <i class="fas fa-donate"></i>
+    </div>
+
+    <!-- back to top button -->
+    <div class="footer-fixed-btn footer-fixed-btn--hidden back-top">
+        <div>&#xe639;</div>
+    </div>
+</footer>
+
+        <!-- wrapper -->
+        <div class="wrapper">
+            <div class="site-intro" style="    height:50vh;
+">
+    <!-- 主页  -->
+    <!-- 404页  -->
+    <div class="site-intro-placeholder"></div>
+    <div class="site-intro-img" style="background-image: url(/intro/post-bg.jpg)"></div>
+    <div class="site-intro-meta">
+        <!-- 标题  -->
+        <h1 class="intro-title">
+            <!-- 主页  -->
+                变分学习笔记
+            <!-- 404 -->
+        </h1>
+        <!-- 副标题 -->
+        <p class="intro-subtitle">
+            <!-- 主页副标题  -->
+            <!-- 404 -->
+        </p>
+        <!-- 文章页 meta -->
+            <div class="post-intros">
+                <!-- 文章页标签  -->
+                    <div class="post-intro-tags" >
+        <a class="post-tag" href="javascript:void(0);" data-tags="机器学习">机器学习</a>
+</div>
+
+                <!-- 文章字数统计 -->
+                    <div class="post-intro-read">
+                        <span>字数统计: <span class="post-count word-count">507</span>阅读时长: <span class="post-count reading-time">1 min</span></span>
+                    </div>
+                <div class="post-intro-meta">
+                    <!-- 撰写日期 -->
+                    <span class="iconfont-archer post-intro-calander">&#xe676;</span>
+                    <span class="post-intro-time">2021/03/29</span>
+                    <!-- busuanzi -->
+                        <span id="busuanzi_container_page_pv" class="busuanzi-pv">
+                            <span class="iconfont-archer post-intro-busuanzi">&#xe602;</span>
+                            <span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    <!-- 文章分享 -->
+                    <span class="share-wrapper">
+                        <span class="iconfont-archer share-icon">&#xe71d;</span>
+                        <span class="share-text">Share</span>
+                        <ul class="share-list">
+                            <li class="iconfont-archer share-qr" data-type="qr">&#xe75b;
+                                <div class="share-qrcode"></div>
+                            </li>
+                            <li class="iconfont-archer" data-type="weibo">&#xe619;</li>
+                            <li class="iconfont-archer" data-type="qzone">&#xe62e;</li>
+                            <li class="iconfont-archer" data-type="twitter">&#xe634;</li>
+                            <li class="iconfont-archer" data-type="facebook">&#xe67a;</li>
+                        </ul>
+                    </span>
+                </div>
+            </div>
+    </div>
+</div>
+
+            <script>
+  // get user agent
+  function getBrowserVersions() {
+    var u = window.navigator.userAgent
+    return {
+      userAgent: u,
+      trident: u.indexOf('Trident') > -1, //IE内核
+      presto: u.indexOf('Presto') > -1, //opera内核
+      webKit: u.indexOf('AppleWebKit') > -1, //苹果、谷歌内核
+      gecko: u.indexOf('Gecko') > -1 && u.indexOf('KHTML') == -1, //火狐内核
+      mobile: !!u.match(/AppleWebKit.*Mobile.*/), //是否为移动终端
+      ios: !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/), //ios终端
+      android: u.indexOf('Android') > -1 || u.indexOf('Linux') > -1, //android终端或者uc浏览器
+      iPhone: u.indexOf('iPhone') > -1 || u.indexOf('Mac') > -1, //是否为iPhone或者安卓QQ浏览器
+      iPad: u.indexOf('iPad') > -1, //是否为iPad
+      webApp: u.indexOf('Safari') == -1, //是否为web应用程序，没有头部与底部
+      weixin: u.indexOf('MicroMessenger') == -1, //是否为微信浏览器
+      uc: u.indexOf('UCBrowser') > -1, //是否为android下的UC浏览器
+    }
+  }
+  var browser = {
+    versions: getBrowserVersions(),
+  }
+  console.log('userAgent: ' + browser.versions.userAgent)
+
+  // callback
+  function fontLoaded() {
+    console.log('font loaded')
+    if (document.getElementsByClassName('site-intro-meta')) {
+      document
+        .getElementsByClassName('intro-title')[0]
+        .classList.add('intro-fade-in')
+      document
+        .getElementsByClassName('intro-subtitle')[0]
+        .classList.add('intro-fade-in')
+      var postIntros = document.getElementsByClassName('post-intros')[0]
+      if (postIntros) {
+        postIntros.classList.add('post-fade-in')
+      }
+    }
+  }
+
+  // UC不支持跨域，所以直接显示
+  function asyncCb() {
+    if (browser.versions.uc) {
+      console.log('UCBrowser')
+      fontLoaded()
+    } else {
+      WebFont.load({
+        custom: {
+          families: ['Oswald-Regular'],
+        },
+        loading: function () {
+          // 所有字体开始加载
+          // console.log('font loading');
+        },
+        active: function () {
+          // 所有字体已渲染
+          fontLoaded()
+        },
+        inactive: function () {
+          // 字体预加载失败，无效字体或浏览器不支持加载
+          console.log('inactive: timeout')
+          fontLoaded()
+        },
+        timeout: 5000, // Set the timeout to two seconds
+      })
+    }
+  }
+
+  function asyncErr() {
+    console.warn('script load from CDN failed, will load local script')
+  }
+
+  // load webfont-loader async, and add callback function
+  function async(u, cb, err) {
+    var d = document,
+      t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0]
+    o.src = u
+    if (cb) {
+      o.addEventListener(
+        'load',
+        function (e) {
+          cb(null, e)
+        },
+        false
+      )
+    }
+    if (err) {
+      o.addEventListener(
+        'error',
+        function (e) {
+          err(null, e)
+        },
+        false
+      )
+    }
+    s.parentNode.insertBefore(o, s)
+  }
+
+  var asyncLoadWithFallBack = function (arr, success, reject) {
+    var currReject = function () {
+      reject()
+      arr.shift()
+      if (arr.length) async(arr[0], success, currReject)
+    }
+
+    async(arr[0], success, currReject)
+  }
+
+  asyncLoadWithFallBack(
+    [
+      'https://cdn.jsdelivr.net/npm/webfontloader@1.6.28/webfontloader.min.js',
+      'https://cdn.bootcss.com/webfont/1.6.28/webfontloader.js',
+      "/lib/webfontloader.min.js",
+    ],
+    asyncCb,
+    asyncErr
+  )
+</script>
+
+            <img class="loading" src="/assets/loading.svg" style="display: block; margin: 6rem auto 0 auto; width: 6rem; height: 6rem;" alt="loading">
+            <div class="container container-unloaded">
+                <main class="main post-page">
+    <article class="article-entry">
+        <h1 id="变分推断"><a href="#变分推断" class="headerlink" title="变分推断"></a>变分推断</h1><h3 id="应用举例"><a href="#应用举例" class="headerlink" title="应用举例"></a>应用举例</h3><ul>
+<li><p>文章LAD题目分析</p>
+<span id="more"></span>
+<p>对文本进行自动分析，然后自动从中找出topic</p>
+<img src="https://raw.githubusercontent.com/Skylyong/i/main/20210325161624.png" style="zoom:50%;" /></li>
+<li><p>交通数据分析</p>
+<p>美国湾区出租车数据分析，用变分推断的方法可以在一台笔记本电脑上面完成大量数据的计算</p>
+<img src="https://raw.githubusercontent.com/Skylyong/i/main/20210325162352.png" style="zoom:50%;" /></li>
+</ul>
+<h3 id="贝叶斯推断概述"><a href="#贝叶斯推断概述" class="headerlink" title="贝叶斯推断概述"></a>贝叶斯推断概述</h3><h4 id="目标优缺点"><a href="#目标优缺点" class="headerlink" title="目标优缺点"></a>目标优缺点</h4><p><img src="https://raw.githubusercontent.com/Skylyong/i/main/20210325162622.png"></p>
+<h4 id="Roadmap"><a href="#Roadmap" class="headerlink" title="Roadmap"></a>Roadmap</h4><img src="https://raw.githubusercontent.com/Skylyong/i/main/20210325162730.png" style="zoom:67%;" />
+
+<blockquote>
+<p>接下来主要讲解变分贝叶斯方法，变分贝叶斯方法是近似贝叶斯推断的一大类方法，变分贝叶斯方法又有很多子类，Mean-field变分推断是其中比较有代表性的一类。接下来结合讲解的方法讲三个例子：univariate Gaussian、Mixture of Gaussians和LDA</p>
+</blockquote>
+<h3 id="贝叶斯推断"><a href="#贝叶斯推断" class="headerlink" title="贝叶斯推断"></a><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1Qf4y1e7jN?from=search&seid=14715651649240686105">贝叶斯推断</a></h3> <img src="https://raw.githubusercontent.com/Skylyong/i/main/20210325164141.png" style="zoom:67%;" />
+
+<blockquote>
+<p>Data是观测变量，Parameters是模型的参数，通过对观测变量$x$取值的观测，我们可以更新参数$z$, 这里$p(x) = \int_{z}^{}{p(x,z)dz}$，实际应用中$z$是一个高维的分布，很难计算$p(z|x)$</p>
+</blockquote>
+<h3 id="近似贝叶斯推断"><a href="#近似贝叶斯推断" class="headerlink" title="近似贝叶斯推断_"></a><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1a5411H7eW?from=search&seid=14715651649240686105">近似贝叶斯推断</a>_</h3><p><img src="https://raw.githubusercontent.com/Skylyong/i/main/20210325210910.png"></p>
+<blockquote>
+<p>直接计算$p(z|x)$复杂度很高很难，然后就有了近似计算（推断）。常用的近似计算有：MCMC方法和基于优化的方法，MCMC方法虽然精度高但是数据量大时计算很慢，基于随机梯度的优化方法可以使用并行加速，因此可以大大的加速计算速度。<br>基于随机梯度优化方法的思路为：找到一个简单的分布$q^*(z) \in Q$来近似p(z|x), 目标$q^*(z)$应该是$Q$中，与$p(z|x)$某种距离最小的那个。<br><img src="https://raw.githubusercontent.com/Skylyong/i/main/20210325212515.png"><br>为什么要用KL散步来度量两个分布的距离呢？<br>KL满足可导和凸性，使得它的计算更快；<br>我们没法通过上式求得$q^*(z)$，需要通过下面的转换把优化KL最小问题进行转换为求$q(z)$使得ELBO最大的问题.<br><img src="https://raw.githubusercontent.com/Skylyong/i/main/20210325214048.png"></p>
+</blockquote>
+<p><img src="https://raw.githubusercontent.com/Skylyong/i/main/20210325214709.png"></p>
+<blockquote>
+<p>这里的$log p(x)$是一个固定的常数。</p>
+</blockquote>
+<h3 id="平均场推断"><a href="#平均场推断" class="headerlink" title="平均场推断"></a><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1Ki4y1w7Z9/?spm_id_from=autoNext">平均场推断</a></h3><p><img src="https://raw.githubusercontent.com/Skylyong/i/main/20210325223324.png"></p>
+
+    </article>
+    <!-- license -->
+        <div class="license-wrapper">
+            <p>原文作者：<a href="https://eggplant.wiki">茄子</a>
+            <p>原文链接：<a href="https://eggplant.wiki/2021/03/29/%E5%8F%98%E5%88%86%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">https://eggplant.wiki/2021/03/29/%E5%8F%98%E5%88%86%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</a>
+            <p>发表日期：<a href="https://eggplant.wiki/2021/03/29/%E5%8F%98%E5%88%86%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">March 29th 2021, 2:35:48 pm</a>
+            <p>更新日期：<a href="https://eggplant.wiki/2021/03/29/%E5%8F%98%E5%88%86%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">March 31st 2021, 3:25:41 am</a>
+            <p>版权声明：本文采用<a rel="license noopener" target="_blank" href="http://creativecommons.org/licenses/by-nc/4.0/">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可</p>
+        </div>
+    <!-- paginator -->
+    <ul class="post-paginator">
+        <li class="next">
+                <div class="nextSlogan">Next Post</div>
+                <a href="/2021/03/30/%E4%B8%8D%E5%90%8C%E8%B7%AF%E5%BE%84/" title="【每日算法】2021年03月30日 多云 不同路径">
+                    <div class="nextTitle">【每日算法】2021年03月30日 多云 不同路径</div>
+                </a>
+        </li>
+        <li class="previous">
+                <div class="prevSlogan">Previous Post</div>
+                <a href="/2021/03/28/GitHub%E5%8A%A0%E9%80%9F%E6%96%B9%E6%B3%95/" title="GitHub加速方法">
+                    <div class="prevTitle">GitHub加速方法</div>
+                </a>
+        </li>
+    </ul>
+    <!-- comment -->
+        <div class="post-comment">
+            <!-- 来必力 City 版安装代码 -->
+
+            
+            
+            
+            <!-- utteranc评论 -->
+    <script src='https://utteranc.es/client.js'
+        repo='Skylyong/blog-commit'
+        issue-term='pathname'
+        label='utteranc'
+        theme='github-light'
+        crossorigin='anonymous'
+        async>
+    </script>
+
+            <!-- partial('_partial/comment/changyan') -->
+            <!--PC版-->
+
+            
+            
+            
+        </div>
+    <!-- timeliness note -->
+    <!-- idea from: https://hexo.fluid-dev.com/posts/hexo-injector/#%E6%96%87%E7%AB%A0%E6%97%B6%E6%95%88%E6%80%A7%E6%8F%90%E7%A4%BA -->
+    <!-- Mathjax -->
+            <script>
+        MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+            }
+        };
+    </script>
+
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3.2.0/es5/tex-mml-chtml.js"></script>
+
+</main>
+
+                <!-- profile -->
+            </div>
+            <footer class="footer footer-unloaded">
+    <!-- social  -->
+        <div class="social">
+                            <a href="mailto:lyong_s@foxmail.com" class="iconfont-archer email" title="email" ></a>
+                <a href="//github.com/Skylyong" class="iconfont-archer github" target="_blank" title="github"></a>
+
+        </div>
+    <!-- powered by Hexo  -->
+    <div class="copyright">
+        <span id="hexo-power">Powered by <a href="https://hexo.io/" target="_blank">Hexo</a></span><span class="iconfont-archer power">&#xe635;</span><span id="theme-info">theme <a href="https://github.com/fi3ework/hexo-theme-archer" target="_blank">Archer</a></span>
+    </div>
+    <!-- website approve for Chinese user -->
+    <!-- 不蒜子  -->
+        <div class="busuanzi-container">
+                <span id="busuanzi_container_site_pv">PV: <span id="busuanzi_value_site_pv"></span> :)</span>
+        </div>
+</footer>
+
+        </div>
+        <!-- toc -->
+            <div class="toc-wrapper toc-wrapper-loding" style=    top:50vh;
+>
+                <div class="toc-catalog">
+                    <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
+                </div>
+                <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8F%98%E5%88%86%E6%8E%A8%E6%96%AD"><span class="toc-number">1.</span> <span class="toc-text">变分推断</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BA%94%E7%94%A8%E4%B8%BE%E4%BE%8B"><span class="toc-number">1.0.1.</span> <span class="toc-text">应用举例</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%B4%9D%E5%8F%B6%E6%96%AF%E6%8E%A8%E6%96%AD%E6%A6%82%E8%BF%B0"><span class="toc-number">1.0.2.</span> <span class="toc-text">贝叶斯推断概述</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%9B%AE%E6%A0%87%E4%BC%98%E7%BC%BA%E7%82%B9"><span class="toc-number">1.0.2.1.</span> <span class="toc-text">目标优缺点</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Roadmap"><span class="toc-number">1.0.2.2.</span> <span class="toc-text">Roadmap</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%B4%9D%E5%8F%B6%E6%96%AF%E6%8E%A8%E6%96%AD"><span class="toc-number">1.0.3.</span> <span class="toc-text">贝叶斯推断</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%91%E4%BC%BC%E8%B4%9D%E5%8F%B6%E6%96%AF%E6%8E%A8%E6%96%AD"><span class="toc-number">1.0.4.</span> <span class="toc-text">近似贝叶斯推断_</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B9%B3%E5%9D%87%E5%9C%BA%E6%8E%A8%E6%96%AD"><span class="toc-number">1.0.5.</span> <span class="toc-text">平均场推断</span></a></li></ol></li></ol></li></ol>
+            </div>
+        <!-- sidebar -->
+        <div class="sidebar sidebar-hide">
+    <ul class="sidebar-tabs sidebar-tabs-active-0">
+        <li class="sidebar-tab-archives"><span class="iconfont-archer">&#xe67d;</span><span class="tab-name">Archive</span></li>
+        <li class="sidebar-tab-tags"><span class="iconfont-archer">&#xe61b;</span><span class="tab-name">Tag</span></li>
+        <li class="sidebar-tab-categories"><span class="iconfont-archer">&#xe666;</span><span class="tab-name">Cate</span></li>
+    </ul>
+    <div class="sidebar-content sidebar-content-show-archive">
+        <div class="sidebar-panel-archives">
+    <!-- 在 ejs 中将 archive 按照时间排序 -->
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+    <div class="total-and-search">
+        <div class="total-archive">
+        Total : 47
+        </div>
+        <!-- search  -->
+            <div class="site-search site-search-loading popup-trigger">
+                <span class="iconfont-archer search-icon">&#xe627;</span>
+            </div>
+    </div>
+    <div class="post-archive">
+            <div class="archive-year"> 2025 </div>
+            <ul class="year-list">
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/06</span>
+            <a class="archive-post-title" href="/2025/03/06/%E4%BD%BF%E7%94%A8BERT%E5%BE%97%E5%88%B0%E7%9F%AD%E8%AF%AD%E5%90%91%E9%87%8F%E8%A1%A8%E7%A4%BA%E5%B9%B6%E8%BF%9B%E8%A1%8C%E5%B1%82%E6%AC%A1%E8%81%9A%E7%B1%BB%E5%AE%9E%E7%8E%B0%E7%9B%B8%E4%BC%BC%E6%80%A7%E5%8E%BB%E9%87%8D/">使用BERT得到短语向量表示并进行层次聚类实现相似性去重</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/06</span>
+            <a class="archive-post-title" href="/2025/03/06/%E5%9F%BA%E4%BA%8E%E7%BC%96%E8%BE%91%E8%B7%9D%E7%A6%BB%E7%9A%84%E6%96%87%E6%9C%AC%E5%B1%82%E6%AC%A1%E8%81%9A%E7%B1%BB/">基于编辑距离的文本层次聚类</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/27</span>
+            <a class="archive-post-title" href="/2025/02/27/Ai%E7%AB%9E%E8%B5%9B%E5%B9%B3%E5%8F%B0/">Ai竞赛平台</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/19</span>
+            <a class="archive-post-title" href="/2025/02/19/python%E6%97%A5%E5%B8%B8%E5%BC%80%E5%8F%91%E6%9D%82%E8%AE%B0/">python日常开发杂记</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/12</span>
+            <a class="archive-post-title" href="/2025/02/12/%E9%80%9A%E8%BF%87docker%E9%83%A8%E7%BD%B2doccano%E6%A0%87%E6%B3%A8%E5%B7%A5%E5%85%B7/">通过docker部署doccano标注工具</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/06</span>
+            <a class="archive-post-title" href="/2025/02/06/%E5%9C%A8%E5%91%88%E8%B4%A1%E7%9A%84%E6%97%A5%E5%AD%90%E2%80%94%E2%80%94%E5%A4%8D%E4%B9%A0%E8%B5%84%E6%96%99%E4%B8%8D%E8%A7%81%E4%BA%86/">在呈贡的日子——复习资料不见了</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/06</span>
+            <a class="archive-post-title" href="/2025/02/06/%E5%9C%A8%E5%91%88%E8%B4%A1%E7%9A%84%E6%97%A5%E5%AD%90%E2%80%94%E2%80%94%E6%8D%9E%E9%B1%BC%E6%B2%B3/">在呈贡的日子——捞鱼河</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/28</span>
+            <a class="archive-post-title" href="/2025/01/28/vscode%E5%BC%80%E5%8F%91%E6%8A%80%E5%B7%A7%E8%AE%B0%E5%BD%95/">vscode开发技巧记录</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/28</span>
+            <a class="archive-post-title" href="/2025/01/28/%E5%8D%9A%E5%AE%A2%E7%BB%B4%E6%8A%A4%E6%97%A5%E5%BF%97/">博客维护日志</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/27</span>
+            <a class="archive-post-title" href="/2025/01/27/2024%E5%B9%B4%E5%BA%95%E6%80%BB%E7%BB%93/">2024年底总结</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/26</span>
+            <a class="archive-post-title" href="/2025/01/26/%E6%90%AD%E5%BB%BAWebdav%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%AE%9E%E7%8E%B0Obsidian%E5%92%8CZotero%E5%A4%9A%E7%AB%AF%E5%90%8C%E6%AD%A5/">搭建Webdav服务器实现Obsidian和Zotero多端同步</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/07</span>
+            <a class="archive-post-title" href="/2025/01/07/sentence-transformers%20sampler%20bug%20%E4%B9%8B%20set%20%E4%B8%8D%E4%B8%80%E5%AE%9A%E6%98%AF%E6%97%A0%E5%BA%8F%E7%9A%84/">sentence-transformers sampler bug 之 set 不一定是无序的</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/06</span>
+            <a class="archive-post-title" href="/2025/01/06/matplotlib%E6%98%BE%E7%A4%BA%E4%B8%AD%E6%96%87/">matplotlib 设置显示中文</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/06</span>
+            <a class="archive-post-title" href="/2025/01/06/python%E5%A4%9A%E8%BF%9B%E7%A8%8B%E7%A4%BA%E4%BE%8B/">python多进程示例</a>
+        </li>
+                </ul>
+            <div class="archive-year"> 2023 </div>
+            <ul class="year-list">
+        <li class="archive-post-item">
+            <span class="archive-post-date">09/12</span>
+            <a class="archive-post-title" href="/2023/09/12/ubuntu%E4%B8%8A%E5%AE%89%E8%A3%85NIVIDIA%E9%A9%B1%E5%8A%A8%E5%92%8CCUDA-Tookit/">ubuntu上安装NIVIDIA驱动和CUDA_Tookit</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">07/23</span>
+            <a class="archive-post-title" href="/2023/07/23/%E5%9C%A8mac%E4%B8%8A%E4%BD%BF%E7%94%A8pybind11%E5%AE%9E%E7%8E%B0c-%E4%B8%8Epython%E4%BA%92%E9%80%9A%E7%9A%84demo/">在mac上使用pybind11实现c++与python互通的demo</a>
+        </li>
+                </ul>
+            <div class="archive-year"> 2022 </div>
+            <ul class="year-list">
+        <li class="archive-post-item">
+            <span class="archive-post-date">09/07</span>
+            <a class="archive-post-title" href="/2022/09/07/Mac%E7%B3%BB%E7%BB%9F%E5%88%B6%E4%BD%9Cwin10%E5%90%AF%E5%8A%A8U%E7%9B%98/">Mac系统制作win10启动U盘</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">09/05</span>
+            <a class="archive-post-title" href="/2022/09/05/%E7%94%B5%E7%A3%81%E6%AF%94%E8%B5%9B%E6%80%BB%E7%BB%93/">电磁比赛总结</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/29</span>
+            <a class="archive-post-title" href="/2022/04/29/%E8%BF%9C%E7%A8%8B%E8%AE%BF%E9%97%AE%E6%9C%8D%E5%8A%A1%E5%99%A8Jupyter-Notebook/">远程访问服务器Jupyter-Notebook</a>
+        </li>
+                </ul>
+            <div class="archive-year"> 2021 </div>
+            <ul class="year-list">
+        <li class="archive-post-item">
+            <span class="archive-post-date">12/10</span>
+            <a class="archive-post-title" href="/2021/12/10/C-%E5%A4%9A%E7%BA%BF%E7%A8%8B%E7%BC%96%E7%A8%8B/">C++多线程编程</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">09/29</span>
+            <a class="archive-post-title" href="/2021/09/29/%E5%B0%86%E5%BE%AE%E4%BF%A1%E8%81%8A%E5%A4%A9%E4%B8%AD%E7%9A%84%E8%AF%AD%E9%9F%B3%E8%BD%AC%E6%8D%A2%E4%B8%BAmp3/">将微信聊天中的语音转换为mp3</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">09/19</span>
+            <a class="archive-post-title" href="/2021/09/19/%E6%9C%89%E7%94%A8%E7%9A%84%E8%B5%84%E6%BA%90/">有用的资源</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">09/19</span>
+            <a class="archive-post-title" href="/2021/09/19/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99/">机器学习参考资料</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/14</span>
+            <a class="archive-post-title" href="/2021/08/14/%E5%B7%A5%E5%85%B7%E7%AE%B1/">工具箱</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/14</span>
+            <a class="archive-post-title" href="/2021/08/14/%E5%BE%AE%E4%BF%A1%E6%A0%87%E7%AD%BE%E6%95%B4%E7%90%86/">微信标签整理</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/13</span>
+            <a class="archive-post-title" href="/2021/08/13/Google%E8%AE%BF%E9%97%AE%E5%8A%A9%E6%89%8B%E5%AE%89%E8%A3%85/">Google访问助手安装</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/13</span>
+            <a class="archive-post-title" href="/2021/08/13/%E5%9B%BE%E7%9A%84%E5%88%9B%E5%BB%BA%E5%92%8C%E9%81%8D%E5%8E%86/">【课程设计】图的创建和遍历</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/13</span>
+            <a class="archive-post-title" href="/2021/08/13/%E5%B8%B8%E7%94%A8%E6%95%B0%E6%8D%AE%E9%9B%86%E6%95%B4%E7%90%86/">常用数据集整理</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/13</span>
+            <a class="archive-post-title" href="/2021/08/13/%E6%9D%8E%E8%91%86%E6%98%A5%E2%80%94%E2%80%94Writing%20Perfect%20Papers/">论文写作</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/09</span>
+            <a class="archive-post-title" href="/2021/08/09/SVM%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">SVM学习笔记</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/06</span>
+            <a class="archive-post-title" href="/2021/08/06/Pandas%E5%AD%A6%E4%B9%A0/">Pandas学习</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/05</span>
+            <a class="archive-post-title" href="/2021/08/05/Pytorch%E5%AD%A6%E4%B9%A0/">Pytorch学习</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">07/01</span>
+            <a class="archive-post-title" href="/2021/07/01/Huggingface-%E9%A2%84%E8%AE%AD%E7%BB%83%E6%A8%A1%E5%9E%8B%E6%9D%83%E9%87%8D%E4%B8%8B%E8%BD%BD%E7%9A%84%E9%97%AE%E9%A2%98/">Huggingface 预训练模型权重下载的问题</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">06/21</span>
+            <a class="archive-post-title" href="/2021/06/21/jupyter-notebook-%E6%9C%AC%E5%9C%B0%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%90%AD%E5%BB%BA/">jupyter notebook 本地服务器搭建</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/16</span>
+            <a class="archive-post-title" href="/2021/04/16/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E4%B8%AD%E7%9A%84%E5%90%84%E7%A7%8D%E7%86%B5/">机器学习中的各种熵</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/08</span>
+            <a class="archive-post-title" href="/2021/04/08/git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/">git常用命令</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/08</span>
+            <a class="archive-post-title" href="/2021/04/08/NLP%E7%9F%A5%E8%AF%86%E4%BD%93%E7%B3%BB/">NLP知识体系</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/01</span>
+            <a class="archive-post-title" href="/2021/04/01/%E6%9C%80%E5%B0%8F%E8%B7%AF%E5%BE%84%E5%92%8C/">【每日算法】2021年03月31日 小雨 最小路径和</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/31</span>
+            <a class="archive-post-title" href="/2021/03/31/GitLab%E6%90%AD%E5%BB%BA%E7%AC%94%E8%AE%B0/">GitLab搭建笔记</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/31</span>
+            <a class="archive-post-title" href="/2021/03/31/%E3%80%90%E8%AF%BE%E7%A8%8B%E8%AE%BE%E8%AE%A1%E3%80%91%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91%E5%BA%94%E7%94%A8/">【课程设计】最小生成树应用</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/31</span>
+            <a class="archive-post-title" href="/2021/03/31/%E5%AD%A6%E4%B9%A0%E8%A7%86%E9%A2%91%E6%95%B4%E7%90%86/">学习视频整理</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/31</span>
+            <a class="archive-post-title" href="/2021/03/31/%E8%8B%B1%E8%AF%AD%E5%8F%A3%E8%AF%AD%E7%BB%83%E4%B9%A0%E7%94%B5%E5%BD%B1%E6%8E%A8%E8%8D%90/">英语口语练习电影推荐</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/30</span>
+            <a class="archive-post-title" href="/2021/03/30/%E4%B8%8D%E5%90%8C%E8%B7%AF%E5%BE%84/">【每日算法】2021年03月30日 多云 不同路径</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/29</span>
+            <a class="archive-post-title" href="/2021/03/29/%E5%8F%98%E5%88%86%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">变分学习笔记</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/28</span>
+            <a class="archive-post-title" href="/2021/03/28/GitHub%E5%8A%A0%E9%80%9F%E6%96%B9%E6%B3%95/">GitHub加速方法</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/21</span>
+            <a class="archive-post-title" href="/2021/02/21/hexo%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E6%95%99%E7%A8%8B/">hexo个人博客搭建</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/21</span>
+            <a class="archive-post-title" href="/2021/02/21/%E5%A5%BD%E7%94%A8%E7%9A%84%E5%85%8D%E8%B4%B9%E6%97%A0%E5%B9%BF%E5%91%8A%E7%94%B5%E5%BD%B1%E7%BD%91%E7%AB%99%E6%8E%A8%E8%8D%90/">好用的免费无广告电影网站推荐</a>
+        </li>
+            </ul>
+    </div>
+</div>
+
+        <div class="sidebar-panel-tags">
+    <div class="sidebar-tags-name">
+            <span class="sidebar-tag-name" data-tags="总结">
+                <span class="iconfont-archer">&#xe606;</span>
+                总结
+            </span>
+            <span class="sidebar-tag-name" data-tags="ai竞赛">
+                <span class="iconfont-archer">&#xe606;</span>
+                ai竞赛
+            </span>
+            <span class="sidebar-tag-name" data-tags="GitHub">
+                <span class="iconfont-archer">&#xe606;</span>
+                GitHub
+            </span>
+            <span class="sidebar-tag-name" data-tags="GitLab">
+                <span class="iconfont-archer">&#xe606;</span>
+                GitLab
+            </span>
+            <span class="sidebar-tag-name" data-tags="Google访问助手">
+                <span class="iconfont-archer">&#xe606;</span>
+                Google访问助手
+            </span>
+            <span class="sidebar-tag-name" data-tags="预训练模型">
+                <span class="iconfont-archer">&#xe606;</span>
+                预训练模型
+            </span>
+            <span class="sidebar-tag-name" data-tags="启动U盘">
+                <span class="iconfont-archer">&#xe606;</span>
+                启动U盘
+            </span>
+            <span class="sidebar-tag-name" data-tags="nlp">
+                <span class="iconfont-archer">&#xe606;</span>
+                nlp
+            </span>
+            <span class="sidebar-tag-name" data-tags="Pandas">
+                <span class="iconfont-archer">&#xe606;</span>
+                Pandas
+            </span>
+            <span class="sidebar-tag-name" data-tags="git">
+                <span class="iconfont-archer">&#xe606;</span>
+                git
+            </span>
+            <span class="sidebar-tag-name" data-tags="博客">
+                <span class="iconfont-archer">&#xe606;</span>
+                博客
+            </span>
+            <span class="sidebar-tag-name" data-tags="jupyter notebook">
+                <span class="iconfont-archer">&#xe606;</span>
+                jupyter notebook
+            </span>
+            <span class="sidebar-tag-name" data-tags="python">
+                <span class="iconfont-archer">&#xe606;</span>
+                python
+            </span>
+            <span class="sidebar-tag-name" data-tags="NIVIDIA驱动">
+                <span class="iconfont-archer">&#xe606;</span>
+                NIVIDIA驱动
+            </span>
+            <span class="sidebar-tag-name" data-tags="vscode">
+                <span class="iconfont-archer">&#xe606;</span>
+                vscode
+            </span>
+            <span class="sidebar-tag-name" data-tags="树">
+                <span class="iconfont-archer">&#xe606;</span>
+                树
+            </span>
+            <span class="sidebar-tag-name" data-tags="动态规划">
+                <span class="iconfont-archer">&#xe606;</span>
+                动态规划
+            </span>
+            <span class="sidebar-tag-name" data-tags="文本聚类 bert向量表示">
+                <span class="iconfont-archer">&#xe606;</span>
+                文本聚类 bert向量表示
+            </span>
+            <span class="sidebar-tag-name" data-tags="图">
+                <span class="iconfont-archer">&#xe606;</span>
+                图
+            </span>
+            <span class="sidebar-tag-name" data-tags="pytorch">
+                <span class="iconfont-archer">&#xe606;</span>
+                pytorch
+            </span>
+            <span class="sidebar-tag-name" data-tags="机器学习">
+                <span class="iconfont-archer">&#xe606;</span>
+                机器学习
+            </span>
+            <span class="sidebar-tag-name" data-tags="svm">
+                <span class="iconfont-archer">&#xe606;</span>
+                svm
+            </span>
+            <span class="sidebar-tag-name" data-tags="python_c++_互通">
+                <span class="iconfont-archer">&#xe606;</span>
+                python_c++_互通
+            </span>
+            <span class="sidebar-tag-name" data-tags="呈贡">
+                <span class="iconfont-archer">&#xe606;</span>
+                呈贡
+            </span>
+            <span class="sidebar-tag-name" data-tags="文本聚类 编辑距离">
+                <span class="iconfont-archer">&#xe606;</span>
+                文本聚类 编辑距离
+            </span>
+            <span class="sidebar-tag-name" data-tags="电影">
+                <span class="iconfont-archer">&#xe606;</span>
+                电影
+            </span>
+            <span class="sidebar-tag-name" data-tags="编程">
+                <span class="iconfont-archer">&#xe606;</span>
+                编程
+            </span>
+            <span class="sidebar-tag-name" data-tags="微信">
+                <span class="iconfont-archer">&#xe606;</span>
+                微信
+            </span>
+            <span class="sidebar-tag-name" data-tags="干货">
+                <span class="iconfont-archer">&#xe606;</span>
+                干货
+            </span>
+            <span class="sidebar-tag-name" data-tags="资源">
+                <span class="iconfont-archer">&#xe606;</span>
+                资源
+            </span>
+            <span class="sidebar-tag-name" data-tags="熵">
+                <span class="iconfont-archer">&#xe606;</span>
+                熵
+            </span>
+            <span class="sidebar-tag-name" data-tags="竞赛">
+                <span class="iconfont-archer">&#xe606;</span>
+                竞赛
+            </span>
+            <span class="sidebar-tag-name" data-tags="docker, doccano">
+                <span class="iconfont-archer">&#xe606;</span>
+                docker, doccano
+            </span>
+            <span class="sidebar-tag-name" data-tags="论文写作">
+                <span class="iconfont-archer">&#xe606;</span>
+                论文写作
+            </span>
+    </div>
+    <div class="iconfont-archer sidebar-tags-empty">&#xe678;</div>
+    <div class="tag-load-fail" style="display: none; color: #ccc; font-size: 0.6rem;">
+        缺失模块，请参考主题文档进行安装配置：https://github.com/fi3ework/hexo-theme-archer#%E5%AE%89%E8%A3%85%E4%B8%BB%E9%A2%98
+    </div> 
+    <div class="sidebar-tags-list"></div>
+</div>
+
+        <div class="sidebar-panel-categories">
+    <div class="sidebar-categories-name">
+        <span class="sidebar-category-name" data-categories="生活情感">
+            <span class="iconfont-archer">&#xe60a;</span>
+            生活情感
+        </span>
+        <span class="sidebar-category-name" data-categories="总结">
+            <span class="iconfont-archer">&#xe60a;</span>
+            总结
+        </span>
+        <span class="sidebar-category-name" data-categories="爬坑总结">
+            <span class="iconfont-archer">&#xe60a;</span>
+            爬坑总结
+        </span>
+        <span class="sidebar-category-name" data-categories="干货">
+            <span class="iconfont-archer">&#xe60a;</span>
+            干货
+        </span>
+        <span class="sidebar-category-name" data-categories="人工智能">
+            <span class="iconfont-archer">&#xe60a;</span>
+            人工智能
+        </span>
+        <span class="sidebar-category-name" data-categories="知识框架">
+            <span class="iconfont-archer">&#xe60a;</span>
+            知识框架
+        </span>
+        <span class="sidebar-category-name" data-categories="学习笔记">
+            <span class="iconfont-archer">&#xe60a;</span>
+            学习笔记
+        </span>
+        <span class="sidebar-category-name" data-categories="生活总结">
+            <span class="iconfont-archer">&#xe60a;</span>
+            生活总结
+        </span>
+        <span class="sidebar-category-name" data-categories="编程经验">
+            <span class="iconfont-archer">&#xe60a;</span>
+            编程经验
+        </span>
+        <span class="sidebar-category-name" data-categories="编程开发">
+            <span class="iconfont-archer">&#xe60a;</span>
+            编程开发
+        </span>
+        <span class="sidebar-category-name" data-categories="编程">
+            <span class="iconfont-archer">&#xe60a;</span>
+            编程
+        </span>
+        <span class="sidebar-category-name" data-categories="算法笔记">
+            <span class="iconfont-archer">&#xe60a;</span>
+            算法笔记
+        </span>
+        <span class="sidebar-category-name" data-categories="自然语言处理">
+            <span class="iconfont-archer">&#xe60a;</span>
+            自然语言处理
+        </span>
+        <span class="sidebar-category-name" data-categories="算法">
+            <span class="iconfont-archer">&#xe60a;</span>
+            算法
+        </span>
+        <span class="sidebar-category-name" data-categories="学习资料">
+            <span class="iconfont-archer">&#xe60a;</span>
+            学习资料
+        </span>
+        <span class="sidebar-category-name" data-categories="收藏">
+            <span class="iconfont-archer">&#xe60a;</span>
+            收藏
+        </span>
+        <span class="sidebar-category-name" data-categories="数据集">
+            <span class="iconfont-archer">&#xe60a;</span>
+            数据集
+        </span>
+        <span class="sidebar-category-name" data-categories="机器学习">
+            <span class="iconfont-archer">&#xe60a;</span>
+            机器学习
+        </span>
+    </div>
+    <div class="iconfont-archer sidebar-categories-empty">&#xe678;</div>
+    <div class="sidebar-categories-list"></div>
+</div>
+
+    </div>
+</div>
+
+        <!-- site-meta -->
+        <script>
+    var siteMetaRoot = "/"
+    if (siteMetaRoot === "undefined") {
+        siteMetaRoot = '/'
+    }
+    var siteMeta = {
+        url: "https://eggplant.wiki",
+        root: siteMetaRoot,
+        author: "茄子"
+    }
+</script>
+
+        <!-- import experimental options here -->
+        <!-- Custom Font -->
+
+        <!-- main func -->
+        <script src="/scripts/main.js"></script>
+        <!-- fancybox -->
+        <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.36/dist/fancybox/fancybox.umd.js" onload="window.Fancybox.bind('[data-fancybox]')" defer></script>
+        <!-- algolia -->
+            <div class="site-search site-search-loading">
+    <div class="algolia-popup popup">
+        <div class="algolia-search">
+            <div class="algolia-search-input-icon">
+                <i class="fa fa-search"></i>
+            </div>
+            <div class="algolia-search-input" id="algolia-search-input"></div>
+            <div class="popup-btn-close">
+                <i class="iconfont-archer">&#xe609;</i>
+            </div>
+        </div>
+
+        <div class="algolia-results">
+            <div id="algolia-stats" class="algolia-stats"></div>
+            <div id="algolia-hits"></div>
+            <div id="algolia-pagination" class="algolia-pagination"></div>
+        </div>
+    </div>
+</div>
+
+            <script src="/scripts/search.js" async></script>
+        <!-- busuanzi -->
+            <script src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async></script>
+        <!-- async load share.js -->
+            <script src="/scripts/share.js" async></script>
+        <!-- mermaid -->
+            <script src='https://cdn.jsdelivr.net/npm/mermaid@8.11.0/dist/mermaid.min.js' onload="window.mermaid.initialize({theme: 'dark'})" async></script>
+    </body>
+</html>
