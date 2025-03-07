@@ -198,6 +198,18 @@
     <link rel="preload" href="/font/Oswald-Regular.ttf" as="font" crossorigin>
     <link rel="preload" href="https://at.alicdn.com/t/font_327081_1dta1rlogw17zaor.woff" as="font" crossorigin>
     <!-- algolia -->
+        <script>
+            var hits = JSON.parse('{"per_page":10}')
+            var labels = JSON.parse('{"input_placeholder":"Search for Posts","hits_empty":"We did not find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}')
+
+            var algolia = {
+                applicationID: 'HDLQX51180',
+                apiKey: '2bcb8a706f5955c9f74cea13e540fb1b',
+                indexName: 'my-hexo-blog',
+                hits: hits,
+                labels: labels
+            }
+        </script>
     <!-- 百度统计  -->
     <!-- 谷歌统计  -->
     <!-- Google tag (gtag.js) -->
@@ -402,18 +414,15 @@
                 <main class="main index-page">
             
         <article class="index-post">
-            <a class="abstract-title" href="/2021/03/31/gitlab-da-jian-bi-ji/">
+            <a class="abstract-title" href="/2021/03/31/gitlabda-jian-bi-ji/">
                 <span class="abstract-title-text">GitLab搭建笔记</span>
             </a>
             <div class="abstract-content">
-                安装gitlab：curl -s https:&#x2F;&#x2F;packages.gitlab.com&#x2F;install&#x2F;repositories&#x2F;gitlab&#x2F;gitlab-ee&#x2F;
-script.deb.sh | sudo bash
-
+                安装gitlab：123curl -s https://packages.gitlab.com/install/repositories/gitlab/gitlab-ee/script.deb.sh | sudo bash
 防火墙设置 之前已经配置好了，略
 gitlab配置打开/etc/gitlab/gitlab.rb
-external_url &#39;http:&#x2F;&#x2F;gitlab.bytenlp.site&#39;
-# 系统端口冲突，我把端口改为了85
-nginx[&#39;listen_port&...
+123external_url &#x27;http://gitlab.bytenlp.site&#x27;# 系统端口冲突，我把端口改为了85nginx[&#x27;listen_port&#x27;] = 85
+让配置生效，并重启gitlab服务1234# 重新配置g...
             </div>
             <!-- read more -->
             <div class="abstract-post-meta">
@@ -508,7 +517,7 @@ Big Hero 6 (提取码:g4q4...
         <div class="index-post-divider"></div>
             
         <article class="index-post">
-            <a class="abstract-title" href="/2021/03/31/ke-cheng-she-ji-zui-xiao-sheng-cheng-shu-ying-yong/">
+            <a class="abstract-title" href="/2021/03/31/-ke-cheng-she-ji-zui-xiao-sheng-cheng-shu-ying-yong/">
                 <span class="abstract-title-text">【课程设计】最小生成树应用</span>
             </a>
             <div class="abstract-content">
@@ -516,7 +525,7 @@ Big Hero 6 (提取码:g4q4...
 问题分析根据设计要求，我们假设城市之间的距离越大架设网线的经济代价越大，因此可以用两个城市之间的距离作为边的权重。
 n个城市之间最多可以生成 1+2+…+(n-1)条边，分别计算出每条边的长度然后对他们进行升序排序，利用并查集得到由n-1条边组成的最小生成树，问题便得到解决。
 为了解决上述问题，需要构建一个城市结构体CITY来表示城市，并且还需要构建EDGE结构体来表示城市与城市的边，并利用随机函数生成城市的坐标。
-实现代码#include&lt;stdio.h&g...
+实现代码123456789101112131415...
             </div>
             <!-- read more -->
             <div class="abstract-post-meta">
@@ -576,32 +585,14 @@ n个城市之间最多可以生成 1+2+…+(n-1)条边，分别计算出每条�
         </article>
         <div class="index-post-divider"></div>
         <article class="index-post">
-            <a class="abstract-title" href="/2021/03/28/github-jia-su-fang-fa/">
+            <a class="abstract-title" href="/2021/03/28/githubjia-su-fang-fa/">
                 <span class="abstract-title-text">GitHub加速方法</span>
             </a>
             <div class="abstract-content">
                 <h3 id="设置代理加速GitHub"><a href="#设置代理加速GitHub" class="headerlink" title="设置代理加速GitHub"></a>设置代理加速GitHub</h3><p>由于github网站服务器在国外，国内上传和下载数据速度较慢，假如你已经有具备了科学上网的条件，可以通过设置代理的方式来提高数据传输速度。</p>
 <p>以下设置均建立在具备科学上网的前提下，下文中的小飞机指某款用于科学上网的工具。</p>
 <h4 id="设置http代理"><a href="#设置http代理" class="headerlink" title="设置http代理"></a>设置http代理</h4><p>在命令行输入如下的命令</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">export http_proxy&#x3D;http:&#x2F;&#x2F;127.0.0.1:1087
-export https_proxy&#x3D;http:&#x2F;&#x2F;127.0.0.1:1087
-
-#设置http代理，端口号对应的是小飞机的http代理端口号
-git config --global http.proxy http:&#x2F;&#x2F;127.0.0.1:1087
-git config --global https.proxy http:&#x2F;&#x2F;127.0.0.1:1087
-
-#配置github用户名和邮箱
-git config --global user.name github_id
-git config --global user.email github_email
-
-
-#取消代理设置
-git config --global --unset http.proxy
-git config --global --unset https.proxy
-
-#查看代理设置
-git config --list
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> http_proxy=http://127.0.0.1:1087</span><br><span class="line"><span class="built_in">export</span> https_proxy=http://127.0.0.1:1087</span><br><span class="line"></span><br><span class="line"><span class="comment">#设置http代理，端口号对应的是小飞机的http代理端口号</span></span><br><span class="line">git config --global http.proxy http://127.0.0.1:1087</span><br><span class="line">git config --global https.proxy http://127.0.0.1:1087</span><br><span class="line"></span><br><span class="line"><span class="comment">#配置github用户名和邮箱</span></span><br><span class="line">git config --global user.name github_id</span><br><span class="line">git config --global user.email github_email</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">#取消代理设置</span></span><br><span class="line">git config --global --<span class="built_in">unset</span> http.proxy</span><br><span class="line">git config --global --<span class="built_in">unset</span> https.proxy</span><br><span class="line"></span><br><span class="line"><span class="comment">#查看代理设置</span></span><br><span class="line">git config --list</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 <p>http代理端口查询：</p>
 <blockquote>
@@ -610,16 +601,7 @@ git config --list
 <img src="https://raw.githubusercontent.com/Skylyong/i/main/20210319193849.png" style="zoom:67%;" />
 
 <h4 id="设置ssh加速"><a href="#设置ssh加速" class="headerlink" title="设置ssh加速"></a><a target="_blank" rel="noopener" href="https://gist.github.com/chuyik/02d0d37a49edc162546441092efae6a1">设置ssh</a>加速</h4><p><code>在~/.ssh/config</code> 文件（不存在则新建）添加如下内容：</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">Host github.com
-   HostName github.com
-   User git
-   # 走 HTTP 代理，需要 brew install socat
-   # ProxyCommand socat - PROXY:127.0.0.1:%h:%p,proxyport&#x3D;1087
-   # 走 socks5 代理（如 Shadowsocks）
-   ProxyCommand nc -v -x 127.0.0.1:1086 %h %p
-   #上面1086这个端口号可以在“小飞机”的高级设置中查看
-   # 走 socks5 代理（如 Shadowsocks），Windows 平台没有 nc 命令
-   # ProxyCommand connect -S 127.0.0.1:1086 %h %p<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">Host github.com</span><br><span class="line">   HostName github.com</span><br><span class="line">   User git</span><br><span class="line">   <span class="comment"># 走 HTTP 代理，需要 brew install socat</span></span><br><span class="line">   <span class="comment"># ProxyCommand socat - PROXY:127.0.0.1:%h:%p,proxyport=1087</span></span><br><span class="line">   <span class="comment"># 走 socks5 代理（如 Shadowsocks）</span></span><br><span class="line">   ProxyCommand nc -v -x 127.0.0.1:1086 %h %p</span><br><span class="line">   <span class="comment">#上面1086这个端口号可以在“小飞机”的高级设置中查看</span></span><br><span class="line">   <span class="comment"># 走 socks5 代理（如 Shadowsocks），Windows 平台没有 nc 命令</span></span><br><span class="line">   <span class="comment"># ProxyCommand connect -S 127.0.0.1:1086 %h %p</span></span><br></pre></td></tr></table></figure>
 
 <p>本地Socks5监听窗口查询：</p>
 <blockquote>
@@ -736,13 +718,16 @@ git config --list
         Total : 47
         </div>
         <!-- search  -->
+            <div class="site-search site-search-loading popup-trigger">
+                <span class="iconfont-archer search-icon">&#xe627;</span>
+            </div>
     </div>
     <div class="post-archive">
             <div class="archive-year"> 2025 </div>
             <ul class="year-list">
         <li class="archive-post-item">
             <span class="archive-post-date">03/06</span>
-            <a class="archive-post-title" href="/2025/03/06/shi-yong-bert-de-dao-duan-yu-xiang-liang-biao-shi-bing-jin-xing-ceng-ci-ju-lei-shi-xian-xiang-si-xing-qu-chong/">使用BERT得到短语向量表示并进行层次聚类实现相似性去重</a>
+            <a class="archive-post-title" href="/2025/03/06/shi-yong-bertde-dao-duan-yu-xiang-liang-biao-shi-bing-jin-xing-ceng-ci-ju-lei-shi-xian-xiang-si-xing-qu-chong/">使用BERT得到短语向量表示并进行层次聚类实现相似性去重</a>
         </li>
         <li class="archive-post-item">
             <span class="archive-post-date">03/06</span>
@@ -750,27 +735,27 @@ git config --list
         </li>
         <li class="archive-post-item">
             <span class="archive-post-date">02/27</span>
-            <a class="archive-post-title" href="/2025/02/27/ai-jing-sai-ping-tai/">Ai竞赛平台</a>
+            <a class="archive-post-title" href="/2025/02/27/aijing-sai-ping-tai/">Ai竞赛平台</a>
         </li>
         <li class="archive-post-item">
             <span class="archive-post-date">02/19</span>
-            <a class="archive-post-title" href="/2025/02/19/python-ri-chang-kai-fa-za-ji/">python日常开发杂记</a>
+            <a class="archive-post-title" href="/2025/02/19/pythonri-chang-kai-fa-za-ji/">python日常开发杂记</a>
         </li>
         <li class="archive-post-item">
             <span class="archive-post-date">02/12</span>
-            <a class="archive-post-title" href="/2025/02/12/tong-guo-docker-bu-shu-doccano-biao-zhu-gong-ju/">通过docker部署doccano标注工具</a>
+            <a class="archive-post-title" href="/2025/02/12/tong-guo-dockerbu-shu-doccanobiao-zhu-gong-ju/">通过docker部署doccano标注工具</a>
         </li>
         <li class="archive-post-item">
             <span class="archive-post-date">02/06</span>
-            <a class="archive-post-title" href="/2025/02/06/zai-cheng-gong-de-ri-zi-fu-xi-zi-liao-bu-jian-liao/">在呈贡的日子——复习资料不见了</a>
+            <a class="archive-post-title" href="/2025/02/06/zai-cheng-gong-de-ri-zi----fu-xi-zi-liao-bu-jian-liao/">在呈贡的日子——复习资料不见了</a>
         </li>
         <li class="archive-post-item">
             <span class="archive-post-date">02/06</span>
-            <a class="archive-post-title" href="/2025/02/06/zai-cheng-gong-de-ri-zi-lao-yu-he/">在呈贡的日子——捞鱼河</a>
+            <a class="archive-post-title" href="/2025/02/06/zai-cheng-gong-de-ri-zi----lao-yu-he/">在呈贡的日子——捞鱼河</a>
         </li>
         <li class="archive-post-item">
             <span class="archive-post-date">01/28</span>
-            <a class="archive-post-title" href="/2025/01/28/vscode-kai-fa-ji-qiao-ji-lu/">vscode开发技巧记录</a>
+            <a class="archive-post-title" href="/2025/01/28/vscodekai-fa-ji-qiao-ji-lu/">vscode开发技巧记录</a>
         </li>
         <li class="archive-post-item">
             <span class="archive-post-date">01/28</span>
@@ -778,11 +763,11 @@ git config --list
         </li>
         <li class="archive-post-item">
             <span class="archive-post-date">01/27</span>
-            <a class="archive-post-title" href="/2025/01/27/2024-nian-di-zong-jie/">2024年底总结</a>
+            <a class="archive-post-title" href="/2025/01/27/2024nian-di-zong-jie/">2024年底总结</a>
         </li>
         <li class="archive-post-item">
             <span class="archive-post-date">01/26</span>
-            <a class="archive-post-title" href="/2025/01/26/da-jian-webdav-fu-wu-qi-shi-xian-obsidian-he-zotero-duo-duan-tong-bu/">搭建Webdav服务器实现Obsidian和Zotero多端同步</a>
+            <a class="archive-post-title" href="/2025/01/26/da-jian-webdavfu-wu-qi-shi-xian-obsidianhe-zoteroduo-duan-tong-bu/">搭建Webdav服务器实现Obsidian和Zotero多端同步</a>
         </li>
         <li class="archive-post-item">
             <span class="archive-post-date">01/07</span>
@@ -790,29 +775,29 @@ git config --list
         </li>
         <li class="archive-post-item">
             <span class="archive-post-date">01/06</span>
-            <a class="archive-post-title" href="/2025/01/06/matplotlib-xian-shi-zhong-wen/">matplotlib 设置显示中文</a>
+            <a class="archive-post-title" href="/2025/01/06/matplotlibxian-shi-zhong-wen/">matplotlib 设置显示中文</a>
         </li>
         <li class="archive-post-item">
             <span class="archive-post-date">01/06</span>
-            <a class="archive-post-title" href="/2025/01/06/python-duo-jin-cheng-shi-li/">python多进程示例</a>
+            <a class="archive-post-title" href="/2025/01/06/pythonduo-jin-cheng-shi-li/">python多进程示例</a>
         </li>
                 </ul>
             <div class="archive-year"> 2023 </div>
             <ul class="year-list">
         <li class="archive-post-item">
             <span class="archive-post-date">09/12</span>
-            <a class="archive-post-title" href="/2023/09/12/ubuntu-shang-an-zhuang-nividia-qu-dong-he-cuda-tookit/">ubuntu上安装NIVIDIA驱动和CUDA_Tookit</a>
+            <a class="archive-post-title" href="/2023/09/12/ubuntushang-an-zhuang-nividiaqu-dong-he-cuda-tookit/">ubuntu上安装NIVIDIA驱动和CUDA_Tookit</a>
         </li>
         <li class="archive-post-item">
             <span class="archive-post-date">07/23</span>
-            <a class="archive-post-title" href="/2023/07/23/zai-mac-shang-shi-yong-pybind11-shi-xian-c-yu-python-hu-tong-de-demo/">在mac上使用pybind11实现c++与python互通的demo</a>
+            <a class="archive-post-title" href="/2023/07/23/zai-macshang-shi-yong-pybind11shi-xian-c-yu-pythonhu-tong-de-demo/">在mac上使用pybind11实现c++与python互通的demo</a>
         </li>
                 </ul>
             <div class="archive-year"> 2022 </div>
             <ul class="year-list">
         <li class="archive-post-item">
             <span class="archive-post-date">09/07</span>
-            <a class="archive-post-title" href="/2022/09/07/mac-xi-tong-zhi-zuo-win10-qi-dong-u-pan/">Mac系统制作win10启动U盘</a>
+            <a class="archive-post-title" href="/2022/09/07/macxi-tong-zhi-zuo-win10qi-dong-upan/">Mac系统制作win10启动U盘</a>
         </li>
         <li class="archive-post-item">
             <span class="archive-post-date">09/05</span>
@@ -835,11 +820,11 @@ git config --list
         </li>
         <li class="archive-post-item">
             <span class="archive-post-date">09/19</span>
-            <a class="archive-post-title" href="/2021/09/19/ji-qi-xue-xi-can-kao-zi-liao/">机器学习参考资料</a>
+            <a class="archive-post-title" href="/2021/09/19/you-yong-de-zi-yuan/">有用的资源</a>
         </li>
         <li class="archive-post-item">
             <span class="archive-post-date">09/19</span>
-            <a class="archive-post-title" href="/2021/09/19/you-yong-de-zi-yuan/">有用的资源</a>
+            <a class="archive-post-title" href="/2021/09/19/ji-qi-xue-xi-can-kao-zi-liao/">机器学习参考资料</a>
         </li>
         <li class="archive-post-item">
             <span class="archive-post-date">08/14</span>
@@ -851,7 +836,7 @@ git config --list
         </li>
         <li class="archive-post-item">
             <span class="archive-post-date">08/13</span>
-            <a class="archive-post-title" href="/2021/08/13/google-fang-wen-zhu-shou-an-zhuang/">Google访问助手安装</a>
+            <a class="archive-post-title" href="/2021/08/13/googlefang-wen-zhu-shou-an-zhuang/">Google访问助手安装</a>
         </li>
         <li class="archive-post-item">
             <span class="archive-post-date">08/13</span>
@@ -863,19 +848,19 @@ git config --list
         </li>
         <li class="archive-post-item">
             <span class="archive-post-date">08/13</span>
-            <a class="archive-post-title" href="/2021/08/13/li-bao-chun-writing-perfect-papers/">论文写作</a>
+            <a class="archive-post-title" href="/2021/08/13/li-bao-chun----writing-perfect-papers/">论文写作</a>
         </li>
         <li class="archive-post-item">
             <span class="archive-post-date">08/09</span>
-            <a class="archive-post-title" href="/2021/08/09/svm-xue-xi-bi-ji/">SVM学习笔记</a>
+            <a class="archive-post-title" href="/2021/08/09/svmxue-xi-bi-ji/">SVM学习笔记</a>
         </li>
         <li class="archive-post-item">
             <span class="archive-post-date">08/06</span>
-            <a class="archive-post-title" href="/2021/08/06/pandas-xue-xi/">Pandas学习</a>
+            <a class="archive-post-title" href="/2021/08/06/pandasxue-xi/">Pandas学习</a>
         </li>
         <li class="archive-post-item">
             <span class="archive-post-date">08/05</span>
-            <a class="archive-post-title" href="/2021/08/05/pytorch-xue-xi/">Pytorch学习</a>
+            <a class="archive-post-title" href="/2021/08/05/pytorchxue-xi/">Pytorch学习</a>
         </li>
         <li class="archive-post-item">
             <span class="archive-post-date">07/01</span>
@@ -887,15 +872,15 @@ git config --list
         </li>
         <li class="archive-post-item">
             <span class="archive-post-date">04/16</span>
-            <a class="archive-post-title" href="/2021/04/16/ji-qi-xue-xi-zhong-de-ge-chong-shang/">机器学习中的各种熵</a>
+            <a class="archive-post-title" href="/2021/04/16/ji-qi-xue-xi-zhong-de-ge-zhong-shang/">机器学习中的各种熵</a>
         </li>
         <li class="archive-post-item">
             <span class="archive-post-date">04/08</span>
-            <a class="archive-post-title" href="/2021/04/08/git-chang-yong-ming-ling/">git常用命令</a>
+            <a class="archive-post-title" href="/2021/04/08/gitchang-yong-ming-ling/">git常用命令</a>
         </li>
         <li class="archive-post-item">
             <span class="archive-post-date">04/08</span>
-            <a class="archive-post-title" href="/2021/04/08/nlp-zhi-shi-ti-xi/">NLP知识体系</a>
+            <a class="archive-post-title" href="/2021/04/08/nlpzhi-shi-ti-xi/">NLP知识体系</a>
         </li>
         <li class="archive-post-item">
             <span class="archive-post-date">04/01</span>
@@ -903,11 +888,11 @@ git config --list
         </li>
         <li class="archive-post-item">
             <span class="archive-post-date">03/31</span>
-            <a class="archive-post-title" href="/2021/03/31/gitlab-da-jian-bi-ji/">GitLab搭建笔记</a>
+            <a class="archive-post-title" href="/2021/03/31/gitlabda-jian-bi-ji/">GitLab搭建笔记</a>
         </li>
         <li class="archive-post-item">
             <span class="archive-post-date">03/31</span>
-            <a class="archive-post-title" href="/2021/03/31/ke-cheng-she-ji-zui-xiao-sheng-cheng-shu-ying-yong/">【课程设计】最小生成树应用</a>
+            <a class="archive-post-title" href="/2021/03/31/-ke-cheng-she-ji-zui-xiao-sheng-cheng-shu-ying-yong/">【课程设计】最小生成树应用</a>
         </li>
         <li class="archive-post-item">
             <span class="archive-post-date">03/31</span>
@@ -927,11 +912,11 @@ git config --list
         </li>
         <li class="archive-post-item">
             <span class="archive-post-date">03/28</span>
-            <a class="archive-post-title" href="/2021/03/28/github-jia-su-fang-fa/">GitHub加速方法</a>
+            <a class="archive-post-title" href="/2021/03/28/githubjia-su-fang-fa/">GitHub加速方法</a>
         </li>
         <li class="archive-post-item">
             <span class="archive-post-date">02/21</span>
-            <a class="archive-post-title" href="/2021/02/21/hexo-ge-ren-bo-ke-da-jian-jiao-cheng/">hexo个人博客搭建</a>
+            <a class="archive-post-title" href="/2021/02/21/hexoge-ren-bo-ke-da-jian-jiao-cheng/">hexo个人博客搭建</a>
         </li>
         <li class="archive-post-item">
             <span class="archive-post-date">02/21</span>
@@ -943,17 +928,13 @@ git config --list
 
         <div class="sidebar-panel-tags">
     <div class="sidebar-tags-name">
-            <span class="sidebar-tag-name" data-tags="ai竞赛">
-                <span class="iconfont-archer">&#xe606;</span>
-                ai竞赛
-            </span>
             <span class="sidebar-tag-name" data-tags="总结">
                 <span class="iconfont-archer">&#xe606;</span>
                 总结
             </span>
-            <span class="sidebar-tag-name" data-tags="Google访问助手">
+            <span class="sidebar-tag-name" data-tags="ai竞赛">
                 <span class="iconfont-archer">&#xe606;</span>
-                Google访问助手
+                ai竞赛
             </span>
             <span class="sidebar-tag-name" data-tags="GitHub">
                 <span class="iconfont-archer">&#xe606;</span>
@@ -963,21 +944,25 @@ git config --list
                 <span class="iconfont-archer">&#xe606;</span>
                 GitLab
             </span>
+            <span class="sidebar-tag-name" data-tags="Google访问助手">
+                <span class="iconfont-archer">&#xe606;</span>
+                Google访问助手
+            </span>
             <span class="sidebar-tag-name" data-tags="预训练模型">
                 <span class="iconfont-archer">&#xe606;</span>
                 预训练模型
+            </span>
+            <span class="sidebar-tag-name" data-tags="启动U盘">
+                <span class="iconfont-archer">&#xe606;</span>
+                启动U盘
             </span>
             <span class="sidebar-tag-name" data-tags="nlp">
                 <span class="iconfont-archer">&#xe606;</span>
                 nlp
             </span>
-            <span class="sidebar-tag-name" data-tags="pytorch">
+            <span class="sidebar-tag-name" data-tags="Pandas">
                 <span class="iconfont-archer">&#xe606;</span>
-                pytorch
-            </span>
-            <span class="sidebar-tag-name" data-tags="svm">
-                <span class="iconfont-archer">&#xe606;</span>
-                svm
+                Pandas
             </span>
             <span class="sidebar-tag-name" data-tags="git">
                 <span class="iconfont-archer">&#xe606;</span>
@@ -991,85 +976,81 @@ git config --list
                 <span class="iconfont-archer">&#xe606;</span>
                 jupyter notebook
             </span>
-            <span class="sidebar-tag-name" data-tags="Pandas">
-                <span class="iconfont-archer">&#xe606;</span>
-                Pandas
-            </span>
-            <span class="sidebar-tag-name" data-tags="启动U盘">
-                <span class="iconfont-archer">&#xe606;</span>
-                启动U盘
-            </span>
             <span class="sidebar-tag-name" data-tags="python">
                 <span class="iconfont-archer">&#xe606;</span>
                 python
-            </span>
-            <span class="sidebar-tag-name" data-tags="NIVIDIA驱动">
-                <span class="iconfont-archer">&#xe606;</span>
-                NIVIDIA驱动
-            </span>
-            <span class="sidebar-tag-name" data-tags="文本聚类 bert向量表示">
-                <span class="iconfont-archer">&#xe606;</span>
-                文本聚类 bert向量表示
-            </span>
-            <span class="sidebar-tag-name" data-tags="动态规划">
-                <span class="iconfont-archer">&#xe606;</span>
-                动态规划
             </span>
             <span class="sidebar-tag-name" data-tags="vscode">
                 <span class="iconfont-archer">&#xe606;</span>
                 vscode
             </span>
+            <span class="sidebar-tag-name" data-tags="NIVIDIA驱动">
+                <span class="iconfont-archer">&#xe606;</span>
+                NIVIDIA驱动
+            </span>
             <span class="sidebar-tag-name" data-tags="树">
                 <span class="iconfont-archer">&#xe606;</span>
                 树
             </span>
-            <span class="sidebar-tag-name" data-tags="机器学习">
+            <span class="sidebar-tag-name" data-tags="svm">
                 <span class="iconfont-archer">&#xe606;</span>
-                机器学习
+                svm
+            </span>
+            <span class="sidebar-tag-name" data-tags="pytorch">
+                <span class="iconfont-archer">&#xe606;</span>
+                pytorch
+            </span>
+            <span class="sidebar-tag-name" data-tags="动态规划">
+                <span class="iconfont-archer">&#xe606;</span>
+                动态规划
+            </span>
+            <span class="sidebar-tag-name" data-tags="文本聚类 bert向量表示">
+                <span class="iconfont-archer">&#xe606;</span>
+                文本聚类 bert向量表示
             </span>
             <span class="sidebar-tag-name" data-tags="图">
                 <span class="iconfont-archer">&#xe606;</span>
                 图
             </span>
-            <span class="sidebar-tag-name" data-tags="文本聚类 编辑距离">
+            <span class="sidebar-tag-name" data-tags="python_c++_互通">
                 <span class="iconfont-archer">&#xe606;</span>
-                文本聚类 编辑距离
-            </span>
-            <span class="sidebar-tag-name" data-tags="电影">
-                <span class="iconfont-archer">&#xe606;</span>
-                电影
+                python_c++_互通
             </span>
             <span class="sidebar-tag-name" data-tags="呈贡">
                 <span class="iconfont-archer">&#xe606;</span>
                 呈贡
             </span>
-            <span class="sidebar-tag-name" data-tags="python_c++_互通">
+            <span class="sidebar-tag-name" data-tags="文本聚类 编辑距离">
                 <span class="iconfont-archer">&#xe606;</span>
-                python_c++_互通
+                文本聚类 编辑距离
+            </span>
+            <span class="sidebar-tag-name" data-tags="机器学习">
+                <span class="iconfont-archer">&#xe606;</span>
+                机器学习
             </span>
             <span class="sidebar-tag-name" data-tags="编程">
                 <span class="iconfont-archer">&#xe606;</span>
                 编程
             </span>
-            <span class="sidebar-tag-name" data-tags="干货">
+            <span class="sidebar-tag-name" data-tags="电影">
                 <span class="iconfont-archer">&#xe606;</span>
-                干货
+                电影
             </span>
             <span class="sidebar-tag-name" data-tags="微信">
                 <span class="iconfont-archer">&#xe606;</span>
                 微信
             </span>
-            <span class="sidebar-tag-name" data-tags="熵">
+            <span class="sidebar-tag-name" data-tags="干货">
                 <span class="iconfont-archer">&#xe606;</span>
-                熵
-            </span>
-            <span class="sidebar-tag-name" data-tags="论文写作">
-                <span class="iconfont-archer">&#xe606;</span>
-                论文写作
+                干货
             </span>
             <span class="sidebar-tag-name" data-tags="资源">
                 <span class="iconfont-archer">&#xe606;</span>
                 资源
+            </span>
+            <span class="sidebar-tag-name" data-tags="熵">
+                <span class="iconfont-archer">&#xe606;</span>
+                熵
             </span>
             <span class="sidebar-tag-name" data-tags="竞赛">
                 <span class="iconfont-archer">&#xe606;</span>
@@ -1078,6 +1059,10 @@ git config --list
             <span class="sidebar-tag-name" data-tags="docker, doccano">
                 <span class="iconfont-archer">&#xe606;</span>
                 docker, doccano
+            </span>
+            <span class="sidebar-tag-name" data-tags="论文写作">
+                <span class="iconfont-archer">&#xe606;</span>
+                论文写作
             </span>
     </div>
     <div class="iconfont-archer sidebar-tags-empty">&#xe678;</div>
@@ -1089,21 +1074,21 @@ git config --list
 
         <div class="sidebar-panel-categories">
     <div class="sidebar-categories-name">
-        <span class="sidebar-category-name" data-categories="总结">
-            <span class="iconfont-archer">&#xe60a;</span>
-            总结
-        </span>
         <span class="sidebar-category-name" data-categories="生活情感">
             <span class="iconfont-archer">&#xe60a;</span>
             生活情感
         </span>
-        <span class="sidebar-category-name" data-categories="干货">
+        <span class="sidebar-category-name" data-categories="总结">
             <span class="iconfont-archer">&#xe60a;</span>
-            干货
+            总结
         </span>
         <span class="sidebar-category-name" data-categories="爬坑总结">
             <span class="iconfont-archer">&#xe60a;</span>
             爬坑总结
+        </span>
+        <span class="sidebar-category-name" data-categories="干货">
+            <span class="iconfont-archer">&#xe60a;</span>
+            干货
         </span>
         <span class="sidebar-category-name" data-categories="人工智能">
             <span class="iconfont-archer">&#xe60a;</span>
@@ -1133,13 +1118,13 @@ git config --list
             <span class="iconfont-archer">&#xe60a;</span>
             编程
         </span>
-        <span class="sidebar-category-name" data-categories="自然语言处理">
-            <span class="iconfont-archer">&#xe60a;</span>
-            自然语言处理
-        </span>
         <span class="sidebar-category-name" data-categories="算法笔记">
             <span class="iconfont-archer">&#xe60a;</span>
             算法笔记
+        </span>
+        <span class="sidebar-category-name" data-categories="自然语言处理">
+            <span class="iconfont-archer">&#xe60a;</span>
+            自然语言处理
         </span>
         <span class="sidebar-category-name" data-categories="算法">
             <span class="iconfont-archer">&#xe60a;</span>
@@ -1190,6 +1175,27 @@ git config --list
         <!-- fancybox -->
         <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.36/dist/fancybox/fancybox.umd.js" onload="window.Fancybox.bind('[data-fancybox]')" defer></script>
         <!-- algolia -->
+            <div class="site-search site-search-loading">
+    <div class="algolia-popup popup">
+        <div class="algolia-search">
+            <div class="algolia-search-input-icon">
+                <i class="fa fa-search"></i>
+            </div>
+            <div class="algolia-search-input" id="algolia-search-input"></div>
+            <div class="popup-btn-close">
+                <i class="iconfont-archer">&#xe609;</i>
+            </div>
+        </div>
+
+        <div class="algolia-results">
+            <div id="algolia-stats" class="algolia-stats"></div>
+            <div id="algolia-hits"></div>
+            <div id="algolia-pagination" class="algolia-pagination"></div>
+        </div>
+    </div>
+</div>
+
+            <script src="/scripts/search.js" async></script>
         <!-- busuanzi -->
             <script src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async></script>
         <!-- async load share.js -->

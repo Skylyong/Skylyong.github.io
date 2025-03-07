@@ -198,6 +198,18 @@
     <link rel="preload" href="/font/Oswald-Regular.ttf" as="font" crossorigin>
     <link rel="preload" href="https://at.alicdn.com/t/font_327081_1dta1rlogw17zaor.woff" as="font" crossorigin>
     <!-- algolia -->
+        <script>
+            var hits = JSON.parse('{"per_page":10}')
+            var labels = JSON.parse('{"input_placeholder":"Search for Posts","hits_empty":"We did not find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}')
+
+            var algolia = {
+                applicationID: 'HDLQX51180',
+                apiKey: '2bcb8a706f5955c9f74cea13e540fb1b',
+                indexName: 'my-hexo-blog',
+                hits: hits,
+                labels: labels
+            }
+        </script>
     <!-- 百度统计  -->
     <!-- 谷歌统计  -->
     <!-- Google tag (gtag.js) -->
@@ -402,7 +414,7 @@
                 <main class="main index-page">
             
         <article class="index-post">
-            <a class="abstract-title" href="/2021/02/21/hexo-ge-ren-bo-ke-da-jian-jiao-cheng/">
+            <a class="abstract-title" href="/2021/02/21/hexoge-ren-bo-ke-da-jian-jiao-cheng/">
                 <span class="abstract-title-text">hexo个人博客搭建</span>
             </a>
             <div class="abstract-content">
@@ -545,13 +557,16 @@ next主题使用教程: https://theme-...
         Total : 47
         </div>
         <!-- search  -->
+            <div class="site-search site-search-loading popup-trigger">
+                <span class="iconfont-archer search-icon">&#xe627;</span>
+            </div>
     </div>
     <div class="post-archive">
             <div class="archive-year"> 2025 </div>
             <ul class="year-list">
         <li class="archive-post-item">
             <span class="archive-post-date">03/06</span>
-            <a class="archive-post-title" href="/2025/03/06/shi-yong-bert-de-dao-duan-yu-xiang-liang-biao-shi-bing-jin-xing-ceng-ci-ju-lei-shi-xian-xiang-si-xing-qu-chong/">使用BERT得到短语向量表示并进行层次聚类实现相似性去重</a>
+            <a class="archive-post-title" href="/2025/03/06/shi-yong-bertde-dao-duan-yu-xiang-liang-biao-shi-bing-jin-xing-ceng-ci-ju-lei-shi-xian-xiang-si-xing-qu-chong/">使用BERT得到短语向量表示并进行层次聚类实现相似性去重</a>
         </li>
         <li class="archive-post-item">
             <span class="archive-post-date">03/06</span>
@@ -559,27 +574,27 @@ next主题使用教程: https://theme-...
         </li>
         <li class="archive-post-item">
             <span class="archive-post-date">02/27</span>
-            <a class="archive-post-title" href="/2025/02/27/ai-jing-sai-ping-tai/">Ai竞赛平台</a>
+            <a class="archive-post-title" href="/2025/02/27/aijing-sai-ping-tai/">Ai竞赛平台</a>
         </li>
         <li class="archive-post-item">
             <span class="archive-post-date">02/19</span>
-            <a class="archive-post-title" href="/2025/02/19/python-ri-chang-kai-fa-za-ji/">python日常开发杂记</a>
+            <a class="archive-post-title" href="/2025/02/19/pythonri-chang-kai-fa-za-ji/">python日常开发杂记</a>
         </li>
         <li class="archive-post-item">
             <span class="archive-post-date">02/12</span>
-            <a class="archive-post-title" href="/2025/02/12/tong-guo-docker-bu-shu-doccano-biao-zhu-gong-ju/">通过docker部署doccano标注工具</a>
+            <a class="archive-post-title" href="/2025/02/12/tong-guo-dockerbu-shu-doccanobiao-zhu-gong-ju/">通过docker部署doccano标注工具</a>
         </li>
         <li class="archive-post-item">
             <span class="archive-post-date">02/06</span>
-            <a class="archive-post-title" href="/2025/02/06/zai-cheng-gong-de-ri-zi-fu-xi-zi-liao-bu-jian-liao/">在呈贡的日子——复习资料不见了</a>
+            <a class="archive-post-title" href="/2025/02/06/zai-cheng-gong-de-ri-zi----fu-xi-zi-liao-bu-jian-liao/">在呈贡的日子——复习资料不见了</a>
         </li>
         <li class="archive-post-item">
             <span class="archive-post-date">02/06</span>
-            <a class="archive-post-title" href="/2025/02/06/zai-cheng-gong-de-ri-zi-lao-yu-he/">在呈贡的日子——捞鱼河</a>
+            <a class="archive-post-title" href="/2025/02/06/zai-cheng-gong-de-ri-zi----lao-yu-he/">在呈贡的日子——捞鱼河</a>
         </li>
         <li class="archive-post-item">
             <span class="archive-post-date">01/28</span>
-            <a class="archive-post-title" href="/2025/01/28/vscode-kai-fa-ji-qiao-ji-lu/">vscode开发技巧记录</a>
+            <a class="archive-post-title" href="/2025/01/28/vscodekai-fa-ji-qiao-ji-lu/">vscode开发技巧记录</a>
         </li>
         <li class="archive-post-item">
             <span class="archive-post-date">01/28</span>
@@ -587,11 +602,11 @@ next主题使用教程: https://theme-...
         </li>
         <li class="archive-post-item">
             <span class="archive-post-date">01/27</span>
-            <a class="archive-post-title" href="/2025/01/27/2024-nian-di-zong-jie/">2024年底总结</a>
+            <a class="archive-post-title" href="/2025/01/27/2024nian-di-zong-jie/">2024年底总结</a>
         </li>
         <li class="archive-post-item">
             <span class="archive-post-date">01/26</span>
-            <a class="archive-post-title" href="/2025/01/26/da-jian-webdav-fu-wu-qi-shi-xian-obsidian-he-zotero-duo-duan-tong-bu/">搭建Webdav服务器实现Obsidian和Zotero多端同步</a>
+            <a class="archive-post-title" href="/2025/01/26/da-jian-webdavfu-wu-qi-shi-xian-obsidianhe-zoteroduo-duan-tong-bu/">搭建Webdav服务器实现Obsidian和Zotero多端同步</a>
         </li>
         <li class="archive-post-item">
             <span class="archive-post-date">01/07</span>
@@ -599,29 +614,29 @@ next主题使用教程: https://theme-...
         </li>
         <li class="archive-post-item">
             <span class="archive-post-date">01/06</span>
-            <a class="archive-post-title" href="/2025/01/06/matplotlib-xian-shi-zhong-wen/">matplotlib 设置显示中文</a>
+            <a class="archive-post-title" href="/2025/01/06/matplotlibxian-shi-zhong-wen/">matplotlib 设置显示中文</a>
         </li>
         <li class="archive-post-item">
             <span class="archive-post-date">01/06</span>
-            <a class="archive-post-title" href="/2025/01/06/python-duo-jin-cheng-shi-li/">python多进程示例</a>
+            <a class="archive-post-title" href="/2025/01/06/pythonduo-jin-cheng-shi-li/">python多进程示例</a>
         </li>
                 </ul>
             <div class="archive-year"> 2023 </div>
             <ul class="year-list">
         <li class="archive-post-item">
             <span class="archive-post-date">09/12</span>
-            <a class="archive-post-title" href="/2023/09/12/ubuntu-shang-an-zhuang-nividia-qu-dong-he-cuda-tookit/">ubuntu上安装NIVIDIA驱动和CUDA_Tookit</a>
+            <a class="archive-post-title" href="/2023/09/12/ubuntushang-an-zhuang-nividiaqu-dong-he-cuda-tookit/">ubuntu上安装NIVIDIA驱动和CUDA_Tookit</a>
         </li>
         <li class="archive-post-item">
             <span class="archive-post-date">07/23</span>
-            <a class="archive-post-title" href="/2023/07/23/zai-mac-shang-shi-yong-pybind11-shi-xian-c-yu-python-hu-tong-de-demo/">在mac上使用pybind11实现c++与python互通的demo</a>
+            <a class="archive-post-title" href="/2023/07/23/zai-macshang-shi-yong-pybind11shi-xian-c-yu-pythonhu-tong-de-demo/">在mac上使用pybind11实现c++与python互通的demo</a>
         </li>
                 </ul>
             <div class="archive-year"> 2022 </div>
             <ul class="year-list">
         <li class="archive-post-item">
             <span class="archive-post-date">09/07</span>
-            <a class="archive-post-title" href="/2022/09/07/mac-xi-tong-zhi-zuo-win10-qi-dong-u-pan/">Mac系统制作win10启动U盘</a>
+            <a class="archive-post-title" href="/2022/09/07/macxi-tong-zhi-zuo-win10qi-dong-upan/">Mac系统制作win10启动U盘</a>
         </li>
         <li class="archive-post-item">
             <span class="archive-post-date">09/05</span>
@@ -644,11 +659,11 @@ next主题使用教程: https://theme-...
         </li>
         <li class="archive-post-item">
             <span class="archive-post-date">09/19</span>
-            <a class="archive-post-title" href="/2021/09/19/ji-qi-xue-xi-can-kao-zi-liao/">机器学习参考资料</a>
+            <a class="archive-post-title" href="/2021/09/19/you-yong-de-zi-yuan/">有用的资源</a>
         </li>
         <li class="archive-post-item">
             <span class="archive-post-date">09/19</span>
-            <a class="archive-post-title" href="/2021/09/19/you-yong-de-zi-yuan/">有用的资源</a>
+            <a class="archive-post-title" href="/2021/09/19/ji-qi-xue-xi-can-kao-zi-liao/">机器学习参考资料</a>
         </li>
         <li class="archive-post-item">
             <span class="archive-post-date">08/14</span>
@@ -660,7 +675,7 @@ next主题使用教程: https://theme-...
         </li>
         <li class="archive-post-item">
             <span class="archive-post-date">08/13</span>
-            <a class="archive-post-title" href="/2021/08/13/google-fang-wen-zhu-shou-an-zhuang/">Google访问助手安装</a>
+            <a class="archive-post-title" href="/2021/08/13/googlefang-wen-zhu-shou-an-zhuang/">Google访问助手安装</a>
         </li>
         <li class="archive-post-item">
             <span class="archive-post-date">08/13</span>
@@ -672,19 +687,19 @@ next主题使用教程: https://theme-...
         </li>
         <li class="archive-post-item">
             <span class="archive-post-date">08/13</span>
-            <a class="archive-post-title" href="/2021/08/13/li-bao-chun-writing-perfect-papers/">论文写作</a>
+            <a class="archive-post-title" href="/2021/08/13/li-bao-chun----writing-perfect-papers/">论文写作</a>
         </li>
         <li class="archive-post-item">
             <span class="archive-post-date">08/09</span>
-            <a class="archive-post-title" href="/2021/08/09/svm-xue-xi-bi-ji/">SVM学习笔记</a>
+            <a class="archive-post-title" href="/2021/08/09/svmxue-xi-bi-ji/">SVM学习笔记</a>
         </li>
         <li class="archive-post-item">
             <span class="archive-post-date">08/06</span>
-            <a class="archive-post-title" href="/2021/08/06/pandas-xue-xi/">Pandas学习</a>
+            <a class="archive-post-title" href="/2021/08/06/pandasxue-xi/">Pandas学习</a>
         </li>
         <li class="archive-post-item">
             <span class="archive-post-date">08/05</span>
-            <a class="archive-post-title" href="/2021/08/05/pytorch-xue-xi/">Pytorch学习</a>
+            <a class="archive-post-title" href="/2021/08/05/pytorchxue-xi/">Pytorch学习</a>
         </li>
         <li class="archive-post-item">
             <span class="archive-post-date">07/01</span>
@@ -696,15 +711,15 @@ next主题使用教程: https://theme-...
         </li>
         <li class="archive-post-item">
             <span class="archive-post-date">04/16</span>
-            <a class="archive-post-title" href="/2021/04/16/ji-qi-xue-xi-zhong-de-ge-chong-shang/">机器学习中的各种熵</a>
+            <a class="archive-post-title" href="/2021/04/16/ji-qi-xue-xi-zhong-de-ge-zhong-shang/">机器学习中的各种熵</a>
         </li>
         <li class="archive-post-item">
             <span class="archive-post-date">04/08</span>
-            <a class="archive-post-title" href="/2021/04/08/git-chang-yong-ming-ling/">git常用命令</a>
+            <a class="archive-post-title" href="/2021/04/08/gitchang-yong-ming-ling/">git常用命令</a>
         </li>
         <li class="archive-post-item">
             <span class="archive-post-date">04/08</span>
-            <a class="archive-post-title" href="/2021/04/08/nlp-zhi-shi-ti-xi/">NLP知识体系</a>
+            <a class="archive-post-title" href="/2021/04/08/nlpzhi-shi-ti-xi/">NLP知识体系</a>
         </li>
         <li class="archive-post-item">
             <span class="archive-post-date">04/01</span>
@@ -712,11 +727,11 @@ next主题使用教程: https://theme-...
         </li>
         <li class="archive-post-item">
             <span class="archive-post-date">03/31</span>
-            <a class="archive-post-title" href="/2021/03/31/gitlab-da-jian-bi-ji/">GitLab搭建笔记</a>
+            <a class="archive-post-title" href="/2021/03/31/gitlabda-jian-bi-ji/">GitLab搭建笔记</a>
         </li>
         <li class="archive-post-item">
             <span class="archive-post-date">03/31</span>
-            <a class="archive-post-title" href="/2021/03/31/ke-cheng-she-ji-zui-xiao-sheng-cheng-shu-ying-yong/">【课程设计】最小生成树应用</a>
+            <a class="archive-post-title" href="/2021/03/31/-ke-cheng-she-ji-zui-xiao-sheng-cheng-shu-ying-yong/">【课程设计】最小生成树应用</a>
         </li>
         <li class="archive-post-item">
             <span class="archive-post-date">03/31</span>
@@ -736,11 +751,11 @@ next主题使用教程: https://theme-...
         </li>
         <li class="archive-post-item">
             <span class="archive-post-date">03/28</span>
-            <a class="archive-post-title" href="/2021/03/28/github-jia-su-fang-fa/">GitHub加速方法</a>
+            <a class="archive-post-title" href="/2021/03/28/githubjia-su-fang-fa/">GitHub加速方法</a>
         </li>
         <li class="archive-post-item">
             <span class="archive-post-date">02/21</span>
-            <a class="archive-post-title" href="/2021/02/21/hexo-ge-ren-bo-ke-da-jian-jiao-cheng/">hexo个人博客搭建</a>
+            <a class="archive-post-title" href="/2021/02/21/hexoge-ren-bo-ke-da-jian-jiao-cheng/">hexo个人博客搭建</a>
         </li>
         <li class="archive-post-item">
             <span class="archive-post-date">02/21</span>
@@ -752,17 +767,13 @@ next主题使用教程: https://theme-...
 
         <div class="sidebar-panel-tags">
     <div class="sidebar-tags-name">
-            <span class="sidebar-tag-name" data-tags="ai竞赛">
-                <span class="iconfont-archer">&#xe606;</span>
-                ai竞赛
-            </span>
             <span class="sidebar-tag-name" data-tags="总结">
                 <span class="iconfont-archer">&#xe606;</span>
                 总结
             </span>
-            <span class="sidebar-tag-name" data-tags="Google访问助手">
+            <span class="sidebar-tag-name" data-tags="ai竞赛">
                 <span class="iconfont-archer">&#xe606;</span>
-                Google访问助手
+                ai竞赛
             </span>
             <span class="sidebar-tag-name" data-tags="GitHub">
                 <span class="iconfont-archer">&#xe606;</span>
@@ -772,21 +783,25 @@ next主题使用教程: https://theme-...
                 <span class="iconfont-archer">&#xe606;</span>
                 GitLab
             </span>
+            <span class="sidebar-tag-name" data-tags="Google访问助手">
+                <span class="iconfont-archer">&#xe606;</span>
+                Google访问助手
+            </span>
             <span class="sidebar-tag-name" data-tags="预训练模型">
                 <span class="iconfont-archer">&#xe606;</span>
                 预训练模型
+            </span>
+            <span class="sidebar-tag-name" data-tags="启动U盘">
+                <span class="iconfont-archer">&#xe606;</span>
+                启动U盘
             </span>
             <span class="sidebar-tag-name" data-tags="nlp">
                 <span class="iconfont-archer">&#xe606;</span>
                 nlp
             </span>
-            <span class="sidebar-tag-name" data-tags="pytorch">
+            <span class="sidebar-tag-name" data-tags="Pandas">
                 <span class="iconfont-archer">&#xe606;</span>
-                pytorch
-            </span>
-            <span class="sidebar-tag-name" data-tags="svm">
-                <span class="iconfont-archer">&#xe606;</span>
-                svm
+                Pandas
             </span>
             <span class="sidebar-tag-name" data-tags="git">
                 <span class="iconfont-archer">&#xe606;</span>
@@ -800,85 +815,81 @@ next主题使用教程: https://theme-...
                 <span class="iconfont-archer">&#xe606;</span>
                 jupyter notebook
             </span>
-            <span class="sidebar-tag-name" data-tags="Pandas">
-                <span class="iconfont-archer">&#xe606;</span>
-                Pandas
-            </span>
-            <span class="sidebar-tag-name" data-tags="启动U盘">
-                <span class="iconfont-archer">&#xe606;</span>
-                启动U盘
-            </span>
             <span class="sidebar-tag-name" data-tags="python">
                 <span class="iconfont-archer">&#xe606;</span>
                 python
-            </span>
-            <span class="sidebar-tag-name" data-tags="NIVIDIA驱动">
-                <span class="iconfont-archer">&#xe606;</span>
-                NIVIDIA驱动
-            </span>
-            <span class="sidebar-tag-name" data-tags="文本聚类 bert向量表示">
-                <span class="iconfont-archer">&#xe606;</span>
-                文本聚类 bert向量表示
-            </span>
-            <span class="sidebar-tag-name" data-tags="动态规划">
-                <span class="iconfont-archer">&#xe606;</span>
-                动态规划
             </span>
             <span class="sidebar-tag-name" data-tags="vscode">
                 <span class="iconfont-archer">&#xe606;</span>
                 vscode
             </span>
+            <span class="sidebar-tag-name" data-tags="NIVIDIA驱动">
+                <span class="iconfont-archer">&#xe606;</span>
+                NIVIDIA驱动
+            </span>
             <span class="sidebar-tag-name" data-tags="树">
                 <span class="iconfont-archer">&#xe606;</span>
                 树
             </span>
-            <span class="sidebar-tag-name" data-tags="机器学习">
+            <span class="sidebar-tag-name" data-tags="svm">
                 <span class="iconfont-archer">&#xe606;</span>
-                机器学习
+                svm
+            </span>
+            <span class="sidebar-tag-name" data-tags="pytorch">
+                <span class="iconfont-archer">&#xe606;</span>
+                pytorch
+            </span>
+            <span class="sidebar-tag-name" data-tags="动态规划">
+                <span class="iconfont-archer">&#xe606;</span>
+                动态规划
+            </span>
+            <span class="sidebar-tag-name" data-tags="文本聚类 bert向量表示">
+                <span class="iconfont-archer">&#xe606;</span>
+                文本聚类 bert向量表示
             </span>
             <span class="sidebar-tag-name" data-tags="图">
                 <span class="iconfont-archer">&#xe606;</span>
                 图
             </span>
-            <span class="sidebar-tag-name" data-tags="文本聚类 编辑距离">
+            <span class="sidebar-tag-name" data-tags="python_c++_互通">
                 <span class="iconfont-archer">&#xe606;</span>
-                文本聚类 编辑距离
-            </span>
-            <span class="sidebar-tag-name" data-tags="电影">
-                <span class="iconfont-archer">&#xe606;</span>
-                电影
+                python_c++_互通
             </span>
             <span class="sidebar-tag-name" data-tags="呈贡">
                 <span class="iconfont-archer">&#xe606;</span>
                 呈贡
             </span>
-            <span class="sidebar-tag-name" data-tags="python_c++_互通">
+            <span class="sidebar-tag-name" data-tags="文本聚类 编辑距离">
                 <span class="iconfont-archer">&#xe606;</span>
-                python_c++_互通
+                文本聚类 编辑距离
+            </span>
+            <span class="sidebar-tag-name" data-tags="机器学习">
+                <span class="iconfont-archer">&#xe606;</span>
+                机器学习
             </span>
             <span class="sidebar-tag-name" data-tags="编程">
                 <span class="iconfont-archer">&#xe606;</span>
                 编程
             </span>
-            <span class="sidebar-tag-name" data-tags="干货">
+            <span class="sidebar-tag-name" data-tags="电影">
                 <span class="iconfont-archer">&#xe606;</span>
-                干货
+                电影
             </span>
             <span class="sidebar-tag-name" data-tags="微信">
                 <span class="iconfont-archer">&#xe606;</span>
                 微信
             </span>
-            <span class="sidebar-tag-name" data-tags="熵">
+            <span class="sidebar-tag-name" data-tags="干货">
                 <span class="iconfont-archer">&#xe606;</span>
-                熵
-            </span>
-            <span class="sidebar-tag-name" data-tags="论文写作">
-                <span class="iconfont-archer">&#xe606;</span>
-                论文写作
+                干货
             </span>
             <span class="sidebar-tag-name" data-tags="资源">
                 <span class="iconfont-archer">&#xe606;</span>
                 资源
+            </span>
+            <span class="sidebar-tag-name" data-tags="熵">
+                <span class="iconfont-archer">&#xe606;</span>
+                熵
             </span>
             <span class="sidebar-tag-name" data-tags="竞赛">
                 <span class="iconfont-archer">&#xe606;</span>
@@ -887,6 +898,10 @@ next主题使用教程: https://theme-...
             <span class="sidebar-tag-name" data-tags="docker, doccano">
                 <span class="iconfont-archer">&#xe606;</span>
                 docker, doccano
+            </span>
+            <span class="sidebar-tag-name" data-tags="论文写作">
+                <span class="iconfont-archer">&#xe606;</span>
+                论文写作
             </span>
     </div>
     <div class="iconfont-archer sidebar-tags-empty">&#xe678;</div>
@@ -898,21 +913,21 @@ next主题使用教程: https://theme-...
 
         <div class="sidebar-panel-categories">
     <div class="sidebar-categories-name">
-        <span class="sidebar-category-name" data-categories="总结">
-            <span class="iconfont-archer">&#xe60a;</span>
-            总结
-        </span>
         <span class="sidebar-category-name" data-categories="生活情感">
             <span class="iconfont-archer">&#xe60a;</span>
             生活情感
         </span>
-        <span class="sidebar-category-name" data-categories="干货">
+        <span class="sidebar-category-name" data-categories="总结">
             <span class="iconfont-archer">&#xe60a;</span>
-            干货
+            总结
         </span>
         <span class="sidebar-category-name" data-categories="爬坑总结">
             <span class="iconfont-archer">&#xe60a;</span>
             爬坑总结
+        </span>
+        <span class="sidebar-category-name" data-categories="干货">
+            <span class="iconfont-archer">&#xe60a;</span>
+            干货
         </span>
         <span class="sidebar-category-name" data-categories="人工智能">
             <span class="iconfont-archer">&#xe60a;</span>
@@ -942,13 +957,13 @@ next主题使用教程: https://theme-...
             <span class="iconfont-archer">&#xe60a;</span>
             编程
         </span>
-        <span class="sidebar-category-name" data-categories="自然语言处理">
-            <span class="iconfont-archer">&#xe60a;</span>
-            自然语言处理
-        </span>
         <span class="sidebar-category-name" data-categories="算法笔记">
             <span class="iconfont-archer">&#xe60a;</span>
             算法笔记
+        </span>
+        <span class="sidebar-category-name" data-categories="自然语言处理">
+            <span class="iconfont-archer">&#xe60a;</span>
+            自然语言处理
         </span>
         <span class="sidebar-category-name" data-categories="算法">
             <span class="iconfont-archer">&#xe60a;</span>
@@ -999,6 +1014,27 @@ next主题使用教程: https://theme-...
         <!-- fancybox -->
         <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.36/dist/fancybox/fancybox.umd.js" onload="window.Fancybox.bind('[data-fancybox]')" defer></script>
         <!-- algolia -->
+            <div class="site-search site-search-loading">
+    <div class="algolia-popup popup">
+        <div class="algolia-search">
+            <div class="algolia-search-input-icon">
+                <i class="fa fa-search"></i>
+            </div>
+            <div class="algolia-search-input" id="algolia-search-input"></div>
+            <div class="popup-btn-close">
+                <i class="iconfont-archer">&#xe609;</i>
+            </div>
+        </div>
+
+        <div class="algolia-results">
+            <div id="algolia-stats" class="algolia-stats"></div>
+            <div id="algolia-hits"></div>
+            <div id="algolia-pagination" class="algolia-pagination"></div>
+        </div>
+    </div>
+</div>
+
+            <script src="/scripts/search.js" async></script>
         <!-- busuanzi -->
             <script src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async></script>
         <!-- async load share.js -->
