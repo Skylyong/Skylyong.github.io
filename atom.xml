@@ -227,7 +227,7 @@
     <link href="https://eggplant.wiki/2025/01/28/bo-ke-wei-hu-ri-zhi/"/>
     <id>https://eggplant.wiki/2025/01/28/bo-ke-wei-hu-ri-zhi/</id>
     <published>2025-01-28T08:17:28.000Z</published>
-    <updated>2025-02-10T06:09:32.444Z</updated>
+    <updated>2025-03-07T06:40:15.802Z</updated>
     
     
       
@@ -235,9 +235,7 @@
         
         
     <summary type="html">&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;2025年02月10日 新增 “NEWS” 模块， 记录成长历程&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;2025年02月04日 支持评论功能, 添加&lt;a</summary>
+&lt;li&gt;&lt;p&gt;2025年03月07日 增加搜索功能， 使用 &lt;a href=&quot;https://dashboard.algolia.com/&quot;&gt;algolia&lt;/a&gt; , 插件为 &lt;a</summary>
         
       
     
