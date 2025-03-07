@@ -198,18 +198,6 @@
     <link rel="preload" href="/font/Oswald-Regular.ttf" as="font" crossorigin>
     <link rel="preload" href="https://at.alicdn.com/t/font_327081_1dta1rlogw17zaor.woff" as="font" crossorigin>
     <!-- algolia -->
-        <script>
-            var hits = JSON.parse('{"per_page":10}')
-            var labels = JSON.parse('{"input_placeholder":"Search for Posts","hits_empty":"我们没有找到任何搜索结果: ${query}","hits_stats":"找到${hits}条结果 （用时 ${time} ms）"}')
-
-            var algolia = {
-                applicationID: '',
-                apiKey: '2bcb8a706f5955c9f74cea13e540fb1b',
-                indexName: 'my-hexo-blog',
-                hits: hits,
-                labels: labels
-            }
-        </script>
     <!-- 百度统计  -->
     <!-- 谷歌统计  -->
     <!-- Google tag (gtag.js) -->
@@ -527,9 +515,6 @@ Hugging face是一个专注于NLP的公司，拥有一个开源的预训练模�
         Total : 47
         </div>
         <!-- search  -->
-            <div class="site-search site-search-loading popup-trigger">
-                <span class="iconfont-archer search-icon">&#xe627;</span>
-            </div>
     </div>
     <div class="post-archive">
             <div class="archive-year"> 2025 </div>
@@ -773,17 +758,25 @@ Hugging face是一个专注于NLP的公司，拥有一个开源的预训练模�
                 <span class="iconfont-archer">&#xe606;</span>
                 Pandas
             </span>
-            <span class="sidebar-tag-name" data-tags="git">
+            <span class="sidebar-tag-name" data-tags="svm">
                 <span class="iconfont-archer">&#xe606;</span>
-                git
+                svm
             </span>
             <span class="sidebar-tag-name" data-tags="博客">
                 <span class="iconfont-archer">&#xe606;</span>
                 博客
             </span>
+            <span class="sidebar-tag-name" data-tags="git">
+                <span class="iconfont-archer">&#xe606;</span>
+                git
+            </span>
             <span class="sidebar-tag-name" data-tags="jupyter notebook">
                 <span class="iconfont-archer">&#xe606;</span>
                 jupyter notebook
+            </span>
+            <span class="sidebar-tag-name" data-tags="pytorch">
+                <span class="iconfont-archer">&#xe606;</span>
+                pytorch
             </span>
             <span class="sidebar-tag-name" data-tags="python">
                 <span class="iconfont-archer">&#xe606;</span>
@@ -809,21 +802,13 @@ Hugging face是一个专注于NLP的公司，拥有一个开源的预训练模�
                 <span class="iconfont-archer">&#xe606;</span>
                 文本聚类 bert向量表示
             </span>
-            <span class="sidebar-tag-name" data-tags="图">
-                <span class="iconfont-archer">&#xe606;</span>
-                图
-            </span>
-            <span class="sidebar-tag-name" data-tags="pytorch">
-                <span class="iconfont-archer">&#xe606;</span>
-                pytorch
-            </span>
             <span class="sidebar-tag-name" data-tags="机器学习">
                 <span class="iconfont-archer">&#xe606;</span>
                 机器学习
             </span>
-            <span class="sidebar-tag-name" data-tags="svm">
+            <span class="sidebar-tag-name" data-tags="图">
                 <span class="iconfont-archer">&#xe606;</span>
-                svm
+                图
             </span>
             <span class="sidebar-tag-name" data-tags="python_c++_互通">
                 <span class="iconfont-archer">&#xe606;</span>
@@ -837,21 +822,21 @@ Hugging face是一个专注于NLP的公司，拥有一个开源的预训练模�
                 <span class="iconfont-archer">&#xe606;</span>
                 文本聚类 编辑距离
             </span>
-            <span class="sidebar-tag-name" data-tags="电影">
-                <span class="iconfont-archer">&#xe606;</span>
-                电影
-            </span>
             <span class="sidebar-tag-name" data-tags="编程">
                 <span class="iconfont-archer">&#xe606;</span>
                 编程
             </span>
-            <span class="sidebar-tag-name" data-tags="微信">
+            <span class="sidebar-tag-name" data-tags="电影">
                 <span class="iconfont-archer">&#xe606;</span>
-                微信
+                电影
             </span>
             <span class="sidebar-tag-name" data-tags="干货">
                 <span class="iconfont-archer">&#xe606;</span>
                 干货
+            </span>
+            <span class="sidebar-tag-name" data-tags="微信">
+                <span class="iconfont-archer">&#xe606;</span>
+                微信
             </span>
             <span class="sidebar-tag-name" data-tags="资源">
                 <span class="iconfont-archer">&#xe606;</span>
@@ -919,13 +904,13 @@ Hugging face是一个专注于NLP的公司，拥有一个开源的预训练模�
             <span class="iconfont-archer">&#xe60a;</span>
             编程经验
         </span>
-        <span class="sidebar-category-name" data-categories="编程开发">
-            <span class="iconfont-archer">&#xe60a;</span>
-            编程开发
-        </span>
         <span class="sidebar-category-name" data-categories="编程">
             <span class="iconfont-archer">&#xe60a;</span>
             编程
+        </span>
+        <span class="sidebar-category-name" data-categories="编程开发">
+            <span class="iconfont-archer">&#xe60a;</span>
+            编程开发
         </span>
         <span class="sidebar-category-name" data-categories="算法笔记">
             <span class="iconfont-archer">&#xe60a;</span>
@@ -984,27 +969,6 @@ Hugging face是一个专注于NLP的公司，拥有一个开源的预训练模�
         <!-- fancybox -->
         <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.36/dist/fancybox/fancybox.umd.js" onload="window.Fancybox.bind('[data-fancybox]')" defer></script>
         <!-- algolia -->
-            <div class="site-search site-search-loading">
-    <div class="algolia-popup popup">
-        <div class="algolia-search">
-            <div class="algolia-search-input-icon">
-                <i class="fa fa-search"></i>
-            </div>
-            <div class="algolia-search-input" id="algolia-search-input"></div>
-            <div class="popup-btn-close">
-                <i class="iconfont-archer">&#xe609;</i>
-            </div>
-        </div>
-
-        <div class="algolia-results">
-            <div id="algolia-stats" class="algolia-stats"></div>
-            <div id="algolia-hits"></div>
-            <div id="algolia-pagination" class="algolia-pagination"></div>
-        </div>
-    </div>
-</div>
-
-            <script src="/scripts/search.js" async></script>
         <!-- busuanzi -->
             <script src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async></script>
         <!-- async load share.js -->
