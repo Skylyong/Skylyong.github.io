@@ -419,38 +419,7 @@
                 <span class="abstract-title-text">街拍合集</span>
             </a>
             <div class="abstract-content">
-                整理了一些以前的街拍照片，陆陆续续拍了几万多张照片，以后慢慢更新 …
-
-街拍合集1
-
-街拍合集2
-
-街拍合集3
-
-
-
-            </div>
-            <!-- read more -->
-            <div class="abstract-post-meta">
-                <!-- date -->
-                <div class="abstract-date" title="Last updated: 2025/03/09">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2025/03/09</span>
-                </div>
-                <!-- tags -->
-                    <div class="abstract-tags" >
-        <a class="post-tag" href="javascript:void(0);" data-tags="街拍">街拍</a>
-</div>
-
-            </div>
-        </article>
-        <div class="index-post-divider"></div>
-            
-        <article class="index-post">
-            <a class="abstract-title" href="/2025/03/09/jie-pai-he-ji-3/">
-                <span class="abstract-title-text">街拍合集3</span>
-            </a>
-            <div class="abstract-content">
-                
+                整理了一些以前的街拍照片，陆陆续续拍了几万张，后面会持续更新 …
 
 
 
@@ -468,28 +437,6 @@
 
 
 
-            </div>
-            <!-- read more -->
-            <div class="abstract-post-meta">
-                <!-- date -->
-                <div class="abstract-date" title="Last updated: 2025/03/09">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2025/03/09</span>
-                </div>
-                <!-- tags -->
-                    <div class="abstract-tags" >
-        <a class="post-tag" href="javascript:void(0);" data-tags="街拍">街拍</a>
-</div>
-
-            </div>
-        </article>
-        <div class="index-post-divider"></div>
-            
-        <article class="index-post">
-            <a class="abstract-title" href="/2025/03/09/jie-pai-he-ji-2/">
-                <span class="abstract-title-text">街拍合集2</span>
-            </a>
-            <div class="abstract-content">
-                
 
 
 
@@ -504,28 +451,7 @@
 
 
 
-            </div>
-            <!-- read more -->
-            <div class="abstract-post-meta">
-                <!-- date -->
-                <div class="abstract-date" title="Last updated: 2025/03/09">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2025/03/09</span>
-                </div>
-                <!-- tags -->
-                    <div class="abstract-tags" >
-        <a class="post-tag" href="javascript:void(0);" data-tags="街拍">街拍</a>
-</div>
 
-            </div>
-        </article>
-        <div class="index-post-divider"></div>
-            
-        <article class="index-post">
-            <a class="abstract-title" href="/2025/03/09/jie-pai-he-ji-1/">
-                <span class="abstract-title-text">街拍合集一</span>
-            </a>
-            <div class="abstract-content">
-                
 
 
 
@@ -718,6 +644,88 @@ Zindi: https://zindi.africa/...
             </div>
         </article>
         <div class="index-post-divider"></div>
+            
+        <article class="index-post">
+            <a class="abstract-title" href="/2025/02/19/python-ri-chang-kai-fa-za-ji/">
+                <span class="abstract-title-text">python日常开发杂记</span>
+            </a>
+            <div class="abstract-content">
+                mac系统 pandas存储为csv 在excel中打开乱码
+在使用pandas存储数据为csv文件后，在excel中打开会出现乱码问题，解决方法如下：指定编码格式为utf-8-sig，即可解决问题。
+
+1df.to_csv('output.csv', index=False, encoding='utf-8-sig')
+
+api 调用大模型时，指定返回json格式数据
+解决方法如下： 指定 response_format 为 {"type":"json_object"}，但是这个方法在deepseek中不适用。
+
+123456789101112131415client = openai...
+            </div>
+            <!-- read more -->
+            <div class="abstract-post-meta">
+                <!-- date -->
+                <div class="abstract-date" title="Last updated: 2025/03/08">
+                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2025/02/19</span>
+                </div>
+                <!-- tags -->
+                    <div class="abstract-tags" >
+        <a class="post-tag" href="javascript:void(0);" data-tags="python">python</a>
+</div>
+
+            </div>
+        </article>
+        <div class="index-post-divider"></div>
+            
+        <article class="index-post">
+            <a class="abstract-title" href="/2025/02/12/tong-guo-docker-bu-shu-doccano-biao-zhu-gong-ju/">
+                <span class="abstract-title-text">通过docker部署doccano标注工具</span>
+            </a>
+            <div class="abstract-content">
+                上半年使用了 doccano 标注工具对命名实体识别任务做了标注，感觉很好用。最近准备将其部署到服务器上，通过 docker 容器的方式进行，以便于以后可以快速部署。
+许久不用也是遇到了不少问题，主要是部署好系统后，上传数据一直转圈，没有反应，后面发现是因为没有启动 doccano task,而task需要和 doccano webserver 一起启动， openai 给我的建议是启动两个 docker 服务，我还是选用了常规的 screen 方式。
+下面是自己编写的可以使用的 docker-compose 文件，记录在此，方便以后调用。
+12345678910111213141516...
+            </div>
+            <!-- read more -->
+            <div class="abstract-post-meta">
+                <!-- date -->
+                <div class="abstract-date" title="Last updated: 2025/03/08">
+                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2025/02/12</span>
+                </div>
+                <!-- tags -->
+                    <div class="abstract-tags" >
+        <a class="post-tag" href="javascript:void(0);" data-tags="docker, doccano">docker, doccano</a>
+</div>
+
+            </div>
+        </article>
+        <div class="index-post-divider"></div>
+            
+        <article class="index-post">
+            <a class="abstract-title" href="/2025/02/06/zai-cheng-gong-de-ri-zi-fu-xi-zi-liao-bu-jian-liao/">
+                <span class="abstract-title-text">在呈贡的日子——复习资料不见了</span>
+            </a>
+            <div class="abstract-content">
+                又翻到了一篇当时的记录，起因是复习资料太多，不方便随身携带，我将书藏在了图书馆的顶楼消防通道（阅览室在二楼，书藏在12楼附近），结果，被保安收走了。还依稀记得，午夜的保安们打着手电筒，在过道、门窗旮旯角、花瓶后面到处翻找考研er书的情节，好一波猫鼠游戏。
+下面是当时的记录：
+
+一早上来图书馆，发现书不见了。从7点多折腾到现在（8:55）才从管理员处拿到了我的复习资料。数了数应该是没有丢失，悬着的一颗心总算放了下来。已经过了早点的时间，早点是吃不成了。
+可是接下来的晚上我应该如何安置我的书呢？住的地方离图书馆近5公里，将全部的书背进背出是断然不行的。
+Plan 1:把书精减一下，每天只带当...
+            </div>
+            <!-- read more -->
+            <div class="abstract-post-meta">
+                <!-- date -->
+                <div class="abstract-date" title="Last updated: 2025/03/08">
+                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2025/02/06</span>
+                </div>
+                <!-- tags -->
+                    <div class="abstract-tags" >
+        <a class="post-tag" href="javascript:void(0);" data-tags="呈贡">呈贡</a>
+</div>
+
+            </div>
+        </article>
+        <div class="index-post-divider"></div>
     <!-- paginator  -->
         <nav class="page-nav">
             <span class="page-number current">1</span><a class="page-number" href="/archives/2025/page/2/">2</a><a class="extend next" rel="next" href="/archives/2025/page/2/">NEXT &gt;</a>
@@ -805,12 +813,9 @@ Zindi: https://zindi.africa/...
         
         
         
-        
-        
-        
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 52
+        Total : 49
         </div>
         <!-- search  -->
             <div class="site-search site-search-loading popup-trigger">
@@ -823,18 +828,6 @@ Zindi: https://zindi.africa/...
         <li class="archive-post-item">
             <span class="archive-post-date">03/09</span>
             <a class="archive-post-title" href="/2025/03/09/jie-pai-he-ji/">街拍合集</a>
-        </li>
-        <li class="archive-post-item">
-            <span class="archive-post-date">03/09</span>
-            <a class="archive-post-title" href="/2025/03/09/jie-pai-he-ji-1/">街拍合集一</a>
-        </li>
-        <li class="archive-post-item">
-            <span class="archive-post-date">03/09</span>
-            <a class="archive-post-title" href="/2025/03/09/jie-pai-he-ji-2/">街拍合集2</a>
-        </li>
-        <li class="archive-post-item">
-            <span class="archive-post-date">03/09</span>
-            <a class="archive-post-title" href="/2025/03/09/jie-pai-he-ji-3/">街拍合集3</a>
         </li>
         <li class="archive-post-item">
             <span class="archive-post-date">03/09</span>
@@ -1051,13 +1044,13 @@ Zindi: https://zindi.africa/...
                 <span class="iconfont-archer">&#xe606;</span>
                 ai竞赛
             </span>
-            <span class="sidebar-tag-name" data-tags="GitHub">
-                <span class="iconfont-archer">&#xe606;</span>
-                GitHub
-            </span>
             <span class="sidebar-tag-name" data-tags="GitLab">
                 <span class="iconfont-archer">&#xe606;</span>
                 GitLab
+            </span>
+            <span class="sidebar-tag-name" data-tags="GitHub">
+                <span class="iconfont-archer">&#xe606;</span>
+                GitHub
             </span>
             <span class="sidebar-tag-name" data-tags="Google访问助手">
                 <span class="iconfont-archer">&#xe606;</span>
@@ -1071,29 +1064,29 @@ Zindi: https://zindi.africa/...
                 <span class="iconfont-archer">&#xe606;</span>
                 启动U盘
             </span>
-            <span class="sidebar-tag-name" data-tags="nlp">
+            <span class="sidebar-tag-name" data-tags="Pandas">
                 <span class="iconfont-archer">&#xe606;</span>
-                nlp
+                Pandas
             </span>
             <span class="sidebar-tag-name" data-tags="svm">
                 <span class="iconfont-archer">&#xe606;</span>
                 svm
             </span>
-            <span class="sidebar-tag-name" data-tags="pytorch">
+            <span class="sidebar-tag-name" data-tags="git">
                 <span class="iconfont-archer">&#xe606;</span>
-                pytorch
+                git
             </span>
             <span class="sidebar-tag-name" data-tags="博客">
                 <span class="iconfont-archer">&#xe606;</span>
                 博客
             </span>
-            <span class="sidebar-tag-name" data-tags="git">
+            <span class="sidebar-tag-name" data-tags="nlp">
                 <span class="iconfont-archer">&#xe606;</span>
-                git
+                nlp
             </span>
-            <span class="sidebar-tag-name" data-tags="Pandas">
+            <span class="sidebar-tag-name" data-tags="pytorch">
                 <span class="iconfont-archer">&#xe606;</span>
-                Pandas
+                pytorch
             </span>
             <span class="sidebar-tag-name" data-tags="jupyter notebook">
                 <span class="iconfont-archer">&#xe606;</span>
@@ -1114,10 +1107,6 @@ Zindi: https://zindi.africa/...
             <span class="sidebar-tag-name" data-tags="树">
                 <span class="iconfont-archer">&#xe606;</span>
                 树
-            </span>
-            <span class="sidebar-tag-name" data-tags="动态规划">
-                <span class="iconfont-archer">&#xe606;</span>
-                动态规划
             </span>
             <span class="sidebar-tag-name" data-tags="摄影">
                 <span class="iconfont-archer">&#xe606;</span>
@@ -1167,6 +1156,10 @@ Zindi: https://zindi.africa/...
                 <span class="iconfont-archer">&#xe606;</span>
                 干货
             </span>
+            <span class="sidebar-tag-name" data-tags="动态规划">
+                <span class="iconfont-archer">&#xe606;</span>
+                动态规划
+            </span>
             <span class="sidebar-tag-name" data-tags="资源">
                 <span class="iconfont-archer">&#xe606;</span>
                 资源
@@ -1175,13 +1168,13 @@ Zindi: https://zindi.africa/...
                 <span class="iconfont-archer">&#xe606;</span>
                 熵
             </span>
-            <span class="sidebar-tag-name" data-tags="论文写作">
-                <span class="iconfont-archer">&#xe606;</span>
-                论文写作
-            </span>
             <span class="sidebar-tag-name" data-tags="竞赛">
                 <span class="iconfont-archer">&#xe606;</span>
                 竞赛
+            </span>
+            <span class="sidebar-tag-name" data-tags="论文写作">
+                <span class="iconfont-archer">&#xe606;</span>
+                论文写作
             </span>
             <span class="sidebar-tag-name" data-tags="街拍">
                 <span class="iconfont-archer">&#xe606;</span>
@@ -1221,10 +1214,6 @@ Zindi: https://zindi.africa/...
             <span class="iconfont-archer">&#xe60a;</span>
             人工智能
         </span>
-        <span class="sidebar-category-name" data-categories="知识框架">
-            <span class="iconfont-archer">&#xe60a;</span>
-            知识框架
-        </span>
         <span class="sidebar-category-name" data-categories="学习笔记">
             <span class="iconfont-archer">&#xe60a;</span>
             学习笔记
@@ -1232,6 +1221,10 @@ Zindi: https://zindi.africa/...
         <span class="sidebar-category-name" data-categories="生活总结">
             <span class="iconfont-archer">&#xe60a;</span>
             生活总结
+        </span>
+        <span class="sidebar-category-name" data-categories="知识框架">
+            <span class="iconfont-archer">&#xe60a;</span>
+            知识框架
         </span>
         <span class="sidebar-category-name" data-categories="编程经验">
             <span class="iconfont-archer">&#xe60a;</span>
@@ -1244,10 +1237,6 @@ Zindi: https://zindi.africa/...
         <span class="sidebar-category-name" data-categories="编程">
             <span class="iconfont-archer">&#xe60a;</span>
             编程
-        </span>
-        <span class="sidebar-category-name" data-categories="算法笔记">
-            <span class="iconfont-archer">&#xe60a;</span>
-            算法笔记
         </span>
         <span class="sidebar-category-name" data-categories="摄影">
             <span class="iconfont-archer">&#xe60a;</span>
@@ -1272,6 +1261,10 @@ Zindi: https://zindi.africa/...
         <span class="sidebar-category-name" data-categories="数据集">
             <span class="iconfont-archer">&#xe60a;</span>
             数据集
+        </span>
+        <span class="sidebar-category-name" data-categories="算法笔记">
+            <span class="iconfont-archer">&#xe60a;</span>
+            算法笔记
         </span>
         <span class="sidebar-category-name" data-categories="机器学习">
             <span class="iconfont-archer">&#xe60a;</span>

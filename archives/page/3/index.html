@@ -415,97 +415,6 @@
                 <main class="main index-page">
             
         <article class="index-post">
-            <a class="abstract-title" href="/2023/07/23/zai-mac-shang-shi-yong-pybind11-shi-xian-c-yu-python-hu-tong-de-demo/">
-                <span class="abstract-title-text">在mac上使用pybind11实现c++与python互通的demo</span>
-            </a>
-            <div class="abstract-content">
-                在mac上使用pybind11实现c++与python互通的demo0. 问题描述下面的python代码定义了一个类，类中有一个名为analyze_data的函数，其采用递归的方法解析json格式的data数据，由于处理速度达不到要求，我们希望用c++改写该类，并封装成可供python代码调用的库，以达到加速的效果。
-1234567891011121314151617181920&nbsp;# 待解析的数据deom&nbsp;data_demo = {"resbody": {"data": {"name": "John", "age": 30, "address": {"city": "...
-            </div>
-            <!-- read more -->
-            <div class="abstract-post-meta">
-                <!-- date -->
-                <div class="abstract-date" title="Last updated: 2025/03/08">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2023/07/23</span>
-                </div>
-                <!-- tags -->
-                    <div class="abstract-tags" >
-        <a class="post-tag" href="javascript:void(0);" data-tags="python_c++_互通">python_c++_互通</a>
-</div>
-
-            </div>
-        </article>
-        <div class="index-post-divider"></div>
-            
-        <article class="index-post">
-            <a class="abstract-title" href="/2022/09/07/mac-xi-tong-zhi-zuo-win10-qi-dong-u-pan/">
-                <span class="abstract-title-text">Mac系统制作win10启动U盘</span>
-            </a>
-            <div class="abstract-content">
-                Mac系统下制作win10安装盘准备
-一台mac电脑
-
-一个大于8G的U盘
-
-win10镜像文件
-
-Boot Camp ISO Converter软件（这个软件可以解决FAT32格式的u盘单个文件大小不能超过4GB的问题），下载链接
-
-
-制作步骤
-打开Boot Camp ISO Converter软件对下载好的iso镜像文件进行处理，目的是将镜像文件insta.win分配为大小小于4GB的文件
-
-在插入U盘的状态下，打开终端，输入：
-  1diskutil list
-
-  找到U盘对应的盘符，本例中U盘对应的盘符为：disk2
-
-将U盘(disk2)格式化为FAT32格式
-  1disk...
-            </div>
-            <!-- read more -->
-            <div class="abstract-post-meta">
-                <!-- date -->
-                <div class="abstract-date" title="Last updated: 2025/03/08">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2022/09/07</span>
-                </div>
-                <!-- tags -->
-                    <div class="abstract-tags" >
-        <a class="post-tag" href="javascript:void(0);" data-tags="启动U盘">启动U盘</a>
-</div>
-
-            </div>
-        </article>
-        <div class="index-post-divider"></div>
-            
-        <article class="index-post">
-            <a class="abstract-title" href="/2022/09/05/dian-ci-bi-sai-zong-jie/">
-                <span class="abstract-title-text">电磁比赛总结</span>
-            </a>
-            <div class="abstract-content">
-                电磁比赛总结
-代码总结
-
-要会静态分析资源占有率，特别是当服务器内存资源不足的时候，提前做好静态分析，设置合理的运行参数，才能提升效率。比如本次实验过程中，做数据增强预处理数据时需要占用大量内存资源，参数设置过大，会导致运行一半后因为内存不足，进程被killed掉，参数设置过小效率又变得很低。
-当数据很多，需要占用大量内存时，不要将数据转换为pandas的DataFrame对象，因为它会吃掉更多的内存，此外使用apply方法对数据进行逐行处理的时候，即使使用了加速方法，也没有将数据存储为list然后使用多进程方法处理高效。在本次实验中，后者的速度至少是前者的5倍。
-尽量使用class对代...
-            </div>
-            <!-- read more -->
-            <div class="abstract-post-meta">
-                <!-- date -->
-                <div class="abstract-date" title="Last updated: 2025/03/08">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2022/09/05</span>
-                </div>
-                <!-- tags -->
-                    <div class="abstract-tags" >
-        <a class="post-tag" href="javascript:void(0);" data-tags="竞赛">竞赛</a>
-</div>
-
-            </div>
-        </article>
-        <div class="index-post-divider"></div>
-            
-        <article class="index-post">
             <a class="abstract-title" href="/2022/04/29/yuan-cheng-fang-wen-fu-wu-qi-jupyter-notebook/">
                 <span class="abstract-title-text">远程访问服务器Jupyter-Notebook</span>
             </a>
@@ -749,9 +658,98 @@ Mac系统制作win10启动U盘
             </div>
         </article>
         <div class="index-post-divider"></div>
+            
+        <article class="index-post">
+            <a class="abstract-title" href="/2021/08/13/google-fang-wen-zhu-shou-an-zhuang/">
+                <span class="abstract-title-text">Google访问助手安装</span>
+            </a>
+            <div class="abstract-content">
+                Google访问助手安装今天用图书馆电脑的时候发现不能访问google，非常不方便搜索文献，因此研究了一下google上网助手，记录一下。
+
+IGG谷歌访问助手
+该助手具有如下特点：
+
+免费提供谷歌搜索
+微软onedrive加速
+不包含YouTube，谷歌网盘
+
+
+
+google上网助手
+该助手具备IGG谷歌访问助手的特点，但是安装的时候需要登录Chrome商店才能够下载，如果没有KX上网，建议读者选择安装“IGG谷歌访问助手”方式访问谷歌。
+
+
+
+
+            </div>
+            <!-- read more -->
+            <div class="abstract-post-meta">
+                <!-- date -->
+                <div class="abstract-date" title="Last updated: 2025/03/08">
+                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2021/08/13</span>
+                </div>
+                <!-- tags -->
+                    <div class="abstract-tags" >
+        <a class="post-tag" href="javascript:void(0);" data-tags="Google访问助手">Google访问助手</a>
+</div>
+
+            </div>
+        </article>
+        <div class="index-post-divider"></div>
+            
+        <article class="index-post">
+            <a class="abstract-title" href="/2021/08/13/chang-yong-shu-ju-ji-zheng-li/">
+                <span class="abstract-title-text">常用数据集整理</span>
+            </a>
+            <div class="abstract-content">
+                常用数据集整理前沿：所谓”巧妇难为无米之炊“，作为人工智能领域的学习者，免不了要跟数据打交道，有时候我们不得不耗费大量的精力来收集相关数据集。因此， 整理一些常用的数据集，以便不时之需。
+对话数据集nlp方向的生物医学
+Symcat’s database
+mz database
+dxy database
+
+
+            </div>
+            <!-- read more -->
+            <div class="abstract-post-meta">
+                <!-- date -->
+                <div class="abstract-date" title="Last updated: 2025/03/08">
+                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2021/08/13</span>
+                </div>
+                <!-- tags -->
+                    <div class="abstract-tags" >
+        <a class="post-tag" href="javascript:void(0);" data-tags="机器学习">机器学习</a>
+</div>
+
+            </div>
+        </article>
+        <div class="index-post-divider"></div>
+            
+        <article class="index-post">
+            <a class="abstract-title" href="/2021/08/13/tu-de-chuang-jian-he-bian-li/">
+                <span class="abstract-title-text">【课程设计】图的创建和遍历</span>
+            </a>
+            <div class="abstract-content">
+                问题描述本课程设计主要完成邻接矩阵和邻接表两种不同存储方式的图的建立和遍历，其中遍历部分分别进行了DFS和BFS两种不同形式的遍历。
+实现代码1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768697071727374757677787980818283848586878889909192939495969798991001011021031041051061071081091101111...
+            </div>
+            <!-- read more -->
+            <div class="abstract-post-meta">
+                <!-- date -->
+                <div class="abstract-date" title="Last updated: 2025/03/08">
+                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2021/08/13</span>
+                </div>
+                <!-- tags -->
+                    <div class="abstract-tags" >
+        <a class="post-tag" href="javascript:void(0);" data-tags="图">图</a>
+</div>
+
+            </div>
+        </article>
+        <div class="index-post-divider"></div>
     <!-- paginator  -->
         <nav class="page-nav">
-            <a class="extend prev" rel="prev" href="/archives/page/2/">&lt; PREV</a><a class="page-number" href="/archives/">1</a><a class="page-number" href="/archives/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/archives/page/4/">4</a><a class="page-number" href="/archives/page/5/">5</a><a class="page-number" href="/archives/page/6/">6</a><a class="extend next" rel="next" href="/archives/page/4/">NEXT &gt;</a>
+            <a class="extend prev" rel="prev" href="/archives/page/2/">&lt; PREV</a><a class="page-number" href="/archives/">1</a><a class="page-number" href="/archives/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/archives/page/4/">4</a><a class="page-number" href="/archives/page/5/">5</a><a class="extend next" rel="next" href="/archives/page/4/">NEXT &gt;</a>
         </nav>
 </main>
 
@@ -836,12 +834,9 @@ Mac系统制作win10启动U盘
         
         
         
-        
-        
-        
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 52
+        Total : 49
         </div>
         <!-- search  -->
             <div class="site-search site-search-loading popup-trigger">
@@ -854,18 +849,6 @@ Mac系统制作win10启动U盘
         <li class="archive-post-item">
             <span class="archive-post-date">03/09</span>
             <a class="archive-post-title" href="/2025/03/09/jie-pai-he-ji/">街拍合集</a>
-        </li>
-        <li class="archive-post-item">
-            <span class="archive-post-date">03/09</span>
-            <a class="archive-post-title" href="/2025/03/09/jie-pai-he-ji-1/">街拍合集一</a>
-        </li>
-        <li class="archive-post-item">
-            <span class="archive-post-date">03/09</span>
-            <a class="archive-post-title" href="/2025/03/09/jie-pai-he-ji-2/">街拍合集2</a>
-        </li>
-        <li class="archive-post-item">
-            <span class="archive-post-date">03/09</span>
-            <a class="archive-post-title" href="/2025/03/09/jie-pai-he-ji-3/">街拍合集3</a>
         </li>
         <li class="archive-post-item">
             <span class="archive-post-date">03/09</span>
@@ -1082,13 +1065,13 @@ Mac系统制作win10启动U盘
                 <span class="iconfont-archer">&#xe606;</span>
                 ai竞赛
             </span>
-            <span class="sidebar-tag-name" data-tags="GitHub">
-                <span class="iconfont-archer">&#xe606;</span>
-                GitHub
-            </span>
             <span class="sidebar-tag-name" data-tags="GitLab">
                 <span class="iconfont-archer">&#xe606;</span>
                 GitLab
+            </span>
+            <span class="sidebar-tag-name" data-tags="GitHub">
+                <span class="iconfont-archer">&#xe606;</span>
+                GitHub
             </span>
             <span class="sidebar-tag-name" data-tags="Google访问助手">
                 <span class="iconfont-archer">&#xe606;</span>
@@ -1102,29 +1085,29 @@ Mac系统制作win10启动U盘
                 <span class="iconfont-archer">&#xe606;</span>
                 启动U盘
             </span>
-            <span class="sidebar-tag-name" data-tags="nlp">
+            <span class="sidebar-tag-name" data-tags="Pandas">
                 <span class="iconfont-archer">&#xe606;</span>
-                nlp
+                Pandas
             </span>
             <span class="sidebar-tag-name" data-tags="svm">
                 <span class="iconfont-archer">&#xe606;</span>
                 svm
             </span>
-            <span class="sidebar-tag-name" data-tags="pytorch">
+            <span class="sidebar-tag-name" data-tags="git">
                 <span class="iconfont-archer">&#xe606;</span>
-                pytorch
+                git
             </span>
             <span class="sidebar-tag-name" data-tags="博客">
                 <span class="iconfont-archer">&#xe606;</span>
                 博客
             </span>
-            <span class="sidebar-tag-name" data-tags="git">
+            <span class="sidebar-tag-name" data-tags="nlp">
                 <span class="iconfont-archer">&#xe606;</span>
-                git
+                nlp
             </span>
-            <span class="sidebar-tag-name" data-tags="Pandas">
+            <span class="sidebar-tag-name" data-tags="pytorch">
                 <span class="iconfont-archer">&#xe606;</span>
-                Pandas
+                pytorch
             </span>
             <span class="sidebar-tag-name" data-tags="jupyter notebook">
                 <span class="iconfont-archer">&#xe606;</span>
@@ -1145,10 +1128,6 @@ Mac系统制作win10启动U盘
             <span class="sidebar-tag-name" data-tags="树">
                 <span class="iconfont-archer">&#xe606;</span>
                 树
-            </span>
-            <span class="sidebar-tag-name" data-tags="动态规划">
-                <span class="iconfont-archer">&#xe606;</span>
-                动态规划
             </span>
             <span class="sidebar-tag-name" data-tags="摄影">
                 <span class="iconfont-archer">&#xe606;</span>
@@ -1198,6 +1177,10 @@ Mac系统制作win10启动U盘
                 <span class="iconfont-archer">&#xe606;</span>
                 干货
             </span>
+            <span class="sidebar-tag-name" data-tags="动态规划">
+                <span class="iconfont-archer">&#xe606;</span>
+                动态规划
+            </span>
             <span class="sidebar-tag-name" data-tags="资源">
                 <span class="iconfont-archer">&#xe606;</span>
                 资源
@@ -1206,13 +1189,13 @@ Mac系统制作win10启动U盘
                 <span class="iconfont-archer">&#xe606;</span>
                 熵
             </span>
-            <span class="sidebar-tag-name" data-tags="论文写作">
-                <span class="iconfont-archer">&#xe606;</span>
-                论文写作
-            </span>
             <span class="sidebar-tag-name" data-tags="竞赛">
                 <span class="iconfont-archer">&#xe606;</span>
                 竞赛
+            </span>
+            <span class="sidebar-tag-name" data-tags="论文写作">
+                <span class="iconfont-archer">&#xe606;</span>
+                论文写作
             </span>
             <span class="sidebar-tag-name" data-tags="街拍">
                 <span class="iconfont-archer">&#xe606;</span>
@@ -1252,10 +1235,6 @@ Mac系统制作win10启动U盘
             <span class="iconfont-archer">&#xe60a;</span>
             人工智能
         </span>
-        <span class="sidebar-category-name" data-categories="知识框架">
-            <span class="iconfont-archer">&#xe60a;</span>
-            知识框架
-        </span>
         <span class="sidebar-category-name" data-categories="学习笔记">
             <span class="iconfont-archer">&#xe60a;</span>
             学习笔记
@@ -1263,6 +1242,10 @@ Mac系统制作win10启动U盘
         <span class="sidebar-category-name" data-categories="生活总结">
             <span class="iconfont-archer">&#xe60a;</span>
             生活总结
+        </span>
+        <span class="sidebar-category-name" data-categories="知识框架">
+            <span class="iconfont-archer">&#xe60a;</span>
+            知识框架
         </span>
         <span class="sidebar-category-name" data-categories="编程经验">
             <span class="iconfont-archer">&#xe60a;</span>
@@ -1275,10 +1258,6 @@ Mac系统制作win10启动U盘
         <span class="sidebar-category-name" data-categories="编程">
             <span class="iconfont-archer">&#xe60a;</span>
             编程
-        </span>
-        <span class="sidebar-category-name" data-categories="算法笔记">
-            <span class="iconfont-archer">&#xe60a;</span>
-            算法笔记
         </span>
         <span class="sidebar-category-name" data-categories="摄影">
             <span class="iconfont-archer">&#xe60a;</span>
@@ -1303,6 +1282,10 @@ Mac系统制作win10启动U盘
         <span class="sidebar-category-name" data-categories="数据集">
             <span class="iconfont-archer">&#xe60a;</span>
             数据集
+        </span>
+        <span class="sidebar-category-name" data-categories="算法笔记">
+            <span class="iconfont-archer">&#xe60a;</span>
+            算法笔记
         </span>
         <span class="sidebar-category-name" data-categories="机器学习">
             <span class="iconfont-archer">&#xe60a;</span>
