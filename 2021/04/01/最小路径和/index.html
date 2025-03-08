@@ -19,7 +19,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://raw.githubusercontent.com/Skylyong/i/main/20210401021549.png">
 <meta property="article:published_time" content="2021-03-31T18:08:43.000Z">
-<meta property="article:modified_time" content="2025-01-06T06:02:55.377Z">
+<meta property="article:modified_time" content="2025-03-08T08:39:54.609Z">
 <meta property="article:author" content="茄子">
 <meta property="article:tag" content="动态规划">
 <meta name="twitter:card" content="summary">
@@ -208,8 +208,8 @@
             var labels = JSON.parse('{"input_placeholder":"Search for Posts","hits_empty":"我们没有找到任何搜索结果: ${query}","hits_stats":"找到${hits}条结果 （用时 ${time} ms）"}')
 
             var algolia = {
-                applicationID: '',
-                apiKey: '2bcb8a706f5955c9f74cea13e540fb1b',
+                applicationID: 'HDLQX51180',
+                apiKey: '',
                 indexName: 'my-hexo-blog',
                 hits: hits,
                 labels: labels
@@ -218,7 +218,7 @@
     <!-- 百度统计  -->
     <!-- 谷歌统计  -->
     <!-- Google tag (gtag.js) -->
-<meta name="generator" content="Hexo 5.4.2"></head>
+<meta name="generator" content="Hexo 7.3.0"></head>
 
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
     <script type="text/javascript">
@@ -320,7 +320,7 @@
 
                 <!-- 文章字数统计 -->
                     <div class="post-intro-read">
-                        <span>字数统计: <span class="post-count word-count">422</span>阅读时长: <span class="post-count reading-time">1 min</span></span>
+                        <span>字数统计: <span class="post-count word-count">426</span>阅读时长: <span class="post-count reading-time">1 min</span></span>
                     </div>
                 <div class="post-intro-meta">
                     <!-- 撰写日期 -->
@@ -481,8 +481,8 @@
 <span id="more"></span>
 
 <h4 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h4><p><img src="https://raw.githubusercontent.com/Skylyong/i/main/20210401021549.png"></p>
-<h4 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h4><p>本题的解题思路和之前的第<a target="_blank" rel="noopener" href="https://ailyong.cn/2021/03/30/bu-tong-lu-jing/">62题</a>很相似，定义dp[i][j]为从第(i, j)点走到右下角的最短路径，则有dp[i][j] = dp[i+1][j] + dp[i][j+1].</p>
-<p>然后我们来考虑边界条件，此题的边际和第62题的边际一样，不同的是边界上面dp值，当在下边界的时候dp[m-1][j] = sum(gird[m-1][j:-1]), 在左边界的时候<br>dp[i][n-1] = sum(grid[i:-1][n-1])， dp[m-1][n-1] = grid[m-1][n-1].</p>
+<h4 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h4><p>本题的解题思路和之前的第<a target="_blank" rel="noopener" href="https://ailyong.cn/2021/03/30/bu-tong-lu-jing/">62题</a>很相似，定义dp[i][j]为从第(i, j)点走到右下角的最短路径，则有dp[i][j] &#x3D; dp[i+1][j] + dp[i][j+1].</p>
+<p>然后我们来考虑边界条件，此题的边际和第62题的边际一样，不同的是边界上面dp值，当在下边界的时候dp[m-1][j] &#x3D; sum(gird[m-1][j:-1]), 在左边界的时候<br>dp[i][n-1] &#x3D; sum(grid[i:-1][n-1])， dp[m-1][n-1] &#x3D; grid[m-1][n-1].</p>
 <p>最终答案为: dp[0][0]</p>
 <h4 id="实现代码"><a href="#实现代码" class="headerlink" title="实现代码"></a>实现代码</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">minPathSum</span>(<span class="params">self, grid: <span class="type">List</span>[<span class="type">List</span>[<span class="built_in">int</span>]]</span>) -&gt; <span class="built_in">int</span>:</span><br><span class="line">        m = <span class="built_in">len</span>(grid)</span><br><span class="line">        n = <span class="built_in">len</span>(grid[<span class="number">0</span>])</span><br><span class="line">        dp = [[<span class="number">0</span> <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(n)] <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(m)] <span class="comment">#这里纠结了不少时间</span></span><br><span class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(n-<span class="number">1</span>, -<span class="number">1</span>, -<span class="number">1</span>):</span><br><span class="line">            dp[m-<span class="number">1</span>][j] = <span class="built_in">sum</span>(grid[m-<span class="number">1</span>]) - <span class="built_in">sum</span>(grid[m-<span class="number">1</span>][<span class="number">0</span>:j]) </span><br><span class="line">        col = [x[n-<span class="number">1</span>] <span class="keyword">for</span> x <span class="keyword">in</span> grid]</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(m-<span class="number">1</span>, -<span class="number">1</span>, -<span class="number">1</span>):</span><br><span class="line">            dp[i][n-<span class="number">1</span>] = <span class="built_in">sum</span>(col)-<span class="built_in">sum</span>(col[<span class="number">0</span>:i])</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(m-<span class="number">2</span>, -<span class="number">1</span>, -<span class="number">1</span>):</span><br><span class="line">            <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(n-<span class="number">2</span>, -<span class="number">1</span>, -<span class="number">1</span>):</span><br><span class="line">                dp[i][j] = grid[i][j] + <span class="built_in">min</span>(dp[i+<span class="number">1</span>][j], dp[i][j+<span class="number">1</span>])</span><br><span class="line">        <span class="keyword">return</span> dp[<span class="number">0</span>][<span class="number">0</span>]</span><br></pre></td></tr></table></figure>
 <h4 id="感想"><a href="#感想" class="headerlink" title="感想"></a>感想</h4><p>一开始声明二维数组的时候用了浅拷贝，改变某一行的值的时候，其他行的值也会跟着改变，但是我这么搞，竟然通过了60多个样例，好像是在第63个样例的时候卡住了（挠头），后面一个个的把dp里面的值打印出来看，才发现原来是用了浅拷贝，导致这样的问题，换成了迭代生成式后，终于AC了。</p>
@@ -493,7 +493,7 @@
             <p>原文作者：<a href="https://eggplant.wiki">茄子</a>
             <p>原文链接：<a href="https://eggplant.wiki/2021/04/01/%E6%9C%80%E5%B0%8F%E8%B7%AF%E5%BE%84%E5%92%8C/">https://eggplant.wiki/2021/04/01/%E6%9C%80%E5%B0%8F%E8%B7%AF%E5%BE%84%E5%92%8C/</a>
             <p>发表日期：<a href="https://eggplant.wiki/2021/04/01/%E6%9C%80%E5%B0%8F%E8%B7%AF%E5%BE%84%E5%92%8C/">April 1st 2021, 2:08:43 am</a>
-            <p>更新日期：<a href="https://eggplant.wiki/2021/04/01/%E6%9C%80%E5%B0%8F%E8%B7%AF%E5%BE%84%E5%92%8C/">January 6th 2025, 2:02:55 pm</a>
+            <p>更新日期：<a href="https://eggplant.wiki/2021/04/01/%E6%9C%80%E5%B0%8F%E8%B7%AF%E5%BE%84%E5%92%8C/">March 8th 2025, 4:39:54 pm</a>
             <p>版权声明：本文采用<a rel="license noopener" target="_blank" href="http://creativecommons.org/licenses/by-nc/4.0/">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可</p>
         </div>
     <!-- paginator -->
@@ -639,6 +639,14 @@
             <div class="archive-year"> 2025 </div>
             <ul class="year-list">
         <li class="archive-post-item">
+            <span class="archive-post-date">03/08</span>
+            <a class="archive-post-title" href="/2025/03/08/matplotlib%E6%98%BE%E7%A4%BA%E4%B8%AD%E6%96%87/">matplotlib 设置显示中文</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/08</span>
+            <a class="archive-post-title" href="/2025/03/08/python%E5%A4%9A%E8%BF%9B%E7%A8%8B%E7%A4%BA%E4%BE%8B/">python多进程示例</a>
+        </li>
+        <li class="archive-post-item">
             <span class="archive-post-date">03/06</span>
             <a class="archive-post-title" href="/2025/03/06/%E4%BD%BF%E7%94%A8BERT%E5%BE%97%E5%88%B0%E7%9F%AD%E8%AF%AD%E5%90%91%E9%87%8F%E8%A1%A8%E7%A4%BA%E5%B9%B6%E8%BF%9B%E8%A1%8C%E5%B1%82%E6%AC%A1%E8%81%9A%E7%B1%BB%E5%AE%9E%E7%8E%B0%E7%9B%B8%E4%BC%BC%E6%80%A7%E5%8E%BB%E9%87%8D/">使用BERT得到短语向量表示并进行层次聚类实现相似性去重</a>
         </li>
@@ -685,14 +693,6 @@
         <li class="archive-post-item">
             <span class="archive-post-date">01/07</span>
             <a class="archive-post-title" href="/2025/01/07/sentence-transformers%20sampler%20bug%20%E4%B9%8B%20set%20%E4%B8%8D%E4%B8%80%E5%AE%9A%E6%98%AF%E6%97%A0%E5%BA%8F%E7%9A%84/">sentence-transformers sampler bug 之 set 不一定是无序的</a>
-        </li>
-        <li class="archive-post-item">
-            <span class="archive-post-date">01/06</span>
-            <a class="archive-post-title" href="/2025/01/06/matplotlib%E6%98%BE%E7%A4%BA%E4%B8%AD%E6%96%87/">matplotlib 设置显示中文</a>
-        </li>
-        <li class="archive-post-item">
-            <span class="archive-post-date">01/06</span>
-            <a class="archive-post-title" href="/2025/01/06/python%E5%A4%9A%E8%BF%9B%E7%A8%8B%E7%A4%BA%E4%BE%8B/">python多进程示例</a>
         </li>
                 </ul>
             <div class="archive-year"> 2023 </div>
@@ -841,6 +841,14 @@
 
         <div class="sidebar-panel-tags">
     <div class="sidebar-tags-name">
+            <span class="sidebar-tag-name" data-tags="总结">
+                <span class="iconfont-archer">&#xe606;</span>
+                总结
+            </span>
+            <span class="sidebar-tag-name" data-tags="ai竞赛">
+                <span class="iconfont-archer">&#xe606;</span>
+                ai竞赛
+            </span>
             <span class="sidebar-tag-name" data-tags="GitHub">
                 <span class="iconfont-archer">&#xe606;</span>
                 GitHub
@@ -849,17 +857,17 @@
                 <span class="iconfont-archer">&#xe606;</span>
                 GitLab
             </span>
+            <span class="sidebar-tag-name" data-tags="Google访问助手">
+                <span class="iconfont-archer">&#xe606;</span>
+                Google访问助手
+            </span>
             <span class="sidebar-tag-name" data-tags="预训练模型">
                 <span class="iconfont-archer">&#xe606;</span>
                 预训练模型
             </span>
-            <span class="sidebar-tag-name" data-tags="总结">
+            <span class="sidebar-tag-name" data-tags="启动U盘">
                 <span class="iconfont-archer">&#xe606;</span>
-                总结
-            </span>
-            <span class="sidebar-tag-name" data-tags="Google访问助手">
-                <span class="iconfont-archer">&#xe606;</span>
-                Google访问助手
+                启动U盘
             </span>
             <span class="sidebar-tag-name" data-tags="nlp">
                 <span class="iconfont-archer">&#xe606;</span>
@@ -869,69 +877,69 @@
                 <span class="iconfont-archer">&#xe606;</span>
                 Pandas
             </span>
-            <span class="sidebar-tag-name" data-tags="pytorch">
-                <span class="iconfont-archer">&#xe606;</span>
-                pytorch
-            </span>
             <span class="sidebar-tag-name" data-tags="svm">
                 <span class="iconfont-archer">&#xe606;</span>
                 svm
             </span>
-            <span class="sidebar-tag-name" data-tags="博客">
+            <span class="sidebar-tag-name" data-tags="pytorch">
                 <span class="iconfont-archer">&#xe606;</span>
-                博客
-            </span>
-            <span class="sidebar-tag-name" data-tags="ai竞赛">
-                <span class="iconfont-archer">&#xe606;</span>
-                ai竞赛
-            </span>
-            <span class="sidebar-tag-name" data-tags="jupyter notebook">
-                <span class="iconfont-archer">&#xe606;</span>
-                jupyter notebook
+                pytorch
             </span>
             <span class="sidebar-tag-name" data-tags="git">
                 <span class="iconfont-archer">&#xe606;</span>
                 git
             </span>
-            <span class="sidebar-tag-name" data-tags="启动U盘">
+            <span class="sidebar-tag-name" data-tags="博客">
                 <span class="iconfont-archer">&#xe606;</span>
-                启动U盘
+                博客
+            </span>
+            <span class="sidebar-tag-name" data-tags="jupyter notebook">
+                <span class="iconfont-archer">&#xe606;</span>
+                jupyter notebook
             </span>
             <span class="sidebar-tag-name" data-tags="python">
                 <span class="iconfont-archer">&#xe606;</span>
                 python
             </span>
-            <span class="sidebar-tag-name" data-tags="vscode">
-                <span class="iconfont-archer">&#xe606;</span>
-                vscode
-            </span>
             <span class="sidebar-tag-name" data-tags="NIVIDIA驱动">
                 <span class="iconfont-archer">&#xe606;</span>
                 NIVIDIA驱动
+            </span>
+            <span class="sidebar-tag-name" data-tags="vscode">
+                <span class="iconfont-archer">&#xe606;</span>
+                vscode
             </span>
             <span class="sidebar-tag-name" data-tags="树">
                 <span class="iconfont-archer">&#xe606;</span>
                 树
             </span>
-            <span class="sidebar-tag-name" data-tags="机器学习">
-                <span class="iconfont-archer">&#xe606;</span>
-                机器学习
-            </span>
             <span class="sidebar-tag-name" data-tags="动态规划">
                 <span class="iconfont-archer">&#xe606;</span>
                 动态规划
-            </span>
-            <span class="sidebar-tag-name" data-tags="图">
-                <span class="iconfont-archer">&#xe606;</span>
-                图
             </span>
             <span class="sidebar-tag-name" data-tags="文本聚类 bert向量表示">
                 <span class="iconfont-archer">&#xe606;</span>
                 文本聚类 bert向量表示
             </span>
+            <span class="sidebar-tag-name" data-tags="机器学习">
+                <span class="iconfont-archer">&#xe606;</span>
+                机器学习
+            </span>
+            <span class="sidebar-tag-name" data-tags="图">
+                <span class="iconfont-archer">&#xe606;</span>
+                图
+            </span>
             <span class="sidebar-tag-name" data-tags="python_c++_互通">
                 <span class="iconfont-archer">&#xe606;</span>
                 python_c++_互通
+            </span>
+            <span class="sidebar-tag-name" data-tags="呈贡">
+                <span class="iconfont-archer">&#xe606;</span>
+                呈贡
+            </span>
+            <span class="sidebar-tag-name" data-tags="文本聚类 编辑距离">
+                <span class="iconfont-archer">&#xe606;</span>
+                文本聚类 编辑距离
             </span>
             <span class="sidebar-tag-name" data-tags="电影">
                 <span class="iconfont-archer">&#xe606;</span>
@@ -941,29 +949,21 @@
                 <span class="iconfont-archer">&#xe606;</span>
                 编程
             </span>
-            <span class="sidebar-tag-name" data-tags="干货">
-                <span class="iconfont-archer">&#xe606;</span>
-                干货
-            </span>
-            <span class="sidebar-tag-name" data-tags="呈贡">
-                <span class="iconfont-archer">&#xe606;</span>
-                呈贡
-            </span>
             <span class="sidebar-tag-name" data-tags="微信">
                 <span class="iconfont-archer">&#xe606;</span>
                 微信
             </span>
-            <span class="sidebar-tag-name" data-tags="文本聚类 编辑距离">
+            <span class="sidebar-tag-name" data-tags="干货">
                 <span class="iconfont-archer">&#xe606;</span>
-                文本聚类 编辑距离
-            </span>
-            <span class="sidebar-tag-name" data-tags="熵">
-                <span class="iconfont-archer">&#xe606;</span>
-                熵
+                干货
             </span>
             <span class="sidebar-tag-name" data-tags="资源">
                 <span class="iconfont-archer">&#xe606;</span>
                 资源
+            </span>
+            <span class="sidebar-tag-name" data-tags="熵">
+                <span class="iconfont-archer">&#xe606;</span>
+                熵
             </span>
             <span class="sidebar-tag-name" data-tags="论文写作">
                 <span class="iconfont-archer">&#xe606;</span>
@@ -987,21 +987,25 @@
 
         <div class="sidebar-panel-categories">
     <div class="sidebar-categories-name">
-        <span class="sidebar-category-name" data-categories="爬坑总结">
-            <span class="iconfont-archer">&#xe60a;</span>
-            爬坑总结
-        </span>
-        <span class="sidebar-category-name" data-categories="人工智能">
-            <span class="iconfont-archer">&#xe60a;</span>
-            人工智能
-        </span>
         <span class="sidebar-category-name" data-categories="生活情感">
             <span class="iconfont-archer">&#xe60a;</span>
             生活情感
         </span>
+        <span class="sidebar-category-name" data-categories="总结">
+            <span class="iconfont-archer">&#xe60a;</span>
+            总结
+        </span>
+        <span class="sidebar-category-name" data-categories="爬坑总结">
+            <span class="iconfont-archer">&#xe60a;</span>
+            爬坑总结
+        </span>
         <span class="sidebar-category-name" data-categories="干货">
             <span class="iconfont-archer">&#xe60a;</span>
             干货
+        </span>
+        <span class="sidebar-category-name" data-categories="人工智能">
+            <span class="iconfont-archer">&#xe60a;</span>
+            人工智能
         </span>
         <span class="sidebar-category-name" data-categories="知识框架">
             <span class="iconfont-archer">&#xe60a;</span>
@@ -1014,10 +1018,6 @@
         <span class="sidebar-category-name" data-categories="生活总结">
             <span class="iconfont-archer">&#xe60a;</span>
             生活总结
-        </span>
-        <span class="sidebar-category-name" data-categories="总结">
-            <span class="iconfont-archer">&#xe60a;</span>
-            总结
         </span>
         <span class="sidebar-category-name" data-categories="编程经验">
             <span class="iconfont-archer">&#xe60a;</span>
@@ -1035,13 +1035,13 @@
             <span class="iconfont-archer">&#xe60a;</span>
             算法笔记
         </span>
-        <span class="sidebar-category-name" data-categories="算法">
-            <span class="iconfont-archer">&#xe60a;</span>
-            算法
-        </span>
         <span class="sidebar-category-name" data-categories="自然语言处理">
             <span class="iconfont-archer">&#xe60a;</span>
             自然语言处理
+        </span>
+        <span class="sidebar-category-name" data-categories="算法">
+            <span class="iconfont-archer">&#xe60a;</span>
+            算法
         </span>
         <span class="sidebar-category-name" data-categories="学习资料">
             <span class="iconfont-archer">&#xe60a;</span>

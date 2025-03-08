@@ -203,8 +203,8 @@
             var labels = JSON.parse('{"input_placeholder":"Search for Posts","hits_empty":"我们没有找到任何搜索结果: ${query}","hits_stats":"找到${hits}条结果 （用时 ${time} ms）"}')
 
             var algolia = {
-                applicationID: '',
-                apiKey: '2bcb8a706f5955c9f74cea13e540fb1b',
+                applicationID: 'HDLQX51180',
+                apiKey: '',
                 indexName: 'my-hexo-blog',
                 hits: hits,
                 labels: labels
@@ -213,7 +213,7 @@
     <!-- 百度统计  -->
     <!-- 谷歌统计  -->
     <!-- Google tag (gtag.js) -->
-<meta name="generator" content="Hexo 5.4.2"></head>
+<meta name="generator" content="Hexo 7.3.0"></head>
 
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
     <script type="text/javascript">
@@ -420,22 +420,23 @@
                 <main class="main index-page">
             
         <article class="index-post">
-            <a class="abstract-title" href="/2025/01/06/matplotlib%E6%98%BE%E7%A4%BA%E4%B8%AD%E6%96%87/">
-                <span class="abstract-title-text">matplotlib 设置显示中文</span>
+            <a class="abstract-title" href="/2025/01/26/%E6%90%AD%E5%BB%BAWebdav%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%AE%9E%E7%8E%B0Obsidian%E5%92%8CZotero%E5%A4%9A%E7%AB%AF%E5%90%8C%E6%AD%A5/">
+                <span class="abstract-title-text">搭建Webdav服务器实现Obsidian和Zotero多端同步</span>
             </a>
             <div class="abstract-content">
-                先从网络上下载 SimHei.ttf  文件放在某个位置，然后用下面的代码，设置字体的位置。
-12345678910111213141516171819import jsonimport pandas as pd# 从 data/original/SylvanL/Exam/tcm_exam_1.csv 读取数据import matplotlib.pyplot as pltfrom matplotlib import font_managerfrom matplotlib import rcParamsimport reimport matplotlib # 设置当前目录import os...
+                前 言很长一段时间以来，都比较苦恼自己的obsidian和zotero在多端同步的时候经常碰到问题，有时候想在手机上面查看某篇paper的时候，正好发现pdf附件没被同步，导致不能查看。加之，最近给女朋友推荐了obsidian，她觉得非常好用，但由于设备原因不能实现多端同步。她采用幕布记录笔记，再导入obsidian的方法，以实现多端同步和笔记本地保存，我认为该种方式较为繁琐，不符合技术人的气质。
+思考再三，我决定好好解决多端配置的问题，网络上搜索了一圈资料下来，发现很多手机端软件均支持以Webdav协议进行文件共享，遂决定搭建Webdav协议服务器实现多端共享。
+虽有坚果云等支持Web...
             </div>
             <!-- read more -->
             <div class="abstract-post-meta">
                 <!-- date -->
-                <div class="abstract-date" title="Last updated: 2025/01/06">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2025/01/06</span>
+                <div class="abstract-date" title="Last updated: 2025/03/08">
+                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2025/01/26</span>
                 </div>
                 <!-- tags -->
                     <div class="abstract-tags" >
-        <a class="post-tag" href="javascript:void(0);" data-tags="python">python</a>
+        <a class="post-tag" href="javascript:void(0);" data-tags="干货">干货</a>
 </div>
 
             </div>
@@ -443,21 +444,21 @@
         <div class="index-post-divider"></div>
             
         <article class="index-post">
-            <a class="abstract-title" href="/2025/01/06/python%E5%A4%9A%E8%BF%9B%E7%A8%8B%E7%A4%BA%E4%BE%8B/">
-                <span class="abstract-title-text">python多进程示例</span>
+            <a class="abstract-title" href="/2025/01/07/sentence-transformers%20sampler%20bug%20%E4%B9%8B%20set%20%E4%B8%8D%E4%B8%80%E5%AE%9A%E6%98%AF%E6%97%A0%E5%BA%8F%E7%9A%84/">
+                <span class="abstract-title-text">sentence-transformers sampler bug 之 set 不一定是无序的</span>
             </a>
             <div class="abstract-content">
-                
-导入依赖的包
-1from concurrent.futures import ProcessPoolExecutor, as_completed
-定义处理内容的函数，该函数要是全局函数，不能放在函数或者类里面函数的参数只有一个，可以用元组包装起来，然后再解包
-12345678def process_record(args):    text = args[0][&quot;text&quot;]    CONTENT = args[1]    extract_info = inference(text, model=&quot;deepseek-chat&quot;, CONTENT=...
+                前言问  题： 最近准备训练一个基于对比学习的模型， 用 huggface 的 trainer 训练器，在官方给的源代码中，有一个现成的 sampler 用于数据采样，我需要改写这个 sampler 以保证能够用于自己的数据上。
+实验改完之后，发现采样出来的 indices 竟然是有序的，实际在一个批次中需要打乱样本的顺序，仔细阅读了官方给的源码，发现问题出在如下图所示的 第187行。这里先用 torch.randperm生成了一个乱序的下标，然后转换为set。按理说set是无序的，转换之后也是无序的，看起来很正确。
+
+当我做了小测试后，发现并不是：
+从上面的结果，可以看到：torch....
             </div>
             <!-- read more -->
             <div class="abstract-post-meta">
                 <!-- date -->
-                <div class="abstract-date" title="Last updated: 2025/01/06">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2025/01/06</span>
+                <div class="abstract-date" title="Last updated: 2025/03/08">
+                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2025/01/07</span>
                 </div>
                 <!-- tags -->
                     <div class="abstract-tags" >
@@ -487,7 +488,7 @@
             <!-- read more -->
             <div class="abstract-post-meta">
                 <!-- date -->
-                <div class="abstract-date" title="Last updated: 2023/09/12">
+                <div class="abstract-date" title="Last updated: 2025/03/08">
                     <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2023/09/12</span>
                 </div>
                 <!-- tags -->
@@ -510,7 +511,7 @@
             <!-- read more -->
             <div class="abstract-post-meta">
                 <!-- date -->
-                <div class="abstract-date" title="Last updated: 2023/07/23">
+                <div class="abstract-date" title="Last updated: 2025/03/08">
                     <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2023/07/23</span>
                 </div>
                 <!-- tags -->
@@ -551,7 +552,7 @@ Boot Camp ISO Converter软件（这个软件可以解决FAT32格式的u盘单个
             <!-- read more -->
             <div class="abstract-post-meta">
                 <!-- date -->
-                <div class="abstract-date" title="Last updated: 2022/09/07">
+                <div class="abstract-date" title="Last updated: 2025/03/08">
                     <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2022/09/07</span>
                 </div>
                 <!-- tags -->
@@ -578,7 +579,7 @@ Boot Camp ISO Converter软件（这个软件可以解决FAT32格式的u盘单个
             <!-- read more -->
             <div class="abstract-post-meta">
                 <!-- date -->
-                <div class="abstract-date" title="Last updated: 2022/09/05">
+                <div class="abstract-date" title="Last updated: 2025/03/08">
                     <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2022/09/05</span>
                 </div>
                 <!-- tags -->
@@ -607,7 +608,7 @@ Boot Camp ISO Converter软件（这个软件可以解决FAT32格式的u盘单个
             <!-- read more -->
             <div class="abstract-post-meta">
                 <!-- date -->
-                <div class="abstract-date" title="Last updated: 2024/07/23">
+                <div class="abstract-date" title="Last updated: 2025/03/08">
                     <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2022/04/29</span>
                 </div>
                 <!-- tags -->
@@ -643,7 +644,7 @@ detach() :
             <!-- read more -->
             <div class="abstract-post-meta">
                 <!-- date -->
-                <div class="abstract-date" title="Last updated: 2021/12/11">
+                <div class="abstract-date" title="Last updated: 2025/03/08">
                     <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2021/12/10</span>
                 </div>
                 <!-- tags -->
@@ -669,18 +670,16 @@ detach() :
 
 
 
-
-
 将silk格式文件转换为mp3格式文件
 
 安装silk-v3
 silk-v3依赖gcc和FFmpeg来运行，如果没有这两个依赖项，通过如下命令安装依赖：
-12b...
+12bre...
             </div>
             <!-- read more -->
             <div class="abstract-post-meta">
                 <!-- date -->
-                <div class="abstract-date" title="Last updated: 2021/09/29">
+                <div class="abstract-date" title="Last updated: 2025/03/08">
                     <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2021/09/29</span>
                 </div>
                 <!-- tags -->
@@ -713,7 +712,7 @@ Python Machine Learning： https://github.com/rasbt/python-machine-learning-book
             <!-- read more -->
             <div class="abstract-post-meta">
                 <!-- date -->
-                <div class="abstract-date" title="Last updated: 2021/10/28">
+                <div class="abstract-date" title="Last updated: 2025/03/08">
                     <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2021/09/19</span>
                 </div>
                 <!-- tags -->
@@ -753,7 +752,7 @@ How to write a paper, by Mike Ashby.
             <!-- read more -->
             <div class="abstract-post-meta">
                 <!-- date -->
-                <div class="abstract-date" title="Last updated: 2025/01/06">
+                <div class="abstract-date" title="Last updated: 2025/03/08">
                     <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2021/09/19</span>
                 </div>
                 <!-- tags -->
@@ -795,7 +794,7 @@ How to write a paper, by Mike Ashby.
             <!-- read more -->
             <div class="abstract-post-meta">
                 <!-- date -->
-                <div class="abstract-date" title="Last updated: 2021/08/14">
+                <div class="abstract-date" title="Last updated: 2025/03/08">
                     <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2021/08/14</span>
                 </div>
                 <!-- tags -->
@@ -922,6 +921,14 @@ How to write a paper, by Mike Ashby.
             <div class="archive-year"> 2025 </div>
             <ul class="year-list">
         <li class="archive-post-item">
+            <span class="archive-post-date">03/08</span>
+            <a class="archive-post-title" href="/2025/03/08/matplotlib%E6%98%BE%E7%A4%BA%E4%B8%AD%E6%96%87/">matplotlib 设置显示中文</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/08</span>
+            <a class="archive-post-title" href="/2025/03/08/python%E5%A4%9A%E8%BF%9B%E7%A8%8B%E7%A4%BA%E4%BE%8B/">python多进程示例</a>
+        </li>
+        <li class="archive-post-item">
             <span class="archive-post-date">03/06</span>
             <a class="archive-post-title" href="/2025/03/06/%E4%BD%BF%E7%94%A8BERT%E5%BE%97%E5%88%B0%E7%9F%AD%E8%AF%AD%E5%90%91%E9%87%8F%E8%A1%A8%E7%A4%BA%E5%B9%B6%E8%BF%9B%E8%A1%8C%E5%B1%82%E6%AC%A1%E8%81%9A%E7%B1%BB%E5%AE%9E%E7%8E%B0%E7%9B%B8%E4%BC%BC%E6%80%A7%E5%8E%BB%E9%87%8D/">使用BERT得到短语向量表示并进行层次聚类实现相似性去重</a>
         </li>
@@ -968,14 +975,6 @@ How to write a paper, by Mike Ashby.
         <li class="archive-post-item">
             <span class="archive-post-date">01/07</span>
             <a class="archive-post-title" href="/2025/01/07/sentence-transformers%20sampler%20bug%20%E4%B9%8B%20set%20%E4%B8%8D%E4%B8%80%E5%AE%9A%E6%98%AF%E6%97%A0%E5%BA%8F%E7%9A%84/">sentence-transformers sampler bug 之 set 不一定是无序的</a>
-        </li>
-        <li class="archive-post-item">
-            <span class="archive-post-date">01/06</span>
-            <a class="archive-post-title" href="/2025/01/06/matplotlib%E6%98%BE%E7%A4%BA%E4%B8%AD%E6%96%87/">matplotlib 设置显示中文</a>
-        </li>
-        <li class="archive-post-item">
-            <span class="archive-post-date">01/06</span>
-            <a class="archive-post-title" href="/2025/01/06/python%E5%A4%9A%E8%BF%9B%E7%A8%8B%E7%A4%BA%E4%BE%8B/">python多进程示例</a>
         </li>
                 </ul>
             <div class="archive-year"> 2023 </div>
@@ -1124,6 +1123,14 @@ How to write a paper, by Mike Ashby.
 
         <div class="sidebar-panel-tags">
     <div class="sidebar-tags-name">
+            <span class="sidebar-tag-name" data-tags="总结">
+                <span class="iconfont-archer">&#xe606;</span>
+                总结
+            </span>
+            <span class="sidebar-tag-name" data-tags="ai竞赛">
+                <span class="iconfont-archer">&#xe606;</span>
+                ai竞赛
+            </span>
             <span class="sidebar-tag-name" data-tags="GitHub">
                 <span class="iconfont-archer">&#xe606;</span>
                 GitHub
@@ -1132,17 +1139,17 @@ How to write a paper, by Mike Ashby.
                 <span class="iconfont-archer">&#xe606;</span>
                 GitLab
             </span>
+            <span class="sidebar-tag-name" data-tags="Google访问助手">
+                <span class="iconfont-archer">&#xe606;</span>
+                Google访问助手
+            </span>
             <span class="sidebar-tag-name" data-tags="预训练模型">
                 <span class="iconfont-archer">&#xe606;</span>
                 预训练模型
             </span>
-            <span class="sidebar-tag-name" data-tags="总结">
+            <span class="sidebar-tag-name" data-tags="启动U盘">
                 <span class="iconfont-archer">&#xe606;</span>
-                总结
-            </span>
-            <span class="sidebar-tag-name" data-tags="Google访问助手">
-                <span class="iconfont-archer">&#xe606;</span>
-                Google访问助手
+                启动U盘
             </span>
             <span class="sidebar-tag-name" data-tags="nlp">
                 <span class="iconfont-archer">&#xe606;</span>
@@ -1152,69 +1159,69 @@ How to write a paper, by Mike Ashby.
                 <span class="iconfont-archer">&#xe606;</span>
                 Pandas
             </span>
-            <span class="sidebar-tag-name" data-tags="pytorch">
-                <span class="iconfont-archer">&#xe606;</span>
-                pytorch
-            </span>
             <span class="sidebar-tag-name" data-tags="svm">
                 <span class="iconfont-archer">&#xe606;</span>
                 svm
             </span>
-            <span class="sidebar-tag-name" data-tags="博客">
+            <span class="sidebar-tag-name" data-tags="pytorch">
                 <span class="iconfont-archer">&#xe606;</span>
-                博客
-            </span>
-            <span class="sidebar-tag-name" data-tags="ai竞赛">
-                <span class="iconfont-archer">&#xe606;</span>
-                ai竞赛
-            </span>
-            <span class="sidebar-tag-name" data-tags="jupyter notebook">
-                <span class="iconfont-archer">&#xe606;</span>
-                jupyter notebook
+                pytorch
             </span>
             <span class="sidebar-tag-name" data-tags="git">
                 <span class="iconfont-archer">&#xe606;</span>
                 git
             </span>
-            <span class="sidebar-tag-name" data-tags="启动U盘">
+            <span class="sidebar-tag-name" data-tags="博客">
                 <span class="iconfont-archer">&#xe606;</span>
-                启动U盘
+                博客
+            </span>
+            <span class="sidebar-tag-name" data-tags="jupyter notebook">
+                <span class="iconfont-archer">&#xe606;</span>
+                jupyter notebook
             </span>
             <span class="sidebar-tag-name" data-tags="python">
                 <span class="iconfont-archer">&#xe606;</span>
                 python
             </span>
-            <span class="sidebar-tag-name" data-tags="vscode">
-                <span class="iconfont-archer">&#xe606;</span>
-                vscode
-            </span>
             <span class="sidebar-tag-name" data-tags="NIVIDIA驱动">
                 <span class="iconfont-archer">&#xe606;</span>
                 NIVIDIA驱动
+            </span>
+            <span class="sidebar-tag-name" data-tags="vscode">
+                <span class="iconfont-archer">&#xe606;</span>
+                vscode
             </span>
             <span class="sidebar-tag-name" data-tags="树">
                 <span class="iconfont-archer">&#xe606;</span>
                 树
             </span>
-            <span class="sidebar-tag-name" data-tags="机器学习">
-                <span class="iconfont-archer">&#xe606;</span>
-                机器学习
-            </span>
             <span class="sidebar-tag-name" data-tags="动态规划">
                 <span class="iconfont-archer">&#xe606;</span>
                 动态规划
-            </span>
-            <span class="sidebar-tag-name" data-tags="图">
-                <span class="iconfont-archer">&#xe606;</span>
-                图
             </span>
             <span class="sidebar-tag-name" data-tags="文本聚类 bert向量表示">
                 <span class="iconfont-archer">&#xe606;</span>
                 文本聚类 bert向量表示
             </span>
+            <span class="sidebar-tag-name" data-tags="机器学习">
+                <span class="iconfont-archer">&#xe606;</span>
+                机器学习
+            </span>
+            <span class="sidebar-tag-name" data-tags="图">
+                <span class="iconfont-archer">&#xe606;</span>
+                图
+            </span>
             <span class="sidebar-tag-name" data-tags="python_c++_互通">
                 <span class="iconfont-archer">&#xe606;</span>
                 python_c++_互通
+            </span>
+            <span class="sidebar-tag-name" data-tags="呈贡">
+                <span class="iconfont-archer">&#xe606;</span>
+                呈贡
+            </span>
+            <span class="sidebar-tag-name" data-tags="文本聚类 编辑距离">
+                <span class="iconfont-archer">&#xe606;</span>
+                文本聚类 编辑距离
             </span>
             <span class="sidebar-tag-name" data-tags="电影">
                 <span class="iconfont-archer">&#xe606;</span>
@@ -1224,29 +1231,21 @@ How to write a paper, by Mike Ashby.
                 <span class="iconfont-archer">&#xe606;</span>
                 编程
             </span>
-            <span class="sidebar-tag-name" data-tags="干货">
-                <span class="iconfont-archer">&#xe606;</span>
-                干货
-            </span>
-            <span class="sidebar-tag-name" data-tags="呈贡">
-                <span class="iconfont-archer">&#xe606;</span>
-                呈贡
-            </span>
             <span class="sidebar-tag-name" data-tags="微信">
                 <span class="iconfont-archer">&#xe606;</span>
                 微信
             </span>
-            <span class="sidebar-tag-name" data-tags="文本聚类 编辑距离">
+            <span class="sidebar-tag-name" data-tags="干货">
                 <span class="iconfont-archer">&#xe606;</span>
-                文本聚类 编辑距离
-            </span>
-            <span class="sidebar-tag-name" data-tags="熵">
-                <span class="iconfont-archer">&#xe606;</span>
-                熵
+                干货
             </span>
             <span class="sidebar-tag-name" data-tags="资源">
                 <span class="iconfont-archer">&#xe606;</span>
                 资源
+            </span>
+            <span class="sidebar-tag-name" data-tags="熵">
+                <span class="iconfont-archer">&#xe606;</span>
+                熵
             </span>
             <span class="sidebar-tag-name" data-tags="论文写作">
                 <span class="iconfont-archer">&#xe606;</span>
@@ -1270,21 +1269,25 @@ How to write a paper, by Mike Ashby.
 
         <div class="sidebar-panel-categories">
     <div class="sidebar-categories-name">
-        <span class="sidebar-category-name" data-categories="爬坑总结">
-            <span class="iconfont-archer">&#xe60a;</span>
-            爬坑总结
-        </span>
-        <span class="sidebar-category-name" data-categories="人工智能">
-            <span class="iconfont-archer">&#xe60a;</span>
-            人工智能
-        </span>
         <span class="sidebar-category-name" data-categories="生活情感">
             <span class="iconfont-archer">&#xe60a;</span>
             生活情感
         </span>
+        <span class="sidebar-category-name" data-categories="总结">
+            <span class="iconfont-archer">&#xe60a;</span>
+            总结
+        </span>
+        <span class="sidebar-category-name" data-categories="爬坑总结">
+            <span class="iconfont-archer">&#xe60a;</span>
+            爬坑总结
+        </span>
         <span class="sidebar-category-name" data-categories="干货">
             <span class="iconfont-archer">&#xe60a;</span>
             干货
+        </span>
+        <span class="sidebar-category-name" data-categories="人工智能">
+            <span class="iconfont-archer">&#xe60a;</span>
+            人工智能
         </span>
         <span class="sidebar-category-name" data-categories="知识框架">
             <span class="iconfont-archer">&#xe60a;</span>
@@ -1297,10 +1300,6 @@ How to write a paper, by Mike Ashby.
         <span class="sidebar-category-name" data-categories="生活总结">
             <span class="iconfont-archer">&#xe60a;</span>
             生活总结
-        </span>
-        <span class="sidebar-category-name" data-categories="总结">
-            <span class="iconfont-archer">&#xe60a;</span>
-            总结
         </span>
         <span class="sidebar-category-name" data-categories="编程经验">
             <span class="iconfont-archer">&#xe60a;</span>
@@ -1318,13 +1317,13 @@ How to write a paper, by Mike Ashby.
             <span class="iconfont-archer">&#xe60a;</span>
             算法笔记
         </span>
-        <span class="sidebar-category-name" data-categories="算法">
-            <span class="iconfont-archer">&#xe60a;</span>
-            算法
-        </span>
         <span class="sidebar-category-name" data-categories="自然语言处理">
             <span class="iconfont-archer">&#xe60a;</span>
             自然语言处理
+        </span>
+        <span class="sidebar-category-name" data-categories="算法">
+            <span class="iconfont-archer">&#xe60a;</span>
+            算法
         </span>
         <span class="sidebar-category-name" data-categories="学习资料">
             <span class="iconfont-archer">&#xe60a;</span>

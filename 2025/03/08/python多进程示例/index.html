@@ -10,15 +10,15 @@
     <meta name="copyright" content="茄子">
         <meta name="keywords" content="hexo,hexo-theme,hexo-blog">
     <meta name="description" content="Keep go on">
-    <meta name="description" content="导入依赖的包 1from concurrent.futures import ProcessPoolExecutor, as_completed 定义处理内容的函数，该函数要是全局函数，不能放在函数或者类里面函数的参数只有一个，可以用元组包装起来，然后再解包 12345678def process_record(args):    text &#x3D; args[0][&quot;text&quot;]">
+    <meta name="description" content="导入依赖的包  1from concurrent.futures import ProcessPoolExecutor, as_completed   定义处理内容的函数，该函数要是全局函数，不能放在函数或者类里面函数的参数只有一个，可以用元组包装起来，然后再解包  12345678def process_record(args):    text &#x3D; args[0][&quot;text&amp;qu">
 <meta property="og:type" content="article">
 <meta property="og:title" content="python多进程示例">
-<meta property="og:url" content="https://eggplant.wiki/2025/01/06/python%E5%A4%9A%E8%BF%9B%E7%A8%8B%E7%A4%BA%E4%BE%8B/index.html">
+<meta property="og:url" content="https://eggplant.wiki/2025/03/08/python%E5%A4%9A%E8%BF%9B%E7%A8%8B%E7%A4%BA%E4%BE%8B/index.html">
 <meta property="og:site_name" content="Lyong&#39;s blog">
-<meta property="og:description" content="导入依赖的包 1from concurrent.futures import ProcessPoolExecutor, as_completed 定义处理内容的函数，该函数要是全局函数，不能放在函数或者类里面函数的参数只有一个，可以用元组包装起来，然后再解包 12345678def process_record(args):    text &#x3D; args[0][&quot;text&quot;]">
+<meta property="og:description" content="导入依赖的包  1from concurrent.futures import ProcessPoolExecutor, as_completed   定义处理内容的函数，该函数要是全局函数，不能放在函数或者类里面函数的参数只有一个，可以用元组包装起来，然后再解包  12345678def process_record(args):    text &#x3D; args[0][&quot;text&amp;qu">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2025-01-06T05:34:14.112Z">
-<meta property="article:modified_time" content="2025-01-06T05:35:47.899Z">
+<meta property="article:published_time" content="2025-03-08T08:39:54.567Z">
+<meta property="article:modified_time" content="2025-03-08T08:39:54.568Z">
 <meta property="article:author" content="茄子">
 <meta property="article:tag" content="python">
 <meta name="twitter:card" content="summary">
@@ -206,8 +206,8 @@
             var labels = JSON.parse('{"input_placeholder":"Search for Posts","hits_empty":"我们没有找到任何搜索结果: ${query}","hits_stats":"找到${hits}条结果 （用时 ${time} ms）"}')
 
             var algolia = {
-                applicationID: '',
-                apiKey: '2bcb8a706f5955c9f74cea13e540fb1b',
+                applicationID: 'HDLQX51180',
+                apiKey: '',
                 indexName: 'my-hexo-blog',
                 hits: hits,
                 labels: labels
@@ -216,7 +216,7 @@
     <!-- 百度统计  -->
     <!-- 谷歌统计  -->
     <!-- Google tag (gtag.js) -->
-<meta name="generator" content="Hexo 5.4.2"></head>
+<meta name="generator" content="Hexo 7.3.0"></head>
 
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
     <script type="text/javascript">
@@ -323,7 +323,7 @@
                 <div class="post-intro-meta">
                     <!-- 撰写日期 -->
                     <span class="iconfont-archer post-intro-calander">&#xe676;</span>
-                    <span class="post-intro-time">2025/01/06</span>
+                    <span class="post-intro-time">2025/03/08</span>
                     <!-- busuanzi -->
                         <span id="busuanzi_container_page_pv" class="busuanzi-pv">
                             <span class="iconfont-archer post-intro-busuanzi">&#xe602;</span>
@@ -476,36 +476,39 @@
                 <main class="main post-page">
     <article class="article-entry">
         <ol>
-<li><p>导入依赖的包</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> concurrent.futures <span class="keyword">import</span> ProcessPoolExecutor, as_completed</span><br></pre></td></tr></table></figure></li>
-<li><p>定义处理内容的函数，该函数要是全局函数，不能放在函数或者类里面<br>函数的参数只有一个，可以用元组包装起来，然后再解包</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">process_record</span>(<span class="params">args</span>):</span><br><span class="line">    text = args[<span class="number">0</span>][<span class="string">&quot;text&quot;</span>]</span><br><span class="line">    CONTENT = args[<span class="number">1</span>]</span><br><span class="line">    extract_info = inference(text, model=<span class="string">&quot;deepseek-chat&quot;</span>, CONTENT=CONTENT)</span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">        <span class="string">&quot;text&quot;</span>: text,</span><br><span class="line">        <span class="string">&quot;extract_info&quot;</span>: extract_info</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></li>
-<li><p>使用多进程处理数据<br>在 with 下面一共有两个for，第一个for负责将数据和处理函数放在一个 futures 中， 第二个for负责处理和返回处理结果。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">with</span> ProcessPoolExecutor(max_workers=max_workers) <span class="keyword">as</span> executor:</span><br><span class="line">       futures = []</span><br><span class="line">       <span class="keyword">for</span> d <span class="keyword">in</span> data:</span><br><span class="line">           args = (d, CONTENT)</span><br><span class="line">           futures.append(executor.submit(process_record, args))</span><br><span class="line"></span><br><span class="line">       <span class="comment"># 使用 as_completed 迭代返回已经完成的任务</span></span><br><span class="line">       <span class="comment"># tqdm 用于显示进度条</span></span><br><span class="line">       <span class="keyword">for</span> idx, future <span class="keyword">in</span> <span class="built_in">enumerate</span>(tqdm.tqdm(as_completed(futures), total=<span class="built_in">len</span>(futures), desc=<span class="string">&quot;Extracting info&quot;</span>)):</span><br><span class="line">           result = future.result()</span><br><span class="line">           new_data.append(result)</span><br><span class="line"></span><br><span class="line">           <span class="comment"># 每完成 100 个样本，保存一次临时文件</span></span><br><span class="line">           <span class="keyword">if</span> (idx + <span class="number">1</span>) % <span class="number">500</span> == <span class="number">0</span>:</span><br><span class="line">               <span class="keyword">with</span> <span class="built_in">open</span>(save_path, <span class="string">&quot;w&quot;</span>, encoding=<span class="string">&quot;utf-8&quot;</span>) <span class="keyword">as</span> f:</span><br><span class="line">                   json.dump(new_data, f, indent=<span class="number">4</span>, ensure_ascii=<span class="literal">False</span>)</span><br><span class="line">                   <span class="built_in">print</span>(<span class="string">f&quot;Extracted information from <span class="subst">&#123;idx+<span class="number">1</span>&#125;</span> medical records, and saved to <span class="subst">&#123;save_path&#125;</span>&quot;</span>)</span><br></pre></td></tr></table></figure></li>
+<li>导入依赖的包</li>
 </ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> concurrent.futures <span class="keyword">import</span> ProcessPoolExecutor, as_completed</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>定义处理内容的函数，该函数要是全局函数，不能放在函数或者类里面<br>函数的参数只有一个，可以用元组包装起来，然后再解包</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">process_record</span>(<span class="params">args</span>):</span><br><span class="line">    text = args[<span class="number">0</span>][<span class="string">&quot;text&quot;</span>]</span><br><span class="line">    CONTENT = args[<span class="number">1</span>]</span><br><span class="line">    extract_info = inference(text, model=<span class="string">&quot;deepseek-chat&quot;</span>, CONTENT=CONTENT)</span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">        <span class="string">&quot;text&quot;</span>: text,</span><br><span class="line">        <span class="string">&quot;extract_info&quot;</span>: extract_info</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>使用多进程处理数据<br>在 with 下面一共有两个for，第一个for负责将数据和处理函数放在一个 futures 中， 第二个for负责处理和返回处理结果。</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">with</span> ProcessPoolExecutor(max_workers=max_workers) <span class="keyword">as</span> executor:</span><br><span class="line">       futures = []</span><br><span class="line">       <span class="keyword">for</span> d <span class="keyword">in</span> data:</span><br><span class="line">           args = (d, CONTENT)</span><br><span class="line">           futures.append(executor.submit(process_record, args))</span><br><span class="line"></span><br><span class="line">       <span class="comment"># 使用 as_completed 迭代返回已经完成的任务</span></span><br><span class="line">       <span class="comment"># tqdm 用于显示进度条</span></span><br><span class="line">       <span class="keyword">for</span> idx, future <span class="keyword">in</span> <span class="built_in">enumerate</span>(tqdm.tqdm(as_completed(futures), total=<span class="built_in">len</span>(futures), desc=<span class="string">&quot;Extracting info&quot;</span>)):</span><br><span class="line">           result = future.result()</span><br><span class="line">           new_data.append(result)</span><br><span class="line"></span><br><span class="line">           <span class="comment"># 每完成 100 个样本，保存一次临时文件</span></span><br><span class="line">           <span class="keyword">if</span> (idx + <span class="number">1</span>) % <span class="number">500</span> == <span class="number">0</span>:</span><br><span class="line">               <span class="keyword">with</span> <span class="built_in">open</span>(save_path, <span class="string">&quot;w&quot;</span>, encoding=<span class="string">&quot;utf-8&quot;</span>) <span class="keyword">as</span> f:</span><br><span class="line">                   json.dump(new_data, f, indent=<span class="number">4</span>, ensure_ascii=<span class="literal">False</span>)</span><br><span class="line">                   <span class="built_in">print</span>(<span class="string">f&quot;Extracted information from <span class="subst">&#123;idx+<span class="number">1</span>&#125;</span> medical records, and saved to <span class="subst">&#123;save_path&#125;</span>&quot;</span>)</span><br></pre></td></tr></table></figure>
+
 <p>enjoy ! </p>
 
     </article>
     <!-- license -->
         <div class="license-wrapper">
             <p>原文作者：<a href="https://eggplant.wiki">茄子</a>
-            <p>原文链接：<a href="https://eggplant.wiki/2025/01/06/python%E5%A4%9A%E8%BF%9B%E7%A8%8B%E7%A4%BA%E4%BE%8B/">https://eggplant.wiki/2025/01/06/python%E5%A4%9A%E8%BF%9B%E7%A8%8B%E7%A4%BA%E4%BE%8B/</a>
-            <p>发表日期：<a href="https://eggplant.wiki/2025/01/06/python%E5%A4%9A%E8%BF%9B%E7%A8%8B%E7%A4%BA%E4%BE%8B/">January 6th 2025, 1:34:14 pm</a>
-            <p>更新日期：<a href="https://eggplant.wiki/2025/01/06/python%E5%A4%9A%E8%BF%9B%E7%A8%8B%E7%A4%BA%E4%BE%8B/">January 6th 2025, 1:35:47 pm</a>
+            <p>原文链接：<a href="https://eggplant.wiki/2025/03/08/python%E5%A4%9A%E8%BF%9B%E7%A8%8B%E7%A4%BA%E4%BE%8B/">https://eggplant.wiki/2025/03/08/python%E5%A4%9A%E8%BF%9B%E7%A8%8B%E7%A4%BA%E4%BE%8B/</a>
+            <p>发表日期：<a href="https://eggplant.wiki/2025/03/08/python%E5%A4%9A%E8%BF%9B%E7%A8%8B%E7%A4%BA%E4%BE%8B/">March 8th 2025, 4:39:54 pm</a>
+            <p>更新日期：<a href="https://eggplant.wiki/2025/03/08/python%E5%A4%9A%E8%BF%9B%E7%A8%8B%E7%A4%BA%E4%BE%8B/">March 8th 2025, 4:39:54 pm</a>
             <p>版权声明：本文采用<a rel="license noopener" target="_blank" href="http://creativecommons.org/licenses/by-nc/4.0/">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可</p>
         </div>
     <!-- paginator -->
     <ul class="post-paginator">
         <li class="next">
-                <div class="nextSlogan">Next Post</div>
-                <a href="/2025/01/06/matplotlib%E6%98%BE%E7%A4%BA%E4%B8%AD%E6%96%87/" title="matplotlib 设置显示中文">
-                    <div class="nextTitle">matplotlib 设置显示中文</div>
-                </a>
         </li>
         <li class="previous">
                 <div class="prevSlogan">Previous Post</div>
-                <a href="/2023/09/12/ubuntu%E4%B8%8A%E5%AE%89%E8%A3%85NIVIDIA%E9%A9%B1%E5%8A%A8%E5%92%8CCUDA-Tookit/" title="ubuntu上安装NIVIDIA驱动和CUDA_Tookit">
-                    <div class="prevTitle">ubuntu上安装NIVIDIA驱动和CUDA_Tookit</div>
+                <a href="/2025/03/08/matplotlib%E6%98%BE%E7%A4%BA%E4%B8%AD%E6%96%87/" title="matplotlib 设置显示中文">
+                    <div class="prevTitle">matplotlib 设置显示中文</div>
                 </a>
         </li>
     </ul>
@@ -637,6 +640,14 @@
             <div class="archive-year"> 2025 </div>
             <ul class="year-list">
         <li class="archive-post-item">
+            <span class="archive-post-date">03/08</span>
+            <a class="archive-post-title" href="/2025/03/08/matplotlib%E6%98%BE%E7%A4%BA%E4%B8%AD%E6%96%87/">matplotlib 设置显示中文</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/08</span>
+            <a class="archive-post-title" href="/2025/03/08/python%E5%A4%9A%E8%BF%9B%E7%A8%8B%E7%A4%BA%E4%BE%8B/">python多进程示例</a>
+        </li>
+        <li class="archive-post-item">
             <span class="archive-post-date">03/06</span>
             <a class="archive-post-title" href="/2025/03/06/%E4%BD%BF%E7%94%A8BERT%E5%BE%97%E5%88%B0%E7%9F%AD%E8%AF%AD%E5%90%91%E9%87%8F%E8%A1%A8%E7%A4%BA%E5%B9%B6%E8%BF%9B%E8%A1%8C%E5%B1%82%E6%AC%A1%E8%81%9A%E7%B1%BB%E5%AE%9E%E7%8E%B0%E7%9B%B8%E4%BC%BC%E6%80%A7%E5%8E%BB%E9%87%8D/">使用BERT得到短语向量表示并进行层次聚类实现相似性去重</a>
         </li>
@@ -683,14 +694,6 @@
         <li class="archive-post-item">
             <span class="archive-post-date">01/07</span>
             <a class="archive-post-title" href="/2025/01/07/sentence-transformers%20sampler%20bug%20%E4%B9%8B%20set%20%E4%B8%8D%E4%B8%80%E5%AE%9A%E6%98%AF%E6%97%A0%E5%BA%8F%E7%9A%84/">sentence-transformers sampler bug 之 set 不一定是无序的</a>
-        </li>
-        <li class="archive-post-item">
-            <span class="archive-post-date">01/06</span>
-            <a class="archive-post-title" href="/2025/01/06/matplotlib%E6%98%BE%E7%A4%BA%E4%B8%AD%E6%96%87/">matplotlib 设置显示中文</a>
-        </li>
-        <li class="archive-post-item">
-            <span class="archive-post-date">01/06</span>
-            <a class="archive-post-title" href="/2025/01/06/python%E5%A4%9A%E8%BF%9B%E7%A8%8B%E7%A4%BA%E4%BE%8B/">python多进程示例</a>
         </li>
                 </ul>
             <div class="archive-year"> 2023 </div>
@@ -839,6 +842,14 @@
 
         <div class="sidebar-panel-tags">
     <div class="sidebar-tags-name">
+            <span class="sidebar-tag-name" data-tags="总结">
+                <span class="iconfont-archer">&#xe606;</span>
+                总结
+            </span>
+            <span class="sidebar-tag-name" data-tags="ai竞赛">
+                <span class="iconfont-archer">&#xe606;</span>
+                ai竞赛
+            </span>
             <span class="sidebar-tag-name" data-tags="GitHub">
                 <span class="iconfont-archer">&#xe606;</span>
                 GitHub
@@ -847,17 +858,17 @@
                 <span class="iconfont-archer">&#xe606;</span>
                 GitLab
             </span>
+            <span class="sidebar-tag-name" data-tags="Google访问助手">
+                <span class="iconfont-archer">&#xe606;</span>
+                Google访问助手
+            </span>
             <span class="sidebar-tag-name" data-tags="预训练模型">
                 <span class="iconfont-archer">&#xe606;</span>
                 预训练模型
             </span>
-            <span class="sidebar-tag-name" data-tags="总结">
+            <span class="sidebar-tag-name" data-tags="启动U盘">
                 <span class="iconfont-archer">&#xe606;</span>
-                总结
-            </span>
-            <span class="sidebar-tag-name" data-tags="Google访问助手">
-                <span class="iconfont-archer">&#xe606;</span>
-                Google访问助手
+                启动U盘
             </span>
             <span class="sidebar-tag-name" data-tags="nlp">
                 <span class="iconfont-archer">&#xe606;</span>
@@ -867,69 +878,69 @@
                 <span class="iconfont-archer">&#xe606;</span>
                 Pandas
             </span>
-            <span class="sidebar-tag-name" data-tags="pytorch">
-                <span class="iconfont-archer">&#xe606;</span>
-                pytorch
-            </span>
             <span class="sidebar-tag-name" data-tags="svm">
                 <span class="iconfont-archer">&#xe606;</span>
                 svm
             </span>
-            <span class="sidebar-tag-name" data-tags="博客">
+            <span class="sidebar-tag-name" data-tags="pytorch">
                 <span class="iconfont-archer">&#xe606;</span>
-                博客
-            </span>
-            <span class="sidebar-tag-name" data-tags="ai竞赛">
-                <span class="iconfont-archer">&#xe606;</span>
-                ai竞赛
-            </span>
-            <span class="sidebar-tag-name" data-tags="jupyter notebook">
-                <span class="iconfont-archer">&#xe606;</span>
-                jupyter notebook
+                pytorch
             </span>
             <span class="sidebar-tag-name" data-tags="git">
                 <span class="iconfont-archer">&#xe606;</span>
                 git
             </span>
-            <span class="sidebar-tag-name" data-tags="启动U盘">
+            <span class="sidebar-tag-name" data-tags="博客">
                 <span class="iconfont-archer">&#xe606;</span>
-                启动U盘
+                博客
+            </span>
+            <span class="sidebar-tag-name" data-tags="jupyter notebook">
+                <span class="iconfont-archer">&#xe606;</span>
+                jupyter notebook
             </span>
             <span class="sidebar-tag-name" data-tags="python">
                 <span class="iconfont-archer">&#xe606;</span>
                 python
             </span>
-            <span class="sidebar-tag-name" data-tags="vscode">
-                <span class="iconfont-archer">&#xe606;</span>
-                vscode
-            </span>
             <span class="sidebar-tag-name" data-tags="NIVIDIA驱动">
                 <span class="iconfont-archer">&#xe606;</span>
                 NIVIDIA驱动
+            </span>
+            <span class="sidebar-tag-name" data-tags="vscode">
+                <span class="iconfont-archer">&#xe606;</span>
+                vscode
             </span>
             <span class="sidebar-tag-name" data-tags="树">
                 <span class="iconfont-archer">&#xe606;</span>
                 树
             </span>
-            <span class="sidebar-tag-name" data-tags="机器学习">
-                <span class="iconfont-archer">&#xe606;</span>
-                机器学习
-            </span>
             <span class="sidebar-tag-name" data-tags="动态规划">
                 <span class="iconfont-archer">&#xe606;</span>
                 动态规划
-            </span>
-            <span class="sidebar-tag-name" data-tags="图">
-                <span class="iconfont-archer">&#xe606;</span>
-                图
             </span>
             <span class="sidebar-tag-name" data-tags="文本聚类 bert向量表示">
                 <span class="iconfont-archer">&#xe606;</span>
                 文本聚类 bert向量表示
             </span>
+            <span class="sidebar-tag-name" data-tags="机器学习">
+                <span class="iconfont-archer">&#xe606;</span>
+                机器学习
+            </span>
+            <span class="sidebar-tag-name" data-tags="图">
+                <span class="iconfont-archer">&#xe606;</span>
+                图
+            </span>
             <span class="sidebar-tag-name" data-tags="python_c++_互通">
                 <span class="iconfont-archer">&#xe606;</span>
                 python_c++_互通
+            </span>
+            <span class="sidebar-tag-name" data-tags="呈贡">
+                <span class="iconfont-archer">&#xe606;</span>
+                呈贡
+            </span>
+            <span class="sidebar-tag-name" data-tags="文本聚类 编辑距离">
+                <span class="iconfont-archer">&#xe606;</span>
+                文本聚类 编辑距离
             </span>
             <span class="sidebar-tag-name" data-tags="电影">
                 <span class="iconfont-archer">&#xe606;</span>
@@ -939,29 +950,21 @@
                 <span class="iconfont-archer">&#xe606;</span>
                 编程
             </span>
-            <span class="sidebar-tag-name" data-tags="干货">
-                <span class="iconfont-archer">&#xe606;</span>
-                干货
-            </span>
-            <span class="sidebar-tag-name" data-tags="呈贡">
-                <span class="iconfont-archer">&#xe606;</span>
-                呈贡
-            </span>
             <span class="sidebar-tag-name" data-tags="微信">
                 <span class="iconfont-archer">&#xe606;</span>
                 微信
             </span>
-            <span class="sidebar-tag-name" data-tags="文本聚类 编辑距离">
+            <span class="sidebar-tag-name" data-tags="干货">
                 <span class="iconfont-archer">&#xe606;</span>
-                文本聚类 编辑距离
-            </span>
-            <span class="sidebar-tag-name" data-tags="熵">
-                <span class="iconfont-archer">&#xe606;</span>
-                熵
+                干货
             </span>
             <span class="sidebar-tag-name" data-tags="资源">
                 <span class="iconfont-archer">&#xe606;</span>
                 资源
+            </span>
+            <span class="sidebar-tag-name" data-tags="熵">
+                <span class="iconfont-archer">&#xe606;</span>
+                熵
             </span>
             <span class="sidebar-tag-name" data-tags="论文写作">
                 <span class="iconfont-archer">&#xe606;</span>
@@ -985,21 +988,25 @@
 
         <div class="sidebar-panel-categories">
     <div class="sidebar-categories-name">
-        <span class="sidebar-category-name" data-categories="爬坑总结">
-            <span class="iconfont-archer">&#xe60a;</span>
-            爬坑总结
-        </span>
-        <span class="sidebar-category-name" data-categories="人工智能">
-            <span class="iconfont-archer">&#xe60a;</span>
-            人工智能
-        </span>
         <span class="sidebar-category-name" data-categories="生活情感">
             <span class="iconfont-archer">&#xe60a;</span>
             生活情感
         </span>
+        <span class="sidebar-category-name" data-categories="总结">
+            <span class="iconfont-archer">&#xe60a;</span>
+            总结
+        </span>
+        <span class="sidebar-category-name" data-categories="爬坑总结">
+            <span class="iconfont-archer">&#xe60a;</span>
+            爬坑总结
+        </span>
         <span class="sidebar-category-name" data-categories="干货">
             <span class="iconfont-archer">&#xe60a;</span>
             干货
+        </span>
+        <span class="sidebar-category-name" data-categories="人工智能">
+            <span class="iconfont-archer">&#xe60a;</span>
+            人工智能
         </span>
         <span class="sidebar-category-name" data-categories="知识框架">
             <span class="iconfont-archer">&#xe60a;</span>
@@ -1012,10 +1019,6 @@
         <span class="sidebar-category-name" data-categories="生活总结">
             <span class="iconfont-archer">&#xe60a;</span>
             生活总结
-        </span>
-        <span class="sidebar-category-name" data-categories="总结">
-            <span class="iconfont-archer">&#xe60a;</span>
-            总结
         </span>
         <span class="sidebar-category-name" data-categories="编程经验">
             <span class="iconfont-archer">&#xe60a;</span>
@@ -1033,13 +1036,13 @@
             <span class="iconfont-archer">&#xe60a;</span>
             算法笔记
         </span>
-        <span class="sidebar-category-name" data-categories="算法">
-            <span class="iconfont-archer">&#xe60a;</span>
-            算法
-        </span>
         <span class="sidebar-category-name" data-categories="自然语言处理">
             <span class="iconfont-archer">&#xe60a;</span>
             自然语言处理
+        </span>
+        <span class="sidebar-category-name" data-categories="算法">
+            <span class="iconfont-archer">&#xe60a;</span>
+            算法
         </span>
         <span class="sidebar-category-name" data-categories="学习资料">
             <span class="iconfont-archer">&#xe60a;</span>

@@ -20,7 +20,7 @@
 <meta property="og:image" content="https://raw.githubusercontent.com/Skylyong/i/main/20210701024119.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/Skylyong/i/main/20210701024235.png">
 <meta property="article:published_time" content="2021-06-30T17:44:09.000Z">
-<meta property="article:modified_time" content="2025-02-01T08:06:46.530Z">
+<meta property="article:modified_time" content="2025-03-08T08:39:54.536Z">
 <meta property="article:author" content="茄子">
 <meta property="article:tag" content="预训练模型">
 <meta name="twitter:card" content="summary">
@@ -209,8 +209,8 @@
             var labels = JSON.parse('{"input_placeholder":"Search for Posts","hits_empty":"我们没有找到任何搜索结果: ${query}","hits_stats":"找到${hits}条结果 （用时 ${time} ms）"}')
 
             var algolia = {
-                applicationID: '',
-                apiKey: '2bcb8a706f5955c9f74cea13e540fb1b',
+                applicationID: 'HDLQX51180',
+                apiKey: '',
                 indexName: 'my-hexo-blog',
                 hits: hits,
                 labels: labels
@@ -219,7 +219,7 @@
     <!-- 百度统计  -->
     <!-- 谷歌统计  -->
     <!-- Google tag (gtag.js) -->
-<meta name="generator" content="Hexo 5.4.2"></head>
+<meta name="generator" content="Hexo 7.3.0"></head>
 
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
     <script type="text/javascript">
@@ -321,7 +321,7 @@
 
                 <!-- 文章字数统计 -->
                     <div class="post-intro-read">
-                        <span>字数统计: <span class="post-count word-count">420</span>阅读时长: <span class="post-count reading-time">1 min</span></span>
+                        <span>字数统计: <span class="post-count word-count">425</span>阅读时长: <span class="post-count reading-time">1 min</span></span>
                     </div>
                 <div class="post-intro-meta">
                     <!-- 撰写日期 -->
@@ -488,9 +488,9 @@
 <p>接下来在代码中调用 <font color=red> AutoTokenizer.from_pretrained</font> 和 <font color=red> AutoModel.from_pretrained </font>即可, 例如：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> transformers <span class="keyword">import</span> *</span><br><span class="line">model_name = <span class="string">&#x27;hfl/chinese-xlnet-base&#x27;</span></span><br><span class="line">tokenizer = AutoTokenizer.from_pretrained(model_name)</span><br><span class="line">model = AutoModel.from_pretrained(model_name)</span><br></pre></td></tr></table></figure>
 <p>运行后系统会自动下载相关的模型文件并存放在电脑中。使用Windows模型保存的路径在 <font color=red> C:\Users[用户名].cache\torch\transformers</font>目录下，根据模型的不同下载的东西也不相同</p>
-<p>使用Linux模型保存的路径在 <font color=red> ~/.cache/torch/transformers/ </font>目录下。</p>
+<p>使用Linux模型保存的路径在 <font color=red> ~&#x2F;.cache&#x2F;torch&#x2F;transformers&#x2F; </font>目录下。</p>
 <h4 id="存在的问题"><a href="#存在的问题" class="headerlink" title="存在的问题"></a>存在的问题</h4><p>这些前提是你的电脑有网络可以直接使用代码下载相应的模型文件，但是问题是有些机器是没有外网连接权限或者下载速度非常慢。</p>
-<p>这时候就需要把模型文件下载后在导入代码中，还是以刚才的  <font color=red> hfl/chinese-xlnet-base </font>模型为例，直接在官网搜索模型，点击进入模型的详情界面</p>
+<p>这时候就需要把模型文件下载后在导入代码中，还是以刚才的  <font color=red> hfl&#x2F;chinese-xlnet-base </font>模型为例，直接在官网搜索模型，点击进入模型的详情界面</p>
 <p><img src="https://raw.githubusercontent.com/Skylyong/i/main/20210701024119.png" alt="20210701024119"></p>
 <p>在界面中找到 Files</p>
 <p><img src="https://raw.githubusercontent.com/Skylyong/i/main/20210701024235.png" alt="20210701024235"></p>
@@ -507,7 +507,7 @@
             <p>原文作者：<a href="https://eggplant.wiki">茄子</a>
             <p>原文链接：<a href="https://eggplant.wiki/2021/07/01/Huggingface-%E9%A2%84%E8%AE%AD%E7%BB%83%E6%A8%A1%E5%9E%8B%E6%9D%83%E9%87%8D%E4%B8%8B%E8%BD%BD%E7%9A%84%E9%97%AE%E9%A2%98/">https://eggplant.wiki/2021/07/01/Huggingface-%E9%A2%84%E8%AE%AD%E7%BB%83%E6%A8%A1%E5%9E%8B%E6%9D%83%E9%87%8D%E4%B8%8B%E8%BD%BD%E7%9A%84%E9%97%AE%E9%A2%98/</a>
             <p>发表日期：<a href="https://eggplant.wiki/2021/07/01/Huggingface-%E9%A2%84%E8%AE%AD%E7%BB%83%E6%A8%A1%E5%9E%8B%E6%9D%83%E9%87%8D%E4%B8%8B%E8%BD%BD%E7%9A%84%E9%97%AE%E9%A2%98/">July 1st 2021, 1:44:09 am</a>
-            <p>更新日期：<a href="https://eggplant.wiki/2021/07/01/Huggingface-%E9%A2%84%E8%AE%AD%E7%BB%83%E6%A8%A1%E5%9E%8B%E6%9D%83%E9%87%8D%E4%B8%8B%E8%BD%BD%E7%9A%84%E9%97%AE%E9%A2%98/">February 1st 2025, 4:06:46 pm</a>
+            <p>更新日期：<a href="https://eggplant.wiki/2021/07/01/Huggingface-%E9%A2%84%E8%AE%AD%E7%BB%83%E6%A8%A1%E5%9E%8B%E6%9D%83%E9%87%8D%E4%B8%8B%E8%BD%BD%E7%9A%84%E9%97%AE%E9%A2%98/">March 8th 2025, 4:39:54 pm</a>
             <p>版权声明：本文采用<a rel="license noopener" target="_blank" href="http://creativecommons.org/licenses/by-nc/4.0/">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可</p>
         </div>
     <!-- paginator -->
@@ -653,6 +653,14 @@
             <div class="archive-year"> 2025 </div>
             <ul class="year-list">
         <li class="archive-post-item">
+            <span class="archive-post-date">03/08</span>
+            <a class="archive-post-title" href="/2025/03/08/matplotlib%E6%98%BE%E7%A4%BA%E4%B8%AD%E6%96%87/">matplotlib 设置显示中文</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/08</span>
+            <a class="archive-post-title" href="/2025/03/08/python%E5%A4%9A%E8%BF%9B%E7%A8%8B%E7%A4%BA%E4%BE%8B/">python多进程示例</a>
+        </li>
+        <li class="archive-post-item">
             <span class="archive-post-date">03/06</span>
             <a class="archive-post-title" href="/2025/03/06/%E4%BD%BF%E7%94%A8BERT%E5%BE%97%E5%88%B0%E7%9F%AD%E8%AF%AD%E5%90%91%E9%87%8F%E8%A1%A8%E7%A4%BA%E5%B9%B6%E8%BF%9B%E8%A1%8C%E5%B1%82%E6%AC%A1%E8%81%9A%E7%B1%BB%E5%AE%9E%E7%8E%B0%E7%9B%B8%E4%BC%BC%E6%80%A7%E5%8E%BB%E9%87%8D/">使用BERT得到短语向量表示并进行层次聚类实现相似性去重</a>
         </li>
@@ -699,14 +707,6 @@
         <li class="archive-post-item">
             <span class="archive-post-date">01/07</span>
             <a class="archive-post-title" href="/2025/01/07/sentence-transformers%20sampler%20bug%20%E4%B9%8B%20set%20%E4%B8%8D%E4%B8%80%E5%AE%9A%E6%98%AF%E6%97%A0%E5%BA%8F%E7%9A%84/">sentence-transformers sampler bug 之 set 不一定是无序的</a>
-        </li>
-        <li class="archive-post-item">
-            <span class="archive-post-date">01/06</span>
-            <a class="archive-post-title" href="/2025/01/06/matplotlib%E6%98%BE%E7%A4%BA%E4%B8%AD%E6%96%87/">matplotlib 设置显示中文</a>
-        </li>
-        <li class="archive-post-item">
-            <span class="archive-post-date">01/06</span>
-            <a class="archive-post-title" href="/2025/01/06/python%E5%A4%9A%E8%BF%9B%E7%A8%8B%E7%A4%BA%E4%BE%8B/">python多进程示例</a>
         </li>
                 </ul>
             <div class="archive-year"> 2023 </div>
@@ -855,6 +855,14 @@
 
         <div class="sidebar-panel-tags">
     <div class="sidebar-tags-name">
+            <span class="sidebar-tag-name" data-tags="总结">
+                <span class="iconfont-archer">&#xe606;</span>
+                总结
+            </span>
+            <span class="sidebar-tag-name" data-tags="ai竞赛">
+                <span class="iconfont-archer">&#xe606;</span>
+                ai竞赛
+            </span>
             <span class="sidebar-tag-name" data-tags="GitHub">
                 <span class="iconfont-archer">&#xe606;</span>
                 GitHub
@@ -863,17 +871,17 @@
                 <span class="iconfont-archer">&#xe606;</span>
                 GitLab
             </span>
+            <span class="sidebar-tag-name" data-tags="Google访问助手">
+                <span class="iconfont-archer">&#xe606;</span>
+                Google访问助手
+            </span>
             <span class="sidebar-tag-name" data-tags="预训练模型">
                 <span class="iconfont-archer">&#xe606;</span>
                 预训练模型
             </span>
-            <span class="sidebar-tag-name" data-tags="总结">
+            <span class="sidebar-tag-name" data-tags="启动U盘">
                 <span class="iconfont-archer">&#xe606;</span>
-                总结
-            </span>
-            <span class="sidebar-tag-name" data-tags="Google访问助手">
-                <span class="iconfont-archer">&#xe606;</span>
-                Google访问助手
+                启动U盘
             </span>
             <span class="sidebar-tag-name" data-tags="nlp">
                 <span class="iconfont-archer">&#xe606;</span>
@@ -883,69 +891,69 @@
                 <span class="iconfont-archer">&#xe606;</span>
                 Pandas
             </span>
-            <span class="sidebar-tag-name" data-tags="pytorch">
-                <span class="iconfont-archer">&#xe606;</span>
-                pytorch
-            </span>
             <span class="sidebar-tag-name" data-tags="svm">
                 <span class="iconfont-archer">&#xe606;</span>
                 svm
             </span>
-            <span class="sidebar-tag-name" data-tags="博客">
+            <span class="sidebar-tag-name" data-tags="pytorch">
                 <span class="iconfont-archer">&#xe606;</span>
-                博客
-            </span>
-            <span class="sidebar-tag-name" data-tags="ai竞赛">
-                <span class="iconfont-archer">&#xe606;</span>
-                ai竞赛
-            </span>
-            <span class="sidebar-tag-name" data-tags="jupyter notebook">
-                <span class="iconfont-archer">&#xe606;</span>
-                jupyter notebook
+                pytorch
             </span>
             <span class="sidebar-tag-name" data-tags="git">
                 <span class="iconfont-archer">&#xe606;</span>
                 git
             </span>
-            <span class="sidebar-tag-name" data-tags="启动U盘">
+            <span class="sidebar-tag-name" data-tags="博客">
                 <span class="iconfont-archer">&#xe606;</span>
-                启动U盘
+                博客
+            </span>
+            <span class="sidebar-tag-name" data-tags="jupyter notebook">
+                <span class="iconfont-archer">&#xe606;</span>
+                jupyter notebook
             </span>
             <span class="sidebar-tag-name" data-tags="python">
                 <span class="iconfont-archer">&#xe606;</span>
                 python
             </span>
-            <span class="sidebar-tag-name" data-tags="vscode">
-                <span class="iconfont-archer">&#xe606;</span>
-                vscode
-            </span>
             <span class="sidebar-tag-name" data-tags="NIVIDIA驱动">
                 <span class="iconfont-archer">&#xe606;</span>
                 NIVIDIA驱动
+            </span>
+            <span class="sidebar-tag-name" data-tags="vscode">
+                <span class="iconfont-archer">&#xe606;</span>
+                vscode
             </span>
             <span class="sidebar-tag-name" data-tags="树">
                 <span class="iconfont-archer">&#xe606;</span>
                 树
             </span>
-            <span class="sidebar-tag-name" data-tags="机器学习">
-                <span class="iconfont-archer">&#xe606;</span>
-                机器学习
-            </span>
             <span class="sidebar-tag-name" data-tags="动态规划">
                 <span class="iconfont-archer">&#xe606;</span>
                 动态规划
-            </span>
-            <span class="sidebar-tag-name" data-tags="图">
-                <span class="iconfont-archer">&#xe606;</span>
-                图
             </span>
             <span class="sidebar-tag-name" data-tags="文本聚类 bert向量表示">
                 <span class="iconfont-archer">&#xe606;</span>
                 文本聚类 bert向量表示
             </span>
+            <span class="sidebar-tag-name" data-tags="机器学习">
+                <span class="iconfont-archer">&#xe606;</span>
+                机器学习
+            </span>
+            <span class="sidebar-tag-name" data-tags="图">
+                <span class="iconfont-archer">&#xe606;</span>
+                图
+            </span>
             <span class="sidebar-tag-name" data-tags="python_c++_互通">
                 <span class="iconfont-archer">&#xe606;</span>
                 python_c++_互通
+            </span>
+            <span class="sidebar-tag-name" data-tags="呈贡">
+                <span class="iconfont-archer">&#xe606;</span>
+                呈贡
+            </span>
+            <span class="sidebar-tag-name" data-tags="文本聚类 编辑距离">
+                <span class="iconfont-archer">&#xe606;</span>
+                文本聚类 编辑距离
             </span>
             <span class="sidebar-tag-name" data-tags="电影">
                 <span class="iconfont-archer">&#xe606;</span>
@@ -955,29 +963,21 @@
                 <span class="iconfont-archer">&#xe606;</span>
                 编程
             </span>
-            <span class="sidebar-tag-name" data-tags="干货">
-                <span class="iconfont-archer">&#xe606;</span>
-                干货
-            </span>
-            <span class="sidebar-tag-name" data-tags="呈贡">
-                <span class="iconfont-archer">&#xe606;</span>
-                呈贡
-            </span>
             <span class="sidebar-tag-name" data-tags="微信">
                 <span class="iconfont-archer">&#xe606;</span>
                 微信
             </span>
-            <span class="sidebar-tag-name" data-tags="文本聚类 编辑距离">
+            <span class="sidebar-tag-name" data-tags="干货">
                 <span class="iconfont-archer">&#xe606;</span>
-                文本聚类 编辑距离
-            </span>
-            <span class="sidebar-tag-name" data-tags="熵">
-                <span class="iconfont-archer">&#xe606;</span>
-                熵
+                干货
             </span>
             <span class="sidebar-tag-name" data-tags="资源">
                 <span class="iconfont-archer">&#xe606;</span>
                 资源
+            </span>
+            <span class="sidebar-tag-name" data-tags="熵">
+                <span class="iconfont-archer">&#xe606;</span>
+                熵
             </span>
             <span class="sidebar-tag-name" data-tags="论文写作">
                 <span class="iconfont-archer">&#xe606;</span>
@@ -1001,21 +1001,25 @@
 
         <div class="sidebar-panel-categories">
     <div class="sidebar-categories-name">
-        <span class="sidebar-category-name" data-categories="爬坑总结">
-            <span class="iconfont-archer">&#xe60a;</span>
-            爬坑总结
-        </span>
-        <span class="sidebar-category-name" data-categories="人工智能">
-            <span class="iconfont-archer">&#xe60a;</span>
-            人工智能
-        </span>
         <span class="sidebar-category-name" data-categories="生活情感">
             <span class="iconfont-archer">&#xe60a;</span>
             生活情感
         </span>
+        <span class="sidebar-category-name" data-categories="总结">
+            <span class="iconfont-archer">&#xe60a;</span>
+            总结
+        </span>
+        <span class="sidebar-category-name" data-categories="爬坑总结">
+            <span class="iconfont-archer">&#xe60a;</span>
+            爬坑总结
+        </span>
         <span class="sidebar-category-name" data-categories="干货">
             <span class="iconfont-archer">&#xe60a;</span>
             干货
+        </span>
+        <span class="sidebar-category-name" data-categories="人工智能">
+            <span class="iconfont-archer">&#xe60a;</span>
+            人工智能
         </span>
         <span class="sidebar-category-name" data-categories="知识框架">
             <span class="iconfont-archer">&#xe60a;</span>
@@ -1028,10 +1032,6 @@
         <span class="sidebar-category-name" data-categories="生活总结">
             <span class="iconfont-archer">&#xe60a;</span>
             生活总结
-        </span>
-        <span class="sidebar-category-name" data-categories="总结">
-            <span class="iconfont-archer">&#xe60a;</span>
-            总结
         </span>
         <span class="sidebar-category-name" data-categories="编程经验">
             <span class="iconfont-archer">&#xe60a;</span>
@@ -1049,13 +1049,13 @@
             <span class="iconfont-archer">&#xe60a;</span>
             算法笔记
         </span>
-        <span class="sidebar-category-name" data-categories="算法">
-            <span class="iconfont-archer">&#xe60a;</span>
-            算法
-        </span>
         <span class="sidebar-category-name" data-categories="自然语言处理">
             <span class="iconfont-archer">&#xe60a;</span>
             自然语言处理
+        </span>
+        <span class="sidebar-category-name" data-categories="算法">
+            <span class="iconfont-archer">&#xe60a;</span>
+            算法
         </span>
         <span class="sidebar-category-name" data-categories="学习资料">
             <span class="iconfont-archer">&#xe60a;</span>
