@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="python多进程示例, 茄子的个人空间">
+    <meta name="keywords" content="人像摄影合集, 茄子的个人空间">
     <meta name="description" content="Keep go on">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>python多进程示例 | 茄子的个人空间</title>
+    <title>人像摄影合集 | 茄子的个人空间</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -205,12 +205,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/9.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/8.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">python多进程示例</h1>
+                    <h1 class="description center-align post-title">人像摄影合集</h1>
                 </div>
             </div>
         </div>
@@ -326,8 +326,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/python/">
-                                <span class="chip bg-color">python</span>
+                            <a href="/tags/%E6%91%84%E5%BD%B1/">
+                                <span class="chip bg-color">摄影</span>
                             </a>
                         
                     </div>
@@ -338,8 +338,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/%E7%BC%96%E7%A8%8B%E7%BB%8F%E9%AA%8C/" class="post-category">
-                                编程经验
+                            <a href="/categories/%E6%91%84%E5%BD%B1/" class="post-category">
+                                摄影
                             </a>
                         
                     </div>
@@ -351,7 +351,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2025-03-08
+                    2025-03-09
                 </div>
                 
 
@@ -360,7 +360,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    255
+                    0
                 </div>
                 
 
@@ -387,22 +387,16 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <ol>
-<li>导入依赖的包</li>
-</ol>
-<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> concurrent.futures <span class="keyword">import</span> ProcessPoolExecutor, as_completed</span><br></pre></td></tr></tbody></table></figure>
-
-<ol start="2">
-<li>定义处理内容的函数，该函数要是全局函数，不能放在函数或者类里面<br>函数的参数只有一个，可以用元组包装起来，然后再解包</li>
-</ol>
-<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">process_record</span>(<span class="params">args</span>):</span><br><span class="line">    text = args[<span class="number">0</span>][<span class="string">"text"</span>]</span><br><span class="line">    CONTENT = args[<span class="number">1</span>]</span><br><span class="line">    extract_info = inference(text, model=<span class="string">"deepseek-chat"</span>, CONTENT=CONTENT)</span><br><span class="line">    <span class="keyword">return</span> {</span><br><span class="line">        <span class="string">"text"</span>: text,</span><br><span class="line">        <span class="string">"extract_info"</span>: extract_info</span><br><span class="line">    }</span><br></pre></td></tr></tbody></table></figure>
-
-<ol start="3">
-<li>使用多进程处理数据<br>在 with 下面一共有两个for，第一个for负责将数据和处理函数放在一个 futures 中， 第二个for负责处理和返回处理结果。</li>
-</ol>
-<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">with</span> ProcessPoolExecutor(max_workers=max_workers) <span class="keyword">as</span> executor:</span><br><span class="line">       futures = []</span><br><span class="line">       <span class="keyword">for</span> d <span class="keyword">in</span> data:</span><br><span class="line">           args = (d, CONTENT)</span><br><span class="line">           futures.append(executor.submit(process_record, args))</span><br><span class="line"></span><br><span class="line">       <span class="comment"># 使用 as_completed 迭代返回已经完成的任务</span></span><br><span class="line">       <span class="comment"># tqdm 用于显示进度条</span></span><br><span class="line">       <span class="keyword">for</span> idx, future <span class="keyword">in</span> <span class="built_in">enumerate</span>(tqdm.tqdm(as_completed(futures), total=<span class="built_in">len</span>(futures), desc=<span class="string">"Extracting info"</span>)):</span><br><span class="line">           result = future.result()</span><br><span class="line">           new_data.append(result)</span><br><span class="line"></span><br><span class="line">           <span class="comment"># 每完成 100 个样本，保存一次临时文件</span></span><br><span class="line">           <span class="keyword">if</span> (idx + <span class="number">1</span>) % <span class="number">500</span> == <span class="number">0</span>:</span><br><span class="line">               <span class="keyword">with</span> <span class="built_in">open</span>(save_path, <span class="string">"w"</span>, encoding=<span class="string">"utf-8"</span>) <span class="keyword">as</span> f:</span><br><span class="line">                   json.dump(new_data, f, indent=<span class="number">4</span>, ensure_ascii=<span class="literal">False</span>)</span><br><span class="line">                   <span class="built_in">print</span>(<span class="string">f"Extracted information from <span class="subst">{idx+<span class="number">1</span>}</span> medical records, and saved to <span class="subst">{save_path}</span>"</span>)</span><br></pre></td></tr></tbody></table></figure>
-
-<p>enjoy ! </p>
+                <p><img src="https://raw.githubusercontent.com/Skylyong/i/main/20250309001405.png" alt="image-20250309000801077"></p>
+<p><img src="https://raw.githubusercontent.com/Skylyong/i/main/20250309000843.png" alt="image-20250309000834470"></p>
+<p><img src="https://raw.githubusercontent.com/Skylyong/i/main/20250309000903.png" alt="image-20250309000900685"></p>
+<p><img src="https://raw.githubusercontent.com/Skylyong/i/main/20250309000927.png" alt="image-20250309000925088"></p>
+<p><img src="https://raw.githubusercontent.com/Skylyong/i/main/20250309001529.png" alt="image-20250309001006265"></p>
+<p><img src="https://raw.githubusercontent.com/Skylyong/i/main/20250309001548.png" alt="image-20250309001047780"></p>
+<p><img src="https://raw.githubusercontent.com/Skylyong/i/main/20250309001716.png" alt="image-20250309001715109"></p>
+<p><img src="https://raw.githubusercontent.com/Skylyong/i/main/20250309001122.png" alt="image-20250309001120875"></p>
+<p><img src="https://raw.githubusercontent.com/Skylyong/i/main/20250309001237.png" alt="image-20250309001156888"></p>
+<p><img src="https://raw.githubusercontent.com/Skylyong/i/main/20250309001237.png" alt="image-20250309001235875"></p>
 
                 
             </div>
@@ -429,7 +423,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://eggplant.wiki/2025/03/08/python-duo-jin-cheng-shi-li/">https://eggplant.wiki/2025/03/08/python-duo-jin-cheng-shi-li/</a>
+                    <a href="https://eggplant.wiki/2025/03/09/ren-xiang-she-ying-he-ji/">https://eggplant.wiki/2025/03/09/ren-xiang-she-ying-he-ji/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -467,8 +461,8 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/python/">
-                                    <span class="chip bg-color">python</span>
+                                <a href="/tags/%E6%91%84%E5%BD%B1/">
+                                    <span class="chip bg-color">摄影</span>
                                 </a>
                             
                         </div>
@@ -640,9 +634,10 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
                 <a href="/2025/03/09/ren-xiang-she-ying-he-ji/">
                     <div class="card-image">
@@ -660,9 +655,9 @@
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2025-03-09
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2025-03-09
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -675,6 +670,7 @@
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -693,13 +689,13 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2025/03/08/matplotlib-xian-shi-zhong-wen/">
+                <a href="/2025/03/08/python-duo-jin-cheng-shi-li/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/6.jpg" class="responsive-img" alt="matplotlib 设置显示中文">
+                        <img src="/medias/featureimages/9.jpg" class="responsive-img" alt="python多进程示例">
                         
-                        <span class="card-title">matplotlib 设置显示中文</span>
+                        <span class="card-title">python多进程示例</span>
                     </div>
                 </a>
                 <div class="card-content article-content">

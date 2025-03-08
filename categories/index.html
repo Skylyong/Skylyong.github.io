@@ -240,9 +240,7 @@
 
 
 <script>
-    // 每天切换 banner 图.  Switch banner image every day.
-    var bannerUrl = "/medias/banner/" + new Date().getDay() + '.jpg';
-    $('.bg-cover').css('background-image', 'url(' + bannerUrl + ')');
+    $('.bg-cover').css('background-image', 'url(/medias/banner/0.jpg)');
 </script>
 
 
@@ -371,6 +369,15 @@
                 </a>
                 
                 
+                <a href="/categories/%E6%91%84%E5%BD%B1/" title="摄影: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            style="background-color: #F8C471;">摄影
+                        <span class="tag-length">1</span>
+                    </span>
+                </a>
+                
+                
                 <a href="/categories/%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80%E5%A4%84%E7%90%86/" title="自然语言处理: 2">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
@@ -467,7 +474,7 @@
                     color: '#3C4858'
                 }
             },
-            indicator: [{"name":"生活情感","max":9},{"name":"总结","max":9},{"name":"爬坑总结","max":9},{"name":"干货","max":9},{"name":"人工智能","max":9},{"name":"知识框架","max":9},{"name":"学习笔记","max":9},{"name":"生活总结","max":9},{"name":"编程经验","max":9},{"name":"编程开发","max":9},{"name":"编程","max":9},{"name":"算法笔记","max":9},{"name":"自然语言处理","max":9},{"name":"算法","max":9},{"name":"学习资料","max":9},{"name":"收藏","max":9},{"name":"数据集","max":9},{"name":"机器学习","max":9}],
+            indicator: [{"name":"生活情感","max":9},{"name":"总结","max":9},{"name":"爬坑总结","max":9},{"name":"干货","max":9},{"name":"人工智能","max":9},{"name":"知识框架","max":9},{"name":"学习笔记","max":9},{"name":"生活总结","max":9},{"name":"编程经验","max":9},{"name":"编程开发","max":9},{"name":"编程","max":9},{"name":"算法笔记","max":9},{"name":"摄影","max":9},{"name":"自然语言处理","max":9},{"name":"算法","max":9},{"name":"学习资料","max":9},{"name":"收藏","max":9},{"name":"数据集","max":9},{"name":"机器学习","max":9}],
             nameGap: 5,
             center: ['50%','55%'],
             radius: '66%'
@@ -478,7 +485,7 @@
             itemStyle: {normal: {areaStyle: {type: 'default'}}},
             data : [
                 {
-                    value : [3,4,8,1,1,1,7,3,2,2,1,2,2,1,4,1,1,1],
+                    value : [3,4,8,1,1,1,7,3,2,2,1,2,1,2,1,4,1,1,1],
                     name : '文章分类数量'
                 }
             ]

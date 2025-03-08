@@ -247,9 +247,7 @@
 
 
 <script>
-    // 每天切换 banner 图.  Switch banner image every day.
-    var bannerUrl = "/medias/banner/" + new Date().getDay() + '.jpg';
-    $('.bg-cover').css('background-image', 'url(' + bannerUrl + ')');
+    $('.bg-cover').css('background-image', 'url(/medias/banner/0.jpg)');
 </script>
 
 
@@ -265,21 +263,21 @@
                     <div class="post-statis col l4 hide-on-med-and-down" data-aos="zoom-in-right">
                         
 <div class="statis">
-    <span class="count"><a href="/">47</a></span>
+    <span class="count"><a href="/">48</a></span>
     <span class="name">文章</span>
 </div>
 
 
 
 <div class="statis">
-    <span class="count"><a href="/categories">18</a></span>
+    <span class="count"><a href="/categories">19</a></span>
     <span class="name">分类</span>
 </div>
 
 
 
 <div class="statis">
-    <span class="count"><a href="/tags">35</a></span>
+    <span class="count"><a href="/tags">36</a></span>
     <span class="name">标签</span>
 </div>
 
@@ -295,21 +293,21 @@
                                 <div class="post-statis hide-on-large-only" data-aos="zoom-in-right">
                                     
 <div class="statis">
-    <span class="count"><a href="/">47</a></span>
+    <span class="count"><a href="/">48</a></span>
     <span class="name">文章</span>
 </div>
 
 
 
 <div class="statis">
-    <span class="count"><a href="/categories">18</a></span>
+    <span class="count"><a href="/categories">19</a></span>
     <span class="name">分类</span>
 </div>
 
 
 
 <div class="statis">
-    <span class="count"><a href="/tags">35</a></span>
+    <span class="count"><a href="/tags">36</a></span>
     <span class="name">标签</span>
 </div>
 
@@ -445,7 +443,7 @@
                 name: '文章篇数',
                 type: 'line',
                 color: ['#6772e5'],
-                data: [0,0,0,0,0,0,0,0,0,0,5,5,4],
+                data: [0,0,0,0,0,0,0,0,0,0,5,5,5],
                 markPoint: {
                     symbolSize: 45,
                     color: ['#fa755a','#3ecf8e','#82d3f4'],
@@ -487,7 +485,7 @@
                 type: 'pie',
                 radius: '50%',
                 color: ['#6772e5', '#ff9e0f', '#fa755a', '#3ecf8e', '#82d3f4', '#ab47bc', '#525f7f', '#f51c47', '#26A69A'],
-                data: [{"name":"生活情感","value":3},{"name":"总结","value":4},{"name":"爬坑总结","value":8},{"name":"干货","value":1},{"name":"人工智能","value":1},{"name":"知识框架","value":1},{"name":"学习笔记","value":7},{"name":"生活总结","value":3},{"name":"编程经验","value":2},{"name":"编程开发","value":2},{"name":"编程","value":1},{"name":"算法笔记","value":2},{"name":"自然语言处理","value":2},{"name":"算法","value":1},{"name":"学习资料","value":4},{"name":"收藏","value":1},{"name":"数据集","value":1},{"name":"机器学习","value":1}],
+                data: [{"name":"生活情感","value":3},{"name":"总结","value":4},{"name":"爬坑总结","value":8},{"name":"干货","value":1},{"name":"人工智能","value":1},{"name":"知识框架","value":1},{"name":"学习笔记","value":7},{"name":"生活总结","value":3},{"name":"编程经验","value":2},{"name":"编程开发","value":2},{"name":"编程","value":1},{"name":"算法笔记","value":2},{"name":"摄影","value":1},{"name":"自然语言处理","value":2},{"name":"算法","value":1},{"name":"学习资料","value":4},{"name":"收藏","value":1},{"name":"数据集","value":1},{"name":"机器学习","value":1}],
                 itemStyle: {
                     emphasis: {
                         shadowBlur: 10,
@@ -511,7 +509,7 @@
         xAxis: [
             {
                 type: 'category',
-                data: ["python","机器学习","jupyter notebook","动态规划","呈贡","电影","微信","干货","总结","ai竞赛"]
+                data: ["python","机器学习","jupyter notebook","动态规划","呈贡","电影","干货","微信","总结","ai竞赛"]
             }
         ],
         yAxis: [
@@ -752,6 +750,12 @@
             
             
             
+            <a href="/tags/%E6%91%84%E5%BD%B1/">
+                <span class="chip center-align waves-effect waves-light chip-default">摄影</span>
+            </a>
+            
+            
+            
             <a href="/tags/%E6%96%87%E6%9C%AC%E8%81%9A%E7%B1%BB-bert%E5%90%91%E9%87%8F%E8%A1%A8%E7%A4%BA/">
                 <span class="chip center-align waves-effect waves-light chip-default">文本聚类 bert向量表示</span>
             </a>
@@ -772,20 +776,14 @@
             
             
             
-            <a href="/tags/python-c-%E4%BA%92%E9%80%9A/">
-                <span class="chip center-align waves-effect waves-light chip-default">python_c++_互通</span>
-            </a>
-            
-            
-            
             <a href="/tags/%E5%91%88%E8%B4%A1/">
                 <span class="chip center-align waves-effect waves-light chip-default">呈贡</span>
             </a>
             
             
             
-            <a href="/tags/%E6%96%87%E6%9C%AC%E8%81%9A%E7%B1%BB-%E7%BC%96%E8%BE%91%E8%B7%9D%E7%A6%BB/">
-                <span class="chip center-align waves-effect waves-light chip-default">文本聚类 编辑距离</span>
+            <a href="/tags/python-c-%E4%BA%92%E9%80%9A/">
+                <span class="chip center-align waves-effect waves-light chip-default">python_c++_互通</span>
             </a>
             
             
@@ -796,20 +794,26 @@
             
             
             
+            <a href="/tags/%E6%96%87%E6%9C%AC%E8%81%9A%E7%B1%BB-%E7%BC%96%E8%BE%91%E8%B7%9D%E7%A6%BB/">
+                <span class="chip center-align waves-effect waves-light chip-default">文本聚类 编辑距离</span>
+            </a>
+            
+            
+            
             <a href="/tags/%E7%BC%96%E7%A8%8B/">
                 <span class="chip center-align waves-effect waves-light chip-default">编程</span>
             </a>
             
             
             
-            <a href="/tags/%E5%BE%AE%E4%BF%A1/">
-                <span class="chip center-align waves-effect waves-light chip-default">微信</span>
+            <a href="/tags/%E5%B9%B2%E8%B4%A7/">
+                <span class="chip center-align waves-effect waves-light chip-default">干货</span>
             </a>
             
             
             
-            <a href="/tags/%E5%B9%B2%E8%B4%A7/">
-                <span class="chip center-align waves-effect waves-light chip-default">干货</span>
+            <a href="/tags/%E5%BE%AE%E4%BF%A1/">
+                <span class="chip center-align waves-effect waves-light chip-default">微信</span>
             </a>
             
             
