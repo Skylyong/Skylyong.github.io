@@ -1,0 +1,1215 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="在mac上使用pybind11实现c++与python互通的demo, 茄子的个人空间">
+    <meta name="description" content="Keep go on">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <title>在mac上使用pybind11实现c++与python互通的demo | 茄子的个人空间</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+
+    <script src="/libs/jquery/jquery.min.js"></script>
+
+<meta name="generator" content="Hexo 7.3.0">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+</head>
+
+
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">茄子的个人空间</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>标签</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>分类</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>归档</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">茄子的个人空间</div>
+        <div class="logo-desc">
+            
+            Keep go on
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			首页
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			标签
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			分类
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			归档
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+		</a>
+          
+        </li>
+        
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+    </nav>
+
+</header>
+
+    
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/4.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">在mac上使用pybind11实现c++与python互通的demo</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        width: 345px;
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        padding: 35px 0 15px 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content {
+        padding-bottom: 30px;
+        overflow: auto;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+
+        position: absolute;
+        right: 23.5vw;
+        display: block;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 15px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/python-c-%E4%BA%92%E9%80%9A/">
+                                <span class="chip bg-color">python_c++_互通</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="post-category">
+                                学习笔记
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2023-07-23
+                </div>
+                
+
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
+                    1.8k
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
+                    8 分
+                </div>
+                
+
+                
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="far fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+				
+            </div>
+        </div>
+        <hr class="clearfix">
+
+        
+
+        
+
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h4 id="在mac上使用pybind11实现c-与python互通的demo"><a href="#在mac上使用pybind11实现c-与python互通的demo" class="headerlink" title="在mac上使用pybind11实现c++与python互通的demo"></a>在mac上使用pybind11实现c++与python互通的demo</h4><h5 id="0-问题描述"><a href="#0-问题描述" class="headerlink" title="0. 问题描述"></a>0. 问题描述</h5><p>下面的python代码定义了一个类，类中有一个名为analyze_data的函数，其采用递归的方法解析json格式的data数据，由于处理速度达不到要求，我们希望用c++改写该类，并封装成可供python代码调用的库，以达到加速的效果。</p>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">&nbsp;<span class="comment"># 待解析的数据deom</span></span><br><span class="line">&nbsp;data_demo = {<span class="string">"resbody"</span>: {<span class="string">"data"</span>: {<span class="string">"name"</span>: <span class="string">"John"</span>, <span class="string">"age"</span>: <span class="number">30</span>, <span class="string">"address"</span>: {<span class="string">"city"</span>: <span class="string">"New York"</span>, <span class="string">"zipcode"</span>: <span class="number">10001</span>}}}}</span><br><span class="line">&nbsp;</span><br><span class="line">&nbsp;<span class="comment"># 需要转换为c++代码的类</span></span><br><span class="line">&nbsp;<span class="keyword">class</span> <span class="title class_">AnalyzeDataUtil</span>:</span><br><span class="line">&nbsp;</span><br><span class="line">&nbsp; &nbsp; &nbsp;<span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, datas</span>):</span><br><span class="line">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="variable language_">self</span>.datas = datas</span><br><span class="line">&nbsp;</span><br><span class="line">&nbsp; &nbsp; &nbsp;<span class="keyword">def</span> <span class="title function_">analyze_data</span>(<span class="params">self, data, result=<span class="string">"resbody"</span>, depth=<span class="number">0</span></span>):</span><br><span class="line">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="keyword">if</span> depth == <span class="number">5</span>:</span><br><span class="line">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="keyword">return</span></span><br><span class="line">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="keyword">if</span> <span class="built_in">isinstance</span>(data, <span class="built_in">dict</span>):</span><br><span class="line">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="keyword">for</span> k, v <span class="keyword">in</span> data.items():</span><br><span class="line">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="variable language_">self</span>.analyze_data(v, result + <span class="string">"$%s"</span> % <span class="built_in">str</span>(k), depth+<span class="number">1</span>)</span><br><span class="line">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="keyword">if</span> <span class="built_in">isinstance</span>(data, (<span class="built_in">list</span>, <span class="built_in">tuple</span>)):</span><br><span class="line">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(data)):</span><br><span class="line">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="variable language_">self</span>.analyze_data(data[i], result, depth+<span class="number">1</span>)</span><br><span class="line">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="keyword">else</span>:</span><br><span class="line">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="variable language_">self</span>.datas[result] = <span class="built_in">str</span>(data)</span><br></pre></td></tr></tbody></table></figure>
+
+<p><strong>问题分析</strong>：</p>
+<p>根据问题描述，首先，我们要用c++对python定义的类进行改写，由于传入的变量data类型不固定，且涉及到类型判断，一种比较简单的方式是采用pybind11，它针对python的常见数据类型，都有对应的c++实现版本，代码改写工作大大减少。其次，类改写好之后，我们需要打通c++与python之间的隔阂，使用pybind11实现起来也非常方便，只需要在c++源码中添加少量代码即可。最后，我们还需要将c++源码编译成共享库，供下游代码调用。</p>
+<h5 id="1-安装必要的工具和包"><a href="#1-安装必要的工具和包" class="headerlink" title="1. 安装必要的工具和包"></a>1. 安装必要的工具和包</h5><figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&nbsp;brew install cmake</span><br><span class="line">&nbsp;conda install pybind11</span><br></pre></td></tr></tbody></table></figure>
+
+<p>注意：安装pybind11的时候要用conda来安装，用pip方式安装，编译的时候会报路径错误。</p>
+<h5 id="2-创建c-源文件"><a href="#2-创建c-源文件" class="headerlink" title="2. 创建c++源文件"></a>2. 创建c++源文件</h5><p>下面的代码实现了AnalyzeDataUtil类的c++版本，第54行到第60行的作用是打通c++与python之间的隔阂。</p>
+<figure class="highlight c++"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><span class="line">&nbsp;<span class="comment">//path: analyze_data_util/analyze_data_util.cpp</span></span><br><span class="line">&nbsp;<span class="meta">#<span class="keyword">include</span> <span class="string">&lt;pybind11/pybind11.h&gt;</span></span></span><br><span class="line">&nbsp;<span class="meta">#<span class="keyword">include</span> <span class="string">&lt;pybind11/stl.h&gt;</span></span></span><br><span class="line">&nbsp;</span><br><span class="line">&nbsp;<span class="keyword">namespace</span> py = pybind11;</span><br><span class="line">&nbsp;</span><br><span class="line">&nbsp;<span class="keyword">struct</span> <span class="title class_">AnalyzeDataUtil</span></span><br><span class="line">&nbsp;{</span><br><span class="line">&nbsp;<span class="keyword">public</span>:</span><br><span class="line">&nbsp; &nbsp; &nbsp;<span class="built_in">AnalyzeDataUtil</span>(py::dict datas) : <span class="built_in">datas</span>(datas) {}</span><br><span class="line">&nbsp;</span><br><span class="line">&nbsp; &nbsp; &nbsp;<span class="function"><span class="type">void</span> <span class="title">analyze_data</span><span class="params">(<span class="type">const</span> py::object &amp;data, std::string result = <span class="string">""</span>, <span class="type">int</span> depth = <span class="number">0</span>)</span></span></span><br><span class="line"><span class="function">&nbsp; &nbsp;  </span>{</span><br><span class="line">&nbsp;</span><br><span class="line">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="keyword">if</span> (depth == <span class="number">5</span>)</span><br><span class="line">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="keyword">return</span>;</span><br><span class="line">&nbsp;</span><br><span class="line">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="keyword">if</span> (py::<span class="built_in">isinstance</span>&lt;py::dict&gt;(data))</span><br><span class="line">&nbsp; &nbsp; &nbsp; &nbsp;  {</span><br><span class="line">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;py::dict dict_data = py::<span class="built_in">cast</span>&lt;py::dict&gt;(data);</span><br><span class="line">&nbsp;</span><br><span class="line">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="keyword">for</span> (<span class="type">const</span> <span class="keyword">auto</span> &amp;item : dict_data)</span><br><span class="line">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  {</span><br><span class="line">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="keyword">auto</span> key = py::<span class="built_in">reinterpret_borrow</span>&lt;py::object&gt;(item.first);</span><br><span class="line">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="keyword">auto</span> value = py::<span class="built_in">reinterpret_borrow</span>&lt;py::object&gt;(item.second);</span><br><span class="line">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="built_in">analyze_data</span>(value, result + <span class="string">"$"</span> + py::<span class="built_in">str</span>(key).<span class="built_in">cast</span>&lt;std::string&gt;(), depth + <span class="number">1</span>);</span><br><span class="line">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  }</span><br><span class="line">&nbsp; &nbsp; &nbsp; &nbsp;  }</span><br><span class="line">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="keyword">if</span> (py::<span class="built_in">isinstance</span>&lt;py::list&gt;(data) || py::<span class="built_in">isinstance</span>&lt;py::tuple&gt;(data))</span><br><span class="line">&nbsp; &nbsp; &nbsp; &nbsp;  {</span><br><span class="line">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;py::list list_data = py::<span class="built_in">cast</span>&lt;py::list&gt;(data);</span><br><span class="line">&nbsp;</span><br><span class="line">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="keyword">for</span> (<span class="type">const</span> <span class="keyword">auto</span> &amp;item : list_data)</span><br><span class="line">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  {</span><br><span class="line">&nbsp;</span><br><span class="line">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="built_in">analyze_data</span>(py::<span class="built_in">cast</span>&lt;py::object&gt;(item), result, depth + <span class="number">1</span>);</span><br><span class="line">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  }</span><br><span class="line">&nbsp; &nbsp; &nbsp; &nbsp;  }</span><br><span class="line">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="keyword">else</span></span><br><span class="line">&nbsp; &nbsp; &nbsp; &nbsp;  {</span><br><span class="line">&nbsp;</span><br><span class="line">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;datas[py::<span class="built_in">str</span>(result)] = py::<span class="built_in">str</span>(data).<span class="built_in">cast</span>&lt;std::string&gt;();</span><br><span class="line">&nbsp; &nbsp; &nbsp; &nbsp;  }</span><br><span class="line">&nbsp; &nbsp;  }</span><br><span class="line">&nbsp;</span><br><span class="line">&nbsp; &nbsp; &nbsp;<span class="function">py::dict <span class="title">get_datas</span><span class="params">()</span></span></span><br><span class="line"><span class="function">&nbsp; &nbsp;  </span>{</span><br><span class="line">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="keyword">return</span> datas;</span><br><span class="line">&nbsp; &nbsp;  }</span><br><span class="line">&nbsp;</span><br><span class="line">&nbsp;<span class="keyword">private</span>:</span><br><span class="line">&nbsp; &nbsp; &nbsp;py::dict datas;</span><br><span class="line">&nbsp;};</span><br><span class="line">&nbsp;</span><br><span class="line">&nbsp;<span class="built_in">PYBIND11_MODULE</span>(analyze_data_util, m)</span><br><span class="line">&nbsp;{</span><br><span class="line">&nbsp; &nbsp; &nbsp;py::<span class="built_in">class_</span>&lt;AnalyzeDataUtil&gt;(m, <span class="string">"AnalyzeDataUtil"</span>)</span><br><span class="line">&nbsp; &nbsp; &nbsp; &nbsp;  .<span class="built_in">def</span>(py::<span class="built_in">init</span>&lt;py::dict&gt;())</span><br><span class="line">&nbsp; &nbsp; &nbsp; &nbsp;  .<span class="built_in">def</span>(<span class="string">"analyze_data"</span>, &amp;AnalyzeDataUtil::analyze_data)</span><br><span class="line">&nbsp; &nbsp; &nbsp; &nbsp;  .<span class="built_in">def</span>(<span class="string">"get_datas"</span>, &amp;AnalyzeDataUtil::get_datas);</span><br><span class="line">&nbsp;}</span><br><span class="line">&nbsp;</span><br></pre></td></tr></tbody></table></figure>
+
+<h5 id="4-创建CMakeLists-txt文件编译C-模块"><a href="#4-创建CMakeLists-txt文件编译C-模块" class="headerlink" title="4. 创建CMakeLists.txt文件编译C++模块"></a>4. 创建CMakeLists.txt文件编译C++模块</h5><p>创建文件analyze_data_util/CMakeLists.txt， 然后将下面的脚本拷贝到文件中。</p>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&nbsp;cmake_minimum_required(VERSION 3.12)</span><br><span class="line"></span><br><span class="line">&nbsp;project(analyze_data_util LANGUAGES CXX)</span><br><span class="line">&nbsp;</span><br><span class="line">&nbsp;<span class="built_in">set</span>(CMAKE_CXX_STANDARD 14)</span><br><span class="line">&nbsp;</span><br><span class="line">&nbsp;find_package(pybind11 REQUIRED)</span><br><span class="line">&nbsp;</span><br><span class="line">&nbsp;pybind11_add_module(analyze_data_util analyze_data_util.cpp)</span><br></pre></td></tr></tbody></table></figure>
+
+<h5 id="5-编译C-模块"><a href="#5-编译C-模块" class="headerlink" title="5. 编译C++模块"></a>5. 编译C++模块</h5><figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&nbsp;<span class="built_in">mkdir</span> build</span><br><span class="line">&nbsp;<span class="built_in">cd</span> build</span><br><span class="line">&nbsp;cmake ..</span><br><span class="line">&nbsp;cmake --build .</span><br></pre></td></tr></tbody></table></figure>
+
+<p>将工作目录切换到analyze_data_util中，分别执行上面的代码。将会创建共享库文件，在Mac或Linux中名为：analyze_data_util.so，在Windows中为analyze_data_util.pyd</p>
+<h5 id="6-构造接口"><a href="#6-构造接口" class="headerlink" title="6. 构造接口"></a>6. 构造接口</h5><p>因为在c++中不允许直接访问私有成员，因此我们实现了get_datas()方法来间接访问成员，但是这不符合python的使用习惯，因此我们构造一个同名的AnalyzeDataUtil类将这一细节隐藏起来。也可以省去该步奏，但必须通过get_datas()函数访问解析后的数据。</p>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&nbsp;<span class="comment"># path: demo/analyze_data_tool.py</span></span><br><span class="line">&nbsp;<span class="keyword">import</span> analyze_data_util</span><br><span class="line">&nbsp;</span><br><span class="line">&nbsp;<span class="comment"># Wrapper for AnalyzeDataUtil class</span></span><br><span class="line">&nbsp;<span class="keyword">class</span> <span class="title class_">AnalyzeDataUtil</span>:</span><br><span class="line">&nbsp;</span><br><span class="line">&nbsp; &nbsp; &nbsp;<span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, datas</span>):</span><br><span class="line">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="variable language_">self</span>.analyzer = analyze_data_util.AnalyzeDataUtil(datas)</span><br><span class="line">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="variable language_">self</span>.datas = datas</span><br><span class="line">&nbsp;</span><br><span class="line">&nbsp; &nbsp; &nbsp;<span class="keyword">def</span> <span class="title function_">analyze_data</span>(<span class="params">self, data, result=<span class="string">"resbody"</span>, depth=<span class="number">0</span></span>): &nbsp; </span><br><span class="line">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="variable language_">self</span>.analyzer.analyze_data(data, result, depth)</span><br><span class="line">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="variable language_">self</span>.datas = <span class="variable language_">self</span>.analyzer.get_datas()</span><br></pre></td></tr></tbody></table></figure>
+
+<h5 id="7-在python中使用C-模块"><a href="#7-在python中使用C-模块" class="headerlink" title="7. 在python中使用C++模块"></a>7. 在python中使用C++模块</h5><figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">&nbsp;<span class="comment"># path: demo/test.py</span></span><br><span class="line">&nbsp;<span class="keyword">from</span> analyze_data_tool <span class="keyword">import</span> AnalyzeDataUtil</span><br><span class="line">&nbsp;<span class="keyword">import</span> json</span><br><span class="line">&nbsp;<span class="keyword">import</span> time</span><br><span class="line">&nbsp;<span class="keyword">import</span> pprint</span><br><span class="line">&nbsp;</span><br><span class="line">&nbsp;<span class="built_in">print</span>(<span class="string">'示例用法,c++版本:'</span>)</span><br><span class="line">&nbsp;json_data = <span class="string">'{"resbody": {"data": {"name": "John", "age": 30, "address": {"city": "New York", "zipcode": 10001}}}}'</span></span><br><span class="line">&nbsp;data_dict = json.loads(json_data)</span><br><span class="line">&nbsp;time1 = time.time()</span><br><span class="line">&nbsp;analyzer2 = AnalyzeDataUtil({})</span><br><span class="line">&nbsp;analyzer2.analyze_data(data_dict, <span class="string">"resbody"</span>, <span class="number">0</span>)</span><br><span class="line">&nbsp;time2 = time.time()</span><br><span class="line">&nbsp;all_keys1 = analyzer2.datas.keys()</span><br><span class="line">&nbsp;keys_list1 = <span class="string">' '</span>.join(<span class="built_in">list</span>(all_keys1))</span><br><span class="line">&nbsp;</span><br><span class="line">&nbsp;result = time2 - time1</span><br><span class="line">&nbsp;formatted_result = <span class="string">f"<span class="subst">{result:<span class="number">.10</span>f}</span>"</span></span><br><span class="line">&nbsp;pp.pprint(all_keys1)</span><br><span class="line">&nbsp;<span class="built_in">print</span>(formatted_result)</span><br></pre></td></tr></tbody></table></figure>
+
+<p>创建以上代码，然后将生成的.so or .pyd文件拷贝到demo/目录下，运行python test.py。</p>
+<h5 id="8-后记"><a href="#8-后记" class="headerlink" title="8. 后记"></a>8. 后记</h5><p>虽然上面的解决方案实现了c++与python的互通，但我在对单个文件进行测试比较的时候，得到如下结果：</p>
+<p><img src="https://raw.githubusercontent.com/Skylyong/i/main/20230723015325.png" alt="image-20230723015325241"></p>
+<p>从结果中我们发现，对于相同的json文件，c++版本与python版本处理结果是一致的，但对于速度的提升并不理想，对于单个文件的处理c++的版本甚至比python的低，可能是因为python调用c++包的时候占用了更多的时间，因此，处理速度的提升体现不出来。针对这个问题，我们至少可以从以下两个方面进行考虑：首先，从算法层面上来看，我们可以将递归改为动态规划，或者对递归过程进行剪枝处理，因为递归虽然好用，但是效率往往不高，它重复的过程实比较多。其次，我们还可以尝试使用一些能够快速解析json格式的优秀库(比如<a target="_blank" rel="noopener" href="https://rapidjson.org/zh-cn/">RapidJSON</a>)，这或许会比使用我们自己写的粗糙代码效率来的更快。</p>
+<p>最后，虽然上面讲解中涉及到的每个脚本，我都给出了它所在的文件名和位置，但是并不直观，为了方便大家更直观的理解(我跑别人博客代码的时候，经常因为位置放错，浪费时间去调试)，我把工程目录粘贴出来：</p>
+<p><img src="https://raw.githubusercontent.com/Skylyong/i/main/20230723022224.png" alt="image-20230723022223900"></p>
+<p>以上就是使用pybind11实现c++与python互通的demo啦，希望能够帮到你，想要了解更多，可以去看下面的官方文档喔。</p>
+<ul>
+<li><strong>参考资料</strong><ul>
+<li><strong>pybind11文档：</strong><a target="_blank" rel="noopener" href="https://pybind11.readthedocs.io/en/stable/">https://pybind11.readthedocs.io/en/stable/</a></li>
+<li><strong>pybind11中文文档：</strong><a target="_blank" rel="noopener" href="https://github.com/charlotteLive/pybind11-Chinese-docs">https://github.com/charlotteLive/pybind11-Chinese-docs</a></li>
+</ul>
+</li>
+</ul>
+
+                
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        文章作者:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="/about" rel="external nofollow noreferrer">茄子</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        文章链接:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="https://eggplant.wiki/2023/07/23/zai-mac-shang-shi-yong-pybind11-shi-xian-c-yu-python-hu-tong-de-demo/">https://eggplant.wiki/2023/07/23/zai-mac-shang-shi-yong-pybind11-shi-xian-c-yu-python-hu-tong-de-demo/</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        版权声明:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    本博客所有文章除特別声明外，均采用
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    许可协议。转载请注明来源
+                    <a href="/about" target="_blank">茄子</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/python-c-%E4%BA%92%E9%80%9A/">
+                                    <span class="chip bg-color">python_c++_互通</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+    <div class="social-share" data-sites="wechat,weibo,qzone,douban" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+                <style>
+    #reward {
+        margin: 40px 0;
+        text-align: center;
+    }
+
+    #reward .reward-link {
+        font-size: 1.4rem;
+        line-height: 38px;
+    }
+
+    #reward .btn-floating:hover {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    #rewardModal {
+        width: 320px;
+        height: 350px;
+    }
+
+    #rewardModal .reward-title {
+        margin: 15px auto;
+        padding-bottom: 5px;
+    }
+
+    #rewardModal .modal-content {
+        padding: 10px;
+    }
+
+    #rewardModal .close {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        color: rgba(0, 0, 0, 0.5);
+        font-size: 1.3rem;
+        line-height: 20px;
+        cursor: pointer;
+    }
+
+    #rewardModal .close:hover {
+        color: #ef5350;
+        transform: scale(1.3);
+        -moz-transform:scale(1.3);
+        -webkit-transform:scale(1.3);
+        -o-transform:scale(1.3);
+    }
+
+    #rewardModal .reward-tabs {
+        margin: 0 auto;
+        width: 210px;
+    }
+
+    .reward-tabs .tabs {
+        height: 38px;
+        margin: 10px auto;
+        padding-left: 0;
+    }
+
+    .reward-content ul {
+        padding-left: 0 !important;
+    }
+
+    .reward-tabs .tabs .tab {
+        height: 38px;
+        line-height: 38px;
+    }
+
+    .reward-tabs .tab a {
+        color: #fff;
+        background-color: #ccc;
+    }
+
+    .reward-tabs .tab a:hover {
+        background-color: #ccc;
+        color: #fff;
+    }
+
+    .reward-tabs .wechat-tab .active {
+        color: #fff !important;
+        background-color: #22AB38 !important;
+    }
+
+    .reward-tabs .alipay-tab .active {
+        color: #fff !important;
+        background-color: #019FE8 !important;
+    }
+
+    .reward-tabs .reward-img {
+        width: 210px;
+        height: 210px;
+    }
+</style>
+
+<div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-medium waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fas fa-times"></i></a>
+            <h4 class="reward-title">鼓励一下吧</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+
+            
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/2023/09/12/ubuntu-shang-an-zhuang-nividia-qu-dong-he-cuda-tookit/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/20.jpg" class="responsive-img" alt="ubuntu上安装NIVIDIA驱动和CUDA_Tookit">
+                        
+                        <span class="card-title">ubuntu上安装NIVIDIA驱动和CUDA_Tookit</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2023-09-12
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E7%88%AC%E5%9D%91%E6%80%BB%E7%BB%93/" class="post-category">
+                                    爬坑总结
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/NIVIDIA%E9%A9%B1%E5%8A%A8/">
+                        <span class="chip bg-color">NIVIDIA驱动</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2022/09/07/mac-xi-tong-zhi-zuo-win10-qi-dong-u-pan/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/2.jpg" class="responsive-img" alt="Mac系统制作win10启动U盘">
+                        
+                        <span class="card-title">Mac系统制作win10启动U盘</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-09-07
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E7%88%AC%E5%9D%91%E6%80%BB%E7%BB%93/" class="post-category">
+                                    爬坑总结
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E5%90%AF%E5%8A%A8U%E7%9B%98/">
+                        <span class="chip bg-color">启动U盘</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+<script>
+    $('#articleContent').on('copy', function (e) {
+        // IE8 or earlier browser is 'undefined'
+        if (typeof window.getSelection === 'undefined') return;
+
+        var selection = window.getSelection();
+        // if the selection is short let's not annoy our users.
+        if (('' + selection).length < Number.parseInt('120')) {
+            return;
+        }
+
+        // create a div outside of the visible area and fill it with the selected text.
+        var bodyElement = document.getElementsByTagName('body')[0];
+        var newdiv = document.createElement('div');
+        newdiv.style.position = 'absolute';
+        newdiv.style.left = '-99999px';
+        bodyElement.appendChild(newdiv);
+        newdiv.appendChild(selection.getRangeAt(0).cloneContents());
+
+        // we need a <pre> tag workaround.
+        // otherwise the text inside "pre" loses all the line breaks!
+        if (selection.getRangeAt(0).commonAncestorContainer.nodeName === 'PRE') {
+            newdiv.innerHTML = "<pre>" + newdiv.innerHTML + "</pre>";
+        }
+
+        var url = document.location.href;
+        newdiv.innerHTML += '<br />'
+            + '来源: 茄子的个人空间<br />'
+            + '文章作者: 茄子<br />'
+            + '文章链接: <a href="' + url + '">' + url + '</a><br />'
+            + '本文章著作权归作者所有，任何形式的转载都请注明出处。';
+
+        selection.selectAllChildren(newdiv);
+        window.setTimeout(function () {bodyElement.removeChild(newdiv);}, 200);
+    });
+</script>
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget card" style="background-color: white;">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+
+    <footer class="page-footer bg-color">
+    
+        <link rel="stylesheet" href="/libs/aplayer/APlayer.min.css">
+<style>
+    .aplayer .aplayer-lrc p {
+        
+        display: none;
+        
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 16px !important;
+    }
+
+    .aplayer .aplayer-lrc p.aplayer-lrc-current {
+        
+        display: none;
+        
+        font-size: 15px;
+        color: #42b983;
+    }
+
+    
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body {
+        left: -66px !important;
+    }
+
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body:hover {
+        left: 0px !important;
+    }
+
+    
+</style>
+<div class="">
+    
+    <div class="row">
+        <meting-js class="col l8 offset-l2 m10 offset-m1 s12"
+                   server="netease"
+                   type="playlist"
+                   id="503838841"
+                   fixed='true'
+                   autoplay='false'
+                   theme='#42b983'
+                   loop='all'
+                   order='random'
+                   preload='auto'
+                   volume='0.7'
+                   list-folded='true'
+        >
+        </meting-js>
+    </div>
+</div>
+
+<script src="/libs/aplayer/APlayer.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
+
+    
+    <div class="container row center-align" style="margin-bottom: 0px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            
+                <span id="year">2019-2025</span>
+            
+            <span id="year">2019</span>
+            <a href="/about" target="_blank">茄子</a>
+            <!-- |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a> -->
+            <!-- |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a> -->
+            <br>
+            
+            
+            
+            
+            
+            
+            <span id="busuanzi_container_site_pv">
+                &nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;<span id="busuanzi_value_site_pv"
+                    class="white-color"></span>&nbsp;次
+            </span>
+            
+            
+            <span id="busuanzi_container_site_uv">
+                &nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;<span id="busuanzi_value_site_uv"
+                    class="white-color"></span>&nbsp;人
+            </span>
+            
+            <br>
+            
+            <br>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/Skylyong" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:lyong_s@foxmail.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fas fa-rss"></i>
+    </a>
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(function () {
+    var searchFunc = function (path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+            url: path,
+            dataType: "xml",
+            success: function (xmlResponse) {
+                // get the contents from search data
+                var datas = $("entry", xmlResponse).map(function () {
+                    return {
+                        title: $("title", this).text(),
+                        content: $("content", this).text(),
+                        url: $("url", this).text()
+                    };
+                }).get();
+                var $input = document.getElementById(search_id);
+                var $resultContent = document.getElementById(content_id);
+                $input.addEventListener('input', function () {
+                    var str = '<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = "";
+                    if (this.value.trim().length <= 0) {
+                        return;
+                    }
+                    // perform local searching
+                    datas.forEach(function (data) {
+                        var isMatch = true;
+                        var data_title = data.title.trim().toLowerCase();
+                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                        var data_url = data.url;
+                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
+                        var index_title = -1;
+                        var index_content = -1;
+                        var first_occur = -1;
+                        // only match artiles with not empty titles and contents
+                        if (data_title !== '' && data_content !== '') {
+                            keywords.forEach(function (keyword, i) {
+                                index_title = data_title.indexOf(keyword);
+                                index_content = data_content.indexOf(keyword);
+                                if (index_title < 0 && index_content < 0) {
+                                    isMatch = false;
+                                } else {
+                                    if (index_content < 0) {
+                                        index_content = 0;
+                                    }
+                                    if (i === 0) {
+                                        first_occur = index_content;
+                                    }
+                                }
+                            });
+                        }
+                        // show search results
+                        if (isMatch) {
+                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                            var content = data.content.trim().replace(/<[^>]+>/g, "");
+                            if (first_occur >= 0) {
+                                // cut out 100 characters
+                                var start = first_occur - 20;
+                                var end = first_occur + 80;
+                                if (start < 0) {
+                                    start = 0;
+                                }
+                                if (start === 0) {
+                                    end = 100;
+                                }
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+                                var match_content = content.substr(start, end);
+                                // highlight all keywords
+                                keywords.forEach(function (keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
+                                });
+
+                                str += "<p class=\"search-result\">" + match_content + "...</p>"
+                            }
+                            str += "</li>";
+                        }
+                    });
+                    str += "</ul>";
+                    $resultContent.innerHTML = str;
+                });
+            }
+        });
+    };
+
+    searchFunc('/search.xml', 'searchInput', 'searchResult');
+});
+</script>
+
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+
+    <!-- Baidu Analytics -->
+
+<script>
+    var _hmt = _hmt || [];
+    (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?9a8ff6f1dff94383b5c386933d0a21c3";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    <script src="/libs/others/clicklove.js" async="async"></script>
+    
+    
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+
+    <!--腾讯兔小巢-->
+    
+    
+
+    
+
+    
+
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+</body>
+
+</html>
