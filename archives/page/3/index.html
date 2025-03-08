@@ -415,6 +415,33 @@
                 <main class="main index-page">
             
         <article class="index-post">
+            <a class="abstract-title" href="/2022/09/05/dian-ci-bi-sai-zong-jie/">
+                <span class="abstract-title-text">电磁比赛总结</span>
+            </a>
+            <div class="abstract-content">
+                电磁比赛总结
+代码总结
+
+要会静态分析资源占有率，特别是当服务器内存资源不足的时候，提前做好静态分析，设置合理的运行参数，才能提升效率。比如本次实验过程中，做数据增强预处理数据时需要占用大量内存资源，参数设置过大，会导致运行一半后因为内存不足，进程被killed掉，参数设置过小效率又变得很低。
+当数据很多，需要占用大量内存时，不要将数据转换为pandas的DataFrame对象，因为它会吃掉更多的内存，此外使用apply方法对数据进行逐行处理的时候，即使使用了加速方法，也没有将数据存储为list然后使用多进程方法处理高效。在本次实验中，后者的速度至少是前者的5倍。
+尽量使用class对代...
+            </div>
+            <!-- read more -->
+            <div class="abstract-post-meta">
+                <!-- date -->
+                <div class="abstract-date" title="Last updated: 2025/03/08">
+                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2022/09/05</span>
+                </div>
+                <!-- tags -->
+                    <div class="abstract-tags" >
+        <a class="post-tag" href="javascript:void(0);" data-tags="竞赛">竞赛</a>
+</div>
+
+            </div>
+        </article>
+        <div class="index-post-divider"></div>
+            
+        <article class="index-post">
             <a class="abstract-title" href="/2022/04/29/yuan-cheng-fang-wen-fu-wu-qi-jupyter-notebook/">
                 <span class="abstract-title-text">远程访问服务器Jupyter-Notebook</span>
             </a>
@@ -724,29 +751,6 @@ dxy database
             </div>
         </article>
         <div class="index-post-divider"></div>
-            
-        <article class="index-post">
-            <a class="abstract-title" href="/2021/08/13/tu-de-chuang-jian-he-bian-li/">
-                <span class="abstract-title-text">【课程设计】图的创建和遍历</span>
-            </a>
-            <div class="abstract-content">
-                问题描述本课程设计主要完成邻接矩阵和邻接表两种不同存储方式的图的建立和遍历，其中遍历部分分别进行了DFS和BFS两种不同形式的遍历。
-实现代码1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768697071727374757677787980818283848586878889909192939495969798991001011021031041051061071081091101111...
-            </div>
-            <!-- read more -->
-            <div class="abstract-post-meta">
-                <!-- date -->
-                <div class="abstract-date" title="Last updated: 2025/03/08">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2021/08/13</span>
-                </div>
-                <!-- tags -->
-                    <div class="abstract-tags" >
-        <a class="post-tag" href="javascript:void(0);" data-tags="图">图</a>
-</div>
-
-            </div>
-        </article>
-        <div class="index-post-divider"></div>
     <!-- paginator  -->
         <nav class="page-nav">
             <a class="extend prev" rel="prev" href="/archives/page/2/">&lt; PREV</a><a class="page-number" href="/archives/">1</a><a class="page-number" href="/archives/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/archives/page/4/">4</a><a class="page-number" href="/archives/page/5/">5</a><a class="extend next" rel="next" href="/archives/page/4/">NEXT &gt;</a>
@@ -834,9 +838,10 @@ dxy database
         
         
         
+        
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 49
+        Total : 50
         </div>
         <!-- search  -->
             <div class="site-search site-search-loading popup-trigger">
@@ -848,6 +853,10 @@ dxy database
             <ul class="year-list">
         <li class="archive-post-item">
             <span class="archive-post-date">03/09</span>
+            <a class="archive-post-title" href="/2025/03/09/a-ce-shi/">a测试</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/09</span>
             <a class="archive-post-title" href="/2025/03/09/jie-pai-he-ji/">街拍合集</a>
         </li>
         <li class="archive-post-item">
@@ -856,11 +865,11 @@ dxy database
         </li>
         <li class="archive-post-item">
             <span class="archive-post-date">03/08</span>
-            <a class="archive-post-title" href="/2025/03/08/matplotlib-xian-shi-zhong-wen/">matplotlib 设置显示中文</a>
+            <a class="archive-post-title" href="/2025/03/08/python-duo-jin-cheng-shi-li/">python多进程示例</a>
         </li>
         <li class="archive-post-item">
             <span class="archive-post-date">03/08</span>
-            <a class="archive-post-title" href="/2025/03/08/python-duo-jin-cheng-shi-li/">python多进程示例</a>
+            <a class="archive-post-title" href="/2025/03/08/matplotlib-xian-shi-zhong-wen/">matplotlib 设置显示中文</a>
         </li>
         <li class="archive-post-item">
             <span class="archive-post-date">03/06</span>
@@ -1065,13 +1074,13 @@ dxy database
                 <span class="iconfont-archer">&#xe606;</span>
                 ai竞赛
             </span>
-            <span class="sidebar-tag-name" data-tags="GitLab">
-                <span class="iconfont-archer">&#xe606;</span>
-                GitLab
-            </span>
             <span class="sidebar-tag-name" data-tags="GitHub">
                 <span class="iconfont-archer">&#xe606;</span>
                 GitHub
+            </span>
+            <span class="sidebar-tag-name" data-tags="GitLab">
+                <span class="iconfont-archer">&#xe606;</span>
+                GitLab
             </span>
             <span class="sidebar-tag-name" data-tags="Google访问助手">
                 <span class="iconfont-archer">&#xe606;</span>
@@ -1085,6 +1094,10 @@ dxy database
                 <span class="iconfont-archer">&#xe606;</span>
                 启动U盘
             </span>
+            <span class="sidebar-tag-name" data-tags="nlp">
+                <span class="iconfont-archer">&#xe606;</span>
+                nlp
+            </span>
             <span class="sidebar-tag-name" data-tags="Pandas">
                 <span class="iconfont-archer">&#xe606;</span>
                 Pandas
@@ -1097,17 +1110,13 @@ dxy database
                 <span class="iconfont-archer">&#xe606;</span>
                 git
             </span>
-            <span class="sidebar-tag-name" data-tags="博客">
-                <span class="iconfont-archer">&#xe606;</span>
-                博客
-            </span>
-            <span class="sidebar-tag-name" data-tags="nlp">
-                <span class="iconfont-archer">&#xe606;</span>
-                nlp
-            </span>
             <span class="sidebar-tag-name" data-tags="pytorch">
                 <span class="iconfont-archer">&#xe606;</span>
                 pytorch
+            </span>
+            <span class="sidebar-tag-name" data-tags="博客">
+                <span class="iconfont-archer">&#xe606;</span>
+                博客
             </span>
             <span class="sidebar-tag-name" data-tags="jupyter notebook">
                 <span class="iconfont-archer">&#xe606;</span>
@@ -1129,6 +1138,10 @@ dxy database
                 <span class="iconfont-archer">&#xe606;</span>
                 树
             </span>
+            <span class="sidebar-tag-name" data-tags="动态规划">
+                <span class="iconfont-archer">&#xe606;</span>
+                动态规划
+            </span>
             <span class="sidebar-tag-name" data-tags="摄影">
                 <span class="iconfont-archer">&#xe606;</span>
                 摄影
@@ -1145,13 +1158,13 @@ dxy database
                 <span class="iconfont-archer">&#xe606;</span>
                 机器学习
             </span>
-            <span class="sidebar-tag-name" data-tags="图">
-                <span class="iconfont-archer">&#xe606;</span>
-                图
-            </span>
             <span class="sidebar-tag-name" data-tags="python_c++_互通">
                 <span class="iconfont-archer">&#xe606;</span>
                 python_c++_互通
+            </span>
+            <span class="sidebar-tag-name" data-tags="图">
+                <span class="iconfont-archer">&#xe606;</span>
+                图
             </span>
             <span class="sidebar-tag-name" data-tags="呈贡">
                 <span class="iconfont-archer">&#xe606;</span>
@@ -1161,10 +1174,6 @@ dxy database
                 <span class="iconfont-archer">&#xe606;</span>
                 文本聚类 编辑距离
             </span>
-            <span class="sidebar-tag-name" data-tags="电影">
-                <span class="iconfont-archer">&#xe606;</span>
-                电影
-            </span>
             <span class="sidebar-tag-name" data-tags="编程">
                 <span class="iconfont-archer">&#xe606;</span>
                 编程
@@ -1173,13 +1182,13 @@ dxy database
                 <span class="iconfont-archer">&#xe606;</span>
                 微信
             </span>
+            <span class="sidebar-tag-name" data-tags="电影">
+                <span class="iconfont-archer">&#xe606;</span>
+                电影
+            </span>
             <span class="sidebar-tag-name" data-tags="干货">
                 <span class="iconfont-archer">&#xe606;</span>
                 干货
-            </span>
-            <span class="sidebar-tag-name" data-tags="动态规划">
-                <span class="iconfont-archer">&#xe606;</span>
-                动态规划
             </span>
             <span class="sidebar-tag-name" data-tags="资源">
                 <span class="iconfont-archer">&#xe606;</span>
@@ -1189,13 +1198,13 @@ dxy database
                 <span class="iconfont-archer">&#xe606;</span>
                 熵
             </span>
-            <span class="sidebar-tag-name" data-tags="竞赛">
-                <span class="iconfont-archer">&#xe606;</span>
-                竞赛
-            </span>
             <span class="sidebar-tag-name" data-tags="论文写作">
                 <span class="iconfont-archer">&#xe606;</span>
                 论文写作
+            </span>
+            <span class="sidebar-tag-name" data-tags="竞赛">
+                <span class="iconfont-archer">&#xe606;</span>
+                竞赛
             </span>
             <span class="sidebar-tag-name" data-tags="街拍">
                 <span class="iconfont-archer">&#xe606;</span>
@@ -1235,6 +1244,10 @@ dxy database
             <span class="iconfont-archer">&#xe60a;</span>
             人工智能
         </span>
+        <span class="sidebar-category-name" data-categories="知识框架">
+            <span class="iconfont-archer">&#xe60a;</span>
+            知识框架
+        </span>
         <span class="sidebar-category-name" data-categories="学习笔记">
             <span class="iconfont-archer">&#xe60a;</span>
             学习笔记
@@ -1242,10 +1255,6 @@ dxy database
         <span class="sidebar-category-name" data-categories="生活总结">
             <span class="iconfont-archer">&#xe60a;</span>
             生活总结
-        </span>
-        <span class="sidebar-category-name" data-categories="知识框架">
-            <span class="iconfont-archer">&#xe60a;</span>
-            知识框架
         </span>
         <span class="sidebar-category-name" data-categories="编程经验">
             <span class="iconfont-archer">&#xe60a;</span>
@@ -1258,6 +1267,10 @@ dxy database
         <span class="sidebar-category-name" data-categories="编程">
             <span class="iconfont-archer">&#xe60a;</span>
             编程
+        </span>
+        <span class="sidebar-category-name" data-categories="算法笔记">
+            <span class="iconfont-archer">&#xe60a;</span>
+            算法笔记
         </span>
         <span class="sidebar-category-name" data-categories="摄影">
             <span class="iconfont-archer">&#xe60a;</span>
@@ -1282,10 +1295,6 @@ dxy database
         <span class="sidebar-category-name" data-categories="数据集">
             <span class="iconfont-archer">&#xe60a;</span>
             数据集
-        </span>
-        <span class="sidebar-category-name" data-categories="算法笔记">
-            <span class="iconfont-archer">&#xe60a;</span>
-            算法笔记
         </span>
         <span class="sidebar-category-name" data-categories="机器学习">
             <span class="iconfont-archer">&#xe60a;</span>
