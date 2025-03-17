@@ -13,7 +13,7 @@
     <meta name="description" content="Keep go on">
 <meta property="og:type" content="website">
 <meta property="og:title" content="茄子的个人空间">
-<meta property="og:url" content="https://eggplant.wiki/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/index.html">
+<meta property="og:url" content="https://eggplant.wiki/tags/neo4j/index.html">
 <meta property="og:site_name" content="茄子的个人空间">
 <meta property="og:description" content="Keep go on">
 <meta property="og:locale" content="zh_CN">
@@ -422,177 +422,26 @@
                 <main class="main index-page">
             
         <article class="index-post">
-            <a class="abstract-title" href="/2023/07/23/zai-mac-shang-shi-yong-pybind11-shi-xian-c-yu-python-hu-tong-de-demo/">
-                <span class="abstract-title-text">在mac上使用pybind11实现c++与python互通的demo</span>
+            <a class="abstract-title" href="/2025/03/17/neo4j-dao-ru-jie-dian-he-bian-de-python-dai-ma/">
+                <span class="abstract-title-text">neo4j导入节点和边的python代码</span>
             </a>
             <div class="abstract-content">
-                在mac上使用pybind11实现c++与python互通的demo0. 问题描述下面的python代码定义了一个类，类中有一个名为analyze_data的函数，其采用递归的方法解析json格式的data数据，由于处理速度达不到要求，我们希望用c++改写该类，并封装成可供python代码调用的库，以达到加速的效果。
-1234567891011121314151617181920&nbsp;# 待解析的数据deom&nbsp;data_demo = {"resbody": {"data": {"name": "John", "age": 30, "address": {"city": "...
+                在做知识图谱相关的项目时，经常需要将数据导入到neo4j中，这里分享一下导入节点和边的python代码，以便于以后查阅。
+需要注意的是，下面的代码是在neo4j 5.x 版本上测试通过的，如果是其他版本，可能需要做一些调整。
+
+neo4j 导入节点和边的类实现
+
+123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687...
             </div>
             <!-- read more -->
             <div class="abstract-post-meta">
                 <!-- date -->
-                <div class="abstract-date" title="Last updated: 2025/03/08">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2023/07/23</span>
+                <div class="abstract-date" title="Last updated: 2025/03/17">
+                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2025/03/17</span>
                 </div>
                 <!-- tags -->
                     <div class="abstract-tags" >
-        <a class="post-tag" href="javascript:void(0);" data-tags="python_c++_互通">python_c++_互通</a>
-</div>
-
-            </div>
-        </article>
-        <div class="index-post-divider"></div>
-            
-        <article class="index-post">
-            <a class="abstract-title" href="/2021/08/13/li-bao-chun-writing-perfect-papers/">
-                <span class="abstract-title-text">论文写作</span>
-            </a>
-            <div class="abstract-content">
-                李葆春——Writing Perfect Papers
-            </div>
-            <!-- read more -->
-            <div class="abstract-post-meta">
-                <!-- date -->
-                <div class="abstract-date" title="Last updated: 2025/03/08">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2021/08/13</span>
-                </div>
-                <!-- tags -->
-                    <div class="abstract-tags" >
-        <a class="post-tag" href="javascript:void(0);" data-tags="论文写作">论文写作</a>
-</div>
-
-            </div>
-        </article>
-        <div class="index-post-divider"></div>
-            
-        <article class="index-post">
-            <a class="abstract-title" href="/2021/08/09/svm-xue-xi-bi-ji/">
-                <span class="abstract-title-text">SVM学习笔记</span>
-            </a>
-            <div class="abstract-content">
-                SVM学习笔记https://www.deeplearningbook.org/
-http://page.mi.fu-berlin.de/rojas/neural/neuron.pdf
-https://www.svm-tutorial.com/2014/11/svm-understanding-math-part-1/
-
-            </div>
-            <!-- read more -->
-            <div class="abstract-post-meta">
-                <!-- date -->
-                <div class="abstract-date" title="Last updated: 2025/03/08">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2021/08/09</span>
-                </div>
-                <!-- tags -->
-                    <div class="abstract-tags" >
-        <a class="post-tag" href="javascript:void(0);" data-tags="svm">svm</a>
-</div>
-
-            </div>
-        </article>
-        <div class="index-post-divider"></div>
-            
-        <article class="index-post">
-            <a class="abstract-title" href="/2021/08/06/pandas-xue-xi/">
-                <span class="abstract-title-text">Pandas学习</span>
-            </a>
-            <div class="abstract-content">
-                
-Video url: https://www.youtube.com/watch?v=vmEHCJofslg
-Pandas document: https://pandas.pydata.org/pandas-docs/stable/reference/index.html#api
-Pracice Pandas:   https://stratascratch.com/?via=keith
-
-1. Loading data into Pandas
-1.1 Loading data from csv format file
-123# read data from csv format f...
-            </div>
-            <!-- read more -->
-            <div class="abstract-post-meta">
-                <!-- date -->
-                <div class="abstract-date" title="Last updated: 2025/03/08">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2021/08/06</span>
-                </div>
-                <!-- tags -->
-                    <div class="abstract-tags" >
-        <a class="post-tag" href="javascript:void(0);" data-tags="Pandas">Pandas</a>
-</div>
-
-            </div>
-        </article>
-        <div class="index-post-divider"></div>
-            
-        <article class="index-post">
-            <a class="abstract-title" href="/2021/08/05/pytorch-xue-xi/">
-                <span class="abstract-title-text">Pytorch学习</span>
-            </a>
-            <div class="abstract-content">
-                课程[链接](https: // www.youtube.com / watch?v = c36lUUr864M)
-1. Tensor1.1 How to create tensor
-构造tensor的方法主要有六种，分别如下：
-
-x = torch.ones(3, 5, dtype=torch.float, requires_grad = True )
-
-x = torch.zeros(3, 5, dtype=torch.float, requires_grad = True )
-
-x = torch.rand(3, 5, dtype=torch.float, requires_gra...
-            </div>
-            <!-- read more -->
-            <div class="abstract-post-meta">
-                <!-- date -->
-                <div class="abstract-date" title="Last updated: 2025/03/08">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2021/08/05</span>
-                </div>
-                <!-- tags -->
-                    <div class="abstract-tags" >
-        <a class="post-tag" href="javascript:void(0);" data-tags="pytorch">pytorch</a>
-</div>
-
-            </div>
-        </article>
-        <div class="index-post-divider"></div>
-            
-        <article class="index-post">
-            <a class="abstract-title" href="/2021/03/31/ke-cheng-she-ji-zui-xiao-sheng-cheng-shu-ying-yong/">
-                <span class="abstract-title-text">【课程设计】最小生成树应用</span>
-            </a>
-            <div class="abstract-content">
-                需求描述本次课程设计要求在n个城市之间架设n-1条线路，实现这几个城市之间的网络通信，要求网络经济代价最低。具体要求如下：
-问题分析根据设计要求，我们假设城市之间的距离越大架设网线的经济代价越大，因此可以用两个城市之间的距离作为边的权重。
-n个城市之间最多可以生成 1+2+…+(n-1)条边，分别计算出每条边的长度然后对他们进行升序排序，利用并查集得到由n-1条边组成的最小生成树，问题便得到解决。
-为了解决上述问题，需要构建一个城市结构体CITY来表示城市，并且还需要构建EDGE结构体来表示城市与城市的边，并利用随机函数生成城市的坐标。
-实现代码123456789101112131415...
-            </div>
-            <!-- read more -->
-            <div class="abstract-post-meta">
-                <!-- date -->
-                <div class="abstract-date" title="Last updated: 2025/03/08">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2021/03/31</span>
-                </div>
-                <!-- tags -->
-                    <div class="abstract-tags" >
-        <a class="post-tag" href="javascript:void(0);" data-tags="树">树</a>
-</div>
-
-            </div>
-        </article>
-        <div class="index-post-divider"></div>
-        <article class="index-post">
-            <a class="abstract-title" href="/2021/03/29/bian-fen-xue-xi-bi-ji/">
-                <span class="abstract-title-text">变分学习笔记</span>
-            </a>
-            <div class="abstract-content">
-                <h1 id="变分推断"><a href="#变分推断" class="headerlink" title="变分推断"></a>变分推断</h1><h3 id="应用举例"><a href="#应用举例" class="headerlink" title="应用举例"></a>应用举例</h3><ul>
-<li>文章LAD题目分析</li>
-</ul>
-            </div>
-            <!-- read more -->
-            <div class="abstract-post-meta">
-                <!-- date -->
-                <div class="abstract-date" title="Last updated: 2025/03/08">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2021/03/29</span>
-                </div>
-                <!-- tags -->
-                    <div class="abstract-tags" >
-        <a class="post-tag" href="javascript:void(0);" data-tags="机器学习">机器学习</a>
+        <a class="post-tag" href="javascript:void(0);" data-tags="neo4j">neo4j</a>
 </div>
 
             </div>
