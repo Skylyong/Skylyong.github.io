@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>安装torch-scatter时遇到的坑</title>
+      <link href="/2025/04/18/an-zhuang-torch-scatter-shi-yu-dao-de-keng/"/>
+      <url>/2025/04/18/an-zhuang-torch-scatter-shi-yu-dao-de-keng/</url>
+      
+        <content type="html"><![CDATA[<p>今天在使用 <code>pip</code> 安装<code> torch-scatter</code> 包时报错，然后使用 <code>conda</code> 成功安装了，但是运行代码的时候报错，并且是一个底层的错误。</p><p>查询之后发现，是因为<strong>在使用 <code>torch_scatter</code>、<code>torch_sparse</code>、<code>torch_cluster</code> 等基于 C++ 的扩展模块时，如果 <code>PyTorch</code> 版本和系统环境不完全匹配，就容易发生这类底层编译失败。</strong></p><p>解决方法最稳定也最省事的方式是<strong>不要从源码编译 torch_scatter</strong>，而是使用预编译好的 <code>.whl</code> 包进行安装。步骤如下：</p><ol><li>确认 <code>PyTorch</code> 和 <code>Python</code> 版本</li></ol><figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">python -c <span class="string">"import torch; print(torch.__version__)"</span></span><br><span class="line">python -V</span><br></pre></td></tr></tbody></table></figure><ol start="2"><li>访问 <a href="https://data.pyg.org/whl/">https://data.pyg.org/whl/</a> 下载对应版本的 <code>*.whl</code> 到本地</li></ol>  <img src="/Users/lyong/Desktop/同步阿里云/科研库/images/image-20250418222818844.png" alt="image-20250418222818844" style="zoom:25%;"><ol start="3"><li>使用<code>pip</code>安装下载的 <code>whl</code> 包</li></ol><figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install xxx.whl</span><br></pre></td></tr></tbody></table></figure><p>这样问题就解决了，开心😄</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 编程 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> pytorch </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>neo4j导入节点和边的python代码</title>
       <link href="/2025/03/17/neo4j-dao-ru-jie-dian-he-bian-de-python-dai-ma/"/>
       <url>/2025/03/17/neo4j-dao-ru-jie-dian-he-bian-de-python-dai-ma/</url>

@@ -422,6 +422,34 @@
                 <main class="main index-page">
             
         <article class="index-post">
+            <a class="abstract-title" href="/2025/04/18/an-zhuang-torch-scatter-shi-yu-dao-de-keng/">
+                <span class="abstract-title-text">安装torch-scatter时遇到的坑</span>
+            </a>
+            <div class="abstract-content">
+                今天在使用 pip 安装 torch-scatter 包时报错，然后使用 conda 成功安装了，但是运行代码的时候报错，并且是一个底层的错误。
+查询之后发现，是因为在使用 torch_scatter、torch_sparse、torch_cluster 等基于 C++ 的扩展模块时，如果 PyTorch 版本和系统环境不完全匹配，就容易发生这类底层编译失败。
+解决方法最稳定也最省事的方式是不要从源码编译 torch_scatter，而是使用预编译好的 .whl 包进行安装。步骤如下：
+
+确认 PyTorch 和 Python 版本
+
+12python -c "import torch;...
+            </div>
+            <!-- read more -->
+            <div class="abstract-post-meta">
+                <!-- date -->
+                <div class="abstract-date" title="Last updated: 2025/04/18">
+                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2025/04/18</span>
+                </div>
+                <!-- tags -->
+                    <div class="abstract-tags" >
+        <a class="post-tag" href="javascript:void(0);" data-tags="pytorch">pytorch</a>
+</div>
+
+            </div>
+        </article>
+        <div class="index-post-divider"></div>
+            
+        <article class="index-post">
             <a class="abstract-title" href="/2025/03/17/neo4j-dao-ru-jie-dian-he-bian-de-python-dai-ma/">
                 <span class="abstract-title-text">neo4j导入节点和边的python代码</span>
             </a>
@@ -565,9 +593,10 @@ neo4j 导入节点和边的类实现
         
         
         
+        
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 50
+        Total : 51
         </div>
         <!-- search  -->
             <div class="site-search site-search-loading popup-trigger">
@@ -577,6 +606,10 @@ neo4j 导入节点和边的类实现
     <div class="post-archive">
             <div class="archive-year"> 2025 </div>
             <ul class="year-list">
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/18</span>
+            <a class="archive-post-title" href="/2025/04/18/an-zhuang-torch-scatter-shi-yu-dao-de-keng/">安装torch-scatter时遇到的坑</a>
+        </li>
         <li class="archive-post-item">
             <span class="archive-post-date">03/17</span>
             <a class="archive-post-title" href="/2025/03/17/neo4j-dao-ru-jie-dian-he-bian-de-python-dai-ma/">neo4j导入节点和边的python代码</a>
@@ -591,11 +624,11 @@ neo4j 导入节点和边的类实现
         </li>
         <li class="archive-post-item">
             <span class="archive-post-date">03/08</span>
-            <a class="archive-post-title" href="/2025/03/08/python-duo-jin-cheng-shi-li/">python多进程示例</a>
+            <a class="archive-post-title" href="/2025/03/08/matplotlib-xian-shi-zhong-wen/">matplotlib 设置显示中文</a>
         </li>
         <li class="archive-post-item">
             <span class="archive-post-date">03/08</span>
-            <a class="archive-post-title" href="/2025/03/08/matplotlib-xian-shi-zhong-wen/">matplotlib 设置显示中文</a>
+            <a class="archive-post-title" href="/2025/03/08/python-duo-jin-cheng-shi-li/">python多进程示例</a>
         </li>
         <li class="archive-post-item">
             <span class="archive-post-date">03/06</span>
@@ -800,10 +833,6 @@ neo4j 导入节点和边的类实现
                 <span class="iconfont-archer">&#xe606;</span>
                 ai竞赛
             </span>
-            <span class="sidebar-tag-name" data-tags="GitHub">
-                <span class="iconfont-archer">&#xe606;</span>
-                GitHub
-            </span>
             <span class="sidebar-tag-name" data-tags="GitLab">
                 <span class="iconfont-archer">&#xe606;</span>
                 GitLab
@@ -812,29 +841,25 @@ neo4j 导入节点和边的类实现
                 <span class="iconfont-archer">&#xe606;</span>
                 Google访问助手
             </span>
+            <span class="sidebar-tag-name" data-tags="GitHub">
+                <span class="iconfont-archer">&#xe606;</span>
+                GitHub
+            </span>
             <span class="sidebar-tag-name" data-tags="预训练模型">
                 <span class="iconfont-archer">&#xe606;</span>
                 预训练模型
-            </span>
-            <span class="sidebar-tag-name" data-tags="启动U盘">
-                <span class="iconfont-archer">&#xe606;</span>
-                启动U盘
             </span>
             <span class="sidebar-tag-name" data-tags="nlp">
                 <span class="iconfont-archer">&#xe606;</span>
                 nlp
             </span>
+            <span class="sidebar-tag-name" data-tags="启动U盘">
+                <span class="iconfont-archer">&#xe606;</span>
+                启动U盘
+            </span>
             <span class="sidebar-tag-name" data-tags="Pandas">
                 <span class="iconfont-archer">&#xe606;</span>
                 Pandas
-            </span>
-            <span class="sidebar-tag-name" data-tags="git">
-                <span class="iconfont-archer">&#xe606;</span>
-                git
-            </span>
-            <span class="sidebar-tag-name" data-tags="博客">
-                <span class="iconfont-archer">&#xe606;</span>
-                博客
             </span>
             <span class="sidebar-tag-name" data-tags="pytorch">
                 <span class="iconfont-archer">&#xe606;</span>
@@ -844,6 +869,14 @@ neo4j 导入节点和边的类实现
                 <span class="iconfont-archer">&#xe606;</span>
                 svm
             </span>
+            <span class="sidebar-tag-name" data-tags="git">
+                <span class="iconfont-archer">&#xe606;</span>
+                git
+            </span>
+            <span class="sidebar-tag-name" data-tags="博客">
+                <span class="iconfont-archer">&#xe606;</span>
+                博客
+            </span>
             <span class="sidebar-tag-name" data-tags="jupyter notebook">
                 <span class="iconfont-archer">&#xe606;</span>
                 jupyter notebook
@@ -851,6 +884,10 @@ neo4j 导入节点和边的类实现
             <span class="sidebar-tag-name" data-tags="python">
                 <span class="iconfont-archer">&#xe606;</span>
                 python
+            </span>
+            <span class="sidebar-tag-name" data-tags="neo4j">
+                <span class="iconfont-archer">&#xe606;</span>
+                neo4j
             </span>
             <span class="sidebar-tag-name" data-tags="NIVIDIA驱动">
                 <span class="iconfont-archer">&#xe606;</span>
@@ -864,41 +901,45 @@ neo4j 导入节点和边的类实现
                 <span class="iconfont-archer">&#xe606;</span>
                 树
             </span>
-            <span class="sidebar-tag-name" data-tags="文本聚类 bert向量表示">
+            <span class="sidebar-tag-name" data-tags="摄影">
                 <span class="iconfont-archer">&#xe606;</span>
-                文本聚类 bert向量表示
+                摄影
             </span>
             <span class="sidebar-tag-name" data-tags="动态规划">
                 <span class="iconfont-archer">&#xe606;</span>
                 动态规划
             </span>
-            <span class="sidebar-tag-name" data-tags="机器学习">
+            <span class="sidebar-tag-name" data-tags="文本聚类 bert向量表示">
                 <span class="iconfont-archer">&#xe606;</span>
-                机器学习
+                文本聚类 bert向量表示
             </span>
             <span class="sidebar-tag-name" data-tags="日志">
                 <span class="iconfont-archer">&#xe606;</span>
                 日志
             </span>
-            <span class="sidebar-tag-name" data-tags="neo4j">
+            <span class="sidebar-tag-name" data-tags="机器学习">
                 <span class="iconfont-archer">&#xe606;</span>
-                neo4j
+                机器学习
             </span>
             <span class="sidebar-tag-name" data-tags="图">
                 <span class="iconfont-archer">&#xe606;</span>
                 图
             </span>
-            <span class="sidebar-tag-name" data-tags="呈贡">
-                <span class="iconfont-archer">&#xe606;</span>
-                呈贡
-            </span>
             <span class="sidebar-tag-name" data-tags="python_c++_互通">
                 <span class="iconfont-archer">&#xe606;</span>
                 python_c++_互通
             </span>
+            <span class="sidebar-tag-name" data-tags="呈贡">
+                <span class="iconfont-archer">&#xe606;</span>
+                呈贡
+            </span>
             <span class="sidebar-tag-name" data-tags="文本聚类 编辑距离">
                 <span class="iconfont-archer">&#xe606;</span>
                 文本聚类 编辑距离
+            </span>
+            <span class="sidebar-tag-name" data-tags="电影">
+                <span class="iconfont-archer">&#xe606;</span>
+                电影
             </span>
             <span class="sidebar-tag-name" data-tags="编程">
                 <span class="iconfont-archer">&#xe606;</span>
@@ -907,10 +948,6 @@ neo4j 导入节点和边的类实现
             <span class="sidebar-tag-name" data-tags="微信">
                 <span class="iconfont-archer">&#xe606;</span>
                 微信
-            </span>
-            <span class="sidebar-tag-name" data-tags="电影">
-                <span class="iconfont-archer">&#xe606;</span>
-                电影
             </span>
             <span class="sidebar-tag-name" data-tags="干货">
                 <span class="iconfont-archer">&#xe606;</span>
@@ -932,17 +969,13 @@ neo4j 导入节点和边的类实现
                 <span class="iconfont-archer">&#xe606;</span>
                 竞赛
             </span>
-            <span class="sidebar-tag-name" data-tags="docker, doccano">
-                <span class="iconfont-archer">&#xe606;</span>
-                docker, doccano
-            </span>
             <span class="sidebar-tag-name" data-tags="街拍">
                 <span class="iconfont-archer">&#xe606;</span>
                 街拍
             </span>
-            <span class="sidebar-tag-name" data-tags="摄影">
+            <span class="sidebar-tag-name" data-tags="docker, doccano">
                 <span class="iconfont-archer">&#xe606;</span>
-                摄影
+                docker, doccano
             </span>
     </div>
     <div class="iconfont-archer sidebar-tags-empty">&#xe678;</div>
@@ -990,21 +1023,25 @@ neo4j 导入节点和边的类实现
             <span class="iconfont-archer">&#xe60a;</span>
             编程经验
         </span>
-        <span class="sidebar-category-name" data-categories="编程开发">
-            <span class="iconfont-archer">&#xe60a;</span>
-            编程开发
-        </span>
         <span class="sidebar-category-name" data-categories="编程">
             <span class="iconfont-archer">&#xe60a;</span>
             编程
         </span>
-        <span class="sidebar-category-name" data-categories="自然语言处理">
+        <span class="sidebar-category-name" data-categories="编程开发">
             <span class="iconfont-archer">&#xe60a;</span>
-            自然语言处理
+            编程开发
+        </span>
+        <span class="sidebar-category-name" data-categories="摄影">
+            <span class="iconfont-archer">&#xe60a;</span>
+            摄影
         </span>
         <span class="sidebar-category-name" data-categories="算法笔记">
             <span class="iconfont-archer">&#xe60a;</span>
             算法笔记
+        </span>
+        <span class="sidebar-category-name" data-categories="自然语言处理">
+            <span class="iconfont-archer">&#xe60a;</span>
+            自然语言处理
         </span>
         <span class="sidebar-category-name" data-categories="算法">
             <span class="iconfont-archer">&#xe60a;</span>
@@ -1025,10 +1062,6 @@ neo4j 导入节点和边的类实现
         <span class="sidebar-category-name" data-categories="机器学习">
             <span class="iconfont-archer">&#xe60a;</span>
             机器学习
-        </span>
-        <span class="sidebar-category-name" data-categories="摄影">
-            <span class="iconfont-archer">&#xe60a;</span>
-            摄影
         </span>
     </div>
     <div class="iconfont-archer sidebar-categories-empty">&#xe678;</div>
