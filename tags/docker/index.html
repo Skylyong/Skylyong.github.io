@@ -13,7 +13,7 @@
     <meta name="description" content="Keep go on">
 <meta property="og:type" content="website">
 <meta property="og:title" content="茄子的个人空间">
-<meta property="og:url" content="https://eggplant.wiki/archives/2021/06/index.html">
+<meta property="og:url" content="https://eggplant.wiki/tags/docker/index.html">
 <meta property="og:site_name" content="茄子的个人空间">
 <meta property="og:description" content="Keep go on">
 <meta property="og:locale" content="zh_CN">
@@ -422,23 +422,37 @@
                 <main class="main index-page">
             
         <article class="index-post">
-            <a class="abstract-title" href="/2021/06/21/jupyter-notebook-ben-di-fu-wu-qi-da-jian/">
-                <span class="abstract-title-text">jupyter notebook 本地服务器搭建</span>
+            <a class="abstract-title" href="/2025/04/24/ben-di-gou-jian-docker-jing-xiang-bing-shang-chuan-zhi-a-li-yun-jing-xiang-fu-wu-zhan/">
+                <span class="abstract-title-text">本地构建docker镜像并上传至阿里云镜像服务站</span>
             </a>
             <div class="abstract-content">
-                今天在实验室的服务器主机上面搭建了jupyter notebook服务器，记录一下搭建步骤，方便以后查看。
-服务器端操作生成Jupyter Notebook配置文件1$ jupyter notebook --generate-config
-设置登录密码1234567# 在命令行输入python命令，进入python交互界面，输入如下命令from notebook.auth import passwdpasswd()Enter password:Verify password:Out[2]: 'sha1:67c9e60bb8b6:9ffede0825894254b2e042ea597d77...
+                最近比赛需要构建docker镜像，上传至阿里云镜像服务站，以便于官方复现测评，这是一个繁琐的过程，以后也会用到，所以记录一下。
+主要分为以下几步：
+1） 开通阿里云镜像服务
+2） 在本地电脑或者服务器上面安装docker
+3） 构建docker镜像
+4） 将本地 docker 镜像推送至阿里云镜像服务站
+5）本地一键镜像创建和上传脚本
+下面为详细的步骤描述：
+1） 开通阿里云镜像服务阿里云镜像服务站的开通过程比较繁琐，根据DataWhale的教程操作如下：
+a. 点击链接并登录阿里云账号
+
+b. 创建个人版实例
+
+c. 创建命名空间
+
+d.  创建镜像仓库
+创建镜像仓库时，代码源选择本地...
             </div>
             <!-- read more -->
             <div class="abstract-post-meta">
                 <!-- date -->
-                <div class="abstract-date" title="Last updated: 2025/03/08">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2021/06/21</span>
+                <div class="abstract-date" title="Last updated: 2025/04/24">
+                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2025/04/24</span>
                 </div>
                 <!-- tags -->
                     <div class="abstract-tags" >
-        <a class="post-tag" href="javascript:void(0);" data-tags="jupyter notebook">jupyter notebook</a>
+        <a class="post-tag" href="javascript:void(0);" data-tags="docker">docker</a>
 </div>
 
             </div>
