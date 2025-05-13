@@ -422,6 +422,37 @@
                 <main class="main index-page">
             
         <article class="index-post">
+            <a class="abstract-title" href="/2023/09/12/ubuntu-shang-an-zhuang-nividia-qu-dong-he-cuda-tookit/">
+                <span class="abstract-title-text">ubuntu上安装NIVIDIA驱动和CUDA_Tookit</span>
+            </a>
+            <div class="abstract-content">
+                每一次安装NIVIDIA驱动或CUDA Tookit时，都要经过一番折腾，才能够安装成功，这里把过程记录一下，以便以后可以参考。
+本次安装遇到的最大问题是：pytorch所能支持的最高cuda版本为11.8，而安装后的cuda为最新12.2版本，pytorch没法识别cuda。导致这一问题的主要原因在于两点：
+
+安装的NIVIDIA驱动版本过高，导致CUDA Tookit版本也过高，无法降级
+使用网络方式安装CUDA Tookit，安装之后得到的是最新版的CUDA Tookit，不是我想要的11.8版本
+
+接下来是安装过程：
+
+删除已安装的NIVIDIA驱动或CUDA Tookit
+12...
+            </div>
+            <!-- read more -->
+            <div class="abstract-post-meta">
+                <!-- date -->
+                <div class="abstract-date" title="Last updated: 2025/03/08">
+                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2023/09/12</span>
+                </div>
+                <!-- tags -->
+                    <div class="abstract-tags" >
+        <a class="post-tag" href="javascript:void(0);" data-tags="NIVIDIA驱动">NIVIDIA驱动</a>
+</div>
+
+            </div>
+        </article>
+        <div class="index-post-divider"></div>
+            
+        <article class="index-post">
             <a class="abstract-title" href="/2023/07/23/zai-mac-shang-shi-yong-pybind11-shi-xian-c-yu-python-hu-tong-de-demo/">
                 <span class="abstract-title-text">在mac上使用pybind11实现c++与python互通的demo</span>
             </a>
@@ -726,36 +757,6 @@ How to write a paper, by Mike Ashby.
             </div>
         </article>
         <div class="index-post-divider"></div>
-            
-        <article class="index-post">
-            <a class="abstract-title" href="/2021/08/14/gong-ju-xiang/">
-                <span class="abstract-title-text">工具箱</span>
-            </a>
-            <div class="abstract-content">
-                
-Mac下共享ShadowsocksX-NG的梯子给iOS
-GitHub 设置和取消代理，加速 git clone
-在线智商测试
-
-
-Mac系统制作win10启动U盘
-
-
-            </div>
-            <!-- read more -->
-            <div class="abstract-post-meta">
-                <!-- date -->
-                <div class="abstract-date" title="Last updated: 2025/03/08">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2021/08/14</span>
-                </div>
-                <!-- tags -->
-                    <div class="abstract-tags" >
-        <a class="post-tag" href="javascript:void(0);" data-tags="干货">干货</a>
-</div>
-
-            </div>
-        </article>
-        <div class="index-post-divider"></div>
     <!-- paginator  -->
         <nav class="page-nav">
             <a class="extend prev" rel="prev" href="/archives/page/2/">&lt; PREV</a><a class="page-number" href="/archives/">1</a><a class="page-number" href="/archives/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/archives/page/4/">4</a><a class="page-number" href="/archives/page/5/">5</a><a class="page-number" href="/archives/page/6/">6</a><a class="extend next" rel="next" href="/archives/page/4/">NEXT &gt;</a>
@@ -853,9 +854,10 @@ Mac系统制作win10启动U盘
         
         
         
+        
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 52
+        Total : 53
         </div>
         <!-- search  -->
             <div class="site-search site-search-loading popup-trigger">
@@ -865,6 +867,10 @@ Mac系统制作win10启动U盘
     <div class="post-archive">
             <div class="archive-year"> 2025 </div>
             <ul class="year-list">
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/14</span>
+            <a class="archive-post-title" href="/2025/05/14/git-team-collab-workflow/">git_team_collab_workflow</a>
+        </li>
         <li class="archive-post-item">
             <span class="archive-post-date">04/24</span>
             <a class="archive-post-title" href="/2025/04/24/ben-di-gou-jian-docker-jing-xiang-bing-shang-chuan-zhi-a-li-yun-jing-xiang-fu-wu-zhan/">本地构建docker镜像并上传至阿里云镜像服务站</a>
@@ -1104,61 +1110,57 @@ Mac系统制作win10启动U盘
                 <span class="iconfont-archer">&#xe606;</span>
                 GitLab
             </span>
-            <span class="sidebar-tag-name" data-tags="Google访问助手">
-                <span class="iconfont-archer">&#xe606;</span>
-                Google访问助手
-            </span>
             <span class="sidebar-tag-name" data-tags="预训练模型">
                 <span class="iconfont-archer">&#xe606;</span>
                 预训练模型
-            </span>
-            <span class="sidebar-tag-name" data-tags="启动U盘">
-                <span class="iconfont-archer">&#xe606;</span>
-                启动U盘
             </span>
             <span class="sidebar-tag-name" data-tags="nlp">
                 <span class="iconfont-archer">&#xe606;</span>
                 nlp
             </span>
+            <span class="sidebar-tag-name" data-tags="Google访问助手">
+                <span class="iconfont-archer">&#xe606;</span>
+                Google访问助手
+            </span>
+            <span class="sidebar-tag-name" data-tags="启动U盘">
+                <span class="iconfont-archer">&#xe606;</span>
+                启动U盘
+            </span>
             <span class="sidebar-tag-name" data-tags="pytorch">
                 <span class="iconfont-archer">&#xe606;</span>
                 pytorch
-            </span>
-            <span class="sidebar-tag-name" data-tags="git">
-                <span class="iconfont-archer">&#xe606;</span>
-                git
-            </span>
-            <span class="sidebar-tag-name" data-tags="svm">
-                <span class="iconfont-archer">&#xe606;</span>
-                svm
-            </span>
-            <span class="sidebar-tag-name" data-tags="博客">
-                <span class="iconfont-archer">&#xe606;</span>
-                博客
             </span>
             <span class="sidebar-tag-name" data-tags="Pandas">
                 <span class="iconfont-archer">&#xe606;</span>
                 Pandas
             </span>
-            <span class="sidebar-tag-name" data-tags="python">
+            <span class="sidebar-tag-name" data-tags="github">
                 <span class="iconfont-archer">&#xe606;</span>
-                python
+                github
             </span>
-            <span class="sidebar-tag-name" data-tags="neo4j">
+            <span class="sidebar-tag-name" data-tags="svm">
                 <span class="iconfont-archer">&#xe606;</span>
-                neo4j
+                svm
+            </span>
+            <span class="sidebar-tag-name" data-tags="git">
+                <span class="iconfont-archer">&#xe606;</span>
+                git
+            </span>
+            <span class="sidebar-tag-name" data-tags="博客">
+                <span class="iconfont-archer">&#xe606;</span>
+                博客
             </span>
             <span class="sidebar-tag-name" data-tags="jupyter notebook">
                 <span class="iconfont-archer">&#xe606;</span>
                 jupyter notebook
             </span>
+            <span class="sidebar-tag-name" data-tags="python">
+                <span class="iconfont-archer">&#xe606;</span>
+                python
+            </span>
             <span class="sidebar-tag-name" data-tags="NIVIDIA驱动">
                 <span class="iconfont-archer">&#xe606;</span>
                 NIVIDIA驱动
-            </span>
-            <span class="sidebar-tag-name" data-tags="树">
-                <span class="iconfont-archer">&#xe606;</span>
-                树
             </span>
             <span class="sidebar-tag-name" data-tags="vscode">
                 <span class="iconfont-archer">&#xe606;</span>
@@ -1168,21 +1170,21 @@ Mac系统制作win10启动U盘
                 <span class="iconfont-archer">&#xe606;</span>
                 动态规划
             </span>
-            <span class="sidebar-tag-name" data-tags="摄影">
+            <span class="sidebar-tag-name" data-tags="树">
                 <span class="iconfont-archer">&#xe606;</span>
-                摄影
+                树
             </span>
             <span class="sidebar-tag-name" data-tags="文本聚类 bert向量表示">
                 <span class="iconfont-archer">&#xe606;</span>
                 文本聚类 bert向量表示
             </span>
-            <span class="sidebar-tag-name" data-tags="机器学习">
-                <span class="iconfont-archer">&#xe606;</span>
-                机器学习
-            </span>
             <span class="sidebar-tag-name" data-tags="日志">
                 <span class="iconfont-archer">&#xe606;</span>
                 日志
+            </span>
+            <span class="sidebar-tag-name" data-tags="机器学习">
+                <span class="iconfont-archer">&#xe606;</span>
+                机器学习
             </span>
             <span class="sidebar-tag-name" data-tags="图">
                 <span class="iconfont-archer">&#xe606;</span>
@@ -1244,6 +1246,14 @@ Mac系统制作win10启动U盘
                 <span class="iconfont-archer">&#xe606;</span>
                 docker, doccano
             </span>
+            <span class="sidebar-tag-name" data-tags="neo4j">
+                <span class="iconfont-archer">&#xe606;</span>
+                neo4j
+            </span>
+            <span class="sidebar-tag-name" data-tags="摄影">
+                <span class="iconfont-archer">&#xe606;</span>
+                摄影
+            </span>
     </div>
     <div class="iconfont-archer sidebar-tags-empty">&#xe678;</div>
     <div class="tag-load-fail" style="display: none; color: #ccc; font-size: 0.6rem;">
@@ -1266,10 +1276,6 @@ Mac系统制作win10启动U盘
             <span class="iconfont-archer">&#xe60a;</span>
             爬坑总结
         </span>
-        <span class="sidebar-category-name" data-categories="干货">
-            <span class="iconfont-archer">&#xe60a;</span>
-            干货
-        </span>
         <span class="sidebar-category-name" data-categories="人工智能">
             <span class="iconfont-archer">&#xe60a;</span>
             人工智能
@@ -1278,9 +1284,17 @@ Mac系统制作win10启动U盘
             <span class="iconfont-archer">&#xe60a;</span>
             知识框架
         </span>
+        <span class="sidebar-category-name" data-categories="干货">
+            <span class="iconfont-archer">&#xe60a;</span>
+            干货
+        </span>
         <span class="sidebar-category-name" data-categories="学习笔记">
             <span class="iconfont-archer">&#xe60a;</span>
             学习笔记
+        </span>
+        <span class="sidebar-category-name" data-categories="编程开发">
+            <span class="iconfont-archer">&#xe60a;</span>
+            编程开发
         </span>
         <span class="sidebar-category-name" data-categories="生活总结">
             <span class="iconfont-archer">&#xe60a;</span>
@@ -1294,17 +1308,9 @@ Mac系统制作win10启动U盘
             <span class="iconfont-archer">&#xe60a;</span>
             编程
         </span>
-        <span class="sidebar-category-name" data-categories="编程开发">
-            <span class="iconfont-archer">&#xe60a;</span>
-            编程开发
-        </span>
         <span class="sidebar-category-name" data-categories="算法笔记">
             <span class="iconfont-archer">&#xe60a;</span>
             算法笔记
-        </span>
-        <span class="sidebar-category-name" data-categories="摄影">
-            <span class="iconfont-archer">&#xe60a;</span>
-            摄影
         </span>
         <span class="sidebar-category-name" data-categories="自然语言处理">
             <span class="iconfont-archer">&#xe60a;</span>
@@ -1329,6 +1335,10 @@ Mac系统制作win10启动U盘
         <span class="sidebar-category-name" data-categories="机器学习">
             <span class="iconfont-archer">&#xe60a;</span>
             机器学习
+        </span>
+        <span class="sidebar-category-name" data-categories="摄影">
+            <span class="iconfont-archer">&#xe60a;</span>
+            摄影
         </span>
     </div>
     <div class="iconfont-archer sidebar-categories-empty">&#xe678;</div>

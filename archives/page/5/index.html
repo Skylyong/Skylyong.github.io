@@ -422,6 +422,34 @@
                 <main class="main index-page">
             
         <article class="index-post">
+            <a class="abstract-title" href="/2021/04/16/ji-qi-xue-xi-zhong-de-ge-chong-shang/">
+                <span class="abstract-title-text">机器学习中的各种熵</span>
+            </a>
+            <div class="abstract-content">
+                概念和定义熵条件熵交叉熵代码实现参考链接：
+https://www.cnblogs.com/Arborday/p/10727147.html
+
+https://zhuanlan.zhihu.com/p/35379531
+
+
+
+            </div>
+            <!-- read more -->
+            <div class="abstract-post-meta">
+                <!-- date -->
+                <div class="abstract-date" title="Last updated: 2025/03/08">
+                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2021/04/16</span>
+                </div>
+                <!-- tags -->
+                    <div class="abstract-tags" >
+        <a class="post-tag" href="javascript:void(0);" data-tags="熵">熵</a>
+</div>
+
+            </div>
+        </article>
+        <div class="index-post-divider"></div>
+            
+        <article class="index-post">
             <a class="abstract-title" href="/2021/04/08/git-chang-yong-ming-ling/">
                 <span class="abstract-title-text">git常用命令</span>
             </a>
@@ -712,53 +740,6 @@ n个城市之间最多可以生成 1+2+…+(n-1)条边，分别计算出每条�
             </div>
         </article>
         <div class="index-post-divider"></div>
-        <article class="index-post">
-            <a class="abstract-title" href="/2021/03/28/github-jia-su-fang-fa/">
-                <span class="abstract-title-text">GitHub加速方法</span>
-            </a>
-            <div class="abstract-content">
-                <h3 id="设置代理加速GitHub"><a href="#设置代理加速GitHub" class="headerlink" title="设置代理加速GitHub"></a>设置代理加速GitHub</h3><p>由于github网站服务器在国外，国内上传和下载数据速度较慢，假如你已经有具备了科学上网的条件，可以通过设置代理的方式来提高数据传输速度。</p>
-<p>以下设置均建立在具备科学上网的前提下，下文中的小飞机指某款用于科学上网的工具。</p>
-<h4 id="设置http代理"><a href="#设置http代理" class="headerlink" title="设置http代理"></a>设置http代理</h4><p>在命令行输入如下的命令</p>
-<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> http_proxy=http://127.0.0.1:1087</span><br><span class="line"><span class="built_in">export</span> https_proxy=http://127.0.0.1:1087</span><br><span class="line"></span><br><span class="line"><span class="comment">#设置http代理，端口号对应的是小飞机的http代理端口号</span></span><br><span class="line">git config --global http.proxy http://127.0.0.1:1087</span><br><span class="line">git config --global https.proxy http://127.0.0.1:1087</span><br><span class="line"></span><br><span class="line"><span class="comment">#配置github用户名和邮箱</span></span><br><span class="line">git config --global user.name github_id</span><br><span class="line">git config --global user.email github_email</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">#取消代理设置</span></span><br><span class="line">git config --global --<span class="built_in">unset</span> http.proxy</span><br><span class="line">git config --global --<span class="built_in">unset</span> https.proxy</span><br><span class="line"></span><br><span class="line"><span class="comment">#查看代理设置</span></span><br><span class="line">git config --list</span><br><span class="line"></span><br></pre></td></tr></tbody></table></figure>
-
-<p>http代理端口查询：</p>
-<blockquote>
-<p>在小飞机中找到“http代理 设置”选项，然后点击打开，找到如下图所示的监听窗口。</p>
-</blockquote>
-<img src="https://raw.githubusercontent.com/Skylyong/i/main/20210319193849.png" style="zoom:67%;">
-
-<h4 id="设置ssh加速"><a href="#设置ssh加速" class="headerlink" title="设置ssh加速"></a><a target="_blank" rel="noopener" href="https://gist.github.com/chuyik/02d0d37a49edc162546441092efae6a1">设置ssh</a>加速</h4><p><code>在~/.ssh/config</code> 文件（不存在则新建）添加如下内容：</p>
-<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">Host github.com</span><br><span class="line">   HostName github.com</span><br><span class="line">   User git</span><br><span class="line">   <span class="comment"># 走 HTTP 代理，需要 brew install socat</span></span><br><span class="line">   <span class="comment"># ProxyCommand socat - PROXY:127.0.0.1:%h:%p,proxyport=1087</span></span><br><span class="line">   <span class="comment"># 走 socks5 代理（如 Shadowsocks）</span></span><br><span class="line">   ProxyCommand nc -v -x 127.0.0.1:1086 %h %p</span><br><span class="line">   <span class="comment">#上面1086这个端口号可以在“小飞机”的高级设置中查看</span></span><br><span class="line">   <span class="comment"># 走 socks5 代理（如 Shadowsocks），Windows 平台没有 nc 命令</span></span><br><span class="line">   <span class="comment"># ProxyCommand connect -S 127.0.0.1:1086 %h %p</span></span><br></pre></td></tr></tbody></table></figure>
-
-<p>本地Socks5监听窗口查询：</p>
-<blockquote>
-<p>在小飞机中找到“高级设置”，点击打开就可以找到如下图所示的监听窗口。</p>
-</blockquote>
-<img src="https://raw.githubusercontent.com/Skylyong/i/main/20210319194610.png" style="zoom:50%;">
-
-
-
-
-
-<h3 id="通过修改hosts解决浏览器打不开github网站的方法"><a href="#通过修改hosts解决浏览器打不开github网站的方法" class="headerlink" title="通过修改hosts解决浏览器打不开github网站的方法"></a>通过修改hosts解决浏览器打不开github网站的方法</h3><blockquote>
-<p>假如不具备科学上网的条件，也可以通过修改hosts文件来解决浏览器打不开GitHub的问题，但是通过这种方式只能解决浏览器打开慢的问题，不能够解决在终端克隆项目慢的问题，建议通过代理的方式加速。</p>
-</blockquote>
-            </div>
-            <!-- read more -->
-            <div class="abstract-post-meta">
-                <!-- date -->
-                <div class="abstract-date" title="Last updated: 2025/03/08">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2021/03/28</span>
-                </div>
-                <!-- tags -->
-                    <div class="abstract-tags" >
-        <a class="post-tag" href="javascript:void(0);" data-tags="GitHub">GitHub</a>
-</div>
-
-            </div>
-        </article>
-        <div class="index-post-divider"></div>
     <!-- paginator  -->
         <nav class="page-nav">
             <a class="extend prev" rel="prev" href="/archives/page/4/">&lt; PREV</a><a class="page-number" href="/archives/">1</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/3/">3</a><a class="page-number" href="/archives/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/archives/page/6/">6</a><a class="extend next" rel="next" href="/archives/page/6/">NEXT &gt;</a>
@@ -856,9 +837,10 @@ n个城市之间最多可以生成 1+2+…+(n-1)条边，分别计算出每条�
         
         
         
+        
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 52
+        Total : 53
         </div>
         <!-- search  -->
             <div class="site-search site-search-loading popup-trigger">
@@ -868,6 +850,10 @@ n个城市之间最多可以生成 1+2+…+(n-1)条边，分别计算出每条�
     <div class="post-archive">
             <div class="archive-year"> 2025 </div>
             <ul class="year-list">
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/14</span>
+            <a class="archive-post-title" href="/2025/05/14/git-team-collab-workflow/">git_team_collab_workflow</a>
+        </li>
         <li class="archive-post-item">
             <span class="archive-post-date">04/24</span>
             <a class="archive-post-title" href="/2025/04/24/ben-di-gou-jian-docker-jing-xiang-bing-shang-chuan-zhi-a-li-yun-jing-xiang-fu-wu-zhan/">本地构建docker镜像并上传至阿里云镜像服务站</a>
@@ -1107,61 +1093,57 @@ n个城市之间最多可以生成 1+2+…+(n-1)条边，分别计算出每条�
                 <span class="iconfont-archer">&#xe606;</span>
                 GitLab
             </span>
-            <span class="sidebar-tag-name" data-tags="Google访问助手">
-                <span class="iconfont-archer">&#xe606;</span>
-                Google访问助手
-            </span>
             <span class="sidebar-tag-name" data-tags="预训练模型">
                 <span class="iconfont-archer">&#xe606;</span>
                 预训练模型
-            </span>
-            <span class="sidebar-tag-name" data-tags="启动U盘">
-                <span class="iconfont-archer">&#xe606;</span>
-                启动U盘
             </span>
             <span class="sidebar-tag-name" data-tags="nlp">
                 <span class="iconfont-archer">&#xe606;</span>
                 nlp
             </span>
+            <span class="sidebar-tag-name" data-tags="Google访问助手">
+                <span class="iconfont-archer">&#xe606;</span>
+                Google访问助手
+            </span>
+            <span class="sidebar-tag-name" data-tags="启动U盘">
+                <span class="iconfont-archer">&#xe606;</span>
+                启动U盘
+            </span>
             <span class="sidebar-tag-name" data-tags="pytorch">
                 <span class="iconfont-archer">&#xe606;</span>
                 pytorch
-            </span>
-            <span class="sidebar-tag-name" data-tags="git">
-                <span class="iconfont-archer">&#xe606;</span>
-                git
-            </span>
-            <span class="sidebar-tag-name" data-tags="svm">
-                <span class="iconfont-archer">&#xe606;</span>
-                svm
-            </span>
-            <span class="sidebar-tag-name" data-tags="博客">
-                <span class="iconfont-archer">&#xe606;</span>
-                博客
             </span>
             <span class="sidebar-tag-name" data-tags="Pandas">
                 <span class="iconfont-archer">&#xe606;</span>
                 Pandas
             </span>
-            <span class="sidebar-tag-name" data-tags="python">
+            <span class="sidebar-tag-name" data-tags="github">
                 <span class="iconfont-archer">&#xe606;</span>
-                python
+                github
             </span>
-            <span class="sidebar-tag-name" data-tags="neo4j">
+            <span class="sidebar-tag-name" data-tags="svm">
                 <span class="iconfont-archer">&#xe606;</span>
-                neo4j
+                svm
+            </span>
+            <span class="sidebar-tag-name" data-tags="git">
+                <span class="iconfont-archer">&#xe606;</span>
+                git
+            </span>
+            <span class="sidebar-tag-name" data-tags="博客">
+                <span class="iconfont-archer">&#xe606;</span>
+                博客
             </span>
             <span class="sidebar-tag-name" data-tags="jupyter notebook">
                 <span class="iconfont-archer">&#xe606;</span>
                 jupyter notebook
             </span>
+            <span class="sidebar-tag-name" data-tags="python">
+                <span class="iconfont-archer">&#xe606;</span>
+                python
+            </span>
             <span class="sidebar-tag-name" data-tags="NIVIDIA驱动">
                 <span class="iconfont-archer">&#xe606;</span>
                 NIVIDIA驱动
-            </span>
-            <span class="sidebar-tag-name" data-tags="树">
-                <span class="iconfont-archer">&#xe606;</span>
-                树
             </span>
             <span class="sidebar-tag-name" data-tags="vscode">
                 <span class="iconfont-archer">&#xe606;</span>
@@ -1171,21 +1153,21 @@ n个城市之间最多可以生成 1+2+…+(n-1)条边，分别计算出每条�
                 <span class="iconfont-archer">&#xe606;</span>
                 动态规划
             </span>
-            <span class="sidebar-tag-name" data-tags="摄影">
+            <span class="sidebar-tag-name" data-tags="树">
                 <span class="iconfont-archer">&#xe606;</span>
-                摄影
+                树
             </span>
             <span class="sidebar-tag-name" data-tags="文本聚类 bert向量表示">
                 <span class="iconfont-archer">&#xe606;</span>
                 文本聚类 bert向量表示
             </span>
-            <span class="sidebar-tag-name" data-tags="机器学习">
-                <span class="iconfont-archer">&#xe606;</span>
-                机器学习
-            </span>
             <span class="sidebar-tag-name" data-tags="日志">
                 <span class="iconfont-archer">&#xe606;</span>
                 日志
+            </span>
+            <span class="sidebar-tag-name" data-tags="机器学习">
+                <span class="iconfont-archer">&#xe606;</span>
+                机器学习
             </span>
             <span class="sidebar-tag-name" data-tags="图">
                 <span class="iconfont-archer">&#xe606;</span>
@@ -1247,6 +1229,14 @@ n个城市之间最多可以生成 1+2+…+(n-1)条边，分别计算出每条�
                 <span class="iconfont-archer">&#xe606;</span>
                 docker, doccano
             </span>
+            <span class="sidebar-tag-name" data-tags="neo4j">
+                <span class="iconfont-archer">&#xe606;</span>
+                neo4j
+            </span>
+            <span class="sidebar-tag-name" data-tags="摄影">
+                <span class="iconfont-archer">&#xe606;</span>
+                摄影
+            </span>
     </div>
     <div class="iconfont-archer sidebar-tags-empty">&#xe678;</div>
     <div class="tag-load-fail" style="display: none; color: #ccc; font-size: 0.6rem;">
@@ -1269,10 +1259,6 @@ n个城市之间最多可以生成 1+2+…+(n-1)条边，分别计算出每条�
             <span class="iconfont-archer">&#xe60a;</span>
             爬坑总结
         </span>
-        <span class="sidebar-category-name" data-categories="干货">
-            <span class="iconfont-archer">&#xe60a;</span>
-            干货
-        </span>
         <span class="sidebar-category-name" data-categories="人工智能">
             <span class="iconfont-archer">&#xe60a;</span>
             人工智能
@@ -1281,9 +1267,17 @@ n个城市之间最多可以生成 1+2+…+(n-1)条边，分别计算出每条�
             <span class="iconfont-archer">&#xe60a;</span>
             知识框架
         </span>
+        <span class="sidebar-category-name" data-categories="干货">
+            <span class="iconfont-archer">&#xe60a;</span>
+            干货
+        </span>
         <span class="sidebar-category-name" data-categories="学习笔记">
             <span class="iconfont-archer">&#xe60a;</span>
             学习笔记
+        </span>
+        <span class="sidebar-category-name" data-categories="编程开发">
+            <span class="iconfont-archer">&#xe60a;</span>
+            编程开发
         </span>
         <span class="sidebar-category-name" data-categories="生活总结">
             <span class="iconfont-archer">&#xe60a;</span>
@@ -1297,17 +1291,9 @@ n个城市之间最多可以生成 1+2+…+(n-1)条边，分别计算出每条�
             <span class="iconfont-archer">&#xe60a;</span>
             编程
         </span>
-        <span class="sidebar-category-name" data-categories="编程开发">
-            <span class="iconfont-archer">&#xe60a;</span>
-            编程开发
-        </span>
         <span class="sidebar-category-name" data-categories="算法笔记">
             <span class="iconfont-archer">&#xe60a;</span>
             算法笔记
-        </span>
-        <span class="sidebar-category-name" data-categories="摄影">
-            <span class="iconfont-archer">&#xe60a;</span>
-            摄影
         </span>
         <span class="sidebar-category-name" data-categories="自然语言处理">
             <span class="iconfont-archer">&#xe60a;</span>
@@ -1332,6 +1318,10 @@ n个城市之间最多可以生成 1+2+…+(n-1)条边，分别计算出每条�
         <span class="sidebar-category-name" data-categories="机器学习">
             <span class="iconfont-archer">&#xe60a;</span>
             机器学习
+        </span>
+        <span class="sidebar-category-name" data-categories="摄影">
+            <span class="iconfont-archer">&#xe60a;</span>
+            摄影
         </span>
     </div>
     <div class="iconfont-archer sidebar-categories-empty">&#xe678;</div>
