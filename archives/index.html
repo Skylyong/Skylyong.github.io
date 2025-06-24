@@ -422,6 +422,29 @@
                 <main class="main index-page">
             
         <article class="index-post">
+            <a class="abstract-title" href="/2025/06/17/shi-yong-docker-gou-jian-webdav-fu-wu-qi/">
+                <span class="abstract-title-text">使用Docker构建Webdav服务器</span>
+            </a>
+            <div class="abstract-content">
+                1. 前言半年前，我曾基于 Apache2 搭建了一套 WebDAV 服务，用于实现 Obsidian 和 Zotero 的多端同步。那次部署过程可谓一波三折，尤其是在配置 SSL 签名和 Apache2 时遇到了不少麻烦。由于当时我没有备案的域名，只能使用公网 IP 申请 SSL 证书，而且免费证书只有 3 个月有效期，到期后还需要手动续签。虽然最终勉强配置成功，但也花了我不少时间和精力。
+遗憾的是，这套服务没能持续使用太久。等 SSL 证书过期之后，我因为忙于其他事务也就没有再去续签。而当我想重新启用这套同步方案时，却发现当时使用的华为云廉价服务器（仅 1GB 内存）卡顿严重，连 S...
+            </div>
+            <!-- read more -->
+            <div class="abstract-post-meta">
+                <!-- date -->
+                <div class="abstract-date" title="Last updated: 2025/06/25">
+                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2025/06/17</span>
+                </div>
+                <!-- tags -->
+                    <div class="abstract-tags" >
+        <a class="post-tag" href="javascript:void(0);" data-tags="webdav, docker, obsidian, zotero">webdav, docker, obsidian, zotero</a>
+</div>
+
+            </div>
+        </article>
+        <div class="index-post-divider"></div>
+            
+        <article class="index-post">
             <a class="abstract-title" href="/2025/05/14/git-team-collab-workflow/">
                 <span class="abstract-title-text">git_team_collab_workflow</span>
             </a>
@@ -1046,33 +1069,6 @@ neo4j 导入节点和边的类实现
             </div>
         </article>
         <div class="index-post-divider"></div>
-            
-        <article class="index-post">
-            <a class="abstract-title" href="/2025/03/06/ji-yu-bian-ji-ju-chi-de-wen-ben-ceng-ci-ju-lei/">
-                <span class="abstract-title-text">基于编辑距离的文本层次聚类</span>
-            </a>
-            <div class="abstract-content">
-                在自然语言处理（NLP）和数据清洗过程中，处理相似文本的聚类问题是一个常见的挑战。例如，在搜索日志、医学术语、客户查询等文本数据中，我们经常会遇到拼写相似或近似表达的词汇。为了更好地对这些数据进行分类和管理，我们可以使用 编辑距离（Levenshtein Distance） 结合 层次聚类（Hierarchical Clustering） 进行文本聚类。
-本文介绍了一种基于 Python 的 编辑距离层次聚类 方法，并提供了一个完整的实现代码。该方法的核心思想是：
-
-计算编辑距离矩阵：通过 Levenshtein 距离衡量文本之间的相似性。
-
-层次聚类：使用层次聚类，将相似的文本归类到相...
-            </div>
-            <!-- read more -->
-            <div class="abstract-post-meta">
-                <!-- date -->
-                <div class="abstract-date" title="Last updated: 2025/03/08">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2025/03/06</span>
-                </div>
-                <!-- tags -->
-                    <div class="abstract-tags" >
-        <a class="post-tag" href="javascript:void(0);" data-tags="文本聚类 编辑距离">文本聚类 编辑距离</a>
-</div>
-
-            </div>
-        </article>
-        <div class="index-post-divider"></div>
     <!-- paginator  -->
         <nav class="page-nav">
             <span class="page-number current">1</span><a class="page-number" href="/archives/page/2/">2</a><a class="page-number" href="/archives/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/6/">6</a><a class="extend next" rel="next" href="/archives/page/2/">NEXT &gt;</a>
@@ -1171,9 +1167,10 @@ neo4j 导入节点和边的类实现
         
         
         
+        
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 53
+        Total : 54
         </div>
         <!-- search  -->
             <div class="site-search site-search-loading popup-trigger">
@@ -1183,6 +1180,10 @@ neo4j 导入节点和边的类实现
     <div class="post-archive">
             <div class="archive-year"> 2025 </div>
             <ul class="year-list">
+        <li class="archive-post-item">
+            <span class="archive-post-date">06/17</span>
+            <a class="archive-post-title" href="/2025/06/17/shi-yong-docker-gou-jian-webdav-fu-wu-qi/">使用Docker构建Webdav服务器</a>
+        </li>
         <li class="archive-post-item">
             <span class="archive-post-date">05/14</span>
             <a class="archive-post-title" href="/2025/05/14/git-team-collab-workflow/">git_team_collab_workflow</a>
@@ -1426,33 +1427,29 @@ neo4j 导入节点和边的类实现
                 <span class="iconfont-archer">&#xe606;</span>
                 GitLab
             </span>
-            <span class="sidebar-tag-name" data-tags="预训练模型">
-                <span class="iconfont-archer">&#xe606;</span>
-                预训练模型
-            </span>
-            <span class="sidebar-tag-name" data-tags="nlp">
-                <span class="iconfont-archer">&#xe606;</span>
-                nlp
-            </span>
             <span class="sidebar-tag-name" data-tags="Google访问助手">
                 <span class="iconfont-archer">&#xe606;</span>
                 Google访问助手
+            </span>
+            <span class="sidebar-tag-name" data-tags="预训练模型">
+                <span class="iconfont-archer">&#xe606;</span>
+                预训练模型
             </span>
             <span class="sidebar-tag-name" data-tags="启动U盘">
                 <span class="iconfont-archer">&#xe606;</span>
                 启动U盘
             </span>
-            <span class="sidebar-tag-name" data-tags="pytorch">
+            <span class="sidebar-tag-name" data-tags="nlp">
                 <span class="iconfont-archer">&#xe606;</span>
-                pytorch
+                nlp
             </span>
             <span class="sidebar-tag-name" data-tags="Pandas">
                 <span class="iconfont-archer">&#xe606;</span>
                 Pandas
             </span>
-            <span class="sidebar-tag-name" data-tags="github">
+            <span class="sidebar-tag-name" data-tags="pytorch">
                 <span class="iconfont-archer">&#xe606;</span>
-                github
+                pytorch
             </span>
             <span class="sidebar-tag-name" data-tags="svm">
                 <span class="iconfont-archer">&#xe606;</span>
@@ -1466,6 +1463,10 @@ neo4j 导入节点和边的类实现
                 <span class="iconfont-archer">&#xe606;</span>
                 博客
             </span>
+            <span class="sidebar-tag-name" data-tags="github">
+                <span class="iconfont-archer">&#xe606;</span>
+                github
+            </span>
             <span class="sidebar-tag-name" data-tags="jupyter notebook">
                 <span class="iconfont-archer">&#xe606;</span>
                 jupyter notebook
@@ -1473,6 +1474,10 @@ neo4j 导入节点和边的类实现
             <span class="sidebar-tag-name" data-tags="python">
                 <span class="iconfont-archer">&#xe606;</span>
                 python
+            </span>
+            <span class="sidebar-tag-name" data-tags="neo4j">
+                <span class="iconfont-archer">&#xe606;</span>
+                neo4j
             </span>
             <span class="sidebar-tag-name" data-tags="NIVIDIA驱动">
                 <span class="iconfont-archer">&#xe606;</span>
@@ -1486,13 +1491,17 @@ neo4j 导入节点和边的类实现
                 <span class="iconfont-archer">&#xe606;</span>
                 动态规划
             </span>
-            <span class="sidebar-tag-name" data-tags="树">
+            <span class="sidebar-tag-name" data-tags="摄影">
                 <span class="iconfont-archer">&#xe606;</span>
-                树
+                摄影
             </span>
             <span class="sidebar-tag-name" data-tags="文本聚类 bert向量表示">
                 <span class="iconfont-archer">&#xe606;</span>
                 文本聚类 bert向量表示
+            </span>
+            <span class="sidebar-tag-name" data-tags="webdav, docker, obsidian, zotero">
+                <span class="iconfont-archer">&#xe606;</span>
+                webdav, docker, obsidian, zotero
             </span>
             <span class="sidebar-tag-name" data-tags="日志">
                 <span class="iconfont-archer">&#xe606;</span>
@@ -1502,17 +1511,21 @@ neo4j 导入节点和边的类实现
                 <span class="iconfont-archer">&#xe606;</span>
                 机器学习
             </span>
+            <span class="sidebar-tag-name" data-tags="树">
+                <span class="iconfont-archer">&#xe606;</span>
+                树
+            </span>
             <span class="sidebar-tag-name" data-tags="图">
                 <span class="iconfont-archer">&#xe606;</span>
                 图
             </span>
-            <span class="sidebar-tag-name" data-tags="python_c++_互通">
-                <span class="iconfont-archer">&#xe606;</span>
-                python_c++_互通
-            </span>
             <span class="sidebar-tag-name" data-tags="呈贡">
                 <span class="iconfont-archer">&#xe606;</span>
                 呈贡
+            </span>
+            <span class="sidebar-tag-name" data-tags="python_c++_互通">
+                <span class="iconfont-archer">&#xe606;</span>
+                python_c++_互通
             </span>
             <span class="sidebar-tag-name" data-tags="文本聚类 编辑距离">
                 <span class="iconfont-archer">&#xe606;</span>
@@ -1562,14 +1575,6 @@ neo4j 导入节点和边的类实现
                 <span class="iconfont-archer">&#xe606;</span>
                 docker, doccano
             </span>
-            <span class="sidebar-tag-name" data-tags="neo4j">
-                <span class="iconfont-archer">&#xe606;</span>
-                neo4j
-            </span>
-            <span class="sidebar-tag-name" data-tags="摄影">
-                <span class="iconfont-archer">&#xe606;</span>
-                摄影
-            </span>
     </div>
     <div class="iconfont-archer sidebar-tags-empty">&#xe678;</div>
     <div class="tag-load-fail" style="display: none; color: #ccc; font-size: 0.6rem;">
@@ -1592,6 +1597,10 @@ neo4j 导入节点和边的类实现
             <span class="iconfont-archer">&#xe60a;</span>
             爬坑总结
         </span>
+        <span class="sidebar-category-name" data-categories="干货">
+            <span class="iconfont-archer">&#xe60a;</span>
+            干货
+        </span>
         <span class="sidebar-category-name" data-categories="人工智能">
             <span class="iconfont-archer">&#xe60a;</span>
             人工智能
@@ -1600,21 +1609,17 @@ neo4j 导入节点和边的类实现
             <span class="iconfont-archer">&#xe60a;</span>
             知识框架
         </span>
-        <span class="sidebar-category-name" data-categories="干货">
-            <span class="iconfont-archer">&#xe60a;</span>
-            干货
-        </span>
         <span class="sidebar-category-name" data-categories="学习笔记">
             <span class="iconfont-archer">&#xe60a;</span>
             学习笔记
         </span>
-        <span class="sidebar-category-name" data-categories="编程开发">
-            <span class="iconfont-archer">&#xe60a;</span>
-            编程开发
-        </span>
         <span class="sidebar-category-name" data-categories="生活总结">
             <span class="iconfont-archer">&#xe60a;</span>
             生活总结
+        </span>
+        <span class="sidebar-category-name" data-categories="编程开发">
+            <span class="iconfont-archer">&#xe60a;</span>
+            编程开发
         </span>
         <span class="sidebar-category-name" data-categories="编程经验">
             <span class="iconfont-archer">&#xe60a;</span>
@@ -1628,9 +1633,17 @@ neo4j 导入节点和边的类实现
             <span class="iconfont-archer">&#xe60a;</span>
             算法笔记
         </span>
+        <span class="sidebar-category-name" data-categories="摄影">
+            <span class="iconfont-archer">&#xe60a;</span>
+            摄影
+        </span>
         <span class="sidebar-category-name" data-categories="自然语言处理">
             <span class="iconfont-archer">&#xe60a;</span>
             自然语言处理
+        </span>
+        <span class="sidebar-category-name" data-categories="运维">
+            <span class="iconfont-archer">&#xe60a;</span>
+            运维
         </span>
         <span class="sidebar-category-name" data-categories="算法">
             <span class="iconfont-archer">&#xe60a;</span>
@@ -1651,10 +1664,6 @@ neo4j 导入节点和边的类实现
         <span class="sidebar-category-name" data-categories="机器学习">
             <span class="iconfont-archer">&#xe60a;</span>
             机器学习
-        </span>
-        <span class="sidebar-category-name" data-categories="摄影">
-            <span class="iconfont-archer">&#xe60a;</span>
-            摄影
         </span>
     </div>
     <div class="iconfont-archer sidebar-categories-empty">&#xe678;</div>
