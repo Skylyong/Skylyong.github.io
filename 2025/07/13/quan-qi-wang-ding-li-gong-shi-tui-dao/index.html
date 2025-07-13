@@ -19,7 +19,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://raw.githubusercontent.com/Skylyong/i/main/20250713155940.jpeg">
 <meta property="article:published_time" content="2025-07-12T16:44:26.000Z">
-<meta property="article:modified_time" content="2025-07-13T08:00:04.436Z">
+<meta property="article:modified_time" content="2025-07-13T08:01:51.456Z">
 <meta property="article:author" content="茄子">
 <meta property="article:tag" content="强化学习">
 <meta name="twitter:card" content="summary">
@@ -493,7 +493,7 @@
 <li>$A$是一个随机变量。</li>
 </ol>
 <p>则有：<br>$$E[A | C] = \sum_{i=1}^{n} p(B_i | C) E[A |B_i, C] $$<br>上述公式即为全期望定理公式。</p>
-<h1 id="对公式的感性理解"><a href="#对公式的感性理解" class="headerlink" title="对公式的感性理解"></a>对公式的感性理解</h1><p>用大白话来说就是： <font color="yellow">我想知道，在已知发生了$C$ 的条件下，随机变量$A$的的平均值是多少？那我们可以先看看，在$C$里，各个子情况$B_i$发生的概率有多少，然后在每个小情况里算一下$A$的平均值，最后加权求和就好了。<br></font><br><br><br>就像是：</p>
+<h1 id="对公式的感性理解"><a href="#对公式的感性理解" class="headerlink" title="对公式的感性理解"></a>对公式的感性理解</h1><p>用大白话来说就是： <font color="red">我想知道，在已知发生了$C$ 的条件下，随机变量$A$的的平均值是多少？那我们可以先看看，在$C$里，各个子情况$B_i$发生的概率有多少，然后在每个小情况里算一下$A$的平均值，最后加权求和就好了。<br></font><br><br><br>就像是：</p>
 <p>假如我们做一个实验：</p>
 <ul>
 <li>$C$表示“你进入了一所大学”</li>
@@ -542,8 +542,7 @@
 <li><p>将上式，代入 $p(A | C) = \frac{p(A \cap C)}{p(C)}$，得到：<br>$$</p>
 </li>
 </ol>
-<p>\begin{align*}<br>p(A | C) &amp;= \frac{\sum_{i=1}^{n} p(A | B_i \cap C) p(B_i \cap C)}{p(C)} \<br>&amp;= \sum_{i=1}^{n} p(A | B_i \cap C) \frac{p(B_i \cap C)}{p(C)} \<br>&amp;= \sum_{i=1}^{n} p(A | B_i, C) p(B_i | C)</p>
-<p>\end{align*}<br>$$</p>
+<p>\begin{align*}<br>p(A | C) &amp;= \frac{\sum_{i=1}^{n} p(A | B_i \cap C) p(B_i \cap C)}{p(C)} \<br>&amp;= \sum_{i=1}^{n} p(A | B_i \cap C) \frac{p(B_i \cap C)}{p(C)} \<br>&amp;= \sum_{i=1}^{n} p(A | B_i, C) p(B_i | C)<br>\end{align*}<br>$$</p>
 <ol start="4">
 <li>综上，我们得到了条件概率的全概率公式：<br>$$p(A | C) = \sum_{i=1}^{n} p(A | B_i, C) P(B_i | C)$$</li>
 </ol>
@@ -558,7 +557,7 @@
             <p>原文作者：<a href="https://eggplant.wiki">茄子</a>
             <p>原文链接：<a href="https://eggplant.wiki/2025/07/13/quan-qi-wang-ding-li-gong-shi-tui-dao/">https://eggplant.wiki/2025/07/13/quan-qi-wang-ding-li-gong-shi-tui-dao/</a>
             <p>发表日期：<a href="https://eggplant.wiki/2025/07/13/quan-qi-wang-ding-li-gong-shi-tui-dao/">July 13th 2025, 12:44:26 am</a>
-            <p>更新日期：<a href="https://eggplant.wiki/2025/07/13/quan-qi-wang-ding-li-gong-shi-tui-dao/">July 13th 2025, 4:00:04 pm</a>
+            <p>更新日期：<a href="https://eggplant.wiki/2025/07/13/quan-qi-wang-ding-li-gong-shi-tui-dao/">July 13th 2025, 4:01:51 pm</a>
             <p>版权声明：本文采用<a rel="license noopener" target="_blank" href="http://creativecommons.org/licenses/by-nc/4.0/">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可</p>
         </div>
     <!-- paginator -->
