@@ -450,14 +450,13 @@ $A$是一个随机变量。
         <div class="index-post-divider"></div>
             
         <article class="index-post">
-            <a class="abstract-title" href="/2025/07/12/cong-quan-qi-wang-ding-li-tui-dao-bei-er-man-deng-shi/">
-                <span class="abstract-title-text">从全期望定理推导贝尔曼等式</span>
+            <a class="abstract-title" href="/2025/07/12/bei-er-man-deng-shi-jie-shao-ji-tui-dao/">
+                <span class="abstract-title-text">贝尔曼等式介绍及推导</span>
             </a>
             <div class="abstract-content">
                 引言Bellman equation 是强化学习的基石，以前为了快速应用，这部分的知识没有吃透，总是有一种不踏实的感觉，这次从费曼学习法的思想出发，力求完全透彻理解该公式及其推导过程。接下来，我们分三个部分对Bellman equation进行讲述。
-前置概率知识条件概率的全概率公式假设$B_1$, $B_2$, …, $B_n$ 是一组互补相容的事件，并且形成样本空间的一个分割，则对于任意事件$A$,我们有下的全概率公式：
-$$ P(A) = \sum_{i}^{n} {p(A | B_i) p(B_i)} $$
-那么，对于条件概率 $P(A | C)$，它的全概率公式是什么呢？我们可...
+前置知识贝尔曼等式推导的前置知识，主要包含条件概率的全概率公式，以及全期望定理，相关介绍在这里。
+Bellman equation 推导两个使用 Bellman equation 的例子
             </div>
             <!-- read more -->
             <div class="abstract-post-meta">
@@ -767,7 +766,7 @@ n个城市之间最多可以生成 1+2+…+(n-1)条边，分别计算出每条�
         </li>
         <li class="archive-post-item">
             <span class="archive-post-date">07/12</span>
-            <a class="archive-post-title" href="/2025/07/12/cong-quan-qi-wang-ding-li-tui-dao-bei-er-man-deng-shi/">从全期望定理推导贝尔曼等式</a>
+            <a class="archive-post-title" href="/2025/07/12/bei-er-man-deng-shi-jie-shao-ji-tui-dao/">贝尔曼等式介绍及推导</a>
         </li>
         <li class="archive-post-item">
             <span class="archive-post-date">06/17</span>
@@ -1008,45 +1007,41 @@ n个城市之间最多可以生成 1+2+…+(n-1)条边，分别计算出每条�
                 <span class="iconfont-archer">&#xe606;</span>
                 ai竞赛
             </span>
-            <span class="sidebar-tag-name" data-tags="GitHub">
-                <span class="iconfont-archer">&#xe606;</span>
-                GitHub
-            </span>
-            <span class="sidebar-tag-name" data-tags="Google访问助手">
-                <span class="iconfont-archer">&#xe606;</span>
-                Google访问助手
-            </span>
             <span class="sidebar-tag-name" data-tags="GitLab">
                 <span class="iconfont-archer">&#xe606;</span>
                 GitLab
             </span>
-            <span class="sidebar-tag-name" data-tags="预训练模型">
+            <span class="sidebar-tag-name" data-tags="GitHub">
                 <span class="iconfont-archer">&#xe606;</span>
-                预训练模型
+                GitHub
             </span>
             <span class="sidebar-tag-name" data-tags="启动U盘">
                 <span class="iconfont-archer">&#xe606;</span>
                 启动U盘
             </span>
+            <span class="sidebar-tag-name" data-tags="预训练模型">
+                <span class="iconfont-archer">&#xe606;</span>
+                预训练模型
+            </span>
+            <span class="sidebar-tag-name" data-tags="Google访问助手">
+                <span class="iconfont-archer">&#xe606;</span>
+                Google访问助手
+            </span>
             <span class="sidebar-tag-name" data-tags="nlp">
                 <span class="iconfont-archer">&#xe606;</span>
                 nlp
-            </span>
-            <span class="sidebar-tag-name" data-tags="Pandas">
-                <span class="iconfont-archer">&#xe606;</span>
-                Pandas
             </span>
             <span class="sidebar-tag-name" data-tags="pytorch">
                 <span class="iconfont-archer">&#xe606;</span>
                 pytorch
             </span>
+            <span class="sidebar-tag-name" data-tags="Pandas">
+                <span class="iconfont-archer">&#xe606;</span>
+                Pandas
+            </span>
             <span class="sidebar-tag-name" data-tags="svm">
                 <span class="iconfont-archer">&#xe606;</span>
                 svm
-            </span>
-            <span class="sidebar-tag-name" data-tags="github">
-                <span class="iconfont-archer">&#xe606;</span>
-                github
             </span>
             <span class="sidebar-tag-name" data-tags="git">
                 <span class="iconfont-archer">&#xe606;</span>
@@ -1056,17 +1051,13 @@ n个城市之间最多可以生成 1+2+…+(n-1)条边，分别计算出每条�
                 <span class="iconfont-archer">&#xe606;</span>
                 博客
             </span>
-            <span class="sidebar-tag-name" data-tags="jupyter notebook">
-                <span class="iconfont-archer">&#xe606;</span>
-                jupyter notebook
-            </span>
             <span class="sidebar-tag-name" data-tags="python">
                 <span class="iconfont-archer">&#xe606;</span>
                 python
             </span>
-            <span class="sidebar-tag-name" data-tags="neo4j">
+            <span class="sidebar-tag-name" data-tags="jupyter notebook">
                 <span class="iconfont-archer">&#xe606;</span>
-                neo4j
+                jupyter notebook
             </span>
             <span class="sidebar-tag-name" data-tags="NIVIDIA驱动">
                 <span class="iconfont-archer">&#xe606;</span>
@@ -1084,6 +1075,18 @@ n个城市之间最多可以生成 1+2+…+(n-1)条边，分别计算出每条�
                 <span class="iconfont-archer">&#xe606;</span>
                 动态规划
             </span>
+            <span class="sidebar-tag-name" data-tags="文本聚类 bert向量表示">
+                <span class="iconfont-archer">&#xe606;</span>
+                文本聚类 bert向量表示
+            </span>
+            <span class="sidebar-tag-name" data-tags="neo4j">
+                <span class="iconfont-archer">&#xe606;</span>
+                neo4j
+            </span>
+            <span class="sidebar-tag-name" data-tags="github">
+                <span class="iconfont-archer">&#xe606;</span>
+                github
+            </span>
             <span class="sidebar-tag-name" data-tags="摄影">
                 <span class="iconfont-archer">&#xe606;</span>
                 摄影
@@ -1091,14 +1094,6 @@ n个城市之间最多可以生成 1+2+…+(n-1)条边，分别计算出每条�
             <span class="sidebar-tag-name" data-tags="强化学习">
                 <span class="iconfont-archer">&#xe606;</span>
                 强化学习
-            </span>
-            <span class="sidebar-tag-name" data-tags="文本聚类 bert向量表示">
-                <span class="iconfont-archer">&#xe606;</span>
-                文本聚类 bert向量表示
-            </span>
-            <span class="sidebar-tag-name" data-tags="webdav, docker, obsidian, zotero">
-                <span class="iconfont-archer">&#xe606;</span>
-                webdav, docker, obsidian, zotero
             </span>
             <span class="sidebar-tag-name" data-tags="日志">
                 <span class="iconfont-archer">&#xe606;</span>
@@ -1132,21 +1127,21 @@ n个城市之间最多可以生成 1+2+…+(n-1)条边，分别计算出每条�
                 <span class="iconfont-archer">&#xe606;</span>
                 编程
             </span>
-            <span class="sidebar-tag-name" data-tags="微信">
-                <span class="iconfont-archer">&#xe606;</span>
-                微信
-            </span>
             <span class="sidebar-tag-name" data-tags="干货">
                 <span class="iconfont-archer">&#xe606;</span>
                 干货
             </span>
+            <span class="sidebar-tag-name" data-tags="微信">
+                <span class="iconfont-archer">&#xe606;</span>
+                微信
+            </span>
+            <span class="sidebar-tag-name" data-tags="webdav, docker, obsidian, zotero">
+                <span class="iconfont-archer">&#xe606;</span>
+                webdav, docker, obsidian, zotero
+            </span>
             <span class="sidebar-tag-name" data-tags="资源">
                 <span class="iconfont-archer">&#xe606;</span>
                 资源
-            </span>
-            <span class="sidebar-tag-name" data-tags="docker">
-                <span class="iconfont-archer">&#xe606;</span>
-                docker
             </span>
             <span class="sidebar-tag-name" data-tags="熵">
                 <span class="iconfont-archer">&#xe606;</span>
@@ -1160,13 +1155,17 @@ n个城市之间最多可以生成 1+2+…+(n-1)条边，分别计算出每条�
                 <span class="iconfont-archer">&#xe606;</span>
                 竞赛
             </span>
+            <span class="sidebar-tag-name" data-tags="docker, doccano">
+                <span class="iconfont-archer">&#xe606;</span>
+                docker, doccano
+            </span>
             <span class="sidebar-tag-name" data-tags="街拍">
                 <span class="iconfont-archer">&#xe606;</span>
                 街拍
             </span>
-            <span class="sidebar-tag-name" data-tags="docker, doccano">
+            <span class="sidebar-tag-name" data-tags="docker">
                 <span class="iconfont-archer">&#xe606;</span>
-                docker, doccano
+                docker
             </span>
     </div>
     <div class="iconfont-archer sidebar-tags-empty">&#xe678;</div>
@@ -1190,13 +1189,13 @@ n个城市之间最多可以生成 1+2+…+(n-1)条边，分别计算出每条�
             <span class="iconfont-archer">&#xe60a;</span>
             爬坑总结
         </span>
-        <span class="sidebar-category-name" data-categories="干货">
-            <span class="iconfont-archer">&#xe60a;</span>
-            干货
-        </span>
         <span class="sidebar-category-name" data-categories="人工智能">
             <span class="iconfont-archer">&#xe60a;</span>
             人工智能
+        </span>
+        <span class="sidebar-category-name" data-categories="干货">
+            <span class="iconfont-archer">&#xe60a;</span>
+            干货
         </span>
         <span class="sidebar-category-name" data-categories="知识框架">
             <span class="iconfont-archer">&#xe60a;</span>
@@ -1206,10 +1205,6 @@ n个城市之间最多可以生成 1+2+…+(n-1)条边，分别计算出每条�
             <span class="iconfont-archer">&#xe60a;</span>
             学习笔记
         </span>
-        <span class="sidebar-category-name" data-categories="编程开发">
-            <span class="iconfont-archer">&#xe60a;</span>
-            编程开发
-        </span>
         <span class="sidebar-category-name" data-categories="生活总结">
             <span class="iconfont-archer">&#xe60a;</span>
             生活总结
@@ -1217,6 +1212,10 @@ n个城市之间最多可以生成 1+2+…+(n-1)条边，分别计算出每条�
         <span class="sidebar-category-name" data-categories="编程经验">
             <span class="iconfont-archer">&#xe60a;</span>
             编程经验
+        </span>
+        <span class="sidebar-category-name" data-categories="编程开发">
+            <span class="iconfont-archer">&#xe60a;</span>
+            编程开发
         </span>
         <span class="sidebar-category-name" data-categories="编程">
             <span class="iconfont-archer">&#xe60a;</span>
@@ -1226,17 +1225,13 @@ n个城市之间最多可以生成 1+2+…+(n-1)条边，分别计算出每条�
             <span class="iconfont-archer">&#xe60a;</span>
             算法笔记
         </span>
-        <span class="sidebar-category-name" data-categories="摄影">
-            <span class="iconfont-archer">&#xe60a;</span>
-            摄影
-        </span>
         <span class="sidebar-category-name" data-categories="自然语言处理">
             <span class="iconfont-archer">&#xe60a;</span>
             自然语言处理
         </span>
-        <span class="sidebar-category-name" data-categories="运维">
+        <span class="sidebar-category-name" data-categories="摄影">
             <span class="iconfont-archer">&#xe60a;</span>
-            运维
+            摄影
         </span>
         <span class="sidebar-category-name" data-categories="算法">
             <span class="iconfont-archer">&#xe60a;</span>
@@ -1253,6 +1248,10 @@ n个城市之间最多可以生成 1+2+…+(n-1)条边，分别计算出每条�
         <span class="sidebar-category-name" data-categories="数据集">
             <span class="iconfont-archer">&#xe60a;</span>
             数据集
+        </span>
+        <span class="sidebar-category-name" data-categories="运维">
+            <span class="iconfont-archer">&#xe60a;</span>
+            运维
         </span>
         <span class="sidebar-category-name" data-categories="机器学习">
             <span class="iconfont-archer">&#xe60a;</span>
