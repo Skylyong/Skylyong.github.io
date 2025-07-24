@@ -429,6 +429,32 @@
                 <main class="main index-page">
             
         <article class="index-post">
+            <a class="abstract-title" href="/2021/03/31/gitlab-da-jian-bi-ji/">
+                <span class="abstract-title-text">GitLab搭建笔记</span>
+            </a>
+            <div class="abstract-content">
+                安装gitlab：123curl -s https://packages.gitlab.com/install/repositories/gitlab/gitlab-ee/script.deb.sh | sudo bash
+防火墙设置 之前已经配置好了，略
+gitlab配置打开/etc/gitlab/gitlab.rb
+123external_url 'http://gitlab.bytenlp.site'# 系统端口冲突，我把端口改为了85nginx['listen_port'] = 85
+让配置生效，并重启gitlab服务1234# 重新配置gitlabsudo gitlab-ctl...
+            </div>
+            <!-- read more -->
+            <div class="abstract-post-meta">
+                <!-- date -->
+                <div class="abstract-date" title="Last updated: 2025/03/08">
+                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2021/03/31</span>
+                </div>
+                <!-- tags -->
+                    <div class="abstract-tags" >
+        <a class="post-tag" href="javascript:void(0);" data-tags="GitLab">GitLab</a>
+</div>
+
+            </div>
+        </article>
+        <div class="index-post-divider"></div>
+            
+        <article class="index-post">
             <a class="abstract-title" href="/2021/03/31/ying-yu-kou-yu-lian-xi-dian-ying-tui-jian/">
                     <span class="iconfont-archer stick-top">&#xe63d;</span>
                 <span class="abstract-title-text">英语口语练习电影推荐</span>
@@ -834,9 +860,10 @@ next主题使用教程: https://theme-...
         
         
         
+        
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 56
+        Total : 57
         </div>
         <!-- search  -->
             <div class="site-search site-search-loading popup-trigger">
@@ -1079,6 +1106,13 @@ next主题使用教程: https://theme-...
             <span class="archive-post-date">02/21</span>
             <a class="archive-post-title" href="/2021/02/21/hao-yong-de-mian-fei-wu-guang-gao-dian-ying-wang-zhan-tui-jian/">好用的免费无广告电影网站推荐</a>
         </li>
+                </ul>
+            <div class="archive-year"> Invalid date </div>
+            <ul class="year-list">
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span>
+            <a class="archive-post-title" href="/2025/07/24/uv-chang-yong-cao-zuo/">uv 常用操作</a>
+        </li>
             </ul>
     </div>
 </div>
@@ -1252,6 +1286,10 @@ next主题使用教程: https://theme-...
             <span class="sidebar-tag-name" data-tags="docker, doccano">
                 <span class="iconfont-archer">&#xe606;</span>
                 docker, doccano
+            </span>
+            <span class="sidebar-tag-name" data-tags="uv">
+                <span class="iconfont-archer">&#xe606;</span>
+                uv
             </span>
     </div>
     <div class="iconfont-archer sidebar-tags-empty">&#xe678;</div>
