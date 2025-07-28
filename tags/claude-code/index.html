@@ -13,7 +13,7 @@
     <meta name="description" content="Keep go on">
 <meta property="og:type" content="website">
 <meta property="og:title" content="茄子的个人空间">
-<meta property="og:url" content="https://eggplant.wiki/tags/%E5%90%AF%E5%8A%A8U%E7%9B%98/index.html">
+<meta property="og:url" content="https://eggplant.wiki/tags/claude-code/index.html">
 <meta property="og:site_name" content="茄子的个人空间">
 <meta property="og:description" content="Keep go on">
 <meta property="og:locale" content="zh_CN">
@@ -422,40 +422,26 @@
                 <main class="main index-page">
             
         <article class="index-post">
-            <a class="abstract-title" href="/2022/09/07/mac-xi-tong-zhi-zuo-win10-qi-dong-u-pan/">
-                <span class="abstract-title-text">Mac系统制作win10启动U盘</span>
+            <a class="abstract-title" href="/2025/07/28/claude-code-xue-xi-ji-lu/">
+                <span class="abstract-title-text">Claude-Code学习记录</span>
             </a>
             <div class="abstract-content">
-                Mac系统下制作win10安装盘准备
-一台mac电脑
+                Claude Code 安装根据官方教程，照着操作就好了: https://docs.anthropic.com/en/docs/claude-code/setup
+接入 Kimi K2国内访问 Claude 困难，因此有了Kimi K2 平替方法，下面是操作步骤：
+首先到这里申请一个API， 然后设置环境变量：
+12export ANTHROPIC_BASE_URL="https://api.moonshot.cn/anthropic/"export ANTHROPIC_API_KEY="你的APY KEY"
 
-一个大于8G的U盘
-
-win10镜像文件
-
-Boot Camp ISO Converter软件（这个软件可以解决FAT32格式的u盘单个文件大小不能超过4GB的问题），下载链接
-
-
-制作步骤
-打开Boot Camp ISO Converter软件对下载好的iso镜像文件进行处理，目的是将镜像文件insta.win分配为大小小于4GB的文件
-
-在插入U盘的状态下，打开终端，输入：
-  1diskutil list
-
-  找到U盘对应的盘符，本例中U盘对应的盘符为：disk2
-
-将U盘(disk2)格式化为FAT32格式
-  1disk...
+最后，由于 Claude code 设置了地域限制，需要绕过初始登录验证，...
             </div>
             <!-- read more -->
             <div class="abstract-post-meta">
                 <!-- date -->
-                <div class="abstract-date" title="Last updated: 2025/03/08">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2022/09/07</span>
+                <div class="abstract-date" title="Last updated: 2025/07/28">
+                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2025/07/28</span>
                 </div>
                 <!-- tags -->
                     <div class="abstract-tags" >
-        <a class="post-tag" href="javascript:void(0);" data-tags="启动U盘">启动U盘</a>
+        <a class="post-tag" href="javascript:void(0);" data-tags="claude-code">claude-code</a>
 </div>
 
             </div>

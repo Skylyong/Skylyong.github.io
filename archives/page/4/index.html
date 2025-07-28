@@ -422,6 +422,38 @@
                 <main class="main index-page">
             
         <article class="index-post">
+            <a class="abstract-title" href="/2021/12/10/c-duo-xian-cheng-bian-cheng/">
+                <span class="abstract-title-text">C++多线程编程</span>
+            </a>
+            <div class="abstract-content">
+                常用线程函数
+join() :
+
+阻塞主线程，让主线程等待子线程执行完，当子线程执行完毕，这个join（）就执行完毕，主线程继续执行
+
+
+detach() :
+
+从主线程中将子线程分离，主线程不必等待子线程执行完，一旦detach()之后子线程将失去与主线程的关联，此时这个子线程就会驻留在后台运行，被c++运行时接管，当这个子线程执行完成后，由运行时库负责清理线程相关的资源。
+
+
+
+线程创建方法
+通过函数创建线程
+1234567891011121314#include &lt;iostream&gt;#include &lt;thread&gt;using  namespace  std...
+            </div>
+            <!-- read more -->
+            <div class="abstract-post-meta">
+                <!-- date -->
+                <div class="abstract-date" title="Last updated: 2025/03/08">
+                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2021/12/10</span>
+                </div>
+                <!-- tags -->
+            </div>
+        </article>
+        <div class="index-post-divider"></div>
+            
+        <article class="index-post">
             <a class="abstract-title" href="/2021/09/29/jiang-wei-xin-liao-tian-zhong-de-yu-yin-zhuan-huan-wei-mp3/">
                 <span class="abstract-title-text">将微信聊天中的语音转换为mp3</span>
             </a>
@@ -715,31 +747,6 @@ dxy database
             </div>
         </article>
         <div class="index-post-divider"></div>
-            
-        <article class="index-post">
-            <a class="abstract-title" href="/2021/08/09/svm-xue-xi-bi-ji/">
-                <span class="abstract-title-text">SVM学习笔记</span>
-            </a>
-            <div class="abstract-content">
-                SVM学习笔记https://www.deeplearningbook.org/
-http://page.mi.fu-berlin.de/rojas/neural/neuron.pdf
-https://www.svm-tutorial.com/2014/11/svm-understanding-math-part-1/
-
-            </div>
-            <!-- read more -->
-            <div class="abstract-post-meta">
-                <!-- date -->
-                <div class="abstract-date" title="Last updated: 2025/03/08">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2021/08/09</span>
-                </div>
-                <!-- tags -->
-                    <div class="abstract-tags" >
-        <a class="post-tag" href="javascript:void(0);" data-tags="svm">svm</a>
-</div>
-
-            </div>
-        </article>
-        <div class="index-post-divider"></div>
     <!-- paginator  -->
         <nav class="page-nav">
             <a class="extend prev" rel="prev" href="/archives/page/3/">&lt; PREV</a><a class="page-number" href="/archives/">1</a><a class="page-number" href="/archives/page/2/">2</a><a class="page-number" href="/archives/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/archives/page/5/">5</a><a class="page-number" href="/archives/page/6/">6</a><a class="extend next" rel="next" href="/archives/page/5/">NEXT &gt;</a>
@@ -842,9 +849,10 @@ https://www.svm-tutorial.com/2014/11/svm-understanding-math-part-1/
         
         
         
+        
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 57
+        Total : 58
         </div>
         <!-- search  -->
             <div class="site-search site-search-loading popup-trigger">
@@ -854,6 +862,10 @@ https://www.svm-tutorial.com/2014/11/svm-understanding-math-part-1/
     <div class="post-archive">
             <div class="archive-year"> 2025 </div>
             <ul class="year-list">
+        <li class="archive-post-item">
+            <span class="archive-post-date">07/28</span>
+            <a class="archive-post-title" href="/2025/07/28/claude-code-xue-xi-ji-lu/">Claude-Code学习记录</a>
+        </li>
         <li class="archive-post-item">
             <span class="archive-post-date">07/25</span>
             <a class="archive-post-title" href="/2025/07/25/uv-chang-yong-cao-zuo/">uv常用操作</a>
@@ -1268,6 +1280,10 @@ https://www.svm-tutorial.com/2014/11/svm-understanding-math-part-1/
             <span class="sidebar-tag-name" data-tags="docker, doccano">
                 <span class="iconfont-archer">&#xe606;</span>
                 docker, doccano
+            </span>
+            <span class="sidebar-tag-name" data-tags="claude-code">
+                <span class="iconfont-archer">&#xe606;</span>
+                claude-code
             </span>
     </div>
     <div class="iconfont-archer sidebar-tags-empty">&#xe678;</div>
