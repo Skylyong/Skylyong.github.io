@@ -4,6 +4,83 @@
   
     
     <entry>
+      <title>不动点和压缩映射</title>
+      <link href="/2025/08/10/bu-dong-dian-he-ya-suo-ying-she/"/>
+      <url>/2025/08/10/bu-dong-dian-he-ya-suo-ying-she/</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>矩阵范数</title>
+      <link href="/2025/08/10/ju-zhen-fan-shu/"/>
+      <url>/2025/08/10/ju-zhen-fan-shu/</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>向量范数</title>
+      <link href="/2025/08/10/xiang-liang-fan-shu/"/>
+      <url>/2025/08/10/xiang-liang-fan-shu/</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>范数的基本概念</title>
+      <link href="/2025/08/10/fan-shu-de-ji-ben-gai-nian/"/>
+      <url>/2025/08/10/fan-shu-de-ji-ben-gai-nian/</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>数学中的齐次性理解</title>
+      <link href="/2025/08/10/shu-xue-zhong-de-qi-ci-xing-li-jie/"/>
+      <url>/2025/08/10/shu-xue-zhong-de-qi-ci-xing-li-jie/</url>
+      
+        <content type="html"><![CDATA[<h2 id="什么是齐次性？"><a href="#什么是齐次性？" class="headerlink" title="什么是齐次性？"></a>什么是齐次性？</h2><p>在数学中，<strong>齐次性（Homogeneity）</strong> 通常指函数或方程在输入按比例缩放时，输出也按某个幂次比例缩放的性质。</p><h3 id="齐次函数"><a href="#齐次函数" class="headerlink" title="齐次函数"></a>齐次函数</h3><p>一个函数  $ f: \mathbb{R}^n \to \mathbb{R} $  被称为<strong>k次齐次函数</strong>，如果对于任意标量 ( \lambda ) 和输入向量 ( x \in \mathbb{R}^n )，满足：</p><p>[<br>f(\lambda x) = \lambda^k f(x)<br>]</p><p>这里，( k ) 是齐次次数（degree of homogeneity）。</p><p><strong>示例：</strong><br>函数 ( f(x,y) = x^2 + y^2 ) 是二次齐次函数，因为</p><p>[<br>f(\lambda x, \lambda y) = (\lambda x)^2 + (\lambda y)^2 = \lambda^2 (x^2 + y^2) = \lambda^2 f(x,y).<br>]</p><h3 id="齐次方程"><a href="#齐次方程" class="headerlink" title="齐次方程"></a>齐次方程</h3><p>在线性代数中，形如</p><p>[<br>Ax = 0<br>]</p><p>的方程被称为<strong>齐次线性方程</strong>，其中 ( A ) 是矩阵，( x ) 是向量。此类方程总包含零解。</p><hr><h2 id="齐次性的重要性"><a href="#齐次性的重要性" class="headerlink" title="齐次性的重要性"></a>齐次性的重要性</h2><ol><li><p><strong>理解尺度变化行为</strong><br>齐次性帮助我们了解函数或系统在输入按比例放大或缩小时，输出如何相应变化。这对于数学建模和分析非常关键。</p></li><li><p><strong>简化数学分析</strong><br>齐次函数具有良好的对称性，使得求导、积分和其他计算更简洁。例如，欧拉定理指出：</p></li></ol><p>[<br>\sum_{i=1}^n x_i \frac{\partial f}{\partial x_i} = k f(x)<br>]</p><p>对可微的 ( k ) 次齐次函数成立。</p><ol start="3"><li><p><strong>应用于物理与工程</strong><br>许多物理系统表现出尺度不变性，齐次性描述了这些系统在不同尺度下保持的规律性。</p></li><li><p><strong>经济学中的规模报酬</strong><br>生产函数的齐次性反映了投入与产出的比例关系，帮助分析规模经济和决策。</p></li><li><p><strong>判别方程和系统性质</strong><br>齐次结构揭示方程或系统的对称性、稳定性等重要特征，利于分类与求解。</p></li></ol><hr><p>总结来说，齐次性是理解和描述函数、方程及系统在尺度变换下行为的基础工具，广泛应用于数学、物理、经济等多个领域。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 学习笔记 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 数学 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Claude-Code学习记录</title>
       <link href="/2025/07/28/claude-code-xue-xi-ji-lu/"/>
       <url>/2025/07/28/claude-code-xue-xi-ji-lu/</url>
@@ -70,7 +147,7 @@
       
         <tags>
             
-            <tag> 强化学习 </tag>
+            <tag> 概率论 </tag>
             
         </tags>
       

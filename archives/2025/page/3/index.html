@@ -422,6 +422,144 @@
                 <main class="main index-page">
             
         <article class="index-post">
+            <a class="abstract-title" href="/2025/02/27/ai-jing-sai-ping-tai/">
+                <span class="abstract-title-text">Ai竞赛平台</span>
+            </a>
+            <div class="abstract-content">
+                最近对常见的Ai竞赛平台做了整理，记录如下：
+
+Kaggle:  https://www.kaggle.com/
+AIcrowd: https://www.aicrowd.com/
+Codalab :  https://codalab.lisn.upsaclay.fr/
+DrivenData: https://www.drivendata.org/
+Grand Challenge: https://grand-challenge.org/
+Topcoder:  https://www.topcoder.com/challenges
+Zindi: https://zindi.africa/...
+            </div>
+            <!-- read more -->
+            <div class="abstract-post-meta">
+                <!-- date -->
+                <div class="abstract-date" title="Last updated: 2025/03/08">
+                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2025/02/27</span>
+                </div>
+                <!-- tags -->
+                    <div class="abstract-tags" >
+        <a class="post-tag" href="javascript:void(0);" data-tags="ai竞赛">ai竞赛</a>
+</div>
+
+            </div>
+        </article>
+        <div class="index-post-divider"></div>
+            
+        <article class="index-post">
+            <a class="abstract-title" href="/2025/02/19/python-ri-chang-kai-fa-za-ji/">
+                <span class="abstract-title-text">python日常开发杂记</span>
+            </a>
+            <div class="abstract-content">
+                mac系统 pandas存储为csv 在excel中打开乱码
+在使用pandas存储数据为csv文件后，在excel中打开会出现乱码问题，解决方法如下：指定编码格式为utf-8-sig，即可解决问题。
+
+1df.to_csv('output.csv', index=False, encoding='utf-8-sig')
+
+api 调用大模型时，指定返回json格式数据
+解决方法如下： 指定 response_format 为 {"type":"json_object"}，但是这个方法在deepseek中不适用。
+
+123456789101112131415client = openai...
+            </div>
+            <!-- read more -->
+            <div class="abstract-post-meta">
+                <!-- date -->
+                <div class="abstract-date" title="Last updated: 2025/03/08">
+                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2025/02/19</span>
+                </div>
+                <!-- tags -->
+                    <div class="abstract-tags" >
+        <a class="post-tag" href="javascript:void(0);" data-tags="python">python</a>
+</div>
+
+            </div>
+        </article>
+        <div class="index-post-divider"></div>
+            
+        <article class="index-post">
+            <a class="abstract-title" href="/2025/02/12/tong-guo-docker-bu-shu-doccano-biao-zhu-gong-ju/">
+                <span class="abstract-title-text">通过docker部署doccano标注工具</span>
+            </a>
+            <div class="abstract-content">
+                上半年使用了 doccano 标注工具对命名实体识别任务做了标注，感觉很好用。最近准备将其部署到服务器上，通过 docker 容器的方式进行，以便于以后可以快速部署。
+许久不用也是遇到了不少问题，主要是部署好系统后，上传数据一直转圈，没有反应，后面发现是因为没有启动 doccano task,而task需要和 doccano webserver 一起启动， openai 给我的建议是启动两个 docker 服务，我还是选用了常规的 screen 方式。
+下面是自己编写的可以使用的 docker-compose 文件，记录在此，方便以后调用。
+12345678910111213141516...
+            </div>
+            <!-- read more -->
+            <div class="abstract-post-meta">
+                <!-- date -->
+                <div class="abstract-date" title="Last updated: 2025/03/08">
+                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2025/02/12</span>
+                </div>
+                <!-- tags -->
+                    <div class="abstract-tags" >
+        <a class="post-tag" href="javascript:void(0);" data-tags="docker, doccano">docker, doccano</a>
+</div>
+
+            </div>
+        </article>
+        <div class="index-post-divider"></div>
+            
+        <article class="index-post">
+            <a class="abstract-title" href="/2025/02/06/zai-cheng-gong-de-ri-zi-fu-xi-zi-liao-bu-jian-liao/">
+                <span class="abstract-title-text">在呈贡的日子——复习资料不见了</span>
+            </a>
+            <div class="abstract-content">
+                又翻到了一篇当时的记录，起因是复习资料太多，不方便随身携带，我将书藏在了图书馆的顶楼消防通道（阅览室在二楼，书藏在12楼附近），结果，被保安收走了。还依稀记得，午夜的保安们打着手电筒，在过道、门窗旮旯角、花瓶后面到处翻找考研er书的情节，好一波猫鼠游戏。
+下面是当时的记录：
+
+一早上来图书馆，发现书不见了。从7点多折腾到现在（8:55）才从管理员处拿到了我的复习资料。数了数应该是没有丢失，悬着的一颗心总算放了下来。已经过了早点的时间，早点是吃不成了。
+可是接下来的晚上我应该如何安置我的书呢？住的地方离图书馆近5公里，将全部的书背进背出是断然不行的。
+Plan 1:把书精减一下，每天只带当...
+            </div>
+            <!-- read more -->
+            <div class="abstract-post-meta">
+                <!-- date -->
+                <div class="abstract-date" title="Last updated: 2025/03/08">
+                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2025/02/06</span>
+                </div>
+                <!-- tags -->
+                    <div class="abstract-tags" >
+        <a class="post-tag" href="javascript:void(0);" data-tags="呈贡">呈贡</a>
+</div>
+
+            </div>
+        </article>
+        <div class="index-post-divider"></div>
+            
+        <article class="index-post">
+            <a class="abstract-title" href="/2025/02/06/zai-cheng-gong-de-ri-zi-lao-yu-he/">
+                <span class="abstract-title-text">在呈贡的日子——捞鱼河</span>
+            </a>
+            <div class="abstract-content">
+                今日写论文写乏了，就去翻了翻以前记的笔记，翻到了在呈贡学习生活时期的记录。想当初，我为了逃避家人亲戚带来的压力、独自一人去呈贡寻求一片清净之地复习备考，时光匆匆，一晃几年过去了，令人感叹。
+虽看以前记录的文字略显幼稚，但为了保证记录的真实性，我一字不落的照搬了过来，下面是当时的记录：
+不知不觉就到了月末，在呈贡已经快一个月了。最近天天泡图书馆，感觉效率有点下降，而我对除校园之外的周边环境还一无所知，趁着没下雨的周六就出去看了看。
+上午配置好无线AP找了个共享车就骑了出去，没多久（约30分钟）就到了滇池边上的捞鱼河公园。虽然是周末由于随时会下雨的样子，公园里面人不多，很是清静。
+公园依滇池...
+            </div>
+            <!-- read more -->
+            <div class="abstract-post-meta">
+                <!-- date -->
+                <div class="abstract-date" title="Last updated: 2025/03/08">
+                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2025/02/06</span>
+                </div>
+                <!-- tags -->
+                    <div class="abstract-tags" >
+        <a class="post-tag" href="javascript:void(0);" data-tags="呈贡">呈贡</a>
+</div>
+
+            </div>
+        </article>
+        <div class="index-post-divider"></div>
+            
+        <article class="index-post">
             <a class="abstract-title" href="/2025/01/28/vscode-kai-fa-ji-qiao-ji-lu/">
                 <span class="abstract-title-text">vscode开发技巧记录</span>
             </a>
@@ -664,9 +802,14 @@
         
         
         
+        
+        
+        
+        
+        
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 58
+        Total : 63
         </div>
         <!-- search  -->
             <div class="site-search site-search-loading popup-trigger">
@@ -676,6 +819,26 @@
     <div class="post-archive">
             <div class="archive-year"> 2025 </div>
             <ul class="year-list">
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/10</span>
+            <a class="archive-post-title" href="/2025/08/10/bu-dong-dian-he-ya-suo-ying-she/">不动点和压缩映射</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/10</span>
+            <a class="archive-post-title" href="/2025/08/10/xiang-liang-fan-shu/">向量范数</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/10</span>
+            <a class="archive-post-title" href="/2025/08/10/shu-xue-zhong-de-qi-ci-xing-li-jie/">数学中的齐次性理解</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/10</span>
+            <a class="archive-post-title" href="/2025/08/10/ju-zhen-fan-shu/">矩阵范数</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/10</span>
+            <a class="archive-post-title" href="/2025/08/10/fan-shu-de-ji-ben-gai-nian/">范数的基本概念</a>
+        </li>
         <li class="archive-post-item">
             <span class="archive-post-date">07/28</span>
             <a class="archive-post-title" href="/2025/07/28/claude-code-xue-xi-ji-lu/">Claude-Code学习记录</a>
@@ -1098,6 +1261,14 @@
             <span class="sidebar-tag-name" data-tags="claude-code">
                 <span class="iconfont-archer">&#xe606;</span>
                 claude-code
+            </span>
+            <span class="sidebar-tag-name" data-tags="概率论">
+                <span class="iconfont-archer">&#xe606;</span>
+                概率论
+            </span>
+            <span class="sidebar-tag-name" data-tags="数学">
+                <span class="iconfont-archer">&#xe606;</span>
+                数学
             </span>
     </div>
     <div class="iconfont-archer sidebar-tags-empty">&#xe678;</div>

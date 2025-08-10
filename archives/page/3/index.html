@@ -422,6 +422,144 @@
                 <main class="main index-page">
             
         <article class="index-post">
+            <a class="abstract-title" href="/2025/02/27/ai-jing-sai-ping-tai/">
+                <span class="abstract-title-text">Ai竞赛平台</span>
+            </a>
+            <div class="abstract-content">
+                最近对常见的Ai竞赛平台做了整理，记录如下：
+
+Kaggle:  https://www.kaggle.com/
+AIcrowd: https://www.aicrowd.com/
+Codalab :  https://codalab.lisn.upsaclay.fr/
+DrivenData: https://www.drivendata.org/
+Grand Challenge: https://grand-challenge.org/
+Topcoder:  https://www.topcoder.com/challenges
+Zindi: https://zindi.africa/...
+            </div>
+            <!-- read more -->
+            <div class="abstract-post-meta">
+                <!-- date -->
+                <div class="abstract-date" title="Last updated: 2025/03/08">
+                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2025/02/27</span>
+                </div>
+                <!-- tags -->
+                    <div class="abstract-tags" >
+        <a class="post-tag" href="javascript:void(0);" data-tags="ai竞赛">ai竞赛</a>
+</div>
+
+            </div>
+        </article>
+        <div class="index-post-divider"></div>
+            
+        <article class="index-post">
+            <a class="abstract-title" href="/2025/02/19/python-ri-chang-kai-fa-za-ji/">
+                <span class="abstract-title-text">python日常开发杂记</span>
+            </a>
+            <div class="abstract-content">
+                mac系统 pandas存储为csv 在excel中打开乱码
+在使用pandas存储数据为csv文件后，在excel中打开会出现乱码问题，解决方法如下：指定编码格式为utf-8-sig，即可解决问题。
+
+1df.to_csv('output.csv', index=False, encoding='utf-8-sig')
+
+api 调用大模型时，指定返回json格式数据
+解决方法如下： 指定 response_format 为 {"type":"json_object"}，但是这个方法在deepseek中不适用。
+
+123456789101112131415client = openai...
+            </div>
+            <!-- read more -->
+            <div class="abstract-post-meta">
+                <!-- date -->
+                <div class="abstract-date" title="Last updated: 2025/03/08">
+                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2025/02/19</span>
+                </div>
+                <!-- tags -->
+                    <div class="abstract-tags" >
+        <a class="post-tag" href="javascript:void(0);" data-tags="python">python</a>
+</div>
+
+            </div>
+        </article>
+        <div class="index-post-divider"></div>
+            
+        <article class="index-post">
+            <a class="abstract-title" href="/2025/02/12/tong-guo-docker-bu-shu-doccano-biao-zhu-gong-ju/">
+                <span class="abstract-title-text">通过docker部署doccano标注工具</span>
+            </a>
+            <div class="abstract-content">
+                上半年使用了 doccano 标注工具对命名实体识别任务做了标注，感觉很好用。最近准备将其部署到服务器上，通过 docker 容器的方式进行，以便于以后可以快速部署。
+许久不用也是遇到了不少问题，主要是部署好系统后，上传数据一直转圈，没有反应，后面发现是因为没有启动 doccano task,而task需要和 doccano webserver 一起启动， openai 给我的建议是启动两个 docker 服务，我还是选用了常规的 screen 方式。
+下面是自己编写的可以使用的 docker-compose 文件，记录在此，方便以后调用。
+12345678910111213141516...
+            </div>
+            <!-- read more -->
+            <div class="abstract-post-meta">
+                <!-- date -->
+                <div class="abstract-date" title="Last updated: 2025/03/08">
+                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2025/02/12</span>
+                </div>
+                <!-- tags -->
+                    <div class="abstract-tags" >
+        <a class="post-tag" href="javascript:void(0);" data-tags="docker, doccano">docker, doccano</a>
+</div>
+
+            </div>
+        </article>
+        <div class="index-post-divider"></div>
+            
+        <article class="index-post">
+            <a class="abstract-title" href="/2025/02/06/zai-cheng-gong-de-ri-zi-fu-xi-zi-liao-bu-jian-liao/">
+                <span class="abstract-title-text">在呈贡的日子——复习资料不见了</span>
+            </a>
+            <div class="abstract-content">
+                又翻到了一篇当时的记录，起因是复习资料太多，不方便随身携带，我将书藏在了图书馆的顶楼消防通道（阅览室在二楼，书藏在12楼附近），结果，被保安收走了。还依稀记得，午夜的保安们打着手电筒，在过道、门窗旮旯角、花瓶后面到处翻找考研er书的情节，好一波猫鼠游戏。
+下面是当时的记录：
+
+一早上来图书馆，发现书不见了。从7点多折腾到现在（8:55）才从管理员处拿到了我的复习资料。数了数应该是没有丢失，悬着的一颗心总算放了下来。已经过了早点的时间，早点是吃不成了。
+可是接下来的晚上我应该如何安置我的书呢？住的地方离图书馆近5公里，将全部的书背进背出是断然不行的。
+Plan 1:把书精减一下，每天只带当...
+            </div>
+            <!-- read more -->
+            <div class="abstract-post-meta">
+                <!-- date -->
+                <div class="abstract-date" title="Last updated: 2025/03/08">
+                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2025/02/06</span>
+                </div>
+                <!-- tags -->
+                    <div class="abstract-tags" >
+        <a class="post-tag" href="javascript:void(0);" data-tags="呈贡">呈贡</a>
+</div>
+
+            </div>
+        </article>
+        <div class="index-post-divider"></div>
+            
+        <article class="index-post">
+            <a class="abstract-title" href="/2025/02/06/zai-cheng-gong-de-ri-zi-lao-yu-he/">
+                <span class="abstract-title-text">在呈贡的日子——捞鱼河</span>
+            </a>
+            <div class="abstract-content">
+                今日写论文写乏了，就去翻了翻以前记的笔记，翻到了在呈贡学习生活时期的记录。想当初，我为了逃避家人亲戚带来的压力、独自一人去呈贡寻求一片清净之地复习备考，时光匆匆，一晃几年过去了，令人感叹。
+虽看以前记录的文字略显幼稚，但为了保证记录的真实性，我一字不落的照搬了过来，下面是当时的记录：
+不知不觉就到了月末，在呈贡已经快一个月了。最近天天泡图书馆，感觉效率有点下降，而我对除校园之外的周边环境还一无所知，趁着没下雨的周六就出去看了看。
+上午配置好无线AP找了个共享车就骑了出去，没多久（约30分钟）就到了滇池边上的捞鱼河公园。虽然是周末由于随时会下雨的样子，公园里面人不多，很是清静。
+公园依滇池...
+            </div>
+            <!-- read more -->
+            <div class="abstract-post-meta">
+                <!-- date -->
+                <div class="abstract-date" title="Last updated: 2025/03/08">
+                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2025/02/06</span>
+                </div>
+                <!-- tags -->
+                    <div class="abstract-tags" >
+        <a class="post-tag" href="javascript:void(0);" data-tags="呈贡">呈贡</a>
+</div>
+
+            </div>
+        </article>
+        <div class="index-post-divider"></div>
+            
+        <article class="index-post">
             <a class="abstract-title" href="/2025/01/28/vscode-kai-fa-ji-qiao-ji-lu/">
                 <span class="abstract-title-text">vscode开发技巧记录</span>
             </a>
@@ -561,160 +699,9 @@
             </div>
         </article>
         <div class="index-post-divider"></div>
-            
-        <article class="index-post">
-            <a class="abstract-title" href="/2023/09/12/ubuntu-shang-an-zhuang-nividia-qu-dong-he-cuda-tookit/">
-                <span class="abstract-title-text">ubuntu上安装NIVIDIA驱动和CUDA_Tookit</span>
-            </a>
-            <div class="abstract-content">
-                每一次安装NIVIDIA驱动或CUDA Tookit时，都要经过一番折腾，才能够安装成功，这里把过程记录一下，以便以后可以参考。
-本次安装遇到的最大问题是：pytorch所能支持的最高cuda版本为11.8，而安装后的cuda为最新12.2版本，pytorch没法识别cuda。导致这一问题的主要原因在于两点：
-
-安装的NIVIDIA驱动版本过高，导致CUDA Tookit版本也过高，无法降级
-使用网络方式安装CUDA Tookit，安装之后得到的是最新版的CUDA Tookit，不是我想要的11.8版本
-
-接下来是安装过程：
-
-删除已安装的NIVIDIA驱动或CUDA Tookit
-12...
-            </div>
-            <!-- read more -->
-            <div class="abstract-post-meta">
-                <!-- date -->
-                <div class="abstract-date" title="Last updated: 2025/03/08">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2023/09/12</span>
-                </div>
-                <!-- tags -->
-                    <div class="abstract-tags" >
-        <a class="post-tag" href="javascript:void(0);" data-tags="NIVIDIA驱动">NIVIDIA驱动</a>
-</div>
-
-            </div>
-        </article>
-        <div class="index-post-divider"></div>
-            
-        <article class="index-post">
-            <a class="abstract-title" href="/2023/07/23/zai-mac-shang-shi-yong-pybind11-shi-xian-c-yu-python-hu-tong-de-demo/">
-                <span class="abstract-title-text">在mac上使用pybind11实现c++与python互通的demo</span>
-            </a>
-            <div class="abstract-content">
-                在mac上使用pybind11实现c++与python互通的demo0. 问题描述下面的python代码定义了一个类，类中有一个名为analyze_data的函数，其采用递归的方法解析json格式的data数据，由于处理速度达不到要求，我们希望用c++改写该类，并封装成可供python代码调用的库，以达到加速的效果。
-1234567891011121314151617181920&nbsp;# 待解析的数据deom&nbsp;data_demo = {"resbody": {"data": {"name": "John", "age": 30, "address": {"city": "...
-            </div>
-            <!-- read more -->
-            <div class="abstract-post-meta">
-                <!-- date -->
-                <div class="abstract-date" title="Last updated: 2025/03/08">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2023/07/23</span>
-                </div>
-                <!-- tags -->
-                    <div class="abstract-tags" >
-        <a class="post-tag" href="javascript:void(0);" data-tags="python_c++_互通">python_c++_互通</a>
-</div>
-
-            </div>
-        </article>
-        <div class="index-post-divider"></div>
-            
-        <article class="index-post">
-            <a class="abstract-title" href="/2022/09/07/mac-xi-tong-zhi-zuo-win10-qi-dong-u-pan/">
-                <span class="abstract-title-text">Mac系统制作win10启动U盘</span>
-            </a>
-            <div class="abstract-content">
-                Mac系统下制作win10安装盘准备
-一台mac电脑
-
-一个大于8G的U盘
-
-win10镜像文件
-
-Boot Camp ISO Converter软件（这个软件可以解决FAT32格式的u盘单个文件大小不能超过4GB的问题），下载链接
-
-
-制作步骤
-打开Boot Camp ISO Converter软件对下载好的iso镜像文件进行处理，目的是将镜像文件insta.win分配为大小小于4GB的文件
-
-在插入U盘的状态下，打开终端，输入：
-  1diskutil list
-
-  找到U盘对应的盘符，本例中U盘对应的盘符为：disk2
-
-将U盘(disk2)格式化为FAT32格式
-  1disk...
-            </div>
-            <!-- read more -->
-            <div class="abstract-post-meta">
-                <!-- date -->
-                <div class="abstract-date" title="Last updated: 2025/03/08">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2022/09/07</span>
-                </div>
-                <!-- tags -->
-                    <div class="abstract-tags" >
-        <a class="post-tag" href="javascript:void(0);" data-tags="启动U盘">启动U盘</a>
-</div>
-
-            </div>
-        </article>
-        <div class="index-post-divider"></div>
-            
-        <article class="index-post">
-            <a class="abstract-title" href="/2022/09/05/dian-ci-bi-sai-zong-jie/">
-                <span class="abstract-title-text">电磁比赛总结</span>
-            </a>
-            <div class="abstract-content">
-                电磁比赛总结
-代码总结
-
-要会静态分析资源占有率，特别是当服务器内存资源不足的时候，提前做好静态分析，设置合理的运行参数，才能提升效率。比如本次实验过程中，做数据增强预处理数据时需要占用大量内存资源，参数设置过大，会导致运行一半后因为内存不足，进程被killed掉，参数设置过小效率又变得很低。
-当数据很多，需要占用大量内存时，不要将数据转换为pandas的DataFrame对象，因为它会吃掉更多的内存，此外使用apply方法对数据进行逐行处理的时候，即使使用了加速方法，也没有将数据存储为list然后使用多进程方法处理高效。在本次实验中，后者的速度至少是前者的5倍。
-尽量使用class对代...
-            </div>
-            <!-- read more -->
-            <div class="abstract-post-meta">
-                <!-- date -->
-                <div class="abstract-date" title="Last updated: 2025/03/08">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2022/09/05</span>
-                </div>
-                <!-- tags -->
-                    <div class="abstract-tags" >
-        <a class="post-tag" href="javascript:void(0);" data-tags="竞赛">竞赛</a>
-</div>
-
-            </div>
-        </article>
-        <div class="index-post-divider"></div>
-            
-        <article class="index-post">
-            <a class="abstract-title" href="/2022/04/29/yuan-cheng-fang-wen-fu-wu-qi-jupyter-notebook/">
-                <span class="abstract-title-text">远程访问服务器Jupyter-Notebook</span>
-            </a>
-            <div class="abstract-content">
-                方法： ssh远程使用jupyter notebook在远程服务器上，启动jupyter notebooks服务：
-1jupyter notebook --no-browser --port=8889
-
-在本地终端中启动SSH：
-1ssh -N -f -L localhost:8888:localhost:8889 username@serverIP
-
-其中： -N 告诉SSH没有命令要被远程执行； -f 告诉SSH在后台执行； -L 是指定port forwarding的配置，远端端口是8889，本地的端口号的8888。
-注意：username@serverIP替换成服务器的对应账号。...
-            </div>
-            <!-- read more -->
-            <div class="abstract-post-meta">
-                <!-- date -->
-                <div class="abstract-date" title="Last updated: 2025/03/08">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2022/04/29</span>
-                </div>
-                <!-- tags -->
-                    <div class="abstract-tags" >
-        <a class="post-tag" href="javascript:void(0);" data-tags="jupyter notebook">jupyter notebook</a>
-</div>
-
-            </div>
-        </article>
-        <div class="index-post-divider"></div>
     <!-- paginator  -->
         <nav class="page-nav">
-            <a class="extend prev" rel="prev" href="/archives/page/2/">&lt; PREV</a><a class="page-number" href="/archives/">1</a><a class="page-number" href="/archives/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/archives/page/4/">4</a><a class="page-number" href="/archives/page/5/">5</a><a class="page-number" href="/archives/page/6/">6</a><a class="extend next" rel="next" href="/archives/page/4/">NEXT &gt;</a>
+            <a class="extend prev" rel="prev" href="/archives/page/2/">&lt; PREV</a><a class="page-number" href="/archives/">1</a><a class="page-number" href="/archives/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/archives/page/4/">4</a><a class="page-number" href="/archives/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/7/">7</a><a class="extend next" rel="next" href="/archives/page/4/">NEXT &gt;</a>
         </nav>
 </main>
 
@@ -815,9 +802,14 @@ Boot Camp ISO Converter软件（这个软件可以解决FAT32格式的u盘单个
         
         
         
+        
+        
+        
+        
+        
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 58
+        Total : 63
         </div>
         <!-- search  -->
             <div class="site-search site-search-loading popup-trigger">
@@ -827,6 +819,26 @@ Boot Camp ISO Converter软件（这个软件可以解决FAT32格式的u盘单个
     <div class="post-archive">
             <div class="archive-year"> 2025 </div>
             <ul class="year-list">
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/10</span>
+            <a class="archive-post-title" href="/2025/08/10/bu-dong-dian-he-ya-suo-ying-she/">不动点和压缩映射</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/10</span>
+            <a class="archive-post-title" href="/2025/08/10/xiang-liang-fan-shu/">向量范数</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/10</span>
+            <a class="archive-post-title" href="/2025/08/10/shu-xue-zhong-de-qi-ci-xing-li-jie/">数学中的齐次性理解</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/10</span>
+            <a class="archive-post-title" href="/2025/08/10/ju-zhen-fan-shu/">矩阵范数</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/10</span>
+            <a class="archive-post-title" href="/2025/08/10/fan-shu-de-ji-ben-gai-nian/">范数的基本概念</a>
+        </li>
         <li class="archive-post-item">
             <span class="archive-post-date">07/28</span>
             <a class="archive-post-title" href="/2025/07/28/claude-code-xue-xi-ji-lu/">Claude-Code学习记录</a>
@@ -1249,6 +1261,14 @@ Boot Camp ISO Converter软件（这个软件可以解决FAT32格式的u盘单个
             <span class="sidebar-tag-name" data-tags="claude-code">
                 <span class="iconfont-archer">&#xe606;</span>
                 claude-code
+            </span>
+            <span class="sidebar-tag-name" data-tags="概率论">
+                <span class="iconfont-archer">&#xe606;</span>
+                概率论
+            </span>
+            <span class="sidebar-tag-name" data-tags="数学">
+                <span class="iconfont-archer">&#xe606;</span>
+                数学
             </span>
     </div>
     <div class="iconfont-archer sidebar-tags-empty">&#xe678;</div>
