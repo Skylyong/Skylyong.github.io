@@ -13,7 +13,7 @@
     <meta name="description" content="Keep go on">
 <meta property="og:type" content="website">
 <meta property="og:title" content="茄子的个人空间">
-<meta property="og:url" content="https://eggplant.wiki/archives/index.html">
+<meta property="og:url" content="https://eggplant.wiki/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/page/2/index.html">
 <meta property="og:site_name" content="茄子的个人空间">
 <meta property="og:description" content="Keep go on">
 <meta property="og:locale" content="zh_CN">
@@ -422,49 +422,29 @@
                 <main class="main index-page">
             
         <article class="index-post">
-            <a class="abstract-title" href="/2025/08/10/bu-dong-dian-he-ya-suo-ying-she/">
-                <span class="abstract-title-text">不动点和压缩映射</span>
+            <a class="abstract-title" href="/2021/08/05/pytorch-xue-xi/">
+                <span class="abstract-title-text">Pytorch学习</span>
             </a>
             <div class="abstract-content">
-                
+                课程[链接](https: // www.youtube.com / watch?v = c36lUUr864M)
+1. Tensor1.1 How to create tensor
+构造tensor的方法主要有六种，分别如下：
+
+x = torch.ones(3, 5, dtype=torch.float, requires_grad = True )
+
+x = torch.zeros(3, 5, dtype=torch.float, requires_grad = True )
+
+x = torch.rand(3, 5, dtype=torch.float, requires_gra...
             </div>
             <!-- read more -->
             <div class="abstract-post-meta">
                 <!-- date -->
-                <div class="abstract-date" title="Last updated: 2025/08/10">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2025/08/10</span>
-                </div>
-                <!-- tags -->
-            </div>
-        </article>
-        <div class="index-post-divider"></div>
-            
-        <article class="index-post">
-            <a class="abstract-title" href="/2025/08/10/ju-zhen-fan-shu/">
-                <span class="abstract-title-text">矩阵范数</span>
-            </a>
-            <div class="abstract-content">
-                什么是矩阵范数矩阵范数（matrix norm）是将一个矩阵映射到非负实数的函数:  $|\cdot| $，用来度量矩阵的“大小”或“长度”。矩阵范数需要满足以下三个性质：
-
-非负性：对任意矩阵 $A$，有$$|A| \geq 0$$且当且仅当 $A$ 是零矩阵时，$|A| = 0$。
-
-齐次性（正齐次）：对任意标量 $\alpha$ 和矩阵 $A$，有$$|\alpha A| = |\alpha| \cdot |A|$$
-
-三角不等式：对任意矩阵 $A$ 和 $B$，有$$|A + B| \leq |A| + |B|$$
-
-
-矩阵范数的几种常见类型常见矩阵范数分两类：
-(A) 非算子范...
-            </div>
-            <!-- read more -->
-            <div class="abstract-post-meta">
-                <!-- date -->
-                <div class="abstract-date" title="Last updated: 2025/08/10">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2025/08/10</span>
+                <div class="abstract-date" title="Last updated: 2025/03/08">
+                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2021/08/05</span>
                 </div>
                 <!-- tags -->
                     <div class="abstract-tags" >
-        <a class="post-tag" href="javascript:void(0);" data-tags="数学">数学</a>
+        <a class="post-tag" href="javascript:void(0);" data-tags="pytorch">pytorch</a>
 </div>
 
             </div>
@@ -472,221 +452,48 @@
         <div class="index-post-divider"></div>
             
         <article class="index-post">
-            <a class="abstract-title" href="/2025/08/10/xiang-liang-fan-shu/">
-                <span class="abstract-title-text">向量范数</span>
+            <a class="abstract-title" href="/2021/03/31/ke-cheng-she-ji-zui-xiao-sheng-cheng-shu-ying-yong/">
+                <span class="abstract-title-text">【课程设计】最小生成树应用</span>
             </a>
             <div class="abstract-content">
-                向量范数的定义数学上，向量范数是一个函数 $|\cdot|$，它把向量映射成一个非负实数，并满足以下三个条件（任何合法的范数都要满足）：
-非负性$$|x| \geq 0 \quad \text{且} \quad |x| = 0 \iff x = 0$$
-向量的长度不可能是负的，只有零向量长度为零。
-齐次性（homogeneity / scalability）$$|\alpha x| = |\alpha| \cdot |x|$$
-缩放向量，长度也按比例缩放。
-三角不等式$$|x + y| \leq |x| + |y|$$
-两个向量相加的“长度”不会超过它们长度之和（几何上就是三角形不等式）...
+                需求描述本次课程设计要求在n个城市之间架设n-1条线路，实现这几个城市之间的网络通信，要求网络经济代价最低。具体要求如下：
+问题分析根据设计要求，我们假设城市之间的距离越大架设网线的经济代价越大，因此可以用两个城市之间的距离作为边的权重。
+n个城市之间最多可以生成 1+2+…+(n-1)条边，分别计算出每条边的长度然后对他们进行升序排序，利用并查集得到由n-1条边组成的最小生成树，问题便得到解决。
+为了解决上述问题，需要构建一个城市结构体CITY来表示城市，并且还需要构建EDGE结构体来表示城市与城市的边，并利用随机函数生成城市的坐标。
+实现代码123456789101112131415...
             </div>
             <!-- read more -->
             <div class="abstract-post-meta">
                 <!-- date -->
-                <div class="abstract-date" title="Last updated: 2025/08/10">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2025/08/10</span>
+                <div class="abstract-date" title="Last updated: 2025/03/08">
+                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2021/03/31</span>
                 </div>
                 <!-- tags -->
                     <div class="abstract-tags" >
-        <a class="post-tag" href="javascript:void(0);" data-tags="数学">数学</a>
+        <a class="post-tag" href="javascript:void(0);" data-tags="树">树</a>
 </div>
 
             </div>
         </article>
         <div class="index-post-divider"></div>
-            
         <article class="index-post">
-            <a class="abstract-title" href="/2025/08/10/fan-shu-de-ji-ben-gai-nian/">
-                <span class="abstract-title-text">范数的基本概念</span>
+            <a class="abstract-title" href="/2021/03/29/bian-fen-xue-xi-bi-ji/">
+                <span class="abstract-title-text">变分学习笔记</span>
             </a>
             <div class="abstract-content">
-                范数（norm）本质上就是一种 “长度”或“大小”的度量方法。
-
-对向量来说，范数告诉你“这个向量有多长”。
-
-对矩阵来说，范数告诉你“这个矩阵能把向量拉伸多少”或“矩阵自身有多大”。
-
-
-
+                <h1 id="变分推断"><a href="#变分推断" class="headerlink" title="变分推断"></a>变分推断</h1><h3 id="应用举例"><a href="#应用举例" class="headerlink" title="应用举例"></a>应用举例</h3><ul>
+<li>文章LAD题目分析</li>
+</ul>
             </div>
             <!-- read more -->
             <div class="abstract-post-meta">
                 <!-- date -->
-                <div class="abstract-date" title="Last updated: 2025/08/10">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2025/08/10</span>
+                <div class="abstract-date" title="Last updated: 2025/03/08">
+                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2021/03/29</span>
                 </div>
                 <!-- tags -->
                     <div class="abstract-tags" >
-        <a class="post-tag" href="javascript:void(0);" data-tags="数学">数学</a>
-</div>
-
-            </div>
-        </article>
-        <div class="index-post-divider"></div>
-            
-        <article class="index-post">
-            <a class="abstract-title" href="/2025/08/10/shu-xue-zhong-de-qi-ci-xing-li-jie/">
-                <span class="abstract-title-text">数学中的齐次性理解</span>
-            </a>
-            <div class="abstract-content">
-                什么是齐次性？在数学中，齐次性（Homogeneity） 通常指函数或方程在输入按比例缩放时，输出也按某个幂次比例缩放的性质。
-齐次函数一个映射  $ f: \mathbb{R}^n \to \mathbb{R} $ ，如果对于任意标量 $ \lambda $ 和输入向量 $ x \in \mathbb{R}^n $，满足：
-$$f(\lambda x) = \lambda^k f(x)$$
-则称该映射为k次齐次函数。这里，$ k $ 被称为齐次次数（degree of homogeneity）。
-示例：函数 $ f(x,y) = x^2 + y^2 $ 是二次齐次函数，因为
-$$f(\...
-            </div>
-            <!-- read more -->
-            <div class="abstract-post-meta">
-                <!-- date -->
-                <div class="abstract-date" title="Last updated: 2025/08/10">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2025/08/10</span>
-                </div>
-                <!-- tags -->
-                    <div class="abstract-tags" >
-        <a class="post-tag" href="javascript:void(0);" data-tags="数学">数学</a>
-</div>
-
-            </div>
-        </article>
-        <div class="index-post-divider"></div>
-            
-        <article class="index-post">
-            <a class="abstract-title" href="/2025/07/28/claude-code-xue-xi-ji-lu/">
-                <span class="abstract-title-text">Claude-Code学习记录</span>
-            </a>
-            <div class="abstract-content">
-                Claude Code 安装根据官方教程，照着操作就好了: https://docs.anthropic.com/en/docs/claude-code/setup
-接入 Kimi K2国内访问 Claude 困难，因此有了Kimi K2 平替方法，下面是操作步骤：
-首先到这里申请一个API， 然后设置环境变量：
-12export ANTHROPIC_BASE_URL="https://api.moonshot.cn/anthropic/"export ANTHROPIC_API_KEY="你的APY KEY"
-
-最后，由于 Claude code 设置了地域限制，需要绕过初始登录验证，...
-            </div>
-            <!-- read more -->
-            <div class="abstract-post-meta">
-                <!-- date -->
-                <div class="abstract-date" title="Last updated: 2025/07/28">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2025/07/28</span>
-                </div>
-                <!-- tags -->
-                    <div class="abstract-tags" >
-        <a class="post-tag" href="javascript:void(0);" data-tags="claude-code">claude-code</a>
-</div>
-
-            </div>
-        </article>
-        <div class="index-post-divider"></div>
-            
-        <article class="index-post">
-            <a class="abstract-title" href="/2025/07/25/uv-chang-yong-cao-zuo/">
-                <span class="abstract-title-text">uv常用操作</span>
-            </a>
-            <div class="abstract-content">
-                创建项目
-创建一个新的 Python 项目
-
-12uv init hello-worldcd hello-world
-
-
-在已有的工作目录中初始化一个项目
-
-123mkdir hello-worldcd hello-worlduv init
-
-项目结构一个完整的项目列表如下所示：
-12345678910.├── .venv│   ├── bin│   ├── lib│   └── pyvenv.cfg├── .python-version├── README.md├── main.py├── pyproject.toml└── uv.lock
-
-
-pyproject.toml 包含有关项...
-            </div>
-            <!-- read more -->
-            <div class="abstract-post-meta">
-                <!-- date -->
-                <div class="abstract-date" title="Last updated: 2025/07/25">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2025/07/25</span>
-                </div>
-                <!-- tags -->
-                    <div class="abstract-tags" >
-        <a class="post-tag" href="javascript:void(0);" data-tags="uv">uv</a>
-</div>
-
-            </div>
-        </article>
-        <div class="index-post-divider"></div>
-            
-        <article class="index-post">
-            <a class="abstract-title" href="/2025/07/13/quan-qi-wang-ding-li-gong-shi-tui-dao/">
-                <span class="abstract-title-text">全期望定理公式推导</span>
-            </a>
-            <div class="abstract-content">
-                引言最近推导强化学习的Bellman equation，在化解第二项Future Reward项时，需要用到全期望定理，秉承费曼学习法的理念，这里从两个方面对全期望定理公式进行介绍。首先，我们以一个简单的例子从感性上理解该公式，然后再从数学的角度对其进行较为严谨的推导。
-全期望定理公式
-假设$B_1, B_2, …, B_n$ 是一组互不相容的事件，并且形成样本空间的一个分割；
-$C$是一个确定事件，且 $p(C) &gt; 0$；
-$A$是一个随机变量。
-
-则有：$$E[A | C] = \sum_{i=1}^{n} p(B_i | C) E[A |B_i, C] $$上述公式即为全期...
-            </div>
-            <!-- read more -->
-            <div class="abstract-post-meta">
-                <!-- date -->
-                <div class="abstract-date" title="Last updated: 2025/08/10">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2025/07/13</span>
-                </div>
-                <!-- tags -->
-                    <div class="abstract-tags" >
-        <a class="post-tag" href="javascript:void(0);" data-tags="概率论">概率论</a>
-</div>
-
-            </div>
-        </article>
-        <div class="index-post-divider"></div>
-            
-        <article class="index-post">
-            <a class="abstract-title" href="/2025/07/12/bei-er-man-deng-shi-jie-shao-ji-tui-dao/">
-                <span class="abstract-title-text">贝尔曼等式介绍及推导</span>
-            </a>
-            <div class="abstract-content">
-                引言Bellman equation 是强化学习的基石，以前为了快速应用，这部分的知识没有吃透，总是有一种不踏实的感觉，这次从费曼学习法的思想出发，力求完全透彻理解该公式及其推导过程。接下来，我们分三个部分对Bellman equation进行讲述。
-前置知识贝尔曼等式推导的前置知识，主要包含条件概率的全概率公式，以及全期望定理，相关介绍在这里。
-Bellman equation 推导两个使用 Bellman equation 的例子
-            </div>
-            <!-- read more -->
-            <div class="abstract-post-meta">
-                <!-- date -->
-                <div class="abstract-date" title="Last updated: 2025/07/13">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2025/07/12</span>
-                </div>
-                <!-- tags -->
-                    <div class="abstract-tags" >
-        <a class="post-tag" href="javascript:void(0);" data-tags="强化学习">强化学习</a>
-</div>
-
-            </div>
-        </article>
-        <div class="index-post-divider"></div>
-            
-        <article class="index-post">
-            <a class="abstract-title" href="/2025/06/17/shi-yong-docker-gou-jian-webdav-fu-wu-qi/">
-                <span class="abstract-title-text">使用Docker构建Webdav服务器</span>
-            </a>
-            <div class="abstract-content">
-                1. 前言半年前，我曾基于 Apache2 搭建了一套 WebDAV 服务，用于实现 Obsidian 和 Zotero 的多端同步。那次部署过程可谓一波三折，尤其是在配置 SSL 签名和 Apache2 时遇到了不少麻烦。由于当时我没有备案的域名，只能使用公网 IP 申请 SSL 证书，而且免费证书只有 3 个月有效期，到期后还需要手动续签。虽然最终勉强配置成功，但也花了我不少时间和精力。
-遗憾的是，这套服务没能持续使用太久。等 SSL 证书过期之后，我因为忙于其他事务也就没有再去续签。而当我想重新启用这套同步方案时，却发现当时使用的华为云廉价服务器（仅 1GB 内存）卡顿严重，连 S...
-            </div>
-            <!-- read more -->
-            <div class="abstract-post-meta">
-                <!-- date -->
-                <div class="abstract-date" title="Last updated: 2025/06/25">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2025/06/17</span>
-                </div>
-                <!-- tags -->
-                    <div class="abstract-tags" >
-        <a class="post-tag" href="javascript:void(0);" data-tags="webdav, docker, obsidian, zotero">webdav, docker, obsidian, zotero</a>
+        <a class="post-tag" href="javascript:void(0);" data-tags="机器学习">机器学习</a>
 </div>
 
             </div>
@@ -694,7 +501,7 @@ Bellman equation 推导两个使用 Bellman equation 的例子
         <div class="index-post-divider"></div>
     <!-- paginator  -->
         <nav class="page-nav">
-            <span class="page-number current">1</span><a class="page-number" href="/archives/page/2/">2</a><a class="page-number" href="/archives/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/7/">7</a><a class="extend next" rel="next" href="/archives/page/2/">NEXT &gt;</a>
+            <a class="extend prev" rel="prev" href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">&lt; PREV</a><a class="page-number" href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">1</a><span class="page-number current">2</span>
         </nav>
 </main>
 

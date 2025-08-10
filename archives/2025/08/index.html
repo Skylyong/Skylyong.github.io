@@ -444,7 +444,17 @@
                 <span class="abstract-title-text">矩阵范数</span>
             </a>
             <div class="abstract-content">
-                
+                什么是矩阵范数矩阵范数（matrix norm）是将一个矩阵映射到非负实数的函数:  $|\cdot| $，用来度量矩阵的“大小”或“长度”。矩阵范数需要满足以下三个性质：
+
+非负性：对任意矩阵 $A$，有$$|A| \geq 0$$且当且仅当 $A$ 是零矩阵时，$|A| = 0$。
+
+齐次性（正齐次）：对任意标量 $\alpha$ 和矩阵 $A$，有$$|\alpha A| = |\alpha| \cdot |A|$$
+
+三角不等式：对任意矩阵 $A$ 和 $B$，有$$|A + B| \leq |A| + |B|$$
+
+
+矩阵范数的几种常见类型常见矩阵范数分两类：
+(A) 非算子范...
             </div>
             <!-- read more -->
             <div class="abstract-post-meta">
@@ -453,6 +463,10 @@
                     <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2025/08/10</span>
                 </div>
                 <!-- tags -->
+                    <div class="abstract-tags" >
+        <a class="post-tag" href="javascript:void(0);" data-tags="数学">数学</a>
+</div>
+
             </div>
         </article>
         <div class="index-post-divider"></div>
@@ -462,7 +476,13 @@
                 <span class="abstract-title-text">向量范数</span>
             </a>
             <div class="abstract-content">
-                
+                向量范数的定义数学上，向量范数是一个函数 $|\cdot|$，它把向量映射成一个非负实数，并满足以下三个条件（任何合法的范数都要满足）：
+非负性$$|x| \geq 0 \quad \text{且} \quad |x| = 0 \iff x = 0$$
+向量的长度不可能是负的，只有零向量长度为零。
+齐次性（homogeneity / scalability）$$|\alpha x| = |\alpha| \cdot |x|$$
+缩放向量，长度也按比例缩放。
+三角不等式$$|x + y| \leq |x| + |y|$$
+两个向量相加的“长度”不会超过它们长度之和（几何上就是三角形不等式）...
             </div>
             <!-- read more -->
             <div class="abstract-post-meta">
@@ -471,6 +491,10 @@
                     <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2025/08/10</span>
                 </div>
                 <!-- tags -->
+                    <div class="abstract-tags" >
+        <a class="post-tag" href="javascript:void(0);" data-tags="数学">数学</a>
+</div>
+
             </div>
         </article>
         <div class="index-post-divider"></div>
@@ -480,7 +504,14 @@
                 <span class="abstract-title-text">范数的基本概念</span>
             </a>
             <div class="abstract-content">
-                
+                范数（norm）本质上就是一种 “长度”或“大小”的度量方法。
+
+对向量来说，范数告诉你“这个向量有多长”。
+
+对矩阵来说，范数告诉你“这个矩阵能把向量拉伸多少”或“矩阵自身有多大”。
+
+
+
             </div>
             <!-- read more -->
             <div class="abstract-post-meta">
@@ -489,6 +520,10 @@
                     <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2025/08/10</span>
                 </div>
                 <!-- tags -->
+                    <div class="abstract-tags" >
+        <a class="post-tag" href="javascript:void(0);" data-tags="数学">数学</a>
+</div>
+
             </div>
         </article>
         <div class="index-post-divider"></div>
@@ -499,11 +534,11 @@
             </a>
             <div class="abstract-content">
                 什么是齐次性？在数学中，齐次性（Homogeneity） 通常指函数或方程在输入按比例缩放时，输出也按某个幂次比例缩放的性质。
-齐次函数一个函数  $ f: \mathbb{R}^n \to \mathbb{R} $  被称为k次齐次函数，如果对于任意标量 ( \lambda ) 和输入向量 ( x \in \mathbb{R}^n )，满足：
-[f(\lambda x) = \lambda^k f(x)]
-这里，( k ) 是齐次次数（degree of homogeneity）。
-示例：函数 ( f(x,y) = x^2 + y^2 ) 是二次齐次函数，因为
-[f(\lambda x...
+齐次函数一个映射  $ f: \mathbb{R}^n \to \mathbb{R} $ ，如果对于任意标量 $ \lambda $ 和输入向量 $ x \in \mathbb{R}^n $，满足：
+$$f(\lambda x) = \lambda^k f(x)$$
+则称该映射为k次齐次函数。这里，$ k $ 被称为齐次次数（degree of homogeneity）。
+示例：函数 $ f(x,y) = x^2 + y^2 $ 是二次齐次函数，因为
+$$f(\...
             </div>
             <!-- read more -->
             <div class="abstract-post-meta">
