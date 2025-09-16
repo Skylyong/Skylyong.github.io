@@ -422,6 +422,33 @@
                 <main class="main index-page">
             
         <article class="index-post">
+            <a class="abstract-title" href="/2025/03/06/ji-yu-bian-ji-ju-chi-de-wen-ben-ceng-ci-ju-lei/">
+                <span class="abstract-title-text">基于编辑距离的文本层次聚类</span>
+            </a>
+            <div class="abstract-content">
+                在自然语言处理（NLP）和数据清洗过程中，处理相似文本的聚类问题是一个常见的挑战。例如，在搜索日志、医学术语、客户查询等文本数据中，我们经常会遇到拼写相似或近似表达的词汇。为了更好地对这些数据进行分类和管理，我们可以使用 编辑距离（Levenshtein Distance） 结合 层次聚类（Hierarchical Clustering） 进行文本聚类。
+本文介绍了一种基于 Python 的 编辑距离层次聚类 方法，并提供了一个完整的实现代码。该方法的核心思想是：
+
+计算编辑距离矩阵：通过 Levenshtein 距离衡量文本之间的相似性。
+
+层次聚类：使用层次聚类，将相似的文本归类到相...
+            </div>
+            <!-- read more -->
+            <div class="abstract-post-meta">
+                <!-- date -->
+                <div class="abstract-date" title="Last updated: 2025/03/08">
+                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2025/03/06</span>
+                </div>
+                <!-- tags -->
+                    <div class="abstract-tags" >
+        <a class="post-tag" href="javascript:void(0);" data-tags="文本聚类 编辑距离">文本聚类 编辑距离</a>
+</div>
+
+            </div>
+        </article>
+        <div class="index-post-divider"></div>
+            
+        <article class="index-post">
             <a class="abstract-title" href="/2025/02/27/ai-jing-sai-ping-tai/">
                 <span class="abstract-title-text">Ai竞赛平台</span>
             </a>
@@ -673,32 +700,6 @@ Plan 1:把书精减一下，每天只带当...
             </div>
         </article>
         <div class="index-post-divider"></div>
-            
-        <article class="index-post">
-            <a class="abstract-title" href="/2025/01/07/sentence-transformers-sampler-bug-zhi-set-bu-yi-ding-shi-wu-xu-de/">
-                <span class="abstract-title-text">sentence-transformers sampler bug 之 set 不一定是无序的</span>
-            </a>
-            <div class="abstract-content">
-                前言问  题： 最近准备训练一个基于对比学习的模型， 用 huggface 的 trainer 训练器，在官方给的源代码中，有一个现成的 sampler 用于数据采样，我需要改写这个 sampler 以保证能够用于自己的数据上。
-实验改完之后，发现采样出来的 indices 竟然是有序的，实际在一个批次中需要打乱样本的顺序，仔细阅读了官方给的源码，发现问题出在如下图所示的 第187行。这里先用 torch.randperm生成了一个乱序的下标，然后转换为set。按理说set是无序的，转换之后也是无序的，看起来很正确。
-
-当我做了小测试后，发现并不是：
-从上面的结果，可以看到：torch....
-            </div>
-            <!-- read more -->
-            <div class="abstract-post-meta">
-                <!-- date -->
-                <div class="abstract-date" title="Last updated: 2025/03/08">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2025/01/07</span>
-                </div>
-                <!-- tags -->
-                    <div class="abstract-tags" >
-        <a class="post-tag" href="javascript:void(0);" data-tags="python">python</a>
-</div>
-
-            </div>
-        </article>
-        <div class="index-post-divider"></div>
     <!-- paginator  -->
         <nav class="page-nav">
             <a class="extend prev" rel="prev" href="/archives/page/2/">&lt; PREV</a><a class="page-number" href="/archives/">1</a><a class="page-number" href="/archives/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/archives/page/4/">4</a><a class="page-number" href="/archives/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/7/">7</a><a class="extend next" rel="next" href="/archives/page/4/">NEXT &gt;</a>
@@ -807,9 +808,10 @@ Plan 1:把书精减一下，每天只带当...
         
         
         
+        
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 63
+        Total : 64
         </div>
         <!-- search  -->
             <div class="site-search site-search-loading popup-trigger">
@@ -819,6 +821,10 @@ Plan 1:把书精减一下，每天只带当...
     <div class="post-archive">
             <div class="archive-year"> 2025 </div>
             <ul class="year-list">
+        <li class="archive-post-item">
+            <span class="archive-post-date">09/16</span>
+            <a class="archive-post-title" href="/2025/09/16/linux-ci-pan-guan-li-ji-minio-fu-wu-pei-zhi/">Linux磁盘管理及MinIO服务配置</a>
+        </li>
         <li class="archive-post-item">
             <span class="archive-post-date">08/10</span>
             <a class="archive-post-title" href="/2025/08/10/bu-dong-dian-he-ya-suo-ying-she/">不动点和压缩映射</a>
@@ -1054,11 +1060,11 @@ Plan 1:把书精减一下，每天只带当...
         </li>
         <li class="archive-post-item">
             <span class="archive-post-date">03/31</span>
-            <a class="archive-post-title" href="/2021/03/31/ying-yu-kou-yu-lian-xi-dian-ying-tui-jian/">英语口语练习电影推荐</a>
+            <a class="archive-post-title" href="/2021/03/31/xue-xi-shi-pin-zheng-li/">学习视频整理</a>
         </li>
         <li class="archive-post-item">
             <span class="archive-post-date">03/31</span>
-            <a class="archive-post-title" href="/2021/03/31/xue-xi-shi-pin-zheng-li/">学习视频整理</a>
+            <a class="archive-post-title" href="/2021/03/31/ying-yu-kou-yu-lian-xi-dian-ying-tui-jian/">英语口语练习电影推荐</a>
         </li>
         <li class="archive-post-item">
             <span class="archive-post-date">03/30</span>
@@ -1094,6 +1100,10 @@ Plan 1:把书精减一下，每天只带当...
                 <span class="iconfont-archer">&#xe606;</span>
                 ai竞赛
             </span>
+            <span class="sidebar-tag-name" data-tags="GitLab">
+                <span class="iconfont-archer">&#xe606;</span>
+                GitLab
+            </span>
             <span class="sidebar-tag-name" data-tags="GitHub">
                 <span class="iconfont-archer">&#xe606;</span>
                 GitHub
@@ -1102,25 +1112,17 @@ Plan 1:把书精减一下，每天只带当...
                 <span class="iconfont-archer">&#xe606;</span>
                 Google访问助手
             </span>
-            <span class="sidebar-tag-name" data-tags="GitLab">
-                <span class="iconfont-archer">&#xe606;</span>
-                GitLab
-            </span>
-            <span class="sidebar-tag-name" data-tags="预训练模型">
-                <span class="iconfont-archer">&#xe606;</span>
-                预训练模型
-            </span>
             <span class="sidebar-tag-name" data-tags="启动U盘">
                 <span class="iconfont-archer">&#xe606;</span>
                 启动U盘
             </span>
+            <span class="sidebar-tag-name" data-tags="claude-code">
+                <span class="iconfont-archer">&#xe606;</span>
+                claude-code
+            </span>
             <span class="sidebar-tag-name" data-tags="nlp">
                 <span class="iconfont-archer">&#xe606;</span>
                 nlp
-            </span>
-            <span class="sidebar-tag-name" data-tags="Pandas">
-                <span class="iconfont-archer">&#xe606;</span>
-                Pandas
             </span>
             <span class="sidebar-tag-name" data-tags="pytorch">
                 <span class="iconfont-archer">&#xe606;</span>
@@ -1134,13 +1136,17 @@ Plan 1:把书精减一下，每天只带当...
                 <span class="iconfont-archer">&#xe606;</span>
                 git
             </span>
-            <span class="sidebar-tag-name" data-tags="github">
+            <span class="sidebar-tag-name" data-tags="预训练模型">
                 <span class="iconfont-archer">&#xe606;</span>
-                github
+                预训练模型
             </span>
             <span class="sidebar-tag-name" data-tags="博客">
                 <span class="iconfont-archer">&#xe606;</span>
                 博客
+            </span>
+            <span class="sidebar-tag-name" data-tags="Pandas">
+                <span class="iconfont-archer">&#xe606;</span>
+                Pandas
             </span>
             <span class="sidebar-tag-name" data-tags="jupyter notebook">
                 <span class="iconfont-archer">&#xe606;</span>
@@ -1150,17 +1156,9 @@ Plan 1:把书精减一下，每天只带当...
                 <span class="iconfont-archer">&#xe606;</span>
                 python
             </span>
-            <span class="sidebar-tag-name" data-tags="neo4j">
-                <span class="iconfont-archer">&#xe606;</span>
-                neo4j
-            </span>
             <span class="sidebar-tag-name" data-tags="NIVIDIA驱动">
                 <span class="iconfont-archer">&#xe606;</span>
                 NIVIDIA驱动
-            </span>
-            <span class="sidebar-tag-name" data-tags="uv">
-                <span class="iconfont-archer">&#xe606;</span>
-                uv
             </span>
             <span class="sidebar-tag-name" data-tags="vscode">
                 <span class="iconfont-archer">&#xe606;</span>
@@ -1170,53 +1168,65 @@ Plan 1:把书精减一下，每天只带当...
                 <span class="iconfont-archer">&#xe606;</span>
                 树
             </span>
-            <span class="sidebar-tag-name" data-tags="动态规划">
+            <span class="sidebar-tag-name" data-tags="github">
                 <span class="iconfont-archer">&#xe606;</span>
-                动态规划
+                github
             </span>
-            <span class="sidebar-tag-name" data-tags="摄影">
+            <span class="sidebar-tag-name" data-tags="uv">
                 <span class="iconfont-archer">&#xe606;</span>
-                摄影
+                uv
             </span>
             <span class="sidebar-tag-name" data-tags="文本聚类 bert向量表示">
                 <span class="iconfont-archer">&#xe606;</span>
                 文本聚类 bert向量表示
             </span>
-            <span class="sidebar-tag-name" data-tags="webdav, docker, obsidian, zotero">
+            <span class="sidebar-tag-name" data-tags="动态规划">
                 <span class="iconfont-archer">&#xe606;</span>
-                webdav, docker, obsidian, zotero
+                动态规划
             </span>
-            <span class="sidebar-tag-name" data-tags="日志">
+            <span class="sidebar-tag-name" data-tags="概率论">
                 <span class="iconfont-archer">&#xe606;</span>
-                日志
+                概率论
             </span>
-            <span class="sidebar-tag-name" data-tags="强化学习">
+            <span class="sidebar-tag-name" data-tags="neo4j">
                 <span class="iconfont-archer">&#xe606;</span>
-                强化学习
-            </span>
-            <span class="sidebar-tag-name" data-tags="图">
-                <span class="iconfont-archer">&#xe606;</span>
-                图
+                neo4j
             </span>
             <span class="sidebar-tag-name" data-tags="机器学习">
                 <span class="iconfont-archer">&#xe606;</span>
                 机器学习
             </span>
+            <span class="sidebar-tag-name" data-tags="日志">
+                <span class="iconfont-archer">&#xe606;</span>
+                日志
+            </span>
+            <span class="sidebar-tag-name" data-tags="图">
+                <span class="iconfont-archer">&#xe606;</span>
+                图
+            </span>
             <span class="sidebar-tag-name" data-tags="python_c++_互通">
                 <span class="iconfont-archer">&#xe606;</span>
                 python_c++_互通
+            </span>
+            <span class="sidebar-tag-name" data-tags="数学">
+                <span class="iconfont-archer">&#xe606;</span>
+                数学
             </span>
             <span class="sidebar-tag-name" data-tags="呈贡">
                 <span class="iconfont-archer">&#xe606;</span>
                 呈贡
             </span>
+            <span class="sidebar-tag-name" data-tags="电影">
+                <span class="iconfont-archer">&#xe606;</span>
+                电影
+            </span>
             <span class="sidebar-tag-name" data-tags="文本聚类 编辑距离">
                 <span class="iconfont-archer">&#xe606;</span>
                 文本聚类 编辑距离
             </span>
-            <span class="sidebar-tag-name" data-tags="电影">
+            <span class="sidebar-tag-name" data-tags="编程">
                 <span class="iconfont-archer">&#xe606;</span>
-                电影
+                编程
             </span>
             <span class="sidebar-tag-name" data-tags="微信">
                 <span class="iconfont-archer">&#xe606;</span>
@@ -1226,13 +1236,13 @@ Plan 1:把书精减一下，每天只带当...
                 <span class="iconfont-archer">&#xe606;</span>
                 干货
             </span>
+            <span class="sidebar-tag-name" data-tags="webdav, docker, obsidian, zotero">
+                <span class="iconfont-archer">&#xe606;</span>
+                webdav, docker, obsidian, zotero
+            </span>
             <span class="sidebar-tag-name" data-tags="资源">
                 <span class="iconfont-archer">&#xe606;</span>
                 资源
-            </span>
-            <span class="sidebar-tag-name" data-tags="docker">
-                <span class="iconfont-archer">&#xe606;</span>
-                docker
             </span>
             <span class="sidebar-tag-name" data-tags="熵">
                 <span class="iconfont-archer">&#xe606;</span>
@@ -1246,29 +1256,25 @@ Plan 1:把书精减一下，每天只带当...
                 <span class="iconfont-archer">&#xe606;</span>
                 竞赛
             </span>
-            <span class="sidebar-tag-name" data-tags="街拍">
+            <span class="sidebar-tag-name" data-tags="摄影">
                 <span class="iconfont-archer">&#xe606;</span>
-                街拍
-            </span>
-            <span class="sidebar-tag-name" data-tags="编程">
-                <span class="iconfont-archer">&#xe606;</span>
-                编程
+                摄影
             </span>
             <span class="sidebar-tag-name" data-tags="docker, doccano">
                 <span class="iconfont-archer">&#xe606;</span>
                 docker, doccano
             </span>
-            <span class="sidebar-tag-name" data-tags="claude-code">
+            <span class="sidebar-tag-name" data-tags="docker">
                 <span class="iconfont-archer">&#xe606;</span>
-                claude-code
+                docker
             </span>
-            <span class="sidebar-tag-name" data-tags="概率论">
+            <span class="sidebar-tag-name" data-tags="街拍">
                 <span class="iconfont-archer">&#xe606;</span>
-                概率论
+                街拍
             </span>
-            <span class="sidebar-tag-name" data-tags="数学">
+            <span class="sidebar-tag-name" data-tags="强化学习">
                 <span class="iconfont-archer">&#xe606;</span>
-                数学
+                强化学习
             </span>
     </div>
     <div class="iconfont-archer sidebar-tags-empty">&#xe678;</div>
@@ -1296,9 +1302,9 @@ Plan 1:把书精减一下，每天只带当...
             <span class="iconfont-archer">&#xe60a;</span>
             干货
         </span>
-        <span class="sidebar-category-name" data-categories="人工智能">
+        <span class="sidebar-category-name" data-categories="编程开发">
             <span class="iconfont-archer">&#xe60a;</span>
-            人工智能
+            编程开发
         </span>
         <span class="sidebar-category-name" data-categories="知识框架">
             <span class="iconfont-archer">&#xe60a;</span>
@@ -1308,9 +1314,9 @@ Plan 1:把书精减一下，每天只带当...
             <span class="iconfont-archer">&#xe60a;</span>
             学习笔记
         </span>
-        <span class="sidebar-category-name" data-categories="编程开发">
+        <span class="sidebar-category-name" data-categories="人工智能">
             <span class="iconfont-archer">&#xe60a;</span>
-            编程开发
+            人工智能
         </span>
         <span class="sidebar-category-name" data-categories="生活总结">
             <span class="iconfont-archer">&#xe60a;</span>
@@ -1324,25 +1330,21 @@ Plan 1:把书精减一下，每天只带当...
             <span class="iconfont-archer">&#xe60a;</span>
             编程
         </span>
-        <span class="sidebar-category-name" data-categories="算法笔记">
-            <span class="iconfont-archer">&#xe60a;</span>
-            算法笔记
-        </span>
-        <span class="sidebar-category-name" data-categories="摄影">
-            <span class="iconfont-archer">&#xe60a;</span>
-            摄影
-        </span>
         <span class="sidebar-category-name" data-categories="自然语言处理">
             <span class="iconfont-archer">&#xe60a;</span>
             自然语言处理
         </span>
-        <span class="sidebar-category-name" data-categories="运维">
+        <span class="sidebar-category-name" data-categories="算法笔记">
             <span class="iconfont-archer">&#xe60a;</span>
-            运维
+            算法笔记
         </span>
         <span class="sidebar-category-name" data-categories="算法">
             <span class="iconfont-archer">&#xe60a;</span>
             算法
+        </span>
+        <span class="sidebar-category-name" data-categories="学习资料">
+            <span class="iconfont-archer">&#xe60a;</span>
+            学习资料
         </span>
         <span class="sidebar-category-name" data-categories="收藏">
             <span class="iconfont-archer">&#xe60a;</span>
@@ -1352,13 +1354,17 @@ Plan 1:把书精减一下，每天只带当...
             <span class="iconfont-archer">&#xe60a;</span>
             数据集
         </span>
-        <span class="sidebar-category-name" data-categories="学习资料">
+        <span class="sidebar-category-name" data-categories="运维">
             <span class="iconfont-archer">&#xe60a;</span>
-            学习资料
+            运维
         </span>
         <span class="sidebar-category-name" data-categories="机器学习">
             <span class="iconfont-archer">&#xe60a;</span>
             机器学习
+        </span>
+        <span class="sidebar-category-name" data-categories="摄影">
+            <span class="iconfont-archer">&#xe60a;</span>
+            摄影
         </span>
     </div>
     <div class="iconfont-archer sidebar-categories-empty">&#xe678;</div>
