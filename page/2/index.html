@@ -429,6 +429,38 @@
                 <main class="main index-page">
             
         <article class="index-post">
+            <a class="abstract-title" href="/2025/05/14/git-team-collab-workflow/">
+                <span class="abstract-title-text">git_team_collab_workflow</span>
+            </a>
+            <div class="abstract-content">
+                🛠️ 团队 Git 协作流程规范为确保多人协作开发的高效与规范，团队统一采用如下 Git 工作流流程， 记录如下：
+🛠️ 0. 克隆远程仓库1git clone git@github.com:xxx.git
+
+
+🚀 1. 创建个人开发分支1git checkout -b &lt;your_branch_name&gt;
+
+
+🛠️ 2. 本地开发与提交123git diff                   # 查看变更（可选）git add &lt;file&gt;             # 添加到暂存区git commit -m "说明内容"    # 提交
+
+
+☁️ 3....
+            </div>
+            <!-- read more -->
+            <div class="abstract-post-meta">
+                <!-- date -->
+                <div class="abstract-date" title="Last updated: 2025/05/14">
+                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2025/05/14</span>
+                </div>
+                <!-- tags -->
+                    <div class="abstract-tags" >
+        <a class="post-tag" href="javascript:void(0);" data-tags="github">github</a>
+</div>
+
+            </div>
+        </article>
+        <div class="index-post-divider"></div>
+            
+        <article class="index-post">
             <a class="abstract-title" href="/2025/04/24/ben-di-gou-jian-docker-jing-xiang-bing-shang-chuan-zhi-a-li-yun-jing-xiang-fu-wu-zhan/">
                 <span class="abstract-title-text">本地构建docker镜像并上传至阿里云镜像服务站</span>
             </a>
@@ -1108,31 +1140,6 @@ api 调用大模型时，指定返回json格式数据
             </div>
         </article>
         <div class="index-post-divider"></div>
-            
-        <article class="index-post">
-            <a class="abstract-title" href="/2025/02/12/tong-guo-docker-bu-shu-doccano-biao-zhu-gong-ju/">
-                <span class="abstract-title-text">通过docker部署doccano标注工具</span>
-            </a>
-            <div class="abstract-content">
-                上半年使用了 doccano 标注工具对命名实体识别任务做了标注，感觉很好用。最近准备将其部署到服务器上，通过 docker 容器的方式进行，以便于以后可以快速部署。
-许久不用也是遇到了不少问题，主要是部署好系统后，上传数据一直转圈，没有反应，后面发现是因为没有启动 doccano task,而task需要和 doccano webserver 一起启动， openai 给我的建议是启动两个 docker 服务，我还是选用了常规的 screen 方式。
-下面是自己编写的可以使用的 docker-compose 文件，记录在此，方便以后调用。
-12345678910111213141516...
-            </div>
-            <!-- read more -->
-            <div class="abstract-post-meta">
-                <!-- date -->
-                <div class="abstract-date" title="Last updated: 2025/03/08">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2025/02/12</span>
-                </div>
-                <!-- tags -->
-                    <div class="abstract-tags" >
-        <a class="post-tag" href="javascript:void(0);" data-tags="docker, doccano">docker, doccano</a>
-</div>
-
-            </div>
-        </article>
-        <div class="index-post-divider"></div>
     <!-- paginator  -->
         <nav class="page-nav">
             <a class="extend prev" rel="prev" href="/">&lt; PREV</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/3/">NEXT &gt;</a>
@@ -1296,9 +1303,10 @@ api 调用大模型时，指定返回json格式数据
         
         
         
+        
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 64
+        Total : 65
         </div>
         <!-- search  -->
             <div class="site-search site-search-loading popup-trigger">
@@ -1308,6 +1316,10 @@ api 调用大模型时，指定返回json格式数据
     <div class="post-archive">
             <div class="archive-year"> 2025 </div>
             <ul class="year-list">
+        <li class="archive-post-item">
+            <span class="archive-post-date">09/28</span>
+            <a class="archive-post-title" href="/2025/09/28/quan-ju-pei-zhi-docker-ke-hu-duan-dai-li/">全局配置Docker客户端代理</a>
+        </li>
         <li class="archive-post-item">
             <span class="archive-post-date">09/16</span>
             <a class="archive-post-title" href="/2025/09/16/linux-ci-pan-guan-li-ji-minio-fu-wu-pei-zhi/">Linux磁盘管理及MinIO服务配置</a>

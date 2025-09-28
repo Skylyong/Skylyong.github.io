@@ -422,6 +422,27 @@
                 <main class="main index-page">
             
         <article class="index-post">
+            <a class="abstract-title" href="/2025/09/28/quan-ju-pei-zhi-docker-ke-hu-duan-dai-li/">
+                <span class="abstract-title-text">全局配置Docker客户端代理</span>
+            </a>
+            <div class="abstract-content">
+                我们下载镜像的时候需要科学上网，下面介绍一下全局配置Docker客户端代理的方法，配置好以后所有 docker build, docker pull, docker run 等命令都可以直接使用代理。
+1. 编辑配置目录12sudo mkdir -p /etc/systemd/system/docker.service.dsudo vim /etc/systemd/system/docker.service.d/proxy.conf
+
+2. 写入内容 （根据你的代理地址和端口改）1234[Service]   Environment="HTTP_PROXY=http://YOUR_PRO...
+            </div>
+            <!-- read more -->
+            <div class="abstract-post-meta">
+                <!-- date -->
+                <div class="abstract-date" title="Last updated: 2025/09/28">
+                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2025/09/28</span>
+                </div>
+                <!-- tags -->
+            </div>
+        </article>
+        <div class="index-post-divider"></div>
+            
+        <article class="index-post">
             <a class="abstract-title" href="/2025/09/16/linux-ci-pan-guan-li-ji-minio-fu-wu-pei-zhi/">
                 <span class="abstract-title-text">Linux磁盘管理及MinIO服务配置</span>
             </a>
@@ -670,30 +691,6 @@ $A$是一个随机变量。
             </div>
         </article>
         <div class="index-post-divider"></div>
-            
-        <article class="index-post">
-            <a class="abstract-title" href="/2025/07/12/bei-er-man-deng-shi-jie-shao-ji-tui-dao/">
-                <span class="abstract-title-text">贝尔曼等式介绍及推导</span>
-            </a>
-            <div class="abstract-content">
-                引言Bellman equation 是强化学习的基石，以前为了快速应用，这部分的知识没有吃透，总是有一种不踏实的感觉，这次从费曼学习法的思想出发，力求完全透彻理解该公式及其推导过程。接下来，我们分三个部分对Bellman equation进行讲述。
-前置知识贝尔曼等式推导的前置知识，主要包含条件概率的全概率公式，以及全期望定理，相关介绍在这里。
-Bellman equation 推导两个使用 Bellman equation 的例子
-            </div>
-            <!-- read more -->
-            <div class="abstract-post-meta">
-                <!-- date -->
-                <div class="abstract-date" title="Last updated: 2025/07/13">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2025/07/12</span>
-                </div>
-                <!-- tags -->
-                    <div class="abstract-tags" >
-        <a class="post-tag" href="javascript:void(0);" data-tags="强化学习">强化学习</a>
-</div>
-
-            </div>
-        </article>
-        <div class="index-post-divider"></div>
     <!-- paginator  -->
         <nav class="page-nav">
             <span class="page-number current">1</span><a class="page-number" href="/archives/page/2/">2</a><a class="page-number" href="/archives/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/7/">7</a><a class="extend next" rel="next" href="/archives/page/2/">NEXT &gt;</a>
@@ -803,9 +800,10 @@ Bellman equation 推导两个使用 Bellman equation 的例子
         
         
         
+        
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 64
+        Total : 65
         </div>
         <!-- search  -->
             <div class="site-search site-search-loading popup-trigger">
@@ -815,6 +813,10 @@ Bellman equation 推导两个使用 Bellman equation 的例子
     <div class="post-archive">
             <div class="archive-year"> 2025 </div>
             <ul class="year-list">
+        <li class="archive-post-item">
+            <span class="archive-post-date">09/28</span>
+            <a class="archive-post-title" href="/2025/09/28/quan-ju-pei-zhi-docker-ke-hu-duan-dai-li/">全局配置Docker客户端代理</a>
+        </li>
         <li class="archive-post-item">
             <span class="archive-post-date">09/16</span>
             <a class="archive-post-title" href="/2025/09/16/linux-ci-pan-guan-li-ji-minio-fu-wu-pei-zhi/">Linux磁盘管理及MinIO服务配置</a>

@@ -422,6 +422,27 @@
                 <main class="main index-page">
             
         <article class="index-post">
+            <a class="abstract-title" href="/2025/09/28/quan-ju-pei-zhi-docker-ke-hu-duan-dai-li/">
+                <span class="abstract-title-text">全局配置Docker客户端代理</span>
+            </a>
+            <div class="abstract-content">
+                我们下载镜像的时候需要科学上网，下面介绍一下全局配置Docker客户端代理的方法，配置好以后所有 docker build, docker pull, docker run 等命令都可以直接使用代理。
+1. 编辑配置目录12sudo mkdir -p /etc/systemd/system/docker.service.dsudo vim /etc/systemd/system/docker.service.d/proxy.conf
+
+2. 写入内容 （根据你的代理地址和端口改）1234[Service]   Environment="HTTP_PROXY=http://YOUR_PRO...
+            </div>
+            <!-- read more -->
+            <div class="abstract-post-meta">
+                <!-- date -->
+                <div class="abstract-date" title="Last updated: 2025/09/28">
+                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2025/09/28</span>
+                </div>
+                <!-- tags -->
+            </div>
+        </article>
+        <div class="index-post-divider"></div>
+            
+        <article class="index-post">
             <a class="abstract-title" href="/2025/09/16/linux-ci-pan-guan-li-ji-minio-fu-wu-pei-zhi/">
                 <span class="abstract-title-text">Linux磁盘管理及MinIO服务配置</span>
             </a>
@@ -551,9 +572,10 @@ sdb 是系统盘
         
         
         
+        
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 64
+        Total : 65
         </div>
         <!-- search  -->
             <div class="site-search site-search-loading popup-trigger">
@@ -563,6 +585,10 @@ sdb 是系统盘
     <div class="post-archive">
             <div class="archive-year"> 2025 </div>
             <ul class="year-list">
+        <li class="archive-post-item">
+            <span class="archive-post-date">09/28</span>
+            <a class="archive-post-title" href="/2025/09/28/quan-ju-pei-zhi-docker-ke-hu-duan-dai-li/">全局配置Docker客户端代理</a>
+        </li>
         <li class="archive-post-item">
             <span class="archive-post-date">09/16</span>
             <a class="archive-post-title" href="/2025/09/16/linux-ci-pan-guan-li-ji-minio-fu-wu-pei-zhi/">Linux磁盘管理及MinIO服务配置</a>

@@ -4,6 +4,25 @@
   
     
     <entry>
+      <title>全局配置Docker客户端代理</title>
+      <link href="/2025/09/28/quan-ju-pei-zhi-docker-ke-hu-duan-dai-li/"/>
+      <url>/2025/09/28/quan-ju-pei-zhi-docker-ke-hu-duan-dai-li/</url>
+      
+        <content type="html"><![CDATA[<p>我们下载镜像的时候需要科学上网，下面介绍一下全局配置Docker客户端代理的方法，配置好<br>以后所有 docker build, docker pull, docker run 等命令都可以直接使用代理。</p><h2 id="1-编辑配置目录"><a href="#1-编辑配置目录" class="headerlink" title="1. 编辑配置目录"></a>1. 编辑配置目录</h2><figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> <span class="built_in">mkdir</span> -p /etc/systemd/system/docker.service.d</span><br><span class="line"><span class="built_in">sudo</span> vim /etc/systemd/system/docker.service.d/proxy.conf</span><br></pre></td></tr></tbody></table></figure><h2 id="2-写入内容-（根据你的代理地址和端口改）"><a href="#2-写入内容-（根据你的代理地址和端口改）" class="headerlink" title="2. 写入内容 （根据你的代理地址和端口改）"></a>2. 写入内容 （根据你的代理地址和端口改）</h2><figure class="highlight ini"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">[Service]</span>   </span><br><span class="line"><span class="attr">Environment</span>=<span class="string">"HTTP_PROXY=http://YOUR_PROXY_IP:YOUR_PROXY_PORT"</span></span><br><span class="line"><span class="attr">Environment</span>=<span class="string">"HTTPS_PROXY=http://YOUR_PROXY_IP:YOUR_PROXY_PORT"</span></span><br><span class="line"><span class="attr">Environment</span>=<span class="string">"NO_PROXY=localhost,127.0.0.1,registry.local,.internal"</span></span><br></pre></td></tr></tbody></table></figure><h2 id="3-重载配置并重启docker服务"><a href="#3-重载配置并重启docker服务" class="headerlink" title="3. 重载配置并重启docker服务"></a>3. 重载配置并重启docker服务</h2><figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> systemctl daemon-reload</span><br><span class="line"><span class="built_in">sudo</span> systemctl restart docker</span><br></pre></td></tr></tbody></table></figure><h2 id="4-验证"><a href="#4-验证" class="headerlink" title="4. 验证"></a>4. 验证</h2><figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> systemctl show --property=Environment docker</span><br></pre></td></tr></tbody></table></figure><p>如果看到你刚才设置的环境变量就说明配置成功了。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 学习笔记 </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Linux磁盘管理及MinIO服务配置</title>
       <link href="/2025/09/16/linux-ci-pan-guan-li-ji-minio-fu-wu-pei-zhi/"/>
       <url>/2025/09/16/linux-ci-pan-guan-li-ji-minio-fu-wu-pei-zhi/</url>

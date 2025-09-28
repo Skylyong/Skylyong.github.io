@@ -429,6 +429,27 @@
                 <main class="main index-page">
             
         <article class="index-post">
+            <a class="abstract-title" href="/2025/09/28/quan-ju-pei-zhi-docker-ke-hu-duan-dai-li/">
+                <span class="abstract-title-text">全局配置Docker客户端代理</span>
+            </a>
+            <div class="abstract-content">
+                我们下载镜像的时候需要科学上网，下面介绍一下全局配置Docker客户端代理的方法，配置好以后所有 docker build, docker pull, docker run 等命令都可以直接使用代理。
+1. 编辑配置目录12sudo mkdir -p /etc/systemd/system/docker.service.dsudo vim /etc/systemd/system/docker.service.d/proxy.conf
+
+2. 写入内容 （根据你的代理地址和端口改）1234[Service]   Environment="HTTP_PROXY=http://YOUR_PRO...
+            </div>
+            <!-- read more -->
+            <div class="abstract-post-meta">
+                <!-- date -->
+                <div class="abstract-date" title="Last updated: 2025/09/28">
+                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2025/09/28</span>
+                </div>
+                <!-- tags -->
+            </div>
+        </article>
+        <div class="index-post-divider"></div>
+            
+        <article class="index-post">
             <a class="abstract-title" href="/2025/09/16/linux-ci-pan-guan-li-ji-minio-fu-wu-pei-zhi/">
                 <span class="abstract-title-text">Linux磁盘管理及MinIO服务配置</span>
             </a>
@@ -724,38 +745,6 @@ Bellman equation 推导两个使用 Bellman equation 的例子
             </div>
         </article>
         <div class="index-post-divider"></div>
-            
-        <article class="index-post">
-            <a class="abstract-title" href="/2025/05/14/git-team-collab-workflow/">
-                <span class="abstract-title-text">git_team_collab_workflow</span>
-            </a>
-            <div class="abstract-content">
-                🛠️ 团队 Git 协作流程规范为确保多人协作开发的高效与规范，团队统一采用如下 Git 工作流流程， 记录如下：
-🛠️ 0. 克隆远程仓库1git clone git@github.com:xxx.git
-
-
-🚀 1. 创建个人开发分支1git checkout -b &lt;your_branch_name&gt;
-
-
-🛠️ 2. 本地开发与提交123git diff                   # 查看变更（可选）git add &lt;file&gt;             # 添加到暂存区git commit -m "说明内容"    # 提交
-
-
-☁️ 3....
-            </div>
-            <!-- read more -->
-            <div class="abstract-post-meta">
-                <!-- date -->
-                <div class="abstract-date" title="Last updated: 2025/05/14">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2025/05/14</span>
-                </div>
-                <!-- tags -->
-                    <div class="abstract-tags" >
-        <a class="post-tag" href="javascript:void(0);" data-tags="github">github</a>
-</div>
-
-            </div>
-        </article>
-        <div class="index-post-divider"></div>
     <!-- paginator  -->
         <nav class="page-nav">
             <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/2/">NEXT &gt;</a>
@@ -919,9 +908,10 @@ Bellman equation 推导两个使用 Bellman equation 的例子
         
         
         
+        
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 64
+        Total : 65
         </div>
         <!-- search  -->
             <div class="site-search site-search-loading popup-trigger">
@@ -931,6 +921,10 @@ Bellman equation 推导两个使用 Bellman equation 的例子
     <div class="post-archive">
             <div class="archive-year"> 2025 </div>
             <ul class="year-list">
+        <li class="archive-post-item">
+            <span class="archive-post-date">09/28</span>
+            <a class="archive-post-title" href="/2025/09/28/quan-ju-pei-zhi-docker-ke-hu-duan-dai-li/">全局配置Docker客户端代理</a>
+        </li>
         <li class="archive-post-item">
             <span class="archive-post-date">09/16</span>
             <a class="archive-post-title" href="/2025/09/16/linux-ci-pan-guan-li-ji-minio-fu-wu-pei-zhi/">Linux磁盘管理及MinIO服务配置</a>
