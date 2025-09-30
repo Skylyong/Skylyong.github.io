@@ -429,6 +429,35 @@
                 <main class="main index-page">
             
         <article class="index-post">
+            <a class="abstract-title" href="/2022/04/29/yuan-cheng-fang-wen-fu-wu-qi-jupyter-notebook/">
+                <span class="abstract-title-text">远程访问服务器Jupyter-Notebook</span>
+            </a>
+            <div class="abstract-content">
+                方法： ssh远程使用jupyter notebook在远程服务器上，启动jupyter notebooks服务：
+1jupyter notebook --no-browser --port=8889
+
+在本地终端中启动SSH：
+1ssh -N -f -L localhost:8888:localhost:8889 username@serverIP
+
+其中： -N 告诉SSH没有命令要被远程执行； -f 告诉SSH在后台执行； -L 是指定port forwarding的配置，远端端口是8889，本地的端口号的8888。
+注意：username@serverIP替换成服务器的对应账号。...
+            </div>
+            <!-- read more -->
+            <div class="abstract-post-meta">
+                <!-- date -->
+                <div class="abstract-date" title="Last updated: 2025/03/08">
+                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2022/04/29</span>
+                </div>
+                <!-- tags -->
+                    <div class="abstract-tags" >
+        <a class="post-tag" href="javascript:void(0);" data-tags="jupyter notebook">jupyter notebook</a>
+</div>
+
+            </div>
+        </article>
+        <div class="index-post-divider"></div>
+            
+        <article class="index-post">
             <a class="abstract-title" href="/2021/12/10/c-duo-xian-cheng-bian-cheng/">
                 <span class="abstract-title-text">C++多线程编程</span>
             </a>
@@ -779,35 +808,6 @@ https://www.svm-tutorial.com/2014/11/svm-understanding-math-part-1/
             </div>
         </article>
         <div class="index-post-divider"></div>
-            
-        <article class="index-post">
-            <a class="abstract-title" href="/2021/08/06/pandas-xue-xi/">
-                <span class="abstract-title-text">Pandas学习</span>
-            </a>
-            <div class="abstract-content">
-                
-Video url: https://www.youtube.com/watch?v=vmEHCJofslg
-Pandas document: https://pandas.pydata.org/pandas-docs/stable/reference/index.html#api
-Pracice Pandas:   https://stratascratch.com/?via=keith
-
-1. Loading data into Pandas
-1.1 Loading data from csv format file
-123# read data from csv format f...
-            </div>
-            <!-- read more -->
-            <div class="abstract-post-meta">
-                <!-- date -->
-                <div class="abstract-date" title="Last updated: 2025/03/08">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2021/08/06</span>
-                </div>
-                <!-- tags -->
-                    <div class="abstract-tags" >
-        <a class="post-tag" href="javascript:void(0);" data-tags="Pandas">Pandas</a>
-</div>
-
-            </div>
-        </article>
-        <div class="index-post-divider"></div>
     <!-- paginator  -->
         <nav class="page-nav">
             <a class="extend prev" rel="prev" href="/page/3/">&lt; PREV</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/5/">NEXT &gt;</a>
@@ -971,9 +971,10 @@ Pracice Pandas:   https://stratascratch.com/?via=keith
         
         
         
+        
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 64
+        Total : 65
         </div>
         <!-- search  -->
             <div class="site-search site-search-loading popup-trigger">
@@ -983,6 +984,10 @@ Pracice Pandas:   https://stratascratch.com/?via=keith
     <div class="post-archive">
             <div class="archive-year"> 2025 </div>
             <ul class="year-list">
+        <li class="archive-post-item">
+            <span class="archive-post-date">09/29</span>
+            <a class="archive-post-title" href="/2025/09/29/tong-guo-docker-yun-xing-easyconnect-deng-vpn-ruan-jian/">通过docker运行EasyConnect等VPN软件</a>
+        </li>
         <li class="archive-post-item">
             <span class="archive-post-date">09/28</span>
             <a class="archive-post-title" href="/2025/09/28/quan-ju-pei-zhi-docker-ke-hu-duan-dai-li/">全局配置Docker客户端代理</a>
@@ -1057,11 +1062,11 @@ Pracice Pandas:   https://stratascratch.com/?via=keith
         </li>
         <li class="archive-post-item">
             <span class="archive-post-date">03/08</span>
-            <a class="archive-post-title" href="/2025/03/08/matplotlib-xian-shi-zhong-wen/">matplotlib 设置显示中文</a>
+            <a class="archive-post-title" href="/2025/03/08/python-duo-jin-cheng-shi-li/">python多进程示例</a>
         </li>
         <li class="archive-post-item">
             <span class="archive-post-date">03/08</span>
-            <a class="archive-post-title" href="/2025/03/08/python-duo-jin-cheng-shi-li/">python多进程示例</a>
+            <a class="archive-post-title" href="/2025/03/08/matplotlib-xian-shi-zhong-wen/">matplotlib 设置显示中文</a>
         </li>
         <li class="archive-post-item">
             <span class="archive-post-date">03/06</span>
@@ -1270,10 +1275,6 @@ Pracice Pandas:   https://stratascratch.com/?via=keith
                 <span class="iconfont-archer">&#xe606;</span>
                 GitLab
             </span>
-            <span class="sidebar-tag-name" data-tags="Google访问助手">
-                <span class="iconfont-archer">&#xe606;</span>
-                Google访问助手
-            </span>
             <span class="sidebar-tag-name" data-tags="预训练模型">
                 <span class="iconfont-archer">&#xe606;</span>
                 预训练模型
@@ -1285,6 +1286,10 @@ Pracice Pandas:   https://stratascratch.com/?via=keith
             <span class="sidebar-tag-name" data-tags="nlp">
                 <span class="iconfont-archer">&#xe606;</span>
                 nlp
+            </span>
+            <span class="sidebar-tag-name" data-tags="Google访问助手">
+                <span class="iconfont-archer">&#xe606;</span>
+                Google访问助手
             </span>
             <span class="sidebar-tag-name" data-tags="Pandas">
                 <span class="iconfont-archer">&#xe606;</span>
@@ -1298,13 +1303,13 @@ Pracice Pandas:   https://stratascratch.com/?via=keith
                 <span class="iconfont-archer">&#xe606;</span>
                 pytorch
             </span>
-            <span class="sidebar-tag-name" data-tags="github">
-                <span class="iconfont-archer">&#xe606;</span>
-                github
-            </span>
             <span class="sidebar-tag-name" data-tags="git">
                 <span class="iconfont-archer">&#xe606;</span>
                 git
+            </span>
+            <span class="sidebar-tag-name" data-tags="github">
+                <span class="iconfont-archer">&#xe606;</span>
+                github
             </span>
             <span class="sidebar-tag-name" data-tags="博客">
                 <span class="iconfont-archer">&#xe606;</span>
@@ -1314,13 +1319,13 @@ Pracice Pandas:   https://stratascratch.com/?via=keith
                 <span class="iconfont-archer">&#xe606;</span>
                 jupyter notebook
             </span>
-            <span class="sidebar-tag-name" data-tags="python">
-                <span class="iconfont-archer">&#xe606;</span>
-                python
-            </span>
             <span class="sidebar-tag-name" data-tags="neo4j">
                 <span class="iconfont-archer">&#xe606;</span>
                 neo4j
+            </span>
+            <span class="sidebar-tag-name" data-tags="python">
+                <span class="iconfont-archer">&#xe606;</span>
+                python
             </span>
             <span class="sidebar-tag-name" data-tags="NIVIDIA驱动">
                 <span class="iconfont-archer">&#xe606;</span>
@@ -1346,13 +1351,13 @@ Pracice Pandas:   https://stratascratch.com/?via=keith
                 <span class="iconfont-archer">&#xe606;</span>
                 摄影
             </span>
-            <span class="sidebar-tag-name" data-tags="文本聚类 bert向量表示">
-                <span class="iconfont-archer">&#xe606;</span>
-                文本聚类 bert向量表示
-            </span>
             <span class="sidebar-tag-name" data-tags="webdav, docker, obsidian, zotero">
                 <span class="iconfont-archer">&#xe606;</span>
                 webdav, docker, obsidian, zotero
+            </span>
+            <span class="sidebar-tag-name" data-tags="文本聚类 bert向量表示">
+                <span class="iconfont-archer">&#xe606;</span>
+                文本聚类 bert向量表示
             </span>
             <span class="sidebar-tag-name" data-tags="概率论">
                 <span class="iconfont-archer">&#xe606;</span>
@@ -1370,13 +1375,13 @@ Pracice Pandas:   https://stratascratch.com/?via=keith
                 <span class="iconfont-archer">&#xe606;</span>
                 数学
             </span>
-            <span class="sidebar-tag-name" data-tags="python_c++_互通">
-                <span class="iconfont-archer">&#xe606;</span>
-                python_c++_互通
-            </span>
             <span class="sidebar-tag-name" data-tags="图">
                 <span class="iconfont-archer">&#xe606;</span>
                 图
+            </span>
+            <span class="sidebar-tag-name" data-tags="python_c++_互通">
+                <span class="iconfont-archer">&#xe606;</span>
+                python_c++_互通
             </span>
             <span class="sidebar-tag-name" data-tags="呈贡">
                 <span class="iconfont-archer">&#xe606;</span>
@@ -1386,13 +1391,13 @@ Pracice Pandas:   https://stratascratch.com/?via=keith
                 <span class="iconfont-archer">&#xe606;</span>
                 文本聚类 编辑距离
             </span>
-            <span class="sidebar-tag-name" data-tags="编程">
-                <span class="iconfont-archer">&#xe606;</span>
-                编程
-            </span>
             <span class="sidebar-tag-name" data-tags="电影">
                 <span class="iconfont-archer">&#xe606;</span>
                 电影
+            </span>
+            <span class="sidebar-tag-name" data-tags="编程">
+                <span class="iconfont-archer">&#xe606;</span>
+                编程
             </span>
             <span class="sidebar-tag-name" data-tags="微信">
                 <span class="iconfont-archer">&#xe606;</span>
@@ -1414,21 +1419,21 @@ Pracice Pandas:   https://stratascratch.com/?via=keith
                 <span class="iconfont-archer">&#xe606;</span>
                 熵
             </span>
-            <span class="sidebar-tag-name" data-tags="论文写作">
-                <span class="iconfont-archer">&#xe606;</span>
-                论文写作
-            </span>
             <span class="sidebar-tag-name" data-tags="竞赛">
                 <span class="iconfont-archer">&#xe606;</span>
                 竞赛
             </span>
-            <span class="sidebar-tag-name" data-tags="街拍">
+            <span class="sidebar-tag-name" data-tags="论文写作">
                 <span class="iconfont-archer">&#xe606;</span>
-                街拍
+                论文写作
             </span>
             <span class="sidebar-tag-name" data-tags="强化学习">
                 <span class="iconfont-archer">&#xe606;</span>
                 强化学习
+            </span>
+            <span class="sidebar-tag-name" data-tags="街拍">
+                <span class="iconfont-archer">&#xe606;</span>
+                街拍
             </span>
             <span class="sidebar-tag-name" data-tags="docker, doccano">
                 <span class="iconfont-archer">&#xe606;</span>
@@ -1456,10 +1461,6 @@ Pracice Pandas:   https://stratascratch.com/?via=keith
             <span class="iconfont-archer">&#xe60a;</span>
             爬坑总结
         </span>
-        <span class="sidebar-category-name" data-categories="干货">
-            <span class="iconfont-archer">&#xe60a;</span>
-            干货
-        </span>
         <span class="sidebar-category-name" data-categories="人工智能">
             <span class="iconfont-archer">&#xe60a;</span>
             人工智能
@@ -1467,6 +1468,10 @@ Pracice Pandas:   https://stratascratch.com/?via=keith
         <span class="sidebar-category-name" data-categories="知识框架">
             <span class="iconfont-archer">&#xe60a;</span>
             知识框架
+        </span>
+        <span class="sidebar-category-name" data-categories="干货">
+            <span class="iconfont-archer">&#xe60a;</span>
+            干货
         </span>
         <span class="sidebar-category-name" data-categories="学习笔记">
             <span class="iconfont-archer">&#xe60a;</span>
@@ -1476,13 +1481,13 @@ Pracice Pandas:   https://stratascratch.com/?via=keith
             <span class="iconfont-archer">&#xe60a;</span>
             生活总结
         </span>
-        <span class="sidebar-category-name" data-categories="编程经验">
-            <span class="iconfont-archer">&#xe60a;</span>
-            编程经验
-        </span>
         <span class="sidebar-category-name" data-categories="编程">
             <span class="iconfont-archer">&#xe60a;</span>
             编程
+        </span>
+        <span class="sidebar-category-name" data-categories="编程经验">
+            <span class="iconfont-archer">&#xe60a;</span>
+            编程经验
         </span>
         <span class="sidebar-category-name" data-categories="算法笔记">
             <span class="iconfont-archer">&#xe60a;</span>
@@ -1492,13 +1497,13 @@ Pracice Pandas:   https://stratascratch.com/?via=keith
             <span class="iconfont-archer">&#xe60a;</span>
             摄影
         </span>
-        <span class="sidebar-category-name" data-categories="自然语言处理">
-            <span class="iconfont-archer">&#xe60a;</span>
-            自然语言处理
-        </span>
         <span class="sidebar-category-name" data-categories="运维">
             <span class="iconfont-archer">&#xe60a;</span>
             运维
+        </span>
+        <span class="sidebar-category-name" data-categories="自然语言处理">
+            <span class="iconfont-archer">&#xe60a;</span>
+            自然语言处理
         </span>
         <span class="sidebar-category-name" data-categories="算法">
             <span class="iconfont-archer">&#xe60a;</span>
