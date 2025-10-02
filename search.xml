@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>MinerU安装部署</title>
+      <link href="/2025/10/02/mineru-an-zhuang-bu-shu/"/>
+      <url>/2025/10/02/mineru-an-zhuang-bu-shu/</url>
+      
+        <content type="html"><![CDATA[<p>最近，因为实验工作需要，折腾了一下MinerU的安装部署，记录一下过程。</p><p>我使用的是镜像部署方式，按照官方的给出的Docker镜像进行部署，过程还是比较顺利的。这里要注意的是，MinerU对CUDA版本有要求，具体要求可以参考官方文档。此外，镜像的 Dockerfile 或 docker-compose.yml 应该从Github上拉取最新的版本，以确保使用的是最新的配置。</p><p>此外，应该仔细阅读，官方给出的 镜像部署指南。官方给出了三种不同服务的 docker-compose.yml，从我的理解来看， MinerU 的 docker-compose.yml 文件中，提到的三个服务，是独立的，即每种服务都可以单独运行，只是访问的方式不同。</p><ul><li><strong>web api服务</strong>：提供FastAPI接口，适合程序化访问。</li><li><strong>Gradio WebUI</strong>：提供Web界面，通过浏览器访问，适合demo展示。</li><li><strong>vllm-server 服务</strong>：启动之后，可以通过http client连接vllm server。</li></ul><p> <a href="https://github.com/opendatalab/MinerU">MinerU github主页</a></p><p><a href="https://opendatalab.github.io/MinerU/zh/">MinerU官方文档</a></p><p><a href="https://developer.nvidia.com/cuda-toolkit-archive">CUDA 驱动安装指南</a></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 运维 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> mineru </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>通过docker运行EasyConnect等VPN软件</title>
       <link href="/2025/09/29/tong-guo-docker-yun-xing-easyconnect-deng-vpn-ruan-jian/"/>
       <url>/2025/09/29/tong-guo-docker-yun-xing-easyconnect-deng-vpn-ruan-jian/</url>

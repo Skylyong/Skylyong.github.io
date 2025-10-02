@@ -429,6 +429,30 @@
                 <main class="main index-page">
             
         <article class="index-post">
+            <a class="abstract-title" href="/2025/10/02/mineru-an-zhuang-bu-shu/">
+                <span class="abstract-title-text">MinerU安装部署</span>
+            </a>
+            <div class="abstract-content">
+                最近，因为实验工作需要，折腾了一下MinerU的安装部署，记录一下过程。
+我使用的是镜像部署方式，按照官方的给出的Docker镜像进行部署，过程还是比较顺利的。这里要注意的是，MinerU对CUDA版本有要求，具体要求可以参考官方文档。此外，镜像的 Dockerfile 或 docker-compose.yml 应该从Github上拉取最新的版本，以确保使用的是最新的配置。
+此外，应该仔细阅读，官方给出的 镜像部署指南。官方给出了三种不同服务的 docker-compose.yml，从我的理解来看， MinerU 的 docker-compose.yml 文件中，提到的三个服务，是独立的...
+            </div>
+            <!-- read more -->
+            <div class="abstract-post-meta">
+                <!-- date -->
+                <div class="abstract-date" title="Last updated: 2025/10/02">
+                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2025/10/02</span>
+                </div>
+                <!-- tags -->
+                    <div class="abstract-tags" >
+        <a class="post-tag" href="javascript:void(0);" data-tags="mineru">mineru</a>
+</div>
+
+            </div>
+        </article>
+        <div class="index-post-divider"></div>
+            
+        <article class="index-post">
             <a class="abstract-title" href="/2025/09/29/tong-guo-docker-yun-xing-easyconnect-deng-vpn-ruan-jian/">
                 <span class="abstract-title-text">通过docker运行EasyConnect等VPN软件</span>
             </a>
@@ -716,30 +740,6 @@ $A$是一个随机变量。
             </div>
         </article>
         <div class="index-post-divider"></div>
-            
-        <article class="index-post">
-            <a class="abstract-title" href="/2025/07/12/bei-er-man-deng-shi-jie-shao-ji-tui-dao/">
-                <span class="abstract-title-text">贝尔曼等式介绍及推导</span>
-            </a>
-            <div class="abstract-content">
-                引言Bellman equation 是强化学习的基石，以前为了快速应用，这部分的知识没有吃透，总是有一种不踏实的感觉，这次从费曼学习法的思想出发，力求完全透彻理解该公式及其推导过程。接下来，我们分三个部分对Bellman equation进行讲述。
-前置知识贝尔曼等式推导的前置知识，主要包含条件概率的全概率公式，以及全期望定理，相关介绍在这里。
-Bellman equation 推导两个使用 Bellman equation 的例子
-            </div>
-            <!-- read more -->
-            <div class="abstract-post-meta">
-                <!-- date -->
-                <div class="abstract-date" title="Last updated: 2025/07/13">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2025/07/12</span>
-                </div>
-                <!-- tags -->
-                    <div class="abstract-tags" >
-        <a class="post-tag" href="javascript:void(0);" data-tags="强化学习">强化学习</a>
-</div>
-
-            </div>
-        </article>
-        <div class="index-post-divider"></div>
     <!-- paginator  -->
         <nav class="page-nav">
             <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/2/">NEXT &gt;</a>
@@ -904,9 +904,10 @@ Bellman equation 推导两个使用 Bellman equation 的例子
         
         
         
+        
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 65
+        Total : 66
         </div>
         <!-- search  -->
             <div class="site-search site-search-loading popup-trigger">
@@ -916,6 +917,10 @@ Bellman equation 推导两个使用 Bellman equation 的例子
     <div class="post-archive">
             <div class="archive-year"> 2025 </div>
             <ul class="year-list">
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/02</span>
+            <a class="archive-post-title" href="/2025/10/02/mineru-an-zhuang-bu-shu/">MinerU安装部署</a>
+        </li>
         <li class="archive-post-item">
             <span class="archive-post-date">09/29</span>
             <a class="archive-post-title" href="/2025/09/29/tong-guo-docker-yun-xing-easyconnect-deng-vpn-ruan-jian/">通过docker运行EasyConnect等VPN软件</a>
@@ -930,11 +935,11 @@ Bellman equation 推导两个使用 Bellman equation 的例子
         </li>
         <li class="archive-post-item">
             <span class="archive-post-date">08/10</span>
-            <a class="archive-post-title" href="/2025/08/10/bu-dong-dian-he-ya-suo-ying-she/">不动点和压缩映射</a>
+            <a class="archive-post-title" href="/2025/08/10/xiang-liang-fan-shu/">向量范数</a>
         </li>
         <li class="archive-post-item">
             <span class="archive-post-date">08/10</span>
-            <a class="archive-post-title" href="/2025/08/10/xiang-liang-fan-shu/">向量范数</a>
+            <a class="archive-post-title" href="/2025/08/10/bu-dong-dian-he-ya-suo-ying-she/">不动点和压缩映射</a>
         </li>
         <li class="archive-post-item">
             <span class="archive-post-date">08/10</span>
@@ -942,11 +947,11 @@ Bellman equation 推导两个使用 Bellman equation 的例子
         </li>
         <li class="archive-post-item">
             <span class="archive-post-date">08/10</span>
-            <a class="archive-post-title" href="/2025/08/10/fan-shu-de-ji-ben-gai-nian/">范数的基本概念</a>
+            <a class="archive-post-title" href="/2025/08/10/ju-zhen-fan-shu/">矩阵范数</a>
         </li>
         <li class="archive-post-item">
             <span class="archive-post-date">08/10</span>
-            <a class="archive-post-title" href="/2025/08/10/ju-zhen-fan-shu/">矩阵范数</a>
+            <a class="archive-post-title" href="/2025/08/10/fan-shu-de-ji-ben-gai-nian/">范数的基本概念</a>
         </li>
         <li class="archive-post-item">
             <span class="archive-post-date">07/28</span>
@@ -1199,10 +1204,6 @@ Bellman equation 推导两个使用 Bellman equation 的例子
                 <span class="iconfont-archer">&#xe606;</span>
                 claude-code
             </span>
-            <span class="sidebar-tag-name" data-tags="GitHub">
-                <span class="iconfont-archer">&#xe606;</span>
-                GitHub
-            </span>
             <span class="sidebar-tag-name" data-tags="GitLab">
                 <span class="iconfont-archer">&#xe606;</span>
                 GitLab
@@ -1211,13 +1212,25 @@ Bellman equation 推导两个使用 Bellman equation 的例子
                 <span class="iconfont-archer">&#xe606;</span>
                 Google访问助手
             </span>
+            <span class="sidebar-tag-name" data-tags="GitHub">
+                <span class="iconfont-archer">&#xe606;</span>
+                GitHub
+            </span>
             <span class="sidebar-tag-name" data-tags="预训练模型">
                 <span class="iconfont-archer">&#xe606;</span>
                 预训练模型
             </span>
+            <span class="sidebar-tag-name" data-tags="mineru">
+                <span class="iconfont-archer">&#xe606;</span>
+                mineru
+            </span>
             <span class="sidebar-tag-name" data-tags="启动U盘">
                 <span class="iconfont-archer">&#xe606;</span>
                 启动U盘
+            </span>
+            <span class="sidebar-tag-name" data-tags="Pandas">
+                <span class="iconfont-archer">&#xe606;</span>
+                Pandas
             </span>
             <span class="sidebar-tag-name" data-tags="pytorch">
                 <span class="iconfont-archer">&#xe606;</span>
@@ -1235,25 +1248,29 @@ Bellman equation 推导两个使用 Bellman equation 的例子
                 <span class="iconfont-archer">&#xe606;</span>
                 git
             </span>
-            <span class="sidebar-tag-name" data-tags="Pandas">
-                <span class="iconfont-archer">&#xe606;</span>
-                Pandas
-            </span>
             <span class="sidebar-tag-name" data-tags="博客">
                 <span class="iconfont-archer">&#xe606;</span>
                 博客
-            </span>
-            <span class="sidebar-tag-name" data-tags="python">
-                <span class="iconfont-archer">&#xe606;</span>
-                python
             </span>
             <span class="sidebar-tag-name" data-tags="jupyter notebook">
                 <span class="iconfont-archer">&#xe606;</span>
                 jupyter notebook
             </span>
+            <span class="sidebar-tag-name" data-tags="python">
+                <span class="iconfont-archer">&#xe606;</span>
+                python
+            </span>
             <span class="sidebar-tag-name" data-tags="NIVIDIA驱动">
                 <span class="iconfont-archer">&#xe606;</span>
                 NIVIDIA驱动
+            </span>
+            <span class="sidebar-tag-name" data-tags="github">
+                <span class="iconfont-archer">&#xe606;</span>
+                github
+            </span>
+            <span class="sidebar-tag-name" data-tags="neo4j">
+                <span class="iconfont-archer">&#xe606;</span>
+                neo4j
             </span>
             <span class="sidebar-tag-name" data-tags="uv">
                 <span class="iconfont-archer">&#xe606;</span>
@@ -1267,53 +1284,49 @@ Bellman equation 推导两个使用 Bellman equation 的例子
                 <span class="iconfont-archer">&#xe606;</span>
                 树
             </span>
-            <span class="sidebar-tag-name" data-tags="动态规划">
-                <span class="iconfont-archer">&#xe606;</span>
-                动态规划
-            </span>
-            <span class="sidebar-tag-name" data-tags="neo4j">
-                <span class="iconfont-archer">&#xe606;</span>
-                neo4j
-            </span>
-            <span class="sidebar-tag-name" data-tags="github">
-                <span class="iconfont-archer">&#xe606;</span>
-                github
-            </span>
             <span class="sidebar-tag-name" data-tags="文本聚类 bert向量表示">
                 <span class="iconfont-archer">&#xe606;</span>
                 文本聚类 bert向量表示
             </span>
-            <span class="sidebar-tag-name" data-tags="摄影">
+            <span class="sidebar-tag-name" data-tags="动态规划">
                 <span class="iconfont-archer">&#xe606;</span>
-                摄影
+                动态规划
             </span>
             <span class="sidebar-tag-name" data-tags="概率论">
                 <span class="iconfont-archer">&#xe606;</span>
                 概率论
             </span>
-            <span class="sidebar-tag-name" data-tags="机器学习">
-                <span class="iconfont-archer">&#xe606;</span>
-                机器学习
-            </span>
             <span class="sidebar-tag-name" data-tags="日志">
                 <span class="iconfont-archer">&#xe606;</span>
                 日志
             </span>
-            <span class="sidebar-tag-name" data-tags="图">
+            <span class="sidebar-tag-name" data-tags="机器学习">
                 <span class="iconfont-archer">&#xe606;</span>
-                图
+                机器学习
             </span>
             <span class="sidebar-tag-name" data-tags="数学">
                 <span class="iconfont-archer">&#xe606;</span>
                 数学
             </span>
-            <span class="sidebar-tag-name" data-tags="呈贡">
+            <span class="sidebar-tag-name" data-tags="webdav, docker, obsidian, zotero">
                 <span class="iconfont-archer">&#xe606;</span>
-                呈贡
+                webdav, docker, obsidian, zotero
+            </span>
+            <span class="sidebar-tag-name" data-tags="摄影">
+                <span class="iconfont-archer">&#xe606;</span>
+                摄影
             </span>
             <span class="sidebar-tag-name" data-tags="python_c++_互通">
                 <span class="iconfont-archer">&#xe606;</span>
                 python_c++_互通
+            </span>
+            <span class="sidebar-tag-name" data-tags="呈贡">
+                <span class="iconfont-archer">&#xe606;</span>
+                呈贡
+            </span>
+            <span class="sidebar-tag-name" data-tags="图">
+                <span class="iconfont-archer">&#xe606;</span>
+                图
             </span>
             <span class="sidebar-tag-name" data-tags="文本聚类 编辑距离">
                 <span class="iconfont-archer">&#xe606;</span>
@@ -1323,10 +1336,6 @@ Bellman equation 推导两个使用 Bellman equation 的例子
                 <span class="iconfont-archer">&#xe606;</span>
                 电影
             </span>
-            <span class="sidebar-tag-name" data-tags="微信">
-                <span class="iconfont-archer">&#xe606;</span>
-                微信
-            </span>
             <span class="sidebar-tag-name" data-tags="编程">
                 <span class="iconfont-archer">&#xe606;</span>
                 编程
@@ -1335,21 +1344,21 @@ Bellman equation 推导两个使用 Bellman equation 的例子
                 <span class="iconfont-archer">&#xe606;</span>
                 干货
             </span>
-            <span class="sidebar-tag-name" data-tags="webdav, docker, obsidian, zotero">
+            <span class="sidebar-tag-name" data-tags="微信">
                 <span class="iconfont-archer">&#xe606;</span>
-                webdav, docker, obsidian, zotero
+                微信
             </span>
             <span class="sidebar-tag-name" data-tags="资源">
                 <span class="iconfont-archer">&#xe606;</span>
                 资源
             </span>
-            <span class="sidebar-tag-name" data-tags="论文写作">
-                <span class="iconfont-archer">&#xe606;</span>
-                论文写作
-            </span>
             <span class="sidebar-tag-name" data-tags="熵">
                 <span class="iconfont-archer">&#xe606;</span>
                 熵
+            </span>
+            <span class="sidebar-tag-name" data-tags="论文写作">
+                <span class="iconfont-archer">&#xe606;</span>
+                论文写作
             </span>
             <span class="sidebar-tag-name" data-tags="竞赛">
                 <span class="iconfont-archer">&#xe606;</span>
@@ -1359,13 +1368,13 @@ Bellman equation 推导两个使用 Bellman equation 的例子
                 <span class="iconfont-archer">&#xe606;</span>
                 强化学习
             </span>
-            <span class="sidebar-tag-name" data-tags="街拍">
-                <span class="iconfont-archer">&#xe606;</span>
-                街拍
-            </span>
             <span class="sidebar-tag-name" data-tags="docker, doccano">
                 <span class="iconfont-archer">&#xe606;</span>
                 docker, doccano
+            </span>
+            <span class="sidebar-tag-name" data-tags="街拍">
+                <span class="iconfont-archer">&#xe606;</span>
+                街拍
             </span>
             <span class="sidebar-tag-name" data-tags="docker">
                 <span class="iconfont-archer">&#xe606;</span>
@@ -1401,6 +1410,10 @@ Bellman equation 推导两个使用 Bellman equation 的例子
             <span class="iconfont-archer">&#xe60a;</span>
             人工智能
         </span>
+        <span class="sidebar-category-name" data-categories="运维">
+            <span class="iconfont-archer">&#xe60a;</span>
+            运维
+        </span>
         <span class="sidebar-category-name" data-categories="学习笔记">
             <span class="iconfont-archer">&#xe60a;</span>
             学习笔记
@@ -1421,25 +1434,25 @@ Bellman equation 推导两个使用 Bellman equation 的例子
             <span class="iconfont-archer">&#xe60a;</span>
             编程
         </span>
-        <span class="sidebar-category-name" data-categories="算法笔记">
-            <span class="iconfont-archer">&#xe60a;</span>
-            算法笔记
-        </span>
         <span class="sidebar-category-name" data-categories="自然语言处理">
             <span class="iconfont-archer">&#xe60a;</span>
             自然语言处理
+        </span>
+        <span class="sidebar-category-name" data-categories="算法笔记">
+            <span class="iconfont-archer">&#xe60a;</span>
+            算法笔记
         </span>
         <span class="sidebar-category-name" data-categories="摄影">
             <span class="iconfont-archer">&#xe60a;</span>
             摄影
         </span>
-        <span class="sidebar-category-name" data-categories="算法">
-            <span class="iconfont-archer">&#xe60a;</span>
-            算法
-        </span>
         <span class="sidebar-category-name" data-categories="生活情感">
             <span class="iconfont-archer">&#xe60a;</span>
             生活情感
+        </span>
+        <span class="sidebar-category-name" data-categories="算法">
+            <span class="iconfont-archer">&#xe60a;</span>
+            算法
         </span>
         <span class="sidebar-category-name" data-categories="学习资料">
             <span class="iconfont-archer">&#xe60a;</span>
@@ -1452,10 +1465,6 @@ Bellman equation 推导两个使用 Bellman equation 的例子
         <span class="sidebar-category-name" data-categories="数据集">
             <span class="iconfont-archer">&#xe60a;</span>
             数据集
-        </span>
-        <span class="sidebar-category-name" data-categories="运维">
-            <span class="iconfont-archer">&#xe60a;</span>
-            运维
         </span>
         <span class="sidebar-category-name" data-categories="机器学习">
             <span class="iconfont-archer">&#xe60a;</span>
