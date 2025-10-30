@@ -429,6 +429,32 @@
                 <main class="main index-page">
             
         <article class="index-post">
+            <a class="abstract-title" href="/2025/01/07/sentence-transformers-sampler-bug-zhi-set-bu-yi-ding-shi-wu-xu-de/">
+                <span class="abstract-title-text">sentence-transformers sampler bug 之 set 不一定是无序的</span>
+            </a>
+            <div class="abstract-content">
+                前言问  题： 最近准备训练一个基于对比学习的模型， 用 huggface 的 trainer 训练器，在官方给的源代码中，有一个现成的 sampler 用于数据采样，我需要改写这个 sampler 以保证能够用于自己的数据上。
+实验改完之后，发现采样出来的 indices 竟然是有序的，实际在一个批次中需要打乱样本的顺序，仔细阅读了官方给的源码，发现问题出在如下图所示的 第187行。这里先用 torch.randperm生成了一个乱序的下标，然后转换为set。按理说set是无序的，转换之后也是无序的，看起来很正确。
+
+当我做了小测试后，发现并不是：
+从上面的结果，可以看到：torch....
+            </div>
+            <!-- read more -->
+            <div class="abstract-post-meta">
+                <!-- date -->
+                <div class="abstract-date" title="Last updated: 2025/03/08">
+                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2025/01/07</span>
+                </div>
+                <!-- tags -->
+                    <div class="abstract-tags" >
+        <a class="post-tag" href="javascript:void(0);" data-tags="python">python</a>
+</div>
+
+            </div>
+        </article>
+        <div class="index-post-divider"></div>
+            
+        <article class="index-post">
             <a class="abstract-title" href="/2023/09/12/ubuntu-shang-an-zhuang-nividia-qu-dong-he-cuda-tookit/">
                 <span class="abstract-title-text">ubuntu上安装NIVIDIA驱动和CUDA_Tookit</span>
             </a>
@@ -794,44 +820,6 @@ Mac系统制作win10启动U盘
             </div>
         </article>
         <div class="index-post-divider"></div>
-            
-        <article class="index-post">
-            <a class="abstract-title" href="/2021/08/13/google-fang-wen-zhu-shou-an-zhuang/">
-                <span class="abstract-title-text">Google访问助手安装</span>
-            </a>
-            <div class="abstract-content">
-                Google访问助手安装今天用图书馆电脑的时候发现不能访问google，非常不方便搜索文献，因此研究了一下google上网助手，记录一下。
-
-IGG谷歌访问助手
-该助手具有如下特点：
-
-免费提供谷歌搜索
-微软onedrive加速
-不包含YouTube，谷歌网盘
-
-
-
-google上网助手
-该助手具备IGG谷歌访问助手的特点，但是安装的时候需要登录Chrome商店才能够下载，如果没有KX上网，建议读者选择安装“IGG谷歌访问助手”方式访问谷歌。
-
-
-
-
-            </div>
-            <!-- read more -->
-            <div class="abstract-post-meta">
-                <!-- date -->
-                <div class="abstract-date" title="Last updated: 2025/03/08">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2021/08/13</span>
-                </div>
-                <!-- tags -->
-                    <div class="abstract-tags" >
-        <a class="post-tag" href="javascript:void(0);" data-tags="Google访问助手">Google访问助手</a>
-</div>
-
-            </div>
-        </article>
-        <div class="index-post-divider"></div>
     <!-- paginator  -->
         <nav class="page-nav">
             <a class="extend prev" rel="prev" href="/page/3/">&lt; PREV</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/5/">NEXT &gt;</a>
@@ -1000,9 +988,10 @@ google上网助手
         
         
         
+        
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 69
+        Total : 70
         </div>
         <!-- search  -->
             <div class="site-search site-search-loading popup-trigger">
@@ -1012,6 +1001,10 @@ google上网助手
     <div class="post-archive">
             <div class="archive-year"> 2025 </div>
             <ul class="year-list">
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/16</span>
+            <a class="archive-post-title" href="/2025/10/16/linux-chang-yong-ming-ling-jie-shi/">linux常用命令解释</a>
+        </li>
         <li class="archive-post-item">
             <span class="archive-post-date">10/14</span>
             <a class="archive-post-title" href="/2025/10/14/shi-yong-rclone-zai-duo-ge-fu-wu-qi-zhi-jian-chuan-shu-wen-jian/">使用rclone在多个服务器之间传输文件</a>
@@ -1307,6 +1300,10 @@ google上网助手
                 <span class="iconfont-archer">&#xe606;</span>
                 ai竞赛
             </span>
+            <span class="sidebar-tag-name" data-tags="claude-code">
+                <span class="iconfont-archer">&#xe606;</span>
+                claude-code
+            </span>
             <span class="sidebar-tag-name" data-tags="GitHub">
                 <span class="iconfont-archer">&#xe606;</span>
                 GitHub
@@ -1343,13 +1340,17 @@ google上网助手
                 <span class="iconfont-archer">&#xe606;</span>
                 svm
             </span>
+            <span class="sidebar-tag-name" data-tags="pytorch">
+                <span class="iconfont-archer">&#xe606;</span>
+                pytorch
+            </span>
             <span class="sidebar-tag-name" data-tags="NVIDIA">
                 <span class="iconfont-archer">&#xe606;</span>
                 NVIDIA
             </span>
-            <span class="sidebar-tag-name" data-tags="pytorch">
+            <span class="sidebar-tag-name" data-tags="github">
                 <span class="iconfont-archer">&#xe606;</span>
-                pytorch
+                github
             </span>
             <span class="sidebar-tag-name" data-tags="git">
                 <span class="iconfont-archer">&#xe606;</span>
@@ -1367,17 +1368,21 @@ google上网助手
                 <span class="iconfont-archer">&#xe606;</span>
                 python
             </span>
-            <span class="sidebar-tag-name" data-tags="claude-code">
+            <span class="sidebar-tag-name" data-tags="neo4j">
                 <span class="iconfont-archer">&#xe606;</span>
-                claude-code
+                neo4j
+            </span>
+            <span class="sidebar-tag-name" data-tags="ssh">
+                <span class="iconfont-archer">&#xe606;</span>
+                ssh
             </span>
             <span class="sidebar-tag-name" data-tags="NIVIDIA驱动">
                 <span class="iconfont-archer">&#xe606;</span>
                 NIVIDIA驱动
             </span>
-            <span class="sidebar-tag-name" data-tags="github">
+            <span class="sidebar-tag-name" data-tags="uv">
                 <span class="iconfont-archer">&#xe606;</span>
-                github
+                uv
             </span>
             <span class="sidebar-tag-name" data-tags="vscode">
                 <span class="iconfont-archer">&#xe606;</span>
@@ -1387,29 +1392,25 @@ google上网助手
                 <span class="iconfont-archer">&#xe606;</span>
                 树
             </span>
-            <span class="sidebar-tag-name" data-tags="ssh">
-                <span class="iconfont-archer">&#xe606;</span>
-                ssh
-            </span>
             <span class="sidebar-tag-name" data-tags="动态规划">
                 <span class="iconfont-archer">&#xe606;</span>
                 动态规划
-            </span>
-            <span class="sidebar-tag-name" data-tags="uv">
-                <span class="iconfont-archer">&#xe606;</span>
-                uv
-            </span>
-            <span class="sidebar-tag-name" data-tags="文本聚类 bert向量表示">
-                <span class="iconfont-archer">&#xe606;</span>
-                文本聚类 bert向量表示
             </span>
             <span class="sidebar-tag-name" data-tags="摄影">
                 <span class="iconfont-archer">&#xe606;</span>
                 摄影
             </span>
-            <span class="sidebar-tag-name" data-tags="neo4j">
+            <span class="sidebar-tag-name" data-tags="文本聚类 bert向量表示">
                 <span class="iconfont-archer">&#xe606;</span>
-                neo4j
+                文本聚类 bert向量表示
+            </span>
+            <span class="sidebar-tag-name" data-tags="rclone">
+                <span class="iconfont-archer">&#xe606;</span>
+                rclone
+            </span>
+            <span class="sidebar-tag-name" data-tags="webdav, docker, obsidian, zotero">
+                <span class="iconfont-archer">&#xe606;</span>
+                webdav, docker, obsidian, zotero
             </span>
             <span class="sidebar-tag-name" data-tags="概率论">
                 <span class="iconfont-archer">&#xe606;</span>
@@ -1463,6 +1464,10 @@ google上网助手
                 <span class="iconfont-archer">&#xe606;</span>
                 资源
             </span>
+            <span class="sidebar-tag-name" data-tags="docker">
+                <span class="iconfont-archer">&#xe606;</span>
+                docker
+            </span>
             <span class="sidebar-tag-name" data-tags="熵">
                 <span class="iconfont-archer">&#xe606;</span>
                 熵
@@ -1479,10 +1484,6 @@ google上网助手
                 <span class="iconfont-archer">&#xe606;</span>
                 街拍
             </span>
-            <span class="sidebar-tag-name" data-tags="webdav, docker, obsidian, zotero">
-                <span class="iconfont-archer">&#xe606;</span>
-                webdav, docker, obsidian, zotero
-            </span>
             <span class="sidebar-tag-name" data-tags="强化学习">
                 <span class="iconfont-archer">&#xe606;</span>
                 强化学习
@@ -1490,14 +1491,6 @@ google上网助手
             <span class="sidebar-tag-name" data-tags="docker, doccano">
                 <span class="iconfont-archer">&#xe606;</span>
                 docker, doccano
-            </span>
-            <span class="sidebar-tag-name" data-tags="docker">
-                <span class="iconfont-archer">&#xe606;</span>
-                docker
-            </span>
-            <span class="sidebar-tag-name" data-tags="rclone">
-                <span class="iconfont-archer">&#xe606;</span>
-                rclone
             </span>
     </div>
     <div class="iconfont-archer sidebar-tags-empty">&#xe678;</div>
@@ -1512,6 +1505,10 @@ google上网助手
         <span class="sidebar-category-name" data-categories="总结">
             <span class="iconfont-archer">&#xe60a;</span>
             总结
+        </span>
+        <span class="sidebar-category-name" data-categories="编程开发">
+            <span class="iconfont-archer">&#xe60a;</span>
+            编程开发
         </span>
         <span class="sidebar-category-name" data-categories="爬坑总结">
             <span class="iconfont-archer">&#xe60a;</span>
@@ -1545,10 +1542,6 @@ google上网助手
             <span class="iconfont-archer">&#xe60a;</span>
             编程经验
         </span>
-        <span class="sidebar-category-name" data-categories="编程开发">
-            <span class="iconfont-archer">&#xe60a;</span>
-            编程开发
-        </span>
         <span class="sidebar-category-name" data-categories="编程">
             <span class="iconfont-archer">&#xe60a;</span>
             编程
@@ -1557,13 +1550,13 @@ google上网助手
             <span class="iconfont-archer">&#xe60a;</span>
             算法笔记
         </span>
-        <span class="sidebar-category-name" data-categories="自然语言处理">
-            <span class="iconfont-archer">&#xe60a;</span>
-            自然语言处理
-        </span>
         <span class="sidebar-category-name" data-categories="摄影">
             <span class="iconfont-archer">&#xe60a;</span>
             摄影
+        </span>
+        <span class="sidebar-category-name" data-categories="自然语言处理">
+            <span class="iconfont-archer">&#xe60a;</span>
+            自然语言处理
         </span>
         <span class="sidebar-category-name" data-categories="算法">
             <span class="iconfont-archer">&#xe60a;</span>

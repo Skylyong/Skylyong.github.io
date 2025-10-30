@@ -874,19 +874,12 @@ neo4j 导入节点和边的类实现
         <div class="index-post-divider"></div>
             
         <article class="index-post">
-            <a class="abstract-title" href="/2025/03/08/python-duo-jin-cheng-shi-li/">
-                <span class="abstract-title-text">python多进程示例</span>
+            <a class="abstract-title" href="/2025/03/08/matplotlib-xian-shi-zhong-wen/">
+                <span class="abstract-title-text">matplotlib 设置显示中文</span>
             </a>
             <div class="abstract-content">
-                
-导入依赖的包
-
-1from concurrent.futures import ProcessPoolExecutor, as_completed
-
-
-定义处理内容的函数，该函数要是全局函数，不能放在函数或者类里面函数的参数只有一个，可以用元组包装起来，然后再解包
-
-12345678def process_record(args):    text = args[0]["text"]    CONTENT = args[1]    extract_info = inference(text, model="deepseek-chat", CONTENT=CONTENT)    retu...
+                先从网络上下载 SimHei.ttf  文件放在某个位置，然后用下面的代码，设置字体的位置。
+12345678910111213141516171819import jsonimport pandas as pd# 从 data/original/SylvanL/Exam/tcm_exam_1.csv 读取数据import matplotlib.pyplot as pltfrom matplotlib import font_managerfrom matplotlib import rcParamsimport reimport matplotlib # 设置当前目录import os...
             </div>
             <!-- read more -->
             <div class="abstract-post-meta">
@@ -904,12 +897,19 @@ neo4j 导入节点和边的类实现
         <div class="index-post-divider"></div>
             
         <article class="index-post">
-            <a class="abstract-title" href="/2025/03/08/matplotlib-xian-shi-zhong-wen/">
-                <span class="abstract-title-text">matplotlib 设置显示中文</span>
+            <a class="abstract-title" href="/2025/03/08/python-duo-jin-cheng-shi-li/">
+                <span class="abstract-title-text">python多进程示例</span>
             </a>
             <div class="abstract-content">
-                先从网络上下载 SimHei.ttf  文件放在某个位置，然后用下面的代码，设置字体的位置。
-12345678910111213141516171819import jsonimport pandas as pd# 从 data/original/SylvanL/Exam/tcm_exam_1.csv 读取数据import matplotlib.pyplot as pltfrom matplotlib import font_managerfrom matplotlib import rcParamsimport reimport matplotlib # 设置当前目录import os...
+                
+导入依赖的包
+
+1from concurrent.futures import ProcessPoolExecutor, as_completed
+
+
+定义处理内容的函数，该函数要是全局函数，不能放在函数或者类里面函数的参数只有一个，可以用元组包装起来，然后再解包
+
+12345678def process_record(args):    text = args[0]["text"]    CONTENT = args[1]    extract_info = inference(text, model="deepseek-chat", CONTENT=CONTENT)    retu...
             </div>
             <!-- read more -->
             <div class="abstract-post-meta">
@@ -1086,9 +1086,10 @@ neo4j 导入节点和边的类实现
         
         
         
+        
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 69
+        Total : 70
         </div>
         <!-- search  -->
             <div class="site-search site-search-loading popup-trigger">
@@ -1098,6 +1099,10 @@ neo4j 导入节点和边的类实现
     <div class="post-archive">
             <div class="archive-year"> 2025 </div>
             <ul class="year-list">
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/16</span>
+            <a class="archive-post-title" href="/2025/10/16/linux-chang-yong-ming-ling-jie-shi/">linux常用命令解释</a>
+        </li>
         <li class="archive-post-item">
             <span class="archive-post-date">10/14</span>
             <a class="archive-post-title" href="/2025/10/14/shi-yong-rclone-zai-duo-ge-fu-wu-qi-zhi-jian-chuan-shu-wen-jian/">使用rclone在多个服务器之间传输文件</a>
@@ -1393,6 +1398,10 @@ neo4j 导入节点和边的类实现
                 <span class="iconfont-archer">&#xe606;</span>
                 ai竞赛
             </span>
+            <span class="sidebar-tag-name" data-tags="claude-code">
+                <span class="iconfont-archer">&#xe606;</span>
+                claude-code
+            </span>
             <span class="sidebar-tag-name" data-tags="GitHub">
                 <span class="iconfont-archer">&#xe606;</span>
                 GitHub
@@ -1429,13 +1438,17 @@ neo4j 导入节点和边的类实现
                 <span class="iconfont-archer">&#xe606;</span>
                 svm
             </span>
+            <span class="sidebar-tag-name" data-tags="pytorch">
+                <span class="iconfont-archer">&#xe606;</span>
+                pytorch
+            </span>
             <span class="sidebar-tag-name" data-tags="NVIDIA">
                 <span class="iconfont-archer">&#xe606;</span>
                 NVIDIA
             </span>
-            <span class="sidebar-tag-name" data-tags="pytorch">
+            <span class="sidebar-tag-name" data-tags="github">
                 <span class="iconfont-archer">&#xe606;</span>
-                pytorch
+                github
             </span>
             <span class="sidebar-tag-name" data-tags="git">
                 <span class="iconfont-archer">&#xe606;</span>
@@ -1453,17 +1466,21 @@ neo4j 导入节点和边的类实现
                 <span class="iconfont-archer">&#xe606;</span>
                 python
             </span>
-            <span class="sidebar-tag-name" data-tags="claude-code">
+            <span class="sidebar-tag-name" data-tags="neo4j">
                 <span class="iconfont-archer">&#xe606;</span>
-                claude-code
+                neo4j
+            </span>
+            <span class="sidebar-tag-name" data-tags="ssh">
+                <span class="iconfont-archer">&#xe606;</span>
+                ssh
             </span>
             <span class="sidebar-tag-name" data-tags="NIVIDIA驱动">
                 <span class="iconfont-archer">&#xe606;</span>
                 NIVIDIA驱动
             </span>
-            <span class="sidebar-tag-name" data-tags="github">
+            <span class="sidebar-tag-name" data-tags="uv">
                 <span class="iconfont-archer">&#xe606;</span>
-                github
+                uv
             </span>
             <span class="sidebar-tag-name" data-tags="vscode">
                 <span class="iconfont-archer">&#xe606;</span>
@@ -1473,29 +1490,25 @@ neo4j 导入节点和边的类实现
                 <span class="iconfont-archer">&#xe606;</span>
                 树
             </span>
-            <span class="sidebar-tag-name" data-tags="ssh">
-                <span class="iconfont-archer">&#xe606;</span>
-                ssh
-            </span>
             <span class="sidebar-tag-name" data-tags="动态规划">
                 <span class="iconfont-archer">&#xe606;</span>
                 动态规划
-            </span>
-            <span class="sidebar-tag-name" data-tags="uv">
-                <span class="iconfont-archer">&#xe606;</span>
-                uv
-            </span>
-            <span class="sidebar-tag-name" data-tags="文本聚类 bert向量表示">
-                <span class="iconfont-archer">&#xe606;</span>
-                文本聚类 bert向量表示
             </span>
             <span class="sidebar-tag-name" data-tags="摄影">
                 <span class="iconfont-archer">&#xe606;</span>
                 摄影
             </span>
-            <span class="sidebar-tag-name" data-tags="neo4j">
+            <span class="sidebar-tag-name" data-tags="文本聚类 bert向量表示">
                 <span class="iconfont-archer">&#xe606;</span>
-                neo4j
+                文本聚类 bert向量表示
+            </span>
+            <span class="sidebar-tag-name" data-tags="rclone">
+                <span class="iconfont-archer">&#xe606;</span>
+                rclone
+            </span>
+            <span class="sidebar-tag-name" data-tags="webdav, docker, obsidian, zotero">
+                <span class="iconfont-archer">&#xe606;</span>
+                webdav, docker, obsidian, zotero
             </span>
             <span class="sidebar-tag-name" data-tags="概率论">
                 <span class="iconfont-archer">&#xe606;</span>
@@ -1549,6 +1562,10 @@ neo4j 导入节点和边的类实现
                 <span class="iconfont-archer">&#xe606;</span>
                 资源
             </span>
+            <span class="sidebar-tag-name" data-tags="docker">
+                <span class="iconfont-archer">&#xe606;</span>
+                docker
+            </span>
             <span class="sidebar-tag-name" data-tags="熵">
                 <span class="iconfont-archer">&#xe606;</span>
                 熵
@@ -1565,10 +1582,6 @@ neo4j 导入节点和边的类实现
                 <span class="iconfont-archer">&#xe606;</span>
                 街拍
             </span>
-            <span class="sidebar-tag-name" data-tags="webdav, docker, obsidian, zotero">
-                <span class="iconfont-archer">&#xe606;</span>
-                webdav, docker, obsidian, zotero
-            </span>
             <span class="sidebar-tag-name" data-tags="强化学习">
                 <span class="iconfont-archer">&#xe606;</span>
                 强化学习
@@ -1576,14 +1589,6 @@ neo4j 导入节点和边的类实现
             <span class="sidebar-tag-name" data-tags="docker, doccano">
                 <span class="iconfont-archer">&#xe606;</span>
                 docker, doccano
-            </span>
-            <span class="sidebar-tag-name" data-tags="docker">
-                <span class="iconfont-archer">&#xe606;</span>
-                docker
-            </span>
-            <span class="sidebar-tag-name" data-tags="rclone">
-                <span class="iconfont-archer">&#xe606;</span>
-                rclone
             </span>
     </div>
     <div class="iconfont-archer sidebar-tags-empty">&#xe678;</div>
@@ -1598,6 +1603,10 @@ neo4j 导入节点和边的类实现
         <span class="sidebar-category-name" data-categories="总结">
             <span class="iconfont-archer">&#xe60a;</span>
             总结
+        </span>
+        <span class="sidebar-category-name" data-categories="编程开发">
+            <span class="iconfont-archer">&#xe60a;</span>
+            编程开发
         </span>
         <span class="sidebar-category-name" data-categories="爬坑总结">
             <span class="iconfont-archer">&#xe60a;</span>
@@ -1631,10 +1640,6 @@ neo4j 导入节点和边的类实现
             <span class="iconfont-archer">&#xe60a;</span>
             编程经验
         </span>
-        <span class="sidebar-category-name" data-categories="编程开发">
-            <span class="iconfont-archer">&#xe60a;</span>
-            编程开发
-        </span>
         <span class="sidebar-category-name" data-categories="编程">
             <span class="iconfont-archer">&#xe60a;</span>
             编程
@@ -1643,13 +1648,13 @@ neo4j 导入节点和边的类实现
             <span class="iconfont-archer">&#xe60a;</span>
             算法笔记
         </span>
-        <span class="sidebar-category-name" data-categories="自然语言处理">
-            <span class="iconfont-archer">&#xe60a;</span>
-            自然语言处理
-        </span>
         <span class="sidebar-category-name" data-categories="摄影">
             <span class="iconfont-archer">&#xe60a;</span>
             摄影
+        </span>
+        <span class="sidebar-category-name" data-categories="自然语言处理">
+            <span class="iconfont-archer">&#xe60a;</span>
+            自然语言处理
         </span>
         <span class="sidebar-category-name" data-categories="算法">
             <span class="iconfont-archer">&#xe60a;</span>
