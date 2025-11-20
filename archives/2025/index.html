@@ -422,6 +422,41 @@
                 <main class="main index-page">
             
         <article class="index-post">
+            <a class="abstract-title" href="/2025/11/20/1-cs336-bpe-fen-ci-qi-jie-shao/">
+                <span class="abstract-title-text">1-cs336-BPE分词器介绍</span>
+            </a>
+            <div class="abstract-content">
+                
+[!summary]
+
+Why we need tokenizer？
+为什么需要基于字节的分词器？
+彻底解决”未登录词”问题
+实现对所有语言、符号的通用支持
+核心原理： UTF-8与字节
+
+
+1. The motivation - Why we need tokenizer由于计算机只能够对数字进行计算，而没法直接对字符做计算。因此，我们需要一种操作能够将字符串编码为数字；同时将计算机输出的数字解码为人类阅读友好的字符串。上述中的“操作”即为 Tokenizers。
+
+根据编码基本单元的不同，可以划分出多种不同的编码方式，如基于词级、字符级和基于字节的编码方式。
+其中，基于字节的Tok...
+            </div>
+            <!-- read more -->
+            <div class="abstract-post-meta">
+                <!-- date -->
+                <div class="abstract-date" title="Last updated: 2025/11/20">
+                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2025/11/20</span>
+                </div>
+                <!-- tags -->
+                    <div class="abstract-tags" >
+        <a class="post-tag" href="javascript:void(0);" data-tags="BPE">BPE</a>
+</div>
+
+            </div>
+        </article>
+        <div class="index-post-divider"></div>
+            
+        <article class="index-post">
             <a class="abstract-title" href="/2025/10/16/linux-chang-yong-ming-ling-jie-shi/">
                 <span class="abstract-title-text">linux常用命令解释</span>
             </a>
@@ -650,38 +685,6 @@ sdb 是系统盘
             </div>
         </article>
         <div class="index-post-divider"></div>
-            
-        <article class="index-post">
-            <a class="abstract-title" href="/2025/08/10/ju-zhen-fan-shu/">
-                <span class="abstract-title-text">矩阵范数</span>
-            </a>
-            <div class="abstract-content">
-                什么是矩阵范数矩阵范数（matrix norm）是将一个矩阵映射到非负实数的函数:  $|\cdot| $，用来度量矩阵的“大小”或“长度”。矩阵范数需要满足以下三个性质：
-
-非负性：对任意矩阵 $A$，有$$|A| \geq 0$$且当且仅当 $A$ 是零矩阵时，$|A| = 0$。
-
-齐次性（正齐次）：对任意标量 $\alpha$ 和矩阵 $A$，有$$|\alpha A| = |\alpha| \cdot |A|$$
-
-三角不等式：对任意矩阵 $A$ 和 $B$，有$$|A + B| \leq |A| + |B|$$
-
-
-矩阵范数的几种常见类型常见矩阵范数分两类：
-(A) 非算子范...
-            </div>
-            <!-- read more -->
-            <div class="abstract-post-meta">
-                <!-- date -->
-                <div class="abstract-date" title="Last updated: 2025/08/10">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2025/08/10</span>
-                </div>
-                <!-- tags -->
-                    <div class="abstract-tags" >
-        <a class="post-tag" href="javascript:void(0);" data-tags="数学">数学</a>
-</div>
-
-            </div>
-        </article>
-        <div class="index-post-divider"></div>
     <!-- paginator  -->
         <nav class="page-nav">
             <span class="page-number current">1</span><a class="page-number" href="/archives/2025/page/2/">2</a><a class="page-number" href="/archives/2025/page/3/">3</a><a class="page-number" href="/archives/2025/page/4/">4</a><a class="extend next" rel="next" href="/archives/2025/page/2/">NEXT &gt;</a>
@@ -797,9 +800,10 @@ sdb 是系统盘
         
         
         
+        
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 70
+        Total : 71
         </div>
         <!-- search  -->
             <div class="site-search site-search-loading popup-trigger">
@@ -809,6 +813,10 @@ sdb 是系统盘
     <div class="post-archive">
             <div class="archive-year"> 2025 </div>
             <ul class="year-list">
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/20</span>
+            <a class="archive-post-title" href="/2025/11/20/1-cs336-bpe-fen-ci-qi-jie-shao/">1-cs336-BPE分词器介绍</a>
+        </li>
         <li class="archive-post-item">
             <span class="archive-post-date">10/16</span>
             <a class="archive-post-title" href="/2025/10/16/linux-chang-yong-ming-ling-jie-shi/">linux常用命令解释</a>
@@ -1104,6 +1112,10 @@ sdb 是系统盘
 
         <div class="sidebar-panel-tags">
     <div class="sidebar-tags-name">
+            <span class="sidebar-tag-name" data-tags="BPE">
+                <span class="iconfont-archer">&#xe606;</span>
+                BPE
+            </span>
             <span class="sidebar-tag-name" data-tags="ai竞赛">
                 <span class="iconfont-archer">&#xe606;</span>
                 ai竞赛
@@ -1144,13 +1156,13 @@ sdb 是系统盘
                 <span class="iconfont-archer">&#xe606;</span>
                 Pandas
             </span>
-            <span class="sidebar-tag-name" data-tags="svm">
-                <span class="iconfont-archer">&#xe606;</span>
-                svm
-            </span>
             <span class="sidebar-tag-name" data-tags="pytorch">
                 <span class="iconfont-archer">&#xe606;</span>
                 pytorch
+            </span>
+            <span class="sidebar-tag-name" data-tags="svm">
+                <span class="iconfont-archer">&#xe606;</span>
+                svm
             </span>
             <span class="sidebar-tag-name" data-tags="NVIDIA">
                 <span class="iconfont-archer">&#xe606;</span>
@@ -1164,13 +1176,13 @@ sdb 是系统盘
                 <span class="iconfont-archer">&#xe606;</span>
                 git
             </span>
-            <span class="sidebar-tag-name" data-tags="博客">
-                <span class="iconfont-archer">&#xe606;</span>
-                博客
-            </span>
             <span class="sidebar-tag-name" data-tags="jupyter notebook">
                 <span class="iconfont-archer">&#xe606;</span>
                 jupyter notebook
+            </span>
+            <span class="sidebar-tag-name" data-tags="博客">
+                <span class="iconfont-archer">&#xe606;</span>
+                博客
             </span>
             <span class="sidebar-tag-name" data-tags="python">
                 <span class="iconfont-archer">&#xe606;</span>
@@ -1204,13 +1216,13 @@ sdb 是系统盘
                 <span class="iconfont-archer">&#xe606;</span>
                 动态规划
             </span>
-            <span class="sidebar-tag-name" data-tags="摄影">
-                <span class="iconfont-archer">&#xe606;</span>
-                摄影
-            </span>
             <span class="sidebar-tag-name" data-tags="文本聚类 bert向量表示">
                 <span class="iconfont-archer">&#xe606;</span>
                 文本聚类 bert向量表示
+            </span>
+            <span class="sidebar-tag-name" data-tags="摄影">
+                <span class="iconfont-archer">&#xe606;</span>
+                摄影
             </span>
             <span class="sidebar-tag-name" data-tags="rclone">
                 <span class="iconfont-archer">&#xe606;</span>
@@ -1228,10 +1240,6 @@ sdb 是系统盘
                 <span class="iconfont-archer">&#xe606;</span>
                 日志
             </span>
-            <span class="sidebar-tag-name" data-tags="机器学习">
-                <span class="iconfont-archer">&#xe606;</span>
-                机器学习
-            </span>
             <span class="sidebar-tag-name" data-tags="数学">
                 <span class="iconfont-archer">&#xe606;</span>
                 数学
@@ -1239,6 +1247,10 @@ sdb 是系统盘
             <span class="sidebar-tag-name" data-tags="图">
                 <span class="iconfont-archer">&#xe606;</span>
                 图
+            </span>
+            <span class="sidebar-tag-name" data-tags="机器学习">
+                <span class="iconfont-archer">&#xe606;</span>
+                机器学习
             </span>
             <span class="sidebar-tag-name" data-tags="python_c++_互通">
                 <span class="iconfont-archer">&#xe606;</span>
@@ -1310,6 +1322,10 @@ sdb 是系统盘
 
         <div class="sidebar-panel-categories">
     <div class="sidebar-categories-name">
+        <span class="sidebar-category-name" data-categories="大模型">
+            <span class="iconfont-archer">&#xe60a;</span>
+            大模型
+        </span>
         <span class="sidebar-category-name" data-categories="总结">
             <span class="iconfont-archer">&#xe60a;</span>
             总结
@@ -1358,13 +1374,13 @@ sdb 是系统盘
             <span class="iconfont-archer">&#xe60a;</span>
             算法笔记
         </span>
-        <span class="sidebar-category-name" data-categories="摄影">
-            <span class="iconfont-archer">&#xe60a;</span>
-            摄影
-        </span>
         <span class="sidebar-category-name" data-categories="自然语言处理">
             <span class="iconfont-archer">&#xe60a;</span>
             自然语言处理
+        </span>
+        <span class="sidebar-category-name" data-categories="摄影">
+            <span class="iconfont-archer">&#xe60a;</span>
+            摄影
         </span>
         <span class="sidebar-category-name" data-categories="算法">
             <span class="iconfont-archer">&#xe60a;</span>
