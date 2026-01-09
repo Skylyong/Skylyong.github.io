@@ -1,0 +1,1366 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <!-- title -->
+<!-- keywords -->
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="author" content="LY">
+    <meta name="renderer" content="webkit">
+    <meta name="copyright" content="LY">
+        <meta name="keywords" content="hexo,hexo-theme,hexo-blog">
+    <meta name="description" content="Keep go on">
+    <meta name="description" content="在这里，我们介绍了BPE分词的原理及优缺点，本节我们将详细介绍 BPE Tokenizer的训练方法。 什么是 BPE Tokenizer TrainingBPE Tokenizer Training 是一个构建词表(Vocabulary)的过程，它基于字节级别（Byte-level），通过统计语料中相邻字节对出现的频率，迭代地将最频繁出现的字节对合并成新的、更高级的Token。它的输入为语料，基">
+<meta property="og:type" content="article">
+<meta property="og:title" content="BPE分词训练">
+<meta property="og:url" content="https://skylyong.github.io/2026/01/09/bpe-fen-ci-xun-lian/index.html">
+<meta property="og:site_name" content="茄子的个人空间">
+<meta property="og:description" content="在这里，我们介绍了BPE分词的原理及优缺点，本节我们将详细介绍 BPE Tokenizer的训练方法。 什么是 BPE Tokenizer TrainingBPE Tokenizer Training 是一个构建词表(Vocabulary)的过程，它基于字节级别（Byte-level），通过统计语料中相邻字节对出现的频率，迭代地将最频繁出现的字节对合并成新的、更高级的Token。它的输入为语料，基">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2026-01-09T13:29:23.000Z">
+<meta property="article:modified_time" content="2026-01-09T13:33:28.649Z">
+<meta property="article:author" content="LY">
+<meta property="article:tag" content="BPE">
+<meta name="twitter:card" content="summary">
+    <meta http-equiv="Cache-control" content="no-cache">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <link rel="icon" href="/assets/favicon.ico">
+    <title>BPE分词训练 · LY&#39;s Blog</title>
+    <!-- /*! loadCSS. [c]2017 Filament Group, Inc. MIT License */
+/* This file is meant as a standalone workflow for
+- testing support for link[rel=preload]
+- enabling async CSS loading in browsers that do not support rel=preload
+- applying rel preload css once loaded, whether supported or not.
+*/ -->
+<script>
+    (function (w) {
+        'use strict'
+        // rel=preload support test
+        if (!w.loadCSS) {
+            w.loadCSS = function () {}
+        }
+        // define on the loadCSS obj
+        var rp = (loadCSS.relpreload = {})
+        // rel=preload feature support test
+        // runs once and returns a function for compat purposes
+        rp.support = (function () {
+            var ret
+            try {
+                ret = w.document.createElement('link').relList.supports('preload')
+            } catch (e) {
+                ret = false
+            }
+            return function () {
+                return ret
+            }
+        })()
+
+        // if preload isn't supported, get an asynchronous load by using a non-matching media attribute
+        // then change that media back to its intended value on load
+        rp.bindMediaToggle = function (link) {
+            // remember existing media attr for ultimate state, or default to 'all'
+            var finalMedia = link.media || 'all'
+
+            function enableStylesheet() {
+                link.media = finalMedia
+            }
+
+            // bind load handlers to enable media
+            if (link.addEventListener) {
+                link.addEventListener('load', enableStylesheet)
+            } else if (link.attachEvent) {
+                link.attachEvent('onload', enableStylesheet)
+            }
+
+            // Set rel and non-applicable media type to start an async request
+            // note: timeout allows this to happen async to let rendering continue in IE
+            setTimeout(function () {
+                link.rel = 'stylesheet'
+                link.media = 'only x'
+            })
+            // also enable media after 3 seconds,
+            // which will catch very old browsers (android 2.x, old firefox) that don't support onload on link
+            setTimeout(enableStylesheet, 3000)
+        }
+
+        // loop through link elements in DOM
+        rp.poly = function () {
+            // double check this to prevent external calls from running
+            if (rp.support()) {
+                return
+            }
+            var links = w.document.getElementsByTagName('link')
+            for (var i = 0; i < links.length; i++) {
+                var link = links[i]
+                // qualify links to those with rel=preload and as=style attrs
+                if (
+                    link.rel === 'preload' &&
+                    link.getAttribute('as') === 'style' &&
+                    !link.getAttribute('data-loadcss')
+                ) {
+                    // prevent rerunning on link
+                    link.setAttribute('data-loadcss', true)
+                    // bind listeners to toggle media back
+                    rp.bindMediaToggle(link)
+                }
+            }
+        }
+
+        // if unsupported, run the polyfill
+        if (!rp.support()) {
+            // run once at least
+            rp.poly()
+
+            // rerun poly on an interval until onload
+            var run = w.setInterval(rp.poly, 500)
+            if (w.addEventListener) {
+                w.addEventListener('load', function () {
+                    rp.poly()
+                    w.clearInterval(run)
+                })
+            } else if (w.attachEvent) {
+                w.attachEvent('onload', function () {
+                    rp.poly()
+                    w.clearInterval(run)
+                })
+            }
+        }
+
+        // commonjs
+        if (typeof exports !== 'undefined') {
+            exports.loadCSS = loadCSS
+        } else {
+            w.loadCSS = loadCSS
+        }
+    })(typeof global !== 'undefined' ? global : this)
+</script>
+
+    <style type="text/css">
+    @font-face {
+        font-family: 'Oswald-Regular';
+        src: url("/font/Oswald-Regular.ttf");
+    }
+
+    body {
+        margin: 0;
+    }
+
+    header,
+    footer,
+    .footer-fixed-btn,
+    .sidebar,
+    .container,
+    .site-intro-meta,
+    .toc-wrapper {
+        display: none;
+    }
+
+    .site-intro {
+        position: relative;
+        z-index: 3;
+        width: 100%;
+        /* height: 50vh; */
+        overflow: hidden;
+    }
+
+    .site-intro-placeholder {
+        position: absolute;
+        z-index: -2;
+        top: 0;
+        left: 0;
+        width: calc(100% + 300px);
+        height: 100%;
+        background: repeating-linear-gradient(
+            -45deg,
+            #444 0,
+            #444 80px,
+            #333 80px,
+            #333 160px
+        );
+        background-position: center center;
+        transform: translate3d(-226px, 0, 0);
+        animation: gradient-move 2.5s ease-out 0s infinite;
+    }
+
+    @keyframes gradient-move {
+        0% {
+            transform: translate3d(-226px, 0, 0);
+        }
+        100% {
+            transform: translate3d(0, 0, 0);
+        }
+    }
+</style>
+
+    <link id="stylesheet-fancybox" rel="preload" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.36/dist/fancybox/fancybox.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <link id="stylesheet-base" rel="preload" href="/css/style.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <link id="stylesheet-mobile" rel="preload" href="/css/mobile.css" as="style" onload="this.onload=null;this.rel='stylesheet';this.media='screen and (max-width: 960px)'">
+    <link id="stylesheet-theme-dark" rel="preload" href="/css/dark.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" as="script">
+    <link rel="preload" href="/scripts/main.js" as="script">
+    <link rel="preload" href="/font/Oswald-Regular.ttf" as="font" crossorigin>
+    <link rel="preload" href="https://at.alicdn.com/t/font_327081_1dta1rlogw17zaor.woff" as="font" crossorigin>
+    <!-- algolia -->
+        <script>
+            var hits = JSON.parse('{"per_page":10}')
+            var labels = JSON.parse('{"input_placeholder":"Search for Posts","hits_empty":"我们没有找到任何搜索结果: ${query}","hits_stats":"找到${hits}条结果 （用时 ${time} ms）"}')
+
+            var algolia = {
+                applicationID: 'HDLQX51180',
+                apiKey: '2bcb8a706f5955c9f74cea13e540fb1b',
+                indexName: 'my-hexo-blog',
+                hits: hits,
+                labels: labels
+            }
+        </script>
+    <!-- 百度统计  -->
+    <!-- 谷歌统计  -->
+    <!-- Google tag (gtag.js) -->
+<meta name="generator" content="Hexo 7.3.0">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+</head>
+
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+    <script type="text/javascript">
+        if (typeof window.$ == undefined) {
+            console.warn('jquery load from jsdelivr failed, will load local script')
+            document.write('<script src="/lib/jquery.min.js" />')
+        }
+    </script>
+
+
+
+        <body class="post-body">
+        <!-- header -->
+        <header class="header header-mobile">
+    <!-- top read progress line -->
+    <div class="header-element">
+        <div class="read-progress"></div>
+    </div>
+    <!-- sidebar menu button -->
+
+    
+    <div class="header-element">
+        <div class="header-sidebar-menu">
+            <div style="padding-left: 1px;">&#xe775;</div>
+        </div>
+    </div>
+
+    
+    <!-- header actions -->
+    <div class="header-actions">
+        <!-- theme mode switch button -->
+        <span class="header-theme-btn header-element">
+            <i class="fas fa-adjust"></i>
+        </span>
+        <!-- back to home page text -->
+        <span class="home-link header-element">
+            <a href="/">LY's Space</a>
+        </span>
+    </div>
+    <!-- toggle banner -->
+    <div class="banner">
+        <div class="blog-title header-element">
+            <a href="/">LY&#39;s Space</a>
+        </div>
+        <div class="post-title header-element">
+            <a href="#" class="post-name">BPE分词训练</a>
+        </div>
+    </div>
+</header>
+
+        <!-- fixed footer -->
+        <footer class="footer-fixed">
+    <!-- donate button -->
+    <div class="donate-popup donate-popup--hidden">
+    <div class="donate-popup__title">Buy Me A Coffee</div>
+    <div class="donate-popup__content">
+        <div class="donate-popup__content-description">Thanks for your support!</div>
+        <img
+            class="donate-popup__content-qrCode"
+            title="Wechat"
+            alt="Wechat"
+            src="/assets/donate-wechat.png"
+        ></img>
+    </div>
+</div>
+
+    <div
+        title="Donate to the author"
+        class="footer-fixed-btn footer-fixed-btn--hidden donate-btn"
+    >
+        <i class="fas fa-donate"></i>
+    </div>
+
+    <!-- back to top button -->
+    <div class="footer-fixed-btn footer-fixed-btn--hidden back-top">
+        <div>&#xe639;</div>
+    </div>
+</footer>
+
+        <!-- wrapper -->
+        <div class="wrapper">
+            <div class="site-intro" style="    height:50vh;
+">
+    <!-- 主页  -->
+    <!-- 404页  -->
+    <div class="site-intro-placeholder"></div>
+    <div class="site-intro-img" style="background-image: url(/intro/post-bg.jpg)"></div>
+    <div class="site-intro-meta">
+        <!-- 标题  -->
+        <h1 class="intro-title">
+            <!-- 主页  -->
+                BPE分词训练
+            <!-- 404 -->
+        </h1>
+        <!-- 副标题 -->
+        <p class="intro-subtitle">
+            <!-- 主页副标题  -->
+            <!-- 404 -->
+        </p>
+        <!-- 文章页 meta -->
+            <div class="post-intros">
+                <!-- 文章页标签  -->
+                    <div class="post-intro-tags" >
+        <a class="post-tag" href="javascript:void(0);" data-tags="BPE">BPE</a>
+</div>
+
+                <!-- 文章字数统计 -->
+                    <div class="post-intro-read">
+                        <span>字数统计: <span class="post-count word-count">1.3k</span>阅读时长: <span class="post-count reading-time">6 min</span></span>
+                    </div>
+                <div class="post-intro-meta">
+                    <!-- 撰写日期 -->
+                    <span class="iconfont-archer post-intro-calander">&#xe676;</span>
+                    <span class="post-intro-time">2026/01/09</span>
+                    <!-- busuanzi -->
+                        <span id="busuanzi_container_page_pv" class="busuanzi-pv">
+                            <span class="iconfont-archer post-intro-busuanzi">&#xe602;</span>
+                            <span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    <!-- 文章分享 -->
+                    <span class="share-wrapper">
+                        <span class="iconfont-archer share-icon">&#xe71d;</span>
+                        <span class="share-text">Share</span>
+                        <ul class="share-list">
+                            <li class="iconfont-archer share-qr" data-type="qr">&#xe75b;
+                                <div class="share-qrcode"></div>
+                            </li>
+                            <li class="iconfont-archer" data-type="weibo">&#xe619;</li>
+                            <li class="iconfont-archer" data-type="qzone">&#xe62e;</li>
+                            <li class="iconfont-archer" data-type="twitter">&#xe634;</li>
+                            <li class="iconfont-archer" data-type="facebook">&#xe67a;</li>
+                        </ul>
+                    </span>
+                </div>
+            </div>
+    </div>
+</div>
+
+            <script>
+  // get user agent
+  function getBrowserVersions() {
+    var u = window.navigator.userAgent
+    return {
+      userAgent: u,
+      trident: u.indexOf('Trident') > -1, //IE内核
+      presto: u.indexOf('Presto') > -1, //opera内核
+      webKit: u.indexOf('AppleWebKit') > -1, //苹果、谷歌内核
+      gecko: u.indexOf('Gecko') > -1 && u.indexOf('KHTML') == -1, //火狐内核
+      mobile: !!u.match(/AppleWebKit.*Mobile.*/), //是否为移动终端
+      ios: !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/), //ios终端
+      android: u.indexOf('Android') > -1 || u.indexOf('Linux') > -1, //android终端或者uc浏览器
+      iPhone: u.indexOf('iPhone') > -1 || u.indexOf('Mac') > -1, //是否为iPhone或者安卓QQ浏览器
+      iPad: u.indexOf('iPad') > -1, //是否为iPad
+      webApp: u.indexOf('Safari') == -1, //是否为web应用程序，没有头部与底部
+      weixin: u.indexOf('MicroMessenger') == -1, //是否为微信浏览器
+      uc: u.indexOf('UCBrowser') > -1, //是否为android下的UC浏览器
+    }
+  }
+  var browser = {
+    versions: getBrowserVersions(),
+  }
+  console.log('userAgent: ' + browser.versions.userAgent)
+
+  // callback
+  function fontLoaded() {
+    console.log('font loaded')
+    if (document.getElementsByClassName('site-intro-meta')) {
+      document
+        .getElementsByClassName('intro-title')[0]
+        .classList.add('intro-fade-in')
+      document
+        .getElementsByClassName('intro-subtitle')[0]
+        .classList.add('intro-fade-in')
+      var postIntros = document.getElementsByClassName('post-intros')[0]
+      if (postIntros) {
+        postIntros.classList.add('post-fade-in')
+      }
+    }
+  }
+
+  // UC不支持跨域，所以直接显示
+  function asyncCb() {
+    if (browser.versions.uc) {
+      console.log('UCBrowser')
+      fontLoaded()
+    } else {
+      WebFont.load({
+        custom: {
+          families: ['Oswald-Regular'],
+        },
+        loading: function () {
+          // 所有字体开始加载
+          // console.log('font loading');
+        },
+        active: function () {
+          // 所有字体已渲染
+          fontLoaded()
+        },
+        inactive: function () {
+          // 字体预加载失败，无效字体或浏览器不支持加载
+          console.log('inactive: timeout')
+          fontLoaded()
+        },
+        timeout: 5000, // Set the timeout to two seconds
+      })
+    }
+  }
+
+  function asyncErr() {
+    console.warn('script load from CDN failed, will load local script')
+  }
+
+  // load webfont-loader async, and add callback function
+  function async(u, cb, err) {
+    var d = document,
+      t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0]
+    o.src = u
+    if (cb) {
+      o.addEventListener(
+        'load',
+        function (e) {
+          cb(null, e)
+        },
+        false
+      )
+    }
+    if (err) {
+      o.addEventListener(
+        'error',
+        function (e) {
+          err(null, e)
+        },
+        false
+      )
+    }
+    s.parentNode.insertBefore(o, s)
+  }
+
+  var asyncLoadWithFallBack = function (arr, success, reject) {
+    var currReject = function () {
+      reject()
+      arr.shift()
+      if (arr.length) async(arr[0], success, currReject)
+    }
+
+    async(arr[0], success, currReject)
+  }
+
+  asyncLoadWithFallBack(
+    [
+      'https://cdn.jsdelivr.net/npm/webfontloader@1.6.28/webfontloader.min.js',
+      'https://cdn.bootcss.com/webfont/1.6.28/webfontloader.js',
+      "/lib/webfontloader.min.js",
+    ],
+    asyncCb,
+    asyncErr
+  )
+</script>
+
+            <img class="loading" src="/assets/loading.svg" style="display: block; margin: 6rem auto 0 auto; width: 6rem; height: 6rem;" alt="loading">
+            <div class="container container-unloaded">
+                <main class="main post-page">
+    <article class="article-entry">
+        <p>在<a href="https://skylyong.github.io/2025/11/20/1-cs336-bpe-fen-ci-qi-jie-shao/">这里</a>，我们介绍了BPE分词的原理及优缺点，本节我们将详细介绍 BPE Tokenizer的训练方法。</p>
+<h1 id="什么是-BPE-Tokenizer-Training"><a href="#什么是-BPE-Tokenizer-Training" class="headerlink" title="什么是 BPE Tokenizer Training"></a>什么是 BPE Tokenizer Training</h1><p>BPE Tokenizer Training 是一个构建词表(Vocabulary)的过程，它基于字节级别（Byte-level），通过统计语料中相邻字节对出现的频率，迭代地将最频繁出现的字节对合并成新的、更高级的Token。它的输入为语料，基础词表和特殊token，输出为词表（Vocabulary）字典和记录合并的以元组为元素的list。</p>
+<h1 id="BPE-Tokenizer-Training-的三个核心步骤"><a href="#BPE-Tokenizer-Training-的三个核心步骤" class="headerlink" title="BPE Tokenizer Training 的三个核心步骤"></a>BPE Tokenizer Training 的三个核心步骤</h1><p><strong>BPE Tokenizer Training 包含三个核心步骤</strong>，介绍如下：</p>
+<ol>
+<li>词表初始化（Vocabulary Initialization)）</li>
+</ol>
+<ul>
+<li>基础词表：  在字节级别的BPE中，初始词表包含所有可能的256个字节值（0-255）。</li>
+<li>特殊Token： 在此阶段也会加入特定的特殊 Token（如&nbsp;&lt;|endoftext|&gt;），用于标记文档边界等元数据。这些 Token 在后续处理中永远不会被分割。</li>
+</ul>
+<ol start="2">
+<li>预分词（Pre-tokenization）<br>为了提高计算效率并保留标点符号的语义区分（避免跨单词和标点的无意义合并），需要先对语料进行粗粒度的预分词。</li>
+</ol>
+<ul>
+<li>方法： 使用正则表达式（Regex， 如GPT-2使用的规则）将原始语料分割成一个个 “pre-token” (通常是单词、标点或空格的片段)</li>
+<li>统计： 计算每个 pre-token 在语料中出现的频率。后续的合并操作仅在这些 pre-token 内部进行，而不是每次都重新扫描整个语料库。</li>
+</ul>
+<ol start="2">
+<li><p>计算BPE合并（Compute BPE Merges）<br><strong>这是训练的核心循环过程：</strong><br>1） 统计频次：在所有 pre-token 中，统计每一对相邻字节（或现有 Token）出现的频率。<br>2） 寻找最优对： 找出频率最高的字节对 （例如 “A” 和 “B”）</p>
+<ul>
+<li>平局打破规则（Tie-breaking）: 如果有多对频率相同，选择字典序更大的那一对（lexicographically greater）。</li>
+</ul>
+<p> 3）执行合并：将该最大频率的对合并为一个新的 Token （”AB”），将其加入词表，并记录本次合并。</p>
+<p> 4）迭代： 重复上述过程，直到达到预设的合并次数或词表大小。</p>
+</li>
+</ol>
+<h1 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h1><figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">run_train_bpe</span>(<span class="params"></span></span><br><span class="line"><span class="params">    input_path: <span class="built_in">str</span> | os.PathLike,</span></span><br><span class="line"><span class="params">    vocab_size: <span class="built_in">int</span>,</span></span><br><span class="line"><span class="params">    special_tokens: <span class="built_in">list</span>[<span class="built_in">str</span>],</span></span><br><span class="line"><span class="params">    **kwargs,</span></span><br><span class="line"><span class="params"></span>) -&gt; <span class="built_in">tuple</span>[<span class="built_in">dict</span>[<span class="built_in">int</span>, <span class="built_in">bytes</span>], <span class="built_in">list</span>[<span class="built_in">tuple</span>[<span class="built_in">bytes</span>, <span class="built_in">bytes</span>]]]:</span><br><span class="line">    <span class="string">"""Given the path to an input corpus, run train a BPE tokenizer and</span></span><br><span class="line"><span class="string">    output its vocabulary and merges.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    Args:</span></span><br><span class="line"><span class="string">        input_path (str | os.PathLike): Path to BPE tokenizer training data.</span></span><br><span class="line"><span class="string">        vocab_size (int): Total number of items in the tokenizer's vocabulary (including special tokens).</span></span><br><span class="line"><span class="string">        special_tokens (list[str]): A list of string special tokens to be added to the tokenizer vocabulary.</span></span><br><span class="line"><span class="string">            These strings will never be split into multiple tokens, and will always be</span></span><br><span class="line"><span class="string">            kept as a single token. If these special tokens occur in the `input_path`,</span></span><br><span class="line"><span class="string">            they are treated as any other string.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    Returns:</span></span><br><span class="line"><span class="string">        tuple[dict[int, bytes], list[tuple[bytes, bytes]]]:</span></span><br><span class="line"><span class="string">            vocab:</span></span><br><span class="line"><span class="string">                The trained tokenizer vocabulary, a mapping from int (token ID in the vocabulary)</span></span><br><span class="line"><span class="string">                to bytes (token bytes)</span></span><br><span class="line"><span class="string">            merges:</span></span><br><span class="line"><span class="string">                BPE merges. Each list item is a tuple of bytes (&lt;token1&gt;, &lt;token2&gt;),</span></span><br><span class="line"><span class="string">                representing that &lt;token1&gt; was merged with &lt;token2&gt;.</span></span><br><span class="line"><span class="string">                Merges are ordered by order of creation.</span></span><br><span class="line"><span class="string">    """</span></span><br><span class="line">   </span><br><span class="line">    </span><br><span class="line">    <span class="comment"># GPT-2 pre-tokenization pattern</span></span><br><span class="line">    GPT2_PATTERN = <span class="string">r"""'(?:[sdmt]|ll|ve|re)| ?\p{L}+| ?\p{N}+| ?[^\s\p{L}\p{N}]+|\s+(?!\S)|\s+"""</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment"># Step 1: Initialize vocabulary with all 256 bytes</span></span><br><span class="line">    vocab = {i: <span class="built_in">bytes</span>([i]) <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">256</span>)}</span><br><span class="line">    merges = []</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># Calculate number of merges needed</span></span><br><span class="line">    num_merges = vocab_size - <span class="number">256</span> - <span class="built_in">len</span>(special_tokens)</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># Step 2: Read and pre-tokenize the corpus</span></span><br><span class="line">    <span class="keyword">with</span> <span class="built_in">open</span>(input_path, <span class="string">'r'</span>, encoding=<span class="string">'utf-8'</span>, errors=<span class="string">'ignore'</span>) <span class="keyword">as</span> f:</span><br><span class="line">        text = f.read()</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># Step 3: Split on special tokens to prevent merging across them</span></span><br><span class="line">    <span class="keyword">if</span> special_tokens:</span><br><span class="line">        <span class="comment"># Escape special characters in special tokens and create pattern</span></span><br><span class="line">        escaped_tokens = [re.escape(token) <span class="keyword">for</span> token <span class="keyword">in</span> special_tokens]</span><br><span class="line">        split_pattern = <span class="string">'|'</span>.join(escaped_tokens)</span><br><span class="line">        text_segments = re.split(<span class="string">f'(<span class="subst">{split_pattern}</span>)'</span>, text)</span><br><span class="line">        <span class="comment"># Filter out the special tokens themselves and empty strings</span></span><br><span class="line">        text_segments = [seg <span class="keyword">for</span> seg <span class="keyword">in</span> text_segments <span class="keyword">if</span> seg <span class="keyword">and</span> seg <span class="keyword">not</span> <span class="keyword">in</span> special_tokens]</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        text_segments = [text]</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># Step 4: Pre-tokenize each text segment</span></span><br><span class="line">    pre_tokens = []</span><br><span class="line">    <span class="keyword">for</span> segment <span class="keyword">in</span> text_segments:</span><br><span class="line">        <span class="comment"># Apply GPT-2 regex pattern to get pre-tokens</span></span><br><span class="line">        matches = re.findall(GPT2_PATTERN, segment)</span><br><span class="line">        <span class="keyword">for</span> <span class="keyword">match</span> <span class="keyword">in</span> matches:</span><br><span class="line">            <span class="comment"># Convert each pre-token to a list of bytes</span></span><br><span class="line">            pre_tokens.append([<span class="built_in">bytes</span>([b]) <span class="keyword">for</span> b <span class="keyword">in</span> <span class="keyword">match</span>.encode(<span class="string">'utf-8'</span>)])</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># Step 5: Perform BPE merges (ULTRA OPTIMIZED - Incremental pair counting)</span></span><br><span class="line">    <span class="comment"># Convert pre_tokens to a frequency map to avoid redundant processing</span></span><br><span class="line">    <span class="comment"># 统计初始时，每个字符串的频次</span></span><br><span class="line">    word_freqs = {}</span><br><span class="line">    <span class="keyword">for</span> token_seq <span class="keyword">in</span> pre_tokens:</span><br><span class="line">        word_tuple = <span class="built_in">tuple</span>(token_seq)</span><br><span class="line">        word_freqs[word_tuple] = word_freqs.get(word_tuple, <span class="number">0</span>) + <span class="number">1</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment"># Initial pair counting</span></span><br><span class="line">    <span class="comment"># 统计初始时 每个相邻对出现的频次</span></span><br><span class="line">    pair_counts = {}</span><br><span class="line">    <span class="keyword">for</span> word, freq <span class="keyword">in</span> word_freqs.items():</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(word) - <span class="number">1</span>):</span><br><span class="line">            pair = (word[i], word[i+<span class="number">1</span>])</span><br><span class="line">            pair_counts[pair] = pair_counts.get(pair, <span class="number">0</span>) + freq</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(num_merges):</span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> pair_counts:</span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line">        </span><br><span class="line">        <span class="comment"># Find best pair (sort by frequency, then lexicographically)</span></span><br><span class="line">        best_pair = <span class="built_in">max</span>(pair_counts, key=<span class="keyword">lambda</span> p: (pair_counts[p], p))</span><br><span class="line">        </span><br><span class="line">        <span class="comment"># Create new token</span></span><br><span class="line">        new_token = best_pair[<span class="number">0</span>] + best_pair[<span class="number">1</span>]</span><br><span class="line">        </span><br><span class="line">        <span class="comment"># Add to vocab and merges</span></span><br><span class="line">        vocab[<span class="built_in">len</span>(vocab)] = new_token</span><br><span class="line">        merges.append(best_pair)</span><br><span class="line">        </span><br><span class="line">        <span class="comment"># Update word_freqs and pair_counts incrementally</span></span><br><span class="line">        new_word_freqs = {}</span><br><span class="line">        <span class="keyword">for</span> word, freq <span class="keyword">in</span> word_freqs.items():</span><br><span class="line">            <span class="comment"># Check if this word contains the pair to merge</span></span><br><span class="line">            <span class="keyword">if</span> <span class="built_in">len</span>(word) &lt; <span class="number">2</span>:</span><br><span class="line">                new_word_freqs[word] = freq</span><br><span class="line">                <span class="keyword">continue</span></span><br><span class="line">            </span><br><span class="line">            <span class="comment"># Check if pair exists in word</span></span><br><span class="line">            has_pair = <span class="literal">False</span></span><br><span class="line">            <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(word) - <span class="number">1</span>):</span><br><span class="line">                <span class="keyword">if</span> word[i] == best_pair[<span class="number">0</span>] <span class="keyword">and</span> word[i+<span class="number">1</span>] == best_pair[<span class="number">1</span>]:</span><br><span class="line">                    has_pair = <span class="literal">True</span></span><br><span class="line">                    <span class="keyword">break</span></span><br><span class="line">            </span><br><span class="line">            <span class="keyword">if</span> <span class="keyword">not</span> has_pair:</span><br><span class="line">                <span class="comment"># Word unchanged, keep it</span></span><br><span class="line">                new_word_freqs[word] = freq</span><br><span class="line">                <span class="keyword">continue</span></span><br><span class="line">            </span><br><span class="line">            <span class="comment"># Remove old pairs from pair_counts</span></span><br><span class="line">            <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(word) - <span class="number">1</span>):</span><br><span class="line">                old_pair = (word[i], word[i+<span class="number">1</span>])</span><br><span class="line">                pair_counts[old_pair] = pair_counts.get(old_pair, <span class="number">0</span>) - freq</span><br><span class="line">                <span class="keyword">if</span> pair_counts[old_pair] &lt;= <span class="number">0</span>:</span><br><span class="line">                    <span class="keyword">del</span> pair_counts[old_pair]</span><br><span class="line">            </span><br><span class="line">            <span class="comment"># Merge the pair in this word</span></span><br><span class="line">            new_word = []</span><br><span class="line">            i = <span class="number">0</span></span><br><span class="line">            <span class="keyword">while</span> i &lt; <span class="built_in">len</span>(word):</span><br><span class="line">                <span class="keyword">if</span> i &lt; <span class="built_in">len</span>(word) - <span class="number">1</span> <span class="keyword">and</span> word[i] == best_pair[<span class="number">0</span>] <span class="keyword">and</span> word[i+<span class="number">1</span>] == best_pair[<span class="number">1</span>]:</span><br><span class="line">                    new_word.append(new_token)</span><br><span class="line">                    i += <span class="number">2</span></span><br><span class="line">                <span class="keyword">else</span>:</span><br><span class="line">                    new_word.append(word[i])</span><br><span class="line">                    i += <span class="number">1</span></span><br><span class="line">            </span><br><span class="line">            new_word_tuple = <span class="built_in">tuple</span>(new_word)</span><br><span class="line">            new_word_freqs[new_word_tuple] = freq</span><br><span class="line">            </span><br><span class="line">            <span class="comment"># Add new pairs to pair_counts</span></span><br><span class="line">            <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(new_word) - <span class="number">1</span>):</span><br><span class="line">                new_pair = (new_word[i], new_word[i+<span class="number">1</span>])</span><br><span class="line">                pair_counts[new_pair] = pair_counts.get(new_pair, <span class="number">0</span>) + freq</span><br><span class="line">        </span><br><span class="line">        word_freqs = new_word_freqs</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># Step 6: Add special tokens to vocabulary</span></span><br><span class="line">    <span class="keyword">for</span> special_token <span class="keyword">in</span> special_tokens:</span><br><span class="line">        special_token_bytes = special_token.encode(<span class="string">'utf-8'</span>)</span><br><span class="line">        <span class="keyword">if</span> special_token_bytes <span class="keyword">not</span> <span class="keyword">in</span> vocab.values():</span><br><span class="line">            vocab[<span class="built_in">len</span>(vocab)] = special_token_bytes</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> vocab, merges</span><br></pre></td></tr></tbody></table></figure>
+
+    </article>
+    <!-- license -->
+        <div class="license-wrapper">
+            <p>原文作者：<a href="https://skylyong.github.io">LY</a>
+            <p>原文链接：<a href="https://skylyong.github.io/2026/01/09/bpe-fen-ci-xun-lian/">https://skylyong.github.io/2026/01/09/bpe-fen-ci-xun-lian/</a>
+            <p>发表日期：<a href="https://skylyong.github.io/2026/01/09/bpe-fen-ci-xun-lian/">January 9th 2026, 9:29:23 pm</a>
+            <p>更新日期：<a href="https://skylyong.github.io/2026/01/09/bpe-fen-ci-xun-lian/">January 9th 2026, 9:33:28 pm</a>
+            <p>版权声明：本文采用<a rel="license noopener" target="_blank" href="http://creativecommons.org/licenses/by-nc/4.0/">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可</p>
+        </div>
+    <!-- paginator -->
+    <ul class="post-paginator">
+        <li class="next">
+        </li>
+        <li class="previous">
+                <div class="prevSlogan">Previous Post</div>
+                <a href="/2025/12/02/clash-gui-ze-pei-zhi-zhi-nan/" title="Clash规则配置指南">
+                    <div class="prevTitle">Clash规则配置指南</div>
+                </a>
+        </li>
+    </ul>
+    <!-- comment -->
+        <div class="post-comment">
+            <!-- 来必力 City 版安装代码 -->
+
+            
+            
+            
+            <!-- utteranc评论 -->
+    <script src='https://utteranc.es/client.js'
+        repo='Skylyong/blog-commit'
+        issue-term='pathname'
+        label='utteranc'
+        theme='github-light'
+        crossorigin='anonymous'
+        async>
+    </script>
+
+            <!-- partial('_partial/comment/changyan') -->
+            <!--PC版-->
+
+            
+            
+            
+        </div>
+    <!-- timeliness note -->
+    <!-- idea from: https://hexo.fluid-dev.com/posts/hexo-injector/#%E6%96%87%E7%AB%A0%E6%97%B6%E6%95%88%E6%80%A7%E6%8F%90%E7%A4%BA -->
+    <!-- Mathjax -->
+</main>
+
+                <!-- profile -->
+            </div>
+            <footer class="footer footer-unloaded">
+    <!-- social  -->
+
+    <!-- <h1>Page Layout: post</h1> -->
+
+    
+        <div class="social">
+                            <a href="mailto:lyong_s@foxmail.com" class="iconfont-archer email" title="email" ></a>
+                <a href="//github.com/Skylyong" class="iconfont-archer github" target="_blank" title="github"></a>
+
+        </div>
+    
+    <!-- powered by Hexo  -->
+    
+    <div class="copyright">
+        <span id="hexo-power">Powered by <a href="https://hexo.io/" target="_blank">Hexo</a></span><span class="iconfont-archer power">&#xe635;</span><span id="theme-info">theme <a href="https://github.com/fi3ework/hexo-theme-archer" target="_blank">Archer</a></span>
+    </div>
+
+    <!-- website approve for Chinese user -->
+    <!-- 不蒜子  -->
+        <div class="busuanzi-container">
+                <span id="busuanzi_container_site_pv">PV: <span id="busuanzi_value_site_pv"></span> :)</span>
+        </div>
+</footer>
+
+        </div>
+        <!-- toc -->
+            <div class="toc-wrapper toc-wrapper-loding" style=    top:50vh;
+>
+                <div class="toc-catalog">
+                    <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
+                </div>
+                <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF-BPE-Tokenizer-Training"><span class="toc-number">1.</span> <span class="toc-text">什么是 BPE Tokenizer Training</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#BPE-Tokenizer-Training-%E7%9A%84%E4%B8%89%E4%B8%AA%E6%A0%B8%E5%BF%83%E6%AD%A5%E9%AA%A4"><span class="toc-number">2.</span> <span class="toc-text">BPE Tokenizer Training 的三个核心步骤</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0"><span class="toc-number">3.</span> <span class="toc-text">代码实现</span></a></li></ol>
+            </div>
+        <!-- sidebar -->
+        <div class="sidebar sidebar-hide">
+    <ul class="sidebar-tabs sidebar-tabs-active-0">
+        <li class="sidebar-tab-archives"><span class="iconfont-archer">&#xe67d;</span><span class="tab-name">Archive</span></li>
+        <li class="sidebar-tab-tags"><span class="iconfont-archer">&#xe61b;</span><span class="tab-name">Tag</span></li>
+        <li class="sidebar-tab-categories"><span class="iconfont-archer">&#xe666;</span><span class="tab-name">Cate</span></li>
+    </ul>
+    <div class="sidebar-content sidebar-content-show-archive">
+        <div class="sidebar-panel-archives">
+    <!-- 在 ejs 中将 archive 按照时间排序 -->
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+    <div class="total-and-search">
+        <div class="total-archive">
+        Total : 73
+        </div>
+        <!-- search  -->
+            <div class="site-search site-search-loading popup-trigger">
+                <span class="iconfont-archer search-icon">&#xe627;</span>
+            </div>
+    </div>
+    <div class="post-archive">
+            <div class="archive-year"> 2026 </div>
+            <ul class="year-list">
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/09</span>
+            <a class="archive-post-title" href="/2026/01/09/bpe-fen-ci-xun-lian/">BPE分词训练</a>
+        </li>
+                </ul>
+            <div class="archive-year"> 2025 </div>
+            <ul class="year-list">
+        <li class="archive-post-item">
+            <span class="archive-post-date">12/02</span>
+            <a class="archive-post-title" href="/2025/12/02/clash-gui-ze-pei-zhi-zhi-nan/">Clash规则配置指南</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/20</span>
+            <a class="archive-post-title" href="/2025/11/20/1-cs336-bpe-fen-ci-qi-jie-shao/">1-cs336-BPE分词器介绍</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/16</span>
+            <a class="archive-post-title" href="/2025/10/16/linux-chang-yong-ming-ling-jie-shi/">linux常用命令解释</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/14</span>
+            <a class="archive-post-title" href="/2025/10/14/shi-yong-rclone-zai-duo-ge-fu-wu-qi-zhi-jian-chuan-shu-wen-jian/">使用rclone在多个服务器之间传输文件</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/08</span>
+            <a class="archive-post-title" href="/2025/10/08/ubuntu-shang-che-di-xie-zai-he-chong-zhuang-nvidia-qu-dong-ji-xiang-guan-zu-jian/">Ubuntu上彻底卸载和重装NVIDIA驱动及相关组件</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/03</span>
+            <a class="archive-post-title" href="/2025/10/03/ssh-pei-zhi-jie-shao/">ssh配置介绍</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/02</span>
+            <a class="archive-post-title" href="/2025/10/02/mineru-an-zhuang-bu-shu/">MinerU安装部署</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">09/29</span>
+            <a class="archive-post-title" href="/2025/09/29/tong-guo-docker-yun-xing-easyconnect-deng-vpn-ruan-jian/">通过docker运行EasyConnect等VPN软件</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">09/28</span>
+            <a class="archive-post-title" href="/2025/09/28/quan-ju-pei-zhi-docker-ke-hu-duan-dai-li/">全局配置Docker客户端代理</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">09/16</span>
+            <a class="archive-post-title" href="/2025/09/16/linux-ci-pan-guan-li-ji-minio-fu-wu-pei-zhi/">Linux磁盘管理及MinIO服务配置</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/10</span>
+            <a class="archive-post-title" href="/2025/08/10/bu-dong-dian-he-ya-suo-ying-she/">不动点和压缩映射</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/10</span>
+            <a class="archive-post-title" href="/2025/08/10/xiang-liang-fan-shu/">向量范数</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/10</span>
+            <a class="archive-post-title" href="/2025/08/10/shu-xue-zhong-de-qi-ci-xing-li-jie/">数学中的齐次性理解</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/10</span>
+            <a class="archive-post-title" href="/2025/08/10/ju-zhen-fan-shu/">矩阵范数</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/10</span>
+            <a class="archive-post-title" href="/2025/08/10/fan-shu-de-ji-ben-gai-nian/">范数的基本概念</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">07/28</span>
+            <a class="archive-post-title" href="/2025/07/28/claude-code-xue-xi-ji-lu/">Claude-Code学习记录</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">07/25</span>
+            <a class="archive-post-title" href="/2025/07/25/uv-chang-yong-cao-zuo/">uv常用操作</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">07/13</span>
+            <a class="archive-post-title" href="/2025/07/13/quan-qi-wang-ding-li-gong-shi-tui-dao/">全期望定理公式推导</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">07/12</span>
+            <a class="archive-post-title" href="/2025/07/12/bei-er-man-deng-shi-jie-shao-ji-tui-dao/">贝尔曼等式介绍及推导</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">06/17</span>
+            <a class="archive-post-title" href="/2025/06/17/shi-yong-docker-gou-jian-webdav-fu-wu-qi/">使用Docker构建Webdav服务器</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/14</span>
+            <a class="archive-post-title" href="/2025/05/14/git-team-collab-workflow/">git_team_collab_workflow</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/24</span>
+            <a class="archive-post-title" href="/2025/04/24/ben-di-gou-jian-docker-jing-xiang-bing-shang-chuan-zhi-a-li-yun-jing-xiang-fu-wu-zhan/">本地构建docker镜像并上传至阿里云镜像服务站</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/18</span>
+            <a class="archive-post-title" href="/2025/04/18/an-zhuang-torch-scatter-shi-yu-dao-de-keng/">安装torch-scatter时遇到的坑</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/17</span>
+            <a class="archive-post-title" href="/2025/03/17/neo4j-dao-ru-jie-dian-he-bian-de-python-dai-ma/">neo4j导入节点和边的python代码</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/09</span>
+            <a class="archive-post-title" href="/2025/03/09/jie-pai-he-ji/">街拍合集</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/09</span>
+            <a class="archive-post-title" href="/2025/03/09/ren-xiang-she-ying-he-ji/">人像摄影合集</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/08</span>
+            <a class="archive-post-title" href="/2025/03/08/matplotlib-xian-shi-zhong-wen/">matplotlib 设置显示中文</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/08</span>
+            <a class="archive-post-title" href="/2025/03/08/python-duo-jin-cheng-shi-li/">python多进程示例</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/06</span>
+            <a class="archive-post-title" href="/2025/03/06/shi-yong-bert-de-dao-duan-yu-xiang-liang-biao-shi-bing-jin-xing-ceng-ci-ju-lei-shi-xian-xiang-si-xing-qu-chong/">使用BERT得到短语向量表示并进行层次聚类实现相似性去重</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/06</span>
+            <a class="archive-post-title" href="/2025/03/06/ji-yu-bian-ji-ju-chi-de-wen-ben-ceng-ci-ju-lei/">基于编辑距离的文本层次聚类</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/27</span>
+            <a class="archive-post-title" href="/2025/02/27/ai-jing-sai-ping-tai/">Ai竞赛平台</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/19</span>
+            <a class="archive-post-title" href="/2025/02/19/python-ri-chang-kai-fa-za-ji/">python日常开发杂记</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/12</span>
+            <a class="archive-post-title" href="/2025/02/12/tong-guo-docker-bu-shu-doccano-biao-zhu-gong-ju/">通过docker部署doccano标注工具</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/06</span>
+            <a class="archive-post-title" href="/2025/02/06/zai-cheng-gong-de-ri-zi-fu-xi-zi-liao-bu-jian-liao/">在呈贡的日子——复习资料不见了</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/06</span>
+            <a class="archive-post-title" href="/2025/02/06/zai-cheng-gong-de-ri-zi-lao-yu-he/">在呈贡的日子——捞鱼河</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/28</span>
+            <a class="archive-post-title" href="/2025/01/28/vscode-kai-fa-ji-qiao-ji-lu/">vscode开发技巧记录</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/28</span>
+            <a class="archive-post-title" href="/2025/01/28/bo-ke-wei-hu-ri-zhi/">博客维护日志</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/26</span>
+            <a class="archive-post-title" href="/2025/01/26/da-jian-webdav-fu-wu-qi-shi-xian-obsidian-he-zotero-duo-duan-tong-bu/">搭建Webdav服务器实现Obsidian和Zotero多端同步</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/07</span>
+            <a class="archive-post-title" href="/2025/01/07/sentence-transformers-sampler-bug-zhi-set-bu-yi-ding-shi-wu-xu-de/">sentence-transformers sampler bug 之 set 不一定是无序的</a>
+        </li>
+                </ul>
+            <div class="archive-year"> 2023 </div>
+            <ul class="year-list">
+        <li class="archive-post-item">
+            <span class="archive-post-date">09/12</span>
+            <a class="archive-post-title" href="/2023/09/12/ubuntu-shang-an-zhuang-nividia-qu-dong-he-cuda-tookit/">ubuntu上安装NIVIDIA驱动和CUDA_Tookit</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">07/23</span>
+            <a class="archive-post-title" href="/2023/07/23/zai-mac-shang-shi-yong-pybind11-shi-xian-c-yu-python-hu-tong-de-demo/">在mac上使用pybind11实现c++与python互通的demo</a>
+        </li>
+                </ul>
+            <div class="archive-year"> 2022 </div>
+            <ul class="year-list">
+        <li class="archive-post-item">
+            <span class="archive-post-date">09/07</span>
+            <a class="archive-post-title" href="/2022/09/07/mac-xi-tong-zhi-zuo-win10-qi-dong-u-pan/">Mac系统制作win10启动U盘</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">09/05</span>
+            <a class="archive-post-title" href="/2022/09/05/dian-ci-bi-sai-zong-jie/">电磁比赛总结</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/29</span>
+            <a class="archive-post-title" href="/2022/04/29/yuan-cheng-fang-wen-fu-wu-qi-jupyter-notebook/">远程访问服务器Jupyter-Notebook</a>
+        </li>
+                </ul>
+            <div class="archive-year"> 2021 </div>
+            <ul class="year-list">
+        <li class="archive-post-item">
+            <span class="archive-post-date">12/10</span>
+            <a class="archive-post-title" href="/2021/12/10/c-duo-xian-cheng-bian-cheng/">C++多线程编程</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">09/29</span>
+            <a class="archive-post-title" href="/2021/09/29/jiang-wei-xin-liao-tian-zhong-de-yu-yin-zhuan-huan-wei-mp3/">将微信聊天中的语音转换为mp3</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">09/19</span>
+            <a class="archive-post-title" href="/2021/09/19/you-yong-de-zi-yuan/">有用的资源</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">09/19</span>
+            <a class="archive-post-title" href="/2021/09/19/ji-qi-xue-xi-can-kao-zi-liao/">机器学习参考资料</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/14</span>
+            <a class="archive-post-title" href="/2021/08/14/wei-xin-biao-qian-zheng-li/">微信标签整理</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/14</span>
+            <a class="archive-post-title" href="/2021/08/14/gong-ju-xiang/">工具箱</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/13</span>
+            <a class="archive-post-title" href="/2021/08/13/google-fang-wen-zhu-shou-an-zhuang/">Google访问助手安装</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/13</span>
+            <a class="archive-post-title" href="/2021/08/13/tu-de-chuang-jian-he-bian-li/">【课程设计】图的创建和遍历</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/13</span>
+            <a class="archive-post-title" href="/2021/08/13/chang-yong-shu-ju-ji-zheng-li/">常用数据集整理</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/13</span>
+            <a class="archive-post-title" href="/2021/08/13/li-bao-chun-writing-perfect-papers/">论文写作</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/09</span>
+            <a class="archive-post-title" href="/2021/08/09/svm-xue-xi-bi-ji/">SVM学习笔记</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/06</span>
+            <a class="archive-post-title" href="/2021/08/06/pandas-xue-xi/">Pandas学习</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/05</span>
+            <a class="archive-post-title" href="/2021/08/05/pytorch-xue-xi/">Pytorch学习</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">07/01</span>
+            <a class="archive-post-title" href="/2021/07/01/huggingface-yu-xun-lian-mo-xing-quan-chong-xia-zai-de-wen-ti/">Huggingface 预训练模型权重下载的问题</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">06/21</span>
+            <a class="archive-post-title" href="/2021/06/21/jupyter-notebook-ben-di-fu-wu-qi-da-jian/">jupyter notebook 本地服务器搭建</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/16</span>
+            <a class="archive-post-title" href="/2021/04/16/ji-qi-xue-xi-zhong-de-ge-chong-shang/">机器学习中的各种熵</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/08</span>
+            <a class="archive-post-title" href="/2021/04/08/git-chang-yong-ming-ling/">git常用命令</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/08</span>
+            <a class="archive-post-title" href="/2021/04/08/nlp-zhi-shi-ti-xi/">NLP知识体系</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/01</span>
+            <a class="archive-post-title" href="/2021/04/01/zui-xiao-lu-jing-he/">【每日算法】2021年03月31日 小雨 最小路径和</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/31</span>
+            <a class="archive-post-title" href="/2021/03/31/gitlab-da-jian-bi-ji/">GitLab搭建笔记</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/31</span>
+            <a class="archive-post-title" href="/2021/03/31/ke-cheng-she-ji-zui-xiao-sheng-cheng-shu-ying-yong/">【课程设计】最小生成树应用</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/31</span>
+            <a class="archive-post-title" href="/2021/03/31/xue-xi-shi-pin-zheng-li/">学习视频整理</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/31</span>
+            <a class="archive-post-title" href="/2021/03/31/ying-yu-kou-yu-lian-xi-dian-ying-tui-jian/">英语口语练习电影推荐</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/30</span>
+            <a class="archive-post-title" href="/2021/03/30/bu-tong-lu-jing/">【每日算法】2021年03月30日 多云 不同路径</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/29</span>
+            <a class="archive-post-title" href="/2021/03/29/bian-fen-xue-xi-bi-ji/">变分学习笔记</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/28</span>
+            <a class="archive-post-title" href="/2021/03/28/github-jia-su-fang-fa/">GitHub加速方法</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/21</span>
+            <a class="archive-post-title" href="/2021/02/21/hexo-ge-ren-bo-ke-da-jian-jiao-cheng/">hexo个人博客搭建</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/21</span>
+            <a class="archive-post-title" href="/2021/02/21/hao-yong-de-mian-fei-wu-guang-gao-dian-ying-wang-zhan-tui-jian/">好用的免费无广告电影网站推荐</a>
+        </li>
+            </ul>
+    </div>
+</div>
+
+        <div class="sidebar-panel-tags">
+    <div class="sidebar-tags-name">
+            <span class="sidebar-tag-name" data-tags="BPE">
+                <span class="iconfont-archer">&#xe606;</span>
+                BPE
+            </span>
+            <span class="sidebar-tag-name" data-tags="ai竞赛">
+                <span class="iconfont-archer">&#xe606;</span>
+                ai竞赛
+            </span>
+            <span class="sidebar-tag-name" data-tags="Clash, 规则配置">
+                <span class="iconfont-archer">&#xe606;</span>
+                Clash, 规则配置
+            </span>
+            <span class="sidebar-tag-name" data-tags="claude-code">
+                <span class="iconfont-archer">&#xe606;</span>
+                claude-code
+            </span>
+            <span class="sidebar-tag-name" data-tags="GitHub">
+                <span class="iconfont-archer">&#xe606;</span>
+                GitHub
+            </span>
+            <span class="sidebar-tag-name" data-tags="GitLab">
+                <span class="iconfont-archer">&#xe606;</span>
+                GitLab
+            </span>
+            <span class="sidebar-tag-name" data-tags="Google访问助手">
+                <span class="iconfont-archer">&#xe606;</span>
+                Google访问助手
+            </span>
+            <span class="sidebar-tag-name" data-tags="预训练模型">
+                <span class="iconfont-archer">&#xe606;</span>
+                预训练模型
+            </span>
+            <span class="sidebar-tag-name" data-tags="mineru">
+                <span class="iconfont-archer">&#xe606;</span>
+                mineru
+            </span>
+            <span class="sidebar-tag-name" data-tags="启动U盘">
+                <span class="iconfont-archer">&#xe606;</span>
+                启动U盘
+            </span>
+            <span class="sidebar-tag-name" data-tags="nlp">
+                <span class="iconfont-archer">&#xe606;</span>
+                nlp
+            </span>
+            <span class="sidebar-tag-name" data-tags="Pandas">
+                <span class="iconfont-archer">&#xe606;</span>
+                Pandas
+            </span>
+            <span class="sidebar-tag-name" data-tags="pytorch">
+                <span class="iconfont-archer">&#xe606;</span>
+                pytorch
+            </span>
+            <span class="sidebar-tag-name" data-tags="NVIDIA">
+                <span class="iconfont-archer">&#xe606;</span>
+                NVIDIA
+            </span>
+            <span class="sidebar-tag-name" data-tags="github">
+                <span class="iconfont-archer">&#xe606;</span>
+                github
+            </span>
+            <span class="sidebar-tag-name" data-tags="博客">
+                <span class="iconfont-archer">&#xe606;</span>
+                博客
+            </span>
+            <span class="sidebar-tag-name" data-tags="git">
+                <span class="iconfont-archer">&#xe606;</span>
+                git
+            </span>
+            <span class="sidebar-tag-name" data-tags="python">
+                <span class="iconfont-archer">&#xe606;</span>
+                python
+            </span>
+            <span class="sidebar-tag-name" data-tags="neo4j">
+                <span class="iconfont-archer">&#xe606;</span>
+                neo4j
+            </span>
+            <span class="sidebar-tag-name" data-tags="jupyter notebook">
+                <span class="iconfont-archer">&#xe606;</span>
+                jupyter notebook
+            </span>
+            <span class="sidebar-tag-name" data-tags="svm">
+                <span class="iconfont-archer">&#xe606;</span>
+                svm
+            </span>
+            <span class="sidebar-tag-name" data-tags="ssh">
+                <span class="iconfont-archer">&#xe606;</span>
+                ssh
+            </span>
+            <span class="sidebar-tag-name" data-tags="uv">
+                <span class="iconfont-archer">&#xe606;</span>
+                uv
+            </span>
+            <span class="sidebar-tag-name" data-tags="NIVIDIA驱动">
+                <span class="iconfont-archer">&#xe606;</span>
+                NIVIDIA驱动
+            </span>
+            <span class="sidebar-tag-name" data-tags="vscode">
+                <span class="iconfont-archer">&#xe606;</span>
+                vscode
+            </span>
+            <span class="sidebar-tag-name" data-tags="树">
+                <span class="iconfont-archer">&#xe606;</span>
+                树
+            </span>
+            <span class="sidebar-tag-name" data-tags="动态规划">
+                <span class="iconfont-archer">&#xe606;</span>
+                动态规划
+            </span>
+            <span class="sidebar-tag-name" data-tags="摄影">
+                <span class="iconfont-archer">&#xe606;</span>
+                摄影
+            </span>
+            <span class="sidebar-tag-name" data-tags="文本聚类 bert向量表示">
+                <span class="iconfont-archer">&#xe606;</span>
+                文本聚类 bert向量表示
+            </span>
+            <span class="sidebar-tag-name" data-tags="webdav, docker, obsidian, zotero">
+                <span class="iconfont-archer">&#xe606;</span>
+                webdav, docker, obsidian, zotero
+            </span>
+            <span class="sidebar-tag-name" data-tags="rclone">
+                <span class="iconfont-archer">&#xe606;</span>
+                rclone
+            </span>
+            <span class="sidebar-tag-name" data-tags="概率论">
+                <span class="iconfont-archer">&#xe606;</span>
+                概率论
+            </span>
+            <span class="sidebar-tag-name" data-tags="日志">
+                <span class="iconfont-archer">&#xe606;</span>
+                日志
+            </span>
+            <span class="sidebar-tag-name" data-tags="机器学习">
+                <span class="iconfont-archer">&#xe606;</span>
+                机器学习
+            </span>
+            <span class="sidebar-tag-name" data-tags="图">
+                <span class="iconfont-archer">&#xe606;</span>
+                图
+            </span>
+            <span class="sidebar-tag-name" data-tags="数学">
+                <span class="iconfont-archer">&#xe606;</span>
+                数学
+            </span>
+            <span class="sidebar-tag-name" data-tags="呈贡">
+                <span class="iconfont-archer">&#xe606;</span>
+                呈贡
+            </span>
+            <span class="sidebar-tag-name" data-tags="python_c++_互通">
+                <span class="iconfont-archer">&#xe606;</span>
+                python_c++_互通
+            </span>
+            <span class="sidebar-tag-name" data-tags="编程">
+                <span class="iconfont-archer">&#xe606;</span>
+                编程
+            </span>
+            <span class="sidebar-tag-name" data-tags="电影">
+                <span class="iconfont-archer">&#xe606;</span>
+                电影
+            </span>
+            <span class="sidebar-tag-name" data-tags="微信">
+                <span class="iconfont-archer">&#xe606;</span>
+                微信
+            </span>
+            <span class="sidebar-tag-name" data-tags="文本聚类 编辑距离">
+                <span class="iconfont-archer">&#xe606;</span>
+                文本聚类 编辑距离
+            </span>
+            <span class="sidebar-tag-name" data-tags="干货">
+                <span class="iconfont-archer">&#xe606;</span>
+                干货
+            </span>
+            <span class="sidebar-tag-name" data-tags="资源">
+                <span class="iconfont-archer">&#xe606;</span>
+                资源
+            </span>
+            <span class="sidebar-tag-name" data-tags="熵">
+                <span class="iconfont-archer">&#xe606;</span>
+                熵
+            </span>
+            <span class="sidebar-tag-name" data-tags="docker">
+                <span class="iconfont-archer">&#xe606;</span>
+                docker
+            </span>
+            <span class="sidebar-tag-name" data-tags="论文写作">
+                <span class="iconfont-archer">&#xe606;</span>
+                论文写作
+            </span>
+            <span class="sidebar-tag-name" data-tags="竞赛">
+                <span class="iconfont-archer">&#xe606;</span>
+                竞赛
+            </span>
+            <span class="sidebar-tag-name" data-tags="强化学习">
+                <span class="iconfont-archer">&#xe606;</span>
+                强化学习
+            </span>
+            <span class="sidebar-tag-name" data-tags="街拍">
+                <span class="iconfont-archer">&#xe606;</span>
+                街拍
+            </span>
+            <span class="sidebar-tag-name" data-tags="docker, doccano">
+                <span class="iconfont-archer">&#xe606;</span>
+                docker, doccano
+            </span>
+    </div>
+    <div class="iconfont-archer sidebar-tags-empty">&#xe678;</div>
+    <div class="tag-load-fail" style="display: none; color: #ccc; font-size: 0.6rem;">
+        缺失模块，请参考主题文档进行安装配置：https://github.com/fi3ework/hexo-theme-archer#%E5%AE%89%E8%A3%85%E4%B8%BB%E9%A2%98
+    </div> 
+    <div class="sidebar-tags-list"></div>
+</div>
+
+        <div class="sidebar-panel-categories">
+    <div class="sidebar-categories-name">
+        <span class="sidebar-category-name" data-categories="大模型">
+            <span class="iconfont-archer">&#xe60a;</span>
+            大模型
+        </span>
+        <span class="sidebar-category-name" data-categories="总结">
+            <span class="iconfont-archer">&#xe60a;</span>
+            总结
+        </span>
+        <span class="sidebar-category-name" data-categories="网络工具">
+            <span class="iconfont-archer">&#xe60a;</span>
+            网络工具
+        </span>
+        <span class="sidebar-category-name" data-categories="编程开发">
+            <span class="iconfont-archer">&#xe60a;</span>
+            编程开发
+        </span>
+        <span class="sidebar-category-name" data-categories="爬坑总结">
+            <span class="iconfont-archer">&#xe60a;</span>
+            爬坑总结
+        </span>
+        <span class="sidebar-category-name" data-categories="干货">
+            <span class="iconfont-archer">&#xe60a;</span>
+            干货
+        </span>
+        <span class="sidebar-category-name" data-categories="人工智能">
+            <span class="iconfont-archer">&#xe60a;</span>
+            人工智能
+        </span>
+        <span class="sidebar-category-name" data-categories="运维">
+            <span class="iconfont-archer">&#xe60a;</span>
+            运维
+        </span>
+        <span class="sidebar-category-name" data-categories="知识框架">
+            <span class="iconfont-archer">&#xe60a;</span>
+            知识框架
+        </span>
+        <span class="sidebar-category-name" data-categories="学习笔记">
+            <span class="iconfont-archer">&#xe60a;</span>
+            学习笔记
+        </span>
+        <span class="sidebar-category-name" data-categories="生活总结">
+            <span class="iconfont-archer">&#xe60a;</span>
+            生活总结
+        </span>
+        <span class="sidebar-category-name" data-categories="编程经验">
+            <span class="iconfont-archer">&#xe60a;</span>
+            编程经验
+        </span>
+        <span class="sidebar-category-name" data-categories="编程">
+            <span class="iconfont-archer">&#xe60a;</span>
+            编程
+        </span>
+        <span class="sidebar-category-name" data-categories="算法笔记">
+            <span class="iconfont-archer">&#xe60a;</span>
+            算法笔记
+        </span>
+        <span class="sidebar-category-name" data-categories="摄影">
+            <span class="iconfont-archer">&#xe60a;</span>
+            摄影
+        </span>
+        <span class="sidebar-category-name" data-categories="自然语言处理">
+            <span class="iconfont-archer">&#xe60a;</span>
+            自然语言处理
+        </span>
+        <span class="sidebar-category-name" data-categories="算法">
+            <span class="iconfont-archer">&#xe60a;</span>
+            算法
+        </span>
+        <span class="sidebar-category-name" data-categories="生活情感">
+            <span class="iconfont-archer">&#xe60a;</span>
+            生活情感
+        </span>
+        <span class="sidebar-category-name" data-categories="学习资料">
+            <span class="iconfont-archer">&#xe60a;</span>
+            学习资料
+        </span>
+        <span class="sidebar-category-name" data-categories="数据集">
+            <span class="iconfont-archer">&#xe60a;</span>
+            数据集
+        </span>
+        <span class="sidebar-category-name" data-categories="收藏">
+            <span class="iconfont-archer">&#xe60a;</span>
+            收藏
+        </span>
+        <span class="sidebar-category-name" data-categories="机器学习">
+            <span class="iconfont-archer">&#xe60a;</span>
+            机器学习
+        </span>
+    </div>
+    <div class="iconfont-archer sidebar-categories-empty">&#xe678;</div>
+    <div class="sidebar-categories-list"></div>
+</div>
+
+    </div>
+</div>
+
+        <!-- site-meta -->
+        <script>
+    var siteMetaRoot = "/"
+    if (siteMetaRoot === "undefined") {
+        siteMetaRoot = '/'
+    }
+    var siteMeta = {
+        url: "https://skylyong.github.io",
+        root: siteMetaRoot,
+        author: "LY"
+    }
+</script>
+
+        <!-- import experimental options here -->
+        <!-- Custom Font -->
+
+        <!-- main func -->
+        <script src="/scripts/main.js"></script>
+        <!-- fancybox -->
+        <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.36/dist/fancybox/fancybox.umd.js" onload="window.Fancybox.bind('[data-fancybox]')" defer></script>
+        <!-- algolia -->
+            <div class="site-search site-search-loading">
+    <div class="algolia-popup popup">
+        <div class="algolia-search">
+            <div class="algolia-search-input-icon">
+                <i class="fa fa-search"></i>
+            </div>
+            <div class="algolia-search-input" id="algolia-search-input"></div>
+            <div class="popup-btn-close">
+                <i class="iconfont-archer">&#xe609;</i>
+            </div>
+        </div>
+
+        <div class="algolia-results">
+            <div id="algolia-stats" class="algolia-stats"></div>
+            <div id="algolia-hits"></div>
+            <div id="algolia-pagination" class="algolia-pagination"></div>
+        </div>
+    </div>
+</div>
+
+            
+           
+            <script src="/scripts/search.js" async></script>
+        <!-- busuanzi -->
+            <script src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async></script>
+        <!-- async load share.js -->
+            <script src="/scripts/share.js" async></script>
+        <!-- mermaid -->
+            <script src='https://cdn.jsdelivr.net/npm/mermaid@8.11.0/dist/mermaid.min.js' onload="window.mermaid.initialize({theme: 'dark'})" async></script>
+    </body>
+</html>
