@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>Einx-and-einops</title>
+      <link href="/2026/01/16/einx-and-einops/"/>
+      <url>/2026/01/16/einx-and-einops/</url>
+      
+        <content type="html"><![CDATA[<p>在做深度学习项目时，经常需要对张量进行复杂的重组和变换操作。Einops  和 Einx 是一个强大的库，能够简化这些操作，使代码更加简洁和易读。 这两个工具都有官方文档，官方在文档中给出了非常详尽的教程和示例，这里把官方的链接放在下面，方便日后查阅和学习。</p><ol><li><p>einops 官方文档：<a href="https://einops.rocks/1-einops-basics/">https://einops.rocks/1-einops-basics/</a><br>该文档对应的，<a href="https://github.com/arogozhnikov/einops/blob/main/docs/1-einops-basics.ipynb">github仓库</a></p></li><li><p>einx 官方文档：<a href="https://einx.readthedocs.io/en/stable/gettingstarted/tutorial_notation.html">https://einx.readthedocs.io/en/stable/gettingstarted/tutorial_notation.html</a></p></li></ol><p>对于初学者来说，建议先从 einops 入手，掌握基本的张量变换操作，然后再学习 einx，以便更好地理解和应用这些工具。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 技术笔记 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> tensor </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Chunk划分方法</title>
       <link href="/2026/01/16/chunk-hua-fen-fang-fa/"/>
       <url>/2026/01/16/chunk-hua-fen-fang-fa/</url>
