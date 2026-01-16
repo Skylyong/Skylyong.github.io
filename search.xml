@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>Chunk划分方法</title>
+      <link href="/2026/01/16/chunk-hua-fen-fang-fa/"/>
+      <url>/2026/01/16/chunk-hua-fen-fang-fa/</url>
+      
+        <content type="html"><![CDATA[<p>在构建大语言模型（LLM）应用或 RAG 系统时，如何将长文档科学地切割成小块（Chunks）是决定检索精度和生成质量的关键。 最近团队里面的小伙伴正好需要做这方面的工作，今天偶然刷到了这篇介绍，在这里记录一下，留作以后需要的时候参考。</p><p>项目仓库： <a href="https://github.com/hasibul0912/ChunkWise">https://github.com/hasibul0912/ChunkWise</a></p><p>原文链接： <a href="https://mp.weixin.qq.com/s/euFBkbMMGBoyIpjs4FhFHA">https://mp.weixin.qq.com/s/euFBkbMMGBoyIpjs4FhFHA</a></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 大模型 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> RAG </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>BPE分词编码和解码</title>
       <link href="/2026/01/09/bpe-fen-ci-bian-ma-he-jie-ma/"/>
       <url>/2026/01/09/bpe-fen-ci-bian-ma-he-jie-ma/</url>

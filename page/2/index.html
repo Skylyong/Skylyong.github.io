@@ -429,6 +429,31 @@
                 <main class="main index-page">
             
         <article class="index-post">
+            <a class="abstract-title" href="/2025/09/16/linux-ci-pan-guan-li-ji-minio-fu-wu-pei-zhi/">
+                <span class="abstract-title-text">Linux磁盘管理及MinIO服务配置</span>
+            </a>
+            <div class="abstract-content">
+                一、使用 lsblk 获取磁盘内容可以看到：
+
+sda 和 sdc 是空盘  
+sdb 是系统盘
+
+
+二、磁盘分区和格式化以下脚本将一个大容量磁盘（如 3.6T）分为两个相等大小的分区，并格式化为 ext4 文件系统。
+1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950#!/bin/bash######################################################################### 脚本功能：在 Linu...
+            </div>
+            <!-- read more -->
+            <div class="abstract-post-meta">
+                <!-- date -->
+                <div class="abstract-date" title="Last updated: 2025/09/16">
+                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2025/09/16</span>
+                </div>
+                <!-- tags -->
+            </div>
+        </article>
+        <div class="index-post-divider"></div>
+            
+        <article class="index-post">
             <a class="abstract-title" href="/2025/08/10/bu-dong-dian-he-ya-suo-ying-she/">
                 <span class="abstract-title-text">不动点和压缩映射</span>
             </a>
@@ -729,44 +754,6 @@ Bellman equation 推导两个使用 Bellman equation 的例子
             </div>
         </article>
         <div class="index-post-divider"></div>
-            
-        <article class="index-post">
-            <a class="abstract-title" href="/2025/04/24/ben-di-gou-jian-docker-jing-xiang-bing-shang-chuan-zhi-a-li-yun-jing-xiang-fu-wu-zhan/">
-                <span class="abstract-title-text">本地构建docker镜像并上传至阿里云镜像服务站</span>
-            </a>
-            <div class="abstract-content">
-                最近比赛需要构建docker镜像，上传至阿里云镜像服务站，以便于官方复现测评，这是一个繁琐的过程，以后也会用到，所以记录一下。
-主要分为以下几步：
-1） 开通阿里云镜像服务
-2） 在本地电脑或者服务器上面安装docker
-3） 构建docker镜像
-4） 将本地 docker 镜像推送至阿里云镜像服务站
-5）本地一键镜像创建和上传脚本
-下面为详细的步骤描述：
-1） 开通阿里云镜像服务阿里云镜像服务站的开通过程比较繁琐，根据DataWhale的教程操作如下：
-a. 点击链接并登录阿里云账号
-
-b. 创建个人版实例
-
-c. 创建命名空间
-
-d.  创建镜像仓库
-创建镜像仓库时，代码源选择本地...
-            </div>
-            <!-- read more -->
-            <div class="abstract-post-meta">
-                <!-- date -->
-                <div class="abstract-date" title="Last updated: 2025/04/24">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2025/04/24</span>
-                </div>
-                <!-- tags -->
-                    <div class="abstract-tags" >
-        <a class="post-tag" href="javascript:void(0);" data-tags="docker">docker</a>
-</div>
-
-            </div>
-        </article>
-        <div class="index-post-divider"></div>
     <!-- paginator  -->
         <nav class="page-nav">
             <a class="extend prev" rel="prev" href="/">&lt; PREV</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/3/">NEXT &gt;</a>
@@ -940,9 +927,10 @@ d.  创建镜像仓库
         
         
         
+        
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 74
+        Total : 75
         </div>
         <!-- search  -->
             <div class="site-search site-search-loading popup-trigger">
@@ -952,6 +940,10 @@ d.  创建镜像仓库
     <div class="post-archive">
             <div class="archive-year"> 2026 </div>
             <ul class="year-list">
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/16</span>
+            <a class="archive-post-title" href="/2026/01/16/chunk-hua-fen-fang-fa/">Chunk划分方法</a>
+        </li>
         <li class="archive-post-item">
             <span class="archive-post-date">01/09</span>
             <a class="archive-post-title" href="/2026/01/09/bpe-fen-ci-bian-ma-he-jie-ma/">BPE分词编码和解码</a>
@@ -1469,6 +1461,10 @@ d.  创建镜像仓库
             <span class="sidebar-tag-name" data-tags="docker, doccano">
                 <span class="iconfont-archer">&#xe606;</span>
                 docker, doccano
+            </span>
+            <span class="sidebar-tag-name" data-tags="RAG">
+                <span class="iconfont-archer">&#xe606;</span>
+                RAG
             </span>
     </div>
     <div class="iconfont-archer sidebar-tags-empty">&#xe678;</div>
