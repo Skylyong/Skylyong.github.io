@@ -1,0 +1,1543 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <!-- title -->
+<!-- keywords -->
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="author" content="LY">
+    <meta name="renderer" content="webkit">
+    <meta name="copyright" content="LY">
+        <meta name="keywords" content="hexo,hexo-theme,hexo-blog">
+    <meta name="description" content="Keep go on">
+    <meta name="description" content="Deep Learning 系列1. Single Neuron题目： Write a Python function that simulates a single neuron with a sigmoid activation function for binary classification, handling multidimensional input features. The f">
+<meta property="og:type" content="article">
+<meta property="og:title" content="2026年春编程刷题记录">
+<meta property="og:url" content="https://skylyong.github.io/2026/02/07/2026-nian-chun-bian-cheng-shua-ti-ji-lu/index.html">
+<meta property="og:site_name" content="茄子的个人空间">
+<meta property="og:description" content="Deep Learning 系列1. Single Neuron题目： Write a Python function that simulates a single neuron with a sigmoid activation function for binary classification, handling multidimensional input features. The f">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://raw.githubusercontent.com/Skylyong/i/main/20260207152451.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Skylyong/i/main/20260207170804.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Skylyong/i/main/20260213005407.png">
+<meta property="article:published_time" content="2026-02-07T06:02:23.000Z">
+<meta property="article:modified_time" content="2026-02-12T16:57:30.901Z">
+<meta property="article:author" content="LY">
+<meta property="article:tag" content="pytorch">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/Skylyong/i/main/20260207152451.png">
+    <meta http-equiv="Cache-control" content="no-cache">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <link rel="icon" href="/assets/favicon.ico">
+    <title>2026年春编程刷题记录 · LY&#39;s Blog</title>
+    <!-- /*! loadCSS. [c]2017 Filament Group, Inc. MIT License */
+/* This file is meant as a standalone workflow for
+- testing support for link[rel=preload]
+- enabling async CSS loading in browsers that do not support rel=preload
+- applying rel preload css once loaded, whether supported or not.
+*/ -->
+<script>
+    (function (w) {
+        'use strict'
+        // rel=preload support test
+        if (!w.loadCSS) {
+            w.loadCSS = function () {}
+        }
+        // define on the loadCSS obj
+        var rp = (loadCSS.relpreload = {})
+        // rel=preload feature support test
+        // runs once and returns a function for compat purposes
+        rp.support = (function () {
+            var ret
+            try {
+                ret = w.document.createElement('link').relList.supports('preload')
+            } catch (e) {
+                ret = false
+            }
+            return function () {
+                return ret
+            }
+        })()
+
+        // if preload isn't supported, get an asynchronous load by using a non-matching media attribute
+        // then change that media back to its intended value on load
+        rp.bindMediaToggle = function (link) {
+            // remember existing media attr for ultimate state, or default to 'all'
+            var finalMedia = link.media || 'all'
+
+            function enableStylesheet() {
+                link.media = finalMedia
+            }
+
+            // bind load handlers to enable media
+            if (link.addEventListener) {
+                link.addEventListener('load', enableStylesheet)
+            } else if (link.attachEvent) {
+                link.attachEvent('onload', enableStylesheet)
+            }
+
+            // Set rel and non-applicable media type to start an async request
+            // note: timeout allows this to happen async to let rendering continue in IE
+            setTimeout(function () {
+                link.rel = 'stylesheet'
+                link.media = 'only x'
+            })
+            // also enable media after 3 seconds,
+            // which will catch very old browsers (android 2.x, old firefox) that don't support onload on link
+            setTimeout(enableStylesheet, 3000)
+        }
+
+        // loop through link elements in DOM
+        rp.poly = function () {
+            // double check this to prevent external calls from running
+            if (rp.support()) {
+                return
+            }
+            var links = w.document.getElementsByTagName('link')
+            for (var i = 0; i < links.length; i++) {
+                var link = links[i]
+                // qualify links to those with rel=preload and as=style attrs
+                if (
+                    link.rel === 'preload' &&
+                    link.getAttribute('as') === 'style' &&
+                    !link.getAttribute('data-loadcss')
+                ) {
+                    // prevent rerunning on link
+                    link.setAttribute('data-loadcss', true)
+                    // bind listeners to toggle media back
+                    rp.bindMediaToggle(link)
+                }
+            }
+        }
+
+        // if unsupported, run the polyfill
+        if (!rp.support()) {
+            // run once at least
+            rp.poly()
+
+            // rerun poly on an interval until onload
+            var run = w.setInterval(rp.poly, 500)
+            if (w.addEventListener) {
+                w.addEventListener('load', function () {
+                    rp.poly()
+                    w.clearInterval(run)
+                })
+            } else if (w.attachEvent) {
+                w.attachEvent('onload', function () {
+                    rp.poly()
+                    w.clearInterval(run)
+                })
+            }
+        }
+
+        // commonjs
+        if (typeof exports !== 'undefined') {
+            exports.loadCSS = loadCSS
+        } else {
+            w.loadCSS = loadCSS
+        }
+    })(typeof global !== 'undefined' ? global : this)
+</script>
+
+    <style type="text/css">
+    @font-face {
+        font-family: 'Oswald-Regular';
+        src: url("/font/Oswald-Regular.ttf");
+    }
+
+    body {
+        margin: 0;
+    }
+
+    header,
+    footer,
+    .footer-fixed-btn,
+    .sidebar,
+    .container,
+    .site-intro-meta,
+    .toc-wrapper {
+        display: none;
+    }
+
+    .site-intro {
+        position: relative;
+        z-index: 3;
+        width: 100%;
+        /* height: 50vh; */
+        overflow: hidden;
+    }
+
+    .site-intro-placeholder {
+        position: absolute;
+        z-index: -2;
+        top: 0;
+        left: 0;
+        width: calc(100% + 300px);
+        height: 100%;
+        background: repeating-linear-gradient(
+            -45deg,
+            #444 0,
+            #444 80px,
+            #333 80px,
+            #333 160px
+        );
+        background-position: center center;
+        transform: translate3d(-226px, 0, 0);
+        animation: gradient-move 2.5s ease-out 0s infinite;
+    }
+
+    @keyframes gradient-move {
+        0% {
+            transform: translate3d(-226px, 0, 0);
+        }
+        100% {
+            transform: translate3d(0, 0, 0);
+        }
+    }
+</style>
+
+    <link id="stylesheet-fancybox" rel="preload" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.36/dist/fancybox/fancybox.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <link id="stylesheet-base" rel="preload" href="/css/style.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <link id="stylesheet-mobile" rel="preload" href="/css/mobile.css" as="style" onload="this.onload=null;this.rel='stylesheet';this.media='screen and (max-width: 960px)'">
+    <link id="stylesheet-theme-dark" rel="preload" href="/css/dark.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" as="script">
+    <link rel="preload" href="/scripts/main.js" as="script">
+    <link rel="preload" href="/font/Oswald-Regular.ttf" as="font" crossorigin>
+    <link rel="preload" href="https://at.alicdn.com/t/font_327081_1dta1rlogw17zaor.woff" as="font" crossorigin>
+    <!-- algolia -->
+        <script>
+            var hits = JSON.parse('{"per_page":10}')
+            var labels = JSON.parse('{"input_placeholder":"Search for Posts","hits_empty":"我们没有找到任何搜索结果: ${query}","hits_stats":"找到${hits}条结果 （用时 ${time} ms）"}')
+
+            var algolia = {
+                applicationID: 'HDLQX51180',
+                apiKey: '2bcb8a706f5955c9f74cea13e540fb1b',
+                indexName: 'my-hexo-blog',
+                hits: hits,
+                labels: labels
+            }
+        </script>
+    <!-- 百度统计  -->
+    <!-- 谷歌统计  -->
+    <!-- Google tag (gtag.js) -->
+<meta name="generator" content="Hexo 7.3.0">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+</head>
+
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+    <script type="text/javascript">
+        if (typeof window.$ == undefined) {
+            console.warn('jquery load from jsdelivr failed, will load local script')
+            document.write('<script src="/lib/jquery.min.js" />')
+        }
+    </script>
+
+
+
+        <body class="post-body">
+        <!-- header -->
+        <header class="header header-mobile">
+    <!-- top read progress line -->
+    <div class="header-element">
+        <div class="read-progress"></div>
+    </div>
+    <!-- sidebar menu button -->
+
+    
+    <div class="header-element">
+        <div class="header-sidebar-menu">
+            <div style="padding-left: 1px;">&#xe775;</div>
+        </div>
+    </div>
+
+    
+    <!-- header actions -->
+    <div class="header-actions">
+        <!-- theme mode switch button -->
+        <span class="header-theme-btn header-element">
+            <i class="fas fa-adjust"></i>
+        </span>
+        <!-- back to home page text -->
+        <span class="home-link header-element">
+            <a href="/">LY's Space</a>
+        </span>
+    </div>
+    <!-- toggle banner -->
+    <div class="banner">
+        <div class="blog-title header-element">
+            <a href="/">LY&#39;s Space</a>
+        </div>
+        <div class="post-title header-element">
+            <a href="#" class="post-name">2026年春编程刷题记录</a>
+        </div>
+    </div>
+</header>
+
+        <!-- fixed footer -->
+        <footer class="footer-fixed">
+    <!-- donate button -->
+    <div class="donate-popup donate-popup--hidden">
+    <div class="donate-popup__title">Buy Me A Coffee</div>
+    <div class="donate-popup__content">
+        <div class="donate-popup__content-description">Thanks for your support!</div>
+        <img
+            class="donate-popup__content-qrCode"
+            title="Wechat"
+            alt="Wechat"
+            src="/assets/donate-wechat.png"
+        ></img>
+    </div>
+</div>
+
+    <div
+        title="Donate to the author"
+        class="footer-fixed-btn footer-fixed-btn--hidden donate-btn"
+    >
+        <i class="fas fa-donate"></i>
+    </div>
+
+    <!-- back to top button -->
+    <div class="footer-fixed-btn footer-fixed-btn--hidden back-top">
+        <div>&#xe639;</div>
+    </div>
+</footer>
+
+        <!-- wrapper -->
+        <div class="wrapper">
+            <div class="site-intro" style="    height:50vh;
+">
+    <!-- 主页  -->
+    <!-- 404页  -->
+    <div class="site-intro-placeholder"></div>
+    <div class="site-intro-img" style="background-image: url(/intro/post-bg.jpg)"></div>
+    <div class="site-intro-meta">
+        <!-- 标题  -->
+        <h1 class="intro-title">
+            <!-- 主页  -->
+                2026年春编程刷题记录
+            <!-- 404 -->
+        </h1>
+        <!-- 副标题 -->
+        <p class="intro-subtitle">
+            <!-- 主页副标题  -->
+            <!-- 404 -->
+        </p>
+        <!-- 文章页 meta -->
+            <div class="post-intros">
+                <!-- 文章页标签  -->
+                    <div class="post-intro-tags" >
+        <a class="post-tag" href="javascript:void(0);" data-tags="pytorch">pytorch</a>
+</div>
+
+                <!-- 文章字数统计 -->
+                    <div class="post-intro-read">
+                        <span>字数统计: <span class="post-count word-count">2.2k</span>阅读时长: <span class="post-count reading-time">11 min</span></span>
+                    </div>
+                <div class="post-intro-meta">
+                    <!-- 撰写日期 -->
+                    <span class="iconfont-archer post-intro-calander">&#xe676;</span>
+                    <span class="post-intro-time">2026/02/07</span>
+                    <!-- busuanzi -->
+                        <span id="busuanzi_container_page_pv" class="busuanzi-pv">
+                            <span class="iconfont-archer post-intro-busuanzi">&#xe602;</span>
+                            <span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    <!-- 文章分享 -->
+                    <span class="share-wrapper">
+                        <span class="iconfont-archer share-icon">&#xe71d;</span>
+                        <span class="share-text">Share</span>
+                        <ul class="share-list">
+                            <li class="iconfont-archer share-qr" data-type="qr">&#xe75b;
+                                <div class="share-qrcode"></div>
+                            </li>
+                            <li class="iconfont-archer" data-type="weibo">&#xe619;</li>
+                            <li class="iconfont-archer" data-type="qzone">&#xe62e;</li>
+                            <li class="iconfont-archer" data-type="twitter">&#xe634;</li>
+                            <li class="iconfont-archer" data-type="facebook">&#xe67a;</li>
+                        </ul>
+                    </span>
+                </div>
+            </div>
+    </div>
+</div>
+
+            <script>
+  // get user agent
+  function getBrowserVersions() {
+    var u = window.navigator.userAgent
+    return {
+      userAgent: u,
+      trident: u.indexOf('Trident') > -1, //IE内核
+      presto: u.indexOf('Presto') > -1, //opera内核
+      webKit: u.indexOf('AppleWebKit') > -1, //苹果、谷歌内核
+      gecko: u.indexOf('Gecko') > -1 && u.indexOf('KHTML') == -1, //火狐内核
+      mobile: !!u.match(/AppleWebKit.*Mobile.*/), //是否为移动终端
+      ios: !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/), //ios终端
+      android: u.indexOf('Android') > -1 || u.indexOf('Linux') > -1, //android终端或者uc浏览器
+      iPhone: u.indexOf('iPhone') > -1 || u.indexOf('Mac') > -1, //是否为iPhone或者安卓QQ浏览器
+      iPad: u.indexOf('iPad') > -1, //是否为iPad
+      webApp: u.indexOf('Safari') == -1, //是否为web应用程序，没有头部与底部
+      weixin: u.indexOf('MicroMessenger') == -1, //是否为微信浏览器
+      uc: u.indexOf('UCBrowser') > -1, //是否为android下的UC浏览器
+    }
+  }
+  var browser = {
+    versions: getBrowserVersions(),
+  }
+  console.log('userAgent: ' + browser.versions.userAgent)
+
+  // callback
+  function fontLoaded() {
+    console.log('font loaded')
+    if (document.getElementsByClassName('site-intro-meta')) {
+      document
+        .getElementsByClassName('intro-title')[0]
+        .classList.add('intro-fade-in')
+      document
+        .getElementsByClassName('intro-subtitle')[0]
+        .classList.add('intro-fade-in')
+      var postIntros = document.getElementsByClassName('post-intros')[0]
+      if (postIntros) {
+        postIntros.classList.add('post-fade-in')
+      }
+    }
+  }
+
+  // UC不支持跨域，所以直接显示
+  function asyncCb() {
+    if (browser.versions.uc) {
+      console.log('UCBrowser')
+      fontLoaded()
+    } else {
+      WebFont.load({
+        custom: {
+          families: ['Oswald-Regular'],
+        },
+        loading: function () {
+          // 所有字体开始加载
+          // console.log('font loading');
+        },
+        active: function () {
+          // 所有字体已渲染
+          fontLoaded()
+        },
+        inactive: function () {
+          // 字体预加载失败，无效字体或浏览器不支持加载
+          console.log('inactive: timeout')
+          fontLoaded()
+        },
+        timeout: 5000, // Set the timeout to two seconds
+      })
+    }
+  }
+
+  function asyncErr() {
+    console.warn('script load from CDN failed, will load local script')
+  }
+
+  // load webfont-loader async, and add callback function
+  function async(u, cb, err) {
+    var d = document,
+      t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0]
+    o.src = u
+    if (cb) {
+      o.addEventListener(
+        'load',
+        function (e) {
+          cb(null, e)
+        },
+        false
+      )
+    }
+    if (err) {
+      o.addEventListener(
+        'error',
+        function (e) {
+          err(null, e)
+        },
+        false
+      )
+    }
+    s.parentNode.insertBefore(o, s)
+  }
+
+  var asyncLoadWithFallBack = function (arr, success, reject) {
+    var currReject = function () {
+      reject()
+      arr.shift()
+      if (arr.length) async(arr[0], success, currReject)
+    }
+
+    async(arr[0], success, currReject)
+  }
+
+  asyncLoadWithFallBack(
+    [
+      'https://cdn.jsdelivr.net/npm/webfontloader@1.6.28/webfontloader.min.js',
+      'https://cdn.bootcss.com/webfont/1.6.28/webfontloader.js',
+      "/lib/webfontloader.min.js",
+    ],
+    asyncCb,
+    asyncErr
+  )
+</script>
+
+            <img class="loading" src="/assets/loading.svg" style="display: block; margin: 6rem auto 0 auto; width: 6rem; height: 6rem;" alt="loading">
+            <div class="container container-unloaded">
+                <main class="main post-page">
+    <article class="article-entry">
+        <h1 id="Deep-Learning-系列"><a href="#Deep-Learning-系列" class="headerlink" title="Deep Learning 系列"></a>Deep Learning 系列</h1><h2 id="1-Single-Neuron"><a href="#1-Single-Neuron" class="headerlink" title="1. Single Neuron"></a>1. Single Neuron</h2><p>题目：</p>
+<p>Write a Python function that simulates a single neuron with a sigmoid activation function for binary classification, handling multidimensional input features. The function should take a list of feature vectors (each vector representing multiple features for an example), associated true binary labels, and the neuron’s weights (one for each feature) and bias as input. It should return the predicted probabilities after sigmoid activation and the mean squared error between the predicted probabilities and the true labels, both rounded to four decimal places.</p>
+<p>Example Input:</p>
+<figure class="highlight text"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">features = [[0.5, 1.0], [-1.5, -2.0], [2.0, 1.5]], labels = [0, 1, 0], weights = [0.7, -0.4], bias = -0.1</span><br></pre></td></tr></tbody></table></figure>
+
+<p>Output:</p>
+<figure class="highlight text"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">([0.4626, 0.4134, 0.6682], 0.3349)</span><br></pre></td></tr></tbody></table></figure>
+
+<p>解题：</p>
+<p>1） sigmoid 函数计算公式：$\sigma(x) = \frac{1}{1 + e^{-x}}$， 其函数曲线如下图所示：</p>
+<p><img src="https://raw.githubusercontent.com/Skylyong/i/main/20260207152451.png"></p>
+<p>2） MSE 计算公式： $MSE = \frac{1}{n}\sum_{i=1}^{n}(y_i - \hat{y_i})^2$， 其中 $y_i$ 为真实标签， $\hat{y_i}$ 为预测概率。</p>
+<p>整体实现代码：</p>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> math</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">to_numpy_array</span>(<span class="params">x:<span class="built_in">list</span></span>) -&gt; np.array:</span><br><span class="line">	<span class="keyword">return</span> np.array(x, dtype=np.float32) </span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">sigmoid</span>(<span class="params">x:np.array</span>) -&gt; np.array:</span><br><span class="line">	<span class="keyword">return</span> <span class="number">1</span> / (<span class="number">1</span> + np.exp(-x))</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">single_neuron_model</span>(<span class="params">features: <span class="built_in">list</span>[<span class="built_in">list</span>[<span class="built_in">float</span>]], labels: <span class="built_in">list</span>[<span class="built_in">int</span>], weights: <span class="built_in">list</span>[<span class="built_in">float</span>], bias: <span class="built_in">float</span></span>) -&gt; (<span class="built_in">list</span>[<span class="built_in">float</span>], <span class="built_in">float</span>):</span><br><span class="line">	features = to_numpy_array(features)</span><br><span class="line">	labels = to_numpy_array(labels)</span><br><span class="line">	weights = to_numpy_array(weights)</span><br><span class="line">	bias = to_numpy_array(bias)</span><br><span class="line"></span><br><span class="line">	logits = features @ weights + bias</span><br><span class="line">	probabilities = sigmoid(logits)</span><br><span class="line"></span><br><span class="line">	mse = np.mean((probabilities - labels) ** <span class="number">2</span>)</span><br><span class="line">	probabilities = probabilities.tolist()</span><br><span class="line">	probabilities = [<span class="built_in">round</span>(x, <span class="number">4</span>) <span class="keyword">for</span> x <span class="keyword">in</span> probabilities]</span><br><span class="line"></span><br><span class="line">	mse = <span class="built_in">round</span>(mse, <span class="number">4</span>)</span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> probabilities, mse</span><br><span class="line"></span><br></pre></td></tr></tbody></table></figure>
+
+<br>
+
+<h2 id="2-Implementing-a-Simple-RNN"><a href="#2-Implementing-a-Simple-RNN" class="headerlink" title="2. Implementing a Simple RNN"></a>2. Implementing a Simple RNN</h2><p>题目：</p>
+<p>Write a Python function that implements a simple Recurrent Neural Network (RNN) cell. The function should process a sequence of input vectors and produce the final hidden state. Use the tanh activation function for the hidden state updates. The function should take as inputs the sequence of input vectors, the initial hidden state, the weight matrices for input-to-hidden and hidden-to-hidden connections, and the bias vector. The function should return the final hidden state after processing the entire sequence, rounded to four decimal places.</p>
+<p>Example Input:</p>
+<figure class="highlight text"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">input_sequence = [[1.0], [2.0], [3.0]]</span><br><span class="line">    initial_hidden_state = [0.0]</span><br><span class="line">    Wx = [[0.5]]  # Input to hidden weights</span><br><span class="line">    Wh = [[0.8]]  # Hidden to hidden weights</span><br><span class="line">    b = [0.0]     # Bias</span><br><span class="line"></span><br></pre></td></tr></tbody></table></figure>
+
+<p>Output:</p>
+<figure class="highlight text"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">final_hidden_state = [0.9759]</span><br></pre></td></tr></tbody></table></figure>
+
+<p>解题：</p>
+<p>1） tanh 函数计算公式：$\tanh(x) = \frac{e^{x} - e^{-x}}{e^{x} + e^{-x}}$， 其函数曲线如下图所示：</p>
+<p><img src="https://raw.githubusercontent.com/Skylyong/i/main/20260207170804.png"></p>
+<p>2） RNN 隐藏状态更新公式：</p>
+<p>$$<br>h_t = \tanh(W_x \cdot x_t + W_h \cdot h_{t-1} + b)<br>$$</p>
+<p>其中</p>
+<ul>
+<li>$h_t \in \mathbb{R}^n$：当前时间步的隐藏状态</li>
+<li>$x_t \in \mathbb{R}^m$：当前时间步的输入向量</li>
+<li>$W_x \in \mathbb{R}^{n \times m}$：输入到隐藏状态的权重矩阵</li>
+<li>$W_h \in \mathbb{R}^{n \times n}$：隐藏状态到隐藏状态的权重矩阵</li>
+<li>$b \in \mathbb{R}^n$：偏置向量</li>
+</ul>
+<p>整体实现代码：</p>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">tanh</span>(<span class="params">x:np.array</span>) -&gt; np.array:</span><br><span class="line">	<span class="keyword">return</span> (np.exp(x) - np.exp(-x)) / (np.exp(x) + np.exp(-x))</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">to_numpy</span>(<span class="params">x: <span class="built_in">list</span></span>) -&gt; np.array:</span><br><span class="line">	<span class="keyword">return</span> np.array(x, dtype=np.float32)</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">rnn_forward</span>(<span class="params">input_sequence: <span class="built_in">list</span>[<span class="built_in">list</span>[<span class="built_in">float</span>]], initial_hidden_state: <span class="built_in">list</span>[<span class="built_in">float</span>], Wx: <span class="built_in">list</span>[<span class="built_in">list</span>[<span class="built_in">float</span>]], Wh: <span class="built_in">list</span>[<span class="built_in">list</span>[<span class="built_in">float</span>]], b: <span class="built_in">list</span>[<span class="built_in">float</span>]</span>) -&gt; <span class="built_in">list</span>[<span class="built_in">float</span>]:</span><br><span class="line">	input_sequence = to_numpy(input_sequence)</span><br><span class="line">	initial_hidden_state = to_numpy(initial_hidden_state)</span><br><span class="line">	Wx = to_numpy(Wx)</span><br><span class="line">	Wh = to_numpy(Wh)</span><br><span class="line">	b = to_numpy(b)</span><br><span class="line"></span><br><span class="line">	hidden_states = [initial_hidden_state]</span><br><span class="line">	hidden_state = initial_hidden_state</span><br><span class="line">	<span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(input_sequence.shape[<span class="number">0</span>]):</span><br><span class="line">		hidden_state_logits = Wx @ input_sequence[i] + Wh @ hidden_state + b</span><br><span class="line">		hidden_state = tanh(hidden_state_logits)</span><br><span class="line">		hidden_states.append(hidden_state)</span><br><span class="line">	final_hidden_states = hidden_states[-<span class="number">1</span>].tolist()</span><br><span class="line">	final_hidden_states = np.<span class="built_in">round</span>(final_hidden_states, <span class="number">4</span>)</span><br><span class="line">	<span class="keyword">return</span> final_hidden_states</span><br><span class="line"></span><br></pre></td></tr></tbody></table></figure>
+
+<br>
+
+<h2 id="3-Implement-Long-Short-Term-Memory-LSTM-Network"><a href="#3-Implement-Long-Short-Term-Memory-LSTM-Network" class="headerlink" title="3. Implement Long Short-Term Memory (LSTM) Network"></a>3. Implement Long Short-Term Memory (LSTM) Network</h2><p>题目：</p>
+<p>Task: Implement Long Short-Term Memory (LSTM) Network<br>Your task is to implement an LSTM network that processes a sequence of inputs and produces the final hidden state and cell state after processing all inputs.</p>
+<p>Write a class LSTM with the following methods:</p>
+<p><strong>init</strong>(self, input_size, hidden_size): Initializes the LSTM with random weights and zero biases.<br>forward(self, x, initial_hidden_state, initial_cell_state): Processes a sequence of inputs and returns the hidden states at each time step, as well as the final hidden state and cell state.<br>The LSTM should compute the forget gate, input gate, candidate cell state, and output gate at each time step to update the hidden state and cell state.</p>
+<p>Example Input:</p>
+<figure class="highlight text"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">input_sequence = np.array([[1.0], [2.0], [3.0]])</span><br><span class="line">initial_hidden_state = np.zeros((1, 1))</span><br><span class="line">initial_cell_state = np.zeros((1, 1))</span><br><span class="line"></span><br><span class="line">lstm = LSTM(input_size=1, hidden_size=1)</span><br><span class="line">outputs, final_h, final_c = lstm.forward(input_sequence, initial_hidden_state, initial_cell_state)</span><br><span class="line"></span><br><span class="line">print(final_h)</span><br><span class="line"></span><br></pre></td></tr></tbody></table></figure>
+
+<p>Output:</p>
+<figure class="highlight text"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[[0.73698596]] (approximate)</span><br></pre></td></tr></tbody></table></figure>
+
+<p>Reasoning:</p>
+<p>The LSTM processes the input sequence [1.0, 2.0, 3.0] and produces the final hidden state [0.73698596].</p>
+<p>解题：</p>
+<p>1） LSTM 的模型架构如下图所示：</p>
+<p><img src="https://raw.githubusercontent.com/Skylyong/i/main/20260213005407.png"></p>
+<p>2）对图中的递推公式的解释：</p>
+<p>令 $x_t$ 为当前时刻输入，$h_{t-1}$ 为上一个时刻的隐藏状态，$c_{t-1}$ 为上一个时刻的单元状态：</p>
+<ul>
+<li>遗忘门（Forget Gate）:</li>
+</ul>
+<p>$$<br>f_t = \sigma(W_f x_t + U_f h_{t-1} + b_f)<br>$$</p>
+<ul>
+<li>输入门（Input Gate）:</li>
+</ul>
+<p>$$<br>i_t = \sigma(W_i x_t + U_i h_{t-1} + b_i)<br>$$</p>
+<ul>
+<li>候选单元状态（Candidate Cell State）:</li>
+</ul>
+<p>$$<br>\tilde{c}<em>t = \tanh(W_c x_t + U_c h</em>{t-1} + b_c)<br>$$</p>
+<ul>
+<li>单元状态更新（Cell State Update）:</li>
+</ul>
+<p>$$<br>c_t = f_t \odot c_{t-1} + i_t \odot \tilde{c}_t<br>$$</p>
+<ul>
+<li>输出门（Output Gate）:</li>
+</ul>
+<p>$$<br>o_t = \sigma(W_o x_t + U_o h_{t-1} + b_o)<br>$$</p>
+<ul>
+<li>隐藏状态更新（Hidden State Update）:</li>
+</ul>
+<p>$$<br>h_t = o_t \odot \tanh(c_t)<br>$$</p>
+<p>其中</p>
+<ul>
+<li>$\sigma$ 表示 sigmoid 函数（输出在0-1之间）</li>
+<li>$\tanh$ 表示双曲正切函数 (输出在-1到1之间)</li>
+<li>$\odot$ 哈达玛积（Hadamard product），即逐元素乘法</li>
+</ul>
+<p>整体实现代码：</p>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">LSTM</span>:</span><br><span class="line">	<span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, input_size, hidden_size</span>):</span><br><span class="line">		<span class="variable language_">self</span>.input_size = input_size</span><br><span class="line">		<span class="variable language_">self</span>.hidden_size = hidden_size</span><br><span class="line"></span><br><span class="line">		<span class="comment"># Initialize weights and biases</span></span><br><span class="line">		<span class="variable language_">self</span>.Wf = np.random.randn(hidden_size, input_size + hidden_size)</span><br><span class="line">		<span class="variable language_">self</span>.Wi = np.random.randn(hidden_size, input_size + hidden_size)</span><br><span class="line">		<span class="variable language_">self</span>.Wc = np.random.randn(hidden_size, input_size + hidden_size)</span><br><span class="line">		<span class="variable language_">self</span>.Wo = np.random.randn(hidden_size, input_size + hidden_size)</span><br><span class="line"></span><br><span class="line">		<span class="variable language_">self</span>.bf = np.zeros((hidden_size, <span class="number">1</span>))</span><br><span class="line">		<span class="variable language_">self</span>.bi = np.zeros((hidden_size, <span class="number">1</span>))</span><br><span class="line">		<span class="variable language_">self</span>.bc = np.zeros((hidden_size, <span class="number">1</span>))</span><br><span class="line">		<span class="variable language_">self</span>.bo = np.zeros((hidden_size, <span class="number">1</span>))</span><br><span class="line"></span><br><span class="line">	<span class="keyword">def</span> <span class="title function_">sigmoid</span>(<span class="params">self, x</span>):</span><br><span class="line">		<span class="keyword">return</span> <span class="number">1</span> / (<span class="number">1</span> + np.exp(-x))</span><br><span class="line"></span><br><span class="line">	<span class="keyword">def</span> <span class="title function_">forward</span>(<span class="params">self, x, initial_hidden_state, initial_cell_state</span>):</span><br><span class="line">		<span class="string">"""</span></span><br><span class="line"><span class="string">		Processes a sequence of inputs and returns:</span></span><br><span class="line"><span class="string">		- outputs: hidden states at each time step</span></span><br><span class="line"><span class="string">		- final hidden state</span></span><br><span class="line"><span class="string">		- final cell state</span></span><br><span class="line"><span class="string">		"""</span></span><br><span class="line">		h = initial_hidden_state</span><br><span class="line">		c = initial_cell_state</span><br><span class="line"></span><br><span class="line">		outputs = []</span><br><span class="line"></span><br><span class="line">		<span class="keyword">for</span> t <span class="keyword">in</span> <span class="built_in">range</span>(x.shape[<span class="number">0</span>]):</span><br><span class="line">			<span class="comment"># 当前输入，转为列向量</span></span><br><span class="line">			x_t = x[t].reshape(-<span class="number">1</span>, <span class="number">1</span>)</span><br><span class="line"></span><br><span class="line">			<span class="comment"># 拼接 [h_{t-1}, x_t]</span></span><br><span class="line">			concat = np.vstack((h, x_t))</span><br><span class="line"></span><br><span class="line">			<span class="comment"># Forget gate</span></span><br><span class="line">			f_t = <span class="variable language_">self</span>.sigmoid(<span class="variable language_">self</span>.Wf @ concat + <span class="variable language_">self</span>.bf)</span><br><span class="line"></span><br><span class="line">			<span class="comment"># Input gate</span></span><br><span class="line">			i_t = <span class="variable language_">self</span>.sigmoid(<span class="variable language_">self</span>.Wi @ concat + <span class="variable language_">self</span>.bi)</span><br><span class="line"></span><br><span class="line">			<span class="comment"># Candidate cell state</span></span><br><span class="line">			c_hat_t = np.tanh(<span class="variable language_">self</span>.Wc @ concat + <span class="variable language_">self</span>.bc)</span><br><span class="line"></span><br><span class="line">			<span class="comment"># Update cell state</span></span><br><span class="line">			c = f_t * c + i_t * c_hat_t</span><br><span class="line"></span><br><span class="line">			<span class="comment"># Output gate</span></span><br><span class="line">			o_t = <span class="variable language_">self</span>.sigmoid(<span class="variable language_">self</span>.Wo @ concat + <span class="variable language_">self</span>.bo)</span><br><span class="line"></span><br><span class="line">			<span class="comment"># Update hidden state</span></span><br><span class="line">			h = o_t * np.tanh(c)</span><br><span class="line"></span><br><span class="line">			outputs.append(h)</span><br><span class="line"></span><br><span class="line">		outputs = np.array(outputs)</span><br><span class="line"></span><br><span class="line">		<span class="keyword">return</span> outputs, h, c</span><br><span class="line"></span><br></pre></td></tr></tbody></table></figure>
+
+<br>
+
+<h2 id="Simple-Convolutional-2D-Layer"><a href="#Simple-Convolutional-2D-Layer" class="headerlink" title="Simple Convolutional 2D Layer"></a>Simple Convolutional 2D Layer</h2><p>题目</p>
+<p>In this problem, you need to implement a 2D convolutional layer in Python. This function will process an input matrix using a specified convolutional kernel, padding, and stride.</p>
+<p>Example Input:</p>
+<figure class="highlight text"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">import numpy as np</span><br><span class="line"></span><br><span class="line">input_matrix = np.array([</span><br><span class="line">    [1, 2, 3, 4],</span><br><span class="line">    [5, 6, 7, 8],</span><br><span class="line">    [9, 10, 11, 12],</span><br><span class="line">    [13, 14, 15, 16]</span><br><span class="line">])</span><br><span class="line"></span><br><span class="line">kernel = np.array([</span><br><span class="line">    [1, 0],</span><br><span class="line">    [-1, 1]</span><br><span class="line">])</span><br><span class="line"></span><br><span class="line">padding = 1</span><br><span class="line">stride = 2</span><br><span class="line"></span><br><span class="line">output = simple_conv2d(input_matrix, kernel, padding, stride)</span><br><span class="line">print(output)</span><br><span class="line"></span><br></pre></td></tr></tbody></table></figure>
+
+<p>Output:</p>
+<figure class="highlight text"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[[ 1.  1. -4.],[ 9.  7. -4.],[ 0. 14. 16.]]</span><br></pre></td></tr></tbody></table></figure>
+
+<p>Reasoning:</p>
+<p>The function performs a 2D convolution operation on the input matrix using the specified kernel, padding, and stride. The output matrix contains the results of the convolution operation.</p>
+<p>解题：</p>
+<p>下面是分步骤的详细解答说明：</p>
+<h3 id="1-输入与参数定义"><a href="#1-输入与参数定义" class="headerlink" title="1. 输入与参数定义"></a>1. 输入与参数定义</h3><p>函数接收四个参数：</p>
+<ul>
+<li><code>input_matrix</code> ($X$): 输入的二维矩阵，尺寸为 $H_{in} \times W_{in}$。</li>
+<li><code>kernel</code> ($K$): 卷积核（滤波器），尺寸为 $K_H \times K_W$。</li>
+<li><code>padding</code> ($P$): 在输入矩阵周围填充 0 的圈数。</li>
+<li><code>stride</code> ($S$): 滑动窗口的步长。</li>
+</ul>
+<h3 id="2-零填充-Padding"><a href="#2-零填充-Padding" class="headerlink" title="2. 零填充 (Padding)"></a>2. 零填充 (Padding)</h3><p>代码使用 <code>np.pad</code> 对输入矩阵的四周进行填充。</p>
+<ul>
+<li><p><strong>操作</strong>：在高度和宽度的两侧各添加 $P$ 行/列的 0。</p>
+</li>
+<li><p><strong>数学变化</strong>：<br>填充后的输入尺寸变为：</p>
+<p>$$<br>H_{pad} = H_{in} + 2P<br>$$</p>
+<p>$$<br>W_{pad} = W_{in} + 2P<br>$$</p>
+</li>
+</ul>
+<h3 id="3-计算输出尺寸-Output-Size"><a href="#3-计算输出尺寸-Output-Size" class="headerlink" title="3. 计算输出尺寸 (Output Size)"></a>3. 计算输出尺寸 (Output Size)</h3><p>在进行卷积之前，需要计算输出矩阵的形状。这取决于输入尺寸、卷积核大小、填充和步幅。</p>
+<ul>
+<li><p><strong>代码对应</strong>：<code>(padded_height - kernel_height) // stride + 1</code></p>
+</li>
+<li><p><strong>数学公式</strong>：<br>输出的高度 $H_{out}$ 和宽度 $W_{out}$ 计算如下（其中 $\lfloor \cdot \rfloor$ 表示向下取整）：</p>
+<p>$$<br>H_{out} = \left\lfloor \frac{H_{in} + 2P - K_H}{S} \right\rfloor + 1<br>$$</p>
+<p>$$<br>W_{out} = \left\lfloor \frac{W_{in} + 2P - K_W}{S} \right\rfloor + 1<br>$$</p>
+</li>
+</ul>
+<h3 id="4-滑动窗口与卷积计算-Convolution-Loop"><a href="#4-滑动窗口与卷积计算-Convolution-Loop" class="headerlink" title="4. 滑动窗口与卷积计算 (Convolution Loop)"></a>4. 滑动窗口与卷积计算 (Convolution Loop)</h3><p>代码通过双重循环遍历输出矩阵的每一个位置 $(i, j)$。</p>
+<ul>
+<li><p><strong>定位窗口</strong>：<br>根据步幅 $S$，在填充后的输入矩阵上找到对应的切片区域（Region）。区域的左上角坐标为：</p>
+<p>$$<br>\text{start}_h = i \times S<br>$$</p>
+<p>$$<br>\text{start}_w = j \times S<br>$$</p>
+<p>截取的区域大小与卷积核一致，即 $K_H \times K_W$。</p>
+</li>
+<li><p><strong>计算数值</strong>：<br>代码执行 <code>np.sum(region * kernel)</code>。这包含两步：</p>
+<ol>
+<li><strong>逐元素相乘 (Element-wise Multiplication)</strong>：输入区域与卷积核对应位置相乘。</li>
+<li><strong>求和 (Summation)</strong>：将所有乘积相加得到输出矩阵在 $(i, j)$ 处的值。</li>
+</ol>
+</li>
+<li><p><strong>数学公式 (互相关)</strong>：<br>输出矩阵 $Y$ 中的元素 $Y_{i,j}$ 计算公式为：</p>
+<p>$$<br>Y_{i,j} = \sum_{m=0}^{K_H-1} \sum_{n=0}^{K_W-1} X_{pad}[i \cdot S + m, \ j \cdot S + n] \cdot K[m, n]<br>$$</p>
+</li>
+</ul>
+<hr>
+<h3 id="Markdown-格式代码"><a href="#Markdown-格式代码" class="headerlink" title="Markdown 格式代码"></a>Markdown 格式代码</h3><figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">simple_conv2d</span>(<span class="params">input_matrix: np.ndarray, kernel: np.ndarray, padding: <span class="built_in">int</span>, stride: <span class="built_in">int</span></span>):</span><br><span class="line">    <span class="string">"""</span></span><br><span class="line"><span class="string">    实现简单的二维卷积（互相关）运算</span></span><br><span class="line"><span class="string">  </span></span><br><span class="line"><span class="string">    参数:</span></span><br><span class="line"><span class="string">    input_matrix: 输入二维数组 (H, W)</span></span><br><span class="line"><span class="string">    kernel: 卷积核二维数组 (K_H, K_W)</span></span><br><span class="line"><span class="string">    padding: 填充圈数 P</span></span><br><span class="line"><span class="string">    stride: 步幅 S</span></span><br><span class="line"><span class="string">    """</span></span><br><span class="line">    input_height, input_width = input_matrix.shape</span><br><span class="line">    kernel_height, kernel_width = kernel.shape</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 1. Padding (零填充)</span></span><br><span class="line">    <span class="comment"># 在输入的上下左右各填充 padding 行/列的 0</span></span><br><span class="line">    padded_input = np.pad(</span><br><span class="line">        input_matrix,</span><br><span class="line">        pad_width=((padding, padding), (padding, padding)),</span><br><span class="line">        mode=<span class="string">'constant'</span>,</span><br><span class="line">        constant_values=<span class="number">0</span></span><br><span class="line">    )</span><br><span class="line">    padded_height, padded_width = padded_input.shape</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 2. Output size (计算输出尺寸)</span></span><br><span class="line">    <span class="comment"># 公式: floor((H + 2P - K) / S) + 1</span></span><br><span class="line">    out_height = (padded_height - kernel_height) // stride + <span class="number">1</span></span><br><span class="line">    out_width = (padded_width - kernel_width) // stride + <span class="number">1</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># 3. Initialize output (初始化输出矩阵)</span></span><br><span class="line">    output_matrix = np.zeros((out_height, out_width), dtype=<span class="built_in">float</span>)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 4. Convolution / Cross-correlation (卷积/互相关计算)</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(out_height):</span><br><span class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(out_width):</span><br><span class="line">            <span class="comment"># 计算在 padded_input 上的起始坐标</span></span><br><span class="line">            h_start = i * stride</span><br><span class="line">            w_start = j * stride</span><br><span class="line">          </span><br><span class="line">            <span class="comment"># 切片提取感兴趣区域 (Region of Interest)</span></span><br><span class="line">            region = padded_input[</span><br><span class="line">                h_start : h_start + kernel_height,</span><br><span class="line">                w_start : w_start + kernel_width</span><br><span class="line">            ]</span><br><span class="line">          </span><br><span class="line">            <span class="comment"># 逐元素相乘并求和</span></span><br><span class="line">            output_matrix[i, j] = np.<span class="built_in">sum</span>(region * kernel)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> output_matrix</span><br></pre></td></tr></tbody></table></figure>
+
+<p>整体实现代码：</p>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">simple_conv2d</span>(<span class="params">input_matrix: np.ndarray, kernel: np.ndarray, padding: <span class="built_in">int</span>, stride: <span class="built_in">int</span></span>):</span><br><span class="line">    input_height, input_width = input_matrix.shape</span><br><span class="line">    kernel_height, kernel_width = kernel.shape</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 1. Padding</span></span><br><span class="line">    padded_input = np.pad(</span><br><span class="line">        input_matrix,</span><br><span class="line">        pad_width=((padding, padding), (padding, padding)),</span><br><span class="line">        mode=<span class="string">'constant'</span>,</span><br><span class="line">        constant_values=<span class="number">0</span></span><br><span class="line">    )</span><br><span class="line"></span><br><span class="line">    padded_height, padded_width = padded_input.shape</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 2. Output size</span></span><br><span class="line">    out_height = (padded_height - kernel_height) // stride + <span class="number">1</span></span><br><span class="line">    out_width = (padded_width - kernel_width) // stride + <span class="number">1</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># 3. Initialize output</span></span><br><span class="line">    output_matrix = np.zeros((out_height, out_width), dtype=<span class="built_in">float</span>)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 4. Convolution (cross-correlation)</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(out_height):</span><br><span class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(out_width):</span><br><span class="line">            h_start = i * stride</span><br><span class="line">            w_start = j * stride</span><br><span class="line">            region = padded_input[</span><br><span class="line">                h_start:h_start + kernel_height,</span><br><span class="line">                w_start:w_start + kernel_width</span><br><span class="line">            ]</span><br><span class="line">            output_matrix[i, j] = np.<span class="built_in">sum</span>(region * kernel)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> output_matrix</span><br><span class="line"></span><br></pre></td></tr></tbody></table></figure>
+
+<br>
+
+<h2 id="模版"><a href="#模版" class="headerlink" title="模版"></a>模版</h2><p>题目：</p>
+<p>Example Input:</p>
+<figure class="highlight text"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></tbody></table></figure>
+
+<p>Output:</p>
+<figure class="highlight text"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></tbody></table></figure>
+
+<p>解题：</p>
+<p>1）</p>
+<p>整体实现代码：</p>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></tbody></table></figure>
+
+    </article>
+    <!-- license -->
+        <div class="license-wrapper">
+            <p>原文作者：<a href="https://skylyong.github.io">LY</a>
+            <p>原文链接：<a href="https://skylyong.github.io/2026/02/07/2026-nian-chun-bian-cheng-shua-ti-ji-lu/">https://skylyong.github.io/2026/02/07/2026-nian-chun-bian-cheng-shua-ti-ji-lu/</a>
+            <p>发表日期：<a href="https://skylyong.github.io/2026/02/07/2026-nian-chun-bian-cheng-shua-ti-ji-lu/">February 7th 2026, 2:02:23 pm</a>
+            <p>更新日期：<a href="https://skylyong.github.io/2026/02/07/2026-nian-chun-bian-cheng-shua-ti-ji-lu/">February 13th 2026, 12:57:30 am</a>
+            <p>版权声明：本文采用<a rel="license noopener" target="_blank" href="http://creativecommons.org/licenses/by-nc/4.0/">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可</p>
+        </div>
+    <!-- paginator -->
+    <ul class="post-paginator">
+        <li class="next">
+        </li>
+        <li class="previous">
+                <div class="prevSlogan">Previous Post</div>
+                <a href="/2026/01/16/einx-and-einops/" title="Einx-and-einops">
+                    <div class="prevTitle">Einx-and-einops</div>
+                </a>
+        </li>
+    </ul>
+    <!-- comment -->
+        <div class="post-comment">
+            <!-- 来必力 City 版安装代码 -->
+
+            
+            
+            
+            <!-- utteranc评论 -->
+    <script src='https://utteranc.es/client.js'
+        repo='Skylyong/blog-commit'
+        issue-term='pathname'
+        label='utteranc'
+        theme='github-light'
+        crossorigin='anonymous'
+        async>
+    </script>
+
+            <!-- partial('_partial/comment/changyan') -->
+            <!--PC版-->
+
+            
+            
+            
+        </div>
+    <!-- timeliness note -->
+    <!-- idea from: https://hexo.fluid-dev.com/posts/hexo-injector/#%E6%96%87%E7%AB%A0%E6%97%B6%E6%95%88%E6%80%A7%E6%8F%90%E7%A4%BA -->
+    <!-- Mathjax -->
+</main>
+
+                <!-- profile -->
+            </div>
+            <footer class="footer footer-unloaded">
+    <!-- social  -->
+
+    <!-- <h1>Page Layout: post</h1> -->
+
+    
+        <div class="social">
+                            <a href="mailto:lyong_s@foxmail.com" class="iconfont-archer email" title="email" ></a>
+                <a href="//github.com/Skylyong" class="iconfont-archer github" target="_blank" title="github"></a>
+
+        </div>
+    
+    <!-- powered by Hexo  -->
+    
+    <div class="copyright">
+        <span id="hexo-power">Powered by <a href="https://hexo.io/" target="_blank">Hexo</a></span><span class="iconfont-archer power">&#xe635;</span><span id="theme-info">theme <a href="https://github.com/fi3ework/hexo-theme-archer" target="_blank">Archer</a></span>
+    </div>
+
+    <!-- website approve for Chinese user -->
+    <!-- 不蒜子  -->
+        <div class="busuanzi-container">
+                <span id="busuanzi_container_site_pv">PV: <span id="busuanzi_value_site_pv"></span> :)</span>
+        </div>
+</footer>
+
+        </div>
+        <!-- toc -->
+            <div class="toc-wrapper toc-wrapper-loding" style=    top:50vh;
+>
+                <div class="toc-catalog">
+                    <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
+                </div>
+                <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Deep-Learning-%E7%B3%BB%E5%88%97"><span class="toc-number">1.</span> <span class="toc-text">Deep Learning 系列</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-Single-Neuron"><span class="toc-number">1.1.</span> <span class="toc-text">1. Single Neuron</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-Implementing-a-Simple-RNN"><span class="toc-number">1.2.</span> <span class="toc-text">2. Implementing a Simple RNN</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-Implement-Long-Short-Term-Memory-LSTM-Network"><span class="toc-number">1.3.</span> <span class="toc-text">3. Implement Long Short-Term Memory (LSTM) Network</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Simple-Convolutional-2D-Layer"><span class="toc-number">1.4.</span> <span class="toc-text">Simple Convolutional 2D Layer</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E8%BE%93%E5%85%A5%E4%B8%8E%E5%8F%82%E6%95%B0%E5%AE%9A%E4%B9%89"><span class="toc-number">1.4.1.</span> <span class="toc-text">1. 输入与参数定义</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E9%9B%B6%E5%A1%AB%E5%85%85-Padding"><span class="toc-number">1.4.2.</span> <span class="toc-text">2. 零填充 (Padding)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E8%AE%A1%E7%AE%97%E8%BE%93%E5%87%BA%E5%B0%BA%E5%AF%B8-Output-Size"><span class="toc-number">1.4.3.</span> <span class="toc-text">3. 计算输出尺寸 (Output Size)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3%E4%B8%8E%E5%8D%B7%E7%A7%AF%E8%AE%A1%E7%AE%97-Convolution-Loop"><span class="toc-number">1.4.4.</span> <span class="toc-text">4. 滑动窗口与卷积计算 (Convolution Loop)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Markdown-%E6%A0%BC%E5%BC%8F%E4%BB%A3%E7%A0%81"><span class="toc-number">1.4.5.</span> <span class="toc-text">Markdown 格式代码</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A8%A1%E7%89%88"><span class="toc-number">1.5.</span> <span class="toc-text">模版</span></a></li></ol></li></ol>
+            </div>
+        <!-- sidebar -->
+        <div class="sidebar sidebar-hide">
+    <ul class="sidebar-tabs sidebar-tabs-active-0">
+        <li class="sidebar-tab-archives"><span class="iconfont-archer">&#xe67d;</span><span class="tab-name">Archive</span></li>
+        <li class="sidebar-tab-tags"><span class="iconfont-archer">&#xe61b;</span><span class="tab-name">Tag</span></li>
+        <li class="sidebar-tab-categories"><span class="iconfont-archer">&#xe666;</span><span class="tab-name">Cate</span></li>
+    </ul>
+    <div class="sidebar-content sidebar-content-show-archive">
+        <div class="sidebar-panel-archives">
+    <!-- 在 ejs 中将 archive 按照时间排序 -->
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+    <div class="total-and-search">
+        <div class="total-archive">
+        Total : 77
+        </div>
+        <!-- search  -->
+            <div class="site-search site-search-loading popup-trigger">
+                <span class="iconfont-archer search-icon">&#xe627;</span>
+            </div>
+    </div>
+    <div class="post-archive">
+            <div class="archive-year"> 2026 </div>
+            <ul class="year-list">
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/07</span>
+            <a class="archive-post-title" href="/2026/02/07/2026-nian-chun-bian-cheng-shua-ti-ji-lu/">2026年春编程刷题记录</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/16</span>
+            <a class="archive-post-title" href="/2026/01/16/einx-and-einops/">Einx-and-einops</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/16</span>
+            <a class="archive-post-title" href="/2026/01/16/chunk-hua-fen-fang-fa/">Chunk划分方法</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/09</span>
+            <a class="archive-post-title" href="/2026/01/09/bpe-fen-ci-bian-ma-he-jie-ma/">BPE分词编码和解码</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/09</span>
+            <a class="archive-post-title" href="/2026/01/09/bpe-fen-ci-xun-lian/">BPE分词训练</a>
+        </li>
+                </ul>
+            <div class="archive-year"> 2025 </div>
+            <ul class="year-list">
+        <li class="archive-post-item">
+            <span class="archive-post-date">12/02</span>
+            <a class="archive-post-title" href="/2025/12/02/clash-gui-ze-pei-zhi-zhi-nan/">Clash规则配置指南</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/20</span>
+            <a class="archive-post-title" href="/2025/11/20/1-cs336-bpe-fen-ci-qi-jie-shao/">1-cs336-BPE分词器介绍</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/16</span>
+            <a class="archive-post-title" href="/2025/10/16/linux-chang-yong-ming-ling-jie-shi/">linux常用命令解释</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/14</span>
+            <a class="archive-post-title" href="/2025/10/14/shi-yong-rclone-zai-duo-ge-fu-wu-qi-zhi-jian-chuan-shu-wen-jian/">使用rclone在多个服务器之间传输文件</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/08</span>
+            <a class="archive-post-title" href="/2025/10/08/ubuntu-shang-che-di-xie-zai-he-chong-zhuang-nvidia-qu-dong-ji-xiang-guan-zu-jian/">Ubuntu上彻底卸载和重装NVIDIA驱动及相关组件</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/03</span>
+            <a class="archive-post-title" href="/2025/10/03/ssh-pei-zhi-jie-shao/">ssh配置介绍</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/02</span>
+            <a class="archive-post-title" href="/2025/10/02/mineru-an-zhuang-bu-shu/">MinerU安装部署</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">09/29</span>
+            <a class="archive-post-title" href="/2025/09/29/tong-guo-docker-yun-xing-easyconnect-deng-vpn-ruan-jian/">通过docker运行EasyConnect等VPN软件</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">09/28</span>
+            <a class="archive-post-title" href="/2025/09/28/quan-ju-pei-zhi-docker-ke-hu-duan-dai-li/">全局配置Docker客户端代理</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">09/16</span>
+            <a class="archive-post-title" href="/2025/09/16/linux-ci-pan-guan-li-ji-minio-fu-wu-pei-zhi/">Linux磁盘管理及MinIO服务配置</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/10</span>
+            <a class="archive-post-title" href="/2025/08/10/bu-dong-dian-he-ya-suo-ying-she/">不动点和压缩映射</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/10</span>
+            <a class="archive-post-title" href="/2025/08/10/xiang-liang-fan-shu/">向量范数</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/10</span>
+            <a class="archive-post-title" href="/2025/08/10/shu-xue-zhong-de-qi-ci-xing-li-jie/">数学中的齐次性理解</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/10</span>
+            <a class="archive-post-title" href="/2025/08/10/fan-shu-de-ji-ben-gai-nian/">范数的基本概念</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/10</span>
+            <a class="archive-post-title" href="/2025/08/10/ju-zhen-fan-shu/">矩阵范数</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">07/28</span>
+            <a class="archive-post-title" href="/2025/07/28/claude-code-xue-xi-ji-lu/">Claude-Code学习记录</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">07/25</span>
+            <a class="archive-post-title" href="/2025/07/25/uv-chang-yong-cao-zuo/">uv常用操作</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">07/13</span>
+            <a class="archive-post-title" href="/2025/07/13/quan-qi-wang-ding-li-gong-shi-tui-dao/">全期望定理公式推导</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">07/12</span>
+            <a class="archive-post-title" href="/2025/07/12/bei-er-man-deng-shi-jie-shao-ji-tui-dao/">贝尔曼等式介绍及推导</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">06/17</span>
+            <a class="archive-post-title" href="/2025/06/17/shi-yong-docker-gou-jian-webdav-fu-wu-qi/">使用Docker构建Webdav服务器</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/14</span>
+            <a class="archive-post-title" href="/2025/05/14/git-team-collab-workflow/">git_team_collab_workflow</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/24</span>
+            <a class="archive-post-title" href="/2025/04/24/ben-di-gou-jian-docker-jing-xiang-bing-shang-chuan-zhi-a-li-yun-jing-xiang-fu-wu-zhan/">本地构建docker镜像并上传至阿里云镜像服务站</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/18</span>
+            <a class="archive-post-title" href="/2025/04/18/an-zhuang-torch-scatter-shi-yu-dao-de-keng/">安装torch-scatter时遇到的坑</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/17</span>
+            <a class="archive-post-title" href="/2025/03/17/neo4j-dao-ru-jie-dian-he-bian-de-python-dai-ma/">neo4j导入节点和边的python代码</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/09</span>
+            <a class="archive-post-title" href="/2025/03/09/jie-pai-he-ji/">街拍合集</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/09</span>
+            <a class="archive-post-title" href="/2025/03/09/ren-xiang-she-ying-he-ji/">人像摄影合集</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/08</span>
+            <a class="archive-post-title" href="/2025/03/08/matplotlib-xian-shi-zhong-wen/">matplotlib 设置显示中文</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/08</span>
+            <a class="archive-post-title" href="/2025/03/08/python-duo-jin-cheng-shi-li/">python多进程示例</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/06</span>
+            <a class="archive-post-title" href="/2025/03/06/shi-yong-bert-de-dao-duan-yu-xiang-liang-biao-shi-bing-jin-xing-ceng-ci-ju-lei-shi-xian-xiang-si-xing-qu-chong/">使用BERT得到短语向量表示并进行层次聚类实现相似性去重</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/06</span>
+            <a class="archive-post-title" href="/2025/03/06/ji-yu-bian-ji-ju-chi-de-wen-ben-ceng-ci-ju-lei/">基于编辑距离的文本层次聚类</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/27</span>
+            <a class="archive-post-title" href="/2025/02/27/ai-jing-sai-ping-tai/">Ai竞赛平台</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/19</span>
+            <a class="archive-post-title" href="/2025/02/19/python-ri-chang-kai-fa-za-ji/">python日常开发杂记</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/12</span>
+            <a class="archive-post-title" href="/2025/02/12/tong-guo-docker-bu-shu-doccano-biao-zhu-gong-ju/">通过docker部署doccano标注工具</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/06</span>
+            <a class="archive-post-title" href="/2025/02/06/zai-cheng-gong-de-ri-zi-fu-xi-zi-liao-bu-jian-liao/">在呈贡的日子——复习资料不见了</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/06</span>
+            <a class="archive-post-title" href="/2025/02/06/zai-cheng-gong-de-ri-zi-lao-yu-he/">在呈贡的日子——捞鱼河</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/28</span>
+            <a class="archive-post-title" href="/2025/01/28/vscode-kai-fa-ji-qiao-ji-lu/">vscode开发技巧记录</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/28</span>
+            <a class="archive-post-title" href="/2025/01/28/bo-ke-wei-hu-ri-zhi/">博客维护日志</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/26</span>
+            <a class="archive-post-title" href="/2025/01/26/da-jian-webdav-fu-wu-qi-shi-xian-obsidian-he-zotero-duo-duan-tong-bu/">搭建Webdav服务器实现Obsidian和Zotero多端同步</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/07</span>
+            <a class="archive-post-title" href="/2025/01/07/sentence-transformers-sampler-bug-zhi-set-bu-yi-ding-shi-wu-xu-de/">sentence-transformers sampler bug 之 set 不一定是无序的</a>
+        </li>
+                </ul>
+            <div class="archive-year"> 2023 </div>
+            <ul class="year-list">
+        <li class="archive-post-item">
+            <span class="archive-post-date">09/12</span>
+            <a class="archive-post-title" href="/2023/09/12/ubuntu-shang-an-zhuang-nividia-qu-dong-he-cuda-tookit/">ubuntu上安装NIVIDIA驱动和CUDA_Tookit</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">07/23</span>
+            <a class="archive-post-title" href="/2023/07/23/zai-mac-shang-shi-yong-pybind11-shi-xian-c-yu-python-hu-tong-de-demo/">在mac上使用pybind11实现c++与python互通的demo</a>
+        </li>
+                </ul>
+            <div class="archive-year"> 2022 </div>
+            <ul class="year-list">
+        <li class="archive-post-item">
+            <span class="archive-post-date">09/07</span>
+            <a class="archive-post-title" href="/2022/09/07/mac-xi-tong-zhi-zuo-win10-qi-dong-u-pan/">Mac系统制作win10启动U盘</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">09/05</span>
+            <a class="archive-post-title" href="/2022/09/05/dian-ci-bi-sai-zong-jie/">电磁比赛总结</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/29</span>
+            <a class="archive-post-title" href="/2022/04/29/yuan-cheng-fang-wen-fu-wu-qi-jupyter-notebook/">远程访问服务器Jupyter-Notebook</a>
+        </li>
+                </ul>
+            <div class="archive-year"> 2021 </div>
+            <ul class="year-list">
+        <li class="archive-post-item">
+            <span class="archive-post-date">12/10</span>
+            <a class="archive-post-title" href="/2021/12/10/c-duo-xian-cheng-bian-cheng/">C++多线程编程</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">09/29</span>
+            <a class="archive-post-title" href="/2021/09/29/jiang-wei-xin-liao-tian-zhong-de-yu-yin-zhuan-huan-wei-mp3/">将微信聊天中的语音转换为mp3</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">09/19</span>
+            <a class="archive-post-title" href="/2021/09/19/you-yong-de-zi-yuan/">有用的资源</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">09/19</span>
+            <a class="archive-post-title" href="/2021/09/19/ji-qi-xue-xi-can-kao-zi-liao/">机器学习参考资料</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/14</span>
+            <a class="archive-post-title" href="/2021/08/14/gong-ju-xiang/">工具箱</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/14</span>
+            <a class="archive-post-title" href="/2021/08/14/wei-xin-biao-qian-zheng-li/">微信标签整理</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/13</span>
+            <a class="archive-post-title" href="/2021/08/13/google-fang-wen-zhu-shou-an-zhuang/">Google访问助手安装</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/13</span>
+            <a class="archive-post-title" href="/2021/08/13/tu-de-chuang-jian-he-bian-li/">【课程设计】图的创建和遍历</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/13</span>
+            <a class="archive-post-title" href="/2021/08/13/chang-yong-shu-ju-ji-zheng-li/">常用数据集整理</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/13</span>
+            <a class="archive-post-title" href="/2021/08/13/li-bao-chun-writing-perfect-papers/">论文写作</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/09</span>
+            <a class="archive-post-title" href="/2021/08/09/svm-xue-xi-bi-ji/">SVM学习笔记</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/06</span>
+            <a class="archive-post-title" href="/2021/08/06/pandas-xue-xi/">Pandas学习</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/05</span>
+            <a class="archive-post-title" href="/2021/08/05/pytorch-xue-xi/">Pytorch学习</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">07/01</span>
+            <a class="archive-post-title" href="/2021/07/01/huggingface-yu-xun-lian-mo-xing-quan-chong-xia-zai-de-wen-ti/">Huggingface 预训练模型权重下载的问题</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">06/21</span>
+            <a class="archive-post-title" href="/2021/06/21/jupyter-notebook-ben-di-fu-wu-qi-da-jian/">jupyter notebook 本地服务器搭建</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/16</span>
+            <a class="archive-post-title" href="/2021/04/16/ji-qi-xue-xi-zhong-de-ge-chong-shang/">机器学习中的各种熵</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/08</span>
+            <a class="archive-post-title" href="/2021/04/08/git-chang-yong-ming-ling/">git常用命令</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/08</span>
+            <a class="archive-post-title" href="/2021/04/08/nlp-zhi-shi-ti-xi/">NLP知识体系</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/01</span>
+            <a class="archive-post-title" href="/2021/04/01/zui-xiao-lu-jing-he/">【每日算法】2021年03月31日 小雨 最小路径和</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/31</span>
+            <a class="archive-post-title" href="/2021/03/31/gitlab-da-jian-bi-ji/">GitLab搭建笔记</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/31</span>
+            <a class="archive-post-title" href="/2021/03/31/ke-cheng-she-ji-zui-xiao-sheng-cheng-shu-ying-yong/">【课程设计】最小生成树应用</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/31</span>
+            <a class="archive-post-title" href="/2021/03/31/xue-xi-shi-pin-zheng-li/">学习视频整理</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/31</span>
+            <a class="archive-post-title" href="/2021/03/31/ying-yu-kou-yu-lian-xi-dian-ying-tui-jian/">英语口语练习电影推荐</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/30</span>
+            <a class="archive-post-title" href="/2021/03/30/bu-tong-lu-jing/">【每日算法】2021年03月30日 多云 不同路径</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/29</span>
+            <a class="archive-post-title" href="/2021/03/29/bian-fen-xue-xi-bi-ji/">变分学习笔记</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/28</span>
+            <a class="archive-post-title" href="/2021/03/28/github-jia-su-fang-fa/">GitHub加速方法</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/21</span>
+            <a class="archive-post-title" href="/2021/02/21/hexo-ge-ren-bo-ke-da-jian-jiao-cheng/">hexo个人博客搭建</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/21</span>
+            <a class="archive-post-title" href="/2021/02/21/hao-yong-de-mian-fei-wu-guang-gao-dian-ying-wang-zhan-tui-jian/">好用的免费无广告电影网站推荐</a>
+        </li>
+            </ul>
+    </div>
+</div>
+
+        <div class="sidebar-panel-tags">
+    <div class="sidebar-tags-name">
+            <span class="sidebar-tag-name" data-tags="BPE">
+                <span class="iconfont-archer">&#xe606;</span>
+                BPE
+            </span>
+            <span class="sidebar-tag-name" data-tags="pytorch">
+                <span class="iconfont-archer">&#xe606;</span>
+                pytorch
+            </span>
+            <span class="sidebar-tag-name" data-tags="ai竞赛">
+                <span class="iconfont-archer">&#xe606;</span>
+                ai竞赛
+            </span>
+            <span class="sidebar-tag-name" data-tags="Clash, 规则配置">
+                <span class="iconfont-archer">&#xe606;</span>
+                Clash, 规则配置
+            </span>
+            <span class="sidebar-tag-name" data-tags="claude-code">
+                <span class="iconfont-archer">&#xe606;</span>
+                claude-code
+            </span>
+            <span class="sidebar-tag-name" data-tags="tensor">
+                <span class="iconfont-archer">&#xe606;</span>
+                tensor
+            </span>
+            <span class="sidebar-tag-name" data-tags="GitHub">
+                <span class="iconfont-archer">&#xe606;</span>
+                GitHub
+            </span>
+            <span class="sidebar-tag-name" data-tags="Google访问助手">
+                <span class="iconfont-archer">&#xe606;</span>
+                Google访问助手
+            </span>
+            <span class="sidebar-tag-name" data-tags="GitLab">
+                <span class="iconfont-archer">&#xe606;</span>
+                GitLab
+            </span>
+            <span class="sidebar-tag-name" data-tags="启动U盘">
+                <span class="iconfont-archer">&#xe606;</span>
+                启动U盘
+            </span>
+            <span class="sidebar-tag-name" data-tags="RAG">
+                <span class="iconfont-archer">&#xe606;</span>
+                RAG
+            </span>
+            <span class="sidebar-tag-name" data-tags="mineru">
+                <span class="iconfont-archer">&#xe606;</span>
+                mineru
+            </span>
+            <span class="sidebar-tag-name" data-tags="Pandas">
+                <span class="iconfont-archer">&#xe606;</span>
+                Pandas
+            </span>
+            <span class="sidebar-tag-name" data-tags="预训练模型">
+                <span class="iconfont-archer">&#xe606;</span>
+                预训练模型
+            </span>
+            <span class="sidebar-tag-name" data-tags="nlp">
+                <span class="iconfont-archer">&#xe606;</span>
+                nlp
+            </span>
+            <span class="sidebar-tag-name" data-tags="svm">
+                <span class="iconfont-archer">&#xe606;</span>
+                svm
+            </span>
+            <span class="sidebar-tag-name" data-tags="NVIDIA">
+                <span class="iconfont-archer">&#xe606;</span>
+                NVIDIA
+            </span>
+            <span class="sidebar-tag-name" data-tags="github">
+                <span class="iconfont-archer">&#xe606;</span>
+                github
+            </span>
+            <span class="sidebar-tag-name" data-tags="git">
+                <span class="iconfont-archer">&#xe606;</span>
+                git
+            </span>
+            <span class="sidebar-tag-name" data-tags="博客">
+                <span class="iconfont-archer">&#xe606;</span>
+                博客
+            </span>
+            <span class="sidebar-tag-name" data-tags="jupyter notebook">
+                <span class="iconfont-archer">&#xe606;</span>
+                jupyter notebook
+            </span>
+            <span class="sidebar-tag-name" data-tags="python">
+                <span class="iconfont-archer">&#xe606;</span>
+                python
+            </span>
+            <span class="sidebar-tag-name" data-tags="neo4j">
+                <span class="iconfont-archer">&#xe606;</span>
+                neo4j
+            </span>
+            <span class="sidebar-tag-name" data-tags="ssh">
+                <span class="iconfont-archer">&#xe606;</span>
+                ssh
+            </span>
+            <span class="sidebar-tag-name" data-tags="NIVIDIA驱动">
+                <span class="iconfont-archer">&#xe606;</span>
+                NIVIDIA驱动
+            </span>
+            <span class="sidebar-tag-name" data-tags="uv">
+                <span class="iconfont-archer">&#xe606;</span>
+                uv
+            </span>
+            <span class="sidebar-tag-name" data-tags="动态规划">
+                <span class="iconfont-archer">&#xe606;</span>
+                动态规划
+            </span>
+            <span class="sidebar-tag-name" data-tags="树">
+                <span class="iconfont-archer">&#xe606;</span>
+                树
+            </span>
+            <span class="sidebar-tag-name" data-tags="摄影">
+                <span class="iconfont-archer">&#xe606;</span>
+                摄影
+            </span>
+            <span class="sidebar-tag-name" data-tags="vscode">
+                <span class="iconfont-archer">&#xe606;</span>
+                vscode
+            </span>
+            <span class="sidebar-tag-name" data-tags="概率论">
+                <span class="iconfont-archer">&#xe606;</span>
+                概率论
+            </span>
+            <span class="sidebar-tag-name" data-tags="文本聚类 bert向量表示">
+                <span class="iconfont-archer">&#xe606;</span>
+                文本聚类 bert向量表示
+            </span>
+            <span class="sidebar-tag-name" data-tags="日志">
+                <span class="iconfont-archer">&#xe606;</span>
+                日志
+            </span>
+            <span class="sidebar-tag-name" data-tags="rclone">
+                <span class="iconfont-archer">&#xe606;</span>
+                rclone
+            </span>
+            <span class="sidebar-tag-name" data-tags="机器学习">
+                <span class="iconfont-archer">&#xe606;</span>
+                机器学习
+            </span>
+            <span class="sidebar-tag-name" data-tags="webdav, docker, obsidian, zotero">
+                <span class="iconfont-archer">&#xe606;</span>
+                webdav, docker, obsidian, zotero
+            </span>
+            <span class="sidebar-tag-name" data-tags="图">
+                <span class="iconfont-archer">&#xe606;</span>
+                图
+            </span>
+            <span class="sidebar-tag-name" data-tags="数学">
+                <span class="iconfont-archer">&#xe606;</span>
+                数学
+            </span>
+            <span class="sidebar-tag-name" data-tags="python_c++_互通">
+                <span class="iconfont-archer">&#xe606;</span>
+                python_c++_互通
+            </span>
+            <span class="sidebar-tag-name" data-tags="呈贡">
+                <span class="iconfont-archer">&#xe606;</span>
+                呈贡
+            </span>
+            <span class="sidebar-tag-name" data-tags="文本聚类 编辑距离">
+                <span class="iconfont-archer">&#xe606;</span>
+                文本聚类 编辑距离
+            </span>
+            <span class="sidebar-tag-name" data-tags="编程">
+                <span class="iconfont-archer">&#xe606;</span>
+                编程
+            </span>
+            <span class="sidebar-tag-name" data-tags="电影">
+                <span class="iconfont-archer">&#xe606;</span>
+                电影
+            </span>
+            <span class="sidebar-tag-name" data-tags="微信">
+                <span class="iconfont-archer">&#xe606;</span>
+                微信
+            </span>
+            <span class="sidebar-tag-name" data-tags="干货">
+                <span class="iconfont-archer">&#xe606;</span>
+                干货
+            </span>
+            <span class="sidebar-tag-name" data-tags="资源">
+                <span class="iconfont-archer">&#xe606;</span>
+                资源
+            </span>
+            <span class="sidebar-tag-name" data-tags="docker">
+                <span class="iconfont-archer">&#xe606;</span>
+                docker
+            </span>
+            <span class="sidebar-tag-name" data-tags="熵">
+                <span class="iconfont-archer">&#xe606;</span>
+                熵
+            </span>
+            <span class="sidebar-tag-name" data-tags="竞赛">
+                <span class="iconfont-archer">&#xe606;</span>
+                竞赛
+            </span>
+            <span class="sidebar-tag-name" data-tags="论文写作">
+                <span class="iconfont-archer">&#xe606;</span>
+                论文写作
+            </span>
+            <span class="sidebar-tag-name" data-tags="街拍">
+                <span class="iconfont-archer">&#xe606;</span>
+                街拍
+            </span>
+            <span class="sidebar-tag-name" data-tags="docker, doccano">
+                <span class="iconfont-archer">&#xe606;</span>
+                docker, doccano
+            </span>
+            <span class="sidebar-tag-name" data-tags="强化学习">
+                <span class="iconfont-archer">&#xe606;</span>
+                强化学习
+            </span>
+    </div>
+    <div class="iconfont-archer sidebar-tags-empty">&#xe678;</div>
+    <div class="tag-load-fail" style="display: none; color: #ccc; font-size: 0.6rem;">
+        缺失模块，请参考主题文档进行安装配置：https://github.com/fi3ework/hexo-theme-archer#%E5%AE%89%E8%A3%85%E4%B8%BB%E9%A2%98
+    </div> 
+    <div class="sidebar-tags-list"></div>
+</div>
+
+        <div class="sidebar-panel-categories">
+    <div class="sidebar-categories-name">
+        <span class="sidebar-category-name" data-categories="大模型">
+            <span class="iconfont-archer">&#xe60a;</span>
+            大模型
+        </span>
+        <span class="sidebar-category-name" data-categories="编程">
+            <span class="iconfont-archer">&#xe60a;</span>
+            编程
+        </span>
+        <span class="sidebar-category-name" data-categories="总结">
+            <span class="iconfont-archer">&#xe60a;</span>
+            总结
+        </span>
+        <span class="sidebar-category-name" data-categories="网络工具">
+            <span class="iconfont-archer">&#xe60a;</span>
+            网络工具
+        </span>
+        <span class="sidebar-category-name" data-categories="编程开发">
+            <span class="iconfont-archer">&#xe60a;</span>
+            编程开发
+        </span>
+        <span class="sidebar-category-name" data-categories="技术笔记">
+            <span class="iconfont-archer">&#xe60a;</span>
+            技术笔记
+        </span>
+        <span class="sidebar-category-name" data-categories="爬坑总结">
+            <span class="iconfont-archer">&#xe60a;</span>
+            爬坑总结
+        </span>
+        <span class="sidebar-category-name" data-categories="干货">
+            <span class="iconfont-archer">&#xe60a;</span>
+            干货
+        </span>
+        <span class="sidebar-category-name" data-categories="运维">
+            <span class="iconfont-archer">&#xe60a;</span>
+            运维
+        </span>
+        <span class="sidebar-category-name" data-categories="学习笔记">
+            <span class="iconfont-archer">&#xe60a;</span>
+            学习笔记
+        </span>
+        <span class="sidebar-category-name" data-categories="人工智能">
+            <span class="iconfont-archer">&#xe60a;</span>
+            人工智能
+        </span>
+        <span class="sidebar-category-name" data-categories="知识框架">
+            <span class="iconfont-archer">&#xe60a;</span>
+            知识框架
+        </span>
+        <span class="sidebar-category-name" data-categories="生活总结">
+            <span class="iconfont-archer">&#xe60a;</span>
+            生活总结
+        </span>
+        <span class="sidebar-category-name" data-categories="编程经验">
+            <span class="iconfont-archer">&#xe60a;</span>
+            编程经验
+        </span>
+        <span class="sidebar-category-name" data-categories="算法笔记">
+            <span class="iconfont-archer">&#xe60a;</span>
+            算法笔记
+        </span>
+        <span class="sidebar-category-name" data-categories="摄影">
+            <span class="iconfont-archer">&#xe60a;</span>
+            摄影
+        </span>
+        <span class="sidebar-category-name" data-categories="自然语言处理">
+            <span class="iconfont-archer">&#xe60a;</span>
+            自然语言处理
+        </span>
+        <span class="sidebar-category-name" data-categories="算法">
+            <span class="iconfont-archer">&#xe60a;</span>
+            算法
+        </span>
+        <span class="sidebar-category-name" data-categories="生活情感">
+            <span class="iconfont-archer">&#xe60a;</span>
+            生活情感
+        </span>
+        <span class="sidebar-category-name" data-categories="学习资料">
+            <span class="iconfont-archer">&#xe60a;</span>
+            学习资料
+        </span>
+        <span class="sidebar-category-name" data-categories="收藏">
+            <span class="iconfont-archer">&#xe60a;</span>
+            收藏
+        </span>
+        <span class="sidebar-category-name" data-categories="数据集">
+            <span class="iconfont-archer">&#xe60a;</span>
+            数据集
+        </span>
+        <span class="sidebar-category-name" data-categories="机器学习">
+            <span class="iconfont-archer">&#xe60a;</span>
+            机器学习
+        </span>
+    </div>
+    <div class="iconfont-archer sidebar-categories-empty">&#xe678;</div>
+    <div class="sidebar-categories-list"></div>
+</div>
+
+    </div>
+</div>
+
+        <!-- site-meta -->
+        <script>
+    var siteMetaRoot = "/"
+    if (siteMetaRoot === "undefined") {
+        siteMetaRoot = '/'
+    }
+    var siteMeta = {
+        url: "https://skylyong.github.io",
+        root: siteMetaRoot,
+        author: "LY"
+    }
+</script>
+
+        <!-- import experimental options here -->
+        <!-- Custom Font -->
+
+        <!-- main func -->
+        <script src="/scripts/main.js"></script>
+        <!-- fancybox -->
+        <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.36/dist/fancybox/fancybox.umd.js" onload="window.Fancybox.bind('[data-fancybox]')" defer></script>
+        <!-- algolia -->
+            <div class="site-search site-search-loading">
+    <div class="algolia-popup popup">
+        <div class="algolia-search">
+            <div class="algolia-search-input-icon">
+                <i class="fa fa-search"></i>
+            </div>
+            <div class="algolia-search-input" id="algolia-search-input"></div>
+            <div class="popup-btn-close">
+                <i class="iconfont-archer">&#xe609;</i>
+            </div>
+        </div>
+
+        <div class="algolia-results">
+            <div id="algolia-stats" class="algolia-stats"></div>
+            <div id="algolia-hits"></div>
+            <div id="algolia-pagination" class="algolia-pagination"></div>
+        </div>
+    </div>
+</div>
+
+            
+           
+            <script src="/scripts/search.js" async></script>
+        <!-- busuanzi -->
+            <script src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async></script>
+        <!-- async load share.js -->
+            <script src="/scripts/share.js" async></script>
+        <!-- mermaid -->
+            <script src='https://cdn.jsdelivr.net/npm/mermaid@8.11.0/dist/mermaid.min.js' onload="window.mermaid.initialize({theme: 'dark'})" async></script>
+    </body>
+</html>
