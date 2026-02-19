@@ -429,6 +429,33 @@
                 <main class="main index-page">
             
         <article class="index-post">
+            <a class="abstract-title" href="/2022/09/05/dian-ci-bi-sai-zong-jie/">
+                <span class="abstract-title-text">电磁比赛总结</span>
+            </a>
+            <div class="abstract-content">
+                电磁比赛总结
+代码总结
+
+要会静态分析资源占有率，特别是当服务器内存资源不足的时候，提前做好静态分析，设置合理的运行参数，才能提升效率。比如本次实验过程中，做数据增强预处理数据时需要占用大量内存资源，参数设置过大，会导致运行一半后因为内存不足，进程被killed掉，参数设置过小效率又变得很低。
+当数据很多，需要占用大量内存时，不要将数据转换为pandas的DataFrame对象，因为它会吃掉更多的内存，此外使用apply方法对数据进行逐行处理的时候，即使使用了加速方法，也没有将数据存储为list然后使用多进程方法处理高效。在本次实验中，后者的速度至少是前者的5倍。
+尽量使用class对代...
+            </div>
+            <!-- read more -->
+            <div class="abstract-post-meta">
+                <!-- date -->
+                <div class="abstract-date" title="Last updated: 2025/03/08">
+                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2022/09/05</span>
+                </div>
+                <!-- tags -->
+                    <div class="abstract-tags" >
+        <a class="post-tag" href="javascript:void(0);" data-tags="竞赛">竞赛</a>
+</div>
+
+            </div>
+        </article>
+        <div class="index-post-divider"></div>
+            
+        <article class="index-post">
             <a class="abstract-title" href="/2022/04/29/yuan-cheng-fang-wen-fu-wu-qi-jupyter-notebook/">
                 <span class="abstract-title-text">远程访问服务器Jupyter-Notebook</span>
             </a>
@@ -783,31 +810,6 @@ dxy database
             </div>
         </article>
         <div class="index-post-divider"></div>
-            
-        <article class="index-post">
-            <a class="abstract-title" href="/2021/08/09/svm-xue-xi-bi-ji/">
-                <span class="abstract-title-text">SVM学习笔记</span>
-            </a>
-            <div class="abstract-content">
-                SVM学习笔记https://www.deeplearningbook.org/
-http://page.mi.fu-berlin.de/rojas/neural/neuron.pdf
-https://www.svm-tutorial.com/2014/11/svm-understanding-math-part-1/
-
-            </div>
-            <!-- read more -->
-            <div class="abstract-post-meta">
-                <!-- date -->
-                <div class="abstract-date" title="Last updated: 2025/03/08">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2021/08/09</span>
-                </div>
-                <!-- tags -->
-                    <div class="abstract-tags" >
-        <a class="post-tag" href="javascript:void(0);" data-tags="svm">svm</a>
-</div>
-
-            </div>
-        </article>
-        <div class="index-post-divider"></div>
     <!-- paginator  -->
         <nav class="page-nav">
             <a class="extend prev" rel="prev" href="/page/4/">&lt; PREV</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/6/">NEXT &gt;</a>
@@ -984,9 +986,10 @@ https://www.svm-tutorial.com/2014/11/svm-understanding-math-part-1/
         
         
         
+        
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 77
+        Total : 78
         </div>
         <!-- search  -->
             <div class="site-search site-search-loading popup-trigger">
@@ -996,6 +999,10 @@ https://www.svm-tutorial.com/2014/11/svm-understanding-math-part-1/
     <div class="post-archive">
             <div class="archive-year"> 2026 </div>
             <ul class="year-list">
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/19</span>
+            <a class="archive-post-title" href="/2026/02/19/mac-shang-shi-yong-chun-ming-ling-xing-docker/">mac上使用纯命令行docker</a>
+        </li>
         <li class="archive-post-item">
             <span class="archive-post-date">02/07</span>
             <a class="archive-post-title" href="/2026/02/07/2026-nian-chun-bian-cheng-shua-ti-ji-lu/">2026年春编程刷题记录</a>

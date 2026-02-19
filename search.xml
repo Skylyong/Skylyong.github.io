@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>mac上使用纯命令行docker</title>
+      <link href="/2026/02/19/mac-shang-shi-yong-chun-ming-ling-xing-docker/"/>
+      <url>/2026/02/19/mac-shang-shi-yong-chun-ming-ling-xing-docker/</url>
+      
+        <content type="html"><![CDATA[<p>Colima (Container Linux on Mac) 是目前 Docker Desktop 最好的命令行替代品。它基于 Lima 项目，自动创建一个极简的 Linux 虚拟机来运行 Docker 容器。</p><h4 id="1-安装必要的工具"><a href="#1-安装必要的工具" class="headerlink" title="1. 安装必要的工具"></a>1. 安装必要的工具</h4><p>首先，你需要安装 Homebrew（如果还没装）。然后执行以下命令：</p><figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 1. 安装 Docker 客户端 (只包含 docker 命令，没有后台服务)</span></span><br><span class="line">brew install docker</span><br><span class="line"></span><br><span class="line"><span class="comment"># 2. 安装 Docker Compose (管理多容器，可选但建议安装)</span></span><br><span class="line">brew install docker-compose</span><br><span class="line"></span><br><span class="line"><span class="comment"># 3. 安装 Colima (用来在后台跑 Linux 虚拟机)</span></span><br><span class="line">brew install colima</span><br></pre></td></tr></tbody></table></figure><h4 id="2-启动-Colima"><a href="#2-启动-Colima" class="headerlink" title="2. 启动 Colima"></a>2. 启动 Colima</h4><p>安装完成后，通过 Colima 启动 Docker 运行时：</p><figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">colima start</span><br></pre></td></tr></tbody></table></figure><p>第一次启动会下载虚拟机镜像，可能需要一点时间。</p><h4 id="3-验证安装"><a href="#3-验证安装" class="headerlink" title="3. 验证安装"></a>3. 验证安装</h4><p>启动完成后，Colima 会自动配置好 Docker 的上下文。你可以直接运行：</p><figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker ps</span><br></pre></td></tr></tbody></table></figure><p>如果没报错，说明你已经成功避开 Docker Desktop，用上了纯命令行的 Docker。</p><h4 id="4-可选-配置-Colima-资源"><a href="#4-可选-配置-Colima-资源" class="headerlink" title="4. (可选) 配置 Colima 资源"></a>4. (可选) 配置 Colima 资源</h4><p>默认情况下 Colima 占用资源很小。如果你需要调整 CPU 或内存，可以在启动时指定：</p><figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 例如：分配 4核 CPU 和 8GB 内存</span></span><br><span class="line">colima start --cpu 4 --memory 8</span><br></pre></td></tr></tbody></table></figure><hr>]]></content>
+      
+      
+      <categories>
+          
+          <category> 编程 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> docker </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>2026年春编程刷题记录</title>
       <link href="/2026/02/07/2026-nian-chun-bian-cheng-shua-ti-ji-lu/"/>
       <url>/2026/02/07/2026-nian-chun-bian-cheng-shua-ti-ji-lu/</url>
