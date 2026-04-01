@@ -429,6 +429,62 @@
                 <main class="main index-page">
             
         <article class="index-post">
+            <a class="abstract-title" href="/2026/04/01/duo-tai-mac-jian-shu-ju-tong-bu-git-luo-cang-ku-syncthing-fang-an/">
+                <span class="abstract-title-text">多台mac间数据同步：Git裸仓库+Syncthing方案</span>
+            </a>
+            <div class="abstract-content">
+                Git 裸仓库 （自动同步）+ Syncthing 方案
+一、Git 裸仓库管理 Dotfiles 选择方案1.1 什么是裸仓库？为什么用它？12345678910111213普通仓库:  ~/projects/myapp/  ├── .git/          ← Git 元数据  ├── src/           ← 工作文件  └── README.md裸仓库管理 dotfiles:  ~/.dotfiles/        ← Git 元数据（裸仓库，没有工作目录）  工作目录 = $HOME    ← 整个 HOME 就是工作目录好处：不需要把文件集中到某个文件夹再建符号...
+            </div>
+            <!-- read more -->
+            <div class="abstract-post-meta">
+                <!-- date -->
+                <div class="abstract-date" title="Last updated: 2026/04/01">
+                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2026/04/01</span>
+                </div>
+                <!-- tags -->
+                    <div class="abstract-tags" >
+        <a class="post-tag" href="javascript:void(0);" data-tags="Syncthing">Syncthing</a>
+        <a class="post-tag" href="javascript:void(0);" data-tags="Dotfiles">Dotfiles</a>
+</div>
+
+            </div>
+        </article>
+        <div class="index-post-divider"></div>
+            
+        <article class="index-post">
+            <a class="abstract-title" href="/2026/02/26/git-da-wen-jian-chu-li/">
+                <span class="abstract-title-text">Git大文件处理</span>
+            </a>
+            <div class="abstract-content">
+                Git Large File Storage (LFS) 是 Git 的一个开源扩展，用于通过将大文件（如音频、视频、数据集、图形）替换为文本指针来管理这些文件，而将实际的文件内容存储在远程服务器上。
+以下是从安装到使用的完整指南：
+
+第一步：安装 Git LFS在开始之前，你需要确保本地已经安装了 Git。
+1. macOS如果你使用 Homebrew：
+1brew install git-lfs
+
+2. Windows
+方法 A (推荐)：下载 Git LFS 安装包 并运行安装程序。
+方法 B：如果你使用 git for windows，通常已经内置了 LFS，只需进行下一步配置即...
+            </div>
+            <!-- read more -->
+            <div class="abstract-post-meta">
+                <!-- date -->
+                <div class="abstract-date" title="Last updated: 2026/02/26">
+                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2026/02/26</span>
+                </div>
+                <!-- tags -->
+                    <div class="abstract-tags" >
+        <a class="post-tag" href="javascript:void(0);" data-tags="GitHub">GitHub</a>
+        <a class="post-tag" href="javascript:void(0);" data-tags="git">git</a>
+</div>
+
+            </div>
+        </article>
+        <div class="index-post-divider"></div>
+            
+        <article class="index-post">
             <a class="abstract-title" href="/2026/02/19/mac-shang-shi-yong-chun-ming-ling-xing-docker/">
                 <span class="abstract-title-text">mac上使用纯命令行docker</span>
             </a>
@@ -709,64 +765,6 @@ Persistence-M
             </div>
         </article>
         <div class="index-post-divider"></div>
-            
-        <article class="index-post">
-            <a class="abstract-title" href="/2025/10/08/ubuntu-shang-che-di-xie-zai-he-chong-zhuang-nvidia-qu-dong-ji-xiang-guan-zu-jian/">
-                <span class="abstract-title-text">Ubuntu上彻底卸载和重装NVIDIA驱动及相关组件</span>
-            </a>
-            <div class="abstract-content">
-                有时候，我们在配置NVIDIA驱动环境时，会遇到各种各样奇怪的问题，导致无法正常使用GPU。此时，彻底卸载NVIDIA驱动及相关组件，重新安装，往往是解决问题的有效方法。本文将介绍如何在Ubuntu系统上彻底卸载NVIDIA驱动及相关组件。
-卸载下面是一份在Ubuntu上彻底卸载H100环境中的NVIDIA驱动、CUDA、cuDNN、NCCL等相关组件的完整步骤。建议严格按照顺序执行，避免系统残留或驱动冲突。
-提前准备1. 停止所有GPU相关的进程123sudo systemctl stop dockersudo systemctl stop nvidia-persistencedsud...
-            </div>
-            <!-- read more -->
-            <div class="abstract-post-meta">
-                <!-- date -->
-                <div class="abstract-date" title="Last updated: 2025/10/08">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2025/10/08</span>
-                </div>
-                <!-- tags -->
-                    <div class="abstract-tags" >
-        <a class="post-tag" href="javascript:void(0);" data-tags="NVIDIA">NVIDIA</a>
-</div>
-
-            </div>
-        </article>
-        <div class="index-post-divider"></div>
-            
-        <article class="index-post">
-            <a class="abstract-title" href="/2025/10/03/ssh-pei-zhi-jie-shao/">
-                <span class="abstract-title-text">ssh配置介绍</span>
-            </a>
-            <div class="abstract-content">
-                SSH 介绍什么是 ssh 配置~/.ssh/config 文件是SSH的客户端配置文件，用于简化连接远程主机时的命令行输入。通过配置文件，可以为不同的主机设置：
-
-用户名
-端口号
-私钥文件路径
-跳板机（ProxyJump/ProxyCommand）
-连接优化参数（KeepAlive、Compression 等）这样就不需要每次都输入冗长的命令和参数了。
-
-配置文件位置
-用户级配置： ~/.ssh/config （推荐）
-全局配置： /etc/ssh/ssh_config （系统范围，通常不要改）优先级： 命令行参数 &gt; 用户级配置 &gt; 系统级配置
-
-基本结构配置文件由一组 ...
-            </div>
-            <!-- read more -->
-            <div class="abstract-post-meta">
-                <!-- date -->
-                <div class="abstract-date" title="Last updated: 2025/10/03">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2025/10/03</span>
-                </div>
-                <!-- tags -->
-                    <div class="abstract-tags" >
-        <a class="post-tag" href="javascript:void(0);" data-tags="ssh">ssh</a>
-</div>
-
-            </div>
-        </article>
-        <div class="index-post-divider"></div>
     <!-- paginator  -->
         <nav class="page-nav">
             <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/2/">NEXT &gt;</a>
@@ -944,9 +942,11 @@ Persistence-M
         
         
         
+        
+        
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 78
+        Total : 80
         </div>
         <!-- search  -->
             <div class="site-search site-search-loading popup-trigger">
@@ -956,6 +956,14 @@ Persistence-M
     <div class="post-archive">
             <div class="archive-year"> 2026 </div>
             <ul class="year-list">
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/01</span>
+            <a class="archive-post-title" href="/2026/04/01/duo-tai-mac-jian-shu-ju-tong-bu-git-luo-cang-ku-syncthing-fang-an/">多台mac间数据同步：Git裸仓库+Syncthing方案</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/26</span>
+            <a class="archive-post-title" href="/2026/02/26/git-da-wen-jian-chu-li/">Git大文件处理</a>
+        </li>
         <li class="archive-post-item">
             <span class="archive-post-date">02/19</span>
             <a class="archive-post-title" href="/2026/02/19/mac-shang-shi-yong-chun-ming-ling-xing-docker/">mac上使用纯命令行docker</a>
@@ -1497,6 +1505,14 @@ Persistence-M
             <span class="sidebar-tag-name" data-tags="docker, doccano">
                 <span class="iconfont-archer">&#xe606;</span>
                 docker, doccano
+            </span>
+            <span class="sidebar-tag-name" data-tags="Syncthing">
+                <span class="iconfont-archer">&#xe606;</span>
+                Syncthing
+            </span>
+            <span class="sidebar-tag-name" data-tags="Dotfiles">
+                <span class="iconfont-archer">&#xe606;</span>
+                Dotfiles
             </span>
     </div>
     <div class="iconfont-archer sidebar-tags-empty">&#xe678;</div>

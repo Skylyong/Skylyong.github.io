@@ -1,0 +1,1640 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <!-- title -->
+<!-- keywords -->
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="author" content="LY">
+    <meta name="renderer" content="webkit">
+    <meta name="copyright" content="LY">
+        <meta name="keywords" content="hexo,hexo-theme,hexo-blog">
+    <meta name="description" content="Keep go on">
+    <meta name="description" content="Git 裸仓库 （自动同步）+ Syncthing 方案 一、Git 裸仓库管理 Dotfiles 选择方案1.1 什么是裸仓库？为什么用它？12345678910111213普通仓库:  ~&#x2F;projects&#x2F;myapp&#x2F;  ├── .git&#x2F;          ← Git 元数据  ├── src&#x2F;           ← 工作文件  └── README.md裸仓库管理 dotfiles:">
+<meta property="og:type" content="article">
+<meta property="og:title" content="多台mac间数据同步：Git裸仓库+Syncthing方案">
+<meta property="og:url" content="https://skylyong.github.io/2026/04/01/duo-tai-mac-jian-shu-ju-tong-bu-git-luo-cang-ku-syncthing-fang-an/index.html">
+<meta property="og:site_name" content="茄子的个人空间">
+<meta property="og:description" content="Git 裸仓库 （自动同步）+ Syncthing 方案 一、Git 裸仓库管理 Dotfiles 选择方案1.1 什么是裸仓库？为什么用它？12345678910111213普通仓库:  ~&#x2F;projects&#x2F;myapp&#x2F;  ├── .git&#x2F;          ← Git 元数据  ├── src&#x2F;           ← 工作文件  └── README.md裸仓库管理 dotfiles:">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2026-04-01T11:41:57.000Z">
+<meta property="article:modified_time" content="2026-04-01T11:43:52.963Z">
+<meta property="article:author" content="LY">
+<meta property="article:tag" content="Syncthing">
+<meta property="article:tag" content="Dotfiles">
+<meta name="twitter:card" content="summary">
+    <meta http-equiv="Cache-control" content="no-cache">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <link rel="icon" href="/assets/favicon.ico">
+    <title>多台mac间数据同步：Git裸仓库+Syncthing方案 · LY&#39;s Blog</title>
+    <!-- /*! loadCSS. [c]2017 Filament Group, Inc. MIT License */
+/* This file is meant as a standalone workflow for
+- testing support for link[rel=preload]
+- enabling async CSS loading in browsers that do not support rel=preload
+- applying rel preload css once loaded, whether supported or not.
+*/ -->
+<script>
+    (function (w) {
+        'use strict'
+        // rel=preload support test
+        if (!w.loadCSS) {
+            w.loadCSS = function () {}
+        }
+        // define on the loadCSS obj
+        var rp = (loadCSS.relpreload = {})
+        // rel=preload feature support test
+        // runs once and returns a function for compat purposes
+        rp.support = (function () {
+            var ret
+            try {
+                ret = w.document.createElement('link').relList.supports('preload')
+            } catch (e) {
+                ret = false
+            }
+            return function () {
+                return ret
+            }
+        })()
+
+        // if preload isn't supported, get an asynchronous load by using a non-matching media attribute
+        // then change that media back to its intended value on load
+        rp.bindMediaToggle = function (link) {
+            // remember existing media attr for ultimate state, or default to 'all'
+            var finalMedia = link.media || 'all'
+
+            function enableStylesheet() {
+                link.media = finalMedia
+            }
+
+            // bind load handlers to enable media
+            if (link.addEventListener) {
+                link.addEventListener('load', enableStylesheet)
+            } else if (link.attachEvent) {
+                link.attachEvent('onload', enableStylesheet)
+            }
+
+            // Set rel and non-applicable media type to start an async request
+            // note: timeout allows this to happen async to let rendering continue in IE
+            setTimeout(function () {
+                link.rel = 'stylesheet'
+                link.media = 'only x'
+            })
+            // also enable media after 3 seconds,
+            // which will catch very old browsers (android 2.x, old firefox) that don't support onload on link
+            setTimeout(enableStylesheet, 3000)
+        }
+
+        // loop through link elements in DOM
+        rp.poly = function () {
+            // double check this to prevent external calls from running
+            if (rp.support()) {
+                return
+            }
+            var links = w.document.getElementsByTagName('link')
+            for (var i = 0; i < links.length; i++) {
+                var link = links[i]
+                // qualify links to those with rel=preload and as=style attrs
+                if (
+                    link.rel === 'preload' &&
+                    link.getAttribute('as') === 'style' &&
+                    !link.getAttribute('data-loadcss')
+                ) {
+                    // prevent rerunning on link
+                    link.setAttribute('data-loadcss', true)
+                    // bind listeners to toggle media back
+                    rp.bindMediaToggle(link)
+                }
+            }
+        }
+
+        // if unsupported, run the polyfill
+        if (!rp.support()) {
+            // run once at least
+            rp.poly()
+
+            // rerun poly on an interval until onload
+            var run = w.setInterval(rp.poly, 500)
+            if (w.addEventListener) {
+                w.addEventListener('load', function () {
+                    rp.poly()
+                    w.clearInterval(run)
+                })
+            } else if (w.attachEvent) {
+                w.attachEvent('onload', function () {
+                    rp.poly()
+                    w.clearInterval(run)
+                })
+            }
+        }
+
+        // commonjs
+        if (typeof exports !== 'undefined') {
+            exports.loadCSS = loadCSS
+        } else {
+            w.loadCSS = loadCSS
+        }
+    })(typeof global !== 'undefined' ? global : this)
+</script>
+
+    <style type="text/css">
+    @font-face {
+        font-family: 'Oswald-Regular';
+        src: url("/font/Oswald-Regular.ttf");
+    }
+
+    body {
+        margin: 0;
+    }
+
+    header,
+    footer,
+    .footer-fixed-btn,
+    .sidebar,
+    .container,
+    .site-intro-meta,
+    .toc-wrapper {
+        display: none;
+    }
+
+    .site-intro {
+        position: relative;
+        z-index: 3;
+        width: 100%;
+        /* height: 50vh; */
+        overflow: hidden;
+    }
+
+    .site-intro-placeholder {
+        position: absolute;
+        z-index: -2;
+        top: 0;
+        left: 0;
+        width: calc(100% + 300px);
+        height: 100%;
+        background: repeating-linear-gradient(
+            -45deg,
+            #444 0,
+            #444 80px,
+            #333 80px,
+            #333 160px
+        );
+        background-position: center center;
+        transform: translate3d(-226px, 0, 0);
+        animation: gradient-move 2.5s ease-out 0s infinite;
+    }
+
+    @keyframes gradient-move {
+        0% {
+            transform: translate3d(-226px, 0, 0);
+        }
+        100% {
+            transform: translate3d(0, 0, 0);
+        }
+    }
+</style>
+
+    <link id="stylesheet-fancybox" rel="preload" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.36/dist/fancybox/fancybox.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <link id="stylesheet-base" rel="preload" href="/css/style.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <link id="stylesheet-mobile" rel="preload" href="/css/mobile.css" as="style" onload="this.onload=null;this.rel='stylesheet';this.media='screen and (max-width: 960px)'">
+    <link id="stylesheet-theme-dark" rel="preload" href="/css/dark.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" as="script">
+    <link rel="preload" href="/scripts/main.js" as="script">
+    <link rel="preload" href="/font/Oswald-Regular.ttf" as="font" crossorigin>
+    <link rel="preload" href="https://at.alicdn.com/t/font_327081_1dta1rlogw17zaor.woff" as="font" crossorigin>
+    <!-- algolia -->
+        <script>
+            var hits = JSON.parse('{"per_page":10}')
+            var labels = JSON.parse('{"input_placeholder":"Search for Posts","hits_empty":"我们没有找到任何搜索结果: ${query}","hits_stats":"找到${hits}条结果 （用时 ${time} ms）"}')
+
+            var algolia = {
+                applicationID: 'HDLQX51180',
+                apiKey: '2bcb8a706f5955c9f74cea13e540fb1b',
+                indexName: 'my-hexo-blog',
+                hits: hits,
+                labels: labels
+            }
+        </script>
+    <!-- 百度统计  -->
+    <!-- 谷歌统计  -->
+    <!-- Google tag (gtag.js) -->
+<meta name="generator" content="Hexo 7.3.0">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+</head>
+
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+    <script type="text/javascript">
+        if (typeof window.$ == undefined) {
+            console.warn('jquery load from jsdelivr failed, will load local script')
+            document.write('<script src="/lib/jquery.min.js" />')
+        }
+    </script>
+
+
+
+        <body class="post-body">
+        <!-- header -->
+        <header class="header header-mobile">
+    <!-- top read progress line -->
+    <div class="header-element">
+        <div class="read-progress"></div>
+    </div>
+    <!-- sidebar menu button -->
+
+    
+    <div class="header-element">
+        <div class="header-sidebar-menu">
+            <div style="padding-left: 1px;">&#xe775;</div>
+        </div>
+    </div>
+
+    
+    <!-- header actions -->
+    <div class="header-actions">
+        <!-- theme mode switch button -->
+        <span class="header-theme-btn header-element">
+            <i class="fas fa-adjust"></i>
+        </span>
+        <!-- back to home page text -->
+        <span class="home-link header-element">
+            <a href="/">LY's Space</a>
+        </span>
+    </div>
+    <!-- toggle banner -->
+    <div class="banner">
+        <div class="blog-title header-element">
+            <a href="/">LY&#39;s Space</a>
+        </div>
+        <div class="post-title header-element">
+            <a href="#" class="post-name">多台mac间数据同步：Git裸仓库+Syncthing方案</a>
+        </div>
+    </div>
+</header>
+
+        <!-- fixed footer -->
+        <footer class="footer-fixed">
+    <!-- donate button -->
+    <div class="donate-popup donate-popup--hidden">
+    <div class="donate-popup__title">Buy Me A Coffee</div>
+    <div class="donate-popup__content">
+        <div class="donate-popup__content-description">Thanks for your support!</div>
+        <img
+            class="donate-popup__content-qrCode"
+            title="Wechat"
+            alt="Wechat"
+            src="/assets/donate-wechat.png"
+        ></img>
+    </div>
+</div>
+
+    <div
+        title="Donate to the author"
+        class="footer-fixed-btn footer-fixed-btn--hidden donate-btn"
+    >
+        <i class="fas fa-donate"></i>
+    </div>
+
+    <!-- back to top button -->
+    <div class="footer-fixed-btn footer-fixed-btn--hidden back-top">
+        <div>&#xe639;</div>
+    </div>
+</footer>
+
+        <!-- wrapper -->
+        <div class="wrapper">
+            <div class="site-intro" style="    height:50vh;
+">
+    <!-- 主页  -->
+    <!-- 404页  -->
+    <div class="site-intro-placeholder"></div>
+    <div class="site-intro-img" style="background-image: url(/intro/post-bg.jpg)"></div>
+    <div class="site-intro-meta">
+        <!-- 标题  -->
+        <h1 class="intro-title">
+            <!-- 主页  -->
+                多台mac间数据同步：Git裸仓库+Syncthing方案
+            <!-- 404 -->
+        </h1>
+        <!-- 副标题 -->
+        <p class="intro-subtitle">
+            <!-- 主页副标题  -->
+            <!-- 404 -->
+        </p>
+        <!-- 文章页 meta -->
+            <div class="post-intros">
+                <!-- 文章页标签  -->
+                    <div class="post-intro-tags" >
+        <a class="post-tag" href="javascript:void(0);" data-tags="Syncthing">Syncthing</a>
+        <a class="post-tag" href="javascript:void(0);" data-tags="Dotfiles">Dotfiles</a>
+</div>
+
+                <!-- 文章字数统计 -->
+                    <div class="post-intro-read">
+                        <span>字数统计: <span class="post-count word-count">6k</span>阅读时长: <span class="post-count reading-time">27 min</span></span>
+                    </div>
+                <div class="post-intro-meta">
+                    <!-- 撰写日期 -->
+                    <span class="iconfont-archer post-intro-calander">&#xe676;</span>
+                    <span class="post-intro-time">2026/04/01</span>
+                    <!-- busuanzi -->
+                        <span id="busuanzi_container_page_pv" class="busuanzi-pv">
+                            <span class="iconfont-archer post-intro-busuanzi">&#xe602;</span>
+                            <span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    <!-- 文章分享 -->
+                    <span class="share-wrapper">
+                        <span class="iconfont-archer share-icon">&#xe71d;</span>
+                        <span class="share-text">Share</span>
+                        <ul class="share-list">
+                            <li class="iconfont-archer share-qr" data-type="qr">&#xe75b;
+                                <div class="share-qrcode"></div>
+                            </li>
+                            <li class="iconfont-archer" data-type="weibo">&#xe619;</li>
+                            <li class="iconfont-archer" data-type="qzone">&#xe62e;</li>
+                            <li class="iconfont-archer" data-type="twitter">&#xe634;</li>
+                            <li class="iconfont-archer" data-type="facebook">&#xe67a;</li>
+                        </ul>
+                    </span>
+                </div>
+            </div>
+    </div>
+</div>
+
+            <script>
+  // get user agent
+  function getBrowserVersions() {
+    var u = window.navigator.userAgent
+    return {
+      userAgent: u,
+      trident: u.indexOf('Trident') > -1, //IE内核
+      presto: u.indexOf('Presto') > -1, //opera内核
+      webKit: u.indexOf('AppleWebKit') > -1, //苹果、谷歌内核
+      gecko: u.indexOf('Gecko') > -1 && u.indexOf('KHTML') == -1, //火狐内核
+      mobile: !!u.match(/AppleWebKit.*Mobile.*/), //是否为移动终端
+      ios: !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/), //ios终端
+      android: u.indexOf('Android') > -1 || u.indexOf('Linux') > -1, //android终端或者uc浏览器
+      iPhone: u.indexOf('iPhone') > -1 || u.indexOf('Mac') > -1, //是否为iPhone或者安卓QQ浏览器
+      iPad: u.indexOf('iPad') > -1, //是否为iPad
+      webApp: u.indexOf('Safari') == -1, //是否为web应用程序，没有头部与底部
+      weixin: u.indexOf('MicroMessenger') == -1, //是否为微信浏览器
+      uc: u.indexOf('UCBrowser') > -1, //是否为android下的UC浏览器
+    }
+  }
+  var browser = {
+    versions: getBrowserVersions(),
+  }
+  console.log('userAgent: ' + browser.versions.userAgent)
+
+  // callback
+  function fontLoaded() {
+    console.log('font loaded')
+    if (document.getElementsByClassName('site-intro-meta')) {
+      document
+        .getElementsByClassName('intro-title')[0]
+        .classList.add('intro-fade-in')
+      document
+        .getElementsByClassName('intro-subtitle')[0]
+        .classList.add('intro-fade-in')
+      var postIntros = document.getElementsByClassName('post-intros')[0]
+      if (postIntros) {
+        postIntros.classList.add('post-fade-in')
+      }
+    }
+  }
+
+  // UC不支持跨域，所以直接显示
+  function asyncCb() {
+    if (browser.versions.uc) {
+      console.log('UCBrowser')
+      fontLoaded()
+    } else {
+      WebFont.load({
+        custom: {
+          families: ['Oswald-Regular'],
+        },
+        loading: function () {
+          // 所有字体开始加载
+          // console.log('font loading');
+        },
+        active: function () {
+          // 所有字体已渲染
+          fontLoaded()
+        },
+        inactive: function () {
+          // 字体预加载失败，无效字体或浏览器不支持加载
+          console.log('inactive: timeout')
+          fontLoaded()
+        },
+        timeout: 5000, // Set the timeout to two seconds
+      })
+    }
+  }
+
+  function asyncErr() {
+    console.warn('script load from CDN failed, will load local script')
+  }
+
+  // load webfont-loader async, and add callback function
+  function async(u, cb, err) {
+    var d = document,
+      t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0]
+    o.src = u
+    if (cb) {
+      o.addEventListener(
+        'load',
+        function (e) {
+          cb(null, e)
+        },
+        false
+      )
+    }
+    if (err) {
+      o.addEventListener(
+        'error',
+        function (e) {
+          err(null, e)
+        },
+        false
+      )
+    }
+    s.parentNode.insertBefore(o, s)
+  }
+
+  var asyncLoadWithFallBack = function (arr, success, reject) {
+    var currReject = function () {
+      reject()
+      arr.shift()
+      if (arr.length) async(arr[0], success, currReject)
+    }
+
+    async(arr[0], success, currReject)
+  }
+
+  asyncLoadWithFallBack(
+    [
+      'https://cdn.jsdelivr.net/npm/webfontloader@1.6.28/webfontloader.min.js',
+      'https://cdn.bootcss.com/webfont/1.6.28/webfontloader.js',
+      "/lib/webfontloader.min.js",
+    ],
+    asyncCb,
+    asyncErr
+  )
+</script>
+
+            <img class="loading" src="/assets/loading.svg" style="display: block; margin: 6rem auto 0 auto; width: 6rem; height: 6rem;" alt="loading">
+            <div class="container container-unloaded">
+                <main class="main post-page">
+    <article class="article-entry">
+        <h1 id="Git-裸仓库-（自动同步）-Syncthing-方案"><a href="#Git-裸仓库-（自动同步）-Syncthing-方案" class="headerlink" title="Git 裸仓库 （自动同步）+ Syncthing 方案"></a>Git 裸仓库 （自动同步）+ Syncthing 方案</h1><hr>
+<h2 id="一、Git-裸仓库管理-Dotfiles-选择方案"><a href="#一、Git-裸仓库管理-Dotfiles-选择方案" class="headerlink" title="一、Git 裸仓库管理 Dotfiles 选择方案"></a>一、Git 裸仓库管理 Dotfiles <font color="red">选择方案</font></h2><h3 id="1-1-什么是裸仓库？为什么用它？"><a href="#1-1-什么是裸仓库？为什么用它？" class="headerlink" title="1.1 什么是裸仓库？为什么用它？"></a>1.1 什么是裸仓库？为什么用它？</h3><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">普通仓库:</span><br><span class="line">  ~/projects/myapp/</span><br><span class="line">  ├── .git/          ← Git 元数据</span><br><span class="line">  ├── src/           ← 工作文件</span><br><span class="line">  └── README.md</span><br><span class="line"></span><br><span class="line">裸仓库管理 dotfiles:</span><br><span class="line">  ~/.dotfiles/        ← Git 元数据（裸仓库，没有工作目录）</span><br><span class="line">  工作目录 = $HOME    ← 整个 HOME 就是工作目录</span><br><span class="line"></span><br><span class="line">好处：不需要把文件集中到某个文件夹再建符号链接</span><br><span class="line">     .zshrc 就在 ~/.zshrc，.ssh/config 就在 ~/.ssh/config</span><br><span class="line">     所有文件待在原位，Git 直接追踪它们</span><br></pre></td></tr></tbody></table></figure>
+
+<h3 id="1-2-完整搭建步骤"><a href="#1-2-完整搭建步骤" class="headerlink" title="1.2 完整搭建步骤"></a>1.2 完整搭建步骤</h3><h4 id="第一步：创建-GitHub-GitLab-私有仓库"><a href="#第一步：创建-GitHub-GitLab-私有仓库" class="headerlink" title="第一步：创建 GitHub/GitLab 私有仓库"></a>第一步：创建 GitHub/GitLab 私有仓库</h4><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">去 GitHub 创建一个 私有仓库，比如叫 dotfiles</span><br><span class="line">地址: git@github.com:yourname/dotfiles.git</span><br></pre></td></tr></tbody></table></figure>
+
+<h4 id="第二步：在第一台-Mac-上初始化（假设从-MacBook-开始）"><a href="#第二步：在第一台-Mac-上初始化（假设从-MacBook-开始）" class="headerlink" title="第二步：在第一台 Mac 上初始化（假设从 MacBook 开始）"></a>第二步：在第一台 Mac 上初始化（假设从 MacBook 开始）</h4><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"># 1. 创建裸仓库</span><br><span class="line">git init --bare $HOME/.dotfiles</span><br><span class="line"></span><br><span class="line"># 2. 添加 alias 到当前 shell</span><br><span class="line">alias dotfiles='git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'</span><br><span class="line"></span><br><span class="line"># 3. 让 git status 不显示未追踪的文件</span><br><span class="line">#    （否则你整个 HOME 目录的文件都会显示出来）</span><br><span class="line">dotfiles config --local status.showUntrackedFiles no</span><br><span class="line"></span><br><span class="line"># 4. 把这个 alias 持久化写入 .zshrc</span><br><span class="line">echo "" &gt;&gt; ~/.zshrc</span><br><span class="line">echo "# Dotfiles 管理" &gt;&gt; ~/.zshrc</span><br><span class="line">echo "alias dotfiles='git --git-dir=\$HOME/.dotfiles/ --work-tree=\$HOME'" &gt;&gt; ~/.zshrc</span><br></pre></td></tr></tbody></table></figure>
+
+<h4 id="第三步：添加你要管理的文件"><a href="#第三步：添加你要管理的文件" class="headerlink" title="第三步：添加你要管理的文件"></a>第三步：添加你要管理的文件</h4><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"># ===== Shell 配置 =====</span><br><span class="line">dotfiles add ~/.zshrc</span><br><span class="line">dotfiles add ~/.zshenv          # 如果有的话</span><br><span class="line">dotfiles add ~/.aliases         # 如果有的话</span><br><span class="line"></span><br><span class="line"># ===== Git 配置 =====</span><br><span class="line">dotfiles add ~/.gitconfig</span><br><span class="line">dotfiles add ~/.gitignore_global</span><br><span class="line"></span><br><span class="line"># ===== SSH 配置（注意：只加 config，不加私钥！）=====</span><br><span class="line">dotfiles add ~/.ssh/config</span><br><span class="line"></span><br><span class="line"># ===== 编辑器配置 =====</span><br><span class="line">dotfiles add ~/.vimrc</span><br><span class="line">dotfiles add ~/.config/nvim/init.vim    # 如果用 neovim</span><br><span class="line"></span><br><span class="line"># ===== Homebrew =====</span><br><span class="line">brew bundle dump --file=~/Brewfile --force</span><br><span class="line">dotfiles add ~/Brewfile</span><br><span class="line"></span><br><span class="line"># ===== 其他你想同步的配置 =====</span><br><span class="line">dotfiles add ~/.tmux.conf</span><br><span class="line">dotfiles add ~/.config/starship.toml    # 如果用 starship prompt</span><br><span class="line"></span><br><span class="line"># 查看状态</span><br><span class="line">dotfiles status</span><br></pre></td></tr></tbody></table></figure>
+
+<h4 id="第四步：提交并推送"><a href="#第四步：提交并推送" class="headerlink" title="第四步：提交并推送"></a>第四步：提交并推送</h4><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">dotfiles commit -m "Initial dotfiles setup"</span><br><span class="line">dotfiles remote add origin git@github.com:yourname/dotfiles.git</span><br><span class="line">dotfiles branch -M main</span><br><span class="line">dotfiles push -u origin main</span><br></pre></td></tr></tbody></table></figure>
+
+<h4 id="第五步：在第二台-Mac（Mac-Mini）上克隆"><a href="#第五步：在第二台-Mac（Mac-Mini）上克隆" class="headerlink" title="第五步：在第二台 Mac（Mac Mini）上克隆"></a>第五步：在第二台 Mac（Mac Mini）上克隆</h4><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"># 1. 先确保 SSH 密钥已配置好（能访问 GitHub）</span><br><span class="line"></span><br><span class="line"># 2. 克隆裸仓库</span><br><span class="line">git clone --bare git@github.com:yourname/dotfiles.git $HOME/.dotfiles</span><br><span class="line"></span><br><span class="line"># 3. 定义临时 alias</span><br><span class="line">alias dotfiles='git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'</span><br><span class="line"></span><br><span class="line"># 4. 尝试检出文件</span><br><span class="line">dotfiles checkout</span><br></pre></td></tr></tbody></table></figure>
+
+<p><strong>如果出现冲突</strong>（Mac Mini 上已经有 <code>.zshrc</code> 等文件）：</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"># 会报错类似：</span><br><span class="line"># error: The following untracked working tree files would be overwritten:</span><br><span class="line">#     .zshrc</span><br><span class="line">#     .gitconfig</span><br><span class="line"></span><br><span class="line"># 解决方案：备份已有文件，再检出</span><br><span class="line">mkdir -p ~/.dotfiles-backup</span><br><span class="line"></span><br><span class="line"># 自动备份冲突文件</span><br><span class="line">dotfiles checkout 2&gt;&amp;1 | \</span><br><span class="line">  grep -E "^\s+" | \</span><br><span class="line">  awk '{print $1}' | \</span><br><span class="line">  xargs -I{} sh -c 'mkdir -p $(dirname ~/.dotfiles-backup/{}) &amp;&amp; mv ~/{} ~/.dotfiles-backup/{}'</span><br><span class="line"></span><br><span class="line"># 再次检出</span><br><span class="line">dotfiles checkout</span><br><span class="line"></span><br><span class="line"># 设置不显示未追踪文件</span><br><span class="line">dotfiles config --local status.showUntrackedFiles no</span><br></pre></td></tr></tbody></table></figure>
+
+<h3 id="1-3-处理-Intel-vs-Apple-Silicon-差异"><a href="#1-3-处理-Intel-vs-Apple-Silicon-差异" class="headerlink" title="1.3 处理 Intel vs Apple Silicon 差异"></a>1.3 处理 Intel vs Apple Silicon 差异</h3><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"># ============================================</span><br><span class="line"># ~/.zshrc 中这样写，一份文件兼容两台机器</span><br><span class="line"># ============================================</span><br><span class="line"></span><br><span class="line"># ---------- Homebrew 路径 ----------</span><br><span class="line">if [[ $(uname -m) == "arm64" ]]; then</span><br><span class="line">    # Apple Silicon (Mac Mini)</span><br><span class="line">    eval "$(/opt/homebrew/bin/brew shellenv)"</span><br><span class="line">else</span><br><span class="line">    # Intel (MacBook)</span><br><span class="line">    eval "$(/usr/local/bin/brew shellenv)"</span><br><span class="line">fi</span><br><span class="line"></span><br><span class="line"># ---------- 按机器名加载专属配置 ----------</span><br><span class="line"># 先给两台机器设好名字：</span><br><span class="line">#   sudo scutil --set HostName macbook</span><br><span class="line">#   sudo scutil --set HostName mac-mini</span><br><span class="line"></span><br><span class="line">HOSTNAME=$(hostname -s)</span><br><span class="line"></span><br><span class="line">if [[ -f "$HOME/.zshrc.local.$HOSTNAME" ]]; then</span><br><span class="line">    source "$HOME/.zshrc.local.$HOSTNAME"</span><br><span class="line">fi</span><br><span class="line"></span><br><span class="line"># 这样你可以创建：</span><br><span class="line">#   ~/.zshrc.local.macbook     ← MacBook 专属配置</span><br><span class="line">#   ~/.zshrc.local.mac-mini    ← Mac Mini 专属配置</span><br><span class="line"># 这两个文件也可以加入 dotfiles 管理</span><br></pre></td></tr></tbody></table></figure>
+
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"># ~/.zshrc.local.macbook 示例</span><br><span class="line">export DISPLAY_SCALE="laptop"</span><br><span class="line"># MacBook 专属 alias</span><br><span class="line">alias mon="open -a 'Activity Monitor'"</span><br><span class="line"></span><br><span class="line"># ~/.zshrc.local.mac-mini 示例  </span><br><span class="line">export DISPLAY_SCALE="desktop"</span><br><span class="line"># Mac Mini 专属：连接外部显示器相关</span><br></pre></td></tr></tbody></table></figure>
+
+<h3 id="1-4-日常工作流"><a href="#1-4-日常工作流" class="headerlink" title="1.4 日常工作流"></a>1.4 日常工作流</h3><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"># ===== 在任意一台机器上修改了配置 =====</span><br><span class="line"></span><br><span class="line"># 查看改了什么</span><br><span class="line">dotfiles status</span><br><span class="line">dotfiles diff ~/.zshrc</span><br><span class="line"></span><br><span class="line"># 提交并推送</span><br><span class="line">dotfiles add ~/.zshrc</span><br><span class="line">dotfiles commit -m "add new alias for docker"</span><br><span class="line">dotfiles push</span><br><span class="line"></span><br><span class="line"># ===== 在另一台机器上拉取 =====</span><br><span class="line">dotfiles pull</span><br><span class="line"></span><br><span class="line"># ===== 常用命令速查 =====</span><br><span class="line">dotfiles status          # 查看状态</span><br><span class="line">dotfiles add &lt;file&gt;      # 追踪新文件</span><br><span class="line">dotfiles commit -m "msg" # 提交</span><br><span class="line">dotfiles push            # 推送</span><br><span class="line">dotfiles pull            # 拉取</span><br><span class="line">dotfiles log --oneline   # 查看历史</span><br><span class="line">dotfiles diff            # 查看差异</span><br><span class="line">dotfiles ls-files        # 查看所有管理的文件列表</span><br></pre></td></tr></tbody></table></figure>
+
+<h3 id="1-5-安全注意事项"><a href="#1-5-安全注意事项" class="headerlink" title="1.5 安全注意事项"></a>1.5 安全注意事项</h3><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"># 创建全局的 gitignore，防止误提交敏感文件</span><br><span class="line">cat &gt; ~/.dotfiles-ignore &lt;&lt; 'EOF'</span><br><span class="line"># 绝对不要提交的文件</span><br><span class="line">.ssh/id_rsa</span><br><span class="line">.ssh/id_rsa.pub</span><br><span class="line">.ssh/id_ed25519</span><br><span class="line">.ssh/id_ed25519.pub</span><br><span class="line">.ssh/known_hosts</span><br><span class="line">.ssh/authorized_keys</span><br><span class="line">*.pem</span><br><span class="line">*.key</span><br><span class="line">.env</span><br><span class="line">.aws/credentials</span><br><span class="line">EOF</span><br><span class="line"></span><br><span class="line">dotfiles config --local core.excludesFile ~/.dotfiles-ignore</span><br></pre></td></tr></tbody></table></figure>
+
+<hr>
+<h3 id="1-6-Git-Dotfiles-自动化同步方案"><a href="#1-6-Git-Dotfiles-自动化同步方案" class="headerlink" title="1.6 Git Dotfiles 自动化同步方案"></a>1.6 Git Dotfiles 自动化同步方案</h3><h4 id="核心思路"><a href="#核心思路" class="headerlink" title="核心思路"></a>核心思路</h4><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">手动流程：dotfiles add → commit → push → 另一台 pull</span><br><span class="line">自动流程：定时检测变更 → 自动 commit → 自动 push → 另一台自动 pull</span><br></pre></td></tr></tbody></table></figure>
+
+<h4 id="方案一：LaunchAgent-定时任务（推荐）-选择方案"><a href="#方案一：LaunchAgent-定时任务（推荐）-选择方案" class="headerlink" title="方案一：LaunchAgent 定时任务（推荐） 选择方案"></a>方案一：LaunchAgent 定时任务（推荐） <font color="red">选择方案</font></h4><p>macOS 原生的定时任务机制，比 crontab 更可靠。</p>
+<h6 id="第一步：创建自动同步脚本"><a href="#第一步：创建自动同步脚本" class="headerlink" title="第一步：创建自动同步脚本"></a>第一步：创建自动同步脚本</h6><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br></pre></td><td class="code"><pre><span class="line">mkdir -p ~/Scripts</span><br><span class="line"></span><br><span class="line">cat &gt; ~/Scripts/dotfiles-autosync.sh &lt;&lt; 'EOF'</span><br><span class="line">#!/bin/bash</span><br><span class="line"></span><br><span class="line"># ============================================</span><br><span class="line"># Dotfiles 自动同步脚本</span><br><span class="line"># ============================================</span><br><span class="line"></span><br><span class="line">LOG_FILE="$HOME/.dotfiles-sync.log"</span><br><span class="line">DOTFILES="git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME"</span><br><span class="line">TIMESTAMP=$(date "+%Y-%m-%d %H:%M:%S")</span><br><span class="line"></span><br><span class="line">log() {</span><br><span class="line">    echo "[$TIMESTAMP] $1" &gt;&gt; "$LOG_FILE"</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"># 日志文件保留最近 500 行，防止无限增长</span><br><span class="line">tail -n 500 "$LOG_FILE" &gt; "$LOG_FILE.tmp" 2&gt;/dev/null &amp;&amp; mv "$LOG_FILE.tmp" "$LOG_FILE"</span><br><span class="line"></span><br><span class="line"># ---------- 1. 先拉取远程更新 ----------</span><br><span class="line">log "开始拉取远程更新..."</span><br><span class="line">PULL_RESULT=$($DOTFILES pull --rebase 2&gt;&amp;1)</span><br><span class="line">PULL_STATUS=$?</span><br><span class="line"></span><br><span class="line">if [ $PULL_STATUS -ne 0 ]; then</span><br><span class="line">    log "⚠️  拉取失败: $PULL_RESULT"</span><br><span class="line">    # 如果 rebase 冲突，自动中止</span><br><span class="line">    $DOTFILES rebase --abort 2&gt;/dev/null</span><br><span class="line">    log "已中止 rebase，需要手动处理"</span><br><span class="line">    </span><br><span class="line">    # 发送通知</span><br><span class="line">    osascript -e 'display notification "Dotfiles 拉取冲突，需手动处理" with title "Dotfiles Sync"'</span><br><span class="line">    exit 1</span><br><span class="line">fi</span><br><span class="line"></span><br><span class="line">if echo "$PULL_RESULT" | grep -q "Already up to date"; then</span><br><span class="line">    log "远程无更新"</span><br><span class="line">else</span><br><span class="line">    log "✅ 拉取成功: $PULL_RESULT"</span><br><span class="line">fi</span><br><span class="line"></span><br><span class="line"># ---------- 2. 检测本地变更 ----------</span><br><span class="line">CHANGES=$($DOTFILES diff --name-only 2&gt;/dev/null)</span><br><span class="line">STAGED=$($DOTFILES diff --cached --name-only 2&gt;/dev/null)</span><br><span class="line"></span><br><span class="line">if [ -z "$CHANGES" ] &amp;&amp; [ -z "$STAGED" ]; then</span><br><span class="line">    log "本地无变更，跳过"</span><br><span class="line">    exit 0</span><br><span class="line">fi</span><br><span class="line"></span><br><span class="line"># ---------- 3. 自动提交本地变更 ----------</span><br><span class="line">log "检测到变更: $CHANGES"</span><br><span class="line"></span><br><span class="line"># 只提交已追踪的文件的修改（不会添加新文件）</span><br><span class="line">$DOTFILES add -u</span><br><span class="line"></span><br><span class="line"># 生成有意义的 commit message</span><br><span class="line">HOSTNAME=$(hostname -s)</span><br><span class="line">CHANGED_FILES=$($DOTFILES diff --cached --name-only | tr '\n' ', ' | sed 's/,$//')</span><br><span class="line">COMMIT_MSG="auto-sync from $HOSTNAME: $CHANGED_FILES"</span><br><span class="line"></span><br><span class="line">$DOTFILES commit -m "$COMMIT_MSG"</span><br><span class="line">log "✅ 已提交: $COMMIT_MSG"</span><br><span class="line"></span><br><span class="line"># ---------- 4. 推送到远程 ----------</span><br><span class="line">PUSH_RESULT=$($DOTFILES push 2&gt;&amp;1)</span><br><span class="line">PUSH_STATUS=$?</span><br><span class="line"></span><br><span class="line">if [ $PUSH_STATUS -ne 0 ]; then</span><br><span class="line">    log "⚠️  推送失败: $PUSH_RESULT"</span><br><span class="line">    osascript -e 'display notification "Dotfiles 推送失败" with title "Dotfiles Sync"'</span><br><span class="line">    exit 1</span><br><span class="line">fi</span><br><span class="line"></span><br><span class="line">log "✅ 推送成功"</span><br><span class="line">osascript -e 'display notification "Dotfiles 已同步" with title "Dotfiles Sync"'</span><br><span class="line"></span><br><span class="line">EOF</span><br><span class="line"></span><br><span class="line">chmod +x ~/Scripts/dotfiles-autosync.sh</span><br></pre></td></tr></tbody></table></figure>
+
+<h5 id="第二步：创建-LaunchAgent（定时执行）"><a href="#第二步：创建-LaunchAgent（定时执行）" class="headerlink" title="第二步：创建 LaunchAgent（定时执行）"></a>第二步：创建 LaunchAgent（定时执行）</h5><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><span class="line">cat &gt; ~/Library/LaunchAgents/com.dotfiles.autosync.plist &lt;&lt; 'EOF'</span><br><span class="line">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span><br><span class="line">&lt;!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN"</span><br><span class="line">  "http://www.apple.com/DTDs/PropertyList-1.0.dtd"&gt;</span><br><span class="line">&lt;plist version="1.0"&gt;</span><br><span class="line">&lt;dict&gt;</span><br><span class="line">    &lt;key&gt;Label&lt;/key&gt;</span><br><span class="line">    &lt;string&gt;com.dotfiles.autosync&lt;/string&gt;</span><br><span class="line"></span><br><span class="line">    &lt;key&gt;ProgramArguments&lt;/key&gt;</span><br><span class="line">    &lt;array&gt;</span><br><span class="line">        &lt;string&gt;/bin/bash&lt;/string&gt;</span><br><span class="line">        &lt;string&gt;-l&lt;/string&gt;</span><br><span class="line">        &lt;string&gt;/Users/YOUR_USERNAME/Scripts/dotfiles-autosync.sh&lt;/string&gt;</span><br><span class="line">    &lt;/array&gt;</span><br><span class="line"></span><br><span class="line">    &lt;!-- 每 30 分钟执行一次 --&gt;</span><br><span class="line">    &lt;key&gt;StartInterval&lt;/key&gt;</span><br><span class="line">    &lt;integer&gt;1800&lt;/integer&gt;</span><br><span class="line"></span><br><span class="line">    &lt;!-- 也可以用固定时间点 --&gt;</span><br><span class="line">    &lt;!--</span><br><span class="line">    &lt;key&gt;StartCalendarInterval&lt;/key&gt;</span><br><span class="line">    &lt;array&gt;</span><br><span class="line">        &lt;dict&gt;</span><br><span class="line">            &lt;key&gt;Hour&lt;/key&gt;&lt;integer&gt;9&lt;/integer&gt;</span><br><span class="line">            &lt;key&gt;Minute&lt;/key&gt;&lt;integer&gt;0&lt;/integer&gt;</span><br><span class="line">        &lt;/dict&gt;</span><br><span class="line">        &lt;dict&gt;</span><br><span class="line">            &lt;key&gt;Hour&lt;/key&gt;&lt;integer&gt;13&lt;/integer&gt;</span><br><span class="line">            &lt;key&gt;Minute&lt;/key&gt;&lt;integer&gt;0&lt;/integer&gt;</span><br><span class="line">        &lt;/dict&gt;</span><br><span class="line">        &lt;dict&gt;</span><br><span class="line">            &lt;key&gt;Hour&lt;/key&gt;&lt;integer&gt;18&lt;/integer&gt;</span><br><span class="line">            &lt;key&gt;Minute&lt;/key&gt;&lt;integer&gt;0&lt;/integer&gt;</span><br><span class="line">        &lt;/dict&gt;</span><br><span class="line">        &lt;dict&gt;</span><br><span class="line">            &lt;key&gt;Hour&lt;/key&gt;&lt;integer&gt;23&lt;/integer&gt;</span><br><span class="line">            &lt;key&gt;Minute&lt;/key&gt;&lt;integer&gt;0&lt;/integer&gt;</span><br><span class="line">        &lt;/dict&gt;</span><br><span class="line">    &lt;/array&gt;</span><br><span class="line">    --&gt;</span><br><span class="line"></span><br><span class="line">    &lt;key&gt;StandardOutPath&lt;/key&gt;</span><br><span class="line">    &lt;string&gt;/tmp/dotfiles-sync-stdout.log&lt;/string&gt;</span><br><span class="line"></span><br><span class="line">    &lt;key&gt;StandardErrorPath&lt;/key&gt;</span><br><span class="line">    &lt;string&gt;/tmp/dotfiles-sync-stderr.log&lt;/string&gt;</span><br><span class="line"></span><br><span class="line">    &lt;!-- 开机后如果错过了执行时间，立即补执行 --&gt;</span><br><span class="line">    &lt;key&gt;RunAtLoad&lt;/key&gt;</span><br><span class="line">    &lt;true/&gt;</span><br><span class="line"></span><br><span class="line">    &lt;!-- 网络可用时才执行 --&gt;</span><br><span class="line">    &lt;key&gt;NetworkState&lt;/key&gt;</span><br><span class="line">    &lt;true/&gt;</span><br><span class="line">&lt;/dict&gt;</span><br><span class="line">&lt;/plist&gt;</span><br><span class="line">EOF</span><br></pre></td></tr></tbody></table></figure>
+
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"># ⚠️ 替换用户名</span><br><span class="line">sed -i '' "s/YOUR_USERNAME/$(whoami)/g" \</span><br><span class="line">  ~/Library/LaunchAgents/com.dotfiles.autosync.plist</span><br><span class="line"></span><br><span class="line"># 加载任务</span><br><span class="line">launchctl load ~/Library/LaunchAgents/com.dotfiles.autosync.plist</span><br><span class="line"></span><br><span class="line"># 验证是否在运行</span><br><span class="line">launchctl list | grep dotfiles</span><br><span class="line"></span><br><span class="line"># 手动触发一次测试</span><br><span class="line">launchctl start com.dotfiles.autosync</span><br><span class="line"></span><br><span class="line"># 查看日志</span><br><span class="line">cat ~/.dotfiles-sync.log</span><br></pre></td></tr></tbody></table></figure>
+
+<h6 id="管理命令"><a href="#管理命令" class="headerlink" title="管理命令"></a>管理命令</h6><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"># 停止</span><br><span class="line">launchctl unload ~/Library/LaunchAgents/com.dotfiles.autosync.plist</span><br><span class="line"></span><br><span class="line"># 重新加载（修改 plist 后）</span><br><span class="line">launchctl unload ~/Library/LaunchAgents/com.dotfiles.autosync.plist</span><br><span class="line">launchctl load ~/Library/LaunchAgents/com.dotfiles.autosync.plist</span><br><span class="line"></span><br><span class="line"># 查看日志</span><br><span class="line">tail -f ~/.dotfiles-sync.log</span><br></pre></td></tr></tbody></table></figure>
+
+<hr>
+<h4 id="方案二：fswatch-文件监听（实时同步）"><a href="#方案二：fswatch-文件监听（实时同步）" class="headerlink" title="方案二：fswatch 文件监听（实时同步）"></a>方案二：fswatch 文件监听（实时同步）</h4><p>文件一保存就立刻同步，而不是定时轮询。</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># 安装</span><br><span class="line">brew install fswatch</span><br></pre></td></tr></tbody></table></figure>
+
+<h5 id="监听脚本"><a href="#监听脚本" class="headerlink" title="监听脚本"></a>监听脚本</h5><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br></pre></td><td class="code"><pre><span class="line">cat &gt; ~/Scripts/dotfiles-watch.sh &lt;&lt; 'EOF'</span><br><span class="line">#!/bin/bash</span><br><span class="line"></span><br><span class="line"># ============================================</span><br><span class="line"># 实时监听 dotfiles 变更并自动同步</span><br><span class="line"># ============================================</span><br><span class="line"></span><br><span class="line">DOTFILES="git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME"</span><br><span class="line">LOG_FILE="$HOME/.dotfiles-sync.log"</span><br><span class="line"></span><br><span class="line">log() {</span><br><span class="line">    echo "[$(date '+%Y-%m-%d %H:%M:%S')] $1" &gt;&gt; "$LOG_FILE"</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"># 获取所有被 git 追踪的文件</span><br><span class="line">WATCHED_FILES=$($DOTFILES ls-files --full-name | sed "s|^|$HOME/|")</span><br><span class="line"></span><br><span class="line">if [ -z "$WATCHED_FILES" ]; then</span><br><span class="line">    log "❌ 没有找到被追踪的文件"</span><br><span class="line">    exit 1</span><br><span class="line">fi</span><br><span class="line"></span><br><span class="line">log "🔍 开始监听以下文件的变更..."</span><br><span class="line">echo "$WATCHED_FILES" | while read f; do log "  → $f"; done</span><br><span class="line"></span><br><span class="line"># 防抖：文件修改后等 5 秒再同步（避免频繁触发）</span><br><span class="line">DEBOUNCE_SEC=5</span><br><span class="line">LAST_SYNC=0</span><br><span class="line"></span><br><span class="line">sync_dotfiles() {</span><br><span class="line">    CURRENT_TIME=$(date +%s)</span><br><span class="line">    ELAPSED=$((CURRENT_TIME - LAST_SYNC))</span><br><span class="line"></span><br><span class="line">    if [ $ELAPSED -lt $DEBOUNCE_SEC ]; then</span><br><span class="line">        return</span><br><span class="line">    fi</span><br><span class="line">    LAST_SYNC=$CURRENT_TIME</span><br><span class="line"></span><br><span class="line">    CHANGES=$($DOTFILES diff --name-only 2&gt;/dev/null)</span><br><span class="line">    if [ -z "$CHANGES" ]; then</span><br><span class="line">        return</span><br><span class="line">    fi</span><br><span class="line"></span><br><span class="line">    log "检测到变更: $CHANGES"</span><br><span class="line"></span><br><span class="line">    # 拉取</span><br><span class="line">    $DOTFILES pull --rebase 2&gt;/dev/null</span><br><span class="line"></span><br><span class="line">    # 提交推送</span><br><span class="line">    $DOTFILES add -u</span><br><span class="line">    HOSTNAME=$(hostname -s)</span><br><span class="line">    CHANGED_FILES=$($DOTFILES diff --cached --name-only | tr '\n' ', ' | sed 's/,$//')</span><br><span class="line"></span><br><span class="line">    if [ -n "$CHANGED_FILES" ]; then</span><br><span class="line">        $DOTFILES commit -m "auto: $HOSTNAME updated $CHANGED_FILES"</span><br><span class="line">        $DOTFILES push 2&gt;/dev/null</span><br><span class="line">        log "✅ 已同步: $CHANGED_FILES"</span><br><span class="line">    fi</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"># 使用 fswatch 监听文件变更</span><br><span class="line">echo "$WATCHED_FILES" | fswatch --from-file=- -0 | while read -d "" event; do</span><br><span class="line">    sync_dotfiles</span><br><span class="line">done</span><br><span class="line"></span><br><span class="line">EOF</span><br><span class="line"></span><br><span class="line">chmod +x ~/Scripts/dotfiles-watch.sh</span><br></pre></td></tr></tbody></table></figure>
+
+<h5 id="设置为后台服务"><a href="#设置为后台服务" class="headerlink" title="设置为后台服务"></a>设置为后台服务</h5><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">cat &gt; ~/Library/LaunchAgents/com.dotfiles.watch.plist &lt;&lt; EOF</span><br><span class="line">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span><br><span class="line">&lt;!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN"</span><br><span class="line">  "http://www.apple.com/DTDs/PropertyList-1.0.dtd"&gt;</span><br><span class="line">&lt;plist version="1.0"&gt;</span><br><span class="line">&lt;dict&gt;</span><br><span class="line">    &lt;key&gt;Label&lt;/key&gt;</span><br><span class="line">    &lt;string&gt;com.dotfiles.watch&lt;/string&gt;</span><br><span class="line">    &lt;key&gt;ProgramArguments&lt;/key&gt;</span><br><span class="line">    &lt;array&gt;</span><br><span class="line">        &lt;string&gt;/bin/bash&lt;/string&gt;</span><br><span class="line">        &lt;string&gt;-l&lt;/string&gt;</span><br><span class="line">        &lt;string&gt;$HOME/Scripts/dotfiles-watch.sh&lt;/string&gt;</span><br><span class="line">    &lt;/array&gt;</span><br><span class="line">    &lt;key&gt;RunAtLoad&lt;/key&gt;</span><br><span class="line">    &lt;true/&gt;</span><br><span class="line">    &lt;key&gt;KeepAlive&lt;/key&gt;</span><br><span class="line">    &lt;true/&gt;</span><br><span class="line">    &lt;key&gt;StandardOutPath&lt;/key&gt;</span><br><span class="line">    &lt;string&gt;/tmp/dotfiles-watch-stdout.log&lt;/string&gt;</span><br><span class="line">    &lt;key&gt;StandardErrorPath&lt;/key&gt;</span><br><span class="line">    &lt;string&gt;/tmp/dotfiles-watch-stderr.log&lt;/string&gt;</span><br><span class="line">&lt;/dict&gt;</span><br><span class="line">&lt;/plist&gt;</span><br><span class="line">EOF</span><br><span class="line"></span><br><span class="line">launchctl load ~/Library/LaunchAgents/com.dotfiles.watch.plist</span><br></pre></td></tr></tbody></table></figure>
+
+<hr>
+<h4 id="方案三：Shell-钩子（最简单）"><a href="#方案三：Shell-钩子（最简单）" class="headerlink" title="方案三：Shell 钩子（最简单）"></a>方案三：Shell 钩子（最简单）</h4><p>每次打开/关闭终端时自动同步。</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line"># 加入 ~/.zshrc 末尾</span><br><span class="line"></span><br><span class="line"># ---------- Dotfiles 自动同步 ----------</span><br><span class="line"></span><br><span class="line"># 打开终端时：静默拉取</span><br><span class="line">_dotfiles_pull() {</span><br><span class="line">    (</span><br><span class="line">        git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME pull --rebase &amp;&gt;/dev/null</span><br><span class="line">    ) &amp;  # 后台执行，不阻塞终端启动</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"># 关闭终端时：自动提交推送</span><br><span class="line">_dotfiles_push() {</span><br><span class="line">    local DOTFILES="git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME"</span><br><span class="line">    local CHANGES=$($DOTFILES diff --name-only 2&gt;/dev/null)</span><br><span class="line"></span><br><span class="line">    if [ -n "$CHANGES" ]; then</span><br><span class="line">        $DOTFILES add -u</span><br><span class="line">        local HOSTNAME=$(hostname -s)</span><br><span class="line">        local FILES=$($DOTFILES diff --cached --name-only | tr '\n' ', ' | sed 's/,$//')</span><br><span class="line">        if [ -n "$FILES" ]; then</span><br><span class="line">            $DOTFILES commit -m "auto: $HOSTNAME updated $FILES" &amp;&gt;/dev/null</span><br><span class="line">            $DOTFILES push &amp;&gt;/dev/null</span><br><span class="line">        fi</span><br><span class="line">    fi</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"># 注册钩子</span><br><span class="line">_dotfiles_pull                      # 开终端 → 拉取</span><br><span class="line">zshexit() { _dotfiles_push; }      # 关终端 → 推送</span><br><span class="line"></span><br><span class="line"># 手动同步命令</span><br><span class="line">dotfiles-sync() {</span><br><span class="line">    echo "⏬ 拉取远程更新..."</span><br><span class="line">    dotfiles pull --rebase</span><br><span class="line">    echo ""</span><br><span class="line"></span><br><span class="line">    local CHANGES=$(dotfiles diff --name-only 2&gt;/dev/null)</span><br><span class="line">    if [ -n "$CHANGES" ]; then</span><br><span class="line">        echo "📝 本地变更:"</span><br><span class="line">        echo "$CHANGES"</span><br><span class="line">        echo ""</span><br><span class="line">        dotfiles add -u</span><br><span class="line">        dotfiles commit -m "manual sync from $(hostname -s)"</span><br><span class="line">        dotfiles push</span><br><span class="line">        echo "✅ 同步完成"</span><br><span class="line">    else</span><br><span class="line">        echo "✅ 无本地变更"</span><br><span class="line">    fi</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<hr>
+<h5 id="三种方案对比"><a href="#三种方案对比" class="headerlink" title="三种方案对比"></a>三种方案对比</h5><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">┌──────────────────┬──────────────┬──────────────┬──────────────┐</span><br><span class="line">│                  │  LaunchAgent │   fswatch    │  Shell 钩子  │</span><br><span class="line">│                  │   定时任务   │   文件监听    │  开关终端    │</span><br><span class="line">├──────────────────┼──────────────┼──────────────┼──────────────┤</span><br><span class="line">│ 实时性           │ 每 N 分钟    │ 秒级         │ 开关终端时   │</span><br><span class="line">│ 资源占用         │ 极低         │ 低           │ 无           │</span><br><span class="line">│ 复杂度           │ 中           │ 中           │ 低           │</span><br><span class="line">│ 可靠性           │ 高           │ 高           │ 中           │</span><br><span class="line">│ 不开终端也能同步 │ ✅           │ ✅           │ ❌           │</span><br><span class="line">│ 推荐度           │ ⭐⭐⭐⭐⭐  │ ⭐⭐⭐       │ ⭐⭐⭐⭐     │</span><br><span class="line">└──────────────────┴──────────────┴──────────────┴──────────────┘</span><br></pre></td></tr></tbody></table></figure>
+
+<h5 id="🎯-我的推荐"><a href="#🎯-我的推荐" class="headerlink" title="🎯 我的推荐"></a>🎯 我的推荐</h5><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># 最佳组合：LaunchAgent（保底） + Shell 钩子（即时）</span><br><span class="line"></span><br><span class="line"># 1. LaunchAgent 每 30 分钟自动同步 → 保底机制</span><br><span class="line"># 2. Shell 钩子 开/关终端时同步 → 覆盖日常使用</span><br><span class="line"># 3. dotfiles-sync 命令 → 随时手动触发</span><br></pre></td></tr></tbody></table></figure>
+
+<h5 id="新文件的处理"><a href="#新文件的处理" class="headerlink" title="新文件的处理"></a>新文件的处理</h5><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"># ⚠️ 以上自动化只同步"已追踪"的文件（add -u）</span><br><span class="line"># 新文件仍然需要手动添加一次：</span><br><span class="line"></span><br><span class="line">dotfiles add ~/.config/some-new-config</span><br><span class="line">dotfiles commit -m "track new config"</span><br><span class="line">dotfiles push</span><br><span class="line"># 之后这个文件就会被自动同步了</span><br></pre></td></tr></tbody></table></figure>
+
+<p><strong>两台机器都要部署这些脚本</strong>，这样任何一台修改配置，另一台都能自动获取到更新。</p>
+<h2 id="二、Syncthing-文件夹同步-选择方案"><a href="#二、Syncthing-文件夹同步-选择方案" class="headerlink" title="二、Syncthing 文件夹同步 选择方案"></a>二、Syncthing 文件夹同步 <font color="red">选择方案</font></h2><h3 id="2-1-架构理解"><a href="#2-1-架构理解" class="headerlink" title="2.1 架构理解"></a>2.1 架构理解</h3><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">┌──────────────────┐         P2P 直连          ┌──────────────────┐</span><br><span class="line">│   MacBook (Intel) │ ◄════════════════════► │  Mac Mini (M chip) │</span><br><span class="line">│                    │    局域网/互联网         │                    │</span><br><span class="line">│ ~/Projects/shared  │ ←── 实时双向同步 ──→  │ ~/Projects/shared  │</span><br><span class="line">│ ~/Notes            │ ←── 实时双向同步 ──→  │ ~/Notes            │</span><br><span class="line">│ ~/Scripts          │ ←── 实时双向同步 ──→  │ ~/Scripts          │</span><br><span class="line">└──────────────────┘    无需中心服务器        └──────────────────┘</span><br><span class="line"></span><br><span class="line">特点：</span><br><span class="line">• 数据不经过任何第三方服务器（端到端加密）</span><br><span class="line">• 局域网内走内网，速度极快</span><br><span class="line">• 不在同一网络时通过中继也能同步</span><br><span class="line">• 修改文件后几秒内自动同步</span><br></pre></td></tr></tbody></table></figure>
+
+<h3 id="2-2-安装"><a href="#2-2-安装" class="headerlink" title="2.2 安装"></a>2.2 安装</h3><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"># 两台 Mac 上都执行</span><br><span class="line">brew install syncthing</span><br><span class="line"></span><br><span class="line"># 设置开机自启</span><br><span class="line">brew services start syncthing</span><br><span class="line"></span><br><span class="line"># 验证是否运行</span><br><span class="line">brew services list | grep syncthing</span><br><span class="line"># syncthing started yourname ~/Library/LaunchAgents/homebrew.mxcl.syncthing.plist</span><br></pre></td></tr></tbody></table></figure>
+
+<h3 id="2-3-初始配置"><a href="#2-3-初始配置" class="headerlink" title="2.3 初始配置"></a>2.3 初始配置</h3><h4 id="打开-Web-管理界面"><a href="#打开-Web-管理界面" class="headerlink" title="打开 Web 管理界面"></a>打开 Web 管理界面</h4><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># 两台机器都在浏览器打开</span><br><span class="line">open http://127.0.0.1:8384</span><br></pre></td></tr></tbody></table></figure>
+
+<p>首次打开会看到这样的界面：</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">┌────────────────────────────────────────────────┐</span><br><span class="line">│  Syncthing - MacBook                           │</span><br><span class="line">├────────────────────────────────────────────────┤</span><br><span class="line">│                                                │</span><br><span class="line">│  本设备                                        │</span><br><span class="line">│  ┌──────────────────────────────────────┐      │</span><br><span class="line">│  │ 设备 ID: XXXXXXX-XXXXXXX-XXXXXXX... │      │</span><br><span class="line">│  │ 这就是你的设备标识，需要告诉对方     │      │</span><br><span class="line">│  └──────────────────────────────────────┘      │</span><br><span class="line">│                                                │</span><br><span class="line">│  [+ 添加远程设备]    [+ 添加文件夹]            │</span><br><span class="line">│                                                │</span><br><span class="line">└────────────────────────────────────────────────┘</span><br></pre></td></tr></tbody></table></figure>
+
+<h4 id="步骤-1：互相添加设备"><a href="#步骤-1：互相添加设备" class="headerlink" title="步骤 1：互相添加设备"></a>步骤 1：互相添加设备</h4><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">在 MacBook 上：</span><br><span class="line">1. 复制 MacBook 的 Device ID（设备标识）</span><br><span class="line">2. 打开 Mac Mini 的 Web UI</span><br><span class="line">3. 点击 [+ 添加远程设备]</span><br><span class="line">4. 粘贴 MacBook 的 Device ID</span><br><span class="line">5. 给它起个名字: "MacBook"</span><br><span class="line">6. 保存</span><br><span class="line"></span><br><span class="line">在 Mac Mini 上做同样的操作（反向添加）</span><br><span class="line"></span><br><span class="line">或者：如果两台在同一局域网，Syncthing 会自动发现，</span><br><span class="line">     你只需要在界面上确认 [接受] 即可</span><br></pre></td></tr></tbody></table></figure>
+
+<h4 id="步骤-2：添加要同步的文件夹"><a href="#步骤-2：添加要同步的文件夹" class="headerlink" title="步骤 2：添加要同步的文件夹"></a>步骤 2：添加要同步的文件夹</h4><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">在 MacBook 的 Web UI 上点击 [+ 添加文件夹]：</span><br><span class="line"></span><br><span class="line">┌─────────────────────────────────────┐</span><br><span class="line">│ 添加文件夹                          │</span><br><span class="line">├─────────────────────────────────────┤</span><br><span class="line">│ 文件夹标签: Projects                │</span><br><span class="line">│ 文件夹 ID:  projects-shared         │ ← 两台机器要一致</span><br><span class="line">│ 文件夹路径: /Users/you/Projects     │</span><br><span class="line">│                                     │</span><br><span class="line">│ 共享给设备:                          │</span><br><span class="line">│  ☑ Mac Mini                         │</span><br><span class="line">│                                     │</span><br><span class="line">│ [保存]                              │</span><br><span class="line">└─────────────────────────────────────┘</span><br><span class="line"></span><br><span class="line">保存后，Mac Mini 端会弹出通知：</span><br><span class="line">"MacBook 想要共享文件夹 Projects，是否接受？"</span><br><span class="line">点击接受，选择本地路径（通常保持一样: /Users/you/Projects）</span><br></pre></td></tr></tbody></table></figure>
+
+<h3 id="2-4-推荐同步的文件夹及配置"><a href="#2-4-推荐同步的文件夹及配置" class="headerlink" title="2.4 推荐同步的文件夹及配置"></a>2.4 推荐同步的文件夹及配置</h3><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># 建议同步这些文件夹</span><br><span class="line">~/Projects/shared    # 共享项目（不是所有项目都需要同步）</span><br><span class="line">~/Notes              # 笔记</span><br><span class="line">~/Scripts            # 自己写的脚本工具</span><br><span class="line">~/Documents/shared   # 共享文档</span><br></pre></td></tr></tbody></table></figure>
+
+<h4 id="每个文件夹的具体配置"><a href="#每个文件夹的具体配置" class="headerlink" title="每个文件夹的具体配置"></a>每个文件夹的具体配置</h4><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">在 Web UI 中编辑文件夹 → 高级设置：</span><br><span class="line"></span><br><span class="line">文件夹类型：</span><br><span class="line">┌─────────────────────────────────────────────────┐</span><br><span class="line">│ • 发送与接收（双向同步） ← 大多数情况选这个     │</span><br><span class="line">│ • 仅发送（本机为主）                             │  </span><br><span class="line">│ • 仅接收（对方为主）                             │</span><br><span class="line">└─────────────────────────────────────────────────┘</span><br><span class="line"></span><br><span class="line">文件版本控制（重要！防止误删误改）：</span><br><span class="line">┌─────────────────────────────────────────────────┐</span><br><span class="line">│ 推荐选择: "简单文件版本控制"                     │</span><br><span class="line">│ 保留版本数: 5                                    │</span><br><span class="line">│                                                  │</span><br><span class="line">│ 这样即使文件被覆盖/删除，                        │</span><br><span class="line">│ 也能在 .stversions 文件夹中找到旧版本            │</span><br><span class="line">└─────────────────────────────────────────────────┘</span><br></pre></td></tr></tbody></table></figure>
+
+<h3 id="2-5-设置忽略文件"><a href="#2-5-设置忽略文件" class="headerlink" title="2.5 设置忽略文件"></a>2.5 设置忽略文件</h3><p>在同步的文件夹根目录创建 <code>.stignore</code> 文件：</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"># ~/Projects/.stignore</span><br><span class="line"></span><br><span class="line"># 版本控制</span><br><span class="line">.git</span><br><span class="line"></span><br><span class="line"># macOS</span><br><span class="line">.DS_Store</span><br><span class="line">._*</span><br><span class="line">.Spotlight-V100</span><br><span class="line">.Trashes</span><br><span class="line"></span><br><span class="line"># IDE</span><br><span class="line">.idea/</span><br><span class="line">.vscode/settings.json</span><br><span class="line">*.swp</span><br><span class="line">*.swo</span><br><span class="line"></span><br><span class="line"># 编译产物</span><br><span class="line">node_modules</span><br><span class="line">__pycache__</span><br><span class="line">*.pyc</span><br><span class="line">target/</span><br><span class="line">build/</span><br><span class="line">dist/</span><br><span class="line">.next/</span><br><span class="line"></span><br><span class="line"># 依赖 - 不需要同步，各自 install 即可</span><br><span class="line">vendor/</span><br><span class="line">Pods/</span><br><span class="line"></span><br><span class="line"># 大文件</span><br><span class="line">*.zip</span><br><span class="line">*.tar.gz</span><br><span class="line">*.dmg</span><br></pre></td></tr></tbody></table></figure>
+
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"># ~/Notes/.stignore（笔记文件夹忽略规则简单些）</span><br><span class="line">.DS_Store</span><br><span class="line">._*</span><br><span class="line">*.tmp</span><br></pre></td></tr></tbody></table></figure>
+
+<h3 id="2-6-高级配置"><a href="#2-6-高级配置" class="headerlink" title="2.6 高级配置"></a>2.6 高级配置</h3><h4 id="命令行操作（可选，不用-Web-UI）"><a href="#命令行操作（可选，不用-Web-UI）" class="headerlink" title="命令行操作（可选，不用 Web UI）"></a>命令行操作（可选，不用 Web UI）</h4><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"># 查看 Syncthing 状态</span><br><span class="line">syncthing cli show system</span><br><span class="line"></span><br><span class="line"># 查看已连接的设备</span><br><span class="line">syncthing cli show connections</span><br><span class="line"></span><br><span class="line"># 查看同步的文件夹</span><br><span class="line">syncthing cli show folders</span><br></pre></td></tr></tbody></table></figure>
+
+<h4 id="配置文件位置"><a href="#配置文件位置" class="headerlink" title="配置文件位置"></a>配置文件位置</h4><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"># Syncthing 配置文件位于</span><br><span class="line">~/Library/Application Support/Syncthing/config.xml</span><br><span class="line"></span><br><span class="line"># 可以直接编辑，但推荐用 Web UI</span><br></pre></td></tr></tbody></table></figure>
+
+<h4 id="设置-GUI-密码（安全）"><a href="#设置-GUI-密码（安全）" class="headerlink" title="设置 GUI 密码（安全）"></a>设置 GUI 密码（安全）</h4><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Web UI → 右上角 操作 → 设置 → GUI</span><br><span class="line">设置用户名和密码，防止同网络其他人访问</span><br></pre></td></tr></tbody></table></figure>
+
+<h3 id="2-7-冲突处理"><a href="#2-7-冲突处理" class="headerlink" title="2.7 冲突处理"></a>2.7 冲突处理</h3><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">当两台机器同时修改同一文件时：</span><br><span class="line"></span><br><span class="line">Syncthing 不会覆盖，而是创建冲突副本：</span><br><span class="line">  notes.md                         ← 最后修改的版本</span><br><span class="line">  notes.sync-conflict-20250101-120000-ABCDEFG.md  ← 冲突副本</span><br><span class="line"></span><br><span class="line">处理方式：</span><br><span class="line">1. 手动对比两个文件，合并修改</span><br><span class="line">2. 删除冲突副本</span><br><span class="line"></span><br><span class="line">避免冲突的最佳实践：</span><br><span class="line">• 同一时间只在一台机器上编辑同一个文件</span><br><span class="line">• 大型项目用 Git 管理，Syncthing 只同步参考文件/笔记</span><br></pre></td></tr></tbody></table></figure>
+
+<h3 id="2-8-性能和网络"><a href="#2-8-性能和网络" class="headerlink" title="2.8 性能和网络"></a>2.8 性能和网络</h3><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"># 查看同步状态</span><br><span class="line">open http://127.0.0.1:8384</span><br><span class="line"></span><br><span class="line"># 同一局域网内：</span><br><span class="line">#   文件直接通过内网传输</span><br><span class="line">#   速度通常 50-100+ MB/s（取决于网络）</span><br><span class="line"></span><br><span class="line"># 不在同一网络时：</span><br><span class="line">#   通过 Syncthing 中继服务器传输</span><br><span class="line">#   速度较慢但仍可用</span><br><span class="line">#   数据端到端加密，中继看不到内容</span><br></pre></td></tr></tbody></table></figure>
+
+<hr>
+<h2 id="三、两个方案的协作方式"><a href="#三、两个方案的协作方式" class="headerlink" title="三、两个方案的协作方式"></a>三、两个方案的协作方式</h2><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">┌────────────── 你的两台 Mac ──────────────────┐</span><br><span class="line">│                                                │</span><br><span class="line">│  MacBook (Intel)          Mac Mini (M chip)    │</span><br><span class="line">│                                                │</span><br><span class="line">│  ┌─ Git Dotfiles ───────────────────────────┐ │</span><br><span class="line">│  │                                           │ │</span><br><span class="line">│  │  ~/.zshrc ─────── git push/pull ─── ~/.zshrc│</span><br><span class="line">│  │  ~/.gitconfig                    ~/.gitconfig│</span><br><span class="line">│  │  ~/.ssh/config                  ~/.ssh/config│</span><br><span class="line">│  │  ~/Brewfile                      ~/Brewfile  │</span><br><span class="line">│  │                                           │ │</span><br><span class="line">│  │  通过 GitHub 私有仓库中转                  │ │</span><br><span class="line">│  │  手动 push/pull，有版本历史               │ │</span><br><span class="line">│  └───────────────────────────────────────────┘ │</span><br><span class="line">│                                                │</span><br><span class="line">│  ┌─ Syncthing ──────────────────────────────┐ │</span><br><span class="line">│  │                                           │ │</span><br><span class="line">│  │  ~/Projects/ ◄══ 实时同步 ══► ~/Projects/ │ │</span><br><span class="line">│  │  ~/Notes/    ◄══ 实时同步 ══► ~/Notes/    │ │</span><br><span class="line">│  │  ~/Scripts/  ◄══ 实时同步 ══► ~/Scripts/  │ │</span><br><span class="line">│  │                                           │ │</span><br><span class="line">│  │  P2P 直连，自动后台运行                    │ │</span><br><span class="line">│  │  修改后几秒内同步到对方                    │ │</span><br><span class="line">│  └───────────────────────────────────────────┘ │</span><br><span class="line">│                                                │</span><br><span class="line">│  ┌─ 手动处理 ───────────────────────────────┐ │</span><br><span class="line">│  │  SSH 私钥: scp 拷贝一次即可               │ │</span><br><span class="line">│  │  Homebrew 包: brew bundle install         │ │</span><br><span class="line">│  └───────────────────────────────────────────┘ │</span><br><span class="line">└────────────────────────────────────────────────┘</span><br></pre></td></tr></tbody></table></figure>
+
+<h3 id="完整的初次搭建清单"><a href="#完整的初次搭建清单" class="headerlink" title="完整的初次搭建清单"></a>完整的初次搭建清单</h3><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line"># ============================</span><br><span class="line"># 第一台 Mac（MacBook）上执行</span><br><span class="line"># ============================</span><br><span class="line"></span><br><span class="line"># 1. 设置主机名</span><br><span class="line">sudo scutil --set HostName macbook</span><br><span class="line">sudo scutil --set LocalHostName macbook</span><br><span class="line"></span><br><span class="line"># 2. 初始化 dotfiles git 裸仓库</span><br><span class="line">git init --bare $HOME/.dotfiles</span><br><span class="line">alias dotfiles='git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'</span><br><span class="line">dotfiles config --local status.showUntrackedFiles no</span><br><span class="line"></span><br><span class="line"># 3. 添加配置文件并推送</span><br><span class="line">dotfiles add ~/.zshrc ~/.gitconfig ~/.ssh/config ~/Brewfile</span><br><span class="line">dotfiles commit -m "initial dotfiles"</span><br><span class="line">dotfiles remote add origin git@github.com:yourname/dotfiles.git</span><br><span class="line">dotfiles push -u origin main</span><br><span class="line"></span><br><span class="line"># 4. 安装并启动 Syncthing</span><br><span class="line">brew install syncthing</span><br><span class="line">brew services start syncthing</span><br><span class="line"># 打开 http://127.0.0.1:8384 获取 Device ID</span><br><span class="line"></span><br><span class="line"># ============================</span><br><span class="line"># 第二台 Mac（Mac Mini）上执行</span><br><span class="line"># ============================</span><br><span class="line"></span><br><span class="line"># 1. 设置主机名</span><br><span class="line">sudo scutil --set HostName mac-mini</span><br><span class="line">sudo scutil --set LocalHostName mac-mini</span><br><span class="line"></span><br><span class="line"># 2. 拷贝 SSH 密钥（从 MacBook 执行）</span><br><span class="line">scp ~/.ssh/id_ed25519 mac-mini.local:~/.ssh/</span><br><span class="line">scp ~/.ssh/id_ed25519.pub mac-mini.local:~/.ssh/</span><br><span class="line"></span><br><span class="line"># 3. 克隆 dotfiles</span><br><span class="line">git clone --bare git@github.com:yourname/dotfiles.git $HOME/.dotfiles</span><br><span class="line">alias dotfiles='git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'</span><br><span class="line">dotfiles checkout  # 如有冲突按前面说的方式备份处理</span><br><span class="line">dotfiles config --local status.showUntrackedFiles no</span><br><span class="line">source ~/.zshrc</span><br><span class="line"></span><br><span class="line"># 4. 用 Brewfile 安装软件</span><br><span class="line">brew bundle --file=~/Brewfile</span><br><span class="line"></span><br><span class="line"># 5. 启动 Syncthing</span><br><span class="line">brew services start syncthing</span><br><span class="line"># 打开 http://127.0.0.1:8384</span><br><span class="line"># 添加 MacBook 为远程设备</span><br><span class="line"># 接受共享文件夹</span><br><span class="line"></span><br><span class="line"># ✅ 完成！</span><br></pre></td></tr></tbody></table></figure>
+
+<h2 id="三、使用-Syncthing-实现两台-Mac-通过新加坡服务器同步文件"><a href="#三、使用-Syncthing-实现两台-Mac-通过新加坡服务器同步文件" class="headerlink" title="三、使用 Syncthing 实现两台 Mac 通过新加坡服务器同步文件"></a>三、使用 Syncthing 实现两台 Mac 通过新加坡服务器同步文件</h2><h4 id="架构说明"><a href="#架构说明" class="headerlink" title="架构说明"></a>架构说明</h4><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Mac A ←→ 新加坡服务器 (Syncthing 中继/节点) ←→ Mac B</span><br></pre></td></tr></tbody></table></figure>
+
+<p>三个节点都运行 Syncthing，新加坡服务器作为”始终在线”的中间节点，确保即使一台 Mac 离线，另一台上线后也能通过服务器同步到最新文件。</p>
+<hr>
+<h4 id="第一部分：新加坡服务器部署-Syncthing（Docker-Compose）"><a href="#第一部分：新加坡服务器部署-Syncthing（Docker-Compose）" class="headerlink" title="第一部分：新加坡服务器部署 Syncthing（Docker Compose）"></a>第一部分：新加坡服务器部署 Syncthing（Docker Compose）</h4><h5 id="1-创建项目目录"><a href="#1-创建项目目录" class="headerlink" title="1. 创建项目目录"></a>1. 创建项目目录</h5><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mkdir -p /opt/syncthing</span><br><span class="line">cd /opt/syncthing</span><br></pre></td></tr></tbody></table></figure>
+
+<h5 id="2-创建-docker-compose-yml"><a href="#2-创建-docker-compose-yml" class="headerlink" title="2. 创建 docker-compose.yml"></a>2. 创建 <code>docker-compose.yml</code></h5><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">version: "3.8"</span><br><span class="line"></span><br><span class="line">services:</span><br><span class="line">  syncthing:</span><br><span class="line">    image: syncthing/syncthing:latest</span><br><span class="line">    container_name: syncthing</span><br><span class="line">    hostname: sg-syncthing-server</span><br><span class="line">    environment:</span><br><span class="line">      - PUID=1000</span><br><span class="line">      - PGID=1000</span><br><span class="line">    volumes:</span><br><span class="line">      # Syncthing 配置目录</span><br><span class="line">      - ./config:/var/syncthing/config</span><br><span class="line">      # 同步数据目录（可按需调整大小/挂载独立磁盘）</span><br><span class="line">      - ./data:/var/syncthing/data</span><br><span class="line">    ports:</span><br><span class="line">      # Web UI</span><br><span class="line">      - "8384:8384"</span><br><span class="line">      # Syncthing 同步协议监听端口</span><br><span class="line">      - "22000:22000/tcp"</span><br><span class="line">      # Syncthing 同步协议 (QUIC)</span><br><span class="line">      - "22000:22000/udp"</span><br><span class="line">      # 本地发现端口（服务器上可选）</span><br><span class="line">      - "21027:21027/udp"</span><br><span class="line">    restart: unless-stopped</span><br></pre></td></tr></tbody></table></figure>
+
+<h5 id="3-启动服务"><a href="#3-启动服务" class="headerlink" title="3. 启动服务"></a>3. 启动服务</h5><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker compose up -d</span><br></pre></td></tr></tbody></table></figure>
+
+<h5 id="4-配置服务器防火墙"><a href="#4-配置服务器防火墙" class="headerlink" title="4. 配置服务器防火墙"></a>4. 配置服务器防火墙</h5><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># UFW 示例</span><br><span class="line">sudo ufw allow 8384/tcp    # Web UI（建议后续限制 IP 或关闭）</span><br><span class="line">sudo ufw allow 22000/tcp   # 同步协议</span><br><span class="line">sudo ufw allow 22000/udp   # 同步协议 QUIC</span><br><span class="line">sudo ufw allow 21027/udp   # 本地发现（可选）</span><br><span class="line">sudo ufw reload</span><br></pre></td></tr></tbody></table></figure>
+
+<blockquote>
+<p>如果使用云服务商（如 AWS、阿里云），也需要在<strong>安全组</strong>中放行以上端口。</p>
+</blockquote>
+<h5 id="5-设置-Web-UI-密码"><a href="#5-设置-Web-UI-密码" class="headerlink" title="5. 设置 Web UI 密码"></a>5. 设置 Web UI 密码</h5><p>首次访问 <code>http://&lt;服务器IP&gt;:8384</code>，Syncthing 会提示你设置用户名和密码。</p>
+<p><strong>务必立即设置！</strong> 否则你的 Syncthing 管理界面暴露在公网上。</p>
+<p>也可以通过修改配置文件设置：</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># 停止容器</span><br><span class="line">docker compose down</span><br><span class="line"></span><br><span class="line"># 编辑配置（可选，也可在 Web UI 中设置）</span><br><span class="line">vim ./config/config.xml</span><br></pre></td></tr></tbody></table></figure>
+
+<p>在 <code>&lt;gui&gt;</code> 部分确保有：</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;gui enabled="true" tls="false" debugging="false"&gt;</span><br><span class="line">    &lt;address&gt;0.0.0.0:8384&lt;/address&gt;</span><br><span class="line">    &lt;user&gt;your_username&lt;/user&gt;</span><br><span class="line">    &lt;password&gt;$2a$...&lt;/password&gt;  &lt;!-- 通过 Web UI 设置后自动生成 --&gt;</span><br><span class="line">    ...</span><br><span class="line">&lt;/gui&gt;</span><br></pre></td></tr></tbody></table></figure>
+
+
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker compose up -d</span><br></pre></td></tr></tbody></table></figure>
+
+<h5 id="6-（推荐）通过-SSH-隧道访问-Web-UI，不暴露-8384-端口-选择的方案"><a href="#6-（推荐）通过-SSH-隧道访问-Web-UI，不暴露-8384-端口-选择的方案" class="headerlink" title="6.（推荐）通过 SSH 隧道访问 Web UI，不暴露 8384 端口 选择的方案"></a>6.（推荐）通过 SSH 隧道访问 Web UI，不暴露 8384 端口 <font color="red">选择的方案</font></h5><p>更安全的做法是<strong>不对外开放 8384</strong>，通过 SSH 隧道访问：</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">ports:</span><br><span class="line">  # 将 Web UI 只绑定到 localhost</span><br><span class="line">  - "127.0.0.1:8384:8384"</span><br><span class="line">  - "22000:22000/tcp"</span><br><span class="line">  - "22000:22000/udp"</span><br><span class="line">  - "21027:21027/udp"</span><br></pre></td></tr></tbody></table></figure>
+
+<p>在 Mac 上通过 SSH 隧道访问：</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ssh -L 8384:127.0.0.1:8384 user@&lt;服务器IP&gt;</span><br><span class="line"># 然后浏览器打开 http://localhost:8384</span><br></pre></td></tr></tbody></table></figure>
+
+<hr>
+<h4 id="第二部分：两台-Mac-安装-Syncthing"><a href="#第二部分：两台-Mac-安装-Syncthing" class="headerlink" title="第二部分：两台 Mac 安装 Syncthing"></a>第二部分：两台 Mac 安装 Syncthing</h4><h5 id="方案-A：Homebrew-安装（推荐）"><a href="#方案-A：Homebrew-安装（推荐）" class="headerlink" title="方案 A：Homebrew 安装（推荐）"></a>方案 A：Homebrew 安装（推荐）</h5><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># 安装</span><br><span class="line">brew install syncthing</span><br><span class="line"></span><br><span class="line"># 设置为开机自启（作为服务运行）</span><br><span class="line">brew services start syncthing</span><br></pre></td></tr></tbody></table></figure>
+
+<p>启动后自动打开 Web UI: <code>http://localhost:8384</code></p>
+<h5 id="方案-B：下载官方-App"><a href="#方案-B：下载官方-App" class="headerlink" title="方案 B：下载官方 App"></a>方案 B：下载官方 App</h5><p>下载 <a target="_blank" rel="noopener" href="https://syncthing.net/downloads/">Syncthing macOS app</a> 或使用第三方图形界面 <a target="_blank" rel="noopener" href="https://github.com/syncthing/syncthing-macos/releases">Syncthing macOS (GitHub)</a>。</p>
+<hr>
+<h4 id="第三部分：三个节点互相连接"><a href="#第三部分：三个节点互相连接" class="headerlink" title="第三部分：三个节点互相连接"></a>第三部分：三个节点互相连接</h4><h5 id="1-获取每个节点的设备-ID"><a href="#1-获取每个节点的设备-ID" class="headerlink" title="1. 获取每个节点的设备 ID"></a>1. 获取每个节点的设备 ID</h5><p>在每个节点的 Web UI 中：</p>
+<p><strong>操作</strong> → <strong>显示 ID</strong> （Actions → Show ID）</p>
+<p>你会得到类似这样的设备 ID：</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">XXXXXXX-XXXXXXX-XXXXXXX-XXXXXXX-XXXXXXX-XXXXXXX-XXXXXXX-XXXXXXX</span><br></pre></td></tr></tbody></table></figure>
+
+<p>记录三个设备 ID：</p>
+<ul>
+<li>Mac A 的设备 ID</li>
+<li>Mac B 的设备 ID</li>
+<li>服务器的设备 ID</li>
+</ul>
+<h5 id="2-互相添加设备"><a href="#2-互相添加设备" class="headerlink" title="2. 互相添加设备"></a>2. 互相添加设备</h5><h4 id="在-Mac-A-的-Web-UI-上："><a href="#在-Mac-A-的-Web-UI-上：" class="headerlink" title="在 Mac A 的 Web UI 上："></a>在 Mac A 的 Web UI 上：</h4><ol>
+<li>点击 <strong>添加远程设备（Add Remote Device）</strong></li>
+<li>输入 <strong>服务器的设备 ID</strong></li>
+<li>设备名称填：<code>SG-Server</code></li>
+<li>地址填：<code>tcp://&lt;服务器IP&gt;:22000</code>（指定直连地址，更快建立连接）</li>
+<li>保存</li>
+</ol>
+<p>重复上述步骤，添加 <strong>Mac B 的设备 ID</strong>（地址可以留 <code>dynamic</code>）</p>
+<h4 id="在-Mac-B-的-Web-UI-上："><a href="#在-Mac-B-的-Web-UI-上：" class="headerlink" title="在 Mac B 的 Web UI 上："></a>在 Mac B 的 Web UI 上：</h4><ol>
+<li>添加 <strong>服务器的设备 ID</strong>，地址填 <code>tcp://&lt;服务器IP&gt;:22000</code></li>
+<li>添加 <strong>Mac A 的设备 ID</strong>，地址留 <code>dynamic</code></li>
+</ol>
+<h4 id="在服务器的-Web-UI-上："><a href="#在服务器的-Web-UI-上：" class="headerlink" title="在服务器的 Web UI 上："></a>在服务器的 Web UI 上：</h4><ol>
+<li>添加 <strong>Mac A 的设备 ID</strong>（地址留 <code>dynamic</code>）</li>
+<li>添加 <strong>Mac B 的设备 ID</strong>（地址留 <code>dynamic</code>）</li>
+</ol>
+<blockquote>
+<p>当一方添加另一方后，被添加方的 Web UI 通常会弹出确认请求，点击确认即可。</p>
+</blockquote>
+<h5 id="3-创建共享文件夹"><a href="#3-创建共享文件夹" class="headerlink" title="3. 创建共享文件夹"></a>3. 创建共享文件夹</h5><h6 id="在-Mac-A-上："><a href="#在-Mac-A-上：" class="headerlink" title="在 Mac A 上："></a>在 Mac A 上：</h6><ol>
+<li>点击 <strong>添加文件夹（Add Folder）</strong></li>
+<li>配置：<ul>
+<li><strong>文件夹标签</strong>：<code>Shared</code>（自定义名称）</li>
+<li><strong>文件夹 ID</strong>：<code>shared-sync</code>（三个设备必须一致！）</li>
+<li><strong>文件夹路径</strong>：<code>/Users/yourname/Sync</code>（Mac A 上的实际路径）</li>
+</ul>
+</li>
+<li>切换到 <strong>共享</strong> 标签页：<ul>
+<li>勾选 <strong>SG-Server</strong></li>
+<li>勾选 <strong>Mac B</strong></li>
+</ul>
+</li>
+<li>切换到 <strong>高级</strong> 标签页（可选）：<ul>
+<li>文件夹类型：<strong>发送和接收（Send &amp; Receive）</strong></li>
+</ul>
+</li>
+<li>保存</li>
+</ol>
+<h6 id="在服务器和-Mac-B-上："><a href="#在服务器和-Mac-B-上：" class="headerlink" title="在服务器和 Mac B 上："></a>在服务器和 Mac B 上：</h6><p>当 Mac A 共享文件夹后，服务器和 Mac B 的 Web UI 会弹出”Mac A 想和你共享文件夹”的提示。</p>
+<p><strong>在服务器上</strong> 接受共享：</p>
+<ul>
+<li>文件夹路径设为：<code>/var/syncthing/data/shared-sync</code></li>
+<li>共享对象勾选 Mac A 和 Mac B</li>
+<li>文件夹类型：<strong>发送和接收</strong></li>
+</ul>
+<p><strong>在 Mac B 上</strong> 接受共享：</p>
+<ul>
+<li>文件夹路径设为：<code>/Users/yourname/Sync</code></li>
+<li>共享对象勾选 Mac A 和 SG-Server</li>
+<li>文件夹类型：<strong>发送和接收</strong></li>
+</ul>
+<hr>
+<h2 id="第四部分：网络拓扑优化-选择的方案"><a href="#第四部分：网络拓扑优化-选择的方案" class="headerlink" title="第四部分：网络拓扑优化  选择的方案"></a>第四部分：网络拓扑优化  <font color="red">选择的方案</font></h2><h3 id="推荐的连接拓扑"><a href="#推荐的连接拓扑" class="headerlink" title="推荐的连接拓扑"></a>推荐的连接拓扑</h3><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Mac A ←→ 服务器 ←→ Mac B</span><br><span class="line">Mac A ←→ Mac B （如果在同一局域网可直连）</span><br></pre></td></tr></tbody></table></figure>
+
+<p>三个节点互相连接，Syncthing 会自动选择最优路径。</p>
+<h3 id="在服务器上设置为-“Introducer”（可选）"><a href="#在服务器上设置为-“Introducer”（可选）" class="headerlink" title="在服务器上设置为 “Introducer”（可选）"></a>在服务器上设置为 “Introducer”（可选）</h3><p>在 Mac A 和 Mac B 的设备配置中，将服务器设为 <strong>Introducer（介绍人）</strong>：</p>
+<blockquote>
+<p>编辑设备 → 勾选 <strong>Introducer</strong></p>
+</blockquote>
+<p>这样服务器上新增的共享设备/文件夹会自动同步到所有客户端。</p>
+<hr>
+<h2 id="第五部分：完整配置参考图"><a href="#第五部分：完整配置参考图" class="headerlink" title="第五部分：完整配置参考图"></a>第五部分：完整配置参考图</h2><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">┌─────────────────────────────────────────────────────────┐</span><br><span class="line">│                    新加坡服务器                           │</span><br><span class="line">│  Docker: syncthing/syncthing                            │</span><br><span class="line">│  设备 ID: SERVER-xxxx-xxxx                              │</span><br><span class="line">│  端口: 22000(TCP/UDP), 8384(Web UI)                     │</span><br><span class="line">│  同步目录: /var/syncthing/data/shared-sync              │</span><br><span class="line">│  角色: Send &amp; Receive                                   │</span><br><span class="line">│  连接设备: Mac A, Mac B                                  │</span><br><span class="line">└──────────┬─────────────────────────────────┬────────────┘</span><br><span class="line">           │                                 │</span><br><span class="line">     TCP/22000                         TCP/22000</span><br><span class="line">           │                                 │</span><br><span class="line">┌──────────▼──────────┐       ┌──────────────▼──────────┐</span><br><span class="line">│       Mac A         │       │         Mac B           │</span><br><span class="line">│  Syncthing (brew)   │       │  Syncthing (brew)       │</span><br><span class="line">│  同步目录:           │       │  同步目录:               │</span><br><span class="line">│  ~/Sync             │◄─────►│  ~/Sync                 │</span><br><span class="line">│  连接: Server, MacB │       │  连接: Server, MacA     │</span><br><span class="line">└─────────────────────┘       └─────────────────────────┘</span><br></pre></td></tr></tbody></table></figure>
+
+<hr>
+<h2 id="第六部分：常用维护命令"><a href="#第六部分：常用维护命令" class="headerlink" title="第六部分：常用维护命令"></a>第六部分：常用维护命令</h2><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"># 查看日志</span><br><span class="line">docker compose logs -f syncthing</span><br><span class="line"></span><br><span class="line"># 重启</span><br><span class="line">docker compose restart</span><br><span class="line"></span><br><span class="line"># 更新镜像</span><br><span class="line">docker compose pull</span><br><span class="line">docker compose up -d</span><br><span class="line"></span><br><span class="line"># 查看同步状态</span><br><span class="line">docker compose exec syncthing syncthing cli show system</span><br><span class="line"></span><br><span class="line"># 备份配置</span><br><span class="line">cp -r /opt/syncthing/config /opt/syncthing/config.bak</span><br></pre></td></tr></tbody></table></figure>
+
+<hr>
+<h2 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h2><table>
+<thead>
+<tr>
+<th>项目</th>
+<th>建议</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>安全性</strong></td>
+<td>Web UI 8384 端口不要对公网开放，使用 SSH 隧道或设置强密码</td>
+</tr>
+<tr>
+<td><strong>磁盘空间</strong></td>
+<td>服务器磁盘需能容纳全部同步文件，注意监控</td>
+</tr>
+<tr>
+<td><strong>版本控制</strong></td>
+<td>Syncthing 支持文件版本控制，在文件夹设置→版本控制中开启</td>
+</tr>
+<tr>
+<td><strong>忽略文件</strong></td>
+<td>在同步目录下创建 <code>.stignore</code> 文件，写入不需要同步的文件模式</td>
+</tr>
+<tr>
+<td><strong>冲突处理</strong></td>
+<td>同时编辑同一文件会产生 <code>.sync-conflict-*</code> 冲突文件</td>
+</tr>
+<tr>
+<td><strong>NAT 穿透</strong></td>
+<td>三个节点都连服务器，不存在穿透问题；两台 Mac 直连可能需要中继</td>
+</tr>
+</tbody></table>
+<h3 id="stignore-示例"><a href="#stignore-示例" class="headerlink" title=".stignore 示例"></a><code>.stignore</code> 示例</h3><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">// 忽略 macOS 系统文件</span><br><span class="line">.DS_Store</span><br><span class="line">._*</span><br><span class="line">.Spotlight-V100</span><br><span class="line">.Trashes</span><br><span class="line"></span><br><span class="line">// 忽略临时文件</span><br><span class="line">*.tmp</span><br><span class="line">*.swp</span><br><span class="line">~*</span><br><span class="line"></span><br><span class="line">// 忽略 node_modules</span><br><span class="line">node_modules</span><br></pre></td></tr></tbody></table></figure>
+
+<p>这样就完成了！三个节点互相同步，即使一台 Mac 关机，另一台的修改会先同步到服务器，等关机的 Mac 开机后自动从服务器拉取最新文件。</p>
+
+    </article>
+    <!-- license -->
+        <div class="license-wrapper">
+            <p>原文作者：<a href="https://skylyong.github.io">LY</a>
+            <p>原文链接：<a href="https://skylyong.github.io/2026/04/01/duo-tai-mac-jian-shu-ju-tong-bu-git-luo-cang-ku-syncthing-fang-an/">https://skylyong.github.io/2026/04/01/duo-tai-mac-jian-shu-ju-tong-bu-git-luo-cang-ku-syncthing-fang-an/</a>
+            <p>发表日期：<a href="https://skylyong.github.io/2026/04/01/duo-tai-mac-jian-shu-ju-tong-bu-git-luo-cang-ku-syncthing-fang-an/">April 1st 2026, 7:41:57 pm</a>
+            <p>更新日期：<a href="https://skylyong.github.io/2026/04/01/duo-tai-mac-jian-shu-ju-tong-bu-git-luo-cang-ku-syncthing-fang-an/">April 1st 2026, 7:43:52 pm</a>
+            <p>版权声明：本文采用<a rel="license noopener" target="_blank" href="http://creativecommons.org/licenses/by-nc/4.0/">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可</p>
+        </div>
+    <!-- paginator -->
+    <ul class="post-paginator">
+        <li class="next">
+        </li>
+        <li class="previous">
+                <div class="prevSlogan">Previous Post</div>
+                <a href="/2026/02/26/git-da-wen-jian-chu-li/" title="Git大文件处理">
+                    <div class="prevTitle">Git大文件处理</div>
+                </a>
+        </li>
+    </ul>
+    <!-- comment -->
+        <div class="post-comment">
+            <!-- 来必力 City 版安装代码 -->
+
+            
+            
+            
+            <!-- utteranc评论 -->
+    <script src='https://utteranc.es/client.js'
+        repo='Skylyong/blog-commit'
+        issue-term='pathname'
+        label='utteranc'
+        theme='github-light'
+        crossorigin='anonymous'
+        async>
+    </script>
+
+            <!-- partial('_partial/comment/changyan') -->
+            <!--PC版-->
+
+            
+            
+            
+        </div>
+    <!-- timeliness note -->
+    <!-- idea from: https://hexo.fluid-dev.com/posts/hexo-injector/#%E6%96%87%E7%AB%A0%E6%97%B6%E6%95%88%E6%80%A7%E6%8F%90%E7%A4%BA -->
+    <!-- Mathjax -->
+</main>
+
+                <!-- profile -->
+            </div>
+            <footer class="footer footer-unloaded">
+    <!-- social  -->
+
+    <!-- <h1>Page Layout: post</h1> -->
+
+    
+        <div class="social">
+                            <a href="mailto:lyong_s@foxmail.com" class="iconfont-archer email" title="email" ></a>
+                <a href="//github.com/Skylyong" class="iconfont-archer github" target="_blank" title="github"></a>
+
+        </div>
+    
+    <!-- powered by Hexo  -->
+    
+    <div class="copyright">
+        <span id="hexo-power">Powered by <a href="https://hexo.io/" target="_blank">Hexo</a></span><span class="iconfont-archer power">&#xe635;</span><span id="theme-info">theme <a href="https://github.com/fi3ework/hexo-theme-archer" target="_blank">Archer</a></span>
+    </div>
+
+    <!-- website approve for Chinese user -->
+    <!-- 不蒜子  -->
+        <div class="busuanzi-container">
+                <span id="busuanzi_container_site_pv">PV: <span id="busuanzi_value_site_pv"></span> :)</span>
+        </div>
+</footer>
+
+        </div>
+        <!-- toc -->
+            <div class="toc-wrapper toc-wrapper-loding" style=    top:50vh;
+>
+                <div class="toc-catalog">
+                    <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
+                </div>
+                <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Git-%E8%A3%B8%E4%BB%93%E5%BA%93-%EF%BC%88%E8%87%AA%E5%8A%A8%E5%90%8C%E6%AD%A5%EF%BC%89-Syncthing-%E6%96%B9%E6%A1%88"><span class="toc-number">1.</span> <span class="toc-text">Git 裸仓库 （自动同步）+ Syncthing 方案</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81Git-%E8%A3%B8%E4%BB%93%E5%BA%93%E7%AE%A1%E7%90%86-Dotfiles-%E9%80%89%E6%8B%A9%E6%96%B9%E6%A1%88"><span class="toc-number">1.1.</span> <span class="toc-text">一、Git 裸仓库管理 Dotfiles 选择方案</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-%E4%BB%80%E4%B9%88%E6%98%AF%E8%A3%B8%E4%BB%93%E5%BA%93%EF%BC%9F%E4%B8%BA%E4%BB%80%E4%B9%88%E7%94%A8%E5%AE%83%EF%BC%9F"><span class="toc-number">1.1.1.</span> <span class="toc-text">1.1 什么是裸仓库？为什么用它？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-%E5%AE%8C%E6%95%B4%E6%90%AD%E5%BB%BA%E6%AD%A5%E9%AA%A4"><span class="toc-number">1.1.2.</span> <span class="toc-text">1.2 完整搭建步骤</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%AC%AC%E4%B8%80%E6%AD%A5%EF%BC%9A%E5%88%9B%E5%BB%BA-GitHub-GitLab-%E7%A7%81%E6%9C%89%E4%BB%93%E5%BA%93"><span class="toc-number">1.1.2.1.</span> <span class="toc-text">第一步：创建 GitHub&#x2F;GitLab 私有仓库</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%AC%AC%E4%BA%8C%E6%AD%A5%EF%BC%9A%E5%9C%A8%E7%AC%AC%E4%B8%80%E5%8F%B0-Mac-%E4%B8%8A%E5%88%9D%E5%A7%8B%E5%8C%96%EF%BC%88%E5%81%87%E8%AE%BE%E4%BB%8E-MacBook-%E5%BC%80%E5%A7%8B%EF%BC%89"><span class="toc-number">1.1.2.2.</span> <span class="toc-text">第二步：在第一台 Mac 上初始化（假设从 MacBook 开始）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%AC%AC%E4%B8%89%E6%AD%A5%EF%BC%9A%E6%B7%BB%E5%8A%A0%E4%BD%A0%E8%A6%81%E7%AE%A1%E7%90%86%E7%9A%84%E6%96%87%E4%BB%B6"><span class="toc-number">1.1.2.3.</span> <span class="toc-text">第三步：添加你要管理的文件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%AC%AC%E5%9B%9B%E6%AD%A5%EF%BC%9A%E6%8F%90%E4%BA%A4%E5%B9%B6%E6%8E%A8%E9%80%81"><span class="toc-number">1.1.2.4.</span> <span class="toc-text">第四步：提交并推送</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%AC%AC%E4%BA%94%E6%AD%A5%EF%BC%9A%E5%9C%A8%E7%AC%AC%E4%BA%8C%E5%8F%B0-Mac%EF%BC%88Mac-Mini%EF%BC%89%E4%B8%8A%E5%85%8B%E9%9A%86"><span class="toc-number">1.1.2.5.</span> <span class="toc-text">第五步：在第二台 Mac（Mac Mini）上克隆</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-3-%E5%A4%84%E7%90%86-Intel-vs-Apple-Silicon-%E5%B7%AE%E5%BC%82"><span class="toc-number">1.1.3.</span> <span class="toc-text">1.3 处理 Intel vs Apple Silicon 差异</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-4-%E6%97%A5%E5%B8%B8%E5%B7%A5%E4%BD%9C%E6%B5%81"><span class="toc-number">1.1.4.</span> <span class="toc-text">1.4 日常工作流</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-5-%E5%AE%89%E5%85%A8%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9"><span class="toc-number">1.1.5.</span> <span class="toc-text">1.5 安全注意事项</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-6-Git-Dotfiles-%E8%87%AA%E5%8A%A8%E5%8C%96%E5%90%8C%E6%AD%A5%E6%96%B9%E6%A1%88"><span class="toc-number">1.1.6.</span> <span class="toc-text">1.6 Git Dotfiles 自动化同步方案</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%A0%B8%E5%BF%83%E6%80%9D%E8%B7%AF"><span class="toc-number">1.1.6.1.</span> <span class="toc-text">核心思路</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%96%B9%E6%A1%88%E4%B8%80%EF%BC%9ALaunchAgent-%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1%EF%BC%88%E6%8E%A8%E8%8D%90%EF%BC%89-%E9%80%89%E6%8B%A9%E6%96%B9%E6%A1%88"><span class="toc-number">1.1.6.2.</span> <span class="toc-text">方案一：LaunchAgent 定时任务（推荐） 选择方案</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#%E7%AC%AC%E4%B8%80%E6%AD%A5%EF%BC%9A%E5%88%9B%E5%BB%BA%E8%87%AA%E5%8A%A8%E5%90%8C%E6%AD%A5%E8%84%9A%E6%9C%AC"><span class="toc-number">1.1.6.2.0.1.</span> <span class="toc-text">第一步：创建自动同步脚本</span></a></li></ol></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E7%AC%AC%E4%BA%8C%E6%AD%A5%EF%BC%9A%E5%88%9B%E5%BB%BA-LaunchAgent%EF%BC%88%E5%AE%9A%E6%97%B6%E6%89%A7%E8%A1%8C%EF%BC%89"><span class="toc-number">1.1.6.2.1.</span> <span class="toc-text">第二步：创建 LaunchAgent（定时执行）</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#%E7%AE%A1%E7%90%86%E5%91%BD%E4%BB%A4"><span class="toc-number">1.1.6.2.1.1.</span> <span class="toc-text">管理命令</span></a></li></ol></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%96%B9%E6%A1%88%E4%BA%8C%EF%BC%9Afswatch-%E6%96%87%E4%BB%B6%E7%9B%91%E5%90%AC%EF%BC%88%E5%AE%9E%E6%97%B6%E5%90%8C%E6%AD%A5%EF%BC%89"><span class="toc-number">1.1.6.3.</span> <span class="toc-text">方案二：fswatch 文件监听（实时同步）</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E7%9B%91%E5%90%AC%E8%84%9A%E6%9C%AC"><span class="toc-number">1.1.6.3.1.</span> <span class="toc-text">监听脚本</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E8%AE%BE%E7%BD%AE%E4%B8%BA%E5%90%8E%E5%8F%B0%E6%9C%8D%E5%8A%A1"><span class="toc-number">1.1.6.3.2.</span> <span class="toc-text">设置为后台服务</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%96%B9%E6%A1%88%E4%B8%89%EF%BC%9AShell-%E9%92%A9%E5%AD%90%EF%BC%88%E6%9C%80%E7%AE%80%E5%8D%95%EF%BC%89"><span class="toc-number">1.1.6.4.</span> <span class="toc-text">方案三：Shell 钩子（最简单）</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%B8%89%E7%A7%8D%E6%96%B9%E6%A1%88%E5%AF%B9%E6%AF%94"><span class="toc-number">1.1.6.4.1.</span> <span class="toc-text">三种方案对比</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%F0%9F%8E%AF-%E6%88%91%E7%9A%84%E6%8E%A8%E8%8D%90"><span class="toc-number">1.1.6.4.2.</span> <span class="toc-text">🎯 我的推荐</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%96%B0%E6%96%87%E4%BB%B6%E7%9A%84%E5%A4%84%E7%90%86"><span class="toc-number">1.1.6.4.3.</span> <span class="toc-text">新文件的处理</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81Syncthing-%E6%96%87%E4%BB%B6%E5%A4%B9%E5%90%8C%E6%AD%A5-%E9%80%89%E6%8B%A9%E6%96%B9%E6%A1%88"><span class="toc-number">1.2.</span> <span class="toc-text">二、Syncthing 文件夹同步 选择方案</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-%E6%9E%B6%E6%9E%84%E7%90%86%E8%A7%A3"><span class="toc-number">1.2.1.</span> <span class="toc-text">2.1 架构理解</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-%E5%AE%89%E8%A3%85"><span class="toc-number">1.2.2.</span> <span class="toc-text">2.2 安装</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3-%E5%88%9D%E5%A7%8B%E9%85%8D%E7%BD%AE"><span class="toc-number">1.2.3.</span> <span class="toc-text">2.3 初始配置</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%89%93%E5%BC%80-Web-%E7%AE%A1%E7%90%86%E7%95%8C%E9%9D%A2"><span class="toc-number">1.2.3.1.</span> <span class="toc-text">打开 Web 管理界面</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%AD%A5%E9%AA%A4-1%EF%BC%9A%E4%BA%92%E7%9B%B8%E6%B7%BB%E5%8A%A0%E8%AE%BE%E5%A4%87"><span class="toc-number">1.2.3.2.</span> <span class="toc-text">步骤 1：互相添加设备</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%AD%A5%E9%AA%A4-2%EF%BC%9A%E6%B7%BB%E5%8A%A0%E8%A6%81%E5%90%8C%E6%AD%A5%E7%9A%84%E6%96%87%E4%BB%B6%E5%A4%B9"><span class="toc-number">1.2.3.3.</span> <span class="toc-text">步骤 2：添加要同步的文件夹</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-4-%E6%8E%A8%E8%8D%90%E5%90%8C%E6%AD%A5%E7%9A%84%E6%96%87%E4%BB%B6%E5%A4%B9%E5%8F%8A%E9%85%8D%E7%BD%AE"><span class="toc-number">1.2.4.</span> <span class="toc-text">2.4 推荐同步的文件夹及配置</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%AF%8F%E4%B8%AA%E6%96%87%E4%BB%B6%E5%A4%B9%E7%9A%84%E5%85%B7%E4%BD%93%E9%85%8D%E7%BD%AE"><span class="toc-number">1.2.4.1.</span> <span class="toc-text">每个文件夹的具体配置</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-5-%E8%AE%BE%E7%BD%AE%E5%BF%BD%E7%95%A5%E6%96%87%E4%BB%B6"><span class="toc-number">1.2.5.</span> <span class="toc-text">2.5 设置忽略文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-6-%E9%AB%98%E7%BA%A7%E9%85%8D%E7%BD%AE"><span class="toc-number">1.2.6.</span> <span class="toc-text">2.6 高级配置</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%91%BD%E4%BB%A4%E8%A1%8C%E6%93%8D%E4%BD%9C%EF%BC%88%E5%8F%AF%E9%80%89%EF%BC%8C%E4%B8%8D%E7%94%A8-Web-UI%EF%BC%89"><span class="toc-number">1.2.6.1.</span> <span class="toc-text">命令行操作（可选，不用 Web UI）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E4%BD%8D%E7%BD%AE"><span class="toc-number">1.2.6.2.</span> <span class="toc-text">配置文件位置</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%AE%BE%E7%BD%AE-GUI-%E5%AF%86%E7%A0%81%EF%BC%88%E5%AE%89%E5%85%A8%EF%BC%89"><span class="toc-number">1.2.6.3.</span> <span class="toc-text">设置 GUI 密码（安全）</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-7-%E5%86%B2%E7%AA%81%E5%A4%84%E7%90%86"><span class="toc-number">1.2.7.</span> <span class="toc-text">2.7 冲突处理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-8-%E6%80%A7%E8%83%BD%E5%92%8C%E7%BD%91%E7%BB%9C"><span class="toc-number">1.2.8.</span> <span class="toc-text">2.8 性能和网络</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E4%B8%A4%E4%B8%AA%E6%96%B9%E6%A1%88%E7%9A%84%E5%8D%8F%E4%BD%9C%E6%96%B9%E5%BC%8F"><span class="toc-number">1.3.</span> <span class="toc-text">三、两个方案的协作方式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%8C%E6%95%B4%E7%9A%84%E5%88%9D%E6%AC%A1%E6%90%AD%E5%BB%BA%E6%B8%85%E5%8D%95"><span class="toc-number">1.3.1.</span> <span class="toc-text">完整的初次搭建清单</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E4%BD%BF%E7%94%A8-Syncthing-%E5%AE%9E%E7%8E%B0%E4%B8%A4%E5%8F%B0-Mac-%E9%80%9A%E8%BF%87%E6%96%B0%E5%8A%A0%E5%9D%A1%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%90%8C%E6%AD%A5%E6%96%87%E4%BB%B6"><span class="toc-number">1.4.</span> <span class="toc-text">三、使用 Syncthing 实现两台 Mac 通过新加坡服务器同步文件</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%9E%B6%E6%9E%84%E8%AF%B4%E6%98%8E"><span class="toc-number">1.4.0.1.</span> <span class="toc-text">架构说明</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%AC%AC%E4%B8%80%E9%83%A8%E5%88%86%EF%BC%9A%E6%96%B0%E5%8A%A0%E5%9D%A1%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%83%A8%E7%BD%B2-Syncthing%EF%BC%88Docker-Compose%EF%BC%89"><span class="toc-number">1.4.0.2.</span> <span class="toc-text">第一部分：新加坡服务器部署 Syncthing（Docker Compose）</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-%E5%88%9B%E5%BB%BA%E9%A1%B9%E7%9B%AE%E7%9B%AE%E5%BD%95"><span class="toc-number">1.4.0.2.1.</span> <span class="toc-text">1. 创建项目目录</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-%E5%88%9B%E5%BB%BA-docker-compose-yml"><span class="toc-number">1.4.0.2.2.</span> <span class="toc-text">2. 创建 docker-compose.yml</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-%E5%90%AF%E5%8A%A8%E6%9C%8D%E5%8A%A1"><span class="toc-number">1.4.0.2.3.</span> <span class="toc-text">3. 启动服务</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#4-%E9%85%8D%E7%BD%AE%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%98%B2%E7%81%AB%E5%A2%99"><span class="toc-number">1.4.0.2.4.</span> <span class="toc-text">4. 配置服务器防火墙</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#5-%E8%AE%BE%E7%BD%AE-Web-UI-%E5%AF%86%E7%A0%81"><span class="toc-number">1.4.0.2.5.</span> <span class="toc-text">5. 设置 Web UI 密码</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#6-%EF%BC%88%E6%8E%A8%E8%8D%90%EF%BC%89%E9%80%9A%E8%BF%87-SSH-%E9%9A%A7%E9%81%93%E8%AE%BF%E9%97%AE-Web-UI%EF%BC%8C%E4%B8%8D%E6%9A%B4%E9%9C%B2-8384-%E7%AB%AF%E5%8F%A3-%E9%80%89%E6%8B%A9%E7%9A%84%E6%96%B9%E6%A1%88"><span class="toc-number">1.4.0.2.6.</span> <span class="toc-text">6.（推荐）通过 SSH 隧道访问 Web UI，不暴露 8384 端口 选择的方案</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%AC%AC%E4%BA%8C%E9%83%A8%E5%88%86%EF%BC%9A%E4%B8%A4%E5%8F%B0-Mac-%E5%AE%89%E8%A3%85-Syncthing"><span class="toc-number">1.4.0.3.</span> <span class="toc-text">第二部分：两台 Mac 安装 Syncthing</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%96%B9%E6%A1%88-A%EF%BC%9AHomebrew-%E5%AE%89%E8%A3%85%EF%BC%88%E6%8E%A8%E8%8D%90%EF%BC%89"><span class="toc-number">1.4.0.3.1.</span> <span class="toc-text">方案 A：Homebrew 安装（推荐）</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%96%B9%E6%A1%88-B%EF%BC%9A%E4%B8%8B%E8%BD%BD%E5%AE%98%E6%96%B9-App"><span class="toc-number">1.4.0.3.2.</span> <span class="toc-text">方案 B：下载官方 App</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%AC%AC%E4%B8%89%E9%83%A8%E5%88%86%EF%BC%9A%E4%B8%89%E4%B8%AA%E8%8A%82%E7%82%B9%E4%BA%92%E7%9B%B8%E8%BF%9E%E6%8E%A5"><span class="toc-number">1.4.0.4.</span> <span class="toc-text">第三部分：三个节点互相连接</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-%E8%8E%B7%E5%8F%96%E6%AF%8F%E4%B8%AA%E8%8A%82%E7%82%B9%E7%9A%84%E8%AE%BE%E5%A4%87-ID"><span class="toc-number">1.4.0.4.1.</span> <span class="toc-text">1. 获取每个节点的设备 ID</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-%E4%BA%92%E7%9B%B8%E6%B7%BB%E5%8A%A0%E8%AE%BE%E5%A4%87"><span class="toc-number">1.4.0.4.2.</span> <span class="toc-text">2. 互相添加设备</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9C%A8-Mac-A-%E7%9A%84-Web-UI-%E4%B8%8A%EF%BC%9A"><span class="toc-number">1.4.0.5.</span> <span class="toc-text">在 Mac A 的 Web UI 上：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9C%A8-Mac-B-%E7%9A%84-Web-UI-%E4%B8%8A%EF%BC%9A"><span class="toc-number">1.4.0.6.</span> <span class="toc-text">在 Mac B 的 Web UI 上：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9C%A8%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%9A%84-Web-UI-%E4%B8%8A%EF%BC%9A"><span class="toc-number">1.4.0.7.</span> <span class="toc-text">在服务器的 Web UI 上：</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#3-%E5%88%9B%E5%BB%BA%E5%85%B1%E4%BA%AB%E6%96%87%E4%BB%B6%E5%A4%B9"><span class="toc-number">1.4.0.7.1.</span> <span class="toc-text">3. 创建共享文件夹</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#%E5%9C%A8-Mac-A-%E4%B8%8A%EF%BC%9A"><span class="toc-number">1.4.0.7.1.1.</span> <span class="toc-text">在 Mac A 上：</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#%E5%9C%A8%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%92%8C-Mac-B-%E4%B8%8A%EF%BC%9A"><span class="toc-number">1.4.0.7.1.2.</span> <span class="toc-text">在服务器和 Mac B 上：</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E5%9B%9B%E9%83%A8%E5%88%86%EF%BC%9A%E7%BD%91%E7%BB%9C%E6%8B%93%E6%89%91%E4%BC%98%E5%8C%96-%E9%80%89%E6%8B%A9%E7%9A%84%E6%96%B9%E6%A1%88"><span class="toc-number">1.5.</span> <span class="toc-text">第四部分：网络拓扑优化  选择的方案</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8E%A8%E8%8D%90%E7%9A%84%E8%BF%9E%E6%8E%A5%E6%8B%93%E6%89%91"><span class="toc-number">1.5.1.</span> <span class="toc-text">推荐的连接拓扑</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9C%A8%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%8A%E8%AE%BE%E7%BD%AE%E4%B8%BA-%E2%80%9CIntroducer%E2%80%9D%EF%BC%88%E5%8F%AF%E9%80%89%EF%BC%89"><span class="toc-number">1.5.2.</span> <span class="toc-text">在服务器上设置为 “Introducer”（可选）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%BA%94%E9%83%A8%E5%88%86%EF%BC%9A%E5%AE%8C%E6%95%B4%E9%85%8D%E7%BD%AE%E5%8F%82%E8%80%83%E5%9B%BE"><span class="toc-number">1.6.</span> <span class="toc-text">第五部分：完整配置参考图</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E5%85%AD%E9%83%A8%E5%88%86%EF%BC%9A%E5%B8%B8%E7%94%A8%E7%BB%B4%E6%8A%A4%E5%91%BD%E4%BB%A4"><span class="toc-number">1.7.</span> <span class="toc-text">第六部分：常用维护命令</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9"><span class="toc-number">1.8.</span> <span class="toc-text">注意事项</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#stignore-%E7%A4%BA%E4%BE%8B"><span class="toc-number">1.8.1.</span> <span class="toc-text">.stignore 示例</span></a></li></ol></li></ol></li></ol>
+            </div>
+        <!-- sidebar -->
+        <div class="sidebar sidebar-hide">
+    <ul class="sidebar-tabs sidebar-tabs-active-0">
+        <li class="sidebar-tab-archives"><span class="iconfont-archer">&#xe67d;</span><span class="tab-name">Archive</span></li>
+        <li class="sidebar-tab-tags"><span class="iconfont-archer">&#xe61b;</span><span class="tab-name">Tag</span></li>
+        <li class="sidebar-tab-categories"><span class="iconfont-archer">&#xe666;</span><span class="tab-name">Cate</span></li>
+    </ul>
+    <div class="sidebar-content sidebar-content-show-archive">
+        <div class="sidebar-panel-archives">
+    <!-- 在 ejs 中将 archive 按照时间排序 -->
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+    <div class="total-and-search">
+        <div class="total-archive">
+        Total : 80
+        </div>
+        <!-- search  -->
+            <div class="site-search site-search-loading popup-trigger">
+                <span class="iconfont-archer search-icon">&#xe627;</span>
+            </div>
+    </div>
+    <div class="post-archive">
+            <div class="archive-year"> 2026 </div>
+            <ul class="year-list">
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/01</span>
+            <a class="archive-post-title" href="/2026/04/01/duo-tai-mac-jian-shu-ju-tong-bu-git-luo-cang-ku-syncthing-fang-an/">多台mac间数据同步：Git裸仓库+Syncthing方案</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/26</span>
+            <a class="archive-post-title" href="/2026/02/26/git-da-wen-jian-chu-li/">Git大文件处理</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/19</span>
+            <a class="archive-post-title" href="/2026/02/19/mac-shang-shi-yong-chun-ming-ling-xing-docker/">mac上使用纯命令行docker</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/07</span>
+            <a class="archive-post-title" href="/2026/02/07/2026-nian-chun-bian-cheng-shua-ti-ji-lu/">2026年春编程刷题记录</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/16</span>
+            <a class="archive-post-title" href="/2026/01/16/einx-and-einops/">Einx-and-einops</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/16</span>
+            <a class="archive-post-title" href="/2026/01/16/chunk-hua-fen-fang-fa/">Chunk划分方法</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/09</span>
+            <a class="archive-post-title" href="/2026/01/09/bpe-fen-ci-bian-ma-he-jie-ma/">BPE分词编码和解码</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/09</span>
+            <a class="archive-post-title" href="/2026/01/09/bpe-fen-ci-xun-lian/">BPE分词训练</a>
+        </li>
+                </ul>
+            <div class="archive-year"> 2025 </div>
+            <ul class="year-list">
+        <li class="archive-post-item">
+            <span class="archive-post-date">12/02</span>
+            <a class="archive-post-title" href="/2025/12/02/clash-gui-ze-pei-zhi-zhi-nan/">Clash规则配置指南</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/20</span>
+            <a class="archive-post-title" href="/2025/11/20/1-cs336-bpe-fen-ci-qi-jie-shao/">1-cs336-BPE分词器介绍</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/16</span>
+            <a class="archive-post-title" href="/2025/10/16/linux-chang-yong-ming-ling-jie-shi/">linux常用命令解释</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/14</span>
+            <a class="archive-post-title" href="/2025/10/14/shi-yong-rclone-zai-duo-ge-fu-wu-qi-zhi-jian-chuan-shu-wen-jian/">使用rclone在多个服务器之间传输文件</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/08</span>
+            <a class="archive-post-title" href="/2025/10/08/ubuntu-shang-che-di-xie-zai-he-chong-zhuang-nvidia-qu-dong-ji-xiang-guan-zu-jian/">Ubuntu上彻底卸载和重装NVIDIA驱动及相关组件</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/03</span>
+            <a class="archive-post-title" href="/2025/10/03/ssh-pei-zhi-jie-shao/">ssh配置介绍</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/02</span>
+            <a class="archive-post-title" href="/2025/10/02/mineru-an-zhuang-bu-shu/">MinerU安装部署</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">09/29</span>
+            <a class="archive-post-title" href="/2025/09/29/tong-guo-docker-yun-xing-easyconnect-deng-vpn-ruan-jian/">通过docker运行EasyConnect等VPN软件</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">09/28</span>
+            <a class="archive-post-title" href="/2025/09/28/quan-ju-pei-zhi-docker-ke-hu-duan-dai-li/">全局配置Docker客户端代理</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">09/16</span>
+            <a class="archive-post-title" href="/2025/09/16/linux-ci-pan-guan-li-ji-minio-fu-wu-pei-zhi/">Linux磁盘管理及MinIO服务配置</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/10</span>
+            <a class="archive-post-title" href="/2025/08/10/bu-dong-dian-he-ya-suo-ying-she/">不动点和压缩映射</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/10</span>
+            <a class="archive-post-title" href="/2025/08/10/xiang-liang-fan-shu/">向量范数</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/10</span>
+            <a class="archive-post-title" href="/2025/08/10/shu-xue-zhong-de-qi-ci-xing-li-jie/">数学中的齐次性理解</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/10</span>
+            <a class="archive-post-title" href="/2025/08/10/ju-zhen-fan-shu/">矩阵范数</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/10</span>
+            <a class="archive-post-title" href="/2025/08/10/fan-shu-de-ji-ben-gai-nian/">范数的基本概念</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">07/28</span>
+            <a class="archive-post-title" href="/2025/07/28/claude-code-xue-xi-ji-lu/">Claude-Code学习记录</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">07/25</span>
+            <a class="archive-post-title" href="/2025/07/25/uv-chang-yong-cao-zuo/">uv常用操作</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">07/13</span>
+            <a class="archive-post-title" href="/2025/07/13/quan-qi-wang-ding-li-gong-shi-tui-dao/">全期望定理公式推导</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">07/12</span>
+            <a class="archive-post-title" href="/2025/07/12/bei-er-man-deng-shi-jie-shao-ji-tui-dao/">贝尔曼等式介绍及推导</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">06/17</span>
+            <a class="archive-post-title" href="/2025/06/17/shi-yong-docker-gou-jian-webdav-fu-wu-qi/">使用Docker构建Webdav服务器</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/14</span>
+            <a class="archive-post-title" href="/2025/05/14/git-team-collab-workflow/">git_team_collab_workflow</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/24</span>
+            <a class="archive-post-title" href="/2025/04/24/ben-di-gou-jian-docker-jing-xiang-bing-shang-chuan-zhi-a-li-yun-jing-xiang-fu-wu-zhan/">本地构建docker镜像并上传至阿里云镜像服务站</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/18</span>
+            <a class="archive-post-title" href="/2025/04/18/an-zhuang-torch-scatter-shi-yu-dao-de-keng/">安装torch-scatter时遇到的坑</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/17</span>
+            <a class="archive-post-title" href="/2025/03/17/neo4j-dao-ru-jie-dian-he-bian-de-python-dai-ma/">neo4j导入节点和边的python代码</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/09</span>
+            <a class="archive-post-title" href="/2025/03/09/jie-pai-he-ji/">街拍合集</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/09</span>
+            <a class="archive-post-title" href="/2025/03/09/ren-xiang-she-ying-he-ji/">人像摄影合集</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/08</span>
+            <a class="archive-post-title" href="/2025/03/08/matplotlib-xian-shi-zhong-wen/">matplotlib 设置显示中文</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/08</span>
+            <a class="archive-post-title" href="/2025/03/08/python-duo-jin-cheng-shi-li/">python多进程示例</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/06</span>
+            <a class="archive-post-title" href="/2025/03/06/shi-yong-bert-de-dao-duan-yu-xiang-liang-biao-shi-bing-jin-xing-ceng-ci-ju-lei-shi-xian-xiang-si-xing-qu-chong/">使用BERT得到短语向量表示并进行层次聚类实现相似性去重</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/06</span>
+            <a class="archive-post-title" href="/2025/03/06/ji-yu-bian-ji-ju-chi-de-wen-ben-ceng-ci-ju-lei/">基于编辑距离的文本层次聚类</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/27</span>
+            <a class="archive-post-title" href="/2025/02/27/ai-jing-sai-ping-tai/">Ai竞赛平台</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/19</span>
+            <a class="archive-post-title" href="/2025/02/19/python-ri-chang-kai-fa-za-ji/">python日常开发杂记</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/12</span>
+            <a class="archive-post-title" href="/2025/02/12/tong-guo-docker-bu-shu-doccano-biao-zhu-gong-ju/">通过docker部署doccano标注工具</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/06</span>
+            <a class="archive-post-title" href="/2025/02/06/zai-cheng-gong-de-ri-zi-fu-xi-zi-liao-bu-jian-liao/">在呈贡的日子——复习资料不见了</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/06</span>
+            <a class="archive-post-title" href="/2025/02/06/zai-cheng-gong-de-ri-zi-lao-yu-he/">在呈贡的日子——捞鱼河</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/28</span>
+            <a class="archive-post-title" href="/2025/01/28/vscode-kai-fa-ji-qiao-ji-lu/">vscode开发技巧记录</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/28</span>
+            <a class="archive-post-title" href="/2025/01/28/bo-ke-wei-hu-ri-zhi/">博客维护日志</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/26</span>
+            <a class="archive-post-title" href="/2025/01/26/da-jian-webdav-fu-wu-qi-shi-xian-obsidian-he-zotero-duo-duan-tong-bu/">搭建Webdav服务器实现Obsidian和Zotero多端同步</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/07</span>
+            <a class="archive-post-title" href="/2025/01/07/sentence-transformers-sampler-bug-zhi-set-bu-yi-ding-shi-wu-xu-de/">sentence-transformers sampler bug 之 set 不一定是无序的</a>
+        </li>
+                </ul>
+            <div class="archive-year"> 2023 </div>
+            <ul class="year-list">
+        <li class="archive-post-item">
+            <span class="archive-post-date">09/12</span>
+            <a class="archive-post-title" href="/2023/09/12/ubuntu-shang-an-zhuang-nividia-qu-dong-he-cuda-tookit/">ubuntu上安装NIVIDIA驱动和CUDA_Tookit</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">07/23</span>
+            <a class="archive-post-title" href="/2023/07/23/zai-mac-shang-shi-yong-pybind11-shi-xian-c-yu-python-hu-tong-de-demo/">在mac上使用pybind11实现c++与python互通的demo</a>
+        </li>
+                </ul>
+            <div class="archive-year"> 2022 </div>
+            <ul class="year-list">
+        <li class="archive-post-item">
+            <span class="archive-post-date">09/07</span>
+            <a class="archive-post-title" href="/2022/09/07/mac-xi-tong-zhi-zuo-win10-qi-dong-u-pan/">Mac系统制作win10启动U盘</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">09/05</span>
+            <a class="archive-post-title" href="/2022/09/05/dian-ci-bi-sai-zong-jie/">电磁比赛总结</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/29</span>
+            <a class="archive-post-title" href="/2022/04/29/yuan-cheng-fang-wen-fu-wu-qi-jupyter-notebook/">远程访问服务器Jupyter-Notebook</a>
+        </li>
+                </ul>
+            <div class="archive-year"> 2021 </div>
+            <ul class="year-list">
+        <li class="archive-post-item">
+            <span class="archive-post-date">12/10</span>
+            <a class="archive-post-title" href="/2021/12/10/c-duo-xian-cheng-bian-cheng/">C++多线程编程</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">09/29</span>
+            <a class="archive-post-title" href="/2021/09/29/jiang-wei-xin-liao-tian-zhong-de-yu-yin-zhuan-huan-wei-mp3/">将微信聊天中的语音转换为mp3</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">09/19</span>
+            <a class="archive-post-title" href="/2021/09/19/ji-qi-xue-xi-can-kao-zi-liao/">机器学习参考资料</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">09/19</span>
+            <a class="archive-post-title" href="/2021/09/19/you-yong-de-zi-yuan/">有用的资源</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/14</span>
+            <a class="archive-post-title" href="/2021/08/14/gong-ju-xiang/">工具箱</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/14</span>
+            <a class="archive-post-title" href="/2021/08/14/wei-xin-biao-qian-zheng-li/">微信标签整理</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/13</span>
+            <a class="archive-post-title" href="/2021/08/13/google-fang-wen-zhu-shou-an-zhuang/">Google访问助手安装</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/13</span>
+            <a class="archive-post-title" href="/2021/08/13/tu-de-chuang-jian-he-bian-li/">【课程设计】图的创建和遍历</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/13</span>
+            <a class="archive-post-title" href="/2021/08/13/chang-yong-shu-ju-ji-zheng-li/">常用数据集整理</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/13</span>
+            <a class="archive-post-title" href="/2021/08/13/li-bao-chun-writing-perfect-papers/">论文写作</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/09</span>
+            <a class="archive-post-title" href="/2021/08/09/svm-xue-xi-bi-ji/">SVM学习笔记</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/06</span>
+            <a class="archive-post-title" href="/2021/08/06/pandas-xue-xi/">Pandas学习</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/05</span>
+            <a class="archive-post-title" href="/2021/08/05/pytorch-xue-xi/">Pytorch学习</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">07/01</span>
+            <a class="archive-post-title" href="/2021/07/01/huggingface-yu-xun-lian-mo-xing-quan-chong-xia-zai-de-wen-ti/">Huggingface 预训练模型权重下载的问题</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">06/21</span>
+            <a class="archive-post-title" href="/2021/06/21/jupyter-notebook-ben-di-fu-wu-qi-da-jian/">jupyter notebook 本地服务器搭建</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/16</span>
+            <a class="archive-post-title" href="/2021/04/16/ji-qi-xue-xi-zhong-de-ge-chong-shang/">机器学习中的各种熵</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/08</span>
+            <a class="archive-post-title" href="/2021/04/08/git-chang-yong-ming-ling/">git常用命令</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/08</span>
+            <a class="archive-post-title" href="/2021/04/08/nlp-zhi-shi-ti-xi/">NLP知识体系</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/01</span>
+            <a class="archive-post-title" href="/2021/04/01/zui-xiao-lu-jing-he/">【每日算法】2021年03月31日 小雨 最小路径和</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/31</span>
+            <a class="archive-post-title" href="/2021/03/31/gitlab-da-jian-bi-ji/">GitLab搭建笔记</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/31</span>
+            <a class="archive-post-title" href="/2021/03/31/ke-cheng-she-ji-zui-xiao-sheng-cheng-shu-ying-yong/">【课程设计】最小生成树应用</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/31</span>
+            <a class="archive-post-title" href="/2021/03/31/xue-xi-shi-pin-zheng-li/">学习视频整理</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/31</span>
+            <a class="archive-post-title" href="/2021/03/31/ying-yu-kou-yu-lian-xi-dian-ying-tui-jian/">英语口语练习电影推荐</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/30</span>
+            <a class="archive-post-title" href="/2021/03/30/bu-tong-lu-jing/">【每日算法】2021年03月30日 多云 不同路径</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/29</span>
+            <a class="archive-post-title" href="/2021/03/29/bian-fen-xue-xi-bi-ji/">变分学习笔记</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/28</span>
+            <a class="archive-post-title" href="/2021/03/28/github-jia-su-fang-fa/">GitHub加速方法</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/21</span>
+            <a class="archive-post-title" href="/2021/02/21/hexo-ge-ren-bo-ke-da-jian-jiao-cheng/">hexo个人博客搭建</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/21</span>
+            <a class="archive-post-title" href="/2021/02/21/hao-yong-de-mian-fei-wu-guang-gao-dian-ying-wang-zhan-tui-jian/">好用的免费无广告电影网站推荐</a>
+        </li>
+            </ul>
+    </div>
+</div>
+
+        <div class="sidebar-panel-tags">
+    <div class="sidebar-tags-name">
+            <span class="sidebar-tag-name" data-tags="BPE">
+                <span class="iconfont-archer">&#xe606;</span>
+                BPE
+            </span>
+            <span class="sidebar-tag-name" data-tags="ai竞赛">
+                <span class="iconfont-archer">&#xe606;</span>
+                ai竞赛
+            </span>
+            <span class="sidebar-tag-name" data-tags="pytorch">
+                <span class="iconfont-archer">&#xe606;</span>
+                pytorch
+            </span>
+            <span class="sidebar-tag-name" data-tags="tensor">
+                <span class="iconfont-archer">&#xe606;</span>
+                tensor
+            </span>
+            <span class="sidebar-tag-name" data-tags="Clash, 规则配置">
+                <span class="iconfont-archer">&#xe606;</span>
+                Clash, 规则配置
+            </span>
+            <span class="sidebar-tag-name" data-tags="GitLab">
+                <span class="iconfont-archer">&#xe606;</span>
+                GitLab
+            </span>
+            <span class="sidebar-tag-name" data-tags="GitHub">
+                <span class="iconfont-archer">&#xe606;</span>
+                GitHub
+            </span>
+            <span class="sidebar-tag-name" data-tags="预训练模型">
+                <span class="iconfont-archer">&#xe606;</span>
+                预训练模型
+            </span>
+            <span class="sidebar-tag-name" data-tags="启动U盘">
+                <span class="iconfont-archer">&#xe606;</span>
+                启动U盘
+            </span>
+            <span class="sidebar-tag-name" data-tags="Google访问助手">
+                <span class="iconfont-archer">&#xe606;</span>
+                Google访问助手
+            </span>
+            <span class="sidebar-tag-name" data-tags="mineru">
+                <span class="iconfont-archer">&#xe606;</span>
+                mineru
+            </span>
+            <span class="sidebar-tag-name" data-tags="claude-code">
+                <span class="iconfont-archer">&#xe606;</span>
+                claude-code
+            </span>
+            <span class="sidebar-tag-name" data-tags="RAG">
+                <span class="iconfont-archer">&#xe606;</span>
+                RAG
+            </span>
+            <span class="sidebar-tag-name" data-tags="nlp">
+                <span class="iconfont-archer">&#xe606;</span>
+                nlp
+            </span>
+            <span class="sidebar-tag-name" data-tags="Pandas">
+                <span class="iconfont-archer">&#xe606;</span>
+                Pandas
+            </span>
+            <span class="sidebar-tag-name" data-tags="svm">
+                <span class="iconfont-archer">&#xe606;</span>
+                svm
+            </span>
+            <span class="sidebar-tag-name" data-tags="github">
+                <span class="iconfont-archer">&#xe606;</span>
+                github
+            </span>
+            <span class="sidebar-tag-name" data-tags="NVIDIA">
+                <span class="iconfont-archer">&#xe606;</span>
+                NVIDIA
+            </span>
+            <span class="sidebar-tag-name" data-tags="博客">
+                <span class="iconfont-archer">&#xe606;</span>
+                博客
+            </span>
+            <span class="sidebar-tag-name" data-tags="jupyter notebook">
+                <span class="iconfont-archer">&#xe606;</span>
+                jupyter notebook
+            </span>
+            <span class="sidebar-tag-name" data-tags="docker">
+                <span class="iconfont-archer">&#xe606;</span>
+                docker
+            </span>
+            <span class="sidebar-tag-name" data-tags="python">
+                <span class="iconfont-archer">&#xe606;</span>
+                python
+            </span>
+            <span class="sidebar-tag-name" data-tags="git">
+                <span class="iconfont-archer">&#xe606;</span>
+                git
+            </span>
+            <span class="sidebar-tag-name" data-tags="neo4j">
+                <span class="iconfont-archer">&#xe606;</span>
+                neo4j
+            </span>
+            <span class="sidebar-tag-name" data-tags="ssh">
+                <span class="iconfont-archer">&#xe606;</span>
+                ssh
+            </span>
+            <span class="sidebar-tag-name" data-tags="vscode">
+                <span class="iconfont-archer">&#xe606;</span>
+                vscode
+            </span>
+            <span class="sidebar-tag-name" data-tags="摄影">
+                <span class="iconfont-archer">&#xe606;</span>
+                摄影
+            </span>
+            <span class="sidebar-tag-name" data-tags="NIVIDIA驱动">
+                <span class="iconfont-archer">&#xe606;</span>
+                NIVIDIA驱动
+            </span>
+            <span class="sidebar-tag-name" data-tags="webdav, docker, obsidian, zotero">
+                <span class="iconfont-archer">&#xe606;</span>
+                webdav, docker, obsidian, zotero
+            </span>
+            <span class="sidebar-tag-name" data-tags="uv">
+                <span class="iconfont-archer">&#xe606;</span>
+                uv
+            </span>
+            <span class="sidebar-tag-name" data-tags="文本聚类 bert向量表示">
+                <span class="iconfont-archer">&#xe606;</span>
+                文本聚类 bert向量表示
+            </span>
+            <span class="sidebar-tag-name" data-tags="树">
+                <span class="iconfont-archer">&#xe606;</span>
+                树
+            </span>
+            <span class="sidebar-tag-name" data-tags="rclone">
+                <span class="iconfont-archer">&#xe606;</span>
+                rclone
+            </span>
+            <span class="sidebar-tag-name" data-tags="机器学习">
+                <span class="iconfont-archer">&#xe606;</span>
+                机器学习
+            </span>
+            <span class="sidebar-tag-name" data-tags="动态规划">
+                <span class="iconfont-archer">&#xe606;</span>
+                动态规划
+            </span>
+            <span class="sidebar-tag-name" data-tags="图">
+                <span class="iconfont-archer">&#xe606;</span>
+                图
+            </span>
+            <span class="sidebar-tag-name" data-tags="概率论">
+                <span class="iconfont-archer">&#xe606;</span>
+                概率论
+            </span>
+            <span class="sidebar-tag-name" data-tags="数学">
+                <span class="iconfont-archer">&#xe606;</span>
+                数学
+            </span>
+            <span class="sidebar-tag-name" data-tags="呈贡">
+                <span class="iconfont-archer">&#xe606;</span>
+                呈贡
+            </span>
+            <span class="sidebar-tag-name" data-tags="日志">
+                <span class="iconfont-archer">&#xe606;</span>
+                日志
+            </span>
+            <span class="sidebar-tag-name" data-tags="python_c++_互通">
+                <span class="iconfont-archer">&#xe606;</span>
+                python_c++_互通
+            </span>
+            <span class="sidebar-tag-name" data-tags="电影">
+                <span class="iconfont-archer">&#xe606;</span>
+                电影
+            </span>
+            <span class="sidebar-tag-name" data-tags="微信">
+                <span class="iconfont-archer">&#xe606;</span>
+                微信
+            </span>
+            <span class="sidebar-tag-name" data-tags="干货">
+                <span class="iconfont-archer">&#xe606;</span>
+                干货
+            </span>
+            <span class="sidebar-tag-name" data-tags="编程">
+                <span class="iconfont-archer">&#xe606;</span>
+                编程
+            </span>
+            <span class="sidebar-tag-name" data-tags="文本聚类 编辑距离">
+                <span class="iconfont-archer">&#xe606;</span>
+                文本聚类 编辑距离
+            </span>
+            <span class="sidebar-tag-name" data-tags="资源">
+                <span class="iconfont-archer">&#xe606;</span>
+                资源
+            </span>
+            <span class="sidebar-tag-name" data-tags="论文写作">
+                <span class="iconfont-archer">&#xe606;</span>
+                论文写作
+            </span>
+            <span class="sidebar-tag-name" data-tags="竞赛">
+                <span class="iconfont-archer">&#xe606;</span>
+                竞赛
+            </span>
+            <span class="sidebar-tag-name" data-tags="熵">
+                <span class="iconfont-archer">&#xe606;</span>
+                熵
+            </span>
+            <span class="sidebar-tag-name" data-tags="强化学习">
+                <span class="iconfont-archer">&#xe606;</span>
+                强化学习
+            </span>
+            <span class="sidebar-tag-name" data-tags="街拍">
+                <span class="iconfont-archer">&#xe606;</span>
+                街拍
+            </span>
+            <span class="sidebar-tag-name" data-tags="docker, doccano">
+                <span class="iconfont-archer">&#xe606;</span>
+                docker, doccano
+            </span>
+            <span class="sidebar-tag-name" data-tags="Syncthing">
+                <span class="iconfont-archer">&#xe606;</span>
+                Syncthing
+            </span>
+            <span class="sidebar-tag-name" data-tags="Dotfiles">
+                <span class="iconfont-archer">&#xe606;</span>
+                Dotfiles
+            </span>
+    </div>
+    <div class="iconfont-archer sidebar-tags-empty">&#xe678;</div>
+    <div class="tag-load-fail" style="display: none; color: #ccc; font-size: 0.6rem;">
+        缺失模块，请参考主题文档进行安装配置：https://github.com/fi3ework/hexo-theme-archer#%E5%AE%89%E8%A3%85%E4%B8%BB%E9%A2%98
+    </div> 
+    <div class="sidebar-tags-list"></div>
+</div>
+
+        <div class="sidebar-panel-categories">
+    <div class="sidebar-categories-name">
+        <span class="sidebar-category-name" data-categories="大模型">
+            <span class="iconfont-archer">&#xe60a;</span>
+            大模型
+        </span>
+        <span class="sidebar-category-name" data-categories="总结">
+            <span class="iconfont-archer">&#xe60a;</span>
+            总结
+        </span>
+        <span class="sidebar-category-name" data-categories="编程">
+            <span class="iconfont-archer">&#xe60a;</span>
+            编程
+        </span>
+        <span class="sidebar-category-name" data-categories="技术笔记">
+            <span class="iconfont-archer">&#xe60a;</span>
+            技术笔记
+        </span>
+        <span class="sidebar-category-name" data-categories="网络工具">
+            <span class="iconfont-archer">&#xe60a;</span>
+            网络工具
+        </span>
+        <span class="sidebar-category-name" data-categories="爬坑总结">
+            <span class="iconfont-archer">&#xe60a;</span>
+            爬坑总结
+        </span>
+        <span class="sidebar-category-name" data-categories="人工智能">
+            <span class="iconfont-archer">&#xe60a;</span>
+            人工智能
+        </span>
+        <span class="sidebar-category-name" data-categories="干货">
+            <span class="iconfont-archer">&#xe60a;</span>
+            干货
+        </span>
+        <span class="sidebar-category-name" data-categories="运维">
+            <span class="iconfont-archer">&#xe60a;</span>
+            运维
+        </span>
+        <span class="sidebar-category-name" data-categories="编程开发">
+            <span class="iconfont-archer">&#xe60a;</span>
+            编程开发
+        </span>
+        <span class="sidebar-category-name" data-categories="知识框架">
+            <span class="iconfont-archer">&#xe60a;</span>
+            知识框架
+        </span>
+        <span class="sidebar-category-name" data-categories="学习笔记">
+            <span class="iconfont-archer">&#xe60a;</span>
+            学习笔记
+        </span>
+        <span class="sidebar-category-name" data-categories="生活总结">
+            <span class="iconfont-archer">&#xe60a;</span>
+            生活总结
+        </span>
+        <span class="sidebar-category-name" data-categories="编程经验">
+            <span class="iconfont-archer">&#xe60a;</span>
+            编程经验
+        </span>
+        <span class="sidebar-category-name" data-categories="摄影">
+            <span class="iconfont-archer">&#xe60a;</span>
+            摄影
+        </span>
+        <span class="sidebar-category-name" data-categories="自然语言处理">
+            <span class="iconfont-archer">&#xe60a;</span>
+            自然语言处理
+        </span>
+        <span class="sidebar-category-name" data-categories="算法笔记">
+            <span class="iconfont-archer">&#xe60a;</span>
+            算法笔记
+        </span>
+        <span class="sidebar-category-name" data-categories="算法">
+            <span class="iconfont-archer">&#xe60a;</span>
+            算法
+        </span>
+        <span class="sidebar-category-name" data-categories="生活情感">
+            <span class="iconfont-archer">&#xe60a;</span>
+            生活情感
+        </span>
+        <span class="sidebar-category-name" data-categories="收藏">
+            <span class="iconfont-archer">&#xe60a;</span>
+            收藏
+        </span>
+        <span class="sidebar-category-name" data-categories="学习资料">
+            <span class="iconfont-archer">&#xe60a;</span>
+            学习资料
+        </span>
+        <span class="sidebar-category-name" data-categories="数据集">
+            <span class="iconfont-archer">&#xe60a;</span>
+            数据集
+        </span>
+        <span class="sidebar-category-name" data-categories="机器学习">
+            <span class="iconfont-archer">&#xe60a;</span>
+            机器学习
+        </span>
+    </div>
+    <div class="iconfont-archer sidebar-categories-empty">&#xe678;</div>
+    <div class="sidebar-categories-list"></div>
+</div>
+
+    </div>
+</div>
+
+        <!-- site-meta -->
+        <script>
+    var siteMetaRoot = "/"
+    if (siteMetaRoot === "undefined") {
+        siteMetaRoot = '/'
+    }
+    var siteMeta = {
+        url: "https://skylyong.github.io",
+        root: siteMetaRoot,
+        author: "LY"
+    }
+</script>
+
+        <!-- import experimental options here -->
+        <!-- Custom Font -->
+
+        <!-- main func -->
+        <script src="/scripts/main.js"></script>
+        <!-- fancybox -->
+        <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.36/dist/fancybox/fancybox.umd.js" onload="window.Fancybox.bind('[data-fancybox]')" defer></script>
+        <!-- algolia -->
+            <div class="site-search site-search-loading">
+    <div class="algolia-popup popup">
+        <div class="algolia-search">
+            <div class="algolia-search-input-icon">
+                <i class="fa fa-search"></i>
+            </div>
+            <div class="algolia-search-input" id="algolia-search-input"></div>
+            <div class="popup-btn-close">
+                <i class="iconfont-archer">&#xe609;</i>
+            </div>
+        </div>
+
+        <div class="algolia-results">
+            <div id="algolia-stats" class="algolia-stats"></div>
+            <div id="algolia-hits"></div>
+            <div id="algolia-pagination" class="algolia-pagination"></div>
+        </div>
+    </div>
+</div>
+
+            
+           
+            <script src="/scripts/search.js" async></script>
+        <!-- busuanzi -->
+            <script src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async></script>
+        <!-- async load share.js -->
+            <script src="/scripts/share.js" async></script>
+        <!-- mermaid -->
+            <script src='https://cdn.jsdelivr.net/npm/mermaid@8.11.0/dist/mermaid.min.js' onload="window.mermaid.initialize({theme: 'dark'})" async></script>
+    </body>
+</html>

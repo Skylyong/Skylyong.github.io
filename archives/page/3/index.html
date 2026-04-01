@@ -422,6 +422,63 @@
                 <main class="main index-page">
             
         <article class="index-post">
+            <a class="abstract-title" href="/2025/08/10/xiang-liang-fan-shu/">
+                <span class="abstract-title-text">向量范数</span>
+            </a>
+            <div class="abstract-content">
+                向量范数的定义数学上，向量范数是一个函数 $|\cdot|$，它把向量映射成一个非负实数，并满足以下三个条件（任何合法的范数都要满足）：
+非负性$$|x| \geq 0 \quad \text{且} \quad |x| = 0 \iff x = 0$$
+向量的长度不可能是负的，只有零向量长度为零。
+齐次性（homogeneity / scalability）$$|\alpha x| = |\alpha| \cdot |x|$$
+缩放向量，长度也按比例缩放。
+三角不等式$$|x + y| \leq |x| + |y|$$
+两个向量相加的“长度”不会超过它们长度之和（几何上就是三角形不等式）...
+            </div>
+            <!-- read more -->
+            <div class="abstract-post-meta">
+                <!-- date -->
+                <div class="abstract-date" title="Last updated: 2025/08/10">
+                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2025/08/10</span>
+                </div>
+                <!-- tags -->
+                    <div class="abstract-tags" >
+        <a class="post-tag" href="javascript:void(0);" data-tags="数学">数学</a>
+</div>
+
+            </div>
+        </article>
+        <div class="index-post-divider"></div>
+            
+        <article class="index-post">
+            <a class="abstract-title" href="/2025/08/10/fan-shu-de-ji-ben-gai-nian/">
+                <span class="abstract-title-text">范数的基本概念</span>
+            </a>
+            <div class="abstract-content">
+                范数（norm）本质上就是一种 “长度”或“大小”的度量方法。
+
+对向量来说，范数告诉你“这个向量有多长”。
+
+对矩阵来说，范数告诉你“这个矩阵能把向量拉伸多少”或“矩阵自身有多大”。
+
+
+
+            </div>
+            <!-- read more -->
+            <div class="abstract-post-meta">
+                <!-- date -->
+                <div class="abstract-date" title="Last updated: 2025/08/10">
+                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2025/08/10</span>
+                </div>
+                <!-- tags -->
+                    <div class="abstract-tags" >
+        <a class="post-tag" href="javascript:void(0);" data-tags="数学">数学</a>
+</div>
+
+            </div>
+        </article>
+        <div class="index-post-divider"></div>
+            
+        <article class="index-post">
             <a class="abstract-title" href="/2025/08/10/shu-xue-zhong-de-qi-ci-xing-li-jie/">
                 <span class="abstract-title-text">数学中的齐次性理解</span>
             </a>
@@ -653,61 +710,6 @@ d.  创建镜像仓库
             </div>
         </article>
         <div class="index-post-divider"></div>
-            
-        <article class="index-post">
-            <a class="abstract-title" href="/2025/04/18/an-zhuang-torch-scatter-shi-yu-dao-de-keng/">
-                <span class="abstract-title-text">安装torch-scatter时遇到的坑</span>
-            </a>
-            <div class="abstract-content">
-                今天在使用 pip 安装 torch-scatter 包时报错，然后使用 conda 成功安装了，但是运行代码的时候报错，并且是一个底层的错误。
-查询之后发现，是因为在使用 torch_scatter、torch_sparse、torch_cluster 等基于 C++ 的扩展模块时，如果 PyTorch 版本和系统环境不完全匹配，就容易发生这类底层编译失败。
-解决方法最稳定也最省事的方式是不要从源码编译 torch_scatter，而是使用预编译好的 .whl 包进行安装。步骤如下：
-
-确认 PyTorch 和 Python 版本
-
-12python -c "import torch;...
-            </div>
-            <!-- read more -->
-            <div class="abstract-post-meta">
-                <!-- date -->
-                <div class="abstract-date" title="Last updated: 2025/04/18">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2025/04/18</span>
-                </div>
-                <!-- tags -->
-                    <div class="abstract-tags" >
-        <a class="post-tag" href="javascript:void(0);" data-tags="pytorch">pytorch</a>
-</div>
-
-            </div>
-        </article>
-        <div class="index-post-divider"></div>
-            
-        <article class="index-post">
-            <a class="abstract-title" href="/2025/03/17/neo4j-dao-ru-jie-dian-he-bian-de-python-dai-ma/">
-                <span class="abstract-title-text">neo4j导入节点和边的python代码</span>
-            </a>
-            <div class="abstract-content">
-                在做知识图谱相关的项目时，经常需要将数据导入到neo4j中，这里分享一下导入节点和边的python代码，以便于以后查阅。
-需要注意的是，下面的代码是在neo4j 5.x 版本上测试通过的，如果是其他版本，可能需要做一些调整。
-
-neo4j 导入节点和边的类实现
-
-123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687...
-            </div>
-            <!-- read more -->
-            <div class="abstract-post-meta">
-                <!-- date -->
-                <div class="abstract-date" title="Last updated: 2025/03/17">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2025/03/17</span>
-                </div>
-                <!-- tags -->
-                    <div class="abstract-tags" >
-        <a class="post-tag" href="javascript:void(0);" data-tags="neo4j">neo4j</a>
-</div>
-
-            </div>
-        </article>
-        <div class="index-post-divider"></div>
     <!-- paginator  -->
         <nav class="page-nav">
             <a class="extend prev" rel="prev" href="/archives/page/2/">&lt; PREV</a><a class="page-number" href="/archives/">1</a><a class="page-number" href="/archives/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/archives/page/4/">4</a><a class="page-number" href="/archives/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/8/">8</a><a class="extend next" rel="next" href="/archives/page/4/">NEXT &gt;</a>
@@ -831,9 +833,11 @@ neo4j 导入节点和边的类实现
         
         
         
+        
+        
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 78
+        Total : 80
         </div>
         <!-- search  -->
             <div class="site-search site-search-loading popup-trigger">
@@ -843,6 +847,14 @@ neo4j 导入节点和边的类实现
     <div class="post-archive">
             <div class="archive-year"> 2026 </div>
             <ul class="year-list">
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/01</span>
+            <a class="archive-post-title" href="/2026/04/01/duo-tai-mac-jian-shu-ju-tong-bu-git-luo-cang-ku-syncthing-fang-an/">多台mac间数据同步：Git裸仓库+Syncthing方案</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/26</span>
+            <a class="archive-post-title" href="/2026/02/26/git-da-wen-jian-chu-li/">Git大文件处理</a>
+        </li>
         <li class="archive-post-item">
             <span class="archive-post-date">02/19</span>
             <a class="archive-post-title" href="/2026/02/19/mac-shang-shi-yong-chun-ming-ling-xing-docker/">mac上使用纯命令行docker</a>
@@ -1384,6 +1396,14 @@ neo4j 导入节点和边的类实现
             <span class="sidebar-tag-name" data-tags="docker, doccano">
                 <span class="iconfont-archer">&#xe606;</span>
                 docker, doccano
+            </span>
+            <span class="sidebar-tag-name" data-tags="Syncthing">
+                <span class="iconfont-archer">&#xe606;</span>
+                Syncthing
+            </span>
+            <span class="sidebar-tag-name" data-tags="Dotfiles">
+                <span class="iconfont-archer">&#xe606;</span>
+                Dotfiles
             </span>
     </div>
     <div class="iconfont-archer sidebar-tags-empty">&#xe678;</div>

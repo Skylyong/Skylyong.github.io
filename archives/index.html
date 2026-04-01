@@ -422,6 +422,62 @@
                 <main class="main index-page">
             
         <article class="index-post">
+            <a class="abstract-title" href="/2026/04/01/duo-tai-mac-jian-shu-ju-tong-bu-git-luo-cang-ku-syncthing-fang-an/">
+                <span class="abstract-title-text">多台mac间数据同步：Git裸仓库+Syncthing方案</span>
+            </a>
+            <div class="abstract-content">
+                Git 裸仓库 （自动同步）+ Syncthing 方案
+一、Git 裸仓库管理 Dotfiles 选择方案1.1 什么是裸仓库？为什么用它？12345678910111213普通仓库:  ~/projects/myapp/  ├── .git/          ← Git 元数据  ├── src/           ← 工作文件  └── README.md裸仓库管理 dotfiles:  ~/.dotfiles/        ← Git 元数据（裸仓库，没有工作目录）  工作目录 = $HOME    ← 整个 HOME 就是工作目录好处：不需要把文件集中到某个文件夹再建符号...
+            </div>
+            <!-- read more -->
+            <div class="abstract-post-meta">
+                <!-- date -->
+                <div class="abstract-date" title="Last updated: 2026/04/01">
+                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2026/04/01</span>
+                </div>
+                <!-- tags -->
+                    <div class="abstract-tags" >
+        <a class="post-tag" href="javascript:void(0);" data-tags="Syncthing">Syncthing</a>
+        <a class="post-tag" href="javascript:void(0);" data-tags="Dotfiles">Dotfiles</a>
+</div>
+
+            </div>
+        </article>
+        <div class="index-post-divider"></div>
+            
+        <article class="index-post">
+            <a class="abstract-title" href="/2026/02/26/git-da-wen-jian-chu-li/">
+                <span class="abstract-title-text">Git大文件处理</span>
+            </a>
+            <div class="abstract-content">
+                Git Large File Storage (LFS) 是 Git 的一个开源扩展，用于通过将大文件（如音频、视频、数据集、图形）替换为文本指针来管理这些文件，而将实际的文件内容存储在远程服务器上。
+以下是从安装到使用的完整指南：
+
+第一步：安装 Git LFS在开始之前，你需要确保本地已经安装了 Git。
+1. macOS如果你使用 Homebrew：
+1brew install git-lfs
+
+2. Windows
+方法 A (推荐)：下载 Git LFS 安装包 并运行安装程序。
+方法 B：如果你使用 git for windows，通常已经内置了 LFS，只需进行下一步配置即...
+            </div>
+            <!-- read more -->
+            <div class="abstract-post-meta">
+                <!-- date -->
+                <div class="abstract-date" title="Last updated: 2026/02/26">
+                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2026/02/26</span>
+                </div>
+                <!-- tags -->
+                    <div class="abstract-tags" >
+        <a class="post-tag" href="javascript:void(0);" data-tags="GitHub">GitHub</a>
+        <a class="post-tag" href="javascript:void(0);" data-tags="git">git</a>
+</div>
+
+            </div>
+        </article>
+        <div class="index-post-divider"></div>
+            
+        <article class="index-post">
             <a class="abstract-title" href="/2026/02/19/mac-shang-shi-yong-chun-ming-ling-xing-docker/">
                 <span class="abstract-title-text">mac上使用纯命令行docker</span>
             </a>
@@ -638,70 +694,6 @@ Why we need tokenizer？
             </div>
         </article>
         <div class="index-post-divider"></div>
-            
-        <article class="index-post">
-            <a class="abstract-title" href="/2025/10/16/linux-chang-yong-ming-ling-jie-shi/">
-                <span class="abstract-title-text">linux常用命令解释</span>
-            </a>
-            <div class="abstract-content">
-                在Linux系统中，有许多常用的命令可以帮助我们进行日常的操作和管理。以下是一些常用命令的解释和示例：
-nvidia-smi该命令用于监控 GPU 状态。下面是每一列的详细解释：
-第一行字段
-
-
-列名
-含义
-
-
-
-GPU
-GPU 的编号（从 0 开始），用于标识多 GPU 系统中的每一张显卡。
-
-
-Name
-GPU 型号名称，例如 NVIDIA A100, RTX 4090, Tesla V100 等。
-
-
-Persistence-M
-“持久化模式”（Persistence Mode），指 GPU 驱动是否保持加载状态： On 表示 GPU 空闲时驱动仍驻留内存；Off 表示空闲时驱动卸...
-            </div>
-            <!-- read more -->
-            <div class="abstract-post-meta">
-                <!-- date -->
-                <div class="abstract-date" title="Last updated: 2025/10/16">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2025/10/16</span>
-                </div>
-                <!-- tags -->
-            </div>
-        </article>
-        <div class="index-post-divider"></div>
-            
-        <article class="index-post">
-            <a class="abstract-title" href="/2025/10/14/shi-yong-rclone-zai-duo-ge-fu-wu-qi-zhi-jian-chuan-shu-wen-jian/">
-                <span class="abstract-title-text">使用rclone在多个服务器之间传输文件</span>
-            </a>
-            <div class="abstract-content">
-                在日常的科研和工作中，我经常需要在多台服务器之间传输和同步文件。传统的方法如 scp 和 rsync 虽然可以完成任务，但在处理大规模数据或复杂目录结构时，效率和稳定性往往不尽如人意。最近，我发现了一个非常强大的工具——rclone，它不仅支持多种云存储服务，还能高效地在不同服务器之间传输文件。
-下面对这次使用 rclone 进行服务器间文件传输的过程进行简单的记录，以供日后参考。
-1. 安装rclone在linux服务器上安装 rclone 非常简单。可以通过以下命令进行安装：
-12sudo apt updatesudo apt install rclone
-
-安装完成后，可以通过以下...
-            </div>
-            <!-- read more -->
-            <div class="abstract-post-meta">
-                <!-- date -->
-                <div class="abstract-date" title="Last updated: 2025/10/14">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2025/10/14</span>
-                </div>
-                <!-- tags -->
-                    <div class="abstract-tags" >
-        <a class="post-tag" href="javascript:void(0);" data-tags="rclone">rclone</a>
-</div>
-
-            </div>
-        </article>
-        <div class="index-post-divider"></div>
     <!-- paginator  -->
         <nav class="page-nav">
             <span class="page-number current">1</span><a class="page-number" href="/archives/page/2/">2</a><a class="page-number" href="/archives/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/8/">8</a><a class="extend next" rel="next" href="/archives/page/2/">NEXT &gt;</a>
@@ -825,9 +817,11 @@ Persistence-M
         
         
         
+        
+        
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 78
+        Total : 80
         </div>
         <!-- search  -->
             <div class="site-search site-search-loading popup-trigger">
@@ -837,6 +831,14 @@ Persistence-M
     <div class="post-archive">
             <div class="archive-year"> 2026 </div>
             <ul class="year-list">
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/01</span>
+            <a class="archive-post-title" href="/2026/04/01/duo-tai-mac-jian-shu-ju-tong-bu-git-luo-cang-ku-syncthing-fang-an/">多台mac间数据同步：Git裸仓库+Syncthing方案</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/26</span>
+            <a class="archive-post-title" href="/2026/02/26/git-da-wen-jian-chu-li/">Git大文件处理</a>
+        </li>
         <li class="archive-post-item">
             <span class="archive-post-date">02/19</span>
             <a class="archive-post-title" href="/2026/02/19/mac-shang-shi-yong-chun-ming-ling-xing-docker/">mac上使用纯命令行docker</a>
@@ -1378,6 +1380,14 @@ Persistence-M
             <span class="sidebar-tag-name" data-tags="docker, doccano">
                 <span class="iconfont-archer">&#xe606;</span>
                 docker, doccano
+            </span>
+            <span class="sidebar-tag-name" data-tags="Syncthing">
+                <span class="iconfont-archer">&#xe606;</span>
+                Syncthing
+            </span>
+            <span class="sidebar-tag-name" data-tags="Dotfiles">
+                <span class="iconfont-archer">&#xe606;</span>
+                Dotfiles
             </span>
     </div>
     <div class="iconfont-archer sidebar-tags-empty">&#xe678;</div>

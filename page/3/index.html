@@ -429,6 +429,70 @@
                 <main class="main index-page">
             
         <article class="index-post">
+            <a class="abstract-title" href="/2025/07/25/uv-chang-yong-cao-zuo/">
+                <span class="abstract-title-text">uv常用操作</span>
+            </a>
+            <div class="abstract-content">
+                创建项目
+创建一个新的 Python 项目
+
+12uv init hello-worldcd hello-world
+
+
+在已有的工作目录中初始化一个项目
+
+123mkdir hello-worldcd hello-worlduv init
+
+项目结构一个完整的项目列表如下所示：
+12345678910.├── .venv│   ├── bin│   ├── lib│   └── pyvenv.cfg├── .python-version├── README.md├── main.py├── pyproject.toml└── uv.lock
+
+
+pyproject.toml 包含有关项...
+            </div>
+            <!-- read more -->
+            <div class="abstract-post-meta">
+                <!-- date -->
+                <div class="abstract-date" title="Last updated: 2025/07/25">
+                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2025/07/25</span>
+                </div>
+                <!-- tags -->
+                    <div class="abstract-tags" >
+        <a class="post-tag" href="javascript:void(0);" data-tags="uv">uv</a>
+</div>
+
+            </div>
+        </article>
+        <div class="index-post-divider"></div>
+            
+        <article class="index-post">
+            <a class="abstract-title" href="/2025/07/13/quan-qi-wang-ding-li-gong-shi-tui-dao/">
+                <span class="abstract-title-text">全期望定理公式推导</span>
+            </a>
+            <div class="abstract-content">
+                引言最近推导强化学习的Bellman equation，在化解第二项Future Reward项时，需要用到全期望定理，秉承费曼学习法的理念，这里从两个方面对全期望定理公式进行介绍。首先，我们以一个简单的例子从感性上理解该公式，然后再从数学的角度对其进行较为严谨的推导。
+全期望定理公式
+假设$B_1, B_2, …, B_n$ 是一组互不相容的事件，并且形成样本空间的一个分割；
+$C$是一个确定事件，且 $p(C) &gt; 0$；
+$A$是一个随机变量。
+
+则有：$$E[A | C] = \sum_{i=1}^{n} p(B_i | C) E[A |B_i, C] $$上述公式即为全期...
+            </div>
+            <!-- read more -->
+            <div class="abstract-post-meta">
+                <!-- date -->
+                <div class="abstract-date" title="Last updated: 2025/08/10">
+                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2025/07/13</span>
+                </div>
+                <!-- tags -->
+                    <div class="abstract-tags" >
+        <a class="post-tag" href="javascript:void(0);" data-tags="概率论">概率论</a>
+</div>
+
+            </div>
+        </article>
+        <div class="index-post-divider"></div>
+            
+        <article class="index-post">
             <a class="abstract-title" href="/2025/07/12/bei-er-man-deng-shi-jie-shao-ji-tui-dao/">
                 <span class="abstract-title-text">贝尔曼等式介绍及推导</span>
             </a>
@@ -1077,56 +1141,6 @@ neo4j 导入节点和边的类实现
             </div>
         </article>
         <div class="index-post-divider"></div>
-            
-        <article class="index-post">
-            <a class="abstract-title" href="/2025/03/06/shi-yong-bert-de-dao-duan-yu-xiang-liang-biao-shi-bing-jin-xing-ceng-ci-ju-lei-shi-xian-xiang-si-xing-qu-chong/">
-                <span class="abstract-title-text">使用BERT得到短语向量表示并进行层次聚类实现相似性去重</span>
-            </a>
-            <div class="abstract-content">
-                在自然语言处理（NLP）中，短语的相似性分析是一个常见且重要的任务。传统的文本相似性计算方法往往依赖于手工设计的特征，但随着深度学习和预训练语言模型的出现，BERT（Bidirectional Encoder Representations from Transformers）及其衍生模型为我们提供了更强大的表达能力。在本文中，我们将介绍如何使用BERT模型对短语进行向量化，并结合层次聚类算法对相似短语进行去重。
-任务背景在很多应用场景下，我们往往需要从大量的短语数据中去除重复或者相似的内容，以便于进一步分析。例如，在传统中医（TCM）数据分析中，可能有大量的类似任务相关查询或医疗术语需...
-            </div>
-            <!-- read more -->
-            <div class="abstract-post-meta">
-                <!-- date -->
-                <div class="abstract-date" title="Last updated: 2025/03/08">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2025/03/06</span>
-                </div>
-                <!-- tags -->
-                    <div class="abstract-tags" >
-        <a class="post-tag" href="javascript:void(0);" data-tags="文本聚类 bert向量表示">文本聚类 bert向量表示</a>
-</div>
-
-            </div>
-        </article>
-        <div class="index-post-divider"></div>
-            
-        <article class="index-post">
-            <a class="abstract-title" href="/2025/03/06/ji-yu-bian-ji-ju-chi-de-wen-ben-ceng-ci-ju-lei/">
-                <span class="abstract-title-text">基于编辑距离的文本层次聚类</span>
-            </a>
-            <div class="abstract-content">
-                在自然语言处理（NLP）和数据清洗过程中，处理相似文本的聚类问题是一个常见的挑战。例如，在搜索日志、医学术语、客户查询等文本数据中，我们经常会遇到拼写相似或近似表达的词汇。为了更好地对这些数据进行分类和管理，我们可以使用 编辑距离（Levenshtein Distance） 结合 层次聚类（Hierarchical Clustering） 进行文本聚类。
-本文介绍了一种基于 Python 的 编辑距离层次聚类 方法，并提供了一个完整的实现代码。该方法的核心思想是：
-
-计算编辑距离矩阵：通过 Levenshtein 距离衡量文本之间的相似性。
-
-层次聚类：使用层次聚类，将相似的文本归类到相...
-            </div>
-            <!-- read more -->
-            <div class="abstract-post-meta">
-                <!-- date -->
-                <div class="abstract-date" title="Last updated: 2025/03/08">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2025/03/06</span>
-                </div>
-                <!-- tags -->
-                    <div class="abstract-tags" >
-        <a class="post-tag" href="javascript:void(0);" data-tags="文本聚类 编辑距离">文本聚类 编辑距离</a>
-</div>
-
-            </div>
-        </article>
-        <div class="index-post-divider"></div>
     <!-- paginator  -->
         <nav class="page-nav">
             <a class="extend prev" rel="prev" href="/page/2/">&lt; PREV</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/4/">NEXT &gt;</a>
@@ -1304,9 +1318,11 @@ neo4j 导入节点和边的类实现
         
         
         
+        
+        
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 78
+        Total : 80
         </div>
         <!-- search  -->
             <div class="site-search site-search-loading popup-trigger">
@@ -1316,6 +1332,14 @@ neo4j 导入节点和边的类实现
     <div class="post-archive">
             <div class="archive-year"> 2026 </div>
             <ul class="year-list">
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/01</span>
+            <a class="archive-post-title" href="/2026/04/01/duo-tai-mac-jian-shu-ju-tong-bu-git-luo-cang-ku-syncthing-fang-an/">多台mac间数据同步：Git裸仓库+Syncthing方案</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/26</span>
+            <a class="archive-post-title" href="/2026/02/26/git-da-wen-jian-chu-li/">Git大文件处理</a>
+        </li>
         <li class="archive-post-item">
             <span class="archive-post-date">02/19</span>
             <a class="archive-post-title" href="/2026/02/19/mac-shang-shi-yong-chun-ming-ling-xing-docker/">mac上使用纯命令行docker</a>
@@ -1857,6 +1881,14 @@ neo4j 导入节点和边的类实现
             <span class="sidebar-tag-name" data-tags="docker, doccano">
                 <span class="iconfont-archer">&#xe606;</span>
                 docker, doccano
+            </span>
+            <span class="sidebar-tag-name" data-tags="Syncthing">
+                <span class="iconfont-archer">&#xe606;</span>
+                Syncthing
+            </span>
+            <span class="sidebar-tag-name" data-tags="Dotfiles">
+                <span class="iconfont-archer">&#xe606;</span>
+                Dotfiles
             </span>
     </div>
     <div class="iconfont-archer sidebar-tags-empty">&#xe678;</div>

@@ -429,6 +429,64 @@
                 <main class="main index-page">
             
         <article class="index-post">
+            <a class="abstract-title" href="/2025/10/08/ubuntu-shang-che-di-xie-zai-he-chong-zhuang-nvidia-qu-dong-ji-xiang-guan-zu-jian/">
+                <span class="abstract-title-text">Ubuntu上彻底卸载和重装NVIDIA驱动及相关组件</span>
+            </a>
+            <div class="abstract-content">
+                有时候，我们在配置NVIDIA驱动环境时，会遇到各种各样奇怪的问题，导致无法正常使用GPU。此时，彻底卸载NVIDIA驱动及相关组件，重新安装，往往是解决问题的有效方法。本文将介绍如何在Ubuntu系统上彻底卸载NVIDIA驱动及相关组件。
+卸载下面是一份在Ubuntu上彻底卸载H100环境中的NVIDIA驱动、CUDA、cuDNN、NCCL等相关组件的完整步骤。建议严格按照顺序执行，避免系统残留或驱动冲突。
+提前准备1. 停止所有GPU相关的进程123sudo systemctl stop dockersudo systemctl stop nvidia-persistencedsud...
+            </div>
+            <!-- read more -->
+            <div class="abstract-post-meta">
+                <!-- date -->
+                <div class="abstract-date" title="Last updated: 2025/10/08">
+                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2025/10/08</span>
+                </div>
+                <!-- tags -->
+                    <div class="abstract-tags" >
+        <a class="post-tag" href="javascript:void(0);" data-tags="NVIDIA">NVIDIA</a>
+</div>
+
+            </div>
+        </article>
+        <div class="index-post-divider"></div>
+            
+        <article class="index-post">
+            <a class="abstract-title" href="/2025/10/03/ssh-pei-zhi-jie-shao/">
+                <span class="abstract-title-text">ssh配置介绍</span>
+            </a>
+            <div class="abstract-content">
+                SSH 介绍什么是 ssh 配置~/.ssh/config 文件是SSH的客户端配置文件，用于简化连接远程主机时的命令行输入。通过配置文件，可以为不同的主机设置：
+
+用户名
+端口号
+私钥文件路径
+跳板机（ProxyJump/ProxyCommand）
+连接优化参数（KeepAlive、Compression 等）这样就不需要每次都输入冗长的命令和参数了。
+
+配置文件位置
+用户级配置： ~/.ssh/config （推荐）
+全局配置： /etc/ssh/ssh_config （系统范围，通常不要改）优先级： 命令行参数 &gt; 用户级配置 &gt; 系统级配置
+
+基本结构配置文件由一组 ...
+            </div>
+            <!-- read more -->
+            <div class="abstract-post-meta">
+                <!-- date -->
+                <div class="abstract-date" title="Last updated: 2025/10/03">
+                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2025/10/03</span>
+                </div>
+                <!-- tags -->
+                    <div class="abstract-tags" >
+        <a class="post-tag" href="javascript:void(0);" data-tags="ssh">ssh</a>
+</div>
+
+            </div>
+        </article>
+        <div class="index-post-divider"></div>
+            
+        <article class="index-post">
             <a class="abstract-title" href="/2025/10/02/mineru-an-zhuang-bu-shu/">
                 <span class="abstract-title-text">MinerU安装部署</span>
             </a>
@@ -676,70 +734,6 @@ $$f(\...
             </div>
         </article>
         <div class="index-post-divider"></div>
-            
-        <article class="index-post">
-            <a class="abstract-title" href="/2025/07/25/uv-chang-yong-cao-zuo/">
-                <span class="abstract-title-text">uv常用操作</span>
-            </a>
-            <div class="abstract-content">
-                创建项目
-创建一个新的 Python 项目
-
-12uv init hello-worldcd hello-world
-
-
-在已有的工作目录中初始化一个项目
-
-123mkdir hello-worldcd hello-worlduv init
-
-项目结构一个完整的项目列表如下所示：
-12345678910.├── .venv│   ├── bin│   ├── lib│   └── pyvenv.cfg├── .python-version├── README.md├── main.py├── pyproject.toml└── uv.lock
-
-
-pyproject.toml 包含有关项...
-            </div>
-            <!-- read more -->
-            <div class="abstract-post-meta">
-                <!-- date -->
-                <div class="abstract-date" title="Last updated: 2025/07/25">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2025/07/25</span>
-                </div>
-                <!-- tags -->
-                    <div class="abstract-tags" >
-        <a class="post-tag" href="javascript:void(0);" data-tags="uv">uv</a>
-</div>
-
-            </div>
-        </article>
-        <div class="index-post-divider"></div>
-            
-        <article class="index-post">
-            <a class="abstract-title" href="/2025/07/13/quan-qi-wang-ding-li-gong-shi-tui-dao/">
-                <span class="abstract-title-text">全期望定理公式推导</span>
-            </a>
-            <div class="abstract-content">
-                引言最近推导强化学习的Bellman equation，在化解第二项Future Reward项时，需要用到全期望定理，秉承费曼学习法的理念，这里从两个方面对全期望定理公式进行介绍。首先，我们以一个简单的例子从感性上理解该公式，然后再从数学的角度对其进行较为严谨的推导。
-全期望定理公式
-假设$B_1, B_2, …, B_n$ 是一组互不相容的事件，并且形成样本空间的一个分割；
-$C$是一个确定事件，且 $p(C) &gt; 0$；
-$A$是一个随机变量。
-
-则有：$$E[A | C] = \sum_{i=1}^{n} p(B_i | C) E[A |B_i, C] $$上述公式即为全期...
-            </div>
-            <!-- read more -->
-            <div class="abstract-post-meta">
-                <!-- date -->
-                <div class="abstract-date" title="Last updated: 2025/08/10">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2025/07/13</span>
-                </div>
-                <!-- tags -->
-                    <div class="abstract-tags" >
-        <a class="post-tag" href="javascript:void(0);" data-tags="概率论">概率论</a>
-</div>
-
-            </div>
-        </article>
-        <div class="index-post-divider"></div>
     <!-- paginator  -->
         <nav class="page-nav">
             <a class="extend prev" rel="prev" href="/">&lt; PREV</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/3/">NEXT &gt;</a>
@@ -917,9 +911,11 @@ $A$是一个随机变量。
         
         
         
+        
+        
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 78
+        Total : 80
         </div>
         <!-- search  -->
             <div class="site-search site-search-loading popup-trigger">
@@ -929,6 +925,14 @@ $A$是一个随机变量。
     <div class="post-archive">
             <div class="archive-year"> 2026 </div>
             <ul class="year-list">
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/01</span>
+            <a class="archive-post-title" href="/2026/04/01/duo-tai-mac-jian-shu-ju-tong-bu-git-luo-cang-ku-syncthing-fang-an/">多台mac间数据同步：Git裸仓库+Syncthing方案</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/26</span>
+            <a class="archive-post-title" href="/2026/02/26/git-da-wen-jian-chu-li/">Git大文件处理</a>
+        </li>
         <li class="archive-post-item">
             <span class="archive-post-date">02/19</span>
             <a class="archive-post-title" href="/2026/02/19/mac-shang-shi-yong-chun-ming-ling-xing-docker/">mac上使用纯命令行docker</a>
@@ -1470,6 +1474,14 @@ $A$是一个随机变量。
             <span class="sidebar-tag-name" data-tags="docker, doccano">
                 <span class="iconfont-archer">&#xe606;</span>
                 docker, doccano
+            </span>
+            <span class="sidebar-tag-name" data-tags="Syncthing">
+                <span class="iconfont-archer">&#xe606;</span>
+                Syncthing
+            </span>
+            <span class="sidebar-tag-name" data-tags="Dotfiles">
+                <span class="iconfont-archer">&#xe606;</span>
+                Dotfiles
             </span>
     </div>
     <div class="iconfont-archer sidebar-tags-empty">&#xe678;</div>
