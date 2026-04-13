@@ -429,6 +429,41 @@
                 <main class="main index-page">
             
         <article class="index-post">
+            <a class="abstract-title" href="/2025/11/20/1-cs336-bpe-fen-ci-qi-jie-shao/">
+                <span class="abstract-title-text">1-cs336-BPE分词器介绍</span>
+            </a>
+            <div class="abstract-content">
+                
+[!summary]
+
+Why we need tokenizer？
+为什么需要基于字节的分词器？
+彻底解决”未登录词”问题
+实现对所有语言、符号的通用支持
+核心原理： UTF-8与字节
+
+
+1. The motivation - Why we need tokenizer由于计算机只能够对数字进行计算，而没法直接对字符做计算。因此，我们需要一种操作能够将字符串编码为数字；同时将计算机输出的数字解码为人类阅读友好的字符串。上述中的“操作”即为 Tokenizers。
+
+根据编码基本单元的不同，可以划分出多种不同的编码方式，如基于词级、字符级和基于字节的编码方式。
+其中，基于字节的Tok...
+            </div>
+            <!-- read more -->
+            <div class="abstract-post-meta">
+                <!-- date -->
+                <div class="abstract-date" title="Last updated: 2025/11/20">
+                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2025/11/20</span>
+                </div>
+                <!-- tags -->
+                    <div class="abstract-tags" >
+        <a class="post-tag" href="javascript:void(0);" data-tags="BPE">BPE</a>
+</div>
+
+            </div>
+        </article>
+        <div class="index-post-divider"></div>
+            
+        <article class="index-post">
             <a class="abstract-title" href="/2025/10/16/linux-chang-yong-ming-ling-jie-shi/">
                 <span class="abstract-title-text">linux常用命令解释</span>
             </a>
@@ -717,35 +752,6 @@ sdb 是系统盘
             </div>
         </article>
         <div class="index-post-divider"></div>
-            
-        <article class="index-post">
-            <a class="abstract-title" href="/2025/08/10/fan-shu-de-ji-ben-gai-nian/">
-                <span class="abstract-title-text">范数的基本概念</span>
-            </a>
-            <div class="abstract-content">
-                范数（norm）本质上就是一种 “长度”或“大小”的度量方法。
-
-对向量来说，范数告诉你“这个向量有多长”。
-
-对矩阵来说，范数告诉你“这个矩阵能把向量拉伸多少”或“矩阵自身有多大”。
-
-
-
-            </div>
-            <!-- read more -->
-            <div class="abstract-post-meta">
-                <!-- date -->
-                <div class="abstract-date" title="Last updated: 2025/08/10">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2025/08/10</span>
-                </div>
-                <!-- tags -->
-                    <div class="abstract-tags" >
-        <a class="post-tag" href="javascript:void(0);" data-tags="数学">数学</a>
-</div>
-
-            </div>
-        </article>
-        <div class="index-post-divider"></div>
     <!-- paginator  -->
         <nav class="page-nav">
             <a class="extend prev" rel="prev" href="/">&lt; PREV</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/3/">NEXT &gt;</a>
@@ -770,6 +776,9 @@ sdb 是系统盘
             </div>
                     <span>
                         <a href="//sebastianraschka.com/" target="_blank">SR.PHD</a>
+                    </span>
+                    <span>
+                        <a href="//dustintran.com/" target="_blank">DT</a>
                     </span>
                     <span>
                         <a href="//lyk-love.cn/" target="_blank">LYK</a>
@@ -927,9 +936,10 @@ sdb 是系统盘
         
         
         
+        
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 82
+        Total : 83
         </div>
         <!-- search  -->
             <div class="site-search site-search-loading popup-trigger">
@@ -939,6 +949,10 @@ sdb 是系统盘
     <div class="post-archive">
             <div class="archive-year"> 2026 </div>
             <ul class="year-list">
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/14</span>
+            <a class="archive-post-title" href="/2026/04/14/zhi-shi-ku-jin-hua-guan-li/">知识库进化管理</a>
+        </li>
         <li class="archive-post-item">
             <span class="archive-post-date">04/05</span>
             <a class="archive-post-title" href="/2026/04/05/2026-xin-zhong-duan-gong-ju-ji-lu/">2026新终端工具记录</a>
@@ -965,11 +979,11 @@ sdb 是系统盘
         </li>
         <li class="archive-post-item">
             <span class="archive-post-date">01/16</span>
-            <a class="archive-post-title" href="/2026/01/16/einx-and-einops/">Einx-and-einops</a>
+            <a class="archive-post-title" href="/2026/01/16/chunk-hua-fen-fang-fa/">Chunk划分方法</a>
         </li>
         <li class="archive-post-item">
             <span class="archive-post-date">01/16</span>
-            <a class="archive-post-title" href="/2026/01/16/chunk-hua-fen-fang-fa/">Chunk划分方法</a>
+            <a class="archive-post-title" href="/2026/01/16/einx-and-einops/">Einx-and-einops</a>
         </li>
         <li class="archive-post-item">
             <span class="archive-post-date">01/09</span>
@@ -1177,19 +1191,19 @@ sdb 是系统盘
         </li>
         <li class="archive-post-item">
             <span class="archive-post-date">09/19</span>
-            <a class="archive-post-title" href="/2021/09/19/ji-qi-xue-xi-can-kao-zi-liao/">机器学习参考资料</a>
-        </li>
-        <li class="archive-post-item">
-            <span class="archive-post-date">09/19</span>
             <a class="archive-post-title" href="/2021/09/19/you-yong-de-zi-yuan/">有用的资源</a>
         </li>
         <li class="archive-post-item">
-            <span class="archive-post-date">08/14</span>
-            <a class="archive-post-title" href="/2021/08/14/gong-ju-xiang/">工具箱</a>
+            <span class="archive-post-date">09/19</span>
+            <a class="archive-post-title" href="/2021/09/19/ji-qi-xue-xi-can-kao-zi-liao/">机器学习参考资料</a>
         </li>
         <li class="archive-post-item">
             <span class="archive-post-date">08/14</span>
             <a class="archive-post-title" href="/2021/08/14/wei-xin-biao-qian-zheng-li/">微信标签整理</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/14</span>
+            <a class="archive-post-title" href="/2021/08/14/gong-ju-xiang/">工具箱</a>
         </li>
         <li class="archive-post-item">
             <span class="archive-post-date">08/13</span>
@@ -1285,6 +1299,10 @@ sdb 是系统盘
 
         <div class="sidebar-panel-tags">
     <div class="sidebar-tags-name">
+            <span class="sidebar-tag-name" data-tags="pytorch">
+                <span class="iconfont-archer">&#xe606;</span>
+                pytorch
+            </span>
             <span class="sidebar-tag-name" data-tags="BPE">
                 <span class="iconfont-archer">&#xe606;</span>
                 BPE
@@ -1293,29 +1311,33 @@ sdb 是系统盘
                 <span class="iconfont-archer">&#xe606;</span>
                 ai竞赛
             </span>
-            <span class="sidebar-tag-name" data-tags="pytorch">
+            <span class="sidebar-tag-name" data-tags="RAG">
                 <span class="iconfont-archer">&#xe606;</span>
-                pytorch
-            </span>
-            <span class="sidebar-tag-name" data-tags="tensor">
-                <span class="iconfont-archer">&#xe606;</span>
-                tensor
+                RAG
             </span>
             <span class="sidebar-tag-name" data-tags="Clash, 规则配置">
                 <span class="iconfont-archer">&#xe606;</span>
                 Clash, 规则配置
             </span>
-            <span class="sidebar-tag-name" data-tags="GitLab">
-                <span class="iconfont-archer">&#xe606;</span>
-                GitLab
-            </span>
             <span class="sidebar-tag-name" data-tags="GitHub">
                 <span class="iconfont-archer">&#xe606;</span>
                 GitHub
             </span>
+            <span class="sidebar-tag-name" data-tags="GitLab">
+                <span class="iconfont-archer">&#xe606;</span>
+                GitLab
+            </span>
+            <span class="sidebar-tag-name" data-tags="git">
+                <span class="iconfont-archer">&#xe606;</span>
+                git
+            </span>
             <span class="sidebar-tag-name" data-tags="预训练模型">
                 <span class="iconfont-archer">&#xe606;</span>
                 预训练模型
+            </span>
+            <span class="sidebar-tag-name" data-tags="tensor">
+                <span class="iconfont-archer">&#xe606;</span>
+                tensor
             </span>
             <span class="sidebar-tag-name" data-tags="启动U盘">
                 <span class="iconfont-archer">&#xe606;</span>
@@ -1325,22 +1347,6 @@ sdb 是系统盘
                 <span class="iconfont-archer">&#xe606;</span>
                 Google访问助手
             </span>
-            <span class="sidebar-tag-name" data-tags="mineru">
-                <span class="iconfont-archer">&#xe606;</span>
-                mineru
-            </span>
-            <span class="sidebar-tag-name" data-tags="claude-code">
-                <span class="iconfont-archer">&#xe606;</span>
-                claude-code
-            </span>
-            <span class="sidebar-tag-name" data-tags="RAG">
-                <span class="iconfont-archer">&#xe606;</span>
-                RAG
-            </span>
-            <span class="sidebar-tag-name" data-tags="nlp">
-                <span class="iconfont-archer">&#xe606;</span>
-                nlp
-            </span>
             <span class="sidebar-tag-name" data-tags="Pandas">
                 <span class="iconfont-archer">&#xe606;</span>
                 Pandas
@@ -1349,69 +1355,85 @@ sdb 是系统盘
                 <span class="iconfont-archer">&#xe606;</span>
                 svm
             </span>
-            <span class="sidebar-tag-name" data-tags="github">
+            <span class="sidebar-tag-name" data-tags="mineru">
                 <span class="iconfont-archer">&#xe606;</span>
-                github
+                mineru
             </span>
-            <span class="sidebar-tag-name" data-tags="NVIDIA">
+            <span class="sidebar-tag-name" data-tags="claude-code">
                 <span class="iconfont-archer">&#xe606;</span>
-                NVIDIA
+                claude-code
             </span>
             <span class="sidebar-tag-name" data-tags="博客">
                 <span class="iconfont-archer">&#xe606;</span>
                 博客
             </span>
-            <span class="sidebar-tag-name" data-tags="jupyter notebook">
+            <span class="sidebar-tag-name" data-tags="github">
                 <span class="iconfont-archer">&#xe606;</span>
-                jupyter notebook
+                github
+            </span>
+            <span class="sidebar-tag-name" data-tags="nlp">
+                <span class="iconfont-archer">&#xe606;</span>
+                nlp
+            </span>
+            <span class="sidebar-tag-name" data-tags="NVIDIA">
+                <span class="iconfont-archer">&#xe606;</span>
+                NVIDIA
             </span>
             <span class="sidebar-tag-name" data-tags="docker">
                 <span class="iconfont-archer">&#xe606;</span>
                 docker
             </span>
-            <span class="sidebar-tag-name" data-tags="python">
+            <span class="sidebar-tag-name" data-tags="jupyter notebook">
                 <span class="iconfont-archer">&#xe606;</span>
-                python
-            </span>
-            <span class="sidebar-tag-name" data-tags="git">
-                <span class="iconfont-archer">&#xe606;</span>
-                git
+                jupyter notebook
             </span>
             <span class="sidebar-tag-name" data-tags="neo4j">
                 <span class="iconfont-archer">&#xe606;</span>
                 neo4j
             </span>
-            <span class="sidebar-tag-name" data-tags="ssh">
+            <span class="sidebar-tag-name" data-tags="python">
                 <span class="iconfont-archer">&#xe606;</span>
-                ssh
-            </span>
-            <span class="sidebar-tag-name" data-tags="vscode">
-                <span class="iconfont-archer">&#xe606;</span>
-                vscode
-            </span>
-            <span class="sidebar-tag-name" data-tags="摄影">
-                <span class="iconfont-archer">&#xe606;</span>
-                摄影
+                python
             </span>
             <span class="sidebar-tag-name" data-tags="NIVIDIA驱动">
                 <span class="iconfont-archer">&#xe606;</span>
                 NIVIDIA驱动
             </span>
-            <span class="sidebar-tag-name" data-tags="webdav, docker, obsidian, zotero">
-                <span class="iconfont-archer">&#xe606;</span>
-                webdav, docker, obsidian, zotero
-            </span>
             <span class="sidebar-tag-name" data-tags="uv">
                 <span class="iconfont-archer">&#xe606;</span>
                 uv
+            </span>
+            <span class="sidebar-tag-name" data-tags="ssh">
+                <span class="iconfont-archer">&#xe606;</span>
+                ssh
+            </span>
+            <span class="sidebar-tag-name" data-tags="树">
+                <span class="iconfont-archer">&#xe606;</span>
+                树
+            </span>
+            <span class="sidebar-tag-name" data-tags="动态规划">
+                <span class="iconfont-archer">&#xe606;</span>
+                动态规划
+            </span>
+            <span class="sidebar-tag-name" data-tags="摄影">
+                <span class="iconfont-archer">&#xe606;</span>
+                摄影
             </span>
             <span class="sidebar-tag-name" data-tags="文本聚类 bert向量表示">
                 <span class="iconfont-archer">&#xe606;</span>
                 文本聚类 bert向量表示
             </span>
-            <span class="sidebar-tag-name" data-tags="树">
+            <span class="sidebar-tag-name" data-tags="概率论">
                 <span class="iconfont-archer">&#xe606;</span>
-                树
+                概率论
+            </span>
+            <span class="sidebar-tag-name" data-tags="webdav, docker, obsidian, zotero">
+                <span class="iconfont-archer">&#xe606;</span>
+                webdav, docker, obsidian, zotero
+            </span>
+            <span class="sidebar-tag-name" data-tags="vscode">
+                <span class="iconfont-archer">&#xe606;</span>
+                vscode
             </span>
             <span class="sidebar-tag-name" data-tags="rclone">
                 <span class="iconfont-archer">&#xe606;</span>
@@ -1421,17 +1443,13 @@ sdb 是系统盘
                 <span class="iconfont-archer">&#xe606;</span>
                 机器学习
             </span>
-            <span class="sidebar-tag-name" data-tags="动态规划">
+            <span class="sidebar-tag-name" data-tags="日志">
                 <span class="iconfont-archer">&#xe606;</span>
-                动态规划
+                日志
             </span>
-            <span class="sidebar-tag-name" data-tags="图">
+            <span class="sidebar-tag-name" data-tags="python_c++_互通">
                 <span class="iconfont-archer">&#xe606;</span>
-                图
-            </span>
-            <span class="sidebar-tag-name" data-tags="概率论">
-                <span class="iconfont-archer">&#xe606;</span>
-                概率论
+                python_c++_互通
             </span>
             <span class="sidebar-tag-name" data-tags="数学">
                 <span class="iconfont-archer">&#xe606;</span>
@@ -1441,61 +1459,13 @@ sdb 是系统盘
                 <span class="iconfont-archer">&#xe606;</span>
                 呈贡
             </span>
-            <span class="sidebar-tag-name" data-tags="日志">
+            <span class="sidebar-tag-name" data-tags="图">
                 <span class="iconfont-archer">&#xe606;</span>
-                日志
-            </span>
-            <span class="sidebar-tag-name" data-tags="python_c++_互通">
-                <span class="iconfont-archer">&#xe606;</span>
-                python_c++_互通
+                图
             </span>
             <span class="sidebar-tag-name" data-tags="电影">
                 <span class="iconfont-archer">&#xe606;</span>
                 电影
-            </span>
-            <span class="sidebar-tag-name" data-tags="微信">
-                <span class="iconfont-archer">&#xe606;</span>
-                微信
-            </span>
-            <span class="sidebar-tag-name" data-tags="干货">
-                <span class="iconfont-archer">&#xe606;</span>
-                干货
-            </span>
-            <span class="sidebar-tag-name" data-tags="编程">
-                <span class="iconfont-archer">&#xe606;</span>
-                编程
-            </span>
-            <span class="sidebar-tag-name" data-tags="文本聚类 编辑距离">
-                <span class="iconfont-archer">&#xe606;</span>
-                文本聚类 编辑距离
-            </span>
-            <span class="sidebar-tag-name" data-tags="资源">
-                <span class="iconfont-archer">&#xe606;</span>
-                资源
-            </span>
-            <span class="sidebar-tag-name" data-tags="论文写作">
-                <span class="iconfont-archer">&#xe606;</span>
-                论文写作
-            </span>
-            <span class="sidebar-tag-name" data-tags="竞赛">
-                <span class="iconfont-archer">&#xe606;</span>
-                竞赛
-            </span>
-            <span class="sidebar-tag-name" data-tags="熵">
-                <span class="iconfont-archer">&#xe606;</span>
-                熵
-            </span>
-            <span class="sidebar-tag-name" data-tags="强化学习">
-                <span class="iconfont-archer">&#xe606;</span>
-                强化学习
-            </span>
-            <span class="sidebar-tag-name" data-tags="街拍">
-                <span class="iconfont-archer">&#xe606;</span>
-                街拍
-            </span>
-            <span class="sidebar-tag-name" data-tags="docker, doccano">
-                <span class="iconfont-archer">&#xe606;</span>
-                docker, doccano
             </span>
             <span class="sidebar-tag-name" data-tags="Syncthing">
                 <span class="iconfont-archer">&#xe606;</span>
@@ -1504,6 +1474,50 @@ sdb 是系统盘
             <span class="sidebar-tag-name" data-tags="Dotfiles">
                 <span class="iconfont-archer">&#xe606;</span>
                 Dotfiles
+            </span>
+            <span class="sidebar-tag-name" data-tags="文本聚类 编辑距离">
+                <span class="iconfont-archer">&#xe606;</span>
+                文本聚类 编辑距离
+            </span>
+            <span class="sidebar-tag-name" data-tags="微信">
+                <span class="iconfont-archer">&#xe606;</span>
+                微信
+            </span>
+            <span class="sidebar-tag-name" data-tags="编程">
+                <span class="iconfont-archer">&#xe606;</span>
+                编程
+            </span>
+            <span class="sidebar-tag-name" data-tags="干货">
+                <span class="iconfont-archer">&#xe606;</span>
+                干货
+            </span>
+            <span class="sidebar-tag-name" data-tags="资源">
+                <span class="iconfont-archer">&#xe606;</span>
+                资源
+            </span>
+            <span class="sidebar-tag-name" data-tags="熵">
+                <span class="iconfont-archer">&#xe606;</span>
+                熵
+            </span>
+            <span class="sidebar-tag-name" data-tags="论文写作">
+                <span class="iconfont-archer">&#xe606;</span>
+                论文写作
+            </span>
+            <span class="sidebar-tag-name" data-tags="街拍">
+                <span class="iconfont-archer">&#xe606;</span>
+                街拍
+            </span>
+            <span class="sidebar-tag-name" data-tags="强化学习">
+                <span class="iconfont-archer">&#xe606;</span>
+                强化学习
+            </span>
+            <span class="sidebar-tag-name" data-tags="docker, doccano">
+                <span class="iconfont-archer">&#xe606;</span>
+                docker, doccano
+            </span>
+            <span class="sidebar-tag-name" data-tags="竞赛">
+                <span class="iconfont-archer">&#xe606;</span>
+                竞赛
             </span>
     </div>
     <div class="iconfont-archer sidebar-tags-empty">&#xe678;</div>
@@ -1515,6 +1529,10 @@ sdb 是系统盘
 
         <div class="sidebar-panel-categories">
     <div class="sidebar-categories-name">
+        <span class="sidebar-category-name" data-categories="编程">
+            <span class="iconfont-archer">&#xe60a;</span>
+            编程
+        </span>
         <span class="sidebar-category-name" data-categories="大模型">
             <span class="iconfont-archer">&#xe60a;</span>
             大模型
@@ -1522,14 +1540,6 @@ sdb 是系统盘
         <span class="sidebar-category-name" data-categories="总结">
             <span class="iconfont-archer">&#xe60a;</span>
             总结
-        </span>
-        <span class="sidebar-category-name" data-categories="编程">
-            <span class="iconfont-archer">&#xe60a;</span>
-            编程
-        </span>
-        <span class="sidebar-category-name" data-categories="技术笔记">
-            <span class="iconfont-archer">&#xe60a;</span>
-            技术笔记
         </span>
         <span class="sidebar-category-name" data-categories="网络工具">
             <span class="iconfont-archer">&#xe60a;</span>
@@ -1539,6 +1549,10 @@ sdb 是系统盘
             <span class="iconfont-archer">&#xe60a;</span>
             爬坑总结
         </span>
+        <span class="sidebar-category-name" data-categories="技术笔记">
+            <span class="iconfont-archer">&#xe60a;</span>
+            技术笔记
+        </span>
         <span class="sidebar-category-name" data-categories="人工智能">
             <span class="iconfont-archer">&#xe60a;</span>
             人工智能
@@ -1546,6 +1560,10 @@ sdb 是系统盘
         <span class="sidebar-category-name" data-categories="干货">
             <span class="iconfont-archer">&#xe60a;</span>
             干货
+        </span>
+        <span class="sidebar-category-name" data-categories="学习笔记">
+            <span class="iconfont-archer">&#xe60a;</span>
+            学习笔记
         </span>
         <span class="sidebar-category-name" data-categories="运维">
             <span class="iconfont-archer">&#xe60a;</span>
@@ -1555,21 +1573,17 @@ sdb 是系统盘
             <span class="iconfont-archer">&#xe60a;</span>
             编程开发
         </span>
-        <span class="sidebar-category-name" data-categories="知识框架">
-            <span class="iconfont-archer">&#xe60a;</span>
-            知识框架
-        </span>
-        <span class="sidebar-category-name" data-categories="学习笔记">
-            <span class="iconfont-archer">&#xe60a;</span>
-            学习笔记
-        </span>
         <span class="sidebar-category-name" data-categories="生活总结">
             <span class="iconfont-archer">&#xe60a;</span>
             生活总结
         </span>
-        <span class="sidebar-category-name" data-categories="编程经验">
+        <span class="sidebar-category-name" data-categories="知识框架">
             <span class="iconfont-archer">&#xe60a;</span>
-            编程经验
+            知识框架
+        </span>
+        <span class="sidebar-category-name" data-categories="算法笔记">
+            <span class="iconfont-archer">&#xe60a;</span>
+            算法笔记
         </span>
         <span class="sidebar-category-name" data-categories="摄影">
             <span class="iconfont-archer">&#xe60a;</span>
@@ -1579,21 +1593,17 @@ sdb 是系统盘
             <span class="iconfont-archer">&#xe60a;</span>
             自然语言处理
         </span>
-        <span class="sidebar-category-name" data-categories="算法笔记">
+        <span class="sidebar-category-name" data-categories="编程经验">
             <span class="iconfont-archer">&#xe60a;</span>
-            算法笔记
-        </span>
-        <span class="sidebar-category-name" data-categories="算法">
-            <span class="iconfont-archer">&#xe60a;</span>
-            算法
+            编程经验
         </span>
         <span class="sidebar-category-name" data-categories="生活情感">
             <span class="iconfont-archer">&#xe60a;</span>
             生活情感
         </span>
-        <span class="sidebar-category-name" data-categories="收藏">
+        <span class="sidebar-category-name" data-categories="算法">
             <span class="iconfont-archer">&#xe60a;</span>
-            收藏
+            算法
         </span>
         <span class="sidebar-category-name" data-categories="学习资料">
             <span class="iconfont-archer">&#xe60a;</span>
@@ -1602,6 +1612,10 @@ sdb 是系统盘
         <span class="sidebar-category-name" data-categories="数据集">
             <span class="iconfont-archer">&#xe60a;</span>
             数据集
+        </span>
+        <span class="sidebar-category-name" data-categories="收藏">
+            <span class="iconfont-archer">&#xe60a;</span>
+            收藏
         </span>
         <span class="sidebar-category-name" data-categories="机器学习">
             <span class="iconfont-archer">&#xe60a;</span>
