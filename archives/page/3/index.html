@@ -422,6 +422,30 @@
                 <main class="main index-page">
             
         <article class="index-post">
+            <a class="abstract-title" href="/2025/10/08/ubuntu-shang-che-di-xie-zai-he-chong-zhuang-nvidia-qu-dong-ji-xiang-guan-zu-jian/">
+                <span class="abstract-title-text">Ubuntu上彻底卸载和重装NVIDIA驱动及相关组件</span>
+            </a>
+            <div class="abstract-content">
+                有时候，我们在配置NVIDIA驱动环境时，会遇到各种各样奇怪的问题，导致无法正常使用GPU。此时，彻底卸载NVIDIA驱动及相关组件，重新安装，往往是解决问题的有效方法。本文将介绍如何在Ubuntu系统上彻底卸载NVIDIA驱动及相关组件。
+卸载下面是一份在Ubuntu上彻底卸载H100环境中的NVIDIA驱动、CUDA、cuDNN、NCCL等相关组件的完整步骤。建议严格按照顺序执行，避免系统残留或驱动冲突。
+提前准备1. 停止所有GPU相关的进程123sudo systemctl stop dockersudo systemctl stop nvidia-persistencedsud...
+            </div>
+            <!-- read more -->
+            <div class="abstract-post-meta">
+                <!-- date -->
+                <div class="abstract-date" title="Last updated: 2025/10/08">
+                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2025/10/08</span>
+                </div>
+                <!-- tags -->
+                    <div class="abstract-tags" >
+        <a class="post-tag" href="javascript:void(0);" data-tags="NVIDIA">NVIDIA</a>
+</div>
+
+            </div>
+        </article>
+        <div class="index-post-divider"></div>
+            
+        <article class="index-post">
             <a class="abstract-title" href="/2025/10/03/ssh-pei-zhi-jie-shao/">
                 <span class="abstract-title-text">ssh配置介绍</span>
             </a>
@@ -646,31 +670,6 @@ $$f(\...
             </div>
         </article>
         <div class="index-post-divider"></div>
-            
-        <article class="index-post">
-            <a class="abstract-title" href="/2025/07/28/claude-code-xue-xi-ji-lu/">
-                <span class="abstract-title-text">Claude-Code学习记录</span>
-            </a>
-            <div class="abstract-content">
-                Claude Code 安装根据官方教程，照着操作就好了: https://docs.anthropic.com/en/docs/claude-code/setup
-接入 Kimi K2国内访问 Claude 困难，因此有了Kimi K2 平替方法，下面是操作步骤：
-首先到这里申请一个API， 然后设置环境变量：
-123456export ANTHROPIC_BASE_URL="https://api.moonshot.cn/anthropic/"export ANTHROPIC_API_KEY="你的APY KEY"export ANTHROPIC_SMALL_FAST_MODEL="...
-            </div>
-            <!-- read more -->
-            <div class="abstract-post-meta">
-                <!-- date -->
-                <div class="abstract-date" title="Last updated: 2025/09/30">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2025/07/28</span>
-                </div>
-                <!-- tags -->
-                    <div class="abstract-tags" >
-        <a class="post-tag" href="javascript:void(0);" data-tags="claude-code">claude-code</a>
-</div>
-
-            </div>
-        </article>
-        <div class="index-post-divider"></div>
     <!-- paginator  -->
         <nav class="page-nav">
             <a class="extend prev" rel="prev" href="/archives/page/2/">&lt; PREV</a><a class="page-number" href="/archives/">1</a><a class="page-number" href="/archives/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/archives/page/4/">4</a><a class="page-number" href="/archives/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/9/">9</a><a class="extend next" rel="next" href="/archives/page/4/">NEXT &gt;</a>
@@ -802,9 +801,10 @@ $$f(\...
         
         
         
+        
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 86
+        Total : 87
         </div>
         <!-- search  -->
             <div class="site-search site-search-loading popup-trigger">
@@ -817,6 +817,10 @@ $$f(\...
         <li class="archive-post-item">
             <span class="archive-post-date">04/14</span>
             <a class="archive-post-title" href="/2026/04/14/ju-zhen-fan-shu/">矩阵范数</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/14</span>
+            <a class="archive-post-title" href="/2026/04/14/zhe-shi-yi-ge-ce-shi-dai-tu-pian-de/">这是一个测试-带图片的</a>
         </li>
         <li class="archive-post-item">
             <span class="archive-post-date">04/14</span>
@@ -1192,13 +1196,13 @@ $$f(\...
                 <span class="iconfont-archer">&#xe606;</span>
                 RAG
             </span>
-            <span class="sidebar-tag-name" data-tags="claude-code">
-                <span class="iconfont-archer">&#xe606;</span>
-                claude-code
-            </span>
             <span class="sidebar-tag-name" data-tags="Clash, 规则配置">
                 <span class="iconfont-archer">&#xe606;</span>
                 Clash, 规则配置
+            </span>
+            <span class="sidebar-tag-name" data-tags="claude-code">
+                <span class="iconfont-archer">&#xe606;</span>
+                claude-code
             </span>
             <span class="sidebar-tag-name" data-tags="tensor">
                 <span class="iconfont-archer">&#xe606;</span>
@@ -1224,13 +1228,13 @@ $$f(\...
                 <span class="iconfont-archer">&#xe606;</span>
                 预训练模型
             </span>
-            <span class="sidebar-tag-name" data-tags="mineru">
-                <span class="iconfont-archer">&#xe606;</span>
-                mineru
-            </span>
             <span class="sidebar-tag-name" data-tags="启动U盘">
                 <span class="iconfont-archer">&#xe606;</span>
                 启动U盘
+            </span>
+            <span class="sidebar-tag-name" data-tags="mineru">
+                <span class="iconfont-archer">&#xe606;</span>
+                mineru
             </span>
             <span class="sidebar-tag-name" data-tags="nlp">
                 <span class="iconfont-archer">&#xe606;</span>
@@ -1244,13 +1248,13 @@ $$f(\...
                 <span class="iconfont-archer">&#xe606;</span>
                 svm
             </span>
-            <span class="sidebar-tag-name" data-tags="github">
-                <span class="iconfont-archer">&#xe606;</span>
-                github
-            </span>
             <span class="sidebar-tag-name" data-tags="NVIDIA">
                 <span class="iconfont-archer">&#xe606;</span>
                 NVIDIA
+            </span>
+            <span class="sidebar-tag-name" data-tags="github">
+                <span class="iconfont-archer">&#xe606;</span>
+                github
             </span>
             <span class="sidebar-tag-name" data-tags="博客">
                 <span class="iconfont-archer">&#xe606;</span>
@@ -1276,21 +1280,21 @@ $$f(\...
                 <span class="iconfont-archer">&#xe606;</span>
                 ssh
             </span>
-            <span class="sidebar-tag-name" data-tags="NIVIDIA驱动">
-                <span class="iconfont-archer">&#xe606;</span>
-                NIVIDIA驱动
-            </span>
             <span class="sidebar-tag-name" data-tags="uv">
                 <span class="iconfont-archer">&#xe606;</span>
                 uv
             </span>
-            <span class="sidebar-tag-name" data-tags="树">
+            <span class="sidebar-tag-name" data-tags="NIVIDIA驱动">
                 <span class="iconfont-archer">&#xe606;</span>
-                树
+                NIVIDIA驱动
             </span>
             <span class="sidebar-tag-name" data-tags="vscode">
                 <span class="iconfont-archer">&#xe606;</span>
                 vscode
+            </span>
+            <span class="sidebar-tag-name" data-tags="树">
+                <span class="iconfont-archer">&#xe606;</span>
+                树
             </span>
             <span class="sidebar-tag-name" data-tags="动态规划">
                 <span class="iconfont-archer">&#xe606;</span>
@@ -1320,13 +1324,13 @@ $$f(\...
                 <span class="iconfont-archer">&#xe606;</span>
                 日志
             </span>
-            <span class="sidebar-tag-name" data-tags="数学">
-                <span class="iconfont-archer">&#xe606;</span>
-                数学
-            </span>
             <span class="sidebar-tag-name" data-tags="机器学习">
                 <span class="iconfont-archer">&#xe606;</span>
                 机器学习
+            </span>
+            <span class="sidebar-tag-name" data-tags="数学">
+                <span class="iconfont-archer">&#xe606;</span>
+                数学
             </span>
             <span class="sidebar-tag-name" data-tags="图">
                 <span class="iconfont-archer">&#xe606;</span>
@@ -1344,6 +1348,10 @@ $$f(\...
                 <span class="iconfont-archer">&#xe606;</span>
                 文本聚类 编辑距离
             </span>
+            <span class="sidebar-tag-name" data-tags="电影">
+                <span class="iconfont-archer">&#xe606;</span>
+                电影
+            </span>
             <span class="sidebar-tag-name" data-tags="Syncthing">
                 <span class="iconfont-archer">&#xe606;</span>
                 Syncthing
@@ -1351,10 +1359,6 @@ $$f(\...
             <span class="sidebar-tag-name" data-tags="Dotfiles">
                 <span class="iconfont-archer">&#xe606;</span>
                 Dotfiles
-            </span>
-            <span class="sidebar-tag-name" data-tags="电影">
-                <span class="iconfont-archer">&#xe606;</span>
-                电影
             </span>
             <span class="sidebar-tag-name" data-tags="编程">
                 <span class="iconfont-archer">&#xe606;</span>
@@ -1376,13 +1380,13 @@ $$f(\...
                 <span class="iconfont-archer">&#xe606;</span>
                 熵
             </span>
-            <span class="sidebar-tag-name" data-tags="论文写作">
-                <span class="iconfont-archer">&#xe606;</span>
-                论文写作
-            </span>
             <span class="sidebar-tag-name" data-tags="竞赛">
                 <span class="iconfont-archer">&#xe606;</span>
                 竞赛
+            </span>
+            <span class="sidebar-tag-name" data-tags="论文写作">
+                <span class="iconfont-archer">&#xe606;</span>
+                论文写作
             </span>
             <span class="sidebar-tag-name" data-tags="街拍">
                 <span class="iconfont-archer">&#xe606;</span>
@@ -1418,13 +1422,13 @@ $$f(\...
             <span class="iconfont-archer">&#xe60a;</span>
             总结
         </span>
-        <span class="sidebar-category-name" data-categories="编程开发">
-            <span class="iconfont-archer">&#xe60a;</span>
-            编程开发
-        </span>
         <span class="sidebar-category-name" data-categories="网络工具">
             <span class="iconfont-archer">&#xe60a;</span>
             网络工具
+        </span>
+        <span class="sidebar-category-name" data-categories="编程开发">
+            <span class="iconfont-archer">&#xe60a;</span>
+            编程开发
         </span>
         <span class="sidebar-category-name" data-categories="技术笔记">
             <span class="iconfont-archer">&#xe60a;</span>

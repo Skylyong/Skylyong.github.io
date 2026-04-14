@@ -429,6 +429,27 @@
                 <main class="main index-page">
             
         <article class="index-post">
+            <a class="abstract-title" href="/2025/09/28/quan-ju-pei-zhi-docker-ke-hu-duan-dai-li/">
+                <span class="abstract-title-text">全局配置Docker客户端代理</span>
+            </a>
+            <div class="abstract-content">
+                我们下载镜像的时候需要科学上网，下面介绍一下全局配置Docker客户端代理的方法，配置好以后所有 docker build, docker pull, docker run 等命令都可以直接使用代理。
+1. 编辑配置目录12sudo mkdir -p /etc/systemd/system/docker.service.dsudo vim /etc/systemd/system/docker.service.d/proxy.conf
+
+2. 写入内容 （根据你的代理地址和端口改）1234[Service]   Environment="HTTP_PROXY=http://YOUR_PRO...
+            </div>
+            <!-- read more -->
+            <div class="abstract-post-meta">
+                <!-- date -->
+                <div class="abstract-date" title="Last updated: 2025/09/28">
+                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2025/09/28</span>
+                </div>
+                <!-- tags -->
+            </div>
+        </article>
+        <div class="index-post-divider"></div>
+            
+        <article class="index-post">
             <a class="abstract-title" href="/2025/09/16/linux-ci-pan-guan-li-ji-minio-fu-wu-pei-zhi/">
                 <span class="abstract-title-text">Linux磁盘管理及MinIO服务配置</span>
             </a>
@@ -722,44 +743,6 @@ Bellman equation 推导两个使用 Bellman equation 的例子
             </div>
         </article>
         <div class="index-post-divider"></div>
-            
-        <article class="index-post">
-            <a class="abstract-title" href="/2025/04/24/ben-di-gou-jian-docker-jing-xiang-bing-shang-chuan-zhi-a-li-yun-jing-xiang-fu-wu-zhan/">
-                <span class="abstract-title-text">本地构建docker镜像并上传至阿里云镜像服务站</span>
-            </a>
-            <div class="abstract-content">
-                最近比赛需要构建docker镜像，上传至阿里云镜像服务站，以便于官方复现测评，这是一个繁琐的过程，以后也会用到，所以记录一下。
-主要分为以下几步：
-1） 开通阿里云镜像服务
-2） 在本地电脑或者服务器上面安装docker
-3） 构建docker镜像
-4） 将本地 docker 镜像推送至阿里云镜像服务站
-5）本地一键镜像创建和上传脚本
-下面为详细的步骤描述：
-1） 开通阿里云镜像服务阿里云镜像服务站的开通过程比较繁琐，根据DataWhale的教程操作如下：
-a. 点击链接并登录阿里云账号
-
-b. 创建个人版实例
-
-c. 创建命名空间
-
-d.  创建镜像仓库
-创建镜像仓库时，代码源选择本地...
-            </div>
-            <!-- read more -->
-            <div class="abstract-post-meta">
-                <!-- date -->
-                <div class="abstract-date" title="Last updated: 2025/04/24">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2025/04/24</span>
-                </div>
-                <!-- tags -->
-                    <div class="abstract-tags" >
-        <a class="post-tag" href="javascript:void(0);" data-tags="docker">docker</a>
-</div>
-
-            </div>
-        </article>
-        <div class="index-post-divider"></div>
     <!-- paginator  -->
         <nav class="page-nav">
             <a class="extend prev" rel="prev" href="/page/2/">&lt; PREV</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><a class="extend next" rel="next" href="/page/4/">NEXT &gt;</a>
@@ -948,9 +931,10 @@ d.  创建镜像仓库
         
         
         
+        
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 86
+        Total : 87
         </div>
         <!-- search  -->
             <div class="site-search site-search-loading popup-trigger">
@@ -963,6 +947,10 @@ d.  创建镜像仓库
         <li class="archive-post-item">
             <span class="archive-post-date">04/14</span>
             <a class="archive-post-title" href="/2026/04/14/ju-zhen-fan-shu/">矩阵范数</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/14</span>
+            <a class="archive-post-title" href="/2026/04/14/zhe-shi-yi-ge-ce-shi-dai-tu-pian-de/">这是一个测试-带图片的</a>
         </li>
         <li class="archive-post-item">
             <span class="archive-post-date">04/14</span>
@@ -1338,13 +1326,13 @@ d.  创建镜像仓库
                 <span class="iconfont-archer">&#xe606;</span>
                 RAG
             </span>
-            <span class="sidebar-tag-name" data-tags="claude-code">
-                <span class="iconfont-archer">&#xe606;</span>
-                claude-code
-            </span>
             <span class="sidebar-tag-name" data-tags="Clash, 规则配置">
                 <span class="iconfont-archer">&#xe606;</span>
                 Clash, 规则配置
+            </span>
+            <span class="sidebar-tag-name" data-tags="claude-code">
+                <span class="iconfont-archer">&#xe606;</span>
+                claude-code
             </span>
             <span class="sidebar-tag-name" data-tags="tensor">
                 <span class="iconfont-archer">&#xe606;</span>
@@ -1370,13 +1358,13 @@ d.  创建镜像仓库
                 <span class="iconfont-archer">&#xe606;</span>
                 预训练模型
             </span>
-            <span class="sidebar-tag-name" data-tags="mineru">
-                <span class="iconfont-archer">&#xe606;</span>
-                mineru
-            </span>
             <span class="sidebar-tag-name" data-tags="启动U盘">
                 <span class="iconfont-archer">&#xe606;</span>
                 启动U盘
+            </span>
+            <span class="sidebar-tag-name" data-tags="mineru">
+                <span class="iconfont-archer">&#xe606;</span>
+                mineru
             </span>
             <span class="sidebar-tag-name" data-tags="nlp">
                 <span class="iconfont-archer">&#xe606;</span>
@@ -1390,13 +1378,13 @@ d.  创建镜像仓库
                 <span class="iconfont-archer">&#xe606;</span>
                 svm
             </span>
-            <span class="sidebar-tag-name" data-tags="github">
-                <span class="iconfont-archer">&#xe606;</span>
-                github
-            </span>
             <span class="sidebar-tag-name" data-tags="NVIDIA">
                 <span class="iconfont-archer">&#xe606;</span>
                 NVIDIA
+            </span>
+            <span class="sidebar-tag-name" data-tags="github">
+                <span class="iconfont-archer">&#xe606;</span>
+                github
             </span>
             <span class="sidebar-tag-name" data-tags="博客">
                 <span class="iconfont-archer">&#xe606;</span>
@@ -1422,21 +1410,21 @@ d.  创建镜像仓库
                 <span class="iconfont-archer">&#xe606;</span>
                 ssh
             </span>
-            <span class="sidebar-tag-name" data-tags="NIVIDIA驱动">
-                <span class="iconfont-archer">&#xe606;</span>
-                NIVIDIA驱动
-            </span>
             <span class="sidebar-tag-name" data-tags="uv">
                 <span class="iconfont-archer">&#xe606;</span>
                 uv
             </span>
-            <span class="sidebar-tag-name" data-tags="树">
+            <span class="sidebar-tag-name" data-tags="NIVIDIA驱动">
                 <span class="iconfont-archer">&#xe606;</span>
-                树
+                NIVIDIA驱动
             </span>
             <span class="sidebar-tag-name" data-tags="vscode">
                 <span class="iconfont-archer">&#xe606;</span>
                 vscode
+            </span>
+            <span class="sidebar-tag-name" data-tags="树">
+                <span class="iconfont-archer">&#xe606;</span>
+                树
             </span>
             <span class="sidebar-tag-name" data-tags="动态规划">
                 <span class="iconfont-archer">&#xe606;</span>
@@ -1466,13 +1454,13 @@ d.  创建镜像仓库
                 <span class="iconfont-archer">&#xe606;</span>
                 日志
             </span>
-            <span class="sidebar-tag-name" data-tags="数学">
-                <span class="iconfont-archer">&#xe606;</span>
-                数学
-            </span>
             <span class="sidebar-tag-name" data-tags="机器学习">
                 <span class="iconfont-archer">&#xe606;</span>
                 机器学习
+            </span>
+            <span class="sidebar-tag-name" data-tags="数学">
+                <span class="iconfont-archer">&#xe606;</span>
+                数学
             </span>
             <span class="sidebar-tag-name" data-tags="图">
                 <span class="iconfont-archer">&#xe606;</span>
@@ -1490,6 +1478,10 @@ d.  创建镜像仓库
                 <span class="iconfont-archer">&#xe606;</span>
                 文本聚类 编辑距离
             </span>
+            <span class="sidebar-tag-name" data-tags="电影">
+                <span class="iconfont-archer">&#xe606;</span>
+                电影
+            </span>
             <span class="sidebar-tag-name" data-tags="Syncthing">
                 <span class="iconfont-archer">&#xe606;</span>
                 Syncthing
@@ -1497,10 +1489,6 @@ d.  创建镜像仓库
             <span class="sidebar-tag-name" data-tags="Dotfiles">
                 <span class="iconfont-archer">&#xe606;</span>
                 Dotfiles
-            </span>
-            <span class="sidebar-tag-name" data-tags="电影">
-                <span class="iconfont-archer">&#xe606;</span>
-                电影
             </span>
             <span class="sidebar-tag-name" data-tags="编程">
                 <span class="iconfont-archer">&#xe606;</span>
@@ -1522,13 +1510,13 @@ d.  创建镜像仓库
                 <span class="iconfont-archer">&#xe606;</span>
                 熵
             </span>
-            <span class="sidebar-tag-name" data-tags="论文写作">
-                <span class="iconfont-archer">&#xe606;</span>
-                论文写作
-            </span>
             <span class="sidebar-tag-name" data-tags="竞赛">
                 <span class="iconfont-archer">&#xe606;</span>
                 竞赛
+            </span>
+            <span class="sidebar-tag-name" data-tags="论文写作">
+                <span class="iconfont-archer">&#xe606;</span>
+                论文写作
             </span>
             <span class="sidebar-tag-name" data-tags="街拍">
                 <span class="iconfont-archer">&#xe606;</span>
@@ -1564,13 +1552,13 @@ d.  创建镜像仓库
             <span class="iconfont-archer">&#xe60a;</span>
             总结
         </span>
-        <span class="sidebar-category-name" data-categories="编程开发">
-            <span class="iconfont-archer">&#xe60a;</span>
-            编程开发
-        </span>
         <span class="sidebar-category-name" data-categories="网络工具">
             <span class="iconfont-archer">&#xe60a;</span>
             网络工具
+        </span>
+        <span class="sidebar-category-name" data-categories="编程开发">
+            <span class="iconfont-archer">&#xe60a;</span>
+            编程开发
         </span>
         <span class="sidebar-category-name" data-categories="技术笔记">
             <span class="iconfont-archer">&#xe60a;</span>
