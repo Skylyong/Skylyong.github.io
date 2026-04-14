@@ -422,6 +422,30 @@
                 <main class="main index-page">
             
         <article class="index-post">
+            <a class="abstract-title" href="/2025/10/02/mineru-an-zhuang-bu-shu/">
+                <span class="abstract-title-text">MinerU安装部署</span>
+            </a>
+            <div class="abstract-content">
+                最近，因为实验工作需要，折腾了一下MinerU的安装部署，记录一下过程。
+我使用的是镜像部署方式，按照官方的给出的Docker镜像进行部署，过程还是比较顺利的。这里要注意的是，MinerU对CUDA版本有要求，具体要求可以参考官方文档。此外，镜像的 Dockerfile 或 docker-compose.yml 应该从Github上拉取最新的版本，以确保使用的是最新的配置。
+此外，应该仔细阅读，官方给出的 镜像部署指南。官方给出了三种不同服务的 docker-compose.yml，从我的理解来看， MinerU 的 docker-compose.yml 文件中，提到的三个服务，是独立的...
+            </div>
+            <!-- read more -->
+            <div class="abstract-post-meta">
+                <!-- date -->
+                <div class="abstract-date" title="Last updated: 2025/10/02">
+                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2025/10/02</span>
+                </div>
+                <!-- tags -->
+                    <div class="abstract-tags" >
+        <a class="post-tag" href="javascript:void(0);" data-tags="mineru">mineru</a>
+</div>
+
+            </div>
+        </article>
+        <div class="index-post-divider"></div>
+            
+        <article class="index-post">
             <a class="abstract-title" href="/2025/09/29/tong-guo-docker-yun-xing-easyconnect-deng-vpn-ruan-jian/">
                 <span class="abstract-title-text">通过docker运行EasyConnect等VPN软件</span>
             </a>
@@ -645,42 +669,6 @@ $$f(\...
             </div>
         </article>
         <div class="index-post-divider"></div>
-            
-        <article class="index-post">
-            <a class="abstract-title" href="/2025/07/25/uv-chang-yong-cao-zuo/">
-                <span class="abstract-title-text">uv常用操作</span>
-            </a>
-            <div class="abstract-content">
-                创建项目
-创建一个新的 Python 项目
-
-12uv init hello-worldcd hello-world
-
-
-在已有的工作目录中初始化一个项目
-
-123mkdir hello-worldcd hello-worlduv init
-
-项目结构一个完整的项目列表如下所示：
-12345678910.├── .venv│   ├── bin│   ├── lib│   └── pyvenv.cfg├── .python-version├── README.md├── main.py├── pyproject.toml└── uv.lock
-
-
-pyproject.toml 包含有关项...
-            </div>
-            <!-- read more -->
-            <div class="abstract-post-meta">
-                <!-- date -->
-                <div class="abstract-date" title="Last updated: 2025/07/25">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2025/07/25</span>
-                </div>
-                <!-- tags -->
-                    <div class="abstract-tags" >
-        <a class="post-tag" href="javascript:void(0);" data-tags="uv">uv</a>
-</div>
-
-            </div>
-        </article>
-        <div class="index-post-divider"></div>
     <!-- paginator  -->
         <nav class="page-nav">
             <a class="extend prev" rel="prev" href="/archives/page/2/">&lt; PREV</a><a class="page-number" href="/archives/">1</a><a class="page-number" href="/archives/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/archives/page/4/">4</a><a class="page-number" href="/archives/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/9/">9</a><a class="extend next" rel="next" href="/archives/page/4/">NEXT &gt;</a>
@@ -811,9 +799,10 @@ pyproject.toml 包含有关项...
         
         
         
+        
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 85
+        Total : 86
         </div>
         <!-- search  -->
             <div class="site-search site-search-loading popup-trigger">
@@ -823,6 +812,10 @@ pyproject.toml 包含有关项...
     <div class="post-archive">
             <div class="archive-year"> 2026 </div>
             <ul class="year-list">
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/14</span>
+            <a class="archive-post-title" href="/2026/04/14/zhe-shi-yi-ge-ce-shi/">这是一个测试</a>
+        </li>
         <li class="archive-post-item">
             <span class="archive-post-date">04/14</span>
             <a class="archive-post-title" href="/2026/04/14/yuan-xue-xi-shu-ji-tui-jian/">元学习书籍推荐</a>
@@ -1221,13 +1214,13 @@ pyproject.toml 包含有关项...
                 <span class="iconfont-archer">&#xe606;</span>
                 Google访问助手
             </span>
-            <span class="sidebar-tag-name" data-tags="预训练模型">
-                <span class="iconfont-archer">&#xe606;</span>
-                预训练模型
-            </span>
             <span class="sidebar-tag-name" data-tags="git">
                 <span class="iconfont-archer">&#xe606;</span>
                 git
+            </span>
+            <span class="sidebar-tag-name" data-tags="预训练模型">
+                <span class="iconfont-archer">&#xe606;</span>
+                预训练模型
             </span>
             <span class="sidebar-tag-name" data-tags="启动U盘">
                 <span class="iconfont-archer">&#xe606;</span>
@@ -1265,13 +1258,13 @@ pyproject.toml 包含有关项...
                 <span class="iconfont-archer">&#xe606;</span>
                 jupyter notebook
             </span>
-            <span class="sidebar-tag-name" data-tags="docker">
-                <span class="iconfont-archer">&#xe606;</span>
-                docker
-            </span>
             <span class="sidebar-tag-name" data-tags="python">
                 <span class="iconfont-archer">&#xe606;</span>
                 python
+            </span>
+            <span class="sidebar-tag-name" data-tags="docker">
+                <span class="iconfont-archer">&#xe606;</span>
+                docker
             </span>
             <span class="sidebar-tag-name" data-tags="neo4j">
                 <span class="iconfont-archer">&#xe606;</span>
@@ -1357,13 +1350,13 @@ pyproject.toml 包含有关项...
                 <span class="iconfont-archer">&#xe606;</span>
                 Dotfiles
             </span>
-            <span class="sidebar-tag-name" data-tags="编程">
-                <span class="iconfont-archer">&#xe606;</span>
-                编程
-            </span>
             <span class="sidebar-tag-name" data-tags="电影">
                 <span class="iconfont-archer">&#xe606;</span>
                 电影
+            </span>
+            <span class="sidebar-tag-name" data-tags="编程">
+                <span class="iconfont-archer">&#xe606;</span>
+                编程
             </span>
             <span class="sidebar-tag-name" data-tags="微信">
                 <span class="iconfont-archer">&#xe606;</span>
