@@ -4,6 +4,19 @@
   
     
     <entry>
+      <title>这是一个带脚本的测试</title>
+      <link href="/2026/04/14/zhe-shi-yi-ge-dai-jiao-ben-de-ce-shi/"/>
+      <url>/2026/04/14/zhe-shi-yi-ge-dai-jiao-ben-de-ce-shi/</url>
+      
+        <content type="html"><![CDATA[<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="built_in">print</span>(os.env())</span><br></pre></td></tr></tbody></table></figure><p>上面是一个脚本测试</p>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>这是一个测试-带图片的</title>
       <link href="/2026/04/14/zhe-shi-yi-ge-ce-shi-dai-tu-pian-de/"/>
       <url>/2026/04/14/zhe-shi-yi-ge-ce-shi-dai-tu-pian-de/</url>
@@ -163,9 +176,9 @@
       
         <tags>
             
-            <tag> GitHub </tag>
-            
             <tag> git </tag>
+            
+            <tag> GitHub </tag>
             
         </tags>
       

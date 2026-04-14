@@ -429,6 +429,38 @@
                 <main class="main index-page">
             
         <article class="index-post">
+            <a class="abstract-title" href="/2025/05/14/git-team-collab-workflow/">
+                <span class="abstract-title-text">git_team_collab_workflow</span>
+            </a>
+            <div class="abstract-content">
+                🛠️ 团队 Git 协作流程规范为确保多人协作开发的高效与规范，团队统一采用如下 Git 工作流流程， 记录如下：
+🛠️ 0. 克隆远程仓库1git clone git@github.com:xxx.git
+
+
+🚀 1. 创建个人开发分支1git checkout -b &lt;your_branch_name&gt;
+
+
+🛠️ 2. 本地开发与提交123git diff                   # 查看变更（可选）git add &lt;file&gt;             # 添加到暂存区git commit -m "说明内容"    # 提交
+
+
+☁️ 3....
+            </div>
+            <!-- read more -->
+            <div class="abstract-post-meta">
+                <!-- date -->
+                <div class="abstract-date" title="Last updated: 2025/05/14">
+                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2025/05/14</span>
+                </div>
+                <!-- tags -->
+                    <div class="abstract-tags" >
+        <a class="post-tag" href="javascript:void(0);" data-tags="github">github</a>
+</div>
+
+            </div>
+        </article>
+        <div class="index-post-divider"></div>
+            
+        <article class="index-post">
             <a class="abstract-title" href="/2025/04/24/ben-di-gou-jian-docker-jing-xiang-bing-shang-chuan-zhi-a-li-yun-jing-xiang-fu-wu-zhan/">
                 <span class="abstract-title-text">本地构建docker镜像并上传至阿里云镜像服务站</span>
             </a>
@@ -1108,31 +1140,6 @@ api 调用大模型时，指定返回json格式数据
             </div>
         </article>
         <div class="index-post-divider"></div>
-            
-        <article class="index-post">
-            <a class="abstract-title" href="/2025/02/12/tong-guo-docker-bu-shu-doccano-biao-zhu-gong-ju/">
-                <span class="abstract-title-text">通过docker部署doccano标注工具</span>
-            </a>
-            <div class="abstract-content">
-                上半年使用了 doccano 标注工具对命名实体识别任务做了标注，感觉很好用。最近准备将其部署到服务器上，通过 docker 容器的方式进行，以便于以后可以快速部署。
-许久不用也是遇到了不少问题，主要是部署好系统后，上传数据一直转圈，没有反应，后面发现是因为没有启动 doccano task,而task需要和 doccano webserver 一起启动， openai 给我的建议是启动两个 docker 服务，我还是选用了常规的 screen 方式。
-下面是自己编写的可以使用的 docker-compose 文件，记录在此，方便以后调用。
-12345678910111213141516...
-            </div>
-            <!-- read more -->
-            <div class="abstract-post-meta">
-                <!-- date -->
-                <div class="abstract-date" title="Last updated: 2025/03/08">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2025/02/12</span>
-                </div>
-                <!-- tags -->
-                    <div class="abstract-tags" >
-        <a class="post-tag" href="javascript:void(0);" data-tags="docker, doccano">docker, doccano</a>
-</div>
-
-            </div>
-        </article>
-        <div class="index-post-divider"></div>
     <!-- paginator  -->
         <nav class="page-nav">
             <a class="extend prev" rel="prev" href="/page/3/">&lt; PREV</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><a class="extend next" rel="next" href="/page/5/">NEXT &gt;</a>
@@ -1322,9 +1329,10 @@ api 调用大模型时，指定返回json格式数据
         
         
         
+        
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 87
+        Total : 88
         </div>
         <!-- search  -->
             <div class="site-search site-search-loading popup-trigger">
@@ -1334,6 +1342,10 @@ api 调用大模型时，指定返回json格式数据
     <div class="post-archive">
             <div class="archive-year"> 2026 </div>
             <ul class="year-list">
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/14</span>
+            <a class="archive-post-title" href="/2026/04/14/zhe-shi-yi-ge-dai-jiao-ben-de-ce-shi/">这是一个带脚本的测试</a>
+        </li>
         <li class="archive-post-item">
             <span class="archive-post-date">04/14</span>
             <a class="archive-post-title" href="/2026/04/14/zhe-shi-yi-ge-ce-shi-dai-tu-pian-de/">这是一个测试-带图片的</a>
@@ -1348,11 +1360,11 @@ api 调用大模型时，指定返回json格式数据
         </li>
         <li class="archive-post-item">
             <span class="archive-post-date">04/14</span>
-            <a class="archive-post-title" href="/2026/04/14/yuan-xue-xi-shu-ji-tui-jian/">元学习书籍推荐</a>
+            <a class="archive-post-title" href="/2026/04/14/guan-yu-ppt/">关于ppt</a>
         </li>
         <li class="archive-post-item">
             <span class="archive-post-date">04/14</span>
-            <a class="archive-post-title" href="/2026/04/14/guan-yu-ppt/">关于ppt</a>
+            <a class="archive-post-title" href="/2026/04/14/yuan-xue-xi-shu-ji-tui-jian/">元学习书籍推荐</a>
         </li>
         <li class="archive-post-item">
             <span class="archive-post-date">04/14</span>
@@ -1728,10 +1740,6 @@ api 调用大模型时，指定返回json格式数据
                 <span class="iconfont-archer">&#xe606;</span>
                 tensor
             </span>
-            <span class="sidebar-tag-name" data-tags="GitHub">
-                <span class="iconfont-archer">&#xe606;</span>
-                GitHub
-            </span>
             <span class="sidebar-tag-name" data-tags="GitLab">
                 <span class="iconfont-archer">&#xe606;</span>
                 GitLab
@@ -1739,6 +1747,10 @@ api 调用大模型时，指定返回json格式数据
             <span class="sidebar-tag-name" data-tags="git">
                 <span class="iconfont-archer">&#xe606;</span>
                 git
+            </span>
+            <span class="sidebar-tag-name" data-tags="GitHub">
+                <span class="iconfont-archer">&#xe606;</span>
+                GitHub
             </span>
             <span class="sidebar-tag-name" data-tags="Google访问助手">
                 <span class="iconfont-archer">&#xe606;</span>
@@ -1768,6 +1780,10 @@ api 调用大模型时，指定返回json格式数据
                 <span class="iconfont-archer">&#xe606;</span>
                 svm
             </span>
+            <span class="sidebar-tag-name" data-tags="NVIDIA">
+                <span class="iconfont-archer">&#xe606;</span>
+                NVIDIA
+            </span>
             <span class="sidebar-tag-name" data-tags="github">
                 <span class="iconfont-archer">&#xe606;</span>
                 github
@@ -1775,10 +1791,6 @@ api 调用大模型时，指定返回json格式数据
             <span class="sidebar-tag-name" data-tags="博客">
                 <span class="iconfont-archer">&#xe606;</span>
                 博客
-            </span>
-            <span class="sidebar-tag-name" data-tags="NVIDIA">
-                <span class="iconfont-archer">&#xe606;</span>
-                NVIDIA
             </span>
             <span class="sidebar-tag-name" data-tags="jupyter notebook">
                 <span class="iconfont-archer">&#xe606;</span>
@@ -1800,13 +1812,13 @@ api 调用大模型时，指定返回json格式数据
                 <span class="iconfont-archer">&#xe606;</span>
                 ssh
             </span>
-            <span class="sidebar-tag-name" data-tags="NIVIDIA驱动">
-                <span class="iconfont-archer">&#xe606;</span>
-                NIVIDIA驱动
-            </span>
             <span class="sidebar-tag-name" data-tags="uv">
                 <span class="iconfont-archer">&#xe606;</span>
                 uv
+            </span>
+            <span class="sidebar-tag-name" data-tags="NIVIDIA驱动">
+                <span class="iconfont-archer">&#xe606;</span>
+                NIVIDIA驱动
             </span>
             <span class="sidebar-tag-name" data-tags="vscode">
                 <span class="iconfont-archer">&#xe606;</span>
@@ -1840,33 +1852,33 @@ api 调用大模型时，指定返回json格式数据
                 <span class="iconfont-archer">&#xe606;</span>
                 概率论
             </span>
+            <span class="sidebar-tag-name" data-tags="日志">
+                <span class="iconfont-archer">&#xe606;</span>
+                日志
+            </span>
             <span class="sidebar-tag-name" data-tags="数学">
                 <span class="iconfont-archer">&#xe606;</span>
                 数学
             </span>
-            <span class="sidebar-tag-name" data-tags="图">
+            <span class="sidebar-tag-name" data-tags="机器学习">
                 <span class="iconfont-archer">&#xe606;</span>
-                图
+                机器学习
             </span>
             <span class="sidebar-tag-name" data-tags="python_c++_互通">
                 <span class="iconfont-archer">&#xe606;</span>
                 python_c++_互通
             </span>
+            <span class="sidebar-tag-name" data-tags="图">
+                <span class="iconfont-archer">&#xe606;</span>
+                图
+            </span>
             <span class="sidebar-tag-name" data-tags="呈贡">
                 <span class="iconfont-archer">&#xe606;</span>
                 呈贡
             </span>
-            <span class="sidebar-tag-name" data-tags="日志">
-                <span class="iconfont-archer">&#xe606;</span>
-                日志
-            </span>
             <span class="sidebar-tag-name" data-tags="文本聚类 编辑距离">
                 <span class="iconfont-archer">&#xe606;</span>
                 文本聚类 编辑距离
-            </span>
-            <span class="sidebar-tag-name" data-tags="机器学习">
-                <span class="iconfont-archer">&#xe606;</span>
-                机器学习
             </span>
             <span class="sidebar-tag-name" data-tags="Syncthing">
                 <span class="iconfont-archer">&#xe606;</span>
@@ -1880,10 +1892,6 @@ api 调用大模型时，指定返回json格式数据
                 <span class="iconfont-archer">&#xe606;</span>
                 电影
             </span>
-            <span class="sidebar-tag-name" data-tags="编程">
-                <span class="iconfont-archer">&#xe606;</span>
-                编程
-            </span>
             <span class="sidebar-tag-name" data-tags="微信">
                 <span class="iconfont-archer">&#xe606;</span>
                 微信
@@ -1891,6 +1899,10 @@ api 调用大模型时，指定返回json格式数据
             <span class="sidebar-tag-name" data-tags="干货">
                 <span class="iconfont-archer">&#xe606;</span>
                 干货
+            </span>
+            <span class="sidebar-tag-name" data-tags="编程">
+                <span class="iconfont-archer">&#xe606;</span>
+                编程
             </span>
             <span class="sidebar-tag-name" data-tags="资源">
                 <span class="iconfont-archer">&#xe606;</span>
@@ -1900,21 +1912,21 @@ api 调用大模型时，指定返回json格式数据
                 <span class="iconfont-archer">&#xe606;</span>
                 熵
             </span>
-            <span class="sidebar-tag-name" data-tags="竞赛">
-                <span class="iconfont-archer">&#xe606;</span>
-                竞赛
-            </span>
             <span class="sidebar-tag-name" data-tags="论文写作">
                 <span class="iconfont-archer">&#xe606;</span>
                 论文写作
             </span>
-            <span class="sidebar-tag-name" data-tags="街拍">
+            <span class="sidebar-tag-name" data-tags="竞赛">
                 <span class="iconfont-archer">&#xe606;</span>
-                街拍
+                竞赛
             </span>
             <span class="sidebar-tag-name" data-tags="强化学习">
                 <span class="iconfont-archer">&#xe606;</span>
                 强化学习
+            </span>
+            <span class="sidebar-tag-name" data-tags="街拍">
+                <span class="iconfont-archer">&#xe606;</span>
+                街拍
             </span>
             <span class="sidebar-tag-name" data-tags="docker, doccano">
                 <span class="iconfont-archer">&#xe606;</span>
@@ -2006,10 +2018,6 @@ api 调用大模型时，指定返回json格式数据
             <span class="iconfont-archer">&#xe60a;</span>
             生活情感
         </span>
-        <span class="sidebar-category-name" data-categories="学习资料">
-            <span class="iconfont-archer">&#xe60a;</span>
-            学习资料
-        </span>
         <span class="sidebar-category-name" data-categories="收藏">
             <span class="iconfont-archer">&#xe60a;</span>
             收藏
@@ -2017,6 +2025,10 @@ api 调用大模型时，指定返回json格式数据
         <span class="sidebar-category-name" data-categories="数据集">
             <span class="iconfont-archer">&#xe60a;</span>
             数据集
+        </span>
+        <span class="sidebar-category-name" data-categories="学习资料">
+            <span class="iconfont-archer">&#xe60a;</span>
+            学习资料
         </span>
         <span class="sidebar-category-name" data-categories="机器学习">
             <span class="iconfont-archer">&#xe60a;</span>

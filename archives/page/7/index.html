@@ -422,6 +422,38 @@
                 <main class="main index-page">
             
         <article class="index-post">
+            <a class="abstract-title" href="/2021/12/10/c-duo-xian-cheng-bian-cheng/">
+                <span class="abstract-title-text">C++多线程编程</span>
+            </a>
+            <div class="abstract-content">
+                常用线程函数
+join() :
+
+阻塞主线程，让主线程等待子线程执行完，当子线程执行完毕，这个join（）就执行完毕，主线程继续执行
+
+
+detach() :
+
+从主线程中将子线程分离，主线程不必等待子线程执行完，一旦detach()之后子线程将失去与主线程的关联，此时这个子线程就会驻留在后台运行，被c++运行时接管，当这个子线程执行完成后，由运行时库负责清理线程相关的资源。
+
+
+
+线程创建方法
+通过函数创建线程
+1234567891011121314#include &lt;iostream&gt;#include &lt;thread&gt;using  namespace  std...
+            </div>
+            <!-- read more -->
+            <div class="abstract-post-meta">
+                <!-- date -->
+                <div class="abstract-date" title="Last updated: 2025/03/08">
+                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2021/12/10</span>
+                </div>
+                <!-- tags -->
+            </div>
+        </article>
+        <div class="index-post-divider"></div>
+            
+        <article class="index-post">
             <a class="abstract-title" href="/2021/09/29/jiang-wei-xin-liao-tian-zhong-de-yu-yin-zhuan-huan-wei-mp3/">
                 <span class="abstract-title-text">将微信聊天中的语音转换为mp3</span>
             </a>
@@ -715,31 +747,6 @@ dxy database
             </div>
         </article>
         <div class="index-post-divider"></div>
-            
-        <article class="index-post">
-            <a class="abstract-title" href="/2021/08/09/svm-xue-xi-bi-ji/">
-                <span class="abstract-title-text">SVM学习笔记</span>
-            </a>
-            <div class="abstract-content">
-                SVM学习笔记https://www.deeplearningbook.org/
-http://page.mi.fu-berlin.de/rojas/neural/neuron.pdf
-https://www.svm-tutorial.com/2014/11/svm-understanding-math-part-1/
-
-            </div>
-            <!-- read more -->
-            <div class="abstract-post-meta">
-                <!-- date -->
-                <div class="abstract-date" title="Last updated: 2025/03/08">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2021/08/09</span>
-                </div>
-                <!-- tags -->
-                    <div class="abstract-tags" >
-        <a class="post-tag" href="javascript:void(0);" data-tags="svm">svm</a>
-</div>
-
-            </div>
-        </article>
-        <div class="index-post-divider"></div>
     <!-- paginator  -->
         <nav class="page-nav">
             <a class="extend prev" rel="prev" href="/archives/page/6/">&lt; PREV</a><a class="page-number" href="/archives/">1</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/5/">5</a><a class="page-number" href="/archives/page/6/">6</a><span class="page-number current">7</span><a class="page-number" href="/archives/page/8/">8</a><a class="page-number" href="/archives/page/9/">9</a><a class="extend next" rel="next" href="/archives/page/8/">NEXT &gt;</a>
@@ -872,9 +879,10 @@ https://www.svm-tutorial.com/2014/11/svm-understanding-math-part-1/
         
         
         
+        
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 87
+        Total : 88
         </div>
         <!-- search  -->
             <div class="site-search site-search-loading popup-trigger">
@@ -884,6 +892,10 @@ https://www.svm-tutorial.com/2014/11/svm-understanding-math-part-1/
     <div class="post-archive">
             <div class="archive-year"> 2026 </div>
             <ul class="year-list">
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/14</span>
+            <a class="archive-post-title" href="/2026/04/14/zhe-shi-yi-ge-dai-jiao-ben-de-ce-shi/">这是一个带脚本的测试</a>
+        </li>
         <li class="archive-post-item">
             <span class="archive-post-date">04/14</span>
             <a class="archive-post-title" href="/2026/04/14/zhe-shi-yi-ge-ce-shi-dai-tu-pian-de/">这是一个测试-带图片的</a>
@@ -898,11 +910,11 @@ https://www.svm-tutorial.com/2014/11/svm-understanding-math-part-1/
         </li>
         <li class="archive-post-item">
             <span class="archive-post-date">04/14</span>
-            <a class="archive-post-title" href="/2026/04/14/yuan-xue-xi-shu-ji-tui-jian/">元学习书籍推荐</a>
+            <a class="archive-post-title" href="/2026/04/14/guan-yu-ppt/">关于ppt</a>
         </li>
         <li class="archive-post-item">
             <span class="archive-post-date">04/14</span>
-            <a class="archive-post-title" href="/2026/04/14/guan-yu-ppt/">关于ppt</a>
+            <a class="archive-post-title" href="/2026/04/14/yuan-xue-xi-shu-ji-tui-jian/">元学习书籍推荐</a>
         </li>
         <li class="archive-post-item">
             <span class="archive-post-date">04/14</span>
@@ -1278,10 +1290,6 @@ https://www.svm-tutorial.com/2014/11/svm-understanding-math-part-1/
                 <span class="iconfont-archer">&#xe606;</span>
                 tensor
             </span>
-            <span class="sidebar-tag-name" data-tags="GitHub">
-                <span class="iconfont-archer">&#xe606;</span>
-                GitHub
-            </span>
             <span class="sidebar-tag-name" data-tags="GitLab">
                 <span class="iconfont-archer">&#xe606;</span>
                 GitLab
@@ -1289,6 +1297,10 @@ https://www.svm-tutorial.com/2014/11/svm-understanding-math-part-1/
             <span class="sidebar-tag-name" data-tags="git">
                 <span class="iconfont-archer">&#xe606;</span>
                 git
+            </span>
+            <span class="sidebar-tag-name" data-tags="GitHub">
+                <span class="iconfont-archer">&#xe606;</span>
+                GitHub
             </span>
             <span class="sidebar-tag-name" data-tags="Google访问助手">
                 <span class="iconfont-archer">&#xe606;</span>
@@ -1318,6 +1330,10 @@ https://www.svm-tutorial.com/2014/11/svm-understanding-math-part-1/
                 <span class="iconfont-archer">&#xe606;</span>
                 svm
             </span>
+            <span class="sidebar-tag-name" data-tags="NVIDIA">
+                <span class="iconfont-archer">&#xe606;</span>
+                NVIDIA
+            </span>
             <span class="sidebar-tag-name" data-tags="github">
                 <span class="iconfont-archer">&#xe606;</span>
                 github
@@ -1325,10 +1341,6 @@ https://www.svm-tutorial.com/2014/11/svm-understanding-math-part-1/
             <span class="sidebar-tag-name" data-tags="博客">
                 <span class="iconfont-archer">&#xe606;</span>
                 博客
-            </span>
-            <span class="sidebar-tag-name" data-tags="NVIDIA">
-                <span class="iconfont-archer">&#xe606;</span>
-                NVIDIA
             </span>
             <span class="sidebar-tag-name" data-tags="jupyter notebook">
                 <span class="iconfont-archer">&#xe606;</span>
@@ -1350,13 +1362,13 @@ https://www.svm-tutorial.com/2014/11/svm-understanding-math-part-1/
                 <span class="iconfont-archer">&#xe606;</span>
                 ssh
             </span>
-            <span class="sidebar-tag-name" data-tags="NIVIDIA驱动">
-                <span class="iconfont-archer">&#xe606;</span>
-                NIVIDIA驱动
-            </span>
             <span class="sidebar-tag-name" data-tags="uv">
                 <span class="iconfont-archer">&#xe606;</span>
                 uv
+            </span>
+            <span class="sidebar-tag-name" data-tags="NIVIDIA驱动">
+                <span class="iconfont-archer">&#xe606;</span>
+                NIVIDIA驱动
             </span>
             <span class="sidebar-tag-name" data-tags="vscode">
                 <span class="iconfont-archer">&#xe606;</span>
@@ -1390,33 +1402,33 @@ https://www.svm-tutorial.com/2014/11/svm-understanding-math-part-1/
                 <span class="iconfont-archer">&#xe606;</span>
                 概率论
             </span>
+            <span class="sidebar-tag-name" data-tags="日志">
+                <span class="iconfont-archer">&#xe606;</span>
+                日志
+            </span>
             <span class="sidebar-tag-name" data-tags="数学">
                 <span class="iconfont-archer">&#xe606;</span>
                 数学
             </span>
-            <span class="sidebar-tag-name" data-tags="图">
+            <span class="sidebar-tag-name" data-tags="机器学习">
                 <span class="iconfont-archer">&#xe606;</span>
-                图
+                机器学习
             </span>
             <span class="sidebar-tag-name" data-tags="python_c++_互通">
                 <span class="iconfont-archer">&#xe606;</span>
                 python_c++_互通
             </span>
+            <span class="sidebar-tag-name" data-tags="图">
+                <span class="iconfont-archer">&#xe606;</span>
+                图
+            </span>
             <span class="sidebar-tag-name" data-tags="呈贡">
                 <span class="iconfont-archer">&#xe606;</span>
                 呈贡
             </span>
-            <span class="sidebar-tag-name" data-tags="日志">
-                <span class="iconfont-archer">&#xe606;</span>
-                日志
-            </span>
             <span class="sidebar-tag-name" data-tags="文本聚类 编辑距离">
                 <span class="iconfont-archer">&#xe606;</span>
                 文本聚类 编辑距离
-            </span>
-            <span class="sidebar-tag-name" data-tags="机器学习">
-                <span class="iconfont-archer">&#xe606;</span>
-                机器学习
             </span>
             <span class="sidebar-tag-name" data-tags="Syncthing">
                 <span class="iconfont-archer">&#xe606;</span>
@@ -1430,10 +1442,6 @@ https://www.svm-tutorial.com/2014/11/svm-understanding-math-part-1/
                 <span class="iconfont-archer">&#xe606;</span>
                 电影
             </span>
-            <span class="sidebar-tag-name" data-tags="编程">
-                <span class="iconfont-archer">&#xe606;</span>
-                编程
-            </span>
             <span class="sidebar-tag-name" data-tags="微信">
                 <span class="iconfont-archer">&#xe606;</span>
                 微信
@@ -1441,6 +1449,10 @@ https://www.svm-tutorial.com/2014/11/svm-understanding-math-part-1/
             <span class="sidebar-tag-name" data-tags="干货">
                 <span class="iconfont-archer">&#xe606;</span>
                 干货
+            </span>
+            <span class="sidebar-tag-name" data-tags="编程">
+                <span class="iconfont-archer">&#xe606;</span>
+                编程
             </span>
             <span class="sidebar-tag-name" data-tags="资源">
                 <span class="iconfont-archer">&#xe606;</span>
@@ -1450,21 +1462,21 @@ https://www.svm-tutorial.com/2014/11/svm-understanding-math-part-1/
                 <span class="iconfont-archer">&#xe606;</span>
                 熵
             </span>
-            <span class="sidebar-tag-name" data-tags="竞赛">
-                <span class="iconfont-archer">&#xe606;</span>
-                竞赛
-            </span>
             <span class="sidebar-tag-name" data-tags="论文写作">
                 <span class="iconfont-archer">&#xe606;</span>
                 论文写作
             </span>
-            <span class="sidebar-tag-name" data-tags="街拍">
+            <span class="sidebar-tag-name" data-tags="竞赛">
                 <span class="iconfont-archer">&#xe606;</span>
-                街拍
+                竞赛
             </span>
             <span class="sidebar-tag-name" data-tags="强化学习">
                 <span class="iconfont-archer">&#xe606;</span>
                 强化学习
+            </span>
+            <span class="sidebar-tag-name" data-tags="街拍">
+                <span class="iconfont-archer">&#xe606;</span>
+                街拍
             </span>
             <span class="sidebar-tag-name" data-tags="docker, doccano">
                 <span class="iconfont-archer">&#xe606;</span>
@@ -1556,10 +1568,6 @@ https://www.svm-tutorial.com/2014/11/svm-understanding-math-part-1/
             <span class="iconfont-archer">&#xe60a;</span>
             生活情感
         </span>
-        <span class="sidebar-category-name" data-categories="学习资料">
-            <span class="iconfont-archer">&#xe60a;</span>
-            学习资料
-        </span>
         <span class="sidebar-category-name" data-categories="收藏">
             <span class="iconfont-archer">&#xe60a;</span>
             收藏
@@ -1567,6 +1575,10 @@ https://www.svm-tutorial.com/2014/11/svm-understanding-math-part-1/
         <span class="sidebar-category-name" data-categories="数据集">
             <span class="iconfont-archer">&#xe60a;</span>
             数据集
+        </span>
+        <span class="sidebar-category-name" data-categories="学习资料">
+            <span class="iconfont-archer">&#xe60a;</span>
+            学习资料
         </span>
         <span class="sidebar-category-name" data-categories="机器学习">
             <span class="iconfont-archer">&#xe60a;</span>
