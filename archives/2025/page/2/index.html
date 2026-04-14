@@ -440,38 +440,6 @@
         <div class="index-post-divider"></div>
             
         <article class="index-post">
-            <a class="abstract-title" href="/2025/08/10/ju-zhen-fan-shu/">
-                <span class="abstract-title-text">矩阵范数</span>
-            </a>
-            <div class="abstract-content">
-                什么是矩阵范数矩阵范数（matrix norm）是将一个矩阵映射到非负实数的函数:  $|\cdot| $，用来度量矩阵的“大小”或“长度”。矩阵范数需要满足以下三个性质：
-
-非负性：对任意矩阵 $A$，有$$|A| \geq 0$$且当且仅当 $A$ 是零矩阵时，$|A| = 0$。
-
-齐次性（正齐次）：对任意标量 $\alpha$ 和矩阵 $A$，有$$|\alpha A| = |\alpha| \cdot |A|$$
-
-三角不等式：对任意矩阵 $A$ 和 $B$，有$$|A + B| \leq |A| + |B|$$
-
-
-矩阵范数的几种常见类型常见矩阵范数分两类：
-(A) 非算子范...
-            </div>
-            <!-- read more -->
-            <div class="abstract-post-meta">
-                <!-- date -->
-                <div class="abstract-date" title="Last updated: 2025/08/10">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2025/08/10</span>
-                </div>
-                <!-- tags -->
-                    <div class="abstract-tags" >
-        <a class="post-tag" href="javascript:void(0);" data-tags="数学">数学</a>
-</div>
-
-            </div>
-        </article>
-        <div class="index-post-divider"></div>
-            
-        <article class="index-post">
             <a class="abstract-title" href="/2025/08/10/xiang-liang-fan-shu/">
                 <span class="abstract-title-text">向量范数</span>
             </a>
@@ -690,6 +658,38 @@ Bellman equation 推导两个使用 Bellman equation 的例子
             </div>
         </article>
         <div class="index-post-divider"></div>
+            
+        <article class="index-post">
+            <a class="abstract-title" href="/2025/05/14/git-team-collab-workflow/">
+                <span class="abstract-title-text">git_team_collab_workflow</span>
+            </a>
+            <div class="abstract-content">
+                🛠️ 团队 Git 协作流程规范为确保多人协作开发的高效与规范，团队统一采用如下 Git 工作流流程， 记录如下：
+🛠️ 0. 克隆远程仓库1git clone git@github.com:xxx.git
+
+
+🚀 1. 创建个人开发分支1git checkout -b &lt;your_branch_name&gt;
+
+
+🛠️ 2. 本地开发与提交123git diff                   # 查看变更（可选）git add &lt;file&gt;             # 添加到暂存区git commit -m "说明内容"    # 提交
+
+
+☁️ 3....
+            </div>
+            <!-- read more -->
+            <div class="abstract-post-meta">
+                <!-- date -->
+                <div class="abstract-date" title="Last updated: 2025/05/14">
+                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2025/05/14</span>
+                </div>
+                <!-- tags -->
+                    <div class="abstract-tags" >
+        <a class="post-tag" href="javascript:void(0);" data-tags="github">github</a>
+</div>
+
+            </div>
+        </article>
+        <div class="index-post-divider"></div>
     <!-- paginator  -->
         <nav class="page-nav">
             <a class="extend prev" rel="prev" href="/archives/2025/">&lt; PREV</a><a class="page-number" href="/archives/2025/">1</a><span class="page-number current">2</span><a class="page-number" href="/archives/2025/page/3/">3</a><a class="page-number" href="/archives/2025/page/4/">4</a><a class="extend next" rel="next" href="/archives/2025/page/3/">NEXT &gt;</a>
@@ -835,6 +835,10 @@ Bellman equation 推导两个使用 Bellman equation 的例子
             <ul class="year-list">
         <li class="archive-post-item">
             <span class="archive-post-date">04/14</span>
+            <a class="archive-post-title" href="/2026/04/14/ju-zhen-fan-shu/">矩阵范数</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/14</span>
             <a class="archive-post-title" href="/2026/04/14/zhe-shi-yi-ge-ce-shi/">这是一个测试</a>
         </li>
         <li class="archive-post-item">
@@ -943,10 +947,6 @@ Bellman equation 推导两个使用 Bellman equation 的例子
         <li class="archive-post-item">
             <span class="archive-post-date">08/10</span>
             <a class="archive-post-title" href="/2025/08/10/shu-xue-zhong-de-qi-ci-xing-li-jie/">数学中的齐次性理解</a>
-        </li>
-        <li class="archive-post-item">
-            <span class="archive-post-date">08/10</span>
-            <a class="archive-post-title" href="/2025/08/10/ju-zhen-fan-shu/">矩阵范数</a>
         </li>
         <li class="archive-post-item">
             <span class="archive-post-date">08/10</span>
@@ -1211,10 +1211,6 @@ Bellman equation 推导两个使用 Bellman equation 的例子
                 <span class="iconfont-archer">&#xe606;</span>
                 RAG
             </span>
-            <span class="sidebar-tag-name" data-tags="Clash, 规则配置">
-                <span class="iconfont-archer">&#xe606;</span>
-                Clash, 规则配置
-            </span>
             <span class="sidebar-tag-name" data-tags="claude-code">
                 <span class="iconfont-archer">&#xe606;</span>
                 claude-code
@@ -1222,6 +1218,10 @@ Bellman equation 推导两个使用 Bellman equation 的例子
             <span class="sidebar-tag-name" data-tags="tensor">
                 <span class="iconfont-archer">&#xe606;</span>
                 tensor
+            </span>
+            <span class="sidebar-tag-name" data-tags="Clash, 规则配置">
+                <span class="iconfont-archer">&#xe606;</span>
+                Clash, 规则配置
             </span>
             <span class="sidebar-tag-name" data-tags="GitHub">
                 <span class="iconfont-archer">&#xe606;</span>
@@ -1255,13 +1255,13 @@ Bellman equation 推导两个使用 Bellman equation 的例子
                 <span class="iconfont-archer">&#xe606;</span>
                 nlp
             </span>
-            <span class="sidebar-tag-name" data-tags="svm">
-                <span class="iconfont-archer">&#xe606;</span>
-                svm
-            </span>
             <span class="sidebar-tag-name" data-tags="Pandas">
                 <span class="iconfont-archer">&#xe606;</span>
                 Pandas
+            </span>
+            <span class="sidebar-tag-name" data-tags="svm">
+                <span class="iconfont-archer">&#xe606;</span>
+                svm
             </span>
             <span class="sidebar-tag-name" data-tags="NVIDIA">
                 <span class="iconfont-archer">&#xe606;</span>
@@ -1363,14 +1363,6 @@ Bellman equation 推导两个使用 Bellman equation 的例子
                 <span class="iconfont-archer">&#xe606;</span>
                 文本聚类 编辑距离
             </span>
-            <span class="sidebar-tag-name" data-tags="Syncthing">
-                <span class="iconfont-archer">&#xe606;</span>
-                Syncthing
-            </span>
-            <span class="sidebar-tag-name" data-tags="Dotfiles">
-                <span class="iconfont-archer">&#xe606;</span>
-                Dotfiles
-            </span>
             <span class="sidebar-tag-name" data-tags="电影">
                 <span class="iconfont-archer">&#xe606;</span>
                 电影
@@ -1378,6 +1370,14 @@ Bellman equation 推导两个使用 Bellman equation 的例子
             <span class="sidebar-tag-name" data-tags="编程">
                 <span class="iconfont-archer">&#xe606;</span>
                 编程
+            </span>
+            <span class="sidebar-tag-name" data-tags="Syncthing">
+                <span class="iconfont-archer">&#xe606;</span>
+                Syncthing
+            </span>
+            <span class="sidebar-tag-name" data-tags="Dotfiles">
+                <span class="iconfont-archer">&#xe606;</span>
+                Dotfiles
             </span>
             <span class="sidebar-tag-name" data-tags="微信">
                 <span class="iconfont-archer">&#xe606;</span>
@@ -1437,10 +1437,6 @@ Bellman equation 推导两个使用 Bellman equation 的例子
             <span class="iconfont-archer">&#xe60a;</span>
             总结
         </span>
-        <span class="sidebar-category-name" data-categories="网络工具">
-            <span class="iconfont-archer">&#xe60a;</span>
-            网络工具
-        </span>
         <span class="sidebar-category-name" data-categories="编程开发">
             <span class="iconfont-archer">&#xe60a;</span>
             编程开发
@@ -1448,6 +1444,10 @@ Bellman equation 推导两个使用 Bellman equation 的例子
         <span class="sidebar-category-name" data-categories="技术笔记">
             <span class="iconfont-archer">&#xe60a;</span>
             技术笔记
+        </span>
+        <span class="sidebar-category-name" data-categories="网络工具">
+            <span class="iconfont-archer">&#xe60a;</span>
+            网络工具
         </span>
         <span class="sidebar-category-name" data-categories="爬坑总结">
             <span class="iconfont-archer">&#xe60a;</span>
