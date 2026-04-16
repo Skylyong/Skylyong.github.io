@@ -429,6 +429,36 @@
                 <main class="main index-page">
             
         <article class="index-post">
+            <a class="abstract-title" href="/2025/02/19/python-ri-chang-kai-fa-za-ji/">
+                <span class="abstract-title-text">python日常开发杂记</span>
+            </a>
+            <div class="abstract-content">
+                mac系统 pandas存储为csv 在excel中打开乱码
+在使用pandas存储数据为csv文件后，在excel中打开会出现乱码问题，解决方法如下：指定编码格式为utf-8-sig，即可解决问题。
+
+1df.to_csv('output.csv', index=False, encoding='utf-8-sig')
+
+api 调用大模型时，指定返回json格式数据
+解决方法如下： 指定 response_format 为 {"type":"json_object"}，但是这个方法在deepseek中不适用。
+
+123456789101112131415client = openai...
+            </div>
+            <!-- read more -->
+            <div class="abstract-post-meta">
+                <!-- date -->
+                <div class="abstract-date" title="Last updated: 2025/10/27">
+                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2025/02/19</span>
+                </div>
+                <!-- tags -->
+                    <div class="abstract-tags" >
+        <a class="post-tag" href="javascript:void(0);" data-tags="python">python</a>
+</div>
+
+            </div>
+        </article>
+        <div class="index-post-divider"></div>
+            
+        <article class="index-post">
             <a class="abstract-title" href="/2025/02/12/tong-guo-docker-bu-shu-doccano-biao-zhu-gong-ju/">
                 <span class="abstract-title-text">通过docker部署doccano标注工具</span>
             </a>
@@ -744,35 +774,6 @@ Boot Camp ISO Converter软件（这个软件可以解决FAT32格式的u盘单个
             </div>
         </article>
         <div class="index-post-divider"></div>
-            
-        <article class="index-post">
-            <a class="abstract-title" href="/2022/04/29/yuan-cheng-fang-wen-fu-wu-qi-jupyter-notebook/">
-                <span class="abstract-title-text">远程访问服务器Jupyter-Notebook</span>
-            </a>
-            <div class="abstract-content">
-                方法： ssh远程使用jupyter notebook在远程服务器上，启动jupyter notebooks服务：
-1jupyter notebook --no-browser --port=8889
-
-在本地终端中启动SSH：
-1ssh -N -f -L localhost:8888:localhost:8889 username@serverIP
-
-其中： -N 告诉SSH没有命令要被远程执行； -f 告诉SSH在后台执行； -L 是指定port forwarding的配置，远端端口是8889，本地的端口号的8888。
-注意：username@serverIP替换成服务器的对应账号。...
-            </div>
-            <!-- read more -->
-            <div class="abstract-post-meta">
-                <!-- date -->
-                <div class="abstract-date" title="Last updated: 2025/03/08">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2022/04/29</span>
-                </div>
-                <!-- tags -->
-                    <div class="abstract-tags" >
-        <a class="post-tag" href="javascript:void(0);" data-tags="jupyter notebook">jupyter notebook</a>
-</div>
-
-            </div>
-        </article>
-        <div class="index-post-divider"></div>
     <!-- paginator  -->
         <nav class="page-nav">
             <a class="extend prev" rel="prev" href="/page/4/">&lt; PREV</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><a class="page-number" href="/page/8/">8</a><a class="extend next" rel="next" href="/page/6/">NEXT &gt;</a>
@@ -963,9 +964,10 @@ Boot Camp ISO Converter软件（这个软件可以解决FAT32格式的u盘单个
         
         
         
+        
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 88
+        Total : 89
         </div>
         <!-- search  -->
             <div class="site-search site-search-loading popup-trigger">
@@ -975,6 +977,10 @@ Boot Camp ISO Converter软件（这个软件可以解决FAT32格式的u盘单个
     <div class="post-archive">
             <div class="archive-year"> 2026 </div>
             <ul class="year-list">
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/16</span>
+            <a class="archive-post-title" href="/2026/04/16/claude/">CLAUDE</a>
+        </li>
         <li class="archive-post-item">
             <span class="archive-post-date">04/16</span>
             <a class="archive-post-title" href="/2026/04/16/zhe-shi-yi-ge-dai-jiao-ben-de-ce-shi/">这是一个带脚本的测试</a>
@@ -993,11 +999,11 @@ Boot Camp ISO Converter软件（这个软件可以解决FAT32格式的u盘单个
         </li>
         <li class="archive-post-item">
             <span class="archive-post-date">04/14</span>
-            <a class="archive-post-title" href="/2026/04/14/yuan-xue-xi-shu-ji-tui-jian/">元学习书籍推荐</a>
+            <a class="archive-post-title" href="/2026/04/14/guan-yu-ppt/">关于ppt</a>
         </li>
         <li class="archive-post-item">
             <span class="archive-post-date">04/14</span>
-            <a class="archive-post-title" href="/2026/04/14/guan-yu-ppt/">关于ppt</a>
+            <a class="archive-post-title" href="/2026/04/14/yuan-xue-xi-shu-ji-tui-jian/">元学习书籍推荐</a>
         </li>
         <li class="archive-post-item">
             <span class="archive-post-date">04/14</span>
@@ -1245,11 +1251,11 @@ Boot Camp ISO Converter软件（这个软件可以解决FAT32格式的u盘单个
         </li>
         <li class="archive-post-item">
             <span class="archive-post-date">08/14</span>
-            <a class="archive-post-title" href="/2021/08/14/wei-xin-biao-qian-zheng-li/">微信标签整理</a>
+            <a class="archive-post-title" href="/2021/08/14/gong-ju-xiang/">工具箱</a>
         </li>
         <li class="archive-post-item">
             <span class="archive-post-date">08/14</span>
-            <a class="archive-post-title" href="/2021/08/14/gong-ju-xiang/">工具箱</a>
+            <a class="archive-post-title" href="/2021/08/14/wei-xin-biao-qian-zheng-li/">微信标签整理</a>
         </li>
         <li class="archive-post-item">
             <span class="archive-post-date">08/13</span>
@@ -1349,13 +1355,13 @@ Boot Camp ISO Converter软件（这个软件可以解决FAT32格式的u盘单个
                 <span class="iconfont-archer">&#xe606;</span>
                 BPE
             </span>
-            <span class="sidebar-tag-name" data-tags="pytorch">
-                <span class="iconfont-archer">&#xe606;</span>
-                pytorch
-            </span>
             <span class="sidebar-tag-name" data-tags="ai竞赛">
                 <span class="iconfont-archer">&#xe606;</span>
                 ai竞赛
+            </span>
+            <span class="sidebar-tag-name" data-tags="pytorch">
+                <span class="iconfont-archer">&#xe606;</span>
+                pytorch
             </span>
             <span class="sidebar-tag-name" data-tags="RAG">
                 <span class="iconfont-archer">&#xe606;</span>
@@ -1369,21 +1375,21 @@ Boot Camp ISO Converter软件（这个软件可以解决FAT32格式的u盘单个
                 <span class="iconfont-archer">&#xe606;</span>
                 claude-code
             </span>
-            <span class="sidebar-tag-name" data-tags="tensor">
+            <span class="sidebar-tag-name" data-tags="GitHub">
                 <span class="iconfont-archer">&#xe606;</span>
-                tensor
+                GitHub
             </span>
             <span class="sidebar-tag-name" data-tags="GitLab">
                 <span class="iconfont-archer">&#xe606;</span>
                 GitLab
             </span>
-            <span class="sidebar-tag-name" data-tags="GitHub">
-                <span class="iconfont-archer">&#xe606;</span>
-                GitHub
-            </span>
             <span class="sidebar-tag-name" data-tags="git">
                 <span class="iconfont-archer">&#xe606;</span>
                 git
+            </span>
+            <span class="sidebar-tag-name" data-tags="tensor">
+                <span class="iconfont-archer">&#xe606;</span>
+                tensor
             </span>
             <span class="sidebar-tag-name" data-tags="Google访问助手">
                 <span class="iconfont-archer">&#xe606;</span>
@@ -1393,21 +1399,21 @@ Boot Camp ISO Converter软件（这个软件可以解决FAT32格式的u盘单个
                 <span class="iconfont-archer">&#xe606;</span>
                 预训练模型
             </span>
-            <span class="sidebar-tag-name" data-tags="启动U盘">
-                <span class="iconfont-archer">&#xe606;</span>
-                启动U盘
-            </span>
             <span class="sidebar-tag-name" data-tags="mineru">
                 <span class="iconfont-archer">&#xe606;</span>
                 mineru
             </span>
-            <span class="sidebar-tag-name" data-tags="nlp">
+            <span class="sidebar-tag-name" data-tags="启动U盘">
                 <span class="iconfont-archer">&#xe606;</span>
-                nlp
+                启动U盘
             </span>
             <span class="sidebar-tag-name" data-tags="Pandas">
                 <span class="iconfont-archer">&#xe606;</span>
                 Pandas
+            </span>
+            <span class="sidebar-tag-name" data-tags="nlp">
+                <span class="iconfont-archer">&#xe606;</span>
+                nlp
             </span>
             <span class="sidebar-tag-name" data-tags="svm">
                 <span class="iconfont-archer">&#xe606;</span>
@@ -1473,10 +1479,6 @@ Boot Camp ISO Converter软件（这个软件可以解决FAT32格式的u盘单个
                 <span class="iconfont-archer">&#xe606;</span>
                 文本聚类 bert向量表示
             </span>
-            <span class="sidebar-tag-name" data-tags="webdav, docker, obsidian, zotero">
-                <span class="iconfont-archer">&#xe606;</span>
-                webdav, docker, obsidian, zotero
-            </span>
             <span class="sidebar-tag-name" data-tags="rclone">
                 <span class="iconfont-archer">&#xe606;</span>
                 rclone
@@ -1484,6 +1486,10 @@ Boot Camp ISO Converter软件（这个软件可以解决FAT32格式的u盘单个
             <span class="sidebar-tag-name" data-tags="概率论">
                 <span class="iconfont-archer">&#xe606;</span>
                 概率论
+            </span>
+            <span class="sidebar-tag-name" data-tags="webdav, docker, obsidian, zotero">
+                <span class="iconfont-archer">&#xe606;</span>
+                webdav, docker, obsidian, zotero
             </span>
             <span class="sidebar-tag-name" data-tags="日志">
                 <span class="iconfont-archer">&#xe606;</span>
@@ -1579,13 +1585,13 @@ Boot Camp ISO Converter软件（这个软件可以解决FAT32格式的u盘单个
             <span class="iconfont-archer">&#xe60a;</span>
             大模型
         </span>
-        <span class="sidebar-category-name" data-categories="编程">
-            <span class="iconfont-archer">&#xe60a;</span>
-            编程
-        </span>
         <span class="sidebar-category-name" data-categories="总结">
             <span class="iconfont-archer">&#xe60a;</span>
             总结
+        </span>
+        <span class="sidebar-category-name" data-categories="编程">
+            <span class="iconfont-archer">&#xe60a;</span>
+            编程
         </span>
         <span class="sidebar-category-name" data-categories="网络工具">
             <span class="iconfont-archer">&#xe60a;</span>
@@ -1595,13 +1601,13 @@ Boot Camp ISO Converter软件（这个软件可以解决FAT32格式的u盘单个
             <span class="iconfont-archer">&#xe60a;</span>
             编程开发
         </span>
-        <span class="sidebar-category-name" data-categories="技术笔记">
-            <span class="iconfont-archer">&#xe60a;</span>
-            技术笔记
-        </span>
         <span class="sidebar-category-name" data-categories="爬坑总结">
             <span class="iconfont-archer">&#xe60a;</span>
             爬坑总结
+        </span>
+        <span class="sidebar-category-name" data-categories="技术笔记">
+            <span class="iconfont-archer">&#xe60a;</span>
+            技术笔记
         </span>
         <span class="sidebar-category-name" data-categories="干货">
             <span class="iconfont-archer">&#xe60a;</span>
@@ -1615,13 +1621,13 @@ Boot Camp ISO Converter软件（这个软件可以解决FAT32格式的u盘单个
             <span class="iconfont-archer">&#xe60a;</span>
             运维
         </span>
-        <span class="sidebar-category-name" data-categories="知识框架">
-            <span class="iconfont-archer">&#xe60a;</span>
-            知识框架
-        </span>
         <span class="sidebar-category-name" data-categories="学习笔记">
             <span class="iconfont-archer">&#xe60a;</span>
             学习笔记
+        </span>
+        <span class="sidebar-category-name" data-categories="知识框架">
+            <span class="iconfont-archer">&#xe60a;</span>
+            知识框架
         </span>
         <span class="sidebar-category-name" data-categories="生活总结">
             <span class="iconfont-archer">&#xe60a;</span>
@@ -1655,13 +1661,13 @@ Boot Camp ISO Converter软件（这个软件可以解决FAT32格式的u盘单个
             <span class="iconfont-archer">&#xe60a;</span>
             学习资料
         </span>
-        <span class="sidebar-category-name" data-categories="数据集">
-            <span class="iconfont-archer">&#xe60a;</span>
-            数据集
-        </span>
         <span class="sidebar-category-name" data-categories="收藏">
             <span class="iconfont-archer">&#xe60a;</span>
             收藏
+        </span>
+        <span class="sidebar-category-name" data-categories="数据集">
+            <span class="iconfont-archer">&#xe60a;</span>
+            数据集
         </span>
         <span class="sidebar-category-name" data-categories="机器学习">
             <span class="iconfont-archer">&#xe60a;</span>

@@ -4,6 +4,19 @@
   
     
     <entry>
+      <title>CLAUDE</title>
+      <link href="/2026/04/16/claude/"/>
+      <url>/2026/04/16/claude/</url>
+      
+        <content type="html"><![CDATA[<h1 id="CLAUDE-md"><a href="#CLAUDE-md" class="headerlink" title="CLAUDE.md"></a>CLAUDE.md</h1><p>本目录是一个 Obsidian 笔记库。</p><h2 id="Obsidian-管理-优先使用官方-CLI"><a href="#Obsidian-管理-优先使用官方-CLI" class="headerlink" title="Obsidian 管理:优先使用官方 CLI"></a>Obsidian 管理:优先使用官方 CLI</h2><p>当需要对 Obsidian 本身进行管理操作(打开/切换 vault、启停插件、导入导出、触发命令、访问 vault 元数据等)时,<strong>优先使用 Obsidian 官方 CLI 工具</strong>,而不是直接手动编辑 <code>.obsidian/</code> 下的配置文件或通过 GUI 指引用户操作。</p><ul><li>文档:<a href="https://obsidian.md/help/cli">https://obsidian.md/help/cli</a></li><li>使用前如果不确定某个子命令的用法,先运行 <code>obsidian --help</code> 或查阅上面的文档页,再执行实际命令。</li><li>仅在 CLI 确实无法完成目标时,才回退到直接修改 <code>.obsidian/</code> 配置或让用户在 GUI 中操作,并说明原因。</li><li>涉及会改动 vault 状态的命令(写入、删除、批量操作)在执行前先向用户确认。</li></ul>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>这是一个带脚本的测试</title>
       <link href="/2026/04/16/zhe-shi-yi-ge-dai-jiao-ben-de-ce-shi/"/>
       <url>/2026/04/16/zhe-shi-yi-ge-dai-jiao-ben-de-ce-shi/</url>
