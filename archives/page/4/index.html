@@ -422,85 +422,6 @@
                 <main class="main index-page">
             
         <article class="index-post">
-            <a class="abstract-title" href="/2025/07/12/bei-er-man-deng-shi-jie-shao-ji-tui-dao/">
-                <span class="abstract-title-text">贝尔曼等式介绍及推导</span>
-            </a>
-            <div class="abstract-content">
-                引言Bellman equation 是强化学习的基石，以前为了快速应用，这部分的知识没有吃透，总是有一种不踏实的感觉，这次从费曼学习法的思想出发，力求完全透彻理解该公式及其推导过程。接下来，我们分三个部分对Bellman equation进行讲述。
-前置知识贝尔曼等式推导的前置知识，主要包含条件概率的全概率公式，以及全期望定理，相关介绍在这里。
-Bellman equation 推导两个使用 Bellman equation 的例子
-            </div>
-            <!-- read more -->
-            <div class="abstract-post-meta">
-                <!-- date -->
-                <div class="abstract-date" title="Last updated: 2025/07/13">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2025/07/12</span>
-                </div>
-                <!-- tags -->
-                    <div class="abstract-tags" >
-        <a class="post-tag" href="javascript:void(0);" data-tags="强化学习">强化学习</a>
-</div>
-
-            </div>
-        </article>
-        <div class="index-post-divider"></div>
-            
-        <article class="index-post">
-            <a class="abstract-title" href="/2025/06/17/shi-yong-docker-gou-jian-webdav-fu-wu-qi/">
-                <span class="abstract-title-text">使用Docker构建Webdav服务器</span>
-            </a>
-            <div class="abstract-content">
-                1. 前言半年前，我曾基于 Apache2 搭建了一套 WebDAV 服务，用于实现 Obsidian 和 Zotero 的多端同步。那次部署过程可谓一波三折，尤其是在配置 SSL 签名和 Apache2 时遇到了不少麻烦。由于当时我没有备案的域名，只能使用公网 IP 申请 SSL 证书，而且免费证书只有 3 个月有效期，到期后还需要手动续签。虽然最终勉强配置成功，但也花了我不少时间和精力。
-遗憾的是，这套服务没能持续使用太久。等 SSL 证书过期之后，我因为忙于其他事务也就没有再去续签。而当我想重新启用这套同步方案时，却发现当时使用的华为云廉价服务器（仅 1GB 内存）卡顿严重，连 S...
-            </div>
-            <!-- read more -->
-            <div class="abstract-post-meta">
-                <!-- date -->
-                <div class="abstract-date" title="Last updated: 2025/06/25">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2025/06/17</span>
-                </div>
-                <!-- tags -->
-                    <div class="abstract-tags" >
-        <a class="post-tag" href="javascript:void(0);" data-tags="webdav, docker, obsidian, zotero">webdav, docker, obsidian, zotero</a>
-</div>
-
-            </div>
-        </article>
-        <div class="index-post-divider"></div>
-            
-        <article class="index-post">
-            <a class="abstract-title" href="/2025/05/14/git-team-collab-workflow/">
-                <span class="abstract-title-text">git_team_collab_workflow</span>
-            </a>
-            <div class="abstract-content">
-                🛠️ 团队 Git 协作流程规范为确保多人协作开发的高效与规范，团队统一采用如下 Git 工作流流程， 记录如下：
-🛠️ 0. 克隆远程仓库1git clone git@github.com:xxx.git
-
-
-🚀 1. 创建个人开发分支1git checkout -b &lt;your_branch_name&gt;
-
-
-🛠️ 2. 本地开发与提交123git diff                   # 查看变更（可选）git add &lt;file&gt;             # 添加到暂存区git commit -m "说明内容"    # 提交
-
-
-☁️ 3....
-            </div>
-            <!-- read more -->
-            <div class="abstract-post-meta">
-                <!-- date -->
-                <div class="abstract-date" title="Last updated: 2025/05/14">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2025/05/14</span>
-                </div>
-                <!-- tags -->
-                    <div class="abstract-tags" >
-        <a class="post-tag" href="javascript:void(0);" data-tags="github">github</a>
-</div>
-
-            </div>
-        </article>
-        <div class="index-post-divider"></div>
-            
-        <article class="index-post">
             <a class="abstract-title" href="/2025/04/24/ben-di-gou-jian-docker-jing-xiang-bing-shang-chuan-zhi-a-li-yun-jing-xiang-fu-wu-zhan/">
                 <span class="abstract-title-text">本地构建docker镜像并上传至阿里云镜像服务站</span>
             </a>
@@ -1070,6 +991,86 @@ neo4j 导入节点和边的类实现
             </div>
         </article>
         <div class="index-post-divider"></div>
+            
+        <article class="index-post">
+            <a class="abstract-title" href="/2025/03/06/shi-yong-bert-de-dao-duan-yu-xiang-liang-biao-shi-bing-jin-xing-ceng-ci-ju-lei-shi-xian-xiang-si-xing-qu-chong/">
+                <span class="abstract-title-text">使用BERT得到短语向量表示并进行层次聚类实现相似性去重</span>
+            </a>
+            <div class="abstract-content">
+                在自然语言处理（NLP）中，短语的相似性分析是一个常见且重要的任务。传统的文本相似性计算方法往往依赖于手工设计的特征，但随着深度学习和预训练语言模型的出现，BERT（Bidirectional Encoder Representations from Transformers）及其衍生模型为我们提供了更强大的表达能力。在本文中，我们将介绍如何使用BERT模型对短语进行向量化，并结合层次聚类算法对相似短语进行去重。
+任务背景在很多应用场景下，我们往往需要从大量的短语数据中去除重复或者相似的内容，以便于进一步分析。例如，在传统中医（TCM）数据分析中，可能有大量的类似任务相关查询或医疗术语需...
+            </div>
+            <!-- read more -->
+            <div class="abstract-post-meta">
+                <!-- date -->
+                <div class="abstract-date" title="Last updated: 2025/03/08">
+                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2025/03/06</span>
+                </div>
+                <!-- tags -->
+                    <div class="abstract-tags" >
+        <a class="post-tag" href="javascript:void(0);" data-tags="文本聚类 bert向量表示">文本聚类 bert向量表示</a>
+</div>
+
+            </div>
+        </article>
+        <div class="index-post-divider"></div>
+            
+        <article class="index-post">
+            <a class="abstract-title" href="/2025/03/06/ji-yu-bian-ji-ju-chi-de-wen-ben-ceng-ci-ju-lei/">
+                <span class="abstract-title-text">基于编辑距离的文本层次聚类</span>
+            </a>
+            <div class="abstract-content">
+                在自然语言处理（NLP）和数据清洗过程中，处理相似文本的聚类问题是一个常见的挑战。例如，在搜索日志、医学术语、客户查询等文本数据中，我们经常会遇到拼写相似或近似表达的词汇。为了更好地对这些数据进行分类和管理，我们可以使用 编辑距离（Levenshtein Distance） 结合 层次聚类（Hierarchical Clustering） 进行文本聚类。
+本文介绍了一种基于 Python 的 编辑距离层次聚类 方法，并提供了一个完整的实现代码。该方法的核心思想是：
+
+计算编辑距离矩阵：通过 Levenshtein 距离衡量文本之间的相似性。
+
+层次聚类：使用层次聚类，将相似的文本归类到相...
+            </div>
+            <!-- read more -->
+            <div class="abstract-post-meta">
+                <!-- date -->
+                <div class="abstract-date" title="Last updated: 2025/03/08">
+                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2025/03/06</span>
+                </div>
+                <!-- tags -->
+                    <div class="abstract-tags" >
+        <a class="post-tag" href="javascript:void(0);" data-tags="文本聚类 编辑距离">文本聚类 编辑距离</a>
+</div>
+
+            </div>
+        </article>
+        <div class="index-post-divider"></div>
+            
+        <article class="index-post">
+            <a class="abstract-title" href="/2025/02/27/ai-jing-sai-ping-tai/">
+                <span class="abstract-title-text">Ai竞赛平台</span>
+            </a>
+            <div class="abstract-content">
+                最近对常见的Ai竞赛平台做了整理，记录如下：
+
+Kaggle:  https://www.kaggle.com/
+AIcrowd: https://www.aicrowd.com/
+Codalab :  https://codalab.lisn.upsaclay.fr/
+DrivenData: https://www.drivendata.org/
+Grand Challenge: https://grand-challenge.org/
+Topcoder:  https://www.topcoder.com/challenges
+Zindi: https://zindi.africa/...
+            </div>
+            <!-- read more -->
+            <div class="abstract-post-meta">
+                <!-- date -->
+                <div class="abstract-date" title="Last updated: 2025/03/08">
+                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2025/02/27</span>
+                </div>
+                <!-- tags -->
+                    <div class="abstract-tags" >
+        <a class="post-tag" href="javascript:void(0);" data-tags="ai竞赛">ai竞赛</a>
+</div>
+
+            </div>
+        </article>
+        <div class="index-post-divider"></div>
     <!-- paginator  -->
         <nav class="page-nav">
             <a class="extend prev" rel="prev" href="/archives/page/3/">&lt; PREV</a><a class="page-number" href="/archives/">1</a><a class="page-number" href="/archives/page/2/">2</a><a class="page-number" href="/archives/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/archives/page/5/">5</a><a class="page-number" href="/archives/page/6/">6</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/9/">9</a><a class="extend next" rel="next" href="/archives/page/5/">NEXT &gt;</a>
@@ -1196,12 +1197,9 @@ neo4j 导入节点和边的类实现
         
         
         
-        
-        
-        
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 84
+        Total : 81
         </div>
         <!-- search  -->
             <div class="site-search site-search-loading popup-trigger">
@@ -1211,18 +1209,6 @@ neo4j 导入节点和边的类实现
     <div class="post-archive">
             <div class="archive-year"> 2026 </div>
             <ul class="year-list">
-        <li class="archive-post-item">
-            <span class="archive-post-date">04/14</span>
-            <a class="archive-post-title" href="/2026/04/14/yuan-xue-xi-shu-ji-tui-jian/">元学习书籍推荐</a>
-        </li>
-        <li class="archive-post-item">
-            <span class="archive-post-date">04/14</span>
-            <a class="archive-post-title" href="/2026/04/14/guan-yu-ppt/">关于ppt</a>
-        </li>
-        <li class="archive-post-item">
-            <span class="archive-post-date">04/14</span>
-            <a class="archive-post-title" href="/2026/04/14/zhi-shi-ku-jin-hua-guan-li/">知识库进化管理</a>
-        </li>
         <li class="archive-post-item">
             <span class="archive-post-date">04/05</span>
             <a class="archive-post-title" href="/2026/04/05/2026-xin-zhong-duan-gong-ju-ji-lu/">2026新终端工具记录</a>
@@ -1565,6 +1551,10 @@ neo4j 导入节点和边的类实现
 
         <div class="sidebar-panel-tags">
     <div class="sidebar-tags-name">
+            <span class="sidebar-tag-name" data-tags="BPE">
+                <span class="iconfont-archer">&#xe606;</span>
+                BPE
+            </span>
             <span class="sidebar-tag-name" data-tags="pytorch">
                 <span class="iconfont-archer">&#xe606;</span>
                 pytorch
@@ -1572,10 +1562,6 @@ neo4j 导入节点和边的类实现
             <span class="sidebar-tag-name" data-tags="ai竞赛">
                 <span class="iconfont-archer">&#xe606;</span>
                 ai竞赛
-            </span>
-            <span class="sidebar-tag-name" data-tags="BPE">
-                <span class="iconfont-archer">&#xe606;</span>
-                BPE
             </span>
             <span class="sidebar-tag-name" data-tags="RAG">
                 <span class="iconfont-archer">&#xe606;</span>
@@ -1585,33 +1571,33 @@ neo4j 导入节点和边的类实现
                 <span class="iconfont-archer">&#xe606;</span>
                 claude-code
             </span>
+            <span class="sidebar-tag-name" data-tags="Clash, 规则配置">
+                <span class="iconfont-archer">&#xe606;</span>
+                Clash, 规则配置
+            </span>
             <span class="sidebar-tag-name" data-tags="tensor">
                 <span class="iconfont-archer">&#xe606;</span>
                 tensor
-            </span>
-            <span class="sidebar-tag-name" data-tags="GitLab">
-                <span class="iconfont-archer">&#xe606;</span>
-                GitLab
             </span>
             <span class="sidebar-tag-name" data-tags="GitHub">
                 <span class="iconfont-archer">&#xe606;</span>
                 GitHub
             </span>
+            <span class="sidebar-tag-name" data-tags="GitLab">
+                <span class="iconfont-archer">&#xe606;</span>
+                GitLab
+            </span>
             <span class="sidebar-tag-name" data-tags="git">
                 <span class="iconfont-archer">&#xe606;</span>
                 git
             </span>
-            <span class="sidebar-tag-name" data-tags="Clash, 规则配置">
+            <span class="sidebar-tag-name" data-tags="Google访问助手">
                 <span class="iconfont-archer">&#xe606;</span>
-                Clash, 规则配置
+                Google访问助手
             </span>
             <span class="sidebar-tag-name" data-tags="预训练模型">
                 <span class="iconfont-archer">&#xe606;</span>
                 预训练模型
-            </span>
-            <span class="sidebar-tag-name" data-tags="Google访问助手">
-                <span class="iconfont-archer">&#xe606;</span>
-                Google访问助手
             </span>
             <span class="sidebar-tag-name" data-tags="启动U盘">
                 <span class="iconfont-archer">&#xe606;</span>
@@ -1645,21 +1631,21 @@ neo4j 导入节点和边的类实现
                 <span class="iconfont-archer">&#xe606;</span>
                 博客
             </span>
-            <span class="sidebar-tag-name" data-tags="jupyter notebook">
-                <span class="iconfont-archer">&#xe606;</span>
-                jupyter notebook
-            </span>
             <span class="sidebar-tag-name" data-tags="docker">
                 <span class="iconfont-archer">&#xe606;</span>
                 docker
             </span>
-            <span class="sidebar-tag-name" data-tags="neo4j">
+            <span class="sidebar-tag-name" data-tags="jupyter notebook">
                 <span class="iconfont-archer">&#xe606;</span>
-                neo4j
+                jupyter notebook
             </span>
             <span class="sidebar-tag-name" data-tags="python">
                 <span class="iconfont-archer">&#xe606;</span>
                 python
+            </span>
+            <span class="sidebar-tag-name" data-tags="neo4j">
+                <span class="iconfont-archer">&#xe606;</span>
+                neo4j
             </span>
             <span class="sidebar-tag-name" data-tags="ssh">
                 <span class="iconfont-archer">&#xe606;</span>
@@ -1705,25 +1691,21 @@ neo4j 导入节点和边的类实现
                 <span class="iconfont-archer">&#xe606;</span>
                 概率论
             </span>
-            <span class="sidebar-tag-name" data-tags="数学">
-                <span class="iconfont-archer">&#xe606;</span>
-                数学
-            </span>
             <span class="sidebar-tag-name" data-tags="日志">
                 <span class="iconfont-archer">&#xe606;</span>
                 日志
-            </span>
-            <span class="sidebar-tag-name" data-tags="图">
-                <span class="iconfont-archer">&#xe606;</span>
-                图
             </span>
             <span class="sidebar-tag-name" data-tags="机器学习">
                 <span class="iconfont-archer">&#xe606;</span>
                 机器学习
             </span>
-            <span class="sidebar-tag-name" data-tags="python_c++_互通">
+            <span class="sidebar-tag-name" data-tags="数学">
                 <span class="iconfont-archer">&#xe606;</span>
-                python_c++_互通
+                数学
+            </span>
+            <span class="sidebar-tag-name" data-tags="图">
+                <span class="iconfont-archer">&#xe606;</span>
+                图
             </span>
             <span class="sidebar-tag-name" data-tags="呈贡">
                 <span class="iconfont-archer">&#xe606;</span>
@@ -1732,6 +1714,10 @@ neo4j 导入节点和边的类实现
             <span class="sidebar-tag-name" data-tags="文本聚类 编辑距离">
                 <span class="iconfont-archer">&#xe606;</span>
                 文本聚类 编辑距离
+            </span>
+            <span class="sidebar-tag-name" data-tags="python_c++_互通">
+                <span class="iconfont-archer">&#xe606;</span>
+                python_c++_互通
             </span>
             <span class="sidebar-tag-name" data-tags="Syncthing">
                 <span class="iconfont-archer">&#xe606;</span>
@@ -1757,17 +1743,13 @@ neo4j 导入节点和边的类实现
                 <span class="iconfont-archer">&#xe606;</span>
                 干货
             </span>
-            <span class="sidebar-tag-name" data-tags="熵">
-                <span class="iconfont-archer">&#xe606;</span>
-                熵
-            </span>
             <span class="sidebar-tag-name" data-tags="资源">
                 <span class="iconfont-archer">&#xe606;</span>
                 资源
             </span>
-            <span class="sidebar-tag-name" data-tags="竞赛">
+            <span class="sidebar-tag-name" data-tags="熵">
                 <span class="iconfont-archer">&#xe606;</span>
-                竞赛
+                熵
             </span>
             <span class="sidebar-tag-name" data-tags="论文写作">
                 <span class="iconfont-archer">&#xe606;</span>
@@ -1777,13 +1759,17 @@ neo4j 导入节点和边的类实现
                 <span class="iconfont-archer">&#xe606;</span>
                 街拍
             </span>
-            <span class="sidebar-tag-name" data-tags="docker, doccano">
+            <span class="sidebar-tag-name" data-tags="竞赛">
                 <span class="iconfont-archer">&#xe606;</span>
-                docker, doccano
+                竞赛
             </span>
             <span class="sidebar-tag-name" data-tags="强化学习">
                 <span class="iconfont-archer">&#xe606;</span>
                 强化学习
+            </span>
+            <span class="sidebar-tag-name" data-tags="docker, doccano">
+                <span class="iconfont-archer">&#xe606;</span>
+                docker, doccano
             </span>
     </div>
     <div class="iconfont-archer sidebar-tags-empty">&#xe678;</div>
@@ -1795,6 +1781,10 @@ neo4j 导入节点和边的类实现
 
         <div class="sidebar-panel-categories">
     <div class="sidebar-categories-name">
+        <span class="sidebar-category-name" data-categories="大模型">
+            <span class="iconfont-archer">&#xe60a;</span>
+            大模型
+        </span>
         <span class="sidebar-category-name" data-categories="编程">
             <span class="iconfont-archer">&#xe60a;</span>
             编程
@@ -1803,13 +1793,13 @@ neo4j 导入节点和边的类实现
             <span class="iconfont-archer">&#xe60a;</span>
             总结
         </span>
-        <span class="sidebar-category-name" data-categories="大模型">
-            <span class="iconfont-archer">&#xe60a;</span>
-            大模型
-        </span>
         <span class="sidebar-category-name" data-categories="编程开发">
             <span class="iconfont-archer">&#xe60a;</span>
             编程开发
+        </span>
+        <span class="sidebar-category-name" data-categories="网络工具">
+            <span class="iconfont-archer">&#xe60a;</span>
+            网络工具
         </span>
         <span class="sidebar-category-name" data-categories="技术笔记">
             <span class="iconfont-archer">&#xe60a;</span>
@@ -1819,17 +1809,13 @@ neo4j 导入节点和边的类实现
             <span class="iconfont-archer">&#xe60a;</span>
             爬坑总结
         </span>
-        <span class="sidebar-category-name" data-categories="网络工具">
+        <span class="sidebar-category-name" data-categories="干货">
             <span class="iconfont-archer">&#xe60a;</span>
-            网络工具
+            干货
         </span>
         <span class="sidebar-category-name" data-categories="人工智能">
             <span class="iconfont-archer">&#xe60a;</span>
             人工智能
-        </span>
-        <span class="sidebar-category-name" data-categories="干货">
-            <span class="iconfont-archer">&#xe60a;</span>
-            干货
         </span>
         <span class="sidebar-category-name" data-categories="运维">
             <span class="iconfont-archer">&#xe60a;</span>

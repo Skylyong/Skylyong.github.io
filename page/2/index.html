@@ -429,94 +429,6 @@
                 <main class="main index-page">
             
         <article class="index-post">
-            <a class="abstract-title" href="/2026/01/09/bpe-fen-ci-xun-lian/">
-                <span class="abstract-title-text">BPE分词训练</span>
-            </a>
-            <div class="abstract-content">
-                在这里，我们介绍了BPE分词的原理及优缺点，本节我们将详细介绍 BPE Tokenizer的训练方法。
-什么是 BPE Tokenizer TrainingBPE Tokenizer Training 是一个构建词表(Vocabulary)的过程，它基于字节级别（Byte-level），通过统计语料中相邻字节对出现的频率，迭代地将最频繁出现的字节对合并成新的、更高级的Token。它的输入为语料，基础词表和特殊token，输出为词表（Vocabulary）字典和记录合并的以元组为元素的list。
-BPE Tokenizer Training 的三个核心步骤BPE Tokenizer Tra...
-            </div>
-            <!-- read more -->
-            <div class="abstract-post-meta">
-                <!-- date -->
-                <div class="abstract-date" title="Last updated: 2026/01/09">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2026/01/09</span>
-                </div>
-                <!-- tags -->
-                    <div class="abstract-tags" >
-        <a class="post-tag" href="javascript:void(0);" data-tags="BPE">BPE</a>
-</div>
-
-            </div>
-        </article>
-        <div class="index-post-divider"></div>
-            
-        <article class="index-post">
-            <a class="abstract-title" href="/2025/12/02/clash-gui-ze-pei-zhi-zhi-nan/">
-                <span class="abstract-title-text">Clash规则配置指南</span>
-            </a>
-            <div class="abstract-content">
-                原文转自： https://flashvpn.io/blog/clash-custom-rules-tutorial
-Clash 规则完全指南：2025 最新分流规则、自定义配置
-“为什么有些网站打不开，必须手动切换代理模式？”
-“怎样才能让 Netflix、YouTube 等流媒体自动走最快的节点？”
-“我想屏蔽 App 和网页里的广告，Clash 能做到吗？”
-
-这些问题的核心都指向同一个功能——Clash 规则。
-简单来说，Clash 规则就是一套交通指挥系统，它能自动判断哪些网站应该走代理（翻墙），哪些应该直连（访问国内网站），哪些应该被屏蔽（去广告）。一套好的规则能让您的上网体...
-            </div>
-            <!-- read more -->
-            <div class="abstract-post-meta">
-                <!-- date -->
-                <div class="abstract-date" title="Last updated: 2025/12/03">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2025/12/02</span>
-                </div>
-                <!-- tags -->
-                    <div class="abstract-tags" >
-        <a class="post-tag" href="javascript:void(0);" data-tags="Clash, 规则配置">Clash, 规则配置</a>
-</div>
-
-            </div>
-        </article>
-        <div class="index-post-divider"></div>
-            
-        <article class="index-post">
-            <a class="abstract-title" href="/2025/11/20/1-cs336-bpe-fen-ci-qi-jie-shao/">
-                <span class="abstract-title-text">1-cs336-BPE分词器介绍</span>
-            </a>
-            <div class="abstract-content">
-                
-[!summary]
-
-Why we need tokenizer？
-为什么需要基于字节的分词器？
-彻底解决”未登录词”问题
-实现对所有语言、符号的通用支持
-核心原理： UTF-8与字节
-
-
-1. The motivation - Why we need tokenizer由于计算机只能够对数字进行计算，而没法直接对字符做计算。因此，我们需要一种操作能够将字符串编码为数字；同时将计算机输出的数字解码为人类阅读友好的字符串。上述中的“操作”即为 Tokenizers。
-
-根据编码基本单元的不同，可以划分出多种不同的编码方式，如基于词级、字符级和基于字节的编码方式。
-其中，基于字节的Tok...
-            </div>
-            <!-- read more -->
-            <div class="abstract-post-meta">
-                <!-- date -->
-                <div class="abstract-date" title="Last updated: 2025/11/20">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2025/11/20</span>
-                </div>
-                <!-- tags -->
-                    <div class="abstract-tags" >
-        <a class="post-tag" href="javascript:void(0);" data-tags="BPE">BPE</a>
-</div>
-
-            </div>
-        </article>
-        <div class="index-post-divider"></div>
-            
-        <article class="index-post">
             <a class="abstract-title" href="/2025/10/16/linux-chang-yong-ming-ling-jie-shi/">
                 <span class="abstract-title-text">linux常用命令解释</span>
             </a>
@@ -745,6 +657,90 @@ sdb 是系统盘
             </div>
         </article>
         <div class="index-post-divider"></div>
+            
+        <article class="index-post">
+            <a class="abstract-title" href="/2025/08/10/xiang-liang-fan-shu/">
+                <span class="abstract-title-text">向量范数</span>
+            </a>
+            <div class="abstract-content">
+                向量范数的定义数学上，向量范数是一个函数 $|\cdot|$，它把向量映射成一个非负实数，并满足以下三个条件（任何合法的范数都要满足）：
+非负性$$|x| \geq 0 \quad \text{且} \quad |x| = 0 \iff x = 0$$
+向量的长度不可能是负的，只有零向量长度为零。
+齐次性（homogeneity / scalability）$$|\alpha x| = |\alpha| \cdot |x|$$
+缩放向量，长度也按比例缩放。
+三角不等式$$|x + y| \leq |x| + |y|$$
+两个向量相加的“长度”不会超过它们长度之和（几何上就是三角形不等式）...
+            </div>
+            <!-- read more -->
+            <div class="abstract-post-meta">
+                <!-- date -->
+                <div class="abstract-date" title="Last updated: 2025/08/10">
+                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2025/08/10</span>
+                </div>
+                <!-- tags -->
+                    <div class="abstract-tags" >
+        <a class="post-tag" href="javascript:void(0);" data-tags="数学">数学</a>
+</div>
+
+            </div>
+        </article>
+        <div class="index-post-divider"></div>
+            
+        <article class="index-post">
+            <a class="abstract-title" href="/2025/08/10/fan-shu-de-ji-ben-gai-nian/">
+                <span class="abstract-title-text">范数的基本概念</span>
+            </a>
+            <div class="abstract-content">
+                范数（norm）本质上就是一种 “长度”或“大小”的度量方法。
+
+对向量来说，范数告诉你“这个向量有多长”。
+
+对矩阵来说，范数告诉你“这个矩阵能把向量拉伸多少”或“矩阵自身有多大”。
+
+
+
+            </div>
+            <!-- read more -->
+            <div class="abstract-post-meta">
+                <!-- date -->
+                <div class="abstract-date" title="Last updated: 2025/08/10">
+                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2025/08/10</span>
+                </div>
+                <!-- tags -->
+                    <div class="abstract-tags" >
+        <a class="post-tag" href="javascript:void(0);" data-tags="数学">数学</a>
+</div>
+
+            </div>
+        </article>
+        <div class="index-post-divider"></div>
+            
+        <article class="index-post">
+            <a class="abstract-title" href="/2025/08/10/shu-xue-zhong-de-qi-ci-xing-li-jie/">
+                <span class="abstract-title-text">数学中的齐次性理解</span>
+            </a>
+            <div class="abstract-content">
+                什么是齐次性？在数学中，齐次性（Homogeneity） 通常指函数或方程在输入按比例缩放时，输出也按某个幂次比例缩放的性质。
+齐次函数一个映射  $ f: \mathbb{R}^n \to \mathbb{R} $ ，如果对于任意标量 $ \lambda $ 和输入向量 $ x \in \mathbb{R}^n $，满足：
+$$f(\lambda x) = \lambda^k f(x)$$
+则称该映射为k次齐次函数。这里，$ k $ 被称为齐次次数（degree of homogeneity）。
+示例：函数 $ f(x,y) = x^2 + y^2 $ 是二次齐次函数，因为
+$$f(\...
+            </div>
+            <!-- read more -->
+            <div class="abstract-post-meta">
+                <!-- date -->
+                <div class="abstract-date" title="Last updated: 2025/08/10">
+                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2025/08/10</span>
+                </div>
+                <!-- tags -->
+                    <div class="abstract-tags" >
+        <a class="post-tag" href="javascript:void(0);" data-tags="数学">数学</a>
+</div>
+
+            </div>
+        </article>
+        <div class="index-post-divider"></div>
     <!-- paginator  -->
         <nav class="page-nav">
             <a class="extend prev" rel="prev" href="/">&lt; PREV</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/3/">NEXT &gt;</a>
@@ -928,12 +924,9 @@ sdb 是系统盘
         
         
         
-        
-        
-        
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 84
+        Total : 81
         </div>
         <!-- search  -->
             <div class="site-search site-search-loading popup-trigger">
@@ -943,18 +936,6 @@ sdb 是系统盘
     <div class="post-archive">
             <div class="archive-year"> 2026 </div>
             <ul class="year-list">
-        <li class="archive-post-item">
-            <span class="archive-post-date">04/14</span>
-            <a class="archive-post-title" href="/2026/04/14/yuan-xue-xi-shu-ji-tui-jian/">元学习书籍推荐</a>
-        </li>
-        <li class="archive-post-item">
-            <span class="archive-post-date">04/14</span>
-            <a class="archive-post-title" href="/2026/04/14/guan-yu-ppt/">关于ppt</a>
-        </li>
-        <li class="archive-post-item">
-            <span class="archive-post-date">04/14</span>
-            <a class="archive-post-title" href="/2026/04/14/zhi-shi-ku-jin-hua-guan-li/">知识库进化管理</a>
-        </li>
         <li class="archive-post-item">
             <span class="archive-post-date">04/05</span>
             <a class="archive-post-title" href="/2026/04/05/2026-xin-zhong-duan-gong-ju-ji-lu/">2026新终端工具记录</a>
@@ -1297,6 +1278,10 @@ sdb 是系统盘
 
         <div class="sidebar-panel-tags">
     <div class="sidebar-tags-name">
+            <span class="sidebar-tag-name" data-tags="BPE">
+                <span class="iconfont-archer">&#xe606;</span>
+                BPE
+            </span>
             <span class="sidebar-tag-name" data-tags="pytorch">
                 <span class="iconfont-archer">&#xe606;</span>
                 pytorch
@@ -1304,10 +1289,6 @@ sdb 是系统盘
             <span class="sidebar-tag-name" data-tags="ai竞赛">
                 <span class="iconfont-archer">&#xe606;</span>
                 ai竞赛
-            </span>
-            <span class="sidebar-tag-name" data-tags="BPE">
-                <span class="iconfont-archer">&#xe606;</span>
-                BPE
             </span>
             <span class="sidebar-tag-name" data-tags="RAG">
                 <span class="iconfont-archer">&#xe606;</span>
@@ -1317,33 +1298,33 @@ sdb 是系统盘
                 <span class="iconfont-archer">&#xe606;</span>
                 claude-code
             </span>
+            <span class="sidebar-tag-name" data-tags="Clash, 规则配置">
+                <span class="iconfont-archer">&#xe606;</span>
+                Clash, 规则配置
+            </span>
             <span class="sidebar-tag-name" data-tags="tensor">
                 <span class="iconfont-archer">&#xe606;</span>
                 tensor
-            </span>
-            <span class="sidebar-tag-name" data-tags="GitLab">
-                <span class="iconfont-archer">&#xe606;</span>
-                GitLab
             </span>
             <span class="sidebar-tag-name" data-tags="GitHub">
                 <span class="iconfont-archer">&#xe606;</span>
                 GitHub
             </span>
+            <span class="sidebar-tag-name" data-tags="GitLab">
+                <span class="iconfont-archer">&#xe606;</span>
+                GitLab
+            </span>
             <span class="sidebar-tag-name" data-tags="git">
                 <span class="iconfont-archer">&#xe606;</span>
                 git
             </span>
-            <span class="sidebar-tag-name" data-tags="Clash, 规则配置">
+            <span class="sidebar-tag-name" data-tags="Google访问助手">
                 <span class="iconfont-archer">&#xe606;</span>
-                Clash, 规则配置
+                Google访问助手
             </span>
             <span class="sidebar-tag-name" data-tags="预训练模型">
                 <span class="iconfont-archer">&#xe606;</span>
                 预训练模型
-            </span>
-            <span class="sidebar-tag-name" data-tags="Google访问助手">
-                <span class="iconfont-archer">&#xe606;</span>
-                Google访问助手
             </span>
             <span class="sidebar-tag-name" data-tags="启动U盘">
                 <span class="iconfont-archer">&#xe606;</span>
@@ -1377,21 +1358,21 @@ sdb 是系统盘
                 <span class="iconfont-archer">&#xe606;</span>
                 博客
             </span>
-            <span class="sidebar-tag-name" data-tags="jupyter notebook">
-                <span class="iconfont-archer">&#xe606;</span>
-                jupyter notebook
-            </span>
             <span class="sidebar-tag-name" data-tags="docker">
                 <span class="iconfont-archer">&#xe606;</span>
                 docker
             </span>
-            <span class="sidebar-tag-name" data-tags="neo4j">
+            <span class="sidebar-tag-name" data-tags="jupyter notebook">
                 <span class="iconfont-archer">&#xe606;</span>
-                neo4j
+                jupyter notebook
             </span>
             <span class="sidebar-tag-name" data-tags="python">
                 <span class="iconfont-archer">&#xe606;</span>
                 python
+            </span>
+            <span class="sidebar-tag-name" data-tags="neo4j">
+                <span class="iconfont-archer">&#xe606;</span>
+                neo4j
             </span>
             <span class="sidebar-tag-name" data-tags="ssh">
                 <span class="iconfont-archer">&#xe606;</span>
@@ -1437,25 +1418,21 @@ sdb 是系统盘
                 <span class="iconfont-archer">&#xe606;</span>
                 概率论
             </span>
-            <span class="sidebar-tag-name" data-tags="数学">
-                <span class="iconfont-archer">&#xe606;</span>
-                数学
-            </span>
             <span class="sidebar-tag-name" data-tags="日志">
                 <span class="iconfont-archer">&#xe606;</span>
                 日志
-            </span>
-            <span class="sidebar-tag-name" data-tags="图">
-                <span class="iconfont-archer">&#xe606;</span>
-                图
             </span>
             <span class="sidebar-tag-name" data-tags="机器学习">
                 <span class="iconfont-archer">&#xe606;</span>
                 机器学习
             </span>
-            <span class="sidebar-tag-name" data-tags="python_c++_互通">
+            <span class="sidebar-tag-name" data-tags="数学">
                 <span class="iconfont-archer">&#xe606;</span>
-                python_c++_互通
+                数学
+            </span>
+            <span class="sidebar-tag-name" data-tags="图">
+                <span class="iconfont-archer">&#xe606;</span>
+                图
             </span>
             <span class="sidebar-tag-name" data-tags="呈贡">
                 <span class="iconfont-archer">&#xe606;</span>
@@ -1464,6 +1441,10 @@ sdb 是系统盘
             <span class="sidebar-tag-name" data-tags="文本聚类 编辑距离">
                 <span class="iconfont-archer">&#xe606;</span>
                 文本聚类 编辑距离
+            </span>
+            <span class="sidebar-tag-name" data-tags="python_c++_互通">
+                <span class="iconfont-archer">&#xe606;</span>
+                python_c++_互通
             </span>
             <span class="sidebar-tag-name" data-tags="Syncthing">
                 <span class="iconfont-archer">&#xe606;</span>
@@ -1489,17 +1470,13 @@ sdb 是系统盘
                 <span class="iconfont-archer">&#xe606;</span>
                 干货
             </span>
-            <span class="sidebar-tag-name" data-tags="熵">
-                <span class="iconfont-archer">&#xe606;</span>
-                熵
-            </span>
             <span class="sidebar-tag-name" data-tags="资源">
                 <span class="iconfont-archer">&#xe606;</span>
                 资源
             </span>
-            <span class="sidebar-tag-name" data-tags="竞赛">
+            <span class="sidebar-tag-name" data-tags="熵">
                 <span class="iconfont-archer">&#xe606;</span>
-                竞赛
+                熵
             </span>
             <span class="sidebar-tag-name" data-tags="论文写作">
                 <span class="iconfont-archer">&#xe606;</span>
@@ -1509,13 +1486,17 @@ sdb 是系统盘
                 <span class="iconfont-archer">&#xe606;</span>
                 街拍
             </span>
-            <span class="sidebar-tag-name" data-tags="docker, doccano">
+            <span class="sidebar-tag-name" data-tags="竞赛">
                 <span class="iconfont-archer">&#xe606;</span>
-                docker, doccano
+                竞赛
             </span>
             <span class="sidebar-tag-name" data-tags="强化学习">
                 <span class="iconfont-archer">&#xe606;</span>
                 强化学习
+            </span>
+            <span class="sidebar-tag-name" data-tags="docker, doccano">
+                <span class="iconfont-archer">&#xe606;</span>
+                docker, doccano
             </span>
     </div>
     <div class="iconfont-archer sidebar-tags-empty">&#xe678;</div>
@@ -1527,6 +1508,10 @@ sdb 是系统盘
 
         <div class="sidebar-panel-categories">
     <div class="sidebar-categories-name">
+        <span class="sidebar-category-name" data-categories="大模型">
+            <span class="iconfont-archer">&#xe60a;</span>
+            大模型
+        </span>
         <span class="sidebar-category-name" data-categories="编程">
             <span class="iconfont-archer">&#xe60a;</span>
             编程
@@ -1535,13 +1520,13 @@ sdb 是系统盘
             <span class="iconfont-archer">&#xe60a;</span>
             总结
         </span>
-        <span class="sidebar-category-name" data-categories="大模型">
-            <span class="iconfont-archer">&#xe60a;</span>
-            大模型
-        </span>
         <span class="sidebar-category-name" data-categories="编程开发">
             <span class="iconfont-archer">&#xe60a;</span>
             编程开发
+        </span>
+        <span class="sidebar-category-name" data-categories="网络工具">
+            <span class="iconfont-archer">&#xe60a;</span>
+            网络工具
         </span>
         <span class="sidebar-category-name" data-categories="技术笔记">
             <span class="iconfont-archer">&#xe60a;</span>
@@ -1551,17 +1536,13 @@ sdb 是系统盘
             <span class="iconfont-archer">&#xe60a;</span>
             爬坑总结
         </span>
-        <span class="sidebar-category-name" data-categories="网络工具">
+        <span class="sidebar-category-name" data-categories="干货">
             <span class="iconfont-archer">&#xe60a;</span>
-            网络工具
+            干货
         </span>
         <span class="sidebar-category-name" data-categories="人工智能">
             <span class="iconfont-archer">&#xe60a;</span>
             人工智能
-        </span>
-        <span class="sidebar-category-name" data-categories="干货">
-            <span class="iconfont-archer">&#xe60a;</span>
-            干货
         </span>
         <span class="sidebar-category-name" data-categories="运维">
             <span class="iconfont-archer">&#xe60a;</span>
