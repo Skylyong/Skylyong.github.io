@@ -4,6 +4,19 @@
   
     
     <entry>
+      <title>Tue Apr 14 2026 00:00:00 GMT+0800 (China Standard Time)</title>
+      <link href="/2026/04/18/2026-04-14/"/>
+      <url>/2026/04/18/2026-04-14/</url>
+      
+        <content type="html"><![CDATA[<p>今日完成：</p><ol><li>将诗怡做的新闻获取平台部署到了服务器上面。</li><li>尝试对公众号发布插件进行改写，新增hexo发布，解决了原来的插件，发布时需要购买会员才能够一键发布到公众号的问题，但是遇到了一个新的问题，数学公式渲染不成功。</li></ol>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>2026新终端工具记录</title>
       <link href="/2026/04/05/2026-xin-zhong-duan-gong-ju-ji-lu/"/>
       <url>/2026/04/05/2026-xin-zhong-duan-gong-ju-ji-lu/</url>
