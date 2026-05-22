@@ -1,0 +1,1517 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="author" content="Lee">
+  <meta name="description" content="Keep go on">
+<meta property="og:type" content="article">
+<meta property="og:title" content="tufte-note 主题排版指南：边注、宽图与长文阅读">
+<meta property="og:url" content="https://skylyong.github.io/2026/05/23/tufte-note-zhu-ti-pai-ban-zhi-nan/index.html">
+<meta property="og:site_name" content="Lee&#39;s Blog">
+<meta property="og:description" content="Keep go on">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2026-05-22T16:00:00.000Z">
+<meta property="article:modified_time" content="2026-05-22T18:18:10.645Z">
+<meta property="article:author" content="Lee">
+<meta property="article:tag" content="Tufte">
+<meta property="article:tag" content="博客">
+<meta property="article:tag" content="Hexo">
+<meta name="twitter:card" content="summary">
+  <title>tufte-note 主题排版指南：边注、宽图与长文阅读 | Lee's Blog</title>
+  
+    <link rel="alternate" href="/atom.xml" title="Lee's Blog" type="application/atom+xml">
+  
+  <script>
+    (function () {
+      try {
+        var stored = window.sessionStorage.getItem('tufte-note:theme');
+        var theme = stored || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+        document.documentElement.setAttribute('data-theme', theme);
+      } catch (error) {}
+    })();
+  </script>
+  <link rel="stylesheet" href="/css/tufte.css">
+  <link rel="stylesheet" href="/css/hexo-tufte.css">
+<meta name="generator" content="Hexo 7.3.0">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+</head>
+
+  
+  <body class="is-post">
+    <header class="site-header">
+  <a class="site-title" href="/">Lee's Blog</a>
+  
+  
+    <nav class="site-nav" aria-label="Primary navigation">
+      
+        
+        
+        <a href="/">Home</a>
+      
+        
+        
+        <a href="/friends/">Friends</a>
+      
+        
+        
+        <a href="/about/">About</a>
+      
+      <button id="theme-toggle" class="theme-toggle-btn" type="button" aria-label="Toggle theme"></button>
+    </nav>
+  
+</header>
+
+    <button class="left-nav-toggle" type="button" aria-controls="left-nav-drawer" aria-expanded="false">
+  <span class="left-nav-toggle-line"></span>
+  <span class="left-nav-toggle-line"></span>
+  <span class="left-nav-toggle-line"></span>
+  <span class="sr-only">Open navigation</span>
+</button>
+
+<div class="left-nav-overlay" hidden></div>
+
+<aside class="left-nav-drawer" id="left-nav-drawer" aria-label="Archive navigation" data-content-url="/content.json" hidden>
+  <div class="left-nav-header">
+    <p class="left-nav-title">Index</p>
+    <button class="left-nav-close" type="button" aria-label="Close navigation">Close</button>
+  </div>
+
+  <form class="left-nav-search" role="search">
+    <label class="sr-only" for="left-nav-search-input">Search posts</label>
+    <input
+      id="left-nav-search-input"
+      class="left-nav-search-input"
+      type="search"
+      name="q"
+      autocomplete="off"
+      placeholder="Search posts"
+      data-search-url="/search.xml"
+    >
+    <p class="left-nav-search-status" aria-live="polite"></p>
+    <ol class="left-nav-search-results"></ol>
+  </form>
+
+  <nav class="left-nav-tabs" aria-label="Archive sections">
+    <button class="left-nav-tab is-active" type="button" data-left-nav-tab="archives" aria-selected="true">Archives</button>
+    <button class="left-nav-tab" type="button" data-left-nav-tab="tags" aria-selected="false">Tags</button>
+    <button class="left-nav-tab" type="button" data-left-nav-tab="categories" aria-selected="false">Categories</button>
+  </nav>
+
+  <section class="left-nav-panel is-active" data-left-nav-panel="archives">
+    
+    
+      
+        
+        
+          
+          
+          <p class="left-nav-year">2026</p>
+          <ol class="left-nav-list left-nav-archive-list">
+        
+        <li>
+          <time datetime="2026-05-22T16:00:00.000Z">05-23</time>
+          <a href="/2026/05/23/tufte-note-zhu-ti-pai-ban-zhi-nan/">tufte-note 主题排版指南：边注、宽图与长文阅读</a>
+        </li>
+      
+        
+        
+        <li>
+          <time datetime="2026-05-19T16:00:00.000Z">05-20</time>
+          <a href="/2026/05/20/transformer-fan-xiang-chuan-bo-3-swiglu-qian-kui-wang-luo-ceng-tui-dao/">Transformer｜反向传播 (Backpropagation)（3）：以SwiGLU为例的前馈网络层推导</a>
+        </li>
+      
+        
+        
+        <li>
+          <time datetime="2026-04-05T09:35:14.000Z">04-05</time>
+          <a href="/2026/04/05/2026-xin-zhong-duan-gong-ju-ji-lu/">2026新终端工具记录</a>
+        </li>
+      
+        
+        
+        <li>
+          <time datetime="2026-04-03T09:52:07.000Z">04-03</time>
+          <a href="/2026/04/03/xin-shou-shang-shou-zhi-nan-aidevbox-aris-zi-dong-hua-ke-yan-huan-jing/">新手上手指南：AIDevBox+ARIS-自动化科研环境</a>
+        </li>
+      
+        
+        
+        <li>
+          <time datetime="2026-04-01T11:41:57.000Z">04-01</time>
+          <a href="/2026/04/01/duo-tai-mac-jian-shu-ju-tong-bu-git-luo-cang-ku-syncthing-fang-an/">多台mac间数据同步：Git裸仓库+Syncthing方案</a>
+        </li>
+      
+        
+        
+        <li>
+          <time datetime="2026-02-26T10:09:37.000Z">02-26</time>
+          <a href="/2026/02/26/git-da-wen-jian-chu-li/">Git大文件处理</a>
+        </li>
+      
+        
+        
+        <li>
+          <time datetime="2026-02-19T06:26:15.000Z">02-19</time>
+          <a href="/2026/02/19/mac-shang-shi-yong-chun-ming-ling-xing-docker/">mac上使用纯命令行docker</a>
+        </li>
+      
+        
+        
+        <li>
+          <time datetime="2026-02-07T06:02:23.000Z">02-07</time>
+          <a href="/2026/02/07/2026-nian-chun-bian-cheng-shua-ti-ji-lu/">2026年春编程刷题记录</a>
+        </li>
+      
+        
+        
+        <li>
+          <time datetime="2026-01-16T08:34:20.000Z">01-16</time>
+          <a href="/2026/01/16/einx-and-einops/">Einx-and-einops</a>
+        </li>
+      
+        
+        
+        <li>
+          <time datetime="2026-01-16T08:13:54.000Z">01-16</time>
+          <a href="/2026/01/16/chunk-hua-fen-fang-fa/">Chunk划分方法</a>
+        </li>
+      
+        
+        
+        <li>
+          <time datetime="2026-01-09T15:01:28.000Z">01-09</time>
+          <a href="/2026/01/09/bpe-fen-ci-bian-ma-he-jie-ma/">BPE分词编码和解码</a>
+        </li>
+      
+        
+        
+        <li>
+          <time datetime="2026-01-09T13:29:23.000Z">01-09</time>
+          <a href="/2026/01/09/bpe-fen-ci-xun-lian/">BPE分词训练</a>
+        </li>
+      
+        
+        
+          
+            </ol>
+          
+          
+          <p class="left-nav-year">2025</p>
+          <ol class="left-nav-list left-nav-archive-list">
+        
+        <li>
+          <time datetime="2025-12-02T03:04:12.000Z">12-02</time>
+          <a href="/2025/12/02/clash-gui-ze-pei-zhi-zhi-nan/">Clash规则配置指南</a>
+        </li>
+      
+        
+        
+        <li>
+          <time datetime="2025-11-20T08:16:11.000Z">11-20</time>
+          <a href="/2025/11/20/1-cs336-bpe-fen-ci-qi-jie-shao/">1-cs336-BPE分词器介绍</a>
+        </li>
+      
+        
+        
+        <li>
+          <time datetime="2025-10-16T05:52:02.000Z">10-16</time>
+          <a href="/2025/10/16/linux-chang-yong-ming-ling-jie-shi/">linux常用命令解释</a>
+        </li>
+      
+        
+        
+        <li>
+          <time datetime="2025-10-14T11:55:30.000Z">10-14</time>
+          <a href="/2025/10/14/shi-yong-rclone-zai-duo-ge-fu-wu-qi-zhi-jian-chuan-shu-wen-jian/">使用rclone在多个服务器之间传输文件</a>
+        </li>
+      
+        
+        
+        <li>
+          <time datetime="2025-10-07T16:20:45.000Z">10-08</time>
+          <a href="/2025/10/08/ubuntu-shang-che-di-xie-zai-he-chong-zhuang-nvidia-qu-dong-ji-xiang-guan-zu-jian/">Ubuntu上彻底卸载和重装NVIDIA驱动及相关组件</a>
+        </li>
+      
+        
+        
+        <li>
+          <time datetime="2025-10-03T10:36:30.000Z">10-03</time>
+          <a href="/2025/10/03/ssh-pei-zhi-jie-shao/">ssh配置介绍</a>
+        </li>
+      
+        
+        
+        <li>
+          <time datetime="2025-10-02T13:39:23.000Z">10-02</time>
+          <a href="/2025/10/02/mineru-an-zhuang-bu-shu/">MinerU安装部署</a>
+        </li>
+      
+        
+        
+        <li>
+          <time datetime="2025-09-29T09:12:41.000Z">09-29</time>
+          <a href="/2025/09/29/tong-guo-docker-yun-xing-easyconnect-deng-vpn-ruan-jian/">通过docker运行EasyConnect等VPN软件</a>
+        </li>
+      
+        
+        
+        <li>
+          <time datetime="2025-09-28T13:07:28.000Z">09-28</time>
+          <a href="/2025/09/28/quan-ju-pei-zhi-docker-ke-hu-duan-dai-li/">全局配置Docker客户端代理</a>
+        </li>
+      
+        
+        
+        <li>
+          <time datetime="2025-09-16T12:36:15.000Z">09-16</time>
+          <a href="/2025/09/16/linux-ci-pan-guan-li-ji-minio-fu-wu-pei-zhi/">Linux磁盘管理及MinIO服务配置</a>
+        </li>
+      
+        
+        
+        <li>
+          <time datetime="2025-08-10T10:51:03.000Z">08-10</time>
+          <a href="/2025/08/10/bu-dong-dian-he-ya-suo-ying-she/">不动点和压缩映射</a>
+        </li>
+      
+        
+        
+        <li>
+          <time datetime="2025-08-10T10:49:11.000Z">08-10</time>
+          <a href="/2025/08/10/xiang-liang-fan-shu/">向量范数</a>
+        </li>
+      
+        
+        
+        <li>
+          <time datetime="2025-08-10T10:48:57.000Z">08-10</time>
+          <a href="/2025/08/10/fan-shu-de-ji-ben-gai-nian/">范数的基本概念</a>
+        </li>
+      
+        
+        
+        <li>
+          <time datetime="2025-08-10T10:48:32.000Z">08-10</time>
+          <a href="/2025/08/10/shu-xue-zhong-de-qi-ci-xing-li-jie/">数学中的齐次性理解</a>
+        </li>
+      
+        
+        
+        <li>
+          <time datetime="2025-07-28T04:35:06.000Z">07-28</time>
+          <a href="/2025/07/28/claude-code-xue-xi-ji-lu/">Claude-Code学习记录</a>
+        </li>
+      
+        
+        
+        <li>
+          <time datetime="2025-07-24T16:03:40.000Z">07-25</time>
+          <a href="/2025/07/25/uv-chang-yong-cao-zuo/">uv常用操作</a>
+        </li>
+      
+        
+        
+        <li>
+          <time datetime="2025-07-12T16:44:26.000Z">07-13</time>
+          <a href="/2025/07/13/quan-qi-wang-ding-li-gong-shi-tui-dao/">全期望定理公式推导</a>
+        </li>
+      
+        
+        
+        <li>
+          <time datetime="2025-07-12T09:00:48.000Z">07-12</time>
+          <a href="/2025/07/12/bei-er-man-deng-shi-jie-shao-ji-tui-dao/">贝尔曼等式介绍及推导</a>
+        </li>
+      
+        
+        
+        <li>
+          <time datetime="2025-06-17T15:17:40.000Z">06-17</time>
+          <a href="/2025/06/17/shi-yong-docker-gou-jian-webdav-fu-wu-qi/">使用Docker构建Webdav服务器</a>
+        </li>
+      
+        
+        
+        <li>
+          <time datetime="2025-05-13T16:22:20.000Z">05-14</time>
+          <a href="/2025/05/14/git-team-collab-workflow/">git_team_collab_workflow</a>
+        </li>
+      
+        
+        
+        <li>
+          <time datetime="2025-04-24T07:11:16.000Z">04-24</time>
+          <a href="/2025/04/24/ben-di-gou-jian-docker-jing-xiang-bing-shang-chuan-zhi-a-li-yun-jing-xiang-fu-wu-zhan/">本地构建docker镜像并上传至阿里云镜像服务站</a>
+        </li>
+      
+        
+        
+        <li>
+          <time datetime="2025-04-18T10:31:58.000Z">04-18</time>
+          <a href="/2025/04/18/an-zhuang-torch-scatter-shi-yu-dao-de-keng/">安装torch-scatter时遇到的坑</a>
+        </li>
+      
+        
+        
+        <li>
+          <time datetime="2025-03-17T11:37:30.000Z">03-17</time>
+          <a href="/2025/03/17/neo4j-dao-ru-jie-dian-he-bian-de-python-dai-ma/">neo4j导入节点和边的python代码</a>
+        </li>
+      
+        
+        
+        <li>
+          <time datetime="2025-03-08T17:05:51.000Z">03-09</time>
+          <a href="/2025/03/09/jie-pai-he-ji/">街拍合集</a>
+        </li>
+      
+        
+        
+        <li>
+          <time datetime="2025-03-08T16:06:13.000Z">03-09</time>
+          <a href="/2025/03/09/ren-xiang-she-ying-he-ji/">人像摄影合集</a>
+        </li>
+      
+        
+        
+        <li>
+          <time datetime="2025-03-08T08:39:54.000Z">03-08</time>
+          <a href="/2025/03/08/matplotlib-xian-shi-zhong-wen/">matplotlib 设置显示中文</a>
+        </li>
+      
+        
+        
+        <li>
+          <time datetime="2025-03-08T08:39:54.000Z">03-08</time>
+          <a href="/2025/03/08/python-duo-jin-cheng-shi-li/">python多进程示例</a>
+        </li>
+      
+        
+        
+        <li>
+          <time datetime="2025-03-06T14:40:33.000Z">03-06</time>
+          <a href="/2025/03/06/shi-yong-bert-de-dao-duan-yu-xiang-liang-biao-shi-bing-jin-xing-ceng-ci-ju-lei-shi-xian-xiang-si-xing-qu-chong/">使用BERT得到短语向量表示并进行层次聚类实现相似性去重</a>
+        </li>
+      
+        
+        
+        <li>
+          <time datetime="2025-03-06T11:23:45.000Z">03-06</time>
+          <a href="/2025/03/06/ji-yu-bian-ji-ju-chi-de-wen-ben-ceng-ci-ju-lei/">基于编辑距离的文本层次聚类</a>
+        </li>
+      
+        
+        
+        <li>
+          <time datetime="2025-02-27T15:18:38.000Z">02-27</time>
+          <a href="/2025/02/27/ai-jing-sai-ping-tai/">Ai竞赛平台</a>
+        </li>
+      
+        
+        
+        <li>
+          <time datetime="2025-02-19T09:02:28.000Z">02-19</time>
+          <a href="/2025/02/19/python-ri-chang-kai-fa-za-ji/">python日常开发杂记</a>
+        </li>
+      
+        
+        
+        <li>
+          <time datetime="2025-02-12T09:15:42.000Z">02-12</time>
+          <a href="/2025/02/12/tong-guo-docker-bu-shu-doccano-biao-zhu-gong-ju/">通过docker部署doccano标注工具</a>
+        </li>
+      
+        
+        
+        <li>
+          <time datetime="2025-02-06T08:45:24.000Z">02-06</time>
+          <a href="/2025/02/06/zai-cheng-gong-de-ri-zi-fu-xi-zi-liao-bu-jian-liao/">在呈贡的日子——复习资料不见了</a>
+        </li>
+      
+        
+        
+        <li>
+          <time datetime="2025-02-06T07:15:04.000Z">02-06</time>
+          <a href="/2025/02/06/zai-cheng-gong-de-ri-zi-lao-yu-he/">在呈贡的日子——捞鱼河</a>
+        </li>
+      
+        
+        
+        <li>
+          <time datetime="2025-01-28T09:13:43.000Z">01-28</time>
+          <a href="/2025/01/28/vscode-kai-fa-ji-qiao-ji-lu/">vscode开发技巧记录</a>
+        </li>
+      
+        
+        
+        <li>
+          <time datetime="2025-01-28T08:17:28.000Z">01-28</time>
+          <a href="/2025/01/28/bo-ke-wei-hu-ri-zhi/">博客维护日志</a>
+        </li>
+      
+        
+        
+        <li>
+          <time datetime="2025-01-26T13:08:21.000Z">01-26</time>
+          <a href="/2025/01/26/da-jian-webdav-fu-wu-qi-shi-xian-obsidian-he-zotero-duo-duan-tong-bu/">搭建Webdav服务器实现Obsidian和Zotero多端同步</a>
+        </li>
+      
+        
+        
+        <li>
+          <time datetime="2025-01-07T08:12:50.000Z">01-07</time>
+          <a href="/2025/01/07/sentence-transformers-sampler-bug-zhi-set-bu-yi-ding-shi-wu-xu-de/">sentence-transformers sampler bug 之 set 不一定是无序的</a>
+        </li>
+      
+        
+        
+          
+            </ol>
+          
+          
+          <p class="left-nav-year">2023</p>
+          <ol class="left-nav-list left-nav-archive-list">
+        
+        <li>
+          <time datetime="2023-09-12T01:37:44.000Z">09-12</time>
+          <a href="/2023/09/12/ubuntu-shang-an-zhuang-nividia-qu-dong-he-cuda-tookit/">ubuntu上安装NIVIDIA驱动和CUDA_Tookit</a>
+        </li>
+      
+        
+        
+        <li>
+          <time datetime="2023-07-22T18:28:00.000Z">07-23</time>
+          <a href="/2023/07/23/zai-mac-shang-shi-yong-pybind11-shi-xian-c-yu-python-hu-tong-de-demo/">在mac上使用pybind11实现c++与python互通的demo</a>
+        </li>
+      
+        
+        
+          
+            </ol>
+          
+          
+          <p class="left-nav-year">2022</p>
+          <ol class="left-nav-list left-nav-archive-list">
+        
+        <li>
+          <time datetime="2022-09-07T11:51:54.000Z">09-07</time>
+          <a href="/2022/09/07/mac-xi-tong-zhi-zuo-win10-qi-dong-u-pan/">Mac系统制作win10启动U盘</a>
+        </li>
+      
+        
+        
+        <li>
+          <time datetime="2022-09-05T06:47:54.000Z">09-05</time>
+          <a href="/2022/09/05/dian-ci-bi-sai-zong-jie/">电磁比赛总结</a>
+        </li>
+      
+        
+        
+        <li>
+          <time datetime="2022-04-29T08:24:56.000Z">04-29</time>
+          <a href="/2022/04/29/yuan-cheng-fang-wen-fu-wu-qi-jupyter-notebook/">远程访问服务器Jupyter-Notebook</a>
+        </li>
+      
+        
+        
+          
+            </ol>
+          
+          
+          <p class="left-nav-year">2021</p>
+          <ol class="left-nav-list left-nav-archive-list">
+        
+        <li>
+          <time datetime="2021-12-10T14:48:07.000Z">12-10</time>
+          <a href="/2021/12/10/c-duo-xian-cheng-bian-cheng/">C++多线程编程</a>
+        </li>
+      
+        
+        
+        <li>
+          <time datetime="2021-09-29T09:21:06.000Z">09-29</time>
+          <a href="/2021/09/29/jiang-wei-xin-liao-tian-zhong-de-yu-yin-zhuan-huan-wei-mp3/">将微信聊天中的语音转换为mp3</a>
+        </li>
+      
+        
+        
+        <li>
+          <time datetime="2021-09-19T15:59:09.000Z">09-19</time>
+          <a href="/2021/09/19/ji-qi-xue-xi-can-kao-zi-liao/">机器学习参考资料</a>
+        </li>
+      
+        
+        
+        <li>
+          <time datetime="2021-09-19T15:28:51.000Z">09-19</time>
+          <a href="/2021/09/19/you-yong-de-zi-yuan/">有用的资源</a>
+        </li>
+      
+        
+        
+        <li>
+          <time datetime="2021-08-13T17:06:28.000Z">08-14</time>
+          <a href="/2021/08/14/wei-xin-biao-qian-zheng-li/">微信标签整理</a>
+        </li>
+      
+        
+        
+        <li>
+          <time datetime="2021-08-13T17:01:38.000Z">08-14</time>
+          <a href="/2021/08/14/gong-ju-xiang/">工具箱</a>
+        </li>
+      
+        
+        
+        <li>
+          <time datetime="2021-08-13T14:54:55.000Z">08-13</time>
+          <a href="/2021/08/13/google-fang-wen-zhu-shou-an-zhuang/">Google访问助手安装</a>
+        </li>
+      
+        
+        
+        <li>
+          <time datetime="2021-08-13T14:48:02.000Z">08-13</time>
+          <a href="/2021/08/13/chang-yong-shu-ju-ji-zheng-li/">常用数据集整理</a>
+        </li>
+      
+        
+        
+        <li>
+          <time datetime="2021-08-13T14:41:02.000Z">08-13</time>
+          <a href="/2021/08/13/tu-de-chuang-jian-he-bian-li/">【课程设计】图的创建和遍历</a>
+        </li>
+      
+        
+        
+        <li>
+          <time datetime="2021-08-13T14:41:02.000Z">08-13</time>
+          <a href="/2021/08/13/li-bao-chun-writing-perfect-papers/">论文写作</a>
+        </li>
+      
+        
+        
+        <li>
+          <time datetime="2021-08-09T13:50:37.000Z">08-09</time>
+          <a href="/2021/08/09/svm-xue-xi-bi-ji/">SVM学习笔记</a>
+        </li>
+      
+        
+        
+        <li>
+          <time datetime="2021-08-06T13:35:53.000Z">08-06</time>
+          <a href="/2021/08/06/pandas-xue-xi/">Pandas学习</a>
+        </li>
+      
+        
+        
+        <li>
+          <time datetime="2021-08-05T13:50:37.000Z">08-05</time>
+          <a href="/2021/08/05/pytorch-xue-xi/">Pytorch学习</a>
+        </li>
+      
+        
+        
+        <li>
+          <time datetime="2021-06-30T17:44:09.000Z">07-01</time>
+          <a href="/2021/07/01/huggingface-yu-xun-lian-mo-xing-quan-chong-xia-zai-de-wen-ti/">Huggingface 预训练模型权重下载的问题</a>
+        </li>
+      
+        
+        
+        <li>
+          <time datetime="2021-06-20T16:36:40.000Z">06-21</time>
+          <a href="/2021/06/21/jupyter-notebook-ben-di-fu-wu-qi-da-jian/">jupyter notebook 本地服务器搭建</a>
+        </li>
+      
+        
+        
+        <li>
+          <time datetime="2021-04-16T13:49:06.000Z">04-16</time>
+          <a href="/2021/04/16/ji-qi-xue-xi-zhong-de-ge-chong-shang/">机器学习中的各种熵</a>
+        </li>
+      
+        
+        
+        <li>
+          <time datetime="2021-04-08T09:11:14.000Z">04-08</time>
+          <a href="/2021/04/08/git-chang-yong-ming-ling/">git常用命令</a>
+        </li>
+      
+        
+        
+        <li>
+          <time datetime="2021-04-08T02:21:44.000Z">04-08</time>
+          <a href="/2021/04/08/nlp-zhi-shi-ti-xi/">NLP知识体系</a>
+        </li>
+      
+        
+        
+        <li>
+          <time datetime="2021-03-31T18:08:43.000Z">04-01</time>
+          <a href="/2021/04/01/zui-xiao-lu-jing-he/">【每日算法】2021年03月31日 小雨 最小路径和</a>
+        </li>
+      
+        
+        
+        <li>
+          <time datetime="2021-03-31T11:59:24.000Z">03-31</time>
+          <a href="/2021/03/31/gitlab-da-jian-bi-ji/">GitLab搭建笔记</a>
+        </li>
+      
+        
+        
+        <li>
+          <time datetime="2021-03-30T21:08:40.000Z">03-31</time>
+          <a href="/2021/03/31/ying-yu-kou-yu-lian-xi-dian-ying-tui-jian/">英语口语练习电影推荐</a>
+        </li>
+      
+        
+        
+        <li>
+          <time datetime="2021-03-30T21:05:15.000Z">03-31</time>
+          <a href="/2021/03/31/xue-xi-shi-pin-zheng-li/">学习视频整理</a>
+        </li>
+      
+        
+        
+        <li>
+          <time datetime="2021-03-30T21:01:57.000Z">03-31</time>
+          <a href="/2021/03/31/ke-cheng-she-ji-zui-xiao-sheng-cheng-shu-ying-yong/">【课程设计】最小生成树应用</a>
+        </li>
+      
+        
+        
+        <li>
+          <time datetime="2021-03-30T10:36:46.000Z">03-30</time>
+          <a href="/2021/03/30/bu-tong-lu-jing/">【每日算法】2021年03月30日 多云 不同路径</a>
+        </li>
+      
+        
+        
+        <li>
+          <time datetime="2021-03-29T06:35:48.000Z">03-29</time>
+          <a href="/2021/03/29/bian-fen-xue-xi-bi-ji/">变分学习笔记</a>
+        </li>
+      
+        
+        
+        <li>
+          <time datetime="2021-03-28T05:57:49.000Z">03-28</time>
+          <a href="/2021/03/28/github-jia-su-fang-fa/">GitHub加速方法</a>
+        </li>
+      
+        
+        
+        <li>
+          <time datetime="2021-02-20T17:37:22.000Z">02-21</time>
+          <a href="/2021/02/21/hexo-ge-ren-bo-ke-da-jian-jiao-cheng/">hexo个人博客搭建</a>
+        </li>
+      
+        
+        
+        <li>
+          <time datetime="2021-02-20T17:28:10.000Z">02-21</time>
+          <a href="/2021/02/21/hao-yong-de-mian-fei-wu-guang-gao-dian-ying-wang-zhan-tui-jian/">好用的免费无广告电影网站推荐</a>
+        </li>
+      
+      
+        </ol>
+      
+    
+  </section>
+
+  <section class="left-nav-panel" data-left-nav-panel="tags" hidden>
+    
+      <ol class="left-nav-chip-list">
+        
+          <li>
+            <button class="left-nav-chip" type="button" data-left-nav-meta="tags" data-left-nav-name="BPE">
+              <span>BPE</span>
+              <span class="left-nav-count">3</span>
+            </button>
+          </li>
+        
+          <li>
+            <button class="left-nav-chip" type="button" data-left-nav-meta="tags" data-left-nav-name="Clash, 规则配置">
+              <span>Clash, 规则配置</span>
+              <span class="left-nav-count">1</span>
+            </button>
+          </li>
+        
+          <li>
+            <button class="left-nav-chip" type="button" data-left-nav-meta="tags" data-left-nav-name="Dotfiles">
+              <span>Dotfiles</span>
+              <span class="left-nav-count">1</span>
+            </button>
+          </li>
+        
+          <li>
+            <button class="left-nav-chip" type="button" data-left-nav-meta="tags" data-left-nav-name="GitHub">
+              <span>GitHub</span>
+              <span class="left-nav-count">2</span>
+            </button>
+          </li>
+        
+          <li>
+            <button class="left-nav-chip" type="button" data-left-nav-meta="tags" data-left-nav-name="GitLab">
+              <span>GitLab</span>
+              <span class="left-nav-count">1</span>
+            </button>
+          </li>
+        
+          <li>
+            <button class="left-nav-chip" type="button" data-left-nav-meta="tags" data-left-nav-name="Google访问助手">
+              <span>Google访问助手</span>
+              <span class="left-nav-count">1</span>
+            </button>
+          </li>
+        
+          <li>
+            <button class="left-nav-chip" type="button" data-left-nav-meta="tags" data-left-nav-name="Hexo">
+              <span>Hexo</span>
+              <span class="left-nav-count">1</span>
+            </button>
+          </li>
+        
+          <li>
+            <button class="left-nav-chip" type="button" data-left-nav-meta="tags" data-left-nav-name="NIVIDIA驱动">
+              <span>NIVIDIA驱动</span>
+              <span class="left-nav-count">1</span>
+            </button>
+          </li>
+        
+          <li>
+            <button class="left-nav-chip" type="button" data-left-nav-meta="tags" data-left-nav-name="NVIDIA">
+              <span>NVIDIA</span>
+              <span class="left-nav-count">1</span>
+            </button>
+          </li>
+        
+          <li>
+            <button class="left-nav-chip" type="button" data-left-nav-meta="tags" data-left-nav-name="Pandas">
+              <span>Pandas</span>
+              <span class="left-nav-count">1</span>
+            </button>
+          </li>
+        
+          <li>
+            <button class="left-nav-chip" type="button" data-left-nav-meta="tags" data-left-nav-name="RAG">
+              <span>RAG</span>
+              <span class="left-nav-count">1</span>
+            </button>
+          </li>
+        
+          <li>
+            <button class="left-nav-chip" type="button" data-left-nav-meta="tags" data-left-nav-name="SwiGLU">
+              <span>SwiGLU</span>
+              <span class="left-nav-count">1</span>
+            </button>
+          </li>
+        
+          <li>
+            <button class="left-nav-chip" type="button" data-left-nav-meta="tags" data-left-nav-name="Syncthing">
+              <span>Syncthing</span>
+              <span class="left-nav-count">1</span>
+            </button>
+          </li>
+        
+          <li>
+            <button class="left-nav-chip" type="button" data-left-nav-meta="tags" data-left-nav-name="Transformer">
+              <span>Transformer</span>
+              <span class="left-nav-count">1</span>
+            </button>
+          </li>
+        
+          <li>
+            <button class="left-nav-chip" type="button" data-left-nav-meta="tags" data-left-nav-name="Tufte">
+              <span>Tufte</span>
+              <span class="left-nav-count">2</span>
+            </button>
+          </li>
+        
+          <li>
+            <button class="left-nav-chip" type="button" data-left-nav-meta="tags" data-left-nav-name="ai竞赛">
+              <span>ai竞赛</span>
+              <span class="left-nav-count">1</span>
+            </button>
+          </li>
+        
+          <li>
+            <button class="left-nav-chip" type="button" data-left-nav-meta="tags" data-left-nav-name="claude-code">
+              <span>claude-code</span>
+              <span class="left-nav-count">1</span>
+            </button>
+          </li>
+        
+          <li>
+            <button class="left-nav-chip" type="button" data-left-nav-meta="tags" data-left-nav-name="docker">
+              <span>docker</span>
+              <span class="left-nav-count">2</span>
+            </button>
+          </li>
+        
+          <li>
+            <button class="left-nav-chip" type="button" data-left-nav-meta="tags" data-left-nav-name="docker, doccano">
+              <span>docker, doccano</span>
+              <span class="left-nav-count">1</span>
+            </button>
+          </li>
+        
+          <li>
+            <button class="left-nav-chip" type="button" data-left-nav-meta="tags" data-left-nav-name="git">
+              <span>git</span>
+              <span class="left-nav-count">2</span>
+            </button>
+          </li>
+        
+          <li>
+            <button class="left-nav-chip" type="button" data-left-nav-meta="tags" data-left-nav-name="github">
+              <span>github</span>
+              <span class="left-nav-count">1</span>
+            </button>
+          </li>
+        
+          <li>
+            <button class="left-nav-chip" type="button" data-left-nav-meta="tags" data-left-nav-name="jupyter notebook">
+              <span>jupyter notebook</span>
+              <span class="left-nav-count">2</span>
+            </button>
+          </li>
+        
+          <li>
+            <button class="left-nav-chip" type="button" data-left-nav-meta="tags" data-left-nav-name="mineru">
+              <span>mineru</span>
+              <span class="left-nav-count">1</span>
+            </button>
+          </li>
+        
+          <li>
+            <button class="left-nav-chip" type="button" data-left-nav-meta="tags" data-left-nav-name="neo4j">
+              <span>neo4j</span>
+              <span class="left-nav-count">1</span>
+            </button>
+          </li>
+        
+          <li>
+            <button class="left-nav-chip" type="button" data-left-nav-meta="tags" data-left-nav-name="nlp">
+              <span>nlp</span>
+              <span class="left-nav-count">1</span>
+            </button>
+          </li>
+        
+          <li>
+            <button class="left-nav-chip" type="button" data-left-nav-meta="tags" data-left-nav-name="python">
+              <span>python</span>
+              <span class="left-nav-count">4</span>
+            </button>
+          </li>
+        
+          <li>
+            <button class="left-nav-chip" type="button" data-left-nav-meta="tags" data-left-nav-name="python_c++_互通">
+              <span>python_c++_互通</span>
+              <span class="left-nav-count">1</span>
+            </button>
+          </li>
+        
+          <li>
+            <button class="left-nav-chip" type="button" data-left-nav-meta="tags" data-left-nav-name="pytorch">
+              <span>pytorch</span>
+              <span class="left-nav-count">3</span>
+            </button>
+          </li>
+        
+          <li>
+            <button class="left-nav-chip" type="button" data-left-nav-meta="tags" data-left-nav-name="rclone">
+              <span>rclone</span>
+              <span class="left-nav-count">1</span>
+            </button>
+          </li>
+        
+          <li>
+            <button class="left-nav-chip" type="button" data-left-nav-meta="tags" data-left-nav-name="ssh">
+              <span>ssh</span>
+              <span class="left-nav-count">1</span>
+            </button>
+          </li>
+        
+          <li>
+            <button class="left-nav-chip" type="button" data-left-nav-meta="tags" data-left-nav-name="svm">
+              <span>svm</span>
+              <span class="left-nav-count">1</span>
+            </button>
+          </li>
+        
+          <li>
+            <button class="left-nav-chip" type="button" data-left-nav-meta="tags" data-left-nav-name="tensor">
+              <span>tensor</span>
+              <span class="left-nav-count">1</span>
+            </button>
+          </li>
+        
+          <li>
+            <button class="left-nav-chip" type="button" data-left-nav-meta="tags" data-left-nav-name="uv">
+              <span>uv</span>
+              <span class="left-nav-count">1</span>
+            </button>
+          </li>
+        
+          <li>
+            <button class="left-nav-chip" type="button" data-left-nav-meta="tags" data-left-nav-name="vscode">
+              <span>vscode</span>
+              <span class="left-nav-count">1</span>
+            </button>
+          </li>
+        
+          <li>
+            <button class="left-nav-chip" type="button" data-left-nav-meta="tags" data-left-nav-name="webdav, docker, obsidian, zotero">
+              <span>webdav, docker, obsidian, zotero</span>
+              <span class="left-nav-count">1</span>
+            </button>
+          </li>
+        
+          <li>
+            <button class="left-nav-chip" type="button" data-left-nav-meta="tags" data-left-nav-name="动态规划">
+              <span>动态规划</span>
+              <span class="left-nav-count">2</span>
+            </button>
+          </li>
+        
+          <li>
+            <button class="left-nav-chip" type="button" data-left-nav-meta="tags" data-left-nav-name="博客">
+              <span>博客</span>
+              <span class="left-nav-count">2</span>
+            </button>
+          </li>
+        
+          <li>
+            <button class="left-nav-chip" type="button" data-left-nav-meta="tags" data-left-nav-name="反向传播">
+              <span>反向传播</span>
+              <span class="left-nav-count">1</span>
+            </button>
+          </li>
+        
+          <li>
+            <button class="left-nav-chip" type="button" data-left-nav-meta="tags" data-left-nav-name="启动U盘">
+              <span>启动U盘</span>
+              <span class="left-nav-count">1</span>
+            </button>
+          </li>
+        
+          <li>
+            <button class="left-nav-chip" type="button" data-left-nav-meta="tags" data-left-nav-name="呈贡">
+              <span>呈贡</span>
+              <span class="left-nav-count">2</span>
+            </button>
+          </li>
+        
+          <li>
+            <button class="left-nav-chip" type="button" data-left-nav-meta="tags" data-left-nav-name="图">
+              <span>图</span>
+              <span class="left-nav-count">1</span>
+            </button>
+          </li>
+        
+          <li>
+            <button class="left-nav-chip" type="button" data-left-nav-meta="tags" data-left-nav-name="干货">
+              <span>干货</span>
+              <span class="left-nav-count">2</span>
+            </button>
+          </li>
+        
+          <li>
+            <button class="left-nav-chip" type="button" data-left-nav-meta="tags" data-left-nav-name="强化学习">
+              <span>强化学习</span>
+              <span class="left-nav-count">1</span>
+            </button>
+          </li>
+        
+          <li>
+            <button class="left-nav-chip" type="button" data-left-nav-meta="tags" data-left-nav-name="微信">
+              <span>微信</span>
+              <span class="left-nav-count">2</span>
+            </button>
+          </li>
+        
+          <li>
+            <button class="left-nav-chip" type="button" data-left-nav-meta="tags" data-left-nav-name="摄影">
+              <span>摄影</span>
+              <span class="left-nav-count">1</span>
+            </button>
+          </li>
+        
+          <li>
+            <button class="left-nav-chip" type="button" data-left-nav-meta="tags" data-left-nav-name="数学">
+              <span>数学</span>
+              <span class="left-nav-count">3</span>
+            </button>
+          </li>
+        
+          <li>
+            <button class="left-nav-chip" type="button" data-left-nav-meta="tags" data-left-nav-name="文本聚类 bert向量表示">
+              <span>文本聚类 bert向量表示</span>
+              <span class="left-nav-count">1</span>
+            </button>
+          </li>
+        
+          <li>
+            <button class="left-nav-chip" type="button" data-left-nav-meta="tags" data-left-nav-name="文本聚类 编辑距离">
+              <span>文本聚类 编辑距离</span>
+              <span class="left-nav-count">1</span>
+            </button>
+          </li>
+        
+          <li>
+            <button class="left-nav-chip" type="button" data-left-nav-meta="tags" data-left-nav-name="日志">
+              <span>日志</span>
+              <span class="left-nav-count">1</span>
+            </button>
+          </li>
+        
+          <li>
+            <button class="left-nav-chip" type="button" data-left-nav-meta="tags" data-left-nav-name="机器学习">
+              <span>机器学习</span>
+              <span class="left-nav-count">3</span>
+            </button>
+          </li>
+        
+          <li>
+            <button class="left-nav-chip" type="button" data-left-nav-meta="tags" data-left-nav-name="树">
+              <span>树</span>
+              <span class="left-nav-count">1</span>
+            </button>
+          </li>
+        
+          <li>
+            <button class="left-nav-chip" type="button" data-left-nav-meta="tags" data-left-nav-name="概率论">
+              <span>概率论</span>
+              <span class="left-nav-count">1</span>
+            </button>
+          </li>
+        
+          <li>
+            <button class="left-nav-chip" type="button" data-left-nav-meta="tags" data-left-nav-name="熵">
+              <span>熵</span>
+              <span class="left-nav-count">1</span>
+            </button>
+          </li>
+        
+          <li>
+            <button class="left-nav-chip" type="button" data-left-nav-meta="tags" data-left-nav-name="电影">
+              <span>电影</span>
+              <span class="left-nav-count">2</span>
+            </button>
+          </li>
+        
+          <li>
+            <button class="left-nav-chip" type="button" data-left-nav-meta="tags" data-left-nav-name="竞赛">
+              <span>竞赛</span>
+              <span class="left-nav-count">1</span>
+            </button>
+          </li>
+        
+          <li>
+            <button class="left-nav-chip" type="button" data-left-nav-meta="tags" data-left-nav-name="编程">
+              <span>编程</span>
+              <span class="left-nav-count">1</span>
+            </button>
+          </li>
+        
+          <li>
+            <button class="left-nav-chip" type="button" data-left-nav-meta="tags" data-left-nav-name="街拍">
+              <span>街拍</span>
+              <span class="left-nav-count">1</span>
+            </button>
+          </li>
+        
+          <li>
+            <button class="left-nav-chip" type="button" data-left-nav-meta="tags" data-left-nav-name="论文写作">
+              <span>论文写作</span>
+              <span class="left-nav-count">1</span>
+            </button>
+          </li>
+        
+          <li>
+            <button class="left-nav-chip" type="button" data-left-nav-meta="tags" data-left-nav-name="资源">
+              <span>资源</span>
+              <span class="left-nav-count">1</span>
+            </button>
+          </li>
+        
+          <li>
+            <button class="left-nav-chip" type="button" data-left-nav-meta="tags" data-left-nav-name="预训练模型">
+              <span>预训练模型</span>
+              <span class="left-nav-count">1</span>
+            </button>
+          </li>
+        
+      </ol>
+      <p class="left-nav-selection-status" data-left-nav-status="tags">Select a tag to view posts.</p>
+      <ol class="left-nav-meta-posts" data-left-nav-posts="tags"></ol>
+    
+  </section>
+
+  <section class="left-nav-panel" data-left-nav-panel="categories" hidden>
+    
+      <ol class="left-nav-chip-list">
+        
+          <li>
+            <button class="left-nav-chip" type="button" data-left-nav-meta="categories" data-left-nav-name="人工智能">
+              <span>人工智能</span>
+              <span class="left-nav-count">1</span>
+            </button>
+          </li>
+        
+          <li>
+            <button class="left-nav-chip" type="button" data-left-nav-meta="categories" data-left-nav-name="大模型">
+              <span>大模型</span>
+              <span class="left-nav-count">4</span>
+            </button>
+          </li>
+        
+          <li>
+            <button class="left-nav-chip" type="button" data-left-nav-meta="categories" data-left-nav-name="学习笔记">
+              <span>学习笔记</span>
+              <span class="left-nav-count">13</span>
+            </button>
+          </li>
+        
+          <li>
+            <button class="left-nav-chip" type="button" data-left-nav-meta="categories" data-left-nav-name="学习资料">
+              <span>学习资料</span>
+              <span class="left-nav-count">4</span>
+            </button>
+          </li>
+        
+          <li>
+            <button class="left-nav-chip" type="button" data-left-nav-meta="categories" data-left-nav-name="干货">
+              <span>干货</span>
+              <span class="left-nav-count">1</span>
+            </button>
+          </li>
+        
+          <li>
+            <button class="left-nav-chip" type="button" data-left-nav-meta="categories" data-left-nav-name="总结">
+              <span>总结</span>
+              <span class="left-nav-count">4</span>
+            </button>
+          </li>
+        
+          <li>
+            <button class="left-nav-chip" type="button" data-left-nav-meta="categories" data-left-nav-name="技术笔记">
+              <span>技术笔记</span>
+              <span class="left-nav-count">2</span>
+            </button>
+          </li>
+        
+          <li>
+            <button class="left-nav-chip" type="button" data-left-nav-meta="categories" data-left-nav-name="摄影">
+              <span>摄影</span>
+              <span class="left-nav-count">2</span>
+            </button>
+          </li>
+        
+          <li>
+            <button class="left-nav-chip" type="button" data-left-nav-meta="categories" data-left-nav-name="收藏">
+              <span>收藏</span>
+              <span class="left-nav-count">1</span>
+            </button>
+          </li>
+        
+          <li>
+            <button class="left-nav-chip" type="button" data-left-nav-meta="categories" data-left-nav-name="数学算法">
+              <span>数学算法</span>
+              <span class="left-nav-count">1</span>
+            </button>
+          </li>
+        
+          <li>
+            <button class="left-nav-chip" type="button" data-left-nav-meta="categories" data-left-nav-name="数据集">
+              <span>数据集</span>
+              <span class="left-nav-count">1</span>
+            </button>
+          </li>
+        
+          <li>
+            <button class="left-nav-chip" type="button" data-left-nav-meta="categories" data-left-nav-name="机器学习">
+              <span>机器学习</span>
+              <span class="left-nav-count">1</span>
+            </button>
+          </li>
+        
+          <li>
+            <button class="left-nav-chip" type="button" data-left-nav-meta="categories" data-left-nav-name="爬坑总结">
+              <span>爬坑总结</span>
+              <span class="left-nav-count">9</span>
+            </button>
+          </li>
+        
+          <li>
+            <button class="left-nav-chip" type="button" data-left-nav-meta="categories" data-left-nav-name="生活总结">
+              <span>生活总结</span>
+              <span class="left-nav-count">4</span>
+            </button>
+          </li>
+        
+          <li>
+            <button class="left-nav-chip" type="button" data-left-nav-meta="categories" data-left-nav-name="生活情感">
+              <span>生活情感</span>
+              <span class="left-nav-count">2</span>
+            </button>
+          </li>
+        
+          <li>
+            <button class="left-nav-chip" type="button" data-left-nav-meta="categories" data-left-nav-name="知识框架">
+              <span>知识框架</span>
+              <span class="left-nav-count">1</span>
+            </button>
+          </li>
+        
+          <li>
+            <button class="left-nav-chip" type="button" data-left-nav-meta="categories" data-left-nav-name="算法">
+              <span>算法</span>
+              <span class="left-nav-count">1</span>
+            </button>
+          </li>
+        
+          <li>
+            <button class="left-nav-chip" type="button" data-left-nav-meta="categories" data-left-nav-name="算法笔记">
+              <span>算法笔记</span>
+              <span class="left-nav-count">2</span>
+            </button>
+          </li>
+        
+          <li>
+            <button class="left-nav-chip" type="button" data-left-nav-meta="categories" data-left-nav-name="编程">
+              <span>编程</span>
+              <span class="left-nav-count">5</span>
+            </button>
+          </li>
+        
+          <li>
+            <button class="left-nav-chip" type="button" data-left-nav-meta="categories" data-left-nav-name="编程开发">
+              <span>编程开发</span>
+              <span class="left-nav-count">5</span>
+            </button>
+          </li>
+        
+          <li>
+            <button class="left-nav-chip" type="button" data-left-nav-meta="categories" data-left-nav-name="编程经验">
+              <span>编程经验</span>
+              <span class="left-nav-count">2</span>
+            </button>
+          </li>
+        
+          <li>
+            <button class="left-nav-chip" type="button" data-left-nav-meta="categories" data-left-nav-name="网络工具">
+              <span>网络工具</span>
+              <span class="left-nav-count">1</span>
+            </button>
+          </li>
+        
+          <li>
+            <button class="left-nav-chip" type="button" data-left-nav-meta="categories" data-left-nav-name="自然语言处理">
+              <span>自然语言处理</span>
+              <span class="left-nav-count">2</span>
+            </button>
+          </li>
+        
+          <li>
+            <button class="left-nav-chip" type="button" data-left-nav-meta="categories" data-left-nav-name="运维">
+              <span>运维</span>
+              <span class="left-nav-count">7</span>
+            </button>
+          </li>
+        
+      </ol>
+      <p class="left-nav-selection-status" data-left-nav-status="categories">Select a category to view posts.</p>
+      <ol class="left-nav-meta-posts" data-left-nav-posts="categories"></ol>
+    
+  </section>
+</aside>
+
+    <article class="post-page">
+  <h1>tufte-note 主题排版指南：边注、宽图与长文阅读</h1>
+  
+<p class="post-meta">
+  
+    <time datetime="2026-05-22T16:00:00.000Z">2026-05-23</time>
+  
+  
+  
+    <span class="meta-separator">/</span>
+    
+      
+      <a href="/categories/%E7%94%9F%E6%B4%BB%E6%80%BB%E7%BB%93/">生活总结</a>
+    
+  
+  
+    <span class="meta-separator">/</span>
+    
+      
+      <a href="/tags/Tufte/">#Tufte</a>
+    
+      <span>, </span>
+      <a href="/tags/%E5%8D%9A%E5%AE%A2/">#博客</a>
+    
+      <span>, </span>
+      <a href="/tags/Hexo/">#Hexo</a>
+    
+  
+</p>
+
+
+  
+
+  
+  <button class="toc-toggle" type="button" aria-controls="toc-sidebar" aria-expanded="true" aria-label="Toggle table of contents">
+    Contents
+  </button>
+  <aside class="toc-sidebar" id="toc-sidebar" aria-label="Table of contents">
+    <p class="toc-title">Contents</p>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%99%AE%E9%80%9A-Markdown-%E4%BB%8D%E7%84%B6%E5%8F%AF%E7%94%A8"><span class="toc-text">普通 Markdown 仍然可用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%94%A8-newthought-%E5%BC%80%E5%90%AF%E6%AE%B5%E8%90%BD"><span class="toc-text">用 newthought 开启段落</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%94%A8-marginnote-%E5%86%99%E6%97%A0%E7%BC%96%E5%8F%B7%E8%BE%B9%E6%B3%A8"><span class="toc-text">用 marginnote 写无编号边注</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%94%A8-sidenote-%E5%86%99%E7%BC%96%E5%8F%B7%E8%BE%B9%E6%B3%A8"><span class="toc-text">用 sidenote 写编号边注</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%94%A8-figure-%E5%86%99%E5%9B%BE%E6%96%87%E5%85%B3%E7%B3%BB"><span class="toc-text">用 figure 写图文关系</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BE%B9%E6%B3%A8%E9%87%8C%E6%94%BE%E5%9B%BE%E7%89%87"><span class="toc-text">边注里放图片</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%9B%AE%E5%BD%95%E3%80%81%E6%B7%B1%E8%89%B2%E6%A8%A1%E5%BC%8F%E5%92%8C%E4%BB%A3%E7%A0%81%E5%A4%8D%E5%88%B6"><span class="toc-text">目录、深色模式和代码复制</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%88%91%E8%87%AA%E5%B7%B1%E7%9A%84%E6%8E%92%E7%89%88%E4%B9%A0%E6%83%AF"><span class="toc-text">我自己的排版习惯</span></a></li></ol>
+  </aside>
+
+
+
+  <section class="article-content">
+    <p><span class="newthought">tufte-note</span> 是我给这个 Hexo 博客启用的一套长文阅读主题。它基于 Tufte CSS，最明显的特点是正文比较克制，右侧留出边注区，适合放解释、引用、图例和一些不想打断正文的补充信息。</p>
+<p>这篇文章记录一下在 <code>tufte-note</code> 主题下写博客时常用的排版方法。普通 Markdown 当然可以直接写，但如果想用出 Tufte 风格，就需要在 Markdown 里穿插少量 HTML。</p>
+<p><span class="marginnote"><strong>当前主题</strong>：站点根目录的 <code>_config.yml</code> 中配置了 <code>theme: tufte-note</code>。主题文件位于 <code>themes/tufte-note</code>，其中 vendored 的 Tufte CSS 版本是 1.8.0。</span></p>
+<h2 id="普通-Markdown-仍然可用"><a href="#普通-Markdown-仍然可用" class="headerlink" title="普通 Markdown 仍然可用"></a>普通 Markdown 仍然可用</h2><p>最基本的标题、段落、列表、引用、代码块、表格、图片都不需要特殊处理。也就是说，原来的文章迁移到 <code>tufte-note</code> 后，一般不用改正文内容。</p>
+<p>例如普通引用：</p>
+<blockquote>
+<p>Tufte 风格的重点不是“装饰”，而是让正文、注释、图表之间保持清楚的层次。</p>
+</blockquote>
+<p>普通代码块也可以直接写：</p>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hexo clean</span><br><span class="line">hexo generate</span><br><span class="line">hexo server</span><br></pre></td></tr></tbody></table></figure>
+
+<p>表格会自动应用主题样式：</p>
+<table>
+<thead>
+<tr>
+<th>场景</th>
+<th>推荐写法</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>正文主线</td>
+<td>普通段落</td>
+<td>保持阅读连续性</td>
+</tr>
+<tr>
+<td>补充解释</td>
+<td>边注</td>
+<td>不打断正文</td>
+</tr>
+<tr>
+<td>大图表</td>
+<td>宽图</td>
+<td>给复杂图更多空间</td>
+</tr>
+<tr>
+<td>公式推导</td>
+<td>MathJax</td>
+<td>配合边注解释变量</td>
+</tr>
+</tbody></table>
+<p>如果文章里有数学公式，可以在 front matter 中加上 <code>mathjax: true</code>。例如：</p>
+<p>$$<br>\operatorname{softmax}(x_i) = \frac{e^{x_i}}{\sum_j e^{x_j}}<br>$$</p>
+<h2 id="用-newthought-开启段落"><a href="#用-newthought-开启段落" class="headerlink" title="用 newthought 开启段落"></a>用 newthought 开启段落</h2><p>Tufte CSS 提供了 <code>newthought</code>，适合用在文章开头或小节开头。它会让开头几个字呈现小型大写的视觉效果，类似纸质书里的段首强调。</p>
+<p>写法如下：</p>
+<figure class="highlight html"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"newthought"</span>&gt;</span>tufte-note<span class="tag">&lt;/<span class="name">span</span>&gt;</span> 是一套适合长文阅读的主题。</span><br></pre></td></tr></tbody></table></figure>
+
+<p>实际效果就是本文开头那样。它适合少量使用，不建议每一段都加。我的习惯是：文章第一段可以用一次，重要转折处最多再用一次。</p>
+<h2 id="用-marginnote-写无编号边注"><a href="#用-marginnote-写无编号边注" class="headerlink" title="用 marginnote 写无编号边注"></a>用 marginnote 写无编号边注</h2><p><code>marginnote</code> 是最常用的边注。它没有编号，适合放背景解释、术语提醒、图片说明、参考链接等信息。</p>
+<figure class="highlight html"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"marginnote"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">strong</span>&gt;</span>提示<span class="tag">&lt;/<span class="name">strong</span>&gt;</span>：这里可以放一段不影响正文主线的补充说明。</span><br><span class="line"><span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br></pre></td></tr></tbody></table></figure>
+
+<p>正文继续向下写。桌面端会把边注放到右侧空白区域；移动端空间不够时，主题会把边注折叠到正文流里，避免挤压阅读区域。</p>
+<p><span class="marginnote"><strong>写作建议</strong>：边注应该服务正文，而不是变成另一个正文。若一段话离开边注后正文就看不懂，说明它应该回到正文里。</span></p>
+<p>我更推荐把 <code>marginnote</code> 放在相关段落的开头或段落之前，这样右侧边注的位置更容易和正文内容对齐。</p>
+<h2 id="用-sidenote-写编号边注"><a href="#用-sidenote-写编号边注" class="headerlink" title="用 sidenote 写编号边注"></a>用 sidenote 写编号边注</h2><p>如果边注需要在正文里留下一个明确的引用位置，可以使用 <code>sidenote</code>。它会在正文位置生成编号，并在右侧边注区域显示对应说明。</p>
+<figure class="highlight html"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">这里是一句需要解释的话</span><br><span class="line"><span class="tag">&lt;<span class="name">label</span> <span class="attr">for</span>=<span class="string">"sn-demo"</span> <span class="attr">class</span>=<span class="string">"margin-toggle sidenote-number"</span>&gt;</span><span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"checkbox"</span> <span class="attr">id</span>=<span class="string">"sn-demo"</span> <span class="attr">class</span>=<span class="string">"margin-toggle"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"sidenote"</span>&gt;</span>这里是编号边注的内容。<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br></pre></td></tr></tbody></table></figure>
+
+<p>效果类似这样：Tufte 的边注很适合写学习笔记中的补充推导<label for="sn-derivation" class="margin-toggle sidenote-number"></label><input type="checkbox" id="sn-derivation" class="margin-toggle"><span class="sidenote">编号边注适合承载“读到这里可能会问”的内容，例如公式变量说明、出处、反例或限制条件。</span>，读者可以沿着正文主线阅读，也可以随时看右侧补充。</p>
+<p>写编号边注时要注意两点：</p>
+<ul>
+<li><code>for</code> 和 <code>id</code> 要一一对应，并且整篇文章里不要重复。</li>
+<li><code>label</code>、<code>input</code>、<code>span.sidenote</code> 最好紧挨着写，避免移动端折叠时位置错乱。</li>
+</ul>
+<h2 id="用-figure-写图文关系"><a href="#用-figure-写图文关系" class="headerlink" title="用 figure 写图文关系"></a>用 figure 写图文关系</h2><p>普通图片可以继续用 Markdown：</p>
+<figure class="highlight markdown"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">![<span class="string">图片说明</span>](<span class="link">/image/example.png</span>)</span><br></pre></td></tr></tbody></table></figure>
+
+<p>但如果想要更稳定的图注和 Tufte 风格，推荐用 HTML 的 <code>figure</code>：</p>
+<figure class="highlight html"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">figure</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"/image/example.png"</span> <span class="attr">alt</span>=<span class="string">"图片说明"</span> <span class="attr">loading</span>=<span class="string">"lazy"</span> <span class="attr">decoding</span>=<span class="string">"async"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">figcaption</span>&gt;</span>这里是图片说明。<span class="tag">&lt;/<span class="name">figcaption</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">figure</span>&gt;</span></span><br></pre></td></tr></tbody></table></figure>
+
+<p>如果图很宽，比如流程图、网络结构图、长表格截图，可以加上 <code>fullwidth</code>：</p>
+<figure class="highlight html"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">figure</span> <span class="attr">class</span>=<span class="string">"fullwidth"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"/image/example-wide.png"</span> <span class="attr">alt</span>=<span class="string">"宽图说明"</span> <span class="attr">loading</span>=<span class="string">"lazy"</span> <span class="attr">decoding</span>=<span class="string">"async"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">figcaption</span>&gt;</span>宽图适合承载复杂结构，不适合普通配图滥用。<span class="tag">&lt;/<span class="name">figcaption</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">figure</span>&gt;</span></span><br></pre></td></tr></tbody></table></figure>
+
+<p><code>fullwidth</code> 会突破普通正文宽度，给图表更多横向空间。我的建议是只在图本身确实需要更多空间时使用，比如模型结构、公式推导总览、系统架构图。</p>
+<h2 id="边注里放图片"><a href="#边注里放图片" class="headerlink" title="边注里放图片"></a>边注里放图片</h2><p>边注不仅能放文字，也可以放图片。比如在推导激活函数、网络结构、几何图形时，可以把小图放到右侧，不打断正文。</p>
+<figure class="highlight html"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"marginnote"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"/image/example-small.png"</span> <span class="attr">alt</span>=<span class="string">"小图说明"</span> <span class="attr">loading</span>=<span class="string">"lazy"</span> <span class="attr">decoding</span>=<span class="string">"async"</span>&gt;</span></span><br><span class="line">  小图说明文字</span><br><span class="line"><span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br></pre></td></tr></tbody></table></figure>
+
+<p>这种写法在我整理 Transformer FFN 推导时很有用：正文负责推导步骤，右侧放 ReLU、GELU、SwiGLU 的函数图像，读者不用来回跳转。</p>
+<h2 id="目录、深色模式和代码复制"><a href="#目录、深色模式和代码复制" class="headerlink" title="目录、深色模式和代码复制"></a>目录、深色模式和代码复制</h2><p><code>tufte-note</code> 主题里默认开启了右侧目录。只要文章有二级、三级标题，页面就会自动生成目录；如果某篇文章不想显示目录，可以在 front matter 里加：</p>
+<figure class="highlight yaml"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">toc:</span> <span class="literal">false</span></span><br></pre></td></tr></tbody></table></figure>
+
+<p>主题还支持浅色/深色切换，以及代码块复制按钮。这些不需要在文章里额外写代码，正常使用 Markdown 代码块即可。</p>
+<h2 id="我自己的排版习惯"><a href="#我自己的排版习惯" class="headerlink" title="我自己的排版习惯"></a>我自己的排版习惯</h2><p>写 <code>tufte-note</code> 主题文章时，我会遵守几个简单规则：</p>
+<ul>
+<li>正文只放主线内容，避免被太多括号和补充说明切碎。</li>
+<li>术语解释、出处、变量说明放到边注。</li>
+<li>长代码不放边注，边注只放短提示。</li>
+<li>宽图要少用，只给真正需要横向空间的图。</li>
+<li>一篇文章里 HTML 片段不要太密集，否则 Markdown 的可维护性会下降。</li>
+</ul>
+<p>最后给一个我常用的最小模板：</p>
+<figure class="highlight markdown"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">title: 文章标题</span><br><span class="line">date: 2026-05-23 00:00:00</span><br><span class="line">categories: 学习笔记</span><br><span class="line">tags:</span><br><span class="line"><span class="bullet">  -</span> Tufte</span><br><span class="line"><span class="section">mathjax: true</span></span><br><span class="line"><span class="section">---</span></span><br><span class="line"></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"newthought"</span>&gt;</span></span>开头关键词<span class="language-xml"><span class="tag">&lt;/<span class="name">span</span>&gt;</span></span> 正文第一段。</span><br><span class="line"></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"marginnote"</span>&gt;</span></span><span class="language-xml"><span class="tag">&lt;<span class="name">strong</span>&gt;</span></span>提示<span class="language-xml"><span class="tag">&lt;/<span class="name">strong</span>&gt;</span></span>：这里放补充信息。<span class="language-xml"><span class="tag">&lt;/<span class="name">span</span>&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="section">## 一个小节</span></span><br><span class="line"></span><br><span class="line">正文内容<span class="language-xml"><span class="tag">&lt;<span class="name">label</span> <span class="attr">for</span>=<span class="string">"sn-demo"</span> <span class="attr">class</span>=<span class="string">"margin-toggle sidenote-number"</span>&gt;</span></span><span class="language-xml"><span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><span class="language-xml"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"checkbox"</span> <span class="attr">id</span>=<span class="string">"sn-demo"</span> <span class="attr">class</span>=<span class="string">"margin-toggle"</span>&gt;</span></span><span class="language-xml"><span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"sidenote"</span>&gt;</span></span>这里放编号边注。<span class="language-xml"><span class="tag">&lt;/<span class="name">span</span>&gt;</span></span>继续写。</span><br><span class="line"></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">figure</span> <span class="attr">class</span>=<span class="string">"fullwidth"</span>&gt;</span></span></span><br><span class="line">  <span class="language-xml"><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"/image/example.png"</span> <span class="attr">alt</span>=<span class="string">"图片说明"</span> <span class="attr">loading</span>=<span class="string">"lazy"</span> <span class="attr">decoding</span>=<span class="string">"async"</span>&gt;</span></span></span><br><span class="line">  <span class="language-xml"><span class="tag">&lt;<span class="name">figcaption</span>&gt;</span></span>图片说明。<span class="language-xml"><span class="tag">&lt;/<span class="name">figcaption</span>&gt;</span></span></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;/<span class="name">figure</span>&gt;</span></span></span><br></pre></td></tr></tbody></table></figure>
+
+<p>这样写出来的文章会比较接近 <code>tufte-note</code> 的设计初衷：正文清楚，补充信息安静地待在边上，图表和公式为理解服务，而不是抢走注意力。</p>
+
+  </section>
+
+  
+
+  
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
+        packages: {'[+]': ['ams']},
+        processEscapes: true,
+        processEnvironments: true,
+        tags: 'ams'
+      },
+      options: {
+        skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      },
+      svg: {
+        fontCache: 'global'
+      }
+    };
+  </script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-svg.js"></script>
+
+
+</article>
+
+    <footer class="site-footer">
+  <p>&copy; 2026 Lee</p>
+  
+    <p class="site-powered">Powered by <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>. Typography based on <a target="_blank" rel="noopener" href="https://github.com/edwardtufte/tufte-css">Tufte CSS</a>.</p>
+  
+</footer>
+
+    <script src="/scripts/theme-toggle.js" defer></script>
+    <script src="/scripts/left-nav.js" defer></script>
+    <script src="/scripts/back-to-top.js" defer></script>
+    
+      <script src="/scripts/toc-scrollspy.js" defer></script>
+      <script src="/scripts/copy-code.js" defer></script>
+    
+  </body>
+</html>

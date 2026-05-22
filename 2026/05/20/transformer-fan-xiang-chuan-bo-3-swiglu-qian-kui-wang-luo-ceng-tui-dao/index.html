@@ -1,0 +1,1601 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="author" content="Lee">
+  <meta name="description" content="Keep go on">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Transformer｜反向传播 (Backpropagation)（3）：以SwiGLU为例的前馈网络层推导">
+<meta property="og:url" content="https://skylyong.github.io/2026/05/20/transformer-fan-xiang-chuan-bo-3-swiglu-qian-kui-wang-luo-ceng-tui-dao/index.html">
+<meta property="og:site_name" content="Lee&#39;s Blog">
+<meta property="og:description" content="Keep go on">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://skylyong.github.io/image/tufte-swiglu-ffn/1.png">
+<meta property="og:image" content="https://skylyong.github.io/image/tufte-swiglu-ffn/ru.png">
+<meta property="og:image" content="https://skylyong.github.io/image/tufte-swiglu-ffn/g.png">
+<meta property="og:image" content="https://skylyong.github.io/image/tufte-swiglu-ffn/s.png">
+<meta property="article:published_time" content="2026-05-19T16:00:00.000Z">
+<meta property="article:modified_time" content="2026-05-21T18:56:56.317Z">
+<meta property="article:author" content="Lee">
+<meta property="article:tag" content="Transformer">
+<meta property="article:tag" content="反向传播">
+<meta property="article:tag" content="SwiGLU">
+<meta property="article:tag" content="Tufte">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://skylyong.github.io/image/tufte-swiglu-ffn/1.png">
+  <title>Transformer｜反向传播 (Backpropagation)（3）：以SwiGLU为例的前馈网络层推导 | Lee's Blog</title>
+  
+    <link rel="alternate" href="/atom.xml" title="Lee's Blog" type="application/atom+xml">
+  
+  <script>
+    (function () {
+      try {
+        var stored = window.sessionStorage.getItem('tufte-note:theme');
+        var theme = stored || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+        document.documentElement.setAttribute('data-theme', theme);
+      } catch (error) {}
+    })();
+  </script>
+  <link rel="stylesheet" href="/css/tufte.css">
+  <link rel="stylesheet" href="/css/hexo-tufte.css">
+<meta name="generator" content="Hexo 7.3.0">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+</head>
+
+  
+  <body class="is-post">
+    <header class="site-header">
+  <a class="site-title" href="/">Lee's Blog</a>
+  
+  
+    <nav class="site-nav" aria-label="Primary navigation">
+      
+        
+        
+        <a href="/">Home</a>
+      
+        
+        
+        <a href="/friends/">Friends</a>
+      
+        
+        
+        <a href="/about/">About</a>
+      
+      <button id="theme-toggle" class="theme-toggle-btn" type="button" aria-label="Toggle theme"></button>
+    </nav>
+  
+</header>
+
+    <button class="left-nav-toggle" type="button" aria-controls="left-nav-drawer" aria-expanded="false">
+  <span class="left-nav-toggle-line"></span>
+  <span class="left-nav-toggle-line"></span>
+  <span class="left-nav-toggle-line"></span>
+  <span class="sr-only">Open navigation</span>
+</button>
+
+<div class="left-nav-overlay" hidden></div>
+
+<aside class="left-nav-drawer" id="left-nav-drawer" aria-label="Archive navigation" data-content-url="/content.json" hidden>
+  <div class="left-nav-header">
+    <p class="left-nav-title">Index</p>
+    <button class="left-nav-close" type="button" aria-label="Close navigation">Close</button>
+  </div>
+
+  <form class="left-nav-search" role="search">
+    <label class="sr-only" for="left-nav-search-input">Search posts</label>
+    <input
+      id="left-nav-search-input"
+      class="left-nav-search-input"
+      type="search"
+      name="q"
+      autocomplete="off"
+      placeholder="Search posts"
+      data-search-url="/search.xml"
+    >
+    <p class="left-nav-search-status" aria-live="polite"></p>
+    <ol class="left-nav-search-results"></ol>
+  </form>
+
+  <nav class="left-nav-tabs" aria-label="Archive sections">
+    <button class="left-nav-tab is-active" type="button" data-left-nav-tab="archives" aria-selected="true">Archives</button>
+    <button class="left-nav-tab" type="button" data-left-nav-tab="tags" aria-selected="false">Tags</button>
+    <button class="left-nav-tab" type="button" data-left-nav-tab="categories" aria-selected="false">Categories</button>
+  </nav>
+
+  <section class="left-nav-panel is-active" data-left-nav-panel="archives">
+    
+    
+      
+        
+        
+          
+          
+          <p class="left-nav-year">2026</p>
+          <ol class="left-nav-list left-nav-archive-list">
+        
+        <li>
+          <time datetime="2026-05-22T16:00:00.000Z">05-23</time>
+          <a href="/2026/05/23/tufte-note-zhu-ti-pai-ban-zhi-nan/">tufte-note 主题排版指南：边注、宽图与长文阅读</a>
+        </li>
+      
+        
+        
+        <li>
+          <time datetime="2026-05-19T16:00:00.000Z">05-20</time>
+          <a href="/2026/05/20/transformer-fan-xiang-chuan-bo-3-swiglu-qian-kui-wang-luo-ceng-tui-dao/">Transformer｜反向传播 (Backpropagation)（3）：以SwiGLU为例的前馈网络层推导</a>
+        </li>
+      
+        
+        
+        <li>
+          <time datetime="2026-04-05T09:35:14.000Z">04-05</time>
+          <a href="/2026/04/05/2026-xin-zhong-duan-gong-ju-ji-lu/">2026新终端工具记录</a>
+        </li>
+      
+        
+        
+        <li>
+          <time datetime="2026-04-03T09:52:07.000Z">04-03</time>
+          <a href="/2026/04/03/xin-shou-shang-shou-zhi-nan-aidevbox-aris-zi-dong-hua-ke-yan-huan-jing/">新手上手指南：AIDevBox+ARIS-自动化科研环境</a>
+        </li>
+      
+        
+        
+        <li>
+          <time datetime="2026-04-01T11:41:57.000Z">04-01</time>
+          <a href="/2026/04/01/duo-tai-mac-jian-shu-ju-tong-bu-git-luo-cang-ku-syncthing-fang-an/">多台mac间数据同步：Git裸仓库+Syncthing方案</a>
+        </li>
+      
+        
+        
+        <li>
+          <time datetime="2026-02-26T10:09:37.000Z">02-26</time>
+          <a href="/2026/02/26/git-da-wen-jian-chu-li/">Git大文件处理</a>
+        </li>
+      
+        
+        
+        <li>
+          <time datetime="2026-02-19T06:26:15.000Z">02-19</time>
+          <a href="/2026/02/19/mac-shang-shi-yong-chun-ming-ling-xing-docker/">mac上使用纯命令行docker</a>
+        </li>
+      
+        
+        
+        <li>
+          <time datetime="2026-02-07T06:02:23.000Z">02-07</time>
+          <a href="/2026/02/07/2026-nian-chun-bian-cheng-shua-ti-ji-lu/">2026年春编程刷题记录</a>
+        </li>
+      
+        
+        
+        <li>
+          <time datetime="2026-01-16T08:34:20.000Z">01-16</time>
+          <a href="/2026/01/16/einx-and-einops/">Einx-and-einops</a>
+        </li>
+      
+        
+        
+        <li>
+          <time datetime="2026-01-16T08:13:54.000Z">01-16</time>
+          <a href="/2026/01/16/chunk-hua-fen-fang-fa/">Chunk划分方法</a>
+        </li>
+      
+        
+        
+        <li>
+          <time datetime="2026-01-09T15:01:28.000Z">01-09</time>
+          <a href="/2026/01/09/bpe-fen-ci-bian-ma-he-jie-ma/">BPE分词编码和解码</a>
+        </li>
+      
+        
+        
+        <li>
+          <time datetime="2026-01-09T13:29:23.000Z">01-09</time>
+          <a href="/2026/01/09/bpe-fen-ci-xun-lian/">BPE分词训练</a>
+        </li>
+      
+        
+        
+          
+            </ol>
+          
+          
+          <p class="left-nav-year">2025</p>
+          <ol class="left-nav-list left-nav-archive-list">
+        
+        <li>
+          <time datetime="2025-12-02T03:04:12.000Z">12-02</time>
+          <a href="/2025/12/02/clash-gui-ze-pei-zhi-zhi-nan/">Clash规则配置指南</a>
+        </li>
+      
+        
+        
+        <li>
+          <time datetime="2025-11-20T08:16:11.000Z">11-20</time>
+          <a href="/2025/11/20/1-cs336-bpe-fen-ci-qi-jie-shao/">1-cs336-BPE分词器介绍</a>
+        </li>
+      
+        
+        
+        <li>
+          <time datetime="2025-10-16T05:52:02.000Z">10-16</time>
+          <a href="/2025/10/16/linux-chang-yong-ming-ling-jie-shi/">linux常用命令解释</a>
+        </li>
+      
+        
+        
+        <li>
+          <time datetime="2025-10-14T11:55:30.000Z">10-14</time>
+          <a href="/2025/10/14/shi-yong-rclone-zai-duo-ge-fu-wu-qi-zhi-jian-chuan-shu-wen-jian/">使用rclone在多个服务器之间传输文件</a>
+        </li>
+      
+        
+        
+        <li>
+          <time datetime="2025-10-07T16:20:45.000Z">10-08</time>
+          <a href="/2025/10/08/ubuntu-shang-che-di-xie-zai-he-chong-zhuang-nvidia-qu-dong-ji-xiang-guan-zu-jian/">Ubuntu上彻底卸载和重装NVIDIA驱动及相关组件</a>
+        </li>
+      
+        
+        
+        <li>
+          <time datetime="2025-10-03T10:36:30.000Z">10-03</time>
+          <a href="/2025/10/03/ssh-pei-zhi-jie-shao/">ssh配置介绍</a>
+        </li>
+      
+        
+        
+        <li>
+          <time datetime="2025-10-02T13:39:23.000Z">10-02</time>
+          <a href="/2025/10/02/mineru-an-zhuang-bu-shu/">MinerU安装部署</a>
+        </li>
+      
+        
+        
+        <li>
+          <time datetime="2025-09-29T09:12:41.000Z">09-29</time>
+          <a href="/2025/09/29/tong-guo-docker-yun-xing-easyconnect-deng-vpn-ruan-jian/">通过docker运行EasyConnect等VPN软件</a>
+        </li>
+      
+        
+        
+        <li>
+          <time datetime="2025-09-28T13:07:28.000Z">09-28</time>
+          <a href="/2025/09/28/quan-ju-pei-zhi-docker-ke-hu-duan-dai-li/">全局配置Docker客户端代理</a>
+        </li>
+      
+        
+        
+        <li>
+          <time datetime="2025-09-16T12:36:15.000Z">09-16</time>
+          <a href="/2025/09/16/linux-ci-pan-guan-li-ji-minio-fu-wu-pei-zhi/">Linux磁盘管理及MinIO服务配置</a>
+        </li>
+      
+        
+        
+        <li>
+          <time datetime="2025-08-10T10:51:03.000Z">08-10</time>
+          <a href="/2025/08/10/bu-dong-dian-he-ya-suo-ying-she/">不动点和压缩映射</a>
+        </li>
+      
+        
+        
+        <li>
+          <time datetime="2025-08-10T10:49:11.000Z">08-10</time>
+          <a href="/2025/08/10/xiang-liang-fan-shu/">向量范数</a>
+        </li>
+      
+        
+        
+        <li>
+          <time datetime="2025-08-10T10:48:57.000Z">08-10</time>
+          <a href="/2025/08/10/fan-shu-de-ji-ben-gai-nian/">范数的基本概念</a>
+        </li>
+      
+        
+        
+        <li>
+          <time datetime="2025-08-10T10:48:32.000Z">08-10</time>
+          <a href="/2025/08/10/shu-xue-zhong-de-qi-ci-xing-li-jie/">数学中的齐次性理解</a>
+        </li>
+      
+        
+        
+        <li>
+          <time datetime="2025-07-28T04:35:06.000Z">07-28</time>
+          <a href="/2025/07/28/claude-code-xue-xi-ji-lu/">Claude-Code学习记录</a>
+        </li>
+      
+        
+        
+        <li>
+          <time datetime="2025-07-24T16:03:40.000Z">07-25</time>
+          <a href="/2025/07/25/uv-chang-yong-cao-zuo/">uv常用操作</a>
+        </li>
+      
+        
+        
+        <li>
+          <time datetime="2025-07-12T16:44:26.000Z">07-13</time>
+          <a href="/2025/07/13/quan-qi-wang-ding-li-gong-shi-tui-dao/">全期望定理公式推导</a>
+        </li>
+      
+        
+        
+        <li>
+          <time datetime="2025-07-12T09:00:48.000Z">07-12</time>
+          <a href="/2025/07/12/bei-er-man-deng-shi-jie-shao-ji-tui-dao/">贝尔曼等式介绍及推导</a>
+        </li>
+      
+        
+        
+        <li>
+          <time datetime="2025-06-17T15:17:40.000Z">06-17</time>
+          <a href="/2025/06/17/shi-yong-docker-gou-jian-webdav-fu-wu-qi/">使用Docker构建Webdav服务器</a>
+        </li>
+      
+        
+        
+        <li>
+          <time datetime="2025-05-13T16:22:20.000Z">05-14</time>
+          <a href="/2025/05/14/git-team-collab-workflow/">git_team_collab_workflow</a>
+        </li>
+      
+        
+        
+        <li>
+          <time datetime="2025-04-24T07:11:16.000Z">04-24</time>
+          <a href="/2025/04/24/ben-di-gou-jian-docker-jing-xiang-bing-shang-chuan-zhi-a-li-yun-jing-xiang-fu-wu-zhan/">本地构建docker镜像并上传至阿里云镜像服务站</a>
+        </li>
+      
+        
+        
+        <li>
+          <time datetime="2025-04-18T10:31:58.000Z">04-18</time>
+          <a href="/2025/04/18/an-zhuang-torch-scatter-shi-yu-dao-de-keng/">安装torch-scatter时遇到的坑</a>
+        </li>
+      
+        
+        
+        <li>
+          <time datetime="2025-03-17T11:37:30.000Z">03-17</time>
+          <a href="/2025/03/17/neo4j-dao-ru-jie-dian-he-bian-de-python-dai-ma/">neo4j导入节点和边的python代码</a>
+        </li>
+      
+        
+        
+        <li>
+          <time datetime="2025-03-08T17:05:51.000Z">03-09</time>
+          <a href="/2025/03/09/jie-pai-he-ji/">街拍合集</a>
+        </li>
+      
+        
+        
+        <li>
+          <time datetime="2025-03-08T16:06:13.000Z">03-09</time>
+          <a href="/2025/03/09/ren-xiang-she-ying-he-ji/">人像摄影合集</a>
+        </li>
+      
+        
+        
+        <li>
+          <time datetime="2025-03-08T08:39:54.000Z">03-08</time>
+          <a href="/2025/03/08/matplotlib-xian-shi-zhong-wen/">matplotlib 设置显示中文</a>
+        </li>
+      
+        
+        
+        <li>
+          <time datetime="2025-03-08T08:39:54.000Z">03-08</time>
+          <a href="/2025/03/08/python-duo-jin-cheng-shi-li/">python多进程示例</a>
+        </li>
+      
+        
+        
+        <li>
+          <time datetime="2025-03-06T14:40:33.000Z">03-06</time>
+          <a href="/2025/03/06/shi-yong-bert-de-dao-duan-yu-xiang-liang-biao-shi-bing-jin-xing-ceng-ci-ju-lei-shi-xian-xiang-si-xing-qu-chong/">使用BERT得到短语向量表示并进行层次聚类实现相似性去重</a>
+        </li>
+      
+        
+        
+        <li>
+          <time datetime="2025-03-06T11:23:45.000Z">03-06</time>
+          <a href="/2025/03/06/ji-yu-bian-ji-ju-chi-de-wen-ben-ceng-ci-ju-lei/">基于编辑距离的文本层次聚类</a>
+        </li>
+      
+        
+        
+        <li>
+          <time datetime="2025-02-27T15:18:38.000Z">02-27</time>
+          <a href="/2025/02/27/ai-jing-sai-ping-tai/">Ai竞赛平台</a>
+        </li>
+      
+        
+        
+        <li>
+          <time datetime="2025-02-19T09:02:28.000Z">02-19</time>
+          <a href="/2025/02/19/python-ri-chang-kai-fa-za-ji/">python日常开发杂记</a>
+        </li>
+      
+        
+        
+        <li>
+          <time datetime="2025-02-12T09:15:42.000Z">02-12</time>
+          <a href="/2025/02/12/tong-guo-docker-bu-shu-doccano-biao-zhu-gong-ju/">通过docker部署doccano标注工具</a>
+        </li>
+      
+        
+        
+        <li>
+          <time datetime="2025-02-06T08:45:24.000Z">02-06</time>
+          <a href="/2025/02/06/zai-cheng-gong-de-ri-zi-fu-xi-zi-liao-bu-jian-liao/">在呈贡的日子——复习资料不见了</a>
+        </li>
+      
+        
+        
+        <li>
+          <time datetime="2025-02-06T07:15:04.000Z">02-06</time>
+          <a href="/2025/02/06/zai-cheng-gong-de-ri-zi-lao-yu-he/">在呈贡的日子——捞鱼河</a>
+        </li>
+      
+        
+        
+        <li>
+          <time datetime="2025-01-28T09:13:43.000Z">01-28</time>
+          <a href="/2025/01/28/vscode-kai-fa-ji-qiao-ji-lu/">vscode开发技巧记录</a>
+        </li>
+      
+        
+        
+        <li>
+          <time datetime="2025-01-28T08:17:28.000Z">01-28</time>
+          <a href="/2025/01/28/bo-ke-wei-hu-ri-zhi/">博客维护日志</a>
+        </li>
+      
+        
+        
+        <li>
+          <time datetime="2025-01-26T13:08:21.000Z">01-26</time>
+          <a href="/2025/01/26/da-jian-webdav-fu-wu-qi-shi-xian-obsidian-he-zotero-duo-duan-tong-bu/">搭建Webdav服务器实现Obsidian和Zotero多端同步</a>
+        </li>
+      
+        
+        
+        <li>
+          <time datetime="2025-01-07T08:12:50.000Z">01-07</time>
+          <a href="/2025/01/07/sentence-transformers-sampler-bug-zhi-set-bu-yi-ding-shi-wu-xu-de/">sentence-transformers sampler bug 之 set 不一定是无序的</a>
+        </li>
+      
+        
+        
+          
+            </ol>
+          
+          
+          <p class="left-nav-year">2023</p>
+          <ol class="left-nav-list left-nav-archive-list">
+        
+        <li>
+          <time datetime="2023-09-12T01:37:44.000Z">09-12</time>
+          <a href="/2023/09/12/ubuntu-shang-an-zhuang-nividia-qu-dong-he-cuda-tookit/">ubuntu上安装NIVIDIA驱动和CUDA_Tookit</a>
+        </li>
+      
+        
+        
+        <li>
+          <time datetime="2023-07-22T18:28:00.000Z">07-23</time>
+          <a href="/2023/07/23/zai-mac-shang-shi-yong-pybind11-shi-xian-c-yu-python-hu-tong-de-demo/">在mac上使用pybind11实现c++与python互通的demo</a>
+        </li>
+      
+        
+        
+          
+            </ol>
+          
+          
+          <p class="left-nav-year">2022</p>
+          <ol class="left-nav-list left-nav-archive-list">
+        
+        <li>
+          <time datetime="2022-09-07T11:51:54.000Z">09-07</time>
+          <a href="/2022/09/07/mac-xi-tong-zhi-zuo-win10-qi-dong-u-pan/">Mac系统制作win10启动U盘</a>
+        </li>
+      
+        
+        
+        <li>
+          <time datetime="2022-09-05T06:47:54.000Z">09-05</time>
+          <a href="/2022/09/05/dian-ci-bi-sai-zong-jie/">电磁比赛总结</a>
+        </li>
+      
+        
+        
+        <li>
+          <time datetime="2022-04-29T08:24:56.000Z">04-29</time>
+          <a href="/2022/04/29/yuan-cheng-fang-wen-fu-wu-qi-jupyter-notebook/">远程访问服务器Jupyter-Notebook</a>
+        </li>
+      
+        
+        
+          
+            </ol>
+          
+          
+          <p class="left-nav-year">2021</p>
+          <ol class="left-nav-list left-nav-archive-list">
+        
+        <li>
+          <time datetime="2021-12-10T14:48:07.000Z">12-10</time>
+          <a href="/2021/12/10/c-duo-xian-cheng-bian-cheng/">C++多线程编程</a>
+        </li>
+      
+        
+        
+        <li>
+          <time datetime="2021-09-29T09:21:06.000Z">09-29</time>
+          <a href="/2021/09/29/jiang-wei-xin-liao-tian-zhong-de-yu-yin-zhuan-huan-wei-mp3/">将微信聊天中的语音转换为mp3</a>
+        </li>
+      
+        
+        
+        <li>
+          <time datetime="2021-09-19T15:59:09.000Z">09-19</time>
+          <a href="/2021/09/19/ji-qi-xue-xi-can-kao-zi-liao/">机器学习参考资料</a>
+        </li>
+      
+        
+        
+        <li>
+          <time datetime="2021-09-19T15:28:51.000Z">09-19</time>
+          <a href="/2021/09/19/you-yong-de-zi-yuan/">有用的资源</a>
+        </li>
+      
+        
+        
+        <li>
+          <time datetime="2021-08-13T17:06:28.000Z">08-14</time>
+          <a href="/2021/08/14/wei-xin-biao-qian-zheng-li/">微信标签整理</a>
+        </li>
+      
+        
+        
+        <li>
+          <time datetime="2021-08-13T17:01:38.000Z">08-14</time>
+          <a href="/2021/08/14/gong-ju-xiang/">工具箱</a>
+        </li>
+      
+        
+        
+        <li>
+          <time datetime="2021-08-13T14:54:55.000Z">08-13</time>
+          <a href="/2021/08/13/google-fang-wen-zhu-shou-an-zhuang/">Google访问助手安装</a>
+        </li>
+      
+        
+        
+        <li>
+          <time datetime="2021-08-13T14:48:02.000Z">08-13</time>
+          <a href="/2021/08/13/chang-yong-shu-ju-ji-zheng-li/">常用数据集整理</a>
+        </li>
+      
+        
+        
+        <li>
+          <time datetime="2021-08-13T14:41:02.000Z">08-13</time>
+          <a href="/2021/08/13/tu-de-chuang-jian-he-bian-li/">【课程设计】图的创建和遍历</a>
+        </li>
+      
+        
+        
+        <li>
+          <time datetime="2021-08-13T14:41:02.000Z">08-13</time>
+          <a href="/2021/08/13/li-bao-chun-writing-perfect-papers/">论文写作</a>
+        </li>
+      
+        
+        
+        <li>
+          <time datetime="2021-08-09T13:50:37.000Z">08-09</time>
+          <a href="/2021/08/09/svm-xue-xi-bi-ji/">SVM学习笔记</a>
+        </li>
+      
+        
+        
+        <li>
+          <time datetime="2021-08-06T13:35:53.000Z">08-06</time>
+          <a href="/2021/08/06/pandas-xue-xi/">Pandas学习</a>
+        </li>
+      
+        
+        
+        <li>
+          <time datetime="2021-08-05T13:50:37.000Z">08-05</time>
+          <a href="/2021/08/05/pytorch-xue-xi/">Pytorch学习</a>
+        </li>
+      
+        
+        
+        <li>
+          <time datetime="2021-06-30T17:44:09.000Z">07-01</time>
+          <a href="/2021/07/01/huggingface-yu-xun-lian-mo-xing-quan-chong-xia-zai-de-wen-ti/">Huggingface 预训练模型权重下载的问题</a>
+        </li>
+      
+        
+        
+        <li>
+          <time datetime="2021-06-20T16:36:40.000Z">06-21</time>
+          <a href="/2021/06/21/jupyter-notebook-ben-di-fu-wu-qi-da-jian/">jupyter notebook 本地服务器搭建</a>
+        </li>
+      
+        
+        
+        <li>
+          <time datetime="2021-04-16T13:49:06.000Z">04-16</time>
+          <a href="/2021/04/16/ji-qi-xue-xi-zhong-de-ge-chong-shang/">机器学习中的各种熵</a>
+        </li>
+      
+        
+        
+        <li>
+          <time datetime="2021-04-08T09:11:14.000Z">04-08</time>
+          <a href="/2021/04/08/git-chang-yong-ming-ling/">git常用命令</a>
+        </li>
+      
+        
+        
+        <li>
+          <time datetime="2021-04-08T02:21:44.000Z">04-08</time>
+          <a href="/2021/04/08/nlp-zhi-shi-ti-xi/">NLP知识体系</a>
+        </li>
+      
+        
+        
+        <li>
+          <time datetime="2021-03-31T18:08:43.000Z">04-01</time>
+          <a href="/2021/04/01/zui-xiao-lu-jing-he/">【每日算法】2021年03月31日 小雨 最小路径和</a>
+        </li>
+      
+        
+        
+        <li>
+          <time datetime="2021-03-31T11:59:24.000Z">03-31</time>
+          <a href="/2021/03/31/gitlab-da-jian-bi-ji/">GitLab搭建笔记</a>
+        </li>
+      
+        
+        
+        <li>
+          <time datetime="2021-03-30T21:08:40.000Z">03-31</time>
+          <a href="/2021/03/31/ying-yu-kou-yu-lian-xi-dian-ying-tui-jian/">英语口语练习电影推荐</a>
+        </li>
+      
+        
+        
+        <li>
+          <time datetime="2021-03-30T21:05:15.000Z">03-31</time>
+          <a href="/2021/03/31/xue-xi-shi-pin-zheng-li/">学习视频整理</a>
+        </li>
+      
+        
+        
+        <li>
+          <time datetime="2021-03-30T21:01:57.000Z">03-31</time>
+          <a href="/2021/03/31/ke-cheng-she-ji-zui-xiao-sheng-cheng-shu-ying-yong/">【课程设计】最小生成树应用</a>
+        </li>
+      
+        
+        
+        <li>
+          <time datetime="2021-03-30T10:36:46.000Z">03-30</time>
+          <a href="/2021/03/30/bu-tong-lu-jing/">【每日算法】2021年03月30日 多云 不同路径</a>
+        </li>
+      
+        
+        
+        <li>
+          <time datetime="2021-03-29T06:35:48.000Z">03-29</time>
+          <a href="/2021/03/29/bian-fen-xue-xi-bi-ji/">变分学习笔记</a>
+        </li>
+      
+        
+        
+        <li>
+          <time datetime="2021-03-28T05:57:49.000Z">03-28</time>
+          <a href="/2021/03/28/github-jia-su-fang-fa/">GitHub加速方法</a>
+        </li>
+      
+        
+        
+        <li>
+          <time datetime="2021-02-20T17:37:22.000Z">02-21</time>
+          <a href="/2021/02/21/hexo-ge-ren-bo-ke-da-jian-jiao-cheng/">hexo个人博客搭建</a>
+        </li>
+      
+        
+        
+        <li>
+          <time datetime="2021-02-20T17:28:10.000Z">02-21</time>
+          <a href="/2021/02/21/hao-yong-de-mian-fei-wu-guang-gao-dian-ying-wang-zhan-tui-jian/">好用的免费无广告电影网站推荐</a>
+        </li>
+      
+      
+        </ol>
+      
+    
+  </section>
+
+  <section class="left-nav-panel" data-left-nav-panel="tags" hidden>
+    
+      <ol class="left-nav-chip-list">
+        
+          <li>
+            <button class="left-nav-chip" type="button" data-left-nav-meta="tags" data-left-nav-name="BPE">
+              <span>BPE</span>
+              <span class="left-nav-count">3</span>
+            </button>
+          </li>
+        
+          <li>
+            <button class="left-nav-chip" type="button" data-left-nav-meta="tags" data-left-nav-name="Clash, 规则配置">
+              <span>Clash, 规则配置</span>
+              <span class="left-nav-count">1</span>
+            </button>
+          </li>
+        
+          <li>
+            <button class="left-nav-chip" type="button" data-left-nav-meta="tags" data-left-nav-name="Dotfiles">
+              <span>Dotfiles</span>
+              <span class="left-nav-count">1</span>
+            </button>
+          </li>
+        
+          <li>
+            <button class="left-nav-chip" type="button" data-left-nav-meta="tags" data-left-nav-name="GitHub">
+              <span>GitHub</span>
+              <span class="left-nav-count">2</span>
+            </button>
+          </li>
+        
+          <li>
+            <button class="left-nav-chip" type="button" data-left-nav-meta="tags" data-left-nav-name="GitLab">
+              <span>GitLab</span>
+              <span class="left-nav-count">1</span>
+            </button>
+          </li>
+        
+          <li>
+            <button class="left-nav-chip" type="button" data-left-nav-meta="tags" data-left-nav-name="Google访问助手">
+              <span>Google访问助手</span>
+              <span class="left-nav-count">1</span>
+            </button>
+          </li>
+        
+          <li>
+            <button class="left-nav-chip" type="button" data-left-nav-meta="tags" data-left-nav-name="Hexo">
+              <span>Hexo</span>
+              <span class="left-nav-count">1</span>
+            </button>
+          </li>
+        
+          <li>
+            <button class="left-nav-chip" type="button" data-left-nav-meta="tags" data-left-nav-name="NIVIDIA驱动">
+              <span>NIVIDIA驱动</span>
+              <span class="left-nav-count">1</span>
+            </button>
+          </li>
+        
+          <li>
+            <button class="left-nav-chip" type="button" data-left-nav-meta="tags" data-left-nav-name="NVIDIA">
+              <span>NVIDIA</span>
+              <span class="left-nav-count">1</span>
+            </button>
+          </li>
+        
+          <li>
+            <button class="left-nav-chip" type="button" data-left-nav-meta="tags" data-left-nav-name="Pandas">
+              <span>Pandas</span>
+              <span class="left-nav-count">1</span>
+            </button>
+          </li>
+        
+          <li>
+            <button class="left-nav-chip" type="button" data-left-nav-meta="tags" data-left-nav-name="RAG">
+              <span>RAG</span>
+              <span class="left-nav-count">1</span>
+            </button>
+          </li>
+        
+          <li>
+            <button class="left-nav-chip" type="button" data-left-nav-meta="tags" data-left-nav-name="SwiGLU">
+              <span>SwiGLU</span>
+              <span class="left-nav-count">1</span>
+            </button>
+          </li>
+        
+          <li>
+            <button class="left-nav-chip" type="button" data-left-nav-meta="tags" data-left-nav-name="Syncthing">
+              <span>Syncthing</span>
+              <span class="left-nav-count">1</span>
+            </button>
+          </li>
+        
+          <li>
+            <button class="left-nav-chip" type="button" data-left-nav-meta="tags" data-left-nav-name="Transformer">
+              <span>Transformer</span>
+              <span class="left-nav-count">1</span>
+            </button>
+          </li>
+        
+          <li>
+            <button class="left-nav-chip" type="button" data-left-nav-meta="tags" data-left-nav-name="Tufte">
+              <span>Tufte</span>
+              <span class="left-nav-count">2</span>
+            </button>
+          </li>
+        
+          <li>
+            <button class="left-nav-chip" type="button" data-left-nav-meta="tags" data-left-nav-name="ai竞赛">
+              <span>ai竞赛</span>
+              <span class="left-nav-count">1</span>
+            </button>
+          </li>
+        
+          <li>
+            <button class="left-nav-chip" type="button" data-left-nav-meta="tags" data-left-nav-name="claude-code">
+              <span>claude-code</span>
+              <span class="left-nav-count">1</span>
+            </button>
+          </li>
+        
+          <li>
+            <button class="left-nav-chip" type="button" data-left-nav-meta="tags" data-left-nav-name="docker">
+              <span>docker</span>
+              <span class="left-nav-count">2</span>
+            </button>
+          </li>
+        
+          <li>
+            <button class="left-nav-chip" type="button" data-left-nav-meta="tags" data-left-nav-name="docker, doccano">
+              <span>docker, doccano</span>
+              <span class="left-nav-count">1</span>
+            </button>
+          </li>
+        
+          <li>
+            <button class="left-nav-chip" type="button" data-left-nav-meta="tags" data-left-nav-name="git">
+              <span>git</span>
+              <span class="left-nav-count">2</span>
+            </button>
+          </li>
+        
+          <li>
+            <button class="left-nav-chip" type="button" data-left-nav-meta="tags" data-left-nav-name="github">
+              <span>github</span>
+              <span class="left-nav-count">1</span>
+            </button>
+          </li>
+        
+          <li>
+            <button class="left-nav-chip" type="button" data-left-nav-meta="tags" data-left-nav-name="jupyter notebook">
+              <span>jupyter notebook</span>
+              <span class="left-nav-count">2</span>
+            </button>
+          </li>
+        
+          <li>
+            <button class="left-nav-chip" type="button" data-left-nav-meta="tags" data-left-nav-name="mineru">
+              <span>mineru</span>
+              <span class="left-nav-count">1</span>
+            </button>
+          </li>
+        
+          <li>
+            <button class="left-nav-chip" type="button" data-left-nav-meta="tags" data-left-nav-name="neo4j">
+              <span>neo4j</span>
+              <span class="left-nav-count">1</span>
+            </button>
+          </li>
+        
+          <li>
+            <button class="left-nav-chip" type="button" data-left-nav-meta="tags" data-left-nav-name="nlp">
+              <span>nlp</span>
+              <span class="left-nav-count">1</span>
+            </button>
+          </li>
+        
+          <li>
+            <button class="left-nav-chip" type="button" data-left-nav-meta="tags" data-left-nav-name="python">
+              <span>python</span>
+              <span class="left-nav-count">4</span>
+            </button>
+          </li>
+        
+          <li>
+            <button class="left-nav-chip" type="button" data-left-nav-meta="tags" data-left-nav-name="python_c++_互通">
+              <span>python_c++_互通</span>
+              <span class="left-nav-count">1</span>
+            </button>
+          </li>
+        
+          <li>
+            <button class="left-nav-chip" type="button" data-left-nav-meta="tags" data-left-nav-name="pytorch">
+              <span>pytorch</span>
+              <span class="left-nav-count">3</span>
+            </button>
+          </li>
+        
+          <li>
+            <button class="left-nav-chip" type="button" data-left-nav-meta="tags" data-left-nav-name="rclone">
+              <span>rclone</span>
+              <span class="left-nav-count">1</span>
+            </button>
+          </li>
+        
+          <li>
+            <button class="left-nav-chip" type="button" data-left-nav-meta="tags" data-left-nav-name="ssh">
+              <span>ssh</span>
+              <span class="left-nav-count">1</span>
+            </button>
+          </li>
+        
+          <li>
+            <button class="left-nav-chip" type="button" data-left-nav-meta="tags" data-left-nav-name="svm">
+              <span>svm</span>
+              <span class="left-nav-count">1</span>
+            </button>
+          </li>
+        
+          <li>
+            <button class="left-nav-chip" type="button" data-left-nav-meta="tags" data-left-nav-name="tensor">
+              <span>tensor</span>
+              <span class="left-nav-count">1</span>
+            </button>
+          </li>
+        
+          <li>
+            <button class="left-nav-chip" type="button" data-left-nav-meta="tags" data-left-nav-name="uv">
+              <span>uv</span>
+              <span class="left-nav-count">1</span>
+            </button>
+          </li>
+        
+          <li>
+            <button class="left-nav-chip" type="button" data-left-nav-meta="tags" data-left-nav-name="vscode">
+              <span>vscode</span>
+              <span class="left-nav-count">1</span>
+            </button>
+          </li>
+        
+          <li>
+            <button class="left-nav-chip" type="button" data-left-nav-meta="tags" data-left-nav-name="webdav, docker, obsidian, zotero">
+              <span>webdav, docker, obsidian, zotero</span>
+              <span class="left-nav-count">1</span>
+            </button>
+          </li>
+        
+          <li>
+            <button class="left-nav-chip" type="button" data-left-nav-meta="tags" data-left-nav-name="动态规划">
+              <span>动态规划</span>
+              <span class="left-nav-count">2</span>
+            </button>
+          </li>
+        
+          <li>
+            <button class="left-nav-chip" type="button" data-left-nav-meta="tags" data-left-nav-name="博客">
+              <span>博客</span>
+              <span class="left-nav-count">2</span>
+            </button>
+          </li>
+        
+          <li>
+            <button class="left-nav-chip" type="button" data-left-nav-meta="tags" data-left-nav-name="反向传播">
+              <span>反向传播</span>
+              <span class="left-nav-count">1</span>
+            </button>
+          </li>
+        
+          <li>
+            <button class="left-nav-chip" type="button" data-left-nav-meta="tags" data-left-nav-name="启动U盘">
+              <span>启动U盘</span>
+              <span class="left-nav-count">1</span>
+            </button>
+          </li>
+        
+          <li>
+            <button class="left-nav-chip" type="button" data-left-nav-meta="tags" data-left-nav-name="呈贡">
+              <span>呈贡</span>
+              <span class="left-nav-count">2</span>
+            </button>
+          </li>
+        
+          <li>
+            <button class="left-nav-chip" type="button" data-left-nav-meta="tags" data-left-nav-name="图">
+              <span>图</span>
+              <span class="left-nav-count">1</span>
+            </button>
+          </li>
+        
+          <li>
+            <button class="left-nav-chip" type="button" data-left-nav-meta="tags" data-left-nav-name="干货">
+              <span>干货</span>
+              <span class="left-nav-count">2</span>
+            </button>
+          </li>
+        
+          <li>
+            <button class="left-nav-chip" type="button" data-left-nav-meta="tags" data-left-nav-name="强化学习">
+              <span>强化学习</span>
+              <span class="left-nav-count">1</span>
+            </button>
+          </li>
+        
+          <li>
+            <button class="left-nav-chip" type="button" data-left-nav-meta="tags" data-left-nav-name="微信">
+              <span>微信</span>
+              <span class="left-nav-count">2</span>
+            </button>
+          </li>
+        
+          <li>
+            <button class="left-nav-chip" type="button" data-left-nav-meta="tags" data-left-nav-name="摄影">
+              <span>摄影</span>
+              <span class="left-nav-count">1</span>
+            </button>
+          </li>
+        
+          <li>
+            <button class="left-nav-chip" type="button" data-left-nav-meta="tags" data-left-nav-name="数学">
+              <span>数学</span>
+              <span class="left-nav-count">3</span>
+            </button>
+          </li>
+        
+          <li>
+            <button class="left-nav-chip" type="button" data-left-nav-meta="tags" data-left-nav-name="文本聚类 bert向量表示">
+              <span>文本聚类 bert向量表示</span>
+              <span class="left-nav-count">1</span>
+            </button>
+          </li>
+        
+          <li>
+            <button class="left-nav-chip" type="button" data-left-nav-meta="tags" data-left-nav-name="文本聚类 编辑距离">
+              <span>文本聚类 编辑距离</span>
+              <span class="left-nav-count">1</span>
+            </button>
+          </li>
+        
+          <li>
+            <button class="left-nav-chip" type="button" data-left-nav-meta="tags" data-left-nav-name="日志">
+              <span>日志</span>
+              <span class="left-nav-count">1</span>
+            </button>
+          </li>
+        
+          <li>
+            <button class="left-nav-chip" type="button" data-left-nav-meta="tags" data-left-nav-name="机器学习">
+              <span>机器学习</span>
+              <span class="left-nav-count">3</span>
+            </button>
+          </li>
+        
+          <li>
+            <button class="left-nav-chip" type="button" data-left-nav-meta="tags" data-left-nav-name="树">
+              <span>树</span>
+              <span class="left-nav-count">1</span>
+            </button>
+          </li>
+        
+          <li>
+            <button class="left-nav-chip" type="button" data-left-nav-meta="tags" data-left-nav-name="概率论">
+              <span>概率论</span>
+              <span class="left-nav-count">1</span>
+            </button>
+          </li>
+        
+          <li>
+            <button class="left-nav-chip" type="button" data-left-nav-meta="tags" data-left-nav-name="熵">
+              <span>熵</span>
+              <span class="left-nav-count">1</span>
+            </button>
+          </li>
+        
+          <li>
+            <button class="left-nav-chip" type="button" data-left-nav-meta="tags" data-left-nav-name="电影">
+              <span>电影</span>
+              <span class="left-nav-count">2</span>
+            </button>
+          </li>
+        
+          <li>
+            <button class="left-nav-chip" type="button" data-left-nav-meta="tags" data-left-nav-name="竞赛">
+              <span>竞赛</span>
+              <span class="left-nav-count">1</span>
+            </button>
+          </li>
+        
+          <li>
+            <button class="left-nav-chip" type="button" data-left-nav-meta="tags" data-left-nav-name="编程">
+              <span>编程</span>
+              <span class="left-nav-count">1</span>
+            </button>
+          </li>
+        
+          <li>
+            <button class="left-nav-chip" type="button" data-left-nav-meta="tags" data-left-nav-name="街拍">
+              <span>街拍</span>
+              <span class="left-nav-count">1</span>
+            </button>
+          </li>
+        
+          <li>
+            <button class="left-nav-chip" type="button" data-left-nav-meta="tags" data-left-nav-name="论文写作">
+              <span>论文写作</span>
+              <span class="left-nav-count">1</span>
+            </button>
+          </li>
+        
+          <li>
+            <button class="left-nav-chip" type="button" data-left-nav-meta="tags" data-left-nav-name="资源">
+              <span>资源</span>
+              <span class="left-nav-count">1</span>
+            </button>
+          </li>
+        
+          <li>
+            <button class="left-nav-chip" type="button" data-left-nav-meta="tags" data-left-nav-name="预训练模型">
+              <span>预训练模型</span>
+              <span class="left-nav-count">1</span>
+            </button>
+          </li>
+        
+      </ol>
+      <p class="left-nav-selection-status" data-left-nav-status="tags">Select a tag to view posts.</p>
+      <ol class="left-nav-meta-posts" data-left-nav-posts="tags"></ol>
+    
+  </section>
+
+  <section class="left-nav-panel" data-left-nav-panel="categories" hidden>
+    
+      <ol class="left-nav-chip-list">
+        
+          <li>
+            <button class="left-nav-chip" type="button" data-left-nav-meta="categories" data-left-nav-name="人工智能">
+              <span>人工智能</span>
+              <span class="left-nav-count">1</span>
+            </button>
+          </li>
+        
+          <li>
+            <button class="left-nav-chip" type="button" data-left-nav-meta="categories" data-left-nav-name="大模型">
+              <span>大模型</span>
+              <span class="left-nav-count">4</span>
+            </button>
+          </li>
+        
+          <li>
+            <button class="left-nav-chip" type="button" data-left-nav-meta="categories" data-left-nav-name="学习笔记">
+              <span>学习笔记</span>
+              <span class="left-nav-count">13</span>
+            </button>
+          </li>
+        
+          <li>
+            <button class="left-nav-chip" type="button" data-left-nav-meta="categories" data-left-nav-name="学习资料">
+              <span>学习资料</span>
+              <span class="left-nav-count">4</span>
+            </button>
+          </li>
+        
+          <li>
+            <button class="left-nav-chip" type="button" data-left-nav-meta="categories" data-left-nav-name="干货">
+              <span>干货</span>
+              <span class="left-nav-count">1</span>
+            </button>
+          </li>
+        
+          <li>
+            <button class="left-nav-chip" type="button" data-left-nav-meta="categories" data-left-nav-name="总结">
+              <span>总结</span>
+              <span class="left-nav-count">4</span>
+            </button>
+          </li>
+        
+          <li>
+            <button class="left-nav-chip" type="button" data-left-nav-meta="categories" data-left-nav-name="技术笔记">
+              <span>技术笔记</span>
+              <span class="left-nav-count">2</span>
+            </button>
+          </li>
+        
+          <li>
+            <button class="left-nav-chip" type="button" data-left-nav-meta="categories" data-left-nav-name="摄影">
+              <span>摄影</span>
+              <span class="left-nav-count">2</span>
+            </button>
+          </li>
+        
+          <li>
+            <button class="left-nav-chip" type="button" data-left-nav-meta="categories" data-left-nav-name="收藏">
+              <span>收藏</span>
+              <span class="left-nav-count">1</span>
+            </button>
+          </li>
+        
+          <li>
+            <button class="left-nav-chip" type="button" data-left-nav-meta="categories" data-left-nav-name="数学算法">
+              <span>数学算法</span>
+              <span class="left-nav-count">1</span>
+            </button>
+          </li>
+        
+          <li>
+            <button class="left-nav-chip" type="button" data-left-nav-meta="categories" data-left-nav-name="数据集">
+              <span>数据集</span>
+              <span class="left-nav-count">1</span>
+            </button>
+          </li>
+        
+          <li>
+            <button class="left-nav-chip" type="button" data-left-nav-meta="categories" data-left-nav-name="机器学习">
+              <span>机器学习</span>
+              <span class="left-nav-count">1</span>
+            </button>
+          </li>
+        
+          <li>
+            <button class="left-nav-chip" type="button" data-left-nav-meta="categories" data-left-nav-name="爬坑总结">
+              <span>爬坑总结</span>
+              <span class="left-nav-count">9</span>
+            </button>
+          </li>
+        
+          <li>
+            <button class="left-nav-chip" type="button" data-left-nav-meta="categories" data-left-nav-name="生活总结">
+              <span>生活总结</span>
+              <span class="left-nav-count">4</span>
+            </button>
+          </li>
+        
+          <li>
+            <button class="left-nav-chip" type="button" data-left-nav-meta="categories" data-left-nav-name="生活情感">
+              <span>生活情感</span>
+              <span class="left-nav-count">2</span>
+            </button>
+          </li>
+        
+          <li>
+            <button class="left-nav-chip" type="button" data-left-nav-meta="categories" data-left-nav-name="知识框架">
+              <span>知识框架</span>
+              <span class="left-nav-count">1</span>
+            </button>
+          </li>
+        
+          <li>
+            <button class="left-nav-chip" type="button" data-left-nav-meta="categories" data-left-nav-name="算法">
+              <span>算法</span>
+              <span class="left-nav-count">1</span>
+            </button>
+          </li>
+        
+          <li>
+            <button class="left-nav-chip" type="button" data-left-nav-meta="categories" data-left-nav-name="算法笔记">
+              <span>算法笔记</span>
+              <span class="left-nav-count">2</span>
+            </button>
+          </li>
+        
+          <li>
+            <button class="left-nav-chip" type="button" data-left-nav-meta="categories" data-left-nav-name="编程">
+              <span>编程</span>
+              <span class="left-nav-count">5</span>
+            </button>
+          </li>
+        
+          <li>
+            <button class="left-nav-chip" type="button" data-left-nav-meta="categories" data-left-nav-name="编程开发">
+              <span>编程开发</span>
+              <span class="left-nav-count">5</span>
+            </button>
+          </li>
+        
+          <li>
+            <button class="left-nav-chip" type="button" data-left-nav-meta="categories" data-left-nav-name="编程经验">
+              <span>编程经验</span>
+              <span class="left-nav-count">2</span>
+            </button>
+          </li>
+        
+          <li>
+            <button class="left-nav-chip" type="button" data-left-nav-meta="categories" data-left-nav-name="网络工具">
+              <span>网络工具</span>
+              <span class="left-nav-count">1</span>
+            </button>
+          </li>
+        
+          <li>
+            <button class="left-nav-chip" type="button" data-left-nav-meta="categories" data-left-nav-name="自然语言处理">
+              <span>自然语言处理</span>
+              <span class="left-nav-count">2</span>
+            </button>
+          </li>
+        
+          <li>
+            <button class="left-nav-chip" type="button" data-left-nav-meta="categories" data-left-nav-name="运维">
+              <span>运维</span>
+              <span class="left-nav-count">7</span>
+            </button>
+          </li>
+        
+      </ol>
+      <p class="left-nav-selection-status" data-left-nav-status="categories">Select a category to view posts.</p>
+      <ol class="left-nav-meta-posts" data-left-nav-posts="categories"></ol>
+    
+  </section>
+</aside>
+
+    <article class="post-page">
+  <h1>Transformer｜反向传播 (Backpropagation)（3）：以SwiGLU为例的前馈网络层推导</h1>
+  
+<p class="post-meta">
+  
+    <time datetime="2026-05-19T16:00:00.000Z">2026-05-20</time>
+  
+  
+  
+    <span class="meta-separator">/</span>
+    
+      
+      <a href="/categories/%E6%95%B0%E5%AD%A6%E7%AE%97%E6%B3%95/">数学算法</a>
+    
+  
+  
+    <span class="meta-separator">/</span>
+    
+      
+      <a href="/tags/Transformer/">#Transformer</a>
+    
+      <span>, </span>
+      <a href="/tags/%E5%8F%8D%E5%90%91%E4%BC%A0%E6%92%AD/">#反向传播</a>
+    
+      <span>, </span>
+      <a href="/tags/SwiGLU/">#SwiGLU</a>
+    
+      <span>, </span>
+      <a href="/tags/Tufte/">#Tufte</a>
+    
+  
+</p>
+
+
+  
+
+  
+  <button class="toc-toggle" type="button" aria-controls="toc-sidebar" aria-expanded="true" aria-label="Toggle table of contents">
+    Contents
+  </button>
+  <aside class="toc-sidebar" id="toc-sidebar" aria-label="Table of contents">
+    <p class="toc-title">Contents</p>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AF%BC%E8%A8%80%EF%BC%9AFFN-%E7%9A%84%E5%8F%91%E5%B1%95%EF%BC%9A%E4%BB%8E-ReLU-%E5%88%B0-SwiGLU"><span class="toc-text">导言：FFN 的发展：从 ReLU 到 SwiGLU</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E4%B8%80%E4%BB%A3%EF%BC%9AReLU-FFN%EF%BC%88%E5%8E%9F%E5%A7%8B-Transformer%EF%BC%8C2017%EF%BC%89"><span class="toc-text">第一代：ReLU FFN（原始 Transformer，2017）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E4%BA%8C%E4%BB%A3%EF%BC%9AGELU-FFN%EF%BC%88BERT-GPT-2%EF%BC%8C2018-2019%EF%BC%89"><span class="toc-text">第二代：GELU FFN（BERT &#x2F; GPT-2，2018-2019）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E4%B8%89%E4%BB%A3%EF%BC%9A%E9%97%A8%E6%8E%A7-FFN-%E2%80%94-SwiGLU%EF%BC%88LLaMA-PaLM%EF%BC%8C2022-2023%EF%BC%89"><span class="toc-text">第三代：门控 FFN — SwiGLU（LLaMA &#x2F; PaLM，2022-2023）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E6%88%91%E4%BB%AC%E9%80%89%E6%8B%A9SwiGLU-%EF%BC%9F"><span class="toc-text">为什么我们选择SwiGLU ？</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#SwiGLU-%E7%9A%84-SiLU-%E6%BF%80%E6%B4%BB%E5%87%BD%E6%95%B0"><span class="toc-text">SwiGLU 的 SiLU 激活函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%9B%E5%85%A5-Block%EF%BC%9A%E5%85%88%E7%A2%B0%E5%88%B0%E6%AE%8B%E5%B7%AE%E8%BF%9E%E6%8E%A5"><span class="toc-text">进入 Block：先碰到残差连接</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#SwiGLU-FFN-%E7%9A%84%E5%89%8D%E5%90%91%E4%BC%A0%E6%92%AD"><span class="toc-text">SwiGLU FFN 的前向传播</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%8D%E5%90%91%E4%BC%A0%E6%92%AD"><span class="toc-text">反向传播</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E4%BA%94%E6%AD%A5%EF%BC%9A-text-output-h-cdot-W-text-down"><span class="toc-text">第五步：$\text{output} &#x3D; h \cdot W_{\text{down}}$</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E5%9B%9B%E6%AD%A5%EF%BC%9A-h-g-odot-up"><span class="toc-text">第四步：$h &#x3D; g \odot up$</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E4%B8%89%E6%AD%A5%EF%BC%9A-g-operatorname-SiLU-text-gate"><span class="toc-text">第三步：$g &#x3D; \operatorname{SiLU}(\text{gate})$</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E4%BA%8C%E6%AD%A5%E5%92%8C%E7%AC%AC%E4%B8%80%E6%AD%A5%EF%BC%9A%E4%B8%A4%E4%B8%AA%E7%BA%BF%E6%80%A7%E5%B1%82"><span class="toc-text">第二步和第一步：两个线性层</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%A4%E8%B7%AF%E8%AF%AF%E5%B7%AE%E5%9C%A8-x-text-norm-%E5%A4%84%E6%B1%87%E5%90%88"><span class="toc-text">两路误差在 $x_{\text{norm}}$ 处汇合</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%8C%E6%95%B4%E6%B5%81%E7%A8%8B%E5%9B%BE"><span class="toc-text">完整流程图</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B0%8F%E7%BB%93"><span class="toc-text">小结</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#FFN-%E5%8F%8D%E5%90%91%E4%BC%A0%E6%92%AD%E7%9A%84%E5%85%B3%E9%94%AE%E7%89%B9%E6%80%A7"><span class="toc-text">FFN 反向传播的关键特性</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-Token-%E4%B9%8B%E9%97%B4%E5%AE%8C%E5%85%A8%E7%8B%AC%E7%AB%8B"><span class="toc-text">1.Token 之间完全独立</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E9%9C%80%E8%A6%81%E5%AD%98%E6%A1%A3%E5%93%AA%E4%BA%9B%E6%95%B0%E6%8D%AE"><span class="toc-text">2.需要存档哪些数据</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%94%E8%80%85%E7%9A%84%E8%AF%9D"><span class="toc-text">笔者的话</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99"><span class="toc-text">参考资料</span></a></li></ol>
+  </aside>
+
+
+
+  <section class="article-content">
+    <p><span class="marginnote"><strong>阅读提醒</strong>：我们推导了线性层的两个核心公式，以及 Softmax 和 RMSNorm 的反向传播。现在我们带着这些工具，正式进入 Transformer Block 的内部。于是我们来到了：<strong>前馈网络（Feed-Forward Network，FFN）</strong>。这里的计算比较稀松平常，所以就多嘴整理了一下FFN的发展流程，作为一些完整的补充，如果前2篇你很顺利地理解下来了，那么恭喜你，这一篇你可以以喝杯下午茶的心情来愉悦地看了。祝食用愉快～☕️</span></p>
+<blockquote>
+<p>转载说明：原文作者为 Shiyi Li，原文地址见 <a target="_blank" rel="noopener" href="https://shiyilee11.github.io/Tufted-Blog-Template/Blog/5-20-tr/">Transformer｜反向传播 (Backpropagation)（3）：以SwiGLU为例的前馈网络层推导</a>。本文用于测试本站 <code>tufte-note</code> 主题样式。</p>
+</blockquote>
+<figure>
+  <span class="marginnote">图 1 一张非常简洁的前馈网络示意图</span>
+  <img src="/image/tufte-swiglu-ffn/1.png" alt="一张非常简洁的前馈网络示意图" loading="lazy" decoding="async">
+  <figcaption>一张非常简洁的前馈网络示意图</figcaption>
+</figure>
+
+<hr>
+<h2 id="导言：FFN-的发展：从-ReLU-到-SwiGLU"><a href="#导言：FFN-的发展：从-ReLU-到-SwiGLU" class="headerlink" title="导言：FFN 的发展：从 ReLU 到 SwiGLU"></a><strong>导言：FFN 的发展：从 ReLU 到 SwiGLU</strong></h2><blockquote>
+<p>FFN 的基本框架一直没变（展开 → 激活 → 压缩），但中间的”激活函数”和”结构”经历了几代演化。</p>
+</blockquote>
+<h3 id="第一代：ReLU-FFN（原始-Transformer，2017）"><a href="#第一代：ReLU-FFN（原始-Transformer，2017）" class="headerlink" title="第一代：ReLU FFN（原始 Transformer，2017）"></a><strong>第一代：ReLU FFN（原始 Transformer，2017）</strong></h3><p><span class="marginnote"><img src="/image/tufte-swiglu-ffn/ru.png" alt="ReLU 函数图像" loading="lazy" decoding="async"></span></p>
+<p><span class="marginnote"><strong>ReLU函数</strong></span></p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">FFN(x) = ReLU(x · W₁) · W₂</span><br></pre></td></tr></tbody></table></figure>
+
+<p>结构最简单：一个线性层展开，ReLU 激活，再一个线性层压缩。</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">x ──→ W₁（展开）──→ ReLU ──→ W₂（压缩）──→ output</span><br><span class="line">     [d → 4d]               [4d → d]</span><br></pre></td></tr></tbody></table></figure>
+
+<p>ReLU 的特点：</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">ReLU(z) = max(0, z)</span><br><span class="line"></span><br><span class="line">z &gt; 0：原样输出</span><br><span class="line">z ≤ 0：直接变成 0（"关门"）</span><br></pre></td></tr></tbody></table></figure>
+
+<p>优点：简单快速。<br>缺点：太粗暴了——负值直接归零，一旦某个神经元被”关门”，梯度就完全无法通过，可能永远学不回来（<strong>“死亡 ReLU”问题</strong>）。</p>
+<hr>
+<h3 id="第二代：GELU-FFN（BERT-GPT-2，2018-2019）"><a href="#第二代：GELU-FFN（BERT-GPT-2，2018-2019）" class="headerlink" title="第二代：GELU FFN（BERT / GPT-2，2018-2019）"></a><strong>第二代：GELU FFN（BERT / GPT-2，2018-2019）</strong></h3><p><span class="marginnote"><img src="/image/tufte-swiglu-ffn/g.png" alt="GELU 函数图像" loading="lazy" decoding="async"></span></p>
+<p><span class="marginnote"><strong>GELU FFN函数</strong></span></p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">FFN(x) = GELU(x · W₁) · W₂</span><br></pre></td></tr></tbody></table></figure>
+
+<p>结构不变，只是把 ReLU 换成了 GELU：</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">GELU(z) = z · Φ(z)</span><br><span class="line"></span><br><span class="line">其中 Φ(z) 是标准正态分布的累积分布函数</span><br></pre></td></tr></tbody></table></figure>
+
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">ReLU：z &gt; 0 → 全开，z ≤ 0 → 全关（硬开关）</span><br><span class="line"></span><br><span class="line">GELU：z 很大 → 几乎全开</span><br><span class="line">      z ≈ 0  → 半开半关（平滑过渡）</span><br><span class="line">      z 很小 → 几乎全关（但不是完全为 0）</span><br></pre></td></tr></tbody></table></figure>
+
+<p>优点：平滑的门控，梯度不会突然断掉。<br>缺点：结构还是单路的，表达能力有限。</p>
+<hr>
+<h3 id="第三代：门控-FFN-—-SwiGLU（LLaMA-PaLM，2022-2023）"><a href="#第三代：门控-FFN-—-SwiGLU（LLaMA-PaLM，2022-2023）" class="headerlink" title="第三代：门控 FFN — SwiGLU（LLaMA / PaLM，2022-2023）"></a><strong>第三代：门控 FFN — SwiGLU（LLaMA / PaLM，2022-2023）</strong></h3><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">FFN(x) = (SiLU(x · W_gate) ⊙ (x · W_up)) · W_down</span><br></pre></td></tr></tbody></table></figure>
+
+<p>这是一个根本性的结构变化——从<strong>单路</strong>变成了<strong>双路</strong>。</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">第一代/第二代（单路）：</span><br><span class="line"></span><br><span class="line">x ──→ W₁ ──→ 激活函数 ──→ W₂ ──→ output</span><br><span class="line">      一条路走到底</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">第三代 SwiGLU（双路）：</span><br><span class="line"></span><br><span class="line">x ──→ W_gate ──→ SiLU ──→ ┐</span><br><span class="line">                            ⊙ ──→ W_down ──→ output</span><br><span class="line">x ──→ W_up ──────────────→ ┘</span><br><span class="line">      两条路，在 ⊙ 处交汇</span><br></pre></td></tr></tbody></table></figure>
+
+<hr>
+<blockquote>
+<p><strong>为什么要搞两条路呢？</strong></p>
+</blockquote>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">W_gate 路线（门控路线）：</span><br><span class="line">  → 决定"哪些特征要保留，哪些要丢弃"</span><br><span class="line">  → SiLU 激活函数产生 0~1 之间的"门控信号"</span><br><span class="line">  → 相当于一个"筛子"</span><br><span class="line"></span><br><span class="line">W_up 路线（内容路线）：</span><br><span class="line">  → 提取实际的特征内容</span><br><span class="line">  → 不经过激活函数，保留完整的信息</span><br><span class="line">  → 相当于"原材料"</span><br><span class="line"></span><br><span class="line">⊙ 逐元素相乘：</span><br><span class="line">  → 用筛子去筛选原材料</span><br><span class="line">  → 门控信号大的维度被保留，小的被抑制</span><br></pre></td></tr></tbody></table></figure>
+
+<blockquote>
+<p>打个比方来看：ReLU FFN 像是一个人同时负责”判断”和”执行”。SwiGLU 像是两个人分工——一个人负责判断（gate），另一个人负责准备材料（up），最后配合完成任务。分工产生效率。</p>
+</blockquote>
+<hr>
+<h3 id="为什么我们选择SwiGLU-？"><a href="#为什么我们选择SwiGLU-？" class="headerlink" title="为什么我们选择SwiGLU ？"></a><strong>为什么我们选择SwiGLU ？</strong></h3><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">ReLU FFN：</span><br><span class="line">  一个矩阵既要学"提取什么特征"，又要学"保留还是丢弃"</span><br><span class="line">  激活函数是硬门控（非0即1），信息损失大</span><br><span class="line"></span><br><span class="line">SwiGLU：</span><br><span class="line">  W_gate 专门学"保留还是丢弃"（门控决策）</span><br><span class="line">  W_up 专门学"提取什么特征"（内容提取）</span><br><span class="line">  SiLU 是软门控（连续值），信息损失小</span><br><span class="line">  两者分工明确，各自可以学得更好</span><br></pre></td></tr></tbody></table></figure>
+
+<p><em><strong>这也是为什么现在主流的大模型（LLaMA、PaLM、Gemma、Qwen 等）基本都用 SwiGLU。</strong></em></p>
+<hr>
+<h2 id="SwiGLU-的-SiLU-激活函数"><a href="#SwiGLU-的-SiLU-激活函数" class="headerlink" title="SwiGLU 的 SiLU 激活函数"></a><strong>SwiGLU 的 SiLU 激活函数</strong></h2><blockquote>
+<p>没错，聪明的你肯定发现了，我们的主角就是SwiGLU，让我们走近它来仔细看看🧐</p>
+</blockquote>
+<p><span class="marginnote"><img src="/image/tufte-swiglu-ffn/s.png" alt="SwiGLU 函数图像" loading="lazy" decoding="async"></span></p>
+<p><span class="marginnote"><strong>SwiGLU函数</strong></span></p>
+<p>SiLU（也叫 Swish）的定义：</p>
+<p>$$<br>\operatorname{SiLU}(z) = z \cdot \sigma(z) = \frac{z}{1 + e^{-z}}<br>$$</p>
+<p>其中 $\sigma(z) = \frac{1}{1 + e^{-z}}$ 是 sigmoid 函数。</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">三种激活函数的对比：</span><br><span class="line"></span><br><span class="line">ReLU：  ____/        硬拐角，负数直接归零</span><br><span class="line">GELU：  ___/~        平滑版 ReLU，负数接近零但不完全为零</span><br><span class="line">SiLU：  __/~~        类似 GELU，但公式更简洁，导数更好算</span><br></pre></td></tr></tbody></table></figure>
+
+<hr>
+<p>SiLU 的导数（后面反向传播要用）：</p>
+<p>$$<br>\operatorname{SiLU}’(z) = \sigma(z) + z \cdot \sigma(z) \cdot (1 - \sigma(z)) = \sigma(z) \cdot (1 + z \cdot (1 - \sigma(z)))<br>$$</p>
+<p>看起来复杂，但其实只是 sigmoid 的组合，计算很高效。</p>
+<hr>
+<h2 id="进入-Block：先碰到残差连接"><a href="#进入-Block：先碰到残差连接" class="headerlink" title="进入 Block：先碰到残差连接"></a><strong>进入 Block：先碰到残差连接</strong></h2><blockquote>
+<p>在正式进入 FFN 的反向传播之前，我们需要知道 FFN 在 Transformer Block 里的位置：</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">x_in（Block 的输入）</span><br><span class="line">│</span><br><span class="line">├─── ... Attention 部分 ... ───→ x_mid</span><br><span class="line">│</span><br><span class="line">│  现在我们站在这里，x_mid 已经算出来了</span><br><span class="line">│</span><br><span class="line">├──────────────────────────────┐</span><br><span class="line">│                              │（残差直通）</span><br><span class="line">▼                              │</span><br><span class="line">RMSNorm(x_mid) → x_norm       │</span><br><span class="line">│                              │</span><br><span class="line">▼                              │</span><br><span class="line">FFN(x_norm) → x_ffn            │</span><br><span class="line">│                              │</span><br><span class="line">▼                              │</span><br><span class="line">x_out = x_mid + x_ffn ←───────┘（残差相加）</span><br></pre></td></tr></tbody></table></figure>
+
+<p>反向传播时，误差从 $\Delta_{x_{\text{out}}}$ 开始，碰到残差相加后分成两路：</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Δ_x_out</span><br><span class="line">│</span><br><span class="line">├── Δ_x_mid_residual = Δ_x_out    ← 直路，原样复制（后面会展开讲）</span><br><span class="line">└── Δ_x_ffn = Δ_x_out              ← 进入 FFN 的反向传播</span><br></pre></td></tr></tbody></table></figure>
+
+<blockquote>
+<p>残差连接的详细机制我们后面会专门展开。这里只需要知道：加法的反向传播就是把误差完整地复制一份给每条路。</p>
+</blockquote>
+<p><em>**现在我们拿着 $\Delta</em>{x_{\text{ffn}}}$，进入 FFN 的内部。**_</p>
+<hr>
+<h2 id="SwiGLU-FFN-的前向传播"><a href="#SwiGLU-FFN-的前向传播" class="headerlink" title="SwiGLU FFN 的前向传播"></a><strong>SwiGLU FFN 的前向传播</strong></h2><p>给每一步起个名字：</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">输入：x_norm，形状 [seq_len × d_model]</span><br><span class="line"></span><br><span class="line">步骤1：gate = x_norm · W_gate     [seq_len × d_ffn]    ← 门控路线</span><br><span class="line">步骤2：up   = x_norm · W_up       [seq_len × d_ffn]    ← 内容路线</span><br><span class="line"></span><br><span class="line">步骤3：g    = SiLU(gate)           [seq_len × d_ffn]    ← 门控信号</span><br><span class="line"></span><br><span class="line">步骤4：h    = g ⊙ up              [seq_len × d_ffn]    ← 逐元素相乘</span><br><span class="line"></span><br><span class="line">步骤5：output = h · W_down        [seq_len × d_model]   ← 压缩回原维度</span><br></pre></td></tr></tbody></table></figure>
+
+<p>每一步都对<strong>每个 token 独立</strong>计算——token 之间没有任何交互。（这里就可以看出和RMSNorm以及Softmax的不同了）</p>
+<p>这意味着，token 1 的误差只影响 token 1，token 2 的误差只影响 token 2，互不干扰。</p>
+<hr>
+<h2 id="反向传播"><a href="#反向传播" class="headerlink" title="反向传播"></a><strong>反向传播</strong></h2><blockquote>
+<p>我们拿着 $\Delta_{\text{output}}$（形状 $[\text{seq_len} \times d_{\text{model}}]$），倒着走。</p>
+</blockquote>
+<h3 id="第五步：-text-output-h-cdot-W-text-down"><a href="#第五步：-text-output-h-cdot-W-text-down" class="headerlink" title="第五步：$\text{output} = h \cdot W_{\text{down}}$"></a><strong>第五步：$\text{output} = h \cdot W_{\text{down}}$</strong></h3><p>这就是我们已经推过的线性层！直接用两个核心公式：</p>
+<p>$$<br>\frac{\partial L}{\partial W_{\text{down}}} = h^T \cdot \Delta_{\text{output}}<br>$$</p>
+<p>$W_{\text{down}}$ 的梯度交给优化器，$\Delta_h$ 继续往前传。</p>
+<hr>
+<h3 id="第四步：-h-g-odot-up"><a href="#第四步：-h-g-odot-up" class="headerlink" title="第四步：$h = g \odot up$"></a><strong>第四步：$h = g \odot up$</strong></h3><p>这里是逐元素乘法，不是矩阵乘法。</p>
+<p>前向传播时，每个元素的计算是独立的：</p>
+<p>$$<br>h_i = g_i \times up_i<br>$$</p>
+<p>所以对 $g_i$ 求导：</p>
+<p>$$<br>\frac{\partial h_i}{\partial g_i} = up_i<br>$$</p>
+<p>对 $up_i$ 求导：</p>
+<p>$$<br>\frac{\partial h_i}{\partial up_i} = g_i<br>$$</p>
+<hr>
+<p>用链式法则：</p>
+<p>$$<br>\Delta_{g,i} = \Delta_{h,i} \times up_i<br>$$</p>
+<p>$$<br>\Delta_{up,i} = \Delta_{h,i} \times g_i<br>$$</p>
+<p>写成向量形式：</p>
+<p>$$<br>\Delta_g = \Delta_h \odot up<br>$$</p>
+<p>$$<br>\Delta_{up} = \Delta_h \odot g<br>$$</p>
+<blockquote>
+<p>$g$ 和 $up$ 在逐元素乘法里互为对方的”系数”。<br>$g$ 的误差取决于它当时乘的那个数（$up$）有多大。<br>$up$ 的误差取决于它当时乘的那个数（$g$）有多大。  </p>
+<p>这就是为什么前向传播时需要把 $g$ 和 $up$ 都<strong>存档</strong>——反向传播时，每一方都需要对方的值。</p>
+</blockquote>
+<p>这里误差<strong>兵分两路</strong>：$\Delta_g$ 去追查门控路线，$\Delta_{up}$ 去追查内容路线。</p>
+<hr>
+<h3 id="第三步：-g-operatorname-SiLU-text-gate"><a href="#第三步：-g-operatorname-SiLU-text-gate" class="headerlink" title="第三步：$g = \operatorname{SiLU}(\text{gate})$"></a><strong>第三步：$g = \operatorname{SiLU}(\text{gate})$</strong></h3><p>SiLU 是逐元素函数，反向传播的规则很简单：</p>
+<p>$$<br>\Delta_{\text{gate}} = \Delta_g \odot \operatorname{SiLU}’(\text{gate})<br>$$</p>
+<p>其中 SiLU 的导数是：</p>
+<p>$$<br>\operatorname{SiLU}’(z) = \sigma(z) \cdot (1 + z \cdot (1 - \sigma(z)))<br>$$</p>
+<blockquote>
+<p><strong>和 ReLU 的对比</strong>：</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">ReLU 的反向传播：</span><br><span class="line">  Δ_z = Δ · mask(z &gt; 0)</span><br><span class="line">  → gate &gt; 0 的通道：误差完整通过</span><br><span class="line">  → gate ≤ 0 的通道：误差被完全阻断</span><br><span class="line">  → 硬开关：要么全通，要么全断</span><br><span class="line"></span><br><span class="line">SiLU 的反向传播：</span><br><span class="line">  Δ_z = Δ · SiLU'(gate)</span><br><span class="line">  → SiLU' 是连续函数，永远不会完全为 0</span><br><span class="line">  → 所有通道都能传递一些梯度</span><br><span class="line">  → 软开关：有些通道多传一点，有些少传一点</span><br></pre></td></tr></tbody></table></figure>
+
+<p>这就是为什么 SiLU 比 ReLU 训练更稳定——不会出现”死亡神经元”问题。</p>
+</blockquote>
+<hr>
+<h3 id="第二步和第一步：两个线性层"><a href="#第二步和第一步：两个线性层" class="headerlink" title="第二步和第一步：两个线性层"></a><strong>第二步和第一步：两个线性层</strong></h3><p>现在我们有两路误差分别回到了两个线性层：</p>
+<p><strong>门控路线：$\text{gate} = x_{\text{norm}} \cdot W_{\text{gate}}$</strong></p>
+<p>$$<br>\frac{\partial L}{\partial W_{\text{gate}}} = x_{\text{norm}}^T \cdot \Delta_{\text{gate}}<br>$$</p>
+<p>$$<br>\Delta_{x,\text{via gate}} = \Delta_{\text{gate}} \cdot W_{\text{gate}}^T<br>$$</p>
+<hr>
+<p><strong>内容路线：$up = x_{\text{norm}} \cdot W_{up}$</strong></p>
+<p>$$<br>\frac{\partial L}{\partial W_{up}} = x_{\text{norm}}^T \cdot \Delta_{up}<br>$$</p>
+<p>$$<br>\Delta_{x,\text{via up}} = \Delta_{up} \cdot W_{up}^T<br>$$</p>
+<hr>
+<h3 id="两路误差在-x-text-norm-处汇合"><a href="#两路误差在-x-text-norm-处汇合" class="headerlink" title="两路误差在 $x_{\text{norm}}$ 处汇合"></a>两路误差在 $x_{\text{norm}}$ 处汇合</h3><p>$x_{\text{norm}}$ 同时”兼职”了两个角色（门控和内容），两条路的误差都要算到它头上：</p>
+<p>$$<br>\Delta_{x_{\text{norm}}} = \Delta_{x,\text{via gate}} + \Delta_{x,\text{via up}}<br>$$</p>
+<hr>
+<h2 id="完整流程图"><a href="#完整流程图" class="headerlink" title="完整流程图"></a><strong>完整流程图</strong></h2><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">Δ_output [seq_len × d_model]</span><br><span class="line">│</span><br><span class="line">▼  output = h · W_down                    ← 线性层公式</span><br><span class="line">├── ∂L/∂W_down = h^T · Δ_output           → 优化器</span><br><span class="line">Δ_h = Δ_output · W_down^T</span><br><span class="line">│</span><br><span class="line">▼  h = g ⊙ up                             ← 逐元素乘法</span><br><span class="line">Δ_g  = Δ_h ⊙ up        （up 是 g 的系数）</span><br><span class="line">Δ_up = Δ_h ⊙ g         （g 是 up 的系数）</span><br><span class="line">│              │</span><br><span class="line">│              ▼  up = x_norm · W_up       ← 线性层公式</span><br><span class="line">│              ├── ∂L/∂W_up = x_norm^T · Δ_up    → 优化器</span><br><span class="line">│              Δ_x_via_up = Δ_up · W_up^T</span><br><span class="line">│</span><br><span class="line">▼  g = SiLU(gate)                          ← 逐元素函数</span><br><span class="line">Δ_gate = Δ_g ⊙ SiLU'(gate)</span><br><span class="line">│</span><br><span class="line">▼  gate = x_norm · W_gate                 ← 线性层公式</span><br><span class="line">├── ∂L/∂W_gate = x_norm^T · Δ_gate        → 优化器</span><br><span class="line">Δ_x_via_gate = Δ_gate · W_gate^T</span><br><span class="line">│</span><br><span class="line">▼  两路汇合</span><br><span class="line">Δ_x_norm = Δ_x_via_gate + Δ_x_via_up</span><br><span class="line">│</span><br><span class="line">▼  继续往前，经过 RMSNorm 反向传播</span><br><span class="line">│  （上一篇也已经推过了）</span><br><span class="line">│</span><br><span class="line">▼  然后和残差直路汇合</span><br><span class="line">Δ_x_mid = Δ_x_mid_residual + Δ_x_mid_via_ffn</span><br><span class="line">│</span><br><span class="line">▼  传给 Attention 部分</span><br></pre></td></tr></tbody></table></figure>
+
+<hr>
+<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a><strong>小结</strong></h2><h3 id="FFN-反向传播的关键特性"><a href="#FFN-反向传播的关键特性" class="headerlink" title="FFN 反向传播的关键特性"></a><strong>FFN 反向传播的关键特性</strong></h3><h4 id="1-Token-之间完全独立"><a href="#1-Token-之间完全独立" class="headerlink" title="1.Token 之间完全独立"></a><strong>1.Token 之间完全独立</strong></h4><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">FFN 的前向传播：</span><br><span class="line"></span><br><span class="line">token 0:  x[0] ─→ gate[0], up[0] ─→ g[0] ⊙ up[0] ─→ output[0]</span><br><span class="line">token 1:  x[1] ─→ gate[1], up[1] ─→ g[1] ⊙ up[1] ─→ output[1]</span><br><span class="line">token 2:  x[2] ─→ gate[2], up[2] ─→ g[2] ⊙ up[2] ─→ output[2]</span><br></pre></td></tr></tbody></table></figure>
+
+<p>反向传播时也一样：</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Δ_output[0] 的误差 ─→ 只影响 x[0] 的梯度</span><br><span class="line">Δ_output[1] 的误差 ─→ 只影响 x[1] 的梯度</span><br><span class="line">Δ_output[2] 的误差 ─→ 只影响 x[2] 的梯度</span><br></pre></td></tr></tbody></table></figure>
+
+<hr>
+<p>但注意：<strong>$W_{\text{gate}}$、$W_{up}$、$W_{\text{down}}$ 是所有 token 共享的同一套参数</strong>。所以这些参数的梯度是所有 token 各自贡献的梯度累加在一起的结果：</p>
+<p>$$<br>\frac{\partial L}{\partial W_{\text{gate}}} = x_{\text{norm}}^T \cdot \Delta_{\text{gate}} = \sum_t x_{\text{norm}}[t]^T \cdot \Delta_{\text{gate}}[t]<br>$$</p>
+<hr>
+<h3 id="2-需要存档哪些数据"><a href="#2-需要存档哪些数据" class="headerlink" title="2.需要存档哪些数据"></a><strong>2.需要存档哪些数据</strong></h3><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">前向传播时需要存档（反向传播时会用到）：</span><br><span class="line"></span><br><span class="line">x_norm    → 用于计算 W_gate 和 W_up 的梯度</span><br><span class="line">gate      → 用于计算 SiLU 的导数</span><br><span class="line">g         → 用于计算 Δ_up = Δ_h ⊙ g</span><br><span class="line">up        → 用于计算 Δ_g = Δ_h ⊙ up</span><br><span class="line">h         → 用于计算 W_down 的梯度</span><br></pre></td></tr></tbody></table></figure>
+
+<p>这也是为什么训练比推理占用更多显存——所有这些中间值都得留着。</p>
+<hr>
+<h2 id="笔者的话"><a href="#笔者的话" class="headerlink" title="笔者的话"></a><strong>笔者的话</strong></h2><blockquote>
+<p>FFN 的反向传播之所以相对简单，是因为 token 之间完全独立——每个 token 的误差老老实实地沿着自己的路往回走，不会跑到别人的地盘上去。</p>
+</blockquote>
+<p><strong>但 Self-Attention 就不一样了</strong>。在 Attention 里，有两个地方会让 token 之间产生交互：</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Q · K^T：每个 token 的 Query 和所有 token 的 Key 做点积</span><br><span class="line">         → 一个 token 的误差会扩散到所有其他 token</span><br><span class="line"></span><br><span class="line">P · V：  每个 token 的输出是所有 token 的 Value 的加权和</span><br><span class="line">         → 一个 token 的 Value 被所有其他 token 引用</span><br></pre></td></tr></tbody></table></figure>
+
+<p>这意味着反向传播时，误差不再是”直线传播”，而是”网状扩散”——每个 token 的误差都会影响所有其他 token 的梯度。这让 Attention 的反向传播比 FFN 复杂得多，也有趣得多。但不要着急，笔者会同样带着你们学习这些拆解的～😊</p>
+<hr>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a><strong>参考资料</strong></h2><ul>
+<li>Laurent Bou´, <em>Deep learning for pedestrians: backpropagation in Transformers</em></li>
+<li>Stanford lecture, <em>cs336(2025-2026)</em></li>
+</ul>
+
+  </section>
+
+  
+
+  
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
+        packages: {'[+]': ['ams']},
+        processEscapes: true,
+        processEnvironments: true,
+        tags: 'ams'
+      },
+      options: {
+        skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      },
+      svg: {
+        fontCache: 'global'
+      }
+    };
+  </script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-svg.js"></script>
+
+
+</article>
+
+    <footer class="site-footer">
+  <p>&copy; 2026 Lee</p>
+  
+    <p class="site-powered">Powered by <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>. Typography based on <a target="_blank" rel="noopener" href="https://github.com/edwardtufte/tufte-css">Tufte CSS</a>.</p>
+  
+</footer>
+
+    <script src="/scripts/theme-toggle.js" defer></script>
+    <script src="/scripts/left-nav.js" defer></script>
+    <script src="/scripts/back-to-top.js" defer></script>
+    
+      <script src="/scripts/toc-scrollspy.js" defer></script>
+      <script src="/scripts/copy-code.js" defer></script>
+    
+  </body>
+</html>
