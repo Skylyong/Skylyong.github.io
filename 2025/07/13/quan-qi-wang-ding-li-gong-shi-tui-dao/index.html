@@ -12,13 +12,11 @@
 <meta property="og:site_name" content="Lee&#39;s Blog">
 <meta property="og:description" content="Keep go on">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://raw.githubusercontent.com/Skylyong/i/main/20250713155940.jpeg">
 <meta property="article:published_time" content="2025-07-12T16:44:26.000Z">
 <meta property="article:modified_time" content="2025-08-10T10:52:34.000Z">
 <meta property="article:author" content="Lee">
 <meta property="article:tag" content="概率论">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://raw.githubusercontent.com/Skylyong/i/main/20250713155940.jpeg">
   <title>全期望定理公式推导 | Lee's Blog</title>
   
     <link rel="alternate" href="/atom.xml" title="Lee's Blog" type="application/atom+xml">
@@ -1409,10 +1407,17 @@
 <h1 id="对公式的证明"><a href="#对公式的证明" class="headerlink" title="对公式的证明"></a>对公式的证明</h1><h2 id="全期望定理公式的推导"><a href="#全期望定理公式的推导" class="headerlink" title="全期望定理公式的推导"></a>全期望定理公式的推导</h2><p>下面，我们来证明全期望定理公式：$$E[A | C] = \sum_{i=1}^{n} p(B_i | C) E[A |B_i, C] $$</p>
 <p>我们从条件概率的全概率公式（稍后我们再对该公式进行推导）：</p>
 <p>$$<br>\begin{align}<br>p(A=a|C) = \sum_{i=1}^{n} p(A=a|B_i, C) p(B_i|C)<br>\end{align}<br>$$</p>
+
 <p>出发，进行推导。</p>
 <p>首先，对公式(1) 的左边进行加权求和，得到期望表达式：</p>
-<p>$$<br>\begin{align*}<br>    E[A | C] &amp;= \sum_{a\in A} P(a |C)a \<br>\end{align*}<br>$$<br>接下来，代入公式(1) 的右边，得到：<br>$$\begin{align*}<br>    E[A | C] &amp;= \sum_{a\in A} \sum_{i=1}^{n} p(A=a|B_i, C) p(B_i|C) a \<br>    &amp;= \sum_{i=1}^{n}  p(B_i|C) \sum_{a\in A} p(A=a|B_i, C) a \<br>    &amp;= \sum_{i=1}^{n}  p(B_i|C) E[A | B_i, C] \<br>\end{align*}<br>$$<br>最终，我们得到了全期望定理公式：<br>$$E[A | C] = \sum_{i=1}^{n} p(B_i | C) E[A |B_i, C] $$</p>
-<p>至此，我们从条件概率的全概率公式出发，推导出了全期望定理公式。下面我们从更一般的概念，推导条件概率的全概率公式。</p>
+<p>$$<br>\begin{align*}<br>    E[A | C] &= \sum_{a\in A} P(a |C)a \\<br>\end{align*}<br>$$</p>
+接下来，代入公式(1) 的右边，得到：
+$$\begin{align*}
+    E[A | C] &amp;= \sum_{a\in A} \sum_{i=1}^{n} p(A=a|B_i, C) p(B_i|C) a \\
+    &amp;= \sum_{i=1}^{n}  p(B_i|C) \sum_{a\in A} p(A=a|B_i, C) a \\
+    &amp;= \sum_{i=1}^{n}  p(B_i|C) E[A | B_i, C] \\
+\end{align*}
+<p>$$<br>最终，我们得到了全期望定理公式：<br>$$E[A | C] = \sum_{i=1}^{n} p(B_i | C) E[A |B_i, C] $$</p><p>至此，我们从条件概率的全概率公式出发，推导出了全期望定理公式。下面我们从更一般的概念，推导条件概率的全概率公式。</p>
 <h2 id="条件概率的全概率公式的推导"><a href="#条件概率的全概率公式的推导" class="headerlink" title="条件概率的全概率公式的推导"></a>条件概率的全概率公式的推导</h2><ul>
 <li>假设$B_1, B_2, …, B_n$ 是一组互不相容的事件，并且形成样本空间的一个分割；</li>
 <li>$C$是一个确定事件，且 $p(C) &gt; 0$；</li>
@@ -1423,15 +1428,13 @@
 <ol>
 <li>我们从条件概率的定义出发：<br>$p(A | C) = \frac{p(A \cap C)}{p(C)}$，<br>我们希望把$p(A|C)$表达为关于$B_i$的加权和。</li>
 </ol>
- <img src="https://raw.githubusercontent.com/Skylyong/i/main/20250713155940.jpeg" alt="Bellman公式推导" style="zoom: 67%;">
-
-
+<p> &lt;img src=”<a target="_blank" rel="noopener" href="https://raw.githubusercontent.com/Skylyong/i/main/20250713155940.jpeg">https://raw.githubusercontent.com/Skylyong/i/main/20250713155940.jpeg</a>“ alt=”Bellman公式推导” style=”zoom: 67%;” /&gt;</p>
 <ol start="2">
 <li><p>使用全概率公式计算$p(A \cap C)$：因为$B_1, B_2, …$ 是一组互不相容的事件，并形成样本空间的一个分割，所以 $A  \cap C$ = $\bigcup_{i=1}^{n} (A \cap B_i \cap C)$(如图所示)， 同时，这些$A \cap B_i \cap C$<br>两两两互不相容，因此：<br>$$p(A \cap C) = \sum_{i=1}^{n} p(A \cap B_i \cap C)$$</p>
 </li>
 <li><p>根据概率的乘法公式，我们对每一项 $p(A \cap B_i \cap C)$进行展开：<br>$$p(A \cap B_i \cap C) = p(A | B_i \cap C) p(B_i \cap C) $$<br>代入上面的公式，得到：<br>$$p(A \cap C) = \sum_{i=1}^{n} p(A | B_i \cap C) p(B_i \cap C)$$</p>
 </li>
-<li><p>将上式，代入 $p(A | C) = \frac{p(A \cap C)}{p(C)}$，得到：<br>$$<br>\begin{align*}<br>p(A | C) &amp;= \frac{\sum_{i=1}^{n} p(A | B_i \cap C) p(B_i \cap C)}{p(C)} \<br>&amp;= \sum_{i=1}^{n} p(A | B_i \cap C) \frac{p(B_i \cap C)}{p(C)} \<br>&amp;= \sum_{i=1}^{n} p(A | B_i, C) p(B_i | C)<br>\end{align*}<br>$$</p>
+<li><p>将上式，代入 $p(A | C) = \frac{p(A \cap C)}{p(C)}$，得到：<br>$$</p><br>\begin{align*}<br>p(A | C) &amp;= \frac{\sum_{i=1}^{n} p(A | B_i \cap C) p(B_i \cap C)}{p(C)} \<br>&amp;= \sum_{i=1}^{n} p(A | B_i \cap C) \frac{p(B_i \cap C)}{p(C)} \<br>&amp;= \sum_{i=1}^{n} p(A | B_i, C) p(B_i | C)<br>\end{align*}<br>$$<p></p>
 </li>
 <li><p>综上，我们得到了条件概率的全概率公式：<br>$$p(A | C) = \sum_{i=1}^{n} p(A | B_i, C) P(B_i | C)$$</p>
 </li>

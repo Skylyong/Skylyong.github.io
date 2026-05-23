@@ -1377,24 +1377,31 @@
 
   <section class="article-content">
     <h2 id="向量范数的定义"><a href="#向量范数的定义" class="headerlink" title="向量范数的定义"></a>向量范数的定义</h2><p>数学上，向量范数是一个函数 $|\cdot|$，它把向量映射成一个非负实数，并满足以下三个条件（任何合法的范数都要满足）：</p>
-<h3 id="非负性"><a href="#非负性" class="headerlink" title="非负性"></a>非负性</h3><p>$$<br>|x| \geq 0 \quad \text{且} \quad |x| = 0 \iff x = 0<br>$$</p>
+<h3 id="非负性"><a href="#非负性" class="headerlink" title="非负性"></a>非负性</h3><p>$$<br>\|x\| \geq 0 \quad \text{且} \quad \|x\| = 0 \iff x = 0<br>$$</p>
+
 <p>向量的长度不可能是负的，只有零向量长度为零。</p>
-<h3 id="齐次性（homogeneity-scalability）"><a href="#齐次性（homogeneity-scalability）" class="headerlink" title="齐次性（homogeneity / scalability）"></a>齐次性（homogeneity / scalability）</h3><p>$$<br>|\alpha x| = |\alpha| \cdot |x|<br>$$</p>
+<h3 id="齐次性（homogeneity-scalability）"><a href="#齐次性（homogeneity-scalability）" class="headerlink" title="齐次性（homogeneity / scalability）"></a>齐次性（homogeneity / scalability）</h3><p>$$<br>\|\alpha x\| = |\alpha| \cdot \|x\|<br>$$</p>
+
 <p>缩放向量，长度也按比例缩放。</p>
-<h3 id="三角不等式"><a href="#三角不等式" class="headerlink" title="三角不等式"></a>三角不等式</h3><p>$$<br>|x + y| \leq |x| + |y|<br>$$</p>
+<h3 id="三角不等式"><a href="#三角不等式" class="headerlink" title="三角不等式"></a>三角不等式</h3><p>$$<br>\|x + y\| \leq \|x\| + \|y\|<br>$$</p>
+
 <p>两个向量相加的“长度”不会超过它们长度之和（几何上就是三角形不等式）。</p>
 <hr>
-<h2 id="常见的向量范数"><a href="#常见的向量范数" class="headerlink" title="常见的向量范数"></a>常见的向量范数</h2><h3 id="欧几里得范数（2范数）"><a href="#欧几里得范数（2范数）" class="headerlink" title="欧几里得范数（2范数）"></a>欧几里得范数（2范数）</h3><p>$$<br>|x|_2 = \sqrt{x_1^2 + x_2^2 + \cdots + x_n^2}<br>$$</p>
+<h2 id="常见的向量范数"><a href="#常见的向量范数" class="headerlink" title="常见的向量范数"></a>常见的向量范数</h2><h3 id="欧几里得范数（2范数）"><a href="#欧几里得范数（2范数）" class="headerlink" title="欧几里得范数（2范数）"></a>欧几里得范数（2范数）</h3><p>$$<br>\|x\|_2 = \sqrt{x_1^2 + x_2^2 + \cdots + x_n^2}<br>$$</p>
+
 <p>就是普通的直线距离。</p>
-<h3 id="1范数"><a href="#1范数" class="headerlink" title="1范数"></a>1范数</h3><p>$$<br>|x|_1 = |x_1| + |x_2| + \cdots + |x_n|<br>$$</p>
+<h3 id="1范数"><a href="#1范数" class="headerlink" title="1范数"></a>1范数</h3><p>$$<br>\|x\|_1 = |x_1| + |x_2| + \cdots + |x_n|<br>$$</p>
+
 <p>像是“走格子”的距离（曼哈顿距离）。</p>
-<h3 id="无穷范数（∞范数）"><a href="#无穷范数（∞范数）" class="headerlink" title="无穷范数（∞范数）"></a>无穷范数（∞范数）</h3><p>$$<br>|x|_{\infty} = \max_i |x_i|<br>$$</p>
+<h3 id="无穷范数（∞范数）"><a href="#无穷范数（∞范数）" class="headerlink" title="无穷范数（∞范数）"></a>无穷范数（∞范数）</h3><p>$$<br>\|x\|_{\infty} = \max_i |x_i|<br>$$</p>
+
 <p>取坐标里绝对值最大的那一项。</p>
 <h2 id="对欧几里得距离和曼哈顿距离的理解"><a href="#对欧几里得距离和曼哈顿距离的理解" class="headerlink" title="对欧几里得距离和曼哈顿距离的理解"></a>对欧几里得距离和曼哈顿距离的理解</h2><p>假设你在一个城市的街区网格里走路，比如纽约曼哈顿区。街道是按规则的直线网格分布，不能直接穿过建筑物，所以你不能用“直线距离”穿墙过去。</p>
 <p><strong>欧几里得距离（直线距离）</strong>：是你两点之间“飞过去”的最短距离，类似鸟儿直接从一点飞到另一点。</p>
 <p><strong>曼哈顿距离（1范数）</strong>：是你只能沿着街道（水平或垂直方向）走的最短路径距离。比如你从一个路口走到另一个路口，你只能沿着横街和纵街走，走的路径就像在走棋盘上的格子一样。</p>
 <p>用公式来说，两个点  $x = (x_1, x_2, \dots, x_n)$ 和 $y = (y_1, y_2, \dots, y_n)$ 的曼哈顿距离是：</p>
 <p>$$<br>\sum_{i=1}^n |x_i - y_i|<br>$$</p>
+
 <p>这就像你先沿着第一条街走几格，再沿着第二条街走几格，两个方向的路程加起来，就是总路程。</p>
 <p>所以“走格子”的意思是：你走的路径只能是水平方向和垂直方向的格子线段的总和，而不是两点间的直线。</p>
 

@@ -1456,12 +1456,14 @@
 <p><span class="marginnote"><strong>SwiGLU函数</strong></span></p>
 <p>SiLU（也叫 Swish）的定义：</p>
 <p>$$<br>\operatorname{SiLU}(z) = z \cdot \sigma(z) = \frac{z}{1 + e^{-z}}<br>$$</p>
+
 <p>其中 $\sigma(z) = \frac{1}{1 + e^{-z}}$ 是 sigmoid 函数。</p>
 <figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">三种激活函数的对比：</span><br><span class="line"></span><br><span class="line">ReLU：  ____/        硬拐角，负数直接归零</span><br><span class="line">GELU：  ___/~        平滑版 ReLU，负数接近零但不完全为零</span><br><span class="line">SiLU：  __/~~        类似 GELU，但公式更简洁，导数更好算</span><br></pre></td></tr></tbody></table></figure>
 
 <hr>
 <p>SiLU 的导数（后面反向传播要用）：</p>
-<p>$$<br>\operatorname{SiLU}’(z) = \sigma(z) + z \cdot \sigma(z) \cdot (1 - \sigma(z)) = \sigma(z) \cdot (1 + z \cdot (1 - \sigma(z)))<br>$$</p>
+<p>$$<br>\operatorname{SiLU}'(z) = \sigma(z) + z \cdot \sigma(z) \cdot (1 - \sigma(z)) = \sigma(z) \cdot (1 + z \cdot (1 - \sigma(z)))<br>$$</p>
+
 <p>看起来复杂，但其实只是 sigmoid 的组合，计算很高效。</p>
 <hr>
 <h2 id="进入-Block：先碰到残差连接"><a href="#进入-Block：先碰到残差连接" class="headerlink" title="进入 Block：先碰到残差连接"></a><strong>进入 Block：先碰到残差连接</strong></h2><blockquote>
@@ -1488,22 +1490,30 @@
 </blockquote>
 <h3 id="第五步：-text-output-h-cdot-W-text-down"><a href="#第五步：-text-output-h-cdot-W-text-down" class="headerlink" title="第五步：$\text{output} = h \cdot W_{\text{down}}$"></a><strong>第五步：$\text{output} = h \cdot W_{\text{down}}$</strong></h3><p>这就是我们已经推过的线性层！直接用两个核心公式：</p>
 <p>$$<br>\frac{\partial L}{\partial W_{\text{down}}} = h^T \cdot \Delta_{\text{output}}<br>$$</p>
+
 <p>$W_{\text{down}}$ 的梯度交给优化器，$\Delta_h$ 继续往前传。</p>
 <hr>
 <h3 id="第四步：-h-g-odot-up"><a href="#第四步：-h-g-odot-up" class="headerlink" title="第四步：$h = g \odot up$"></a><strong>第四步：$h = g \odot up$</strong></h3><p>这里是逐元素乘法，不是矩阵乘法。</p>
 <p>前向传播时，每个元素的计算是独立的：</p>
 <p>$$<br>h_i = g_i \times up_i<br>$$</p>
+
 <p>所以对 $g_i$ 求导：</p>
 <p>$$<br>\frac{\partial h_i}{\partial g_i} = up_i<br>$$</p>
+
 <p>对 $up_i$ 求导：</p>
 <p>$$<br>\frac{\partial h_i}{\partial up_i} = g_i<br>$$</p>
+
 <hr>
 <p>用链式法则：</p>
 <p>$$<br>\Delta_{g,i} = \Delta_{h,i} \times up_i<br>$$</p>
+
 <p>$$<br>\Delta_{up,i} = \Delta_{h,i} \times g_i<br>$$</p>
+
 <p>写成向量形式：</p>
 <p>$$<br>\Delta_g = \Delta_h \odot up<br>$$</p>
+
 <p>$$<br>\Delta_{up} = \Delta_h \odot g<br>$$</p>
+
 <blockquote>
 <p>$g$ 和 $up$ 在逐元素乘法里互为对方的”系数”。<br>$g$ 的误差取决于它当时乘的那个数（$up$）有多大。<br>$up$ 的误差取决于它当时乘的那个数（$g$）有多大。  </p>
 <p>这就是为什么前向传播时需要把 $g$ 和 $up$ 都<strong>存档</strong>——反向传播时，每一方都需要对方的值。</p>
@@ -1511,9 +1521,11 @@
 <p>这里误差<strong>兵分两路</strong>：$\Delta_g$ 去追查门控路线，$\Delta_{up}$ 去追查内容路线。</p>
 <hr>
 <h3 id="第三步：-g-operatorname-SiLU-text-gate"><a href="#第三步：-g-operatorname-SiLU-text-gate" class="headerlink" title="第三步：$g = \operatorname{SiLU}(\text{gate})$"></a><strong>第三步：$g = \operatorname{SiLU}(\text{gate})$</strong></h3><p>SiLU 是逐元素函数，反向传播的规则很简单：</p>
-<p>$$<br>\Delta_{\text{gate}} = \Delta_g \odot \operatorname{SiLU}’(\text{gate})<br>$$</p>
+<p>$$<br>\Delta_{\text{gate}} = \Delta_g \odot \operatorname{SiLU}'(\text{gate})<br>$$</p>
+
 <p>其中 SiLU 的导数是：</p>
-<p>$$<br>\operatorname{SiLU}’(z) = \sigma(z) \cdot (1 + z \cdot (1 - \sigma(z)))<br>$$</p>
+<p>$$<br>\operatorname{SiLU}'(z) = \sigma(z) \cdot (1 + z \cdot (1 - \sigma(z)))<br>$$</p>
+
 <blockquote>
 <p><strong>和 ReLU 的对比</strong>：</p>
 <figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">ReLU 的反向传播：</span><br><span class="line">  Δ_z = Δ · mask(z &gt; 0)</span><br><span class="line">  → gate &gt; 0 的通道：误差完整通过</span><br><span class="line">  → gate ≤ 0 的通道：误差被完全阻断</span><br><span class="line">  → 硬开关：要么全通，要么全断</span><br><span class="line"></span><br><span class="line">SiLU 的反向传播：</span><br><span class="line">  Δ_z = Δ · SiLU'(gate)</span><br><span class="line">  → SiLU' 是连续函数，永远不会完全为 0</span><br><span class="line">  → 所有通道都能传递一些梯度</span><br><span class="line">  → 软开关：有些通道多传一点，有些少传一点</span><br></pre></td></tr></tbody></table></figure>
@@ -1524,14 +1536,19 @@
 <h3 id="第二步和第一步：两个线性层"><a href="#第二步和第一步：两个线性层" class="headerlink" title="第二步和第一步：两个线性层"></a><strong>第二步和第一步：两个线性层</strong></h3><p>现在我们有两路误差分别回到了两个线性层：</p>
 <p><strong>门控路线：$\text{gate} = x_{\text{norm}} \cdot W_{\text{gate}}$</strong></p>
 <p>$$<br>\frac{\partial L}{\partial W_{\text{gate}}} = x_{\text{norm}}^T \cdot \Delta_{\text{gate}}<br>$$</p>
+
 <p>$$<br>\Delta_{x,\text{via gate}} = \Delta_{\text{gate}} \cdot W_{\text{gate}}^T<br>$$</p>
+
 <hr>
 <p><strong>内容路线：$up = x_{\text{norm}} \cdot W_{up}$</strong></p>
 <p>$$<br>\frac{\partial L}{\partial W_{up}} = x_{\text{norm}}^T \cdot \Delta_{up}<br>$$</p>
+
 <p>$$<br>\Delta_{x,\text{via up}} = \Delta_{up} \cdot W_{up}^T<br>$$</p>
+
 <hr>
 <h3 id="两路误差在-x-text-norm-处汇合"><a href="#两路误差在-x-text-norm-处汇合" class="headerlink" title="两路误差在 $x_{\text{norm}}$ 处汇合"></a>两路误差在 $x_{\text{norm}}$ 处汇合</h3><p>$x_{\text{norm}}$ 同时”兼职”了两个角色（门控和内容），两条路的误差都要算到它头上：</p>
 <p>$$<br>\Delta_{x_{\text{norm}}} = \Delta_{x,\text{via gate}} + \Delta_{x,\text{via up}}<br>$$</p>
+
 <hr>
 <h2 id="完整流程图"><a href="#完整流程图" class="headerlink" title="完整流程图"></a><strong>完整流程图</strong></h2><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">Δ_output [seq_len × d_model]</span><br><span class="line">│</span><br><span class="line">▼  output = h · W_down                    ← 线性层公式</span><br><span class="line">├── ∂L/∂W_down = h^T · Δ_output           → 优化器</span><br><span class="line">Δ_h = Δ_output · W_down^T</span><br><span class="line">│</span><br><span class="line">▼  h = g ⊙ up                             ← 逐元素乘法</span><br><span class="line">Δ_g  = Δ_h ⊙ up        （up 是 g 的系数）</span><br><span class="line">Δ_up = Δ_h ⊙ g         （g 是 up 的系数）</span><br><span class="line">│              │</span><br><span class="line">│              ▼  up = x_norm · W_up       ← 线性层公式</span><br><span class="line">│              ├── ∂L/∂W_up = x_norm^T · Δ_up    → 优化器</span><br><span class="line">│              Δ_x_via_up = Δ_up · W_up^T</span><br><span class="line">│</span><br><span class="line">▼  g = SiLU(gate)                          ← 逐元素函数</span><br><span class="line">Δ_gate = Δ_g ⊙ SiLU'(gate)</span><br><span class="line">│</span><br><span class="line">▼  gate = x_norm · W_gate                 ← 线性层公式</span><br><span class="line">├── ∂L/∂W_gate = x_norm^T · Δ_gate        → 优化器</span><br><span class="line">Δ_x_via_gate = Δ_gate · W_gate^T</span><br><span class="line">│</span><br><span class="line">▼  两路汇合</span><br><span class="line">Δ_x_norm = Δ_x_via_gate + Δ_x_via_up</span><br><span class="line">│</span><br><span class="line">▼  继续往前，经过 RMSNorm 反向传播</span><br><span class="line">│  （上一篇也已经推过了）</span><br><span class="line">│</span><br><span class="line">▼  然后和残差直路汇合</span><br><span class="line">Δ_x_mid = Δ_x_mid_residual + Δ_x_mid_via_ffn</span><br><span class="line">│</span><br><span class="line">▼  传给 Attention 部分</span><br></pre></td></tr></tbody></table></figure>
 
@@ -1544,6 +1561,7 @@
 <hr>
 <p>但注意：<strong>$W_{\text{gate}}$、$W_{up}$、$W_{\text{down}}$ 是所有 token 共享的同一套参数</strong>。所以这些参数的梯度是所有 token 各自贡献的梯度累加在一起的结果：</p>
 <p>$$<br>\frac{\partial L}{\partial W_{\text{gate}}} = x_{\text{norm}}^T \cdot \Delta_{\text{gate}} = \sum_t x_{\text{norm}}[t]^T \cdot \Delta_{\text{gate}}[t]<br>$$</p>
+
 <hr>
 <h3 id="2-需要存档哪些数据"><a href="#2-需要存档哪些数据" class="headerlink" title="2.需要存档哪些数据"></a><strong>2.需要存档哪些数据</strong></h3><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">前向传播时需要存档（反向传播时会用到）：</span><br><span class="line"></span><br><span class="line">x_norm    → 用于计算 W_gate 和 W_up 的梯度</span><br><span class="line">gate      → 用于计算 SiLU 的导数</span><br><span class="line">g         → 用于计算 Δ_up = Δ_h ⊙ g</span><br><span class="line">up        → 用于计算 Δ_g = Δ_h ⊙ up</span><br><span class="line">h         → 用于计算 W_down 的梯度</span><br></pre></td></tr></tbody></table></figure>
 

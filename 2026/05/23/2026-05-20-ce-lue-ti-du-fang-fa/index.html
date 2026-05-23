@@ -17,7 +17,7 @@
 <meta property="og:image" content="https://skylyong.github.io/image/2026-05-20-%E7%AD%96%E7%95%A5%E6%A2%AF%E5%BA%A6%E6%96%B9%E6%B3%95/2026-05-20-%E7%AD%96%E7%95%A5%E6%A2%AF%E5%BA%A6%E6%96%B9%E6%B3%95%E5%AD%A6%E4%B9%A0%E6%80%BB%E8%A7%88-1779280978581.webp">
 <meta property="og:image" content="https://skylyong.github.io/image/2026-05-20-%E7%AD%96%E7%95%A5%E6%A2%AF%E5%BA%A6%E6%96%B9%E6%B3%95/2026-05-20-%E7%AD%96%E7%95%A5%E6%A2%AF%E5%BA%A6%E6%96%B9%E6%B3%95%E5%AD%A6%E4%B9%A0%E6%80%BB%E8%A7%88-1779278006000.webp">
 <meta property="article:published_time" content="2026-05-22T20:31:55.000Z">
-<meta property="article:modified_time" content="2026-05-23T09:24:02.000Z">
+<meta property="article:modified_time" content="2026-05-23T10:40:01.000Z">
 <meta property="article:author" content="Lee">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://skylyong.github.io/image/2026-05-20-%E7%AD%96%E7%95%A5%E6%A2%AF%E5%BA%A6%E6%96%B9%E6%B3%95/2026-05-20-%E7%AD%96%E7%95%A5%E6%A2%AF%E5%BA%A6%E6%96%B9%E6%B3%95%E5%AD%A6%E4%B9%A0%E6%80%BB%E8%A7%88-1779267783622.webp">
@@ -1362,7 +1362,7 @@
   </button>
   <aside class="toc-sidebar" id="toc-sidebar" aria-label="Table of contents">
     <p class="toc-title">Contents</p>
-    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AD%96%E7%95%A5%E6%A2%AF%E5%BA%A6%E6%96%B9%E6%B3%95%E5%9F%BA%E7%A1%80"><span class="toc-text">策略梯度方法基础</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E7%AD%96%E7%95%A5%E7%9A%84%E7%9B%AE%E6%A0%87%E5%87%BD%E6%95%B0"><span class="toc-text">1. 策略的目标函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E7%AD%96%E7%95%A5%E6%A2%AF%E5%BA%A6%E7%9A%84%E5%9F%BA%E6%9C%AC%E5%85%AC%E5%BC%8F"><span class="toc-text">2. 策略梯度的基本公式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E4%BC%98%E5%8C%96%E4%B8%8E%E6%96%B9%E5%B7%AE%E9%99%8D%E4%BD%8E"><span class="toc-text">3. 优化与方差降低</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%E6%A2%AF%E5%BA%A6%E6%9B%B4%E6%96%B0"><span class="toc-text">4. 梯度更新</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-Actor-Critic-%E6%96%B9%E6%B3%95"><span class="toc-text">5. Actor-Critic 方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-text">总结</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E4%B8%80%E9%98%B6%E6%AE%B5%EF%BC%9A%E7%AD%96%E7%95%A5%E6%A2%AF%E5%BA%A6%E4%B8%8E%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95%EF%BC%88%E7%90%86%E8%AE%BA%E5%9F%BA%E7%A1%80%EF%BC%89"><span class="toc-text">第一阶段：策略梯度与基础算法（理论基础）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E4%BA%8C%E9%98%B6%E6%AE%B5%EF%BC%9AActor-Critic-%E4%B8%8E%E6%94%B9%E8%BF%9B%E4%BC%B0%E8%AE%A1%E6%96%B9%E6%B3%95%EF%BC%882000%E2%80%932015%EF%BC%89"><span class="toc-text">第二阶段：Actor-Critic 与改进估计方法（2000–2015）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E4%B8%89%E9%98%B6%E6%AE%B5%EF%BC%9APPO-%E6%A0%B8%E5%BF%83%E7%AA%81%E7%A0%B4%E4%B8%8E%E4%BC%98%E5%8C%96%EF%BC%882017%EF%BC%89"><span class="toc-text">第三阶段：PPO 核心突破与优化（2017）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E5%9B%9B%E9%98%B6%E6%AE%B5%EF%BC%9APPO-%E5%90%8E%E7%BB%A7%E4%B8%8E%E5%A4%A7%E6%A8%A1%E5%9E%8B%E5%BA%94%E7%94%A8%EF%BC%882020%E2%80%932024%EF%BC%89"><span class="toc-text">第四阶段：PPO 后继与大模型应用（2020–2024）</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BB%8E-REINFORCE-%E5%88%B0-Policy-Gradient-Methods-%E5%86%8D%E5%88%B0-Actor-Critic"><span class="toc-text">从 REINFORCE 到 Policy Gradient Methods 再到 Actor-Critic</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E6%80%BB%E4%BD%93%E5%8F%91%E5%B1%95%E8%84%89%E7%BB%9C"><span class="toc-text">1. 总体发展脉络</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-REINFORCE%EF%BC%9A%E6%9C%80%E6%97%A9%E7%9A%84%E7%AD%96%E7%95%A5%E6%A2%AF%E5%BA%A6%E7%AE%97%E6%B3%95"><span class="toc-text">2. REINFORCE：最早的策略梯度算法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-%E6%A0%B8%E5%BF%83%E6%80%9D%E6%83%B3"><span class="toc-text">2.1 核心思想</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-%E6%A2%AF%E5%BA%A6%E5%85%AC%E5%BC%8F"><span class="toc-text">2.2 梯度公式</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#nabla-theta-J-theta"><span class="toc-text">$$\nabla_\theta J(\theta)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3-%E7%9B%B4%E8%A7%82%E7%90%86%E8%A7%A3"><span class="toc-text">2.3 直观理解</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-4-%E4%BC%98%E7%82%B9%E4%B8%8E%E9%97%AE%E9%A2%98"><span class="toc-text">2.4 优点与问题</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-Policy-Gradient-Methods%EF%BC%9A%E7%AD%96%E7%95%A5%E6%A2%AF%E5%BA%A6%E7%90%86%E8%AE%BA%E7%9A%84%E7%B3%BB%E7%BB%9F%E5%8C%96"><span class="toc-text">3. Policy Gradient Methods：策略梯度理论的系统化</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-%E4%B8%BA%E4%BB%80%E4%B9%88%E9%9C%80%E8%A6%81%E8%BF%9B%E4%B8%80%E6%AD%A5%E5%8F%91%E5%B1%95"><span class="toc-text">3.1 为什么需要进一步发展</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-%E7%9B%AE%E6%A0%87%E5%87%BD%E6%95%B0"><span class="toc-text">3.2 目标函数</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#J-theta"><span class="toc-text">$$J(\theta)</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#R-tau"><span class="toc-text">$$R(\tau)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-3-%E7%AD%96%E7%95%A5%E6%A2%AF%E5%BA%A6%E5%AE%9A%E7%90%86"><span class="toc-text">3.3 策略梯度定理</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#nabla-theta-J-theta-1"><span class="toc-text">$$\nabla_\theta J(\theta)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-4-%E5%BC%95%E5%85%A5-baseline-%E4%B8%8E%E4%BC%98%E5%8A%BF%E5%87%BD%E6%95%B0"><span class="toc-text">3.4 引入 baseline 与优势函数</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#nabla-theta-J-theta-2"><span class="toc-text">$$\nabla_\theta J(\theta)</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#A-pi-s-a"><span class="toc-text">$$A^\pi(s,a)</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#nabla-theta-J-theta-3"><span class="toc-text">$$\nabla_\theta J(\theta)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-5-%E7%9B%B8%E6%AF%94-REINFORCE-%E7%9A%84%E6%8E%A8%E8%BF%9B"><span class="toc-text">3.5 相比 REINFORCE 的推进</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-Actor-Critic%EF%BC%9A%E7%94%A8%E4%BB%B7%E5%80%BC%E5%87%BD%E6%95%B0%E8%BE%85%E5%8A%A9%E7%AD%96%E7%95%A5%E6%9B%B4%E6%96%B0"><span class="toc-text">4. Actor-Critic：用价值函数辅助策略更新</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#4-1-%E6%A0%B8%E5%BF%83%E5%8A%A8%E6%9C%BA"><span class="toc-text">4.1 核心动机</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-2-Actor"><span class="toc-text">4.2 Actor</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#J-theta-1"><span class="toc-text">$$J(\theta)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#4-3-Critic"><span class="toc-text">4.3 Critic</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-4-TD-%E8%AF%AF%E5%B7%AE"><span class="toc-text">4.4 TD 误差</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#delta-t"><span class="toc-text">$$\delta_t</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#r-t-gamma-V-w-s-t-1"><span class="toc-text">r_t+\gamma V_w(s_{t+1})</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#4-5-Actor-%E7%9A%84%E6%9B%B4%E6%96%B0"><span class="toc-text">4.5 Actor 的更新</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-6-Critic-%E7%9A%84%E6%9B%B4%E6%96%B0"><span class="toc-text">4.6 Critic 的更新</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-7-%E5%8F%8C%E6%97%B6%E9%97%B4%E5%B0%BA%E5%BA%A6%E6%80%9D%E6%83%B3"><span class="toc-text">4.7 双时间尺度思想</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-%E4%B8%89%E8%80%85%E4%B9%8B%E9%97%B4%E7%9A%84%E6%A0%B8%E5%BF%83%E5%8C%BA%E5%88%AB"><span class="toc-text">5. 三者之间的核心区别</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-%E4%BB%8E%E5%85%AC%E5%BC%8F%E8%A7%92%E5%BA%A6%E7%9C%8B%E4%B8%89%E8%80%85%E6%BC%94%E8%BF%9B"><span class="toc-text">6. 从公式角度看三者演进</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#6-1-REINFORCE"><span class="toc-text">6.1 REINFORCE</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#nabla-theta-J-theta-4"><span class="toc-text">$$\nabla_\theta J(\theta)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#6-2-Policy-Gradient-Methods"><span class="toc-text">6.2 Policy Gradient Methods</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#nabla-theta-J-theta-5"><span class="toc-text">$$\nabla_\theta J(\theta)</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#nabla-theta-J-theta-6"><span class="toc-text">$$\nabla_\theta J(\theta)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#6-3-Actor-Critic"><span class="toc-text">6.3 Actor-Critic</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#delta-t-1"><span class="toc-text">$$\delta_t</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#r-t-gamma-V-w-s-t-1-1"><span class="toc-text">r_t+\gamma V_w(s_{t+1})</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-%E5%AD%A6%E4%B9%A0%E8%BF%99%E4%B8%89%E4%B8%AA%E6%96%B9%E6%B3%95%E6%97%B6%E5%BA%94%E6%8A%93%E4%BD%8F%E7%9A%84%E4%B8%BB%E7%BA%BF"><span class="toc-text">7. 学习这三个方法时应抓住的主线</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#7-1-%E7%AC%AC%E4%B8%80%E6%9D%A1%E4%B8%BB%E7%BA%BF%EF%BC%9A%E6%9B%B4%E6%96%B0%E4%BF%A1%E5%8F%B7%E5%A6%82%E4%BD%95%E5%8F%98%E5%8C%96"><span class="toc-text">7.1 第一条主线：更新信号如何变化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-2-%E7%AC%AC%E4%BA%8C%E6%9D%A1%E4%B8%BB%E7%BA%BF%EF%BC%9A%E6%96%B9%E5%B7%AE%E4%B8%8E%E5%81%8F%E5%B7%AE%E7%9A%84%E6%9D%83%E8%A1%A1"><span class="toc-text">7.2 第二条主线：方差与偏差的权衡</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-3-%E7%AC%AC%E4%B8%89%E6%9D%A1%E4%B8%BB%E7%BA%BF%EF%BC%9A%E4%BB%8E%E7%A6%BB%E7%BA%BF%E5%9B%9E%E5%90%88%E6%9B%B4%E6%96%B0%E5%88%B0%E5%9C%A8%E7%BA%BF%E5%A2%9E%E9%87%8F%E6%9B%B4%E6%96%B0"><span class="toc-text">7.3 第三条主线：从离线回合更新到在线增量更新</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#delta-t-2"><span class="toc-text">$$\delta_t</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#8-%E6%8E%A8%E8%8D%90%E5%AD%A6%E4%B9%A0%E9%A1%BA%E5%BA%8F"><span class="toc-text">8. 推荐学习顺序</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E4%B8%80%E6%AD%A5%EF%BC%9A%E7%90%86%E8%A7%A3-REINFORCE"><span class="toc-text">第一步：理解 REINFORCE</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E4%BA%8C%E6%AD%A5%EF%BC%9A%E7%90%86%E8%A7%A3%E7%AD%96%E7%95%A5%E6%A2%AF%E5%BA%A6%E5%AE%9A%E7%90%86"><span class="toc-text">第二步：理解策略梯度定理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E4%B8%89%E6%AD%A5%EF%BC%9A%E7%90%86%E8%A7%A3-Actor-Critic"><span class="toc-text">第三步：理解 Actor-Critic</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#9-%E4%B8%8E%E7%8E%B0%E4%BB%A3%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E7%AE%97%E6%B3%95%E7%9A%84%E5%85%B3%E7%B3%BB"><span class="toc-text">9. 与现代强化学习算法的关系</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#10-%E6%80%BB%E7%BB%93"><span class="toc-text">10. 总结</span></a></li></ol></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AD%96%E7%95%A5%E6%A2%AF%E5%BA%A6%E6%96%B9%E6%B3%95%E5%9F%BA%E7%A1%80"><span class="toc-text">策略梯度方法基础</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E7%AD%96%E7%95%A5%E7%9A%84%E7%9B%AE%E6%A0%87%E5%87%BD%E6%95%B0"><span class="toc-text">1. 策略的目标函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E7%AD%96%E7%95%A5%E6%A2%AF%E5%BA%A6%E7%9A%84%E5%9F%BA%E6%9C%AC%E5%85%AC%E5%BC%8F"><span class="toc-text">2. 策略梯度的基本公式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E4%BC%98%E5%8C%96%E4%B8%8E%E6%96%B9%E5%B7%AE%E9%99%8D%E4%BD%8E"><span class="toc-text">3. 优化与方差降低</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%E6%A2%AF%E5%BA%A6%E6%9B%B4%E6%96%B0"><span class="toc-text">4. 梯度更新</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-Actor-Critic-%E6%96%B9%E6%B3%95"><span class="toc-text">5. Actor-Critic 方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-text">总结</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E4%B8%80%E9%98%B6%E6%AE%B5%EF%BC%9A%E7%AD%96%E7%95%A5%E6%A2%AF%E5%BA%A6%E4%B8%8E%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95%EF%BC%88%E7%90%86%E8%AE%BA%E5%9F%BA%E7%A1%80%EF%BC%89"><span class="toc-text">第一阶段：策略梯度与基础算法（理论基础）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E4%BA%8C%E9%98%B6%E6%AE%B5%EF%BC%9AActor-Critic-%E4%B8%8E%E6%94%B9%E8%BF%9B%E4%BC%B0%E8%AE%A1%E6%96%B9%E6%B3%95%EF%BC%882000%E2%80%932015%EF%BC%89"><span class="toc-text">第二阶段：Actor-Critic 与改进估计方法（2000–2015）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E4%B8%89%E9%98%B6%E6%AE%B5%EF%BC%9APPO-%E6%A0%B8%E5%BF%83%E7%AA%81%E7%A0%B4%E4%B8%8E%E4%BC%98%E5%8C%96%EF%BC%882017%EF%BC%89"><span class="toc-text">第三阶段：PPO 核心突破与优化（2017）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E5%9B%9B%E9%98%B6%E6%AE%B5%EF%BC%9APPO-%E5%90%8E%E7%BB%A7%E4%B8%8E%E5%A4%A7%E6%A8%A1%E5%9E%8B%E5%BA%94%E7%94%A8%EF%BC%882020%E2%80%932024%EF%BC%89"><span class="toc-text">第四阶段：PPO 后继与大模型应用（2020–2024）</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BB%8E-REINFORCE-%E5%88%B0-Policy-Gradient-Methods-%E5%86%8D%E5%88%B0-Actor-Critic"><span class="toc-text">从 REINFORCE 到 Policy Gradient Methods 再到 Actor-Critic</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E6%80%BB%E4%BD%93%E5%8F%91%E5%B1%95%E8%84%89%E7%BB%9C"><span class="toc-text">1. 总体发展脉络</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-REINFORCE%EF%BC%9A%E6%9C%80%E6%97%A9%E7%9A%84%E7%AD%96%E7%95%A5%E6%A2%AF%E5%BA%A6%E7%AE%97%E6%B3%95"><span class="toc-text">2. REINFORCE：最早的策略梯度算法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-%E6%A0%B8%E5%BF%83%E6%80%9D%E6%83%B3"><span class="toc-text">2.1 核心思想</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-%E6%A2%AF%E5%BA%A6%E5%85%AC%E5%BC%8F"><span class="toc-text">2.2 梯度公式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3-%E7%9B%B4%E8%A7%82%E7%90%86%E8%A7%A3"><span class="toc-text">2.3 直观理解</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-4-%E4%BC%98%E7%82%B9%E4%B8%8E%E9%97%AE%E9%A2%98"><span class="toc-text">2.4 优点与问题</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-Policy-Gradient-Methods%EF%BC%9A%E7%AD%96%E7%95%A5%E6%A2%AF%E5%BA%A6%E7%90%86%E8%AE%BA%E7%9A%84%E7%B3%BB%E7%BB%9F%E5%8C%96"><span class="toc-text">3. Policy Gradient Methods：策略梯度理论的系统化</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-%E4%B8%BA%E4%BB%80%E4%B9%88%E9%9C%80%E8%A6%81%E8%BF%9B%E4%B8%80%E6%AD%A5%E5%8F%91%E5%B1%95"><span class="toc-text">3.1 为什么需要进一步发展</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-%E7%9B%AE%E6%A0%87%E5%87%BD%E6%95%B0"><span class="toc-text">3.2 目标函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-3-%E7%AD%96%E7%95%A5%E6%A2%AF%E5%BA%A6%E5%AE%9A%E7%90%86"><span class="toc-text">3.3 策略梯度定理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-4-%E5%BC%95%E5%85%A5-baseline-%E4%B8%8E%E4%BC%98%E5%8A%BF%E5%87%BD%E6%95%B0"><span class="toc-text">3.4 引入 baseline 与优势函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-5-%E7%9B%B8%E6%AF%94-REINFORCE-%E7%9A%84%E6%8E%A8%E8%BF%9B"><span class="toc-text">3.5 相比 REINFORCE 的推进</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-Actor-Critic%EF%BC%9A%E7%94%A8%E4%BB%B7%E5%80%BC%E5%87%BD%E6%95%B0%E8%BE%85%E5%8A%A9%E7%AD%96%E7%95%A5%E6%9B%B4%E6%96%B0"><span class="toc-text">4. Actor-Critic：用价值函数辅助策略更新</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#4-1-%E6%A0%B8%E5%BF%83%E5%8A%A8%E6%9C%BA"><span class="toc-text">4.1 核心动机</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-2-Actor"><span class="toc-text">4.2 Actor</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-3-Critic"><span class="toc-text">4.3 Critic</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-4-TD-%E8%AF%AF%E5%B7%AE"><span class="toc-text">4.4 TD 误差</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-5-Actor-%E7%9A%84%E6%9B%B4%E6%96%B0"><span class="toc-text">4.5 Actor 的更新</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-6-Critic-%E7%9A%84%E6%9B%B4%E6%96%B0"><span class="toc-text">4.6 Critic 的更新</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-7-%E5%8F%8C%E6%97%B6%E9%97%B4%E5%B0%BA%E5%BA%A6%E6%80%9D%E6%83%B3"><span class="toc-text">4.7 双时间尺度思想</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-%E4%B8%89%E8%80%85%E4%B9%8B%E9%97%B4%E7%9A%84%E6%A0%B8%E5%BF%83%E5%8C%BA%E5%88%AB"><span class="toc-text">5. 三者之间的核心区别</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-%E4%BB%8E%E5%85%AC%E5%BC%8F%E8%A7%92%E5%BA%A6%E7%9C%8B%E4%B8%89%E8%80%85%E6%BC%94%E8%BF%9B"><span class="toc-text">6. 从公式角度看三者演进</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#6-1-REINFORCE"><span class="toc-text">6.1 REINFORCE</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-2-Policy-Gradient-Methods"><span class="toc-text">6.2 Policy Gradient Methods</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-3-Actor-Critic"><span class="toc-text">6.3 Actor-Critic</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-%E5%AD%A6%E4%B9%A0%E8%BF%99%E4%B8%89%E4%B8%AA%E6%96%B9%E6%B3%95%E6%97%B6%E5%BA%94%E6%8A%93%E4%BD%8F%E7%9A%84%E4%B8%BB%E7%BA%BF"><span class="toc-text">7. 学习这三个方法时应抓住的主线</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#7-1-%E7%AC%AC%E4%B8%80%E6%9D%A1%E4%B8%BB%E7%BA%BF%EF%BC%9A%E6%9B%B4%E6%96%B0%E4%BF%A1%E5%8F%B7%E5%A6%82%E4%BD%95%E5%8F%98%E5%8C%96"><span class="toc-text">7.1 第一条主线：更新信号如何变化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-2-%E7%AC%AC%E4%BA%8C%E6%9D%A1%E4%B8%BB%E7%BA%BF%EF%BC%9A%E6%96%B9%E5%B7%AE%E4%B8%8E%E5%81%8F%E5%B7%AE%E7%9A%84%E6%9D%83%E8%A1%A1"><span class="toc-text">7.2 第二条主线：方差与偏差的权衡</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-3-%E7%AC%AC%E4%B8%89%E6%9D%A1%E4%B8%BB%E7%BA%BF%EF%BC%9A%E4%BB%8E%E7%A6%BB%E7%BA%BF%E5%9B%9E%E5%90%88%E6%9B%B4%E6%96%B0%E5%88%B0%E5%9C%A8%E7%BA%BF%E5%A2%9E%E9%87%8F%E6%9B%B4%E6%96%B0"><span class="toc-text">7.3 第三条主线：从离线回合更新到在线增量更新</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#8-%E6%8E%A8%E8%8D%90%E5%AD%A6%E4%B9%A0%E9%A1%BA%E5%BA%8F"><span class="toc-text">8. 推荐学习顺序</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E4%B8%80%E6%AD%A5%EF%BC%9A%E7%90%86%E8%A7%A3-REINFORCE"><span class="toc-text">第一步：理解 REINFORCE</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E4%BA%8C%E6%AD%A5%EF%BC%9A%E7%90%86%E8%A7%A3%E7%AD%96%E7%95%A5%E6%A2%AF%E5%BA%A6%E5%AE%9A%E7%90%86"><span class="toc-text">第二步：理解策略梯度定理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E4%B8%89%E6%AD%A5%EF%BC%9A%E7%90%86%E8%A7%A3-Actor-Critic"><span class="toc-text">第三步：理解 Actor-Critic</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#9-%E4%B8%8E%E7%8E%B0%E4%BB%A3%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E7%AE%97%E6%B3%95%E7%9A%84%E5%85%B3%E7%B3%BB"><span class="toc-text">9. 与现代强化学习算法的关系</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#10-%E6%80%BB%E7%BB%93"><span class="toc-text">10. 总结</span></a></li></ol></li></ol>
   </aside>
 
 
@@ -1379,7 +1379,8 @@
 <h1 id="策略梯度方法基础"><a href="#策略梯度方法基础" class="headerlink" title="策略梯度方法基础"></a>策略梯度方法基础</h1><p>在强化学习（Reinforcement Learning, RL）中，策略梯度方法（Policy Gradient Methods）是一类直接优化策略的算法，其核心思想是通过最大化期望回报来改进策略参数。下面我从目标函数出发，详细讲解策略梯度方法及其梯度推导。</p>
 <h2 id="1-策略的目标函数"><a href="#1-策略的目标函数" class="headerlink" title="1. 策略的目标函数"></a>1. 策略的目标函数</h2><p>策略梯度方法假设我们的策略由参数化函数表示，记作 $\pi_\theta(a \mid s)$，它给定状态 $s$ 输出在动作 $a$ 上的概率。</p>
 <p>强化学习的目标是最大化策略在环境中的期望累计回报，定义为：</p>
-<p>$$<br>J(\theta)=\mathbb{E}<em>{\tau \sim \pi</em>\theta}[R(\tau)]<br>$$</p>
+<p>$$<br>J(\theta)=\mathbb{E}_{\tau \sim \pi_\theta}[R(\tau)]<br>$$</p>
+
 <p>其中：</p>
 <ul>
 <li>$\tau=(s_0,a_0,r_0,s_1,a_1,r_1,\ldots)$ 表示一条完整的轨迹（trajectory），即状态-动作-奖励序列；</li>
@@ -1390,21 +1391,19 @@
 <p>直观上，这个目标函数衡量了参数化策略在环境中“获得奖励的平均能力”，优化它意味着找到使期望回报最高的策略参数 $\theta$。</p>
 <h2 id="2-策略梯度的基本公式"><a href="#2-策略梯度的基本公式" class="headerlink" title="2. 策略梯度的基本公式"></a>2. 策略梯度的基本公式</h2><p><span class="marginnote">
 <strong>策略梯度公式的推导：</strong>
-$$
-\nabla_\theta J(\theta)=\mathbb{E}_{\tau \sim \pi_\theta}
-\left[
-R(\tau)\nabla_\theta \log \pi_\theta(\tau)
-\right]
-$$
-</span></p>
+</span></p><p>$$<br>\nabla_\theta J(\theta)=\mathbb{E}_{\tau \sim \pi_\theta}<br>\left[<br>R(\tau)\nabla_\theta \log \pi_\theta(\tau)<br>\right]<br>$$</p>
+<p></p>
 
 <p>策略梯度方法的核心是直接计算 $J(\theta)$ 对 $\theta$ 的梯度 $\nabla_\theta J(\theta)$，然后用梯度上升来更新参数。</p>
 <p>通过对期望的导数使用“对数技巧”（log-likelihood trick），得到：</p>
-<p>$$<br>\nabla_\theta J(\theta)=\mathbb{E}<em>{\tau \sim \pi</em>\theta}<br>\left[<br>R(\tau)\nabla_\theta \log \pi_\theta(\tau)<br>\right]<br>$$</p>
+<p>$$<br>\nabla_\theta J(\theta)=\mathbb{E}_{\tau \sim \pi_\theta}<br>\left[<br>R(\tau)\nabla_\theta \log \pi_\theta(\tau)<br>\right]<br>$$</p>
+
 <p>这里：</p>
 <p>$$<br>\log \pi_\theta(\tau)=\sum_{t=0}^{T}\log \pi_\theta(a_t \mid s_t)<br>$$</p>
+
 <p>因此：</p>
-<p>$$<br>\nabla_\theta J(\theta)=\mathbb{E}<em>{\tau \sim \pi</em>\theta}<br>\left[<br>\sum_{t=0}^{T}\nabla_\theta \log \pi_\theta(a_t \mid s_t)\cdot R(\tau)<br>\right]<br>$$</p>
+<p>$$<br>\nabla_\theta J(\theta)=\mathbb{E}_{\tau \sim \pi_\theta}<br>\left[<br>\sum_{t=0}^{T}\nabla_\theta \log \pi_\theta(a_t \mid s_t)\cdot R(\tau)<br>\right]<br>$$</p>
+
 <p>这就是最基础的 REINFORCE 算法梯度公式（Williams, 1992）。</p>
 <p>直观上，它意味着：</p>
 <ul>
@@ -1412,7 +1411,8 @@ $$
 <li>如果奖励低，则降低相应动作的概率。</li>
 </ul>
 <h2 id="3-优化与方差降低"><a href="#3-优化与方差降低" class="headerlink" title="3. 优化与方差降低"></a>3. 优化与方差降低</h2><p>直接使用 $\nabla_\theta J(\theta)$ 的 Monte Carlo 估计方差可能很大，因此通常引入 baseline 或优势函数：</p>
-<p>$$<br>\nabla_\theta J(\theta)=\mathbb{E}<em>{\tau \sim \pi</em>\theta}<br>\left[<br>\sum_{t=0}^{T}\nabla_\theta \log \pi_\theta(a_t \mid s_t)\cdot (G_t-b(s_t))<br>\right]<br>$$</p>
+<p>$$<br>\nabla_\theta J(\theta)=\mathbb{E}_{\tau \sim \pi_\theta}<br>\left[<br>\sum_{t=0}^{T}\nabla_\theta \log \pi_\theta(a_t \mid s_t)\cdot (G_t-b(s_t))<br>\right]<br>$$</p>
+
 <p>其中：</p>
 <ul>
 <li>$G_t=\sum_{k=t}^{T}\gamma^{k-t}r_k$ 是从 $t$ 时刻开始的累计回报；</li>
@@ -1422,6 +1422,7 @@ $$
 <p>使用优势函数不仅保持了梯度的无偏性，还能显著降低方差，使梯度更新更稳定。</p>
 <h2 id="4-梯度更新"><a href="#4-梯度更新" class="headerlink" title="4. 梯度更新"></a>4. 梯度更新</h2><p>在实际实现中，策略梯度的参数更新通常使用梯度上升（或近似的随机梯度上升）：</p>
 <p>$$<br>\theta \leftarrow \theta+\alpha\nabla_\theta J(\theta)<br>$$</p>
+
 <p>其中，$\alpha$ 是学习率。</p>
 <p>对于 REINFORCE，通常通过多条轨迹采样计算梯度，然后批量更新策略参数。</p>
 <h2 id="5-Actor-Critic-方法"><a href="#5-Actor-Critic-方法" class="headerlink" title="5. Actor-Critic 方法"></a>5. Actor-Critic 方法</h2><p>对于更复杂的 Actor-Critic 方法：</p>
@@ -1431,6 +1432,7 @@ $$
 <li><strong>梯度公式</strong>：</li>
 </ul>
 <p>$$<br>\nabla_\theta J(\theta)\approx<br>\mathbb{E}<br>\left[<br>\nabla_\theta \log \pi_\theta(a \mid s)\cdot A(s,a)<br>\right]<br>$$</p>
+
 <p>这种方法结合了策略优化与价值函数评估，通常收敛更快且稳定性更高。</p>
 <h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>总结来说，策略梯度方法从<strong>最大化期望回报的目标函数</strong>出发，通过<strong>对数技巧</strong>推导出梯度公式，再通过<strong>优势函数或基线</strong>减小方差，最后用梯度上升更新策略参数，实现对策略的直接优化。</p>
 <p>这类方法的优点是可以自然处理<strong>连续动作空间</strong>和<strong>参数化策略</strong>，是现代强化学习（如 PPO、TRPO、SAC）核心理论的基础。</p>
@@ -1532,6 +1534,7 @@ $$
 <h2 id="1-总体发展脉络"><a href="#1-总体发展脉络" class="headerlink" title="1. 总体发展脉络"></a>1. 总体发展脉络</h2><p>在强化学习中，智能体的目标是学习一个策略 $\pi(a|s)$，使其在环境中获得尽可能高的长期累计回报。</p>
 <p>早期强化学习方法多以价值函数为中心，例如学习 $V(s)$ 或 $Q(s,a)$，再根据价值函数选择动作。而策略梯度方法则选择直接优化策略本身：</p>
 <p>$$<br>\pi_\theta(a|s)<br>$$</p>
+
 <p>其中，$\theta$ 是策略参数。</p>
 <p>策略梯度方法的发展可以理解为如下过程：</p>
 <table>
@@ -1566,15 +1569,20 @@ $$
 </blockquote>
 <p>假设策略为：</p>
 <p>$$<br>\pi_\theta(a_t|s_t)<br>$$</p>
+
 <p>轨迹为：</p>
 <p>$$<br>\tau=(s_0,a_0,r_0,s_1,a_1,r_1,\ldots)<br>$$</p>
+
 <p>从时刻 $t$ 开始的累计回报为：</p>
 <p>$$<br>G_t=\sum_{k=t}^{T}\gamma^{k-t}r_k<br>$$</p>
+
 <p>REINFORCE 使用 $G_t$ 作为动作 $a_t$ 好坏的评价信号。</p>
 <h3 id="2-2-梯度公式"><a href="#2-2-梯度公式" class="headerlink" title="2.2 梯度公式"></a>2.2 梯度公式</h3><p>REINFORCE 的策略梯度更新可以写作：</p>
-<h1 id="nabla-theta-J-theta"><a href="#nabla-theta-J-theta" class="headerlink" title="$$\nabla_\theta J(\theta)"></a>$$<br>\nabla_\theta J(\theta)</h1><p>\mathbb{E}<br>\left[<br>G_t \nabla_\theta \log \pi_\theta(a_t|s_t)<br>\right]<br>$$</p>
+<p>$$<br>\nabla_\theta J(\theta)<br>=<br>\mathbb{E}<br>\left[<br>G_t \nabla_\theta \log \pi_\theta(a_t|s_t)<br>\right]<br>$$</p>
+
 <p>对应的参数更新为：</p>
 <p>$$<br>\theta<br>\leftarrow<br>\theta<br>+<br>\alpha G_t \nabla_\theta \log \pi_\theta(a_t|s_t)<br>$$</p>
+
 <p>其中，$\alpha$ 是学习率。</p>
 <h3 id="2-3-直观理解"><a href="#2-3-直观理解" class="headerlink" title="2.3 直观理解"></a>2.3 直观理解</h3><p>表达式中有两个关键部分：</p>
 <ul>
@@ -1604,11 +1612,14 @@ $$
 </blockquote>
 <p>这项工作将策略梯度从一个具体算法推广为一套更系统的理论框架。</p>
 <h3 id="3-2-目标函数"><a href="#3-2-目标函数" class="headerlink" title="3.2 目标函数"></a>3.2 目标函数</h3><p>策略梯度方法的目标是最大化期望回报：</p>
-<h1 id="J-theta"><a href="#J-theta" class="headerlink" title="$$J(\theta)"></a>$$<br>J(\theta)</h1><p>\mathbb{E}<em>{\tau \sim \pi</em>\theta}<br>\left[<br>R(\tau)<br>\right]<br>$$</p>
+<p>$$<br>J(\theta)<br>=<br>\mathbb{E}_{\tau \sim \pi_\theta}<br>\left[<br>R(\tau)<br>\right]<br>$$</p>
+
 <p>其中：</p>
-<h1 id="R-tau"><a href="#R-tau" class="headerlink" title="$$R(\tau)"></a>$$<br>R(\tau)</h1><p>\sum_{t=0}^{T}\gamma^t r_t<br>$$</p>
+<p>$$<br>R(\tau)<br>=<br>\sum_{t=0}^{T}\gamma^t r_t<br>$$</p>
+
 <h3 id="3-3-策略梯度定理"><a href="#3-3-策略梯度定理" class="headerlink" title="3.3 策略梯度定理"></a>3.3 策略梯度定理</h3><p>策略梯度定理给出了更一般的梯度形式：</p>
-<h1 id="nabla-theta-J-theta-1"><a href="#nabla-theta-J-theta-1" class="headerlink" title="$$\nabla_\theta J(\theta)"></a>$$<br>\nabla_\theta J(\theta)</h1><p>\mathbb{E}<em>{s \sim d^\pi, a \sim \pi</em>\theta}<br>\left[<br>\nabla_\theta \log \pi_\theta(a|s) Q^\pi(s,a)<br>\right]<br>$$</p>
+<p>$$<br>\nabla_\theta J(\theta)<br>=<br>\mathbb{E}_{s \sim d^\pi, a \sim \pi_\theta}<br>\left[<br>\nabla_\theta \log \pi_\theta(a|s) Q^\pi(s,a)<br>\right]<br>$$</p>
+
 <p>其中：</p>
 <ul>
 <li>$d^\pi(s)$ 表示策略 $\pi$ 诱导出的状态访问分布；</li>
@@ -1617,13 +1628,17 @@ $$
 </ul>
 <p>这个公式说明，策略更新不一定只能依赖完整轨迹回报 $G_t$，也可以依赖动作价值函数 $Q^\pi(s,a)$。</p>
 <h3 id="3-4-引入-baseline-与优势函数"><a href="#3-4-引入-baseline-与优势函数" class="headerlink" title="3.4 引入 baseline 与优势函数"></a>3.4 引入 baseline 与优势函数</h3><p>为了降低方差，可以从 $Q^\pi(s,a)$ 中减去一个只与状态有关的 baseline：</p>
-<h1 id="nabla-theta-J-theta-2"><a href="#nabla-theta-J-theta-2" class="headerlink" title="$$\nabla_\theta J(\theta)"></a>$$<br>\nabla_\theta J(\theta)</h1><p>\mathbb{E}<br>\left[<br>\nabla_\theta \log \pi_\theta(a|s)<br>\left(<br>Q^\pi(s,a)-b(s)<br>\right)<br>\right]<br>$$</p>
+<p>$$<br>\nabla_\theta J(\theta)<br>=<br>\mathbb{E}<br>\left[<br>\nabla_\theta \log \pi_\theta(a|s)<br>\left(<br>Q^\pi(s,a)-b(s)<br>\right)<br>\right]<br>$$</p>
+
 <p>常见选择是：</p>
 <p>$$<br>b(s)=V^\pi(s)<br>$$</p>
+
 <p>于是得到优势函数：</p>
-<h1 id="A-pi-s-a"><a href="#A-pi-s-a" class="headerlink" title="$$A^\pi(s,a)"></a>$$<br>A^\pi(s,a)</h1><p>Q^\pi(s,a)-V^\pi(s)<br>$$</p>
+<p>$$<br>A^\pi(s,a)<br>=<br>Q^\pi(s,a)-V^\pi(s)<br>$$</p>
+
 <p>因此策略梯度可以写作：</p>
-<h1 id="nabla-theta-J-theta-3"><a href="#nabla-theta-J-theta-3" class="headerlink" title="$$\nabla_\theta J(\theta)"></a>$$<br>\nabla_\theta J(\theta)</h1><p>\mathbb{E}<br>\left[<br>\nabla_\theta \log \pi_\theta(a|s) A^\pi(s,a)<br>\right]<br>$$</p>
+<p>$$<br>\nabla_\theta J(\theta)<br>=<br>\mathbb{E}<br>\left[<br>\nabla_\theta \log \pi_\theta(a|s) A^\pi(s,a)<br>\right]<br>$$</p>
+
 <p>优势函数的含义是：</p>
 <blockquote>
 <p>当前动作 $a$ 相比该状态下的平均动作水平，到底好多少。</p>
@@ -1652,19 +1667,25 @@ $$
 </ul>
 <h3 id="4-2-Actor"><a href="#4-2-Actor" class="headerlink" title="4.2 Actor"></a>4.2 Actor</h3><p>Actor 是参数化策略：</p>
 <p>$$<br>\pi_\theta(a|s)<br>$$</p>
+
 <p>它负责根据状态 $s$ 选择动作 $a$。</p>
 <p>Actor 的目标仍然是最大化期望回报：</p>
-<h1 id="J-theta-1"><a href="#J-theta-1" class="headerlink" title="$$J(\theta)"></a>$$<br>J(\theta)</h1><p>\mathbb{E}<em>{\pi</em>\theta}<br>\left[<br>R<br>\right]<br>$$</p>
+<p>$$<br>J(\theta)<br>=<br>\mathbb{E}_{\pi_\theta}<br>\left[<br>R<br>\right]<br>$$</p>
+
 <h3 id="4-3-Critic"><a href="#4-3-Critic" class="headerlink" title="4.3 Critic"></a>4.3 Critic</h3><p>Critic 通常是价值函数，例如：</p>
 <p>$$<br>V_w(s)<br>$$</p>
+
 <p>或者：</p>
 <p>$$<br>Q_w(s,a)<br>$$</p>
+
 <p>其中，$w$ 是价值函数参数。</p>
 <p>Critic 的任务不是直接选择动作，而是评价当前策略下状态或动作的价值。</p>
 <h3 id="4-4-TD-误差"><a href="#4-4-TD-误差" class="headerlink" title="4.4 TD 误差"></a>4.4 TD 误差</h3><p>Actor-Critic 常用 TD learning 更新 Critic。以状态价值函数 $V_w(s)$ 为例，TD 误差为：</p>
-<h1 id="delta-t"><a href="#delta-t" class="headerlink" title="$$\delta_t"></a>$$<br>\delta_t</h1><h2 id="r-t-gamma-V-w-s-t-1"><a href="#r-t-gamma-V-w-s-t-1" class="headerlink" title="r_t+\gamma V_w(s_{t+1})"></a>r_t<br>+<br>\gamma V_w(s_{t+1})</h2><p>V_w(s_t)<br>$$</p>
+<p>$$<br>\delta_t<br>=<br>r_t<br>+<br>\gamma V_w(s_{t+1})<br>-<br>V_w(s_t)<br>$$</p>
+
 <p>这个 TD 误差可以近似看作优势函数：</p>
 <p>$$<br>\delta_t<br>\approx<br>A^\pi(s_t,a_t)<br>$$</p>
+
 <p>直观上：</p>
 <ul>
 <li>如果 $\delta_t&gt;0$，说明动作结果比 Critic 预期更好；</li>
@@ -1672,9 +1693,11 @@ $$
 </ul>
 <h3 id="4-5-Actor-的更新"><a href="#4-5-Actor-的更新" class="headerlink" title="4.5 Actor 的更新"></a>4.5 Actor 的更新</h3><p>Actor 使用 Critic 提供的评价信号来更新策略：</p>
 <p>$$<br>\theta<br>\leftarrow<br>\theta<br>+<br>\alpha<br>\delta_t<br>\nabla_\theta<br>\log \pi_\theta(a_t|s_t)<br>$$</p>
+
 <p>这里的 $\delta_t$ 替代了 REINFORCE 中的完整回报 $G_t$。</p>
 <h3 id="4-6-Critic-的更新"><a href="#4-6-Critic-的更新" class="headerlink" title="4.6 Critic 的更新"></a>4.6 Critic 的更新</h3><p>Critic 则通过最小化 TD 误差来更新价值函数：</p>
 <p>$$<br>w<br>\leftarrow<br>w<br>+<br>\beta<br>\delta_t<br>\nabla_w V_w(s_t)<br>$$</p>
+
 <p>其中，$\beta$ 是 Critic 的学习率。</p>
 <h3 id="4-7-双时间尺度思想"><a href="#4-7-双时间尺度思想" class="headerlink" title="4.7 双时间尺度思想"></a>4.7 双时间尺度思想</h3><p>Konda 和 Tsitsiklis 的 Actor-Critic 理论中特别强调了<strong>双时间尺度更新</strong>：</p>
 <ul>
@@ -1750,21 +1773,27 @@ $$
 </tbody></table>
 <hr>
 <h2 id="6-从公式角度看三者演进"><a href="#6-从公式角度看三者演进" class="headerlink" title="6. 从公式角度看三者演进"></a>6. 从公式角度看三者演进</h2><h3 id="6-1-REINFORCE"><a href="#6-1-REINFORCE" class="headerlink" title="6.1 REINFORCE"></a>6.1 REINFORCE</h3><p>REINFORCE 使用完整回报：</p>
-<h1 id="nabla-theta-J-theta-4"><a href="#nabla-theta-J-theta-4" class="headerlink" title="$$\nabla_\theta J(\theta)"></a>$$<br>\nabla_\theta J(\theta)</h1><p>\mathbb{E}<br>\left[<br>G_t<br>\nabla_\theta<br>\log \pi_\theta(a_t|s_t)<br>\right]<br>$$</p>
+<p>$$<br>\nabla_\theta J(\theta)<br>=<br>\mathbb{E}<br>\left[<br>G_t<br>\nabla_\theta<br>\log \pi_\theta(a_t|s_t)<br>\right]<br>$$</p>
+
 <p>特点是直接、简单，但方差较大。</p>
 <h3 id="6-2-Policy-Gradient-Methods"><a href="#6-2-Policy-Gradient-Methods" class="headerlink" title="6.2 Policy Gradient Methods"></a>6.2 Policy Gradient Methods</h3><p>策略梯度定理将更新信号推广为动作价值：</p>
-<h1 id="nabla-theta-J-theta-5"><a href="#nabla-theta-J-theta-5" class="headerlink" title="$$\nabla_\theta J(\theta)"></a>$$<br>\nabla_\theta J(\theta)</h1><p>\mathbb{E}<br>\left[<br>Q^\pi(s,a)<br>\nabla_\theta<br>\log \pi_\theta(a|s)<br>\right]<br>$$</p>
+<p>$$<br>\nabla_\theta J(\theta)<br>=<br>\mathbb{E}<br>\left[<br>Q^\pi(s,a)<br>\nabla_\theta<br>\log \pi_\theta(a|s)<br>\right]<br>$$</p>
+
 <p>进一步可以使用优势函数：</p>
-<h1 id="nabla-theta-J-theta-6"><a href="#nabla-theta-J-theta-6" class="headerlink" title="$$\nabla_\theta J(\theta)"></a>$$<br>\nabla_\theta J(\theta)</h1><p>\mathbb{E}<br>\left[<br>A^\pi(s,a)<br>\nabla_\theta<br>\log \pi_\theta(a|s)<br>\right]<br>$$</p>
+<p>$$<br>\nabla_\theta J(\theta)<br>=<br>\mathbb{E}<br>\left[<br>A^\pi(s,a)<br>\nabla_\theta<br>\log \pi_\theta(a|s)<br>\right]<br>$$</p>
+
 <p>特点是理论更一般，允许更灵活的估计方式。</p>
 <h3 id="6-3-Actor-Critic"><a href="#6-3-Actor-Critic" class="headerlink" title="6.3 Actor-Critic"></a>6.3 Actor-Critic</h3><p>Actor-Critic 用 Critic 估计优势或 TD 误差：</p>
-<h1 id="delta-t-1"><a href="#delta-t-1" class="headerlink" title="$$\delta_t"></a>$$<br>\delta_t</h1><h2 id="r-t-gamma-V-w-s-t-1-1"><a href="#r-t-gamma-V-w-s-t-1-1" class="headerlink" title="r_t+\gamma V_w(s_{t+1})"></a>r_t<br>+<br>\gamma V_w(s_{t+1})</h2><p>V_w(s_t)<br>$$</p>
+<p>$$<br>\delta_t<br>=<br>r_t<br>+<br>\gamma V_w(s_{t+1})<br>-<br>V_w(s_t)<br>$$</p>
+
 <p>然后更新 Actor：</p>
 <p>$$<br>\theta<br>\leftarrow<br>\theta<br>+<br>\alpha<br>\delta_t<br>\nabla_\theta<br>\log \pi_\theta(a_t|s_t)<br>$$</p>
+
 <p>特点是可以在线更新，通常方差更低，但会引入估计偏差。</p>
 <hr>
 <h2 id="7-学习这三个方法时应抓住的主线"><a href="#7-学习这三个方法时应抓住的主线" class="headerlink" title="7. 学习这三个方法时应抓住的主线"></a>7. 学习这三个方法时应抓住的主线</h2><h3 id="7-1-第一条主线：更新信号如何变化"><a href="#7-1-第一条主线：更新信号如何变化" class="headerlink" title="7.1 第一条主线：更新信号如何变化"></a>7.1 第一条主线：更新信号如何变化</h3><p>三者最核心的变化在于策略更新信号：</p>
 <p>$$<br>G_t<br>\quad \rightarrow \quad<br>Q^\pi(s,a)<br>\quad \rightarrow \quad<br>A^\pi(s,a)<br>\quad \rightarrow \quad<br>\delta_t<br>$$</p>
+
 <p>含义分别是：</p>
 <ul>
 <li>$G_t$：真实采样得到的完整未来回报；</li>
@@ -1789,7 +1818,8 @@ $$
 </blockquote>
 <h3 id="7-3-第三条主线：从离线回合更新到在线增量更新"><a href="#7-3-第三条主线：从离线回合更新到在线增量更新" class="headerlink" title="7.3 第三条主线：从离线回合更新到在线增量更新"></a>7.3 第三条主线：从离线回合更新到在线增量更新</h3><p>REINFORCE 通常要等 episode 结束后才能知道 $G_t$。</p>
 <p>Actor-Critic 可以在每一步交互后计算 TD 误差：</p>
-<h1 id="delta-t-2"><a href="#delta-t-2" class="headerlink" title="$$\delta_t"></a>$$<br>\delta_t</h1><p>r_t+\gamma V_w(s_{t+1})-V_w(s_t)<br>$$</p>
+<p>$$<br>\delta_t<br>=<br>r_t+\gamma V_w(s_{t+1})-V_w(s_t)<br>$$</p>
+
 <p>因此 Actor-Critic 更适合在线学习和长时序任务。</p>
 <hr>
 <h2 id="8-推荐学习顺序"><a href="#8-推荐学习顺序" class="headerlink" title="8. 推荐学习顺序"></a>8. 推荐学习顺序</h2><p>为了深入理解这三个方法，可以按如下顺序学习：</p>

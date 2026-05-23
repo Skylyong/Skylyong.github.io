@@ -1379,9 +1379,13 @@
     <h2 id="什么是齐次性？"><a href="#什么是齐次性？" class="headerlink" title="什么是齐次性？"></a>什么是齐次性？</h2><p>在数学中，<strong>齐次性（Homogeneity）</strong> 通常指函数或方程在输入按比例缩放时，输出也按某个幂次比例缩放的性质。</p>
 <h3 id="齐次函数"><a href="#齐次函数" class="headerlink" title="齐次函数"></a>齐次函数</h3><p>一个映射  $ f: \mathbb{R}^n \to \mathbb{R} $ ，如果对于任意标量 $ \lambda $ 和输入向量 $ x \in \mathbb{R}^n $，满足：</p>
 <p>$$<br>f(\lambda x) = \lambda^k f(x)<br>$$</p>
+
 <p>则称该映射为<strong>k次齐次函数</strong>。这里，$ k $ 被称为齐次次数（degree of homogeneity）。</p>
 <p><strong>示例：</strong><br>函数 $ f(x,y) = x^2 + y^2 $ 是二次齐次函数，因为</p>
 <p>$$<br>f(\lambda x, \lambda y) = (\lambda x)^2 + (\lambda y)^2 = \lambda^2 (x^2 + y^2) = \lambda^2 f(x,y).<br>$$</p>
+
+
+
 <h2 id="齐次性的重要性"><a href="#齐次性的重要性" class="headerlink" title="齐次性的重要性"></a>齐次性的重要性</h2><ol>
 <li><strong>理解尺度变化行为</strong><br>齐次性说明当输入放大或缩小时，输出会按照确定的幂次比例变化。这个性质帮助我们理解函数对“尺度”变化<br>的敏感度，在建模和分析中非常有用。</li>
 </ol>

@@ -1410,6 +1410,7 @@
 <p><img src="https://raw.githubusercontent.com/Skylyong/i/main/20260207170804.png"></p>
 <p>2） RNN 隐藏状态更新公式：</p>
 <p>$$<br>h_t = \tanh(W_x \cdot x_t + W_h \cdot h_{t-1} + b)<br>$$</p>
+
 <p>其中</p>
 <ul>
 <li>$h_t \in \mathbb{R}^n$：当前时间步的隐藏状态</li>
@@ -1444,26 +1445,32 @@
 <li>遗忘门（Forget Gate）:</li>
 </ul>
 <p>$$<br>f_t = \sigma(W_f x_t + U_f h_{t-1} + b_f)<br>$$</p>
+
 <ul>
 <li>输入门（Input Gate）:</li>
 </ul>
 <p>$$<br>i_t = \sigma(W_i x_t + U_i h_{t-1} + b_i)<br>$$</p>
+
 <ul>
 <li>候选单元状态（Candidate Cell State）:</li>
 </ul>
-<p>$$<br>\tilde{c}<em>t = \tanh(W_c x_t + U_c h</em>{t-1} + b_c)<br>$$</p>
+<p>$$<br>\tilde{c}_t = \tanh(W_c x_t + U_c h_{t-1} + b_c)<br>$$</p>
+
 <ul>
 <li>单元状态更新（Cell State Update）:</li>
 </ul>
 <p>$$<br>c_t = f_t \odot c_{t-1} + i_t \odot \tilde{c}_t<br>$$</p>
+
 <ul>
 <li>输出门（Output Gate）:</li>
 </ul>
 <p>$$<br>o_t = \sigma(W_o x_t + U_o h_{t-1} + b_o)<br>$$</p>
+
 <ul>
 <li>隐藏状态更新（Hidden State Update）:</li>
 </ul>
 <p>$$<br>h_t = o_t \odot \tanh(c_t)<br>$$</p>
+
 <p>其中</p>
 <ul>
 <li>$\sigma$ 表示 sigmoid 函数（输出在0-1之间）</li>
@@ -1496,29 +1503,32 @@
 </ul>
 <h3 id="2-零填充-Padding"><a href="#2-零填充-Padding" class="headerlink" title="2. 零填充 (Padding)"></a>2. 零填充 (Padding)</h3><p>代码使用 <code>np.pad</code> 对输入矩阵的四周进行填充。</p>
 <ul>
-<li><p><strong>操作</strong>：在高度和宽度的两侧各添加 $P$ 行/列的 0。</p>
-</li>
-<li><p><strong>数学变化</strong>：<br>填充后的输入尺寸变为：</p>
-<p>$$<br>H_{pad} = H_{in} + 2P<br>$$</p>
-<p>$$<br>W_{pad} = W_{in} + 2P<br>$$</p>
-</li>
+<li><strong>操作</strong>：在高度和宽度的两侧各添加 $P$ 行/列的 0。</li>
+<li><strong>数学变化</strong>：<br>填充后的输入尺寸变为：</li>
 </ul>
+<p>$$<br>  H_{pad} = H_{in} + 2P<br>  $$</p>
+
+<p>$$<br>  W_{pad} = W_{in} + 2P<br>  $$</p>
+
 <h3 id="3-计算输出尺寸-Output-Size-（推导附后）"><a href="#3-计算输出尺寸-Output-Size-（推导附后）" class="headerlink" title="3. 计算输出尺寸 (Output Size) （推导附后）"></a>3. 计算输出尺寸 (Output Size) （推导附后）</h3><p>在进行卷积之前，需要计算输出矩阵的形状。这取决于输入尺寸、卷积核大小、填充和步幅。</p>
 <ul>
-<li><p><strong>代码对应</strong>：<code>(padded_height - kernel_height) // stride + 1</code></p>
-</li>
-<li><p><strong>数学公式</strong>：<br>输出的高度 $H_{out}$ 和宽度 $W_{out}$ 计算如下（其中 $\lfloor \cdot \rfloor$ 表示向下取整）：</p>
-<p>$$<br>H_{out} = \left\lfloor \frac{H_{in} + 2P - K_H}{S} \right\rfloor + 1<br>$$</p>
-<p>$$<br>W_{out} = \left\lfloor \frac{W_{in} + 2P - K_W}{S} \right\rfloor + 1<br>$$</p>
-</li>
+<li><strong>代码对应</strong>：<code>(padded_height - kernel_height) // stride + 1</code></li>
+<li><strong>数学公式</strong>：<br>输出的高度 $H_{out}$ 和宽度 $W_{out}$ 计算如下（其中 $\lfloor \cdot \rfloor$ 表示向下取整）：</li>
 </ul>
+<p>$$<br>  H_{out} = \left\lfloor \frac{H_{in} + 2P - K_H}{S} \right\rfloor + 1<br>  $$</p>
+
+<p>$$<br>  W_{out} = \left\lfloor \frac{W_{in} + 2P - K_W}{S} \right\rfloor + 1<br>  $$</p>
+
 <h3 id="4-滑动窗口与卷积计算-Convolution-Loop"><a href="#4-滑动窗口与卷积计算-Convolution-Loop" class="headerlink" title="4. 滑动窗口与卷积计算 (Convolution Loop)"></a>4. 滑动窗口与卷积计算 (Convolution Loop)</h3><p>代码通过双重循环遍历输出矩阵的每一个位置 $(i, j)$。</p>
 <ul>
-<li><p><strong>定位窗口</strong>：<br>根据步幅 $S$，在填充后的输入矩阵上找到对应的切片区域（Region）。区域的左上角坐标为：</p>
-<p>$$<br>\text{start}_h = i \times S<br>$$</p>
-<p>$$<br>\text{start}_w = j \times S<br>$$</p>
-<p>截取的区域大小与卷积核一致，即 $K_H \times K_W$。</p>
-</li>
+<li><strong>定位窗口</strong>：<br>根据步幅 $S$，在填充后的输入矩阵上找到对应的切片区域（Region）。区域的左上角坐标为：</li>
+</ul>
+<p>$$<br>  \text{start}_h = i \times S<br>  $$</p>
+
+<p>$$<br>  \text{start}_w = j \times S<br>  $$</p>
+
+<p>  截取的区域大小与卷积核一致，即 $K_H \times K_W$。</p>
+<ul>
 <li><p><strong>计算数值</strong>：<br>代码执行 <code>np.sum(region * kernel)</code>。这包含两步：</p>
 <ol>
 <li><strong>逐元素相乘 (Element-wise Multiplication)</strong>：输入区域与卷积核对应位置相乘。</li>
@@ -1526,9 +1536,10 @@
 </ol>
 </li>
 <li><p><strong>数学公式 (互相关)</strong>：<br>输出矩阵 $Y$ 中的元素 $Y_{i,j}$ 计算公式为：</p>
-<p>$$<br>Y_{i,j} = \sum_{m=0}^{K_H-1} \sum_{n=0}^{K_W-1} X_{pad}[i \cdot S + m, \ j \cdot S + n] \cdot K[m, n]<br>$$</p>
 </li>
 </ul>
+<p>$$<br>  Y_{i,j} = \sum_{m=0}^{K_H-1} \sum_{n=0}^{K_W-1} X_{pad}[i \cdot S + m, \ j \cdot S + n] \cdot K[m, n]<br>  $$</p>
+
 <hr>
 <p>附： 卷积输出尺寸公式推导（Conv / Pooling）</p>
 <h3 id="1-问题设定（以高度-H-为例）"><a href="#1-问题设定（以高度-H-为例）" class="headerlink" title="1. 问题设定（以高度 $H$ 为例）"></a>1. 问题设定（以高度 $H$ 为例）</h3><p>给定：</p>
@@ -1544,12 +1555,20 @@
 </blockquote>
 <h3 id="2-第一步：Padding-后的有效输入长度"><a href="#2-第一步：Padding-后的有效输入长度" class="headerlink" title="2. 第一步：Padding 后的有效输入长度"></a>2. 第一步：Padding 后的有效输入长度</h3><p>原始输入高度为：</p>
 <p>$$<br>H_{in}<br>$$</p>
+
 <p>上下各添加 $P$ 个 padding 后，总高度变为：</p>
 <p>$$<br>H_{\text{padded}} = H_{in} + 2P<br>$$</p>
+
+
+
 <h3 id="3-第二步：卷积核“能放下”的条件"><a href="#3-第二步：卷积核“能放下”的条件" class="headerlink" title="3.第二步：卷积核“能放下”的条件"></a>3.第二步：卷积核“能放下”的条件</h3><p>一个高度为 $K_H$ 的卷积核，要<strong>完整落在 padded 输入中</strong>，其起始位置必须满足：</p>
 <p>$$<br>\text{起始位置} + K_H \le H_{in} + 2P<br>$$</p>
+
 <p>即：</p>
 <p>$$<br>\text{起始位置} \le H_{in} + 2P - K_H<br>$$</p>
+
+
+
 <h3 id="4-第三步：卷积核的滑动方式"><a href="#4-第三步：卷积核的滑动方式" class="headerlink" title="4. 第三步：卷积核的滑动方式"></a>4. 第三步：卷积核的滑动方式</h3><p>卷积核按步长 $S$ 滑动：</p>
 <ul>
 <li>第 1 次起始位置：$0$</li>
@@ -1560,13 +1579,25 @@
 </ul>
 <h3 id="5-第四步：最大可滑动次数"><a href="#5-第四步：最大可滑动次数" class="headerlink" title="5.第四步：最大可滑动次数"></a>5.第四步：最大可滑动次数</h3><p>最后一次合法滑动满足：</p>
 <p>$$<br>(n - 1)S \le H_{in} + 2P - K_H<br>$$</p>
+
 <p>两边同时除以 $S$：</p>
 <p>$$<br>n - 1 \le \frac{H_{in} + 2P - K_H}{S}<br>$$</p>
+
 <p>$$<br>n \le \frac{H_{in} + 2P - K_H}{S} + 1<br>$$</p>
+
 <p>由于 $n$ 必须为整数，取不超过该值的最大整数：</p>
 <p>$$<br>H_{out} = \left\lfloor \frac{H_{in} + 2P - K_H}{S} \right\rfloor + 1<br>$$</p>
+
+
+
 <h3 id="6-最终高度公式"><a href="#6-最终高度公式" class="headerlink" title="6. 最终高度公式"></a>6. 最终高度公式</h3><p>$$<br>\boxed{ H_{out} = \left\lfloor \frac{H_{in} + 2P - K_H}{S} \right\rfloor + 1 }<br>$$</p>
+
+
+
 <h3 id="7-宽度-W-的推导（完全一致）"><a href="#7-宽度-W-的推导（完全一致）" class="headerlink" title="7. 宽度 $W$ 的推导（完全一致）"></a>7. 宽度 $W$ 的推导（完全一致）</h3><p>$$<br>\boxed{ W_{out} = \left\lfloor \frac{W_{in} + 2P - K_W}{S} \right\rfloor + 1 }<br>$$</p>
+
+
+
 <hr>
 <p>代码实现如下：</p>
 <figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">simple_conv2d</span>(<span class="params">input_matrix: np.ndarray, kernel: np.ndarray, padding: <span class="built_in">int</span>, stride: <span class="built_in">int</span></span>):</span><br><span class="line">    <span class="string">"""</span></span><br><span class="line"><span class="string">    实现简单的二维卷积（互相关）运算</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    参数:</span></span><br><span class="line"><span class="string">    input_matrix: 输入二维数组 (H, W)</span></span><br><span class="line"><span class="string">    kernel: 卷积核二维数组 (K_H, K_W)</span></span><br><span class="line"><span class="string">    padding: 填充圈数 P</span></span><br><span class="line"><span class="string">    stride: 步幅 S</span></span><br><span class="line"><span class="string">    """</span></span><br><span class="line">    input_height, input_width = input_matrix.shape</span><br><span class="line">    kernel_height, kernel_width = kernel.shape</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 1. Padding (零填充)</span></span><br><span class="line">    <span class="comment"># 在输入的上下左右各填充 padding 行/列的 0</span></span><br><span class="line">    padded_input = np.pad(</span><br><span class="line">        input_matrix,</span><br><span class="line">        pad_width=((padding, padding), (padding, padding)),</span><br><span class="line">        mode=<span class="string">'constant'</span>,</span><br><span class="line">        constant_values=<span class="number">0</span></span><br><span class="line">    )</span><br><span class="line">    padded_height, padded_width = padded_input.shape</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 2. Output size (计算输出尺寸)</span></span><br><span class="line">    <span class="comment"># 公式: floor((H + 2P - K) / S) + 1</span></span><br><span class="line">    out_height = (padded_height - kernel_height) // stride + <span class="number">1</span></span><br><span class="line">    out_width = (padded_width - kernel_width) // stride + <span class="number">1</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># 3. Initialize output (初始化输出矩阵)</span></span><br><span class="line">    output_matrix = np.zeros((out_height, out_width), dtype=<span class="built_in">float</span>)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 4. Convolution / Cross-correlation (卷积/互相关计算)</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(out_height):</span><br><span class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(out_width):</span><br><span class="line">            <span class="comment"># 计算在 padded_input 上的起始坐标</span></span><br><span class="line">            h_start = i * stride</span><br><span class="line">            w_start = j * stride</span><br><span class="line">          </span><br><span class="line">            <span class="comment"># 切片提取感兴趣区域 (Region of Interest)</span></span><br><span class="line">            region = padded_input[</span><br><span class="line">                h_start : h_start + kernel_height,</span><br><span class="line">                w_start : w_start + kernel_width</span><br><span class="line">            ]</span><br><span class="line">          </span><br><span class="line">            <span class="comment"># 逐元素相乘并求和</span></span><br><span class="line">            output_matrix[i, j] = np.<span class="built_in">sum</span>(region * kernel)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> output_matrix</span><br></pre></td></tr></tbody></table></figure>
