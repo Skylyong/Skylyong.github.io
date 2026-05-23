@@ -17,7 +17,7 @@
 <meta property="og:image" content="https://skylyong.github.io/image/2026-05-20-%E7%AD%96%E7%95%A5%E6%A2%AF%E5%BA%A6%E6%96%B9%E6%B3%95/2026-05-20-%E7%AD%96%E7%95%A5%E6%A2%AF%E5%BA%A6%E6%96%B9%E6%B3%95%E5%AD%A6%E4%B9%A0%E6%80%BB%E8%A7%88-1779280978581.webp">
 <meta property="og:image" content="https://skylyong.github.io/image/2026-05-20-%E7%AD%96%E7%95%A5%E6%A2%AF%E5%BA%A6%E6%96%B9%E6%B3%95/2026-05-20-%E7%AD%96%E7%95%A5%E6%A2%AF%E5%BA%A6%E6%96%B9%E6%B3%95%E5%AD%A6%E4%B9%A0%E6%80%BB%E8%A7%88-1779278006000.webp">
 <meta property="article:published_time" content="2026-05-22T20:31:55.000Z">
-<meta property="article:modified_time" content="2026-05-23T10:40:01.000Z">
+<meta property="article:modified_time" content="2026-05-23T11:18:05.000Z">
 <meta property="article:author" content="Lee">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://skylyong.github.io/image/2026-05-20-%E7%AD%96%E7%95%A5%E6%A2%AF%E5%BA%A6%E6%96%B9%E6%B3%95/2026-05-20-%E7%AD%96%E7%95%A5%E6%A2%AF%E5%BA%A6%E6%96%B9%E6%B3%95%E5%AD%A6%E4%B9%A0%E6%80%BB%E8%A7%88-1779267783622.webp">
@@ -1390,9 +1390,9 @@
 </ul>
 <p>直观上，这个目标函数衡量了参数化策略在环境中“获得奖励的平均能力”，优化它意味着找到使期望回报最高的策略参数 $\theta$。</p>
 <h2 id="2-策略梯度的基本公式"><a href="#2-策略梯度的基本公式" class="headerlink" title="2. 策略梯度的基本公式"></a>2. 策略梯度的基本公式</h2><p><span class="marginnote">
-<strong>策略梯度公式的推导：</strong>
-</span></p><p>$$<br>\nabla_\theta J(\theta)=\mathbb{E}_{\tau \sim \pi_\theta}<br>\left[<br>R(\tau)\nabla_\theta \log \pi_\theta(\tau)<br>\right]<br>$$</p>
-<p></p>
+<strong>策略梯度公式的推导：</strong><br>
+\(\displaystyle \nabla_\theta J(\theta)=\mathbb{E}_{\tau \sim \pi_\theta} \left[ R(\tau)\nabla_\theta \log \pi_\theta(\tau) \right] \)
+</span></p>
 
 <p>策略梯度方法的核心是直接计算 $J(\theta)$ 对 $\theta$ 的梯度 $\nabla_\theta J(\theta)$，然后用梯度上升来更新参数。</p>
 <p>通过对期望的导数使用“对数技巧”（log-likelihood trick），得到：</p>
