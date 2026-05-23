@@ -13,12 +13,11 @@
 <meta property="og:description" content="Keep go on">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://skylyong.github.io/image/2026-05-20-%E7%AD%96%E7%95%A5%E6%A2%AF%E5%BA%A6%E6%96%B9%E6%B3%95/2026-05-20-%E7%AD%96%E7%95%A5%E6%A2%AF%E5%BA%A6%E6%96%B9%E6%B3%95%E5%AD%A6%E4%B9%A0%E6%80%BB%E8%A7%88-1779267783622.webp">
-<meta property="og:image" content="https://skylyong.github.io/image/tufte-swiglu-ffn/s.png">
 <meta property="og:image" content="https://skylyong.github.io/image/2026-05-20-%E7%AD%96%E7%95%A5%E6%A2%AF%E5%BA%A6%E6%96%B9%E6%B3%95/reinforcePoint.md">
 <meta property="og:image" content="https://skylyong.github.io/image/2026-05-20-%E7%AD%96%E7%95%A5%E6%A2%AF%E5%BA%A6%E6%96%B9%E6%B3%95/2026-05-20-%E7%AD%96%E7%95%A5%E6%A2%AF%E5%BA%A6%E6%96%B9%E6%B3%95%E5%AD%A6%E4%B9%A0%E6%80%BB%E8%A7%88-1779280978581.webp">
 <meta property="og:image" content="https://skylyong.github.io/image/2026-05-20-%E7%AD%96%E7%95%A5%E6%A2%AF%E5%BA%A6%E6%96%B9%E6%B3%95/2026-05-20-%E7%AD%96%E7%95%A5%E6%A2%AF%E5%BA%A6%E6%96%B9%E6%B3%95%E5%AD%A6%E4%B9%A0%E6%80%BB%E8%A7%88-1779278006000.webp">
 <meta property="article:published_time" content="2026-05-22T20:31:55.000Z">
-<meta property="article:modified_time" content="2026-05-22T21:28:45.000Z">
+<meta property="article:modified_time" content="2026-05-23T08:27:21.000Z">
 <meta property="article:author" content="Lee">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://skylyong.github.io/image/2026-05-20-%E7%AD%96%E7%95%A5%E6%A2%AF%E5%BA%A6%E6%96%B9%E6%B3%95/2026-05-20-%E7%AD%96%E7%95%A5%E6%A2%AF%E5%BA%A6%E6%96%B9%E6%B3%95%E5%AD%A6%E4%B9%A0%E6%80%BB%E8%A7%88-1779267783622.webp">
@@ -1369,14 +1368,14 @@
 
 
   <section class="article-content">
-    <span class="marginnote">
+    <p><span class="marginnote">
 <img src="/image/2026-05-20-策略梯度方法/2026-05-20-策略梯度方法学习总览-1779267783622.webp" alt="2026-05-20-策略梯度方法学习总览-1779267783622.webp" loading="lazy" decoding="async">
    这是图片说明
-</span>
+</span></p>
 
 
 
-<p><span class="marginnote"><img src="/image/tufte-swiglu-ffn/s.png" alt="SwiGLU 函数图像" loading="lazy" decoding="async"></span></p>
+
 <h1 id="策略梯度方法基础"><a href="#策略梯度方法基础" class="headerlink" title="策略梯度方法基础"></a>策略梯度方法基础</h1><p>在强化学习（Reinforcement Learning, RL）中，策略梯度方法（Policy Gradient Methods）是一类直接优化策略的算法，其核心思想是通过最大化期望回报来改进策略参数。下面我从目标函数出发，详细讲解策略梯度方法及其梯度推导。</p>
 <h2 id="1-策略的目标函数"><a href="#1-策略的目标函数" class="headerlink" title="1. 策略的目标函数"></a>1. 策略的目标函数</h2><p>策略梯度方法假设我们的策略由参数化函数表示，记作 $\pi_\theta(a \mid s)$，它给定状态 $s$ 输出在动作 $a$ 上的概率。</p>
 <p>强化学习的目标是最大化策略在环境中的期望累计回报，定义为：</p>
@@ -1394,7 +1393,7 @@ $$
 <li>期望是对轨迹 $\tau$ 采样自当前策略 $\pi_\theta$ 的分布。</li>
 </ul>
 <p>直观上，这个目标函数衡量了参数化策略在环境中“获得奖励的平均能力”，优化它意味着找到使期望回报最高的策略参数 $\theta$。</p>
-<h2 id="2-策略梯度的基本公式"><a href="#2-策略梯度的基本公式" class="headerlink" title="2. 策略梯度的基本公式"></a>2. 策略梯度的基本公式</h2><span class="marginnote">
+<h2 id="2-策略梯度的基本公式"><a href="#2-策略梯度的基本公式" class="headerlink" title="2. 策略梯度的基本公式"></a>2. 策略梯度的基本公式</h2><p><span class="marginnote">
 <strong>策略梯度公式的推导：</strong>
 
 $$
@@ -1404,7 +1403,7 @@ R(\tau)\nabla_\theta \log \pi_\theta(\tau)
 \right]
 $$
 
-</span>
+</span></p>
 
 <p>策略梯度方法的核心是直接计算 $J(\theta)$ 对 $\theta$ 的梯度 $\nabla_\theta J(\theta)$，然后用梯度上升来更新参数。</p>
 <p>通过对期望的导数使用“对数技巧”（log-likelihood trick），得到：</p>
@@ -1486,9 +1485,9 @@ $$
 <h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>总结来说，策略梯度方法从<strong>最大化期望回报的目标函数</strong>出发，通过<strong>对数技巧</strong>推导出梯度公式，再通过<strong>优势函数或基线</strong>减小方差，最后用梯度上升更新策略参数，实现对策略的直接优化。</p>
 <p>这类方法的优点是可以自然处理<strong>连续动作空间</strong>和<strong>参数化策略</strong>，是现代强化学习（如 PPO、TRPO、SAC）核心理论的基础。</p>
 <p><img src="/image/2026-05-20-%E7%AD%96%E7%95%A5%E6%A2%AF%E5%BA%A6%E6%96%B9%E6%B3%95/reinforcePoint.md" alt="reinforcePoint"></p>
-<span class="marginnote">
+<p><span class="marginnote">
 <img src="/image/2026-05-20-策略梯度方法/2026-05-20-策略梯度方法学习总览-1779280978581.webp" alt="2026-05-20-策略梯度方法学习总览-1779280978581.webp" loading="lazy" decoding="async">
-</span>
+</span></p>
 
 <p><img src="/image/2026-05-20-%E7%AD%96%E7%95%A5%E6%A2%AF%E5%BA%A6%E6%96%B9%E6%B3%95/2026-05-20-%E7%AD%96%E7%95%A5%E6%A2%AF%E5%BA%A6%E6%96%B9%E6%B3%95%E5%AD%A6%E4%B9%A0%E6%80%BB%E8%A7%88-1779278006000.webp" alt="2026-05-20-策略梯度方法学习总览-1779278006000.webp"></p>
 <h3 id="第一阶段：策略梯度与基础算法（理论基础）"><a href="#第一阶段：策略梯度与基础算法（理论基础）" class="headerlink" title="第一阶段：策略梯度与基础算法（理论基础）"></a><strong>第一阶段：策略梯度与基础算法（理论基础）</strong></h3><ol>
