@@ -13,6 +13,7 @@
 <meta property="og:description" content="Keep go on">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://skylyong.github.io/image/2026-05-20-%E7%AD%96%E7%95%A5%E6%A2%AF%E5%BA%A6%E6%96%B9%E6%B3%95/2026-05-20-%E7%AD%96%E7%95%A5%E6%A2%AF%E5%BA%A6%E6%96%B9%E6%B3%95%E5%AD%A6%E4%B9%A0%E6%80%BB%E8%A7%88-1779267783622.webp">
+<meta property="og:image" content="https://skylyong.github.io/image/tufte-swiglu-ffn/s.png">
 <meta property="og:image" content="https://skylyong.github.io/image/2026-05-20-%E7%AD%96%E7%95%A5%E6%A2%AF%E5%BA%A6%E6%96%B9%E6%B3%95/reinforcePoint.md">
 <meta property="og:image" content="https://skylyong.github.io/image/2026-05-20-%E7%AD%96%E7%95%A5%E6%A2%AF%E5%BA%A6%E6%96%B9%E6%B3%95/2026-05-20-%E7%AD%96%E7%95%A5%E6%A2%AF%E5%BA%A6%E6%96%B9%E6%B3%95%E5%AD%A6%E4%B9%A0%E6%80%BB%E8%A7%88-1779280978581.webp">
 <meta property="og:image" content="https://skylyong.github.io/image/2026-05-20-%E7%AD%96%E7%95%A5%E6%A2%AF%E5%BA%A6%E6%96%B9%E6%B3%95/2026-05-20-%E7%AD%96%E7%95%A5%E6%A2%AF%E5%BA%A6%E6%96%B9%E6%B3%95%E5%AD%A6%E4%B9%A0%E6%80%BB%E8%A7%88-1779278006000.webp">
@@ -1375,7 +1376,7 @@
 
 
 
-
+<p><span class="marginnote"><img src="/image/tufte-swiglu-ffn/s.png" alt="SwiGLU 函数图像" loading="lazy" decoding="async"></span></p>
 <h1 id="策略梯度方法基础"><a href="#策略梯度方法基础" class="headerlink" title="策略梯度方法基础"></a>策略梯度方法基础</h1><p>在强化学习（Reinforcement Learning, RL）中，策略梯度方法（Policy Gradient Methods）是一类直接优化策略的算法，其核心思想是通过最大化期望回报来改进策略参数。下面我从目标函数出发，详细讲解策略梯度方法及其梯度推导。</p>
 <h2 id="1-策略的目标函数"><a href="#1-策略的目标函数" class="headerlink" title="1. 策略的目标函数"></a>1. 策略的目标函数</h2><p>策略梯度方法假设我们的策略由参数化函数表示，记作 $\pi_\theta(a \mid s)$，它给定状态 $s$ 输出在动作 $a$ 上的概率。</p>
 <p>强化学习的目标是最大化策略在环境中的期望累计回报，定义为：</p>
