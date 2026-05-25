@@ -7,17 +7,16 @@
   <meta name="author" content="Lee">
   <meta name="description" content="Keep go on">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Chunk划分方法">
-<meta property="og:url" content="https://skylyong.github.io/2026/01/16/chunk-hua-fen-fang-fa/index.html">
+<meta property="og:title" content="2026-05-23-DPO论文精读（三）DPO公式">
+<meta property="og:url" content="https://skylyong.github.io/2026/05/25/2026-05-23-dpo-lun-wen-jing-du-san-dpo-gong-shi/index.html">
 <meta property="og:site_name" content="Lee&#39;s Blog">
 <meta property="og:description" content="Keep go on">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2026-01-16T08:13:54.000Z">
-<meta property="article:modified_time" content="2026-01-16T08:16:29.427Z">
+<meta property="article:published_time" content="2026-05-25T12:38:50.000Z">
+<meta property="article:modified_time" content="2026-05-25T12:38:50.074Z">
 <meta property="article:author" content="Lee">
-<meta property="article:tag" content="RAG">
 <meta name="twitter:card" content="summary">
-  <title>Chunk划分方法 | Lee's Blog</title>
+  <title>2026-05-23-DPO论文精读（三）DPO公式 | Lee's Blog</title>
   
     <link rel="alternate" href="/atom.xml" title="Lee's Blog" type="application/atom+xml">
   
@@ -1366,26 +1365,14 @@
 </aside>
 
     <article class="post-page">
-  <h1>Chunk划分方法</h1>
+  <h1>2026-05-23-DPO论文精读（三）DPO公式</h1>
   
 <p class="post-meta">
   
-    <time datetime="2026-01-16T08:13:54.000Z">2026-01-16</time>
+    <time datetime="2026-05-25T12:38:50.000Z">2026-05-25</time>
   
   
   
-    <span class="meta-separator">/</span>
-    
-      
-      <a href="/categories/%E5%A4%A7%E6%A8%A1%E5%9E%8B/">大模型</a>
-    
-  
-  
-    <span class="meta-separator">/</span>
-    
-      
-      <a href="/tags/RAG/">#RAG</a>
-    
   
 </p>
 
@@ -1398,21 +1385,362 @@
   </button>
   <aside class="toc-sidebar" id="toc-sidebar" aria-label="Table of contents">
     <p class="toc-title">Contents</p>
-    
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#DPO-%E5%85%AC%E5%BC%8F%E8%AF%A6%E8%A7%A3"><span class="toc-text">DPO 公式详解</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A0%B8%E5%BF%83%E5%8A%A8%E6%9C%BA"><span class="toc-text">核心动机</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#DPO-%E7%9B%AE%E6%A0%87%E5%85%AC%E5%BC%8F%E6%8E%A8%E5%AF%BC"><span class="toc-text">DPO 目标公式推导</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%9B%9E%E9%A1%BE%E4%BC%A0%E7%BB%9F-RLHF-%E7%9A%84%E4%BC%98%E5%8C%96%E7%9B%AE%E6%A0%87"><span class="toc-text">1. 回顾传统 RLHF 的优化目标</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E8%BF%99%E4%B8%AA-RL-%E7%9B%AE%E6%A0%87%E7%9A%84%E6%9C%80%E4%BC%98%E7%AD%96%E7%95%A5%E5%BD%A2%E5%BC%8F"><span class="toc-text">2. 这个 RL 目标的最优策略形式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E4%B8%BA%E4%BB%80%E4%B9%88%E4%B8%8D%E8%83%BD%E7%9B%B4%E6%8E%A5%E4%BD%BF%E7%94%A8%E8%BF%99%E4%B8%AA%E6%9C%80%E4%BC%98%E7%AD%96%E7%95%A5%E5%85%AC%E5%BC%8F"><span class="toc-text">3. 为什么不能直接使用这个最优策略公式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-DPO-%E7%9A%84%E5%85%B3%E9%94%AE%E6%93%8D%E4%BD%9C%EF%BC%9A%E6%8A%8A-reward-%E5%86%99%E6%88%90-policy-%E7%9A%84%E5%87%BD%E6%95%B0"><span class="toc-text">4. DPO 的关键操作：把 reward 写成 policy 的函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-%E4%B8%BA%E4%BB%80%E4%B9%88%E6%9C%AA%E7%9F%A5%E7%9A%84-Z-x-%E4%B8%8D%E5%86%8D%E6%98%AF%E9%97%AE%E9%A2%98"><span class="toc-text">5. 为什么未知的 $Z(x)$ 不再是问题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-%E5%B0%86%E4%BA%BA%E7%B1%BB%E5%81%8F%E5%A5%BD%E6%A6%82%E7%8E%87%E7%9B%B4%E6%8E%A5%E5%86%99%E6%88%90-policy-%E7%9A%84%E5%87%BD%E6%95%B0"><span class="toc-text">6. 将人类偏好概率直接写成 policy 的函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-DPO-%E6%8D%9F%E5%A4%B1%E5%87%BD%E6%95%B0"><span class="toc-text">7. DPO 损失函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-%E4%BB%80%E4%B9%88%E6%98%AF-implicit-reward"><span class="toc-text">8. 什么是 implicit reward</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#9-DPO-%E6%9B%B4%E6%96%B0%E5%88%B0%E5%BA%95%E5%9C%A8%E5%81%9A%E4%BB%80%E4%B9%88"><span class="toc-text">9. DPO 更新到底在做什么</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#10-%E4%B8%BA%E4%BB%80%E4%B9%88%E6%A2%AF%E5%BA%A6%E4%B8%AD%E8%BF%98%E6%9C%89%E4%B8%80%E4%B8%AA%E6%9D%83%E9%87%8D%E9%A1%B9"><span class="toc-text">10. 为什么梯度中还有一个权重项</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#11-beta-%E5%9C%A8-DPO-%E4%B8%AD%E7%9A%84%E4%BD%9C%E7%94%A8"><span class="toc-text">11. $\beta$ 在 DPO 中的作用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#12-DPO-%E7%9A%84%E5%AE%8C%E6%95%B4%E8%AE%AD%E7%BB%83%E6%B5%81%E7%A8%8B"><span class="toc-text">12. DPO 的完整训练流程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#13-%E5%A6%82%E6%9E%9C%E6%B2%A1%E6%9C%89%E5%8E%9F%E5%A7%8B-SFT-%E6%A8%A1%E5%9E%8B%E6%80%8E%E4%B9%88%E5%8A%9E"><span class="toc-text">13. 如果没有原始 SFT 模型怎么办</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#14-DPO-%E4%B8%8E%E4%BC%A0%E7%BB%9F-RLHF-%E7%9A%84%E5%AF%B9%E6%AF%94"><span class="toc-text">14. DPO 与传统 RLHF 的对比</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-text">总结</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99"><span class="toc-text">参考资料</span></a></li></ol>
   </aside>
 
 
 
   <section class="article-content">
-    <p>在构建大语言模型（LLM）应用或 RAG 系统时，如何将长文档科学地切割成小块（Chunks）是决定检索精度和生成质量的关键。 最近团队里面的小伙伴正好需要做这方面的工作，今天偶然刷到了这篇介绍，在这里记录一下，留作以后需要的时候参考。</p>
-<p>项目仓库： <a target="_blank" rel="noopener" href="https://github.com/hasibul0912/ChunkWise">https://github.com/hasibul0912/ChunkWise</a></p>
-<p>原文链接： <a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/euFBkbMMGBoyIpjs4FhFHA">https://mp.weixin.qq.com/s/euFBkbMMGBoyIpjs4FhFHA</a></p>
+    <h1 id="DPO-公式详解"><a href="#DPO-公式详解" class="headerlink" title="DPO 公式详解"></a>DPO 公式详解</h1><h2 id="核心动机"><a href="#核心动机" class="headerlink" title="核心动机"></a>核心动机</h2><p>最优 <code>policy</code> 和 <code>reward</code> 之间存在解析关系，把 <code>reward</code> 写成 <code>policy</code> 的函数，这样原本关于 <code>reward</code> 的损失函数，就可以改写成关于 <code>policy</code> 的损失函数。</p>
+<p>DPO 的核心目标是：</p>
+<blockquote>
+<p>不再像传统 RLHF 那样先训练 reward model、再使用 PPO 优化语言模型，而是直接利用偏好数据训练语言模型。</p>
+</blockquote>
+<p><span class="marginnote">
+DPO 目标函数的推导、梯度含义以及训练流程。
+</span></p>
+
+<h2 id="DPO-目标公式推导"><a href="#DPO-目标公式推导" class="headerlink" title="DPO 目标公式推导"></a>DPO 目标公式推导</h2><h3 id="1-回顾传统-RLHF-的优化目标"><a href="#1-回顾传统-RLHF-的优化目标" class="headerlink" title="1. 回顾传统 RLHF 的优化目标"></a>1. 回顾传统 RLHF 的优化目标</h3><p>DPO 从与传统 RLHF 相同的目标出发：</p>
+<p>$$<br>\max_{\pi}<br>\;<br>\mathbb{E}_{y\sim \pi(y\mid x)}<br>\left[<br>r(x,y)<br>\right]<br>-<br>\beta<br>D_{\mathrm{KL}}<br>\left(<br>\pi(y\mid x)<br>\Vert<br>\pi_{\mathrm{ref}}(y\mid x)<br>\right)<br>$$</p>
+
+<p>其中：</p>
+<ul>
+<li>$x$：prompt；</li>
+<li>$y$：模型生成的回答；</li>
+<li>$r(x,y)$：回答的 reward；</li>
+<li>$\pi(y\mid x)$：要优化的策略模型；</li>
+<li>$\pi_{\mathrm{ref}}(y\mid x)$：参考模型，通常是 SFT 模型；</li>
+<li>$\beta$：控制模型偏离参考模型程度的系数。</li>
+</ul>
+<p>这个目标包含两个要求：</p>
+<p>$$<br>\text{生成高 reward 的回答}<br>$$</p>
+
+<p>同时：</p>
+<p>$$<br>\text{不要偏离参考模型太远}<br>$$</p>
+
+<p>如果没有 KL 约束，模型可能会过度追求 reward，生成单一、异常或者利用 reward model 缺陷的回答。</p>
+<hr>
+<h3 id="2-这个-RL-目标的最优策略形式"><a href="#2-这个-RL-目标的最优策略形式" class="headerlink" title="2. 这个 RL 目标的最优策略形式"></a>2. 这个 RL 目标的最优策略形式</h3><p>对于任意给定的 reward function $r(x,y)$，上面的优化目标存在解析形式的最优策略：</p>
+<p>$$<br>\pi_r(y\mid x)<br>=<br>\frac{1}{Z(x)}<br>\pi_{\mathrm{ref}}(y\mid x)<br>\exp\left(<br>\frac{1}{\beta}r(x,y)<br>\right)<br>$$</p>
+
+<p>其中：</p>
+<p>$$<br>Z(x)<br>=<br>\sum_y<br>\pi_{\mathrm{ref}}(y\mid x)<br>\exp\left(<br>\frac{1}{\beta}r(x,y)<br>\right)<br>$$</p>
+
+<p>是归一化因子，也称为 partition function。</p>
+<p>它负责保证：</p>
+<p>$$<br>\sum_y \pi_r(y\mid x)=1<br>$$</p>
+
+<p>这个公式可以理解为：</p>
+<p>$$<br>\text{最优策略}<br>=<br>\text{参考策略}<br>\times<br>\text{由 reward 决定的概率提升因子}<br>$$</p>
+
+<p>具体来说：</p>
+<ul>
+<li>如果某个回答 $y$ 的 reward 高，那么</li>
+</ul>
+<p>$$<br>  \exp\left(\frac{1}{\beta}r(x,y)\right)<br>  $$</p>
+
+<p>  较大，最优策略会提高这个回答的生成概率；</p>
+<ul>
+<li>如果某个回答的 reward 低，它的概率会被降低；</li>
+<li>由于仍然乘以 $\pi_{\mathrm{ref}}(y\mid x)$，模型不会完全脱离原来的 SFT 分布。</li>
+</ul>
+<hr>
+<h3 id="3-为什么不能直接使用这个最优策略公式"><a href="#3-为什么不能直接使用这个最优策略公式" class="headerlink" title="3. 为什么不能直接使用这个最优策略公式"></a>3. 为什么不能直接使用这个最优策略公式</h3><p>问题出在 $Z(x)$：</p>
+<p>$$<br>Z(x)<br>=<br>\sum_y<br>\pi_{\mathrm{ref}}(y\mid x)<br>\exp\left(<br>\frac{1}{\beta}r(x,y)<br>\right)<br>$$</p>
+
+<p>对于语言模型来说，$y$ 表示所有可能生成的文本序列。</p>
+<p>例如，一个回答可能包含几十到上千个 token，每一步都有巨大的词表选择空间。因此，所有可能回答的数量几乎是无法枚举的。</p>
+<p>所以计算：</p>
+<p>$$<br>\sum_y<br>$$</p>
+
+<p>在实际大语言模型中代价极高，甚至不可行。</p>
+<p>这也是为什么即使已经训练出了 reward model，仍然通常需要 PPO 等采样式强化学习方法，而不能直接计算最优策略。</p>
+<hr>
+<h3 id="4-DPO-的关键操作：把-reward-写成-policy-的函数"><a href="#4-DPO-的关键操作：把-reward-写成-policy-的函数" class="headerlink" title="4. DPO 的关键操作：把 reward 写成 policy 的函数"></a>4. DPO 的关键操作：把 reward 写成 policy 的函数</h3><p>DPO 的关键洞察是：虽然从 reward 计算 policy 很困难，但可以把公式反过来，使用 policy 表示 reward。</p>
+<p>从：</p>
+<p>$$<br>\pi_r(y\mid x)<br>=<br>\frac{1}{Z(x)}<br>\pi_{\mathrm{ref}}(y\mid x)<br>\exp\left(<br>\frac{1}{\beta}r(x,y)<br>\right)<br>$$</p>
+
+<p>两边取对数：</p>
+<p>$$<br>\log \pi_r(y\mid x)<br>=<br>-\log Z(x)<br>+<br>\log \pi_{\mathrm{ref}}(y\mid x)<br>+<br>\frac{1}{\beta}r(x,y)<br>$$</p>
+
+<p>整理得到：</p>
+<p>$$<br>r(x,y)<br>=<br>\beta<br>\log<br>\frac{\pi_r(y\mid x)}<br>{\pi_{\mathrm{ref}}(y\mid x)}<br>+<br>\beta \log Z(x)<br>$$</p>
+
+<p>这说明，reward 可以由两个部分表示：</p>
+<p>$$<br>r(x,y)<br>=<br>\underbrace{<br>\beta<br>\log<br>\frac{\pi_r(y\mid x)}<br>{\pi_{\mathrm{ref}}(y\mid x)}<br>}_{\text{策略相对于参考策略的偏好程度}}<br>+<br>\underbrace{<br>\beta \log Z(x)<br>}_{\text{只与 prompt 有关的常数}}<br>$$</p>
+
+<p>其中最关键的是：</p>
+<p>$$<br>\log<br>\frac{\pi_r(y\mid x)}<br>{\pi_{\mathrm{ref}}(y\mid x)}<br>$$</p>
+
+<p>它衡量的是：相比参考模型，最优策略对回答 $y$ 提高或降低了多少概率。</p>
+<p>如果：</p>
+<p>$$<br>\pi_r(y\mid x) > \pi_{\mathrm{ref}}(y\mid x)<br>$$</p>
+
+<p>那么：</p>
+<p>$$<br>\log<br>\frac{\pi_r(y\mid x)}<br>{\pi_{\mathrm{ref}}(y\mid x)}<br>> 0<br>$$</p>
+
+<p>说明这个回答相对于参考模型被增强，对应较高 reward。</p>
+<hr>
+<h3 id="5-为什么未知的-Z-x-不再是问题"><a href="#5-为什么未知的-Z-x-不再是问题" class="headerlink" title="5. 为什么未知的 $Z(x)$ 不再是问题"></a>5. 为什么未知的 $Z(x)$ 不再是问题</h3><p>在人类偏好建模中，Bradley-Terry 模型只依赖两个回答的 reward 差值：</p>
+<p>$$<br>p^*(y_1 \succ y_2\mid x)<br>=<br>\sigma<br>\left(<br>r^*(x,y_1)-r^*(x,y_2)<br>\right)<br>$$</p>
+
+<p>将 reward 的表达式代入：</p>
+<p>$$<br>r^*(x,y_1)<br>=<br>\beta<br>\log<br>\frac{\pi^*(y_1\mid x)}<br>{\pi_{\mathrm{ref}}(y_1\mid x)}<br>+<br>\beta \log Z(x)<br>$$</p>
+
+<p>$$<br>r^*(x,y_2)<br>=<br>\beta<br>\log<br>\frac{\pi^*(y_2\mid x)}<br>{\pi_{\mathrm{ref}}(y_2\mid x)}<br>+<br>\beta \log Z(x)<br>$$</p>
+
+<p>两者相减：</p>
+<p>$$<br>\begin{aligned}<br>r^*(x,y_1)-r^*(x,y_2)<br>&=<br>\beta<br>\log<br>\frac{\pi^*(y_1\mid x)}<br>{\pi_{\mathrm{ref}}(y_1\mid x)}<br>-<br>\beta<br>\log<br>\frac{\pi^*(y_2\mid x)}<br>{\pi_{\mathrm{ref}}(y_2\mid x)}<br>\end{aligned}<br>$$</p>
+
+<p>因为两项中的：</p>
+<p>$$<br>\beta \log Z(x)<br>$$</p>
+
+<p>完全相同，所以直接抵消了。</p>
+<p>这是 DPO 推导中最重要的一步：</p>
+<blockquote>
+<p>虽然单独计算 reward 时需要未知的 $Z(x)$，但人类偏好只依赖 reward 差值，因此 $Z(x)$ 在比较两个回答时会自动消失。</p>
+</blockquote>
+<hr>
+<h3 id="6-将人类偏好概率直接写成-policy-的函数"><a href="#6-将人类偏好概率直接写成-policy-的函数" class="headerlink" title="6. 将人类偏好概率直接写成 policy 的函数"></a>6. 将人类偏好概率直接写成 policy 的函数</h3><p>因此，Bradley-Terry 偏好概率可以从 reward 形式：</p>
+<p>$$<br>p^*(y_1 \succ y_2\mid x)<br>=<br>\sigma<br>\left(<br>r^*(x,y_1)-r^*(x,y_2)<br>\right)<br>$$</p>
+
+<p>改写为 policy 形式：</p>
+<p>$$<br>p^*(y_1 \succ y_2\mid x)<br>=<br>\sigma<br>\left(<br>\beta<br>\log<br>\frac{\pi^*(y_1\mid x)}<br>{\pi_{\mathrm{ref}}(y_1\mid x)}<br>-<br>\beta<br>\log<br>\frac{\pi^*(y_2\mid x)}<br>{\pi_{\mathrm{ref}}(y_2\mid x)}<br>\right)<br>$$</p>
+
+
+<p>上面公式的直观含义是：</p>
+<p>如果最优模型相对于参考模型，更大程度地提高了 $y_1$ 的生成概率，而不是提高 $y_2$ 的生成概率，那么人类更可能偏好 $y_1$。</p>
+<p>注意这里比较的不是简单的：</p>
+<p>$$<br>\pi^*(y_1\mid x)<br>\quad \text{和} \quad<br>\pi^*(y_2\mid x)<br>$$</p>
+
+<p>而是比较：</p>
+<p>$$<br>\frac{\pi^*(y_1\mid x)}<br>{\pi_{\mathrm{ref}}(y_1\mid x)}<br>\quad \text{和} \quad<br>\frac{\pi^*(y_2\mid x)}<br>{\pi_{\mathrm{ref}}(y_2\mid x)}<br>$$</p>
+
+<p>也就是：<strong>当前策略相对于参考策略，对两个回答分别提升了多少。</strong></p>
+<hr>
+<h3 id="7-DPO-损失函数"><a href="#7-DPO-损失函数" class="headerlink" title="7. DPO 损失函数"></a>7. DPO 损失函数</h3><p>真实的最优策略 $\pi^*$ 不可知，因此我们用可训练的语言模型：</p>
+<p>$$<br>\pi_\theta(y\mid x)<br>$$</p>
+
+<p>去拟合它。</p>
+<p>对于偏好数据集：</p>
+<p>$$<br>\mathcal{D}<br>=<br>\left\{<br>(x^{(i)}, y_w^{(i)}, y_l^{(i)})<br>\right\}_{i=1}^{N}<br>$$</p>
+
+<p>其中 $y_w$ 是 preferred answer，$y_l$ 是 rejected answer。</p>
+<p>DPO 的损失函数为：</p>
+<p>$$<br>L_{\mathrm{DPO}}(\pi_\theta;\pi_{\mathrm{ref}})<br>=<br>-<br>\mathbb{E}_{(x,y_w,y_l)\sim\mathcal{D}}<br>\left[<br>\log<br>\sigma<br>\left(<br>\beta<br>\log<br>\frac{\pi_\theta(y_w\mid x)}<br>{\pi_{\mathrm{ref}}(y_w\mid x)}<br>-<br>\beta<br>\log<br>\frac{\pi_\theta(y_l\mid x)}<br>{\pi_{\mathrm{ref}}(y_l\mid x)}<br>\right)<br>\right]<br>$$</p>
+
+<p>这个形式与 reward model 的训练损失很像。</p>
+<p>传统 reward model 的 loss 是：</p>
+<p>$$<br>-<br>\log<br>\sigma<br>\left(<br>r_\phi(x,y_w)-r_\phi(x,y_l)<br>\right)<br>$$</p>
+
+<p>DPO 则把 reward 替换成：</p>
+<p>$$<br>\hat{r}_\theta(x,y)<br>=<br>\beta<br>\log<br>\frac{\pi_\theta(y\mid x)}<br>{\pi_{\mathrm{ref}}(y\mid x)}<br>$$</p>
+
+<p>因此可以理解为：</p>
+<p>$$<br>L_{\mathrm{DPO}}<br>=<br>-<br>\mathbb{E}<br>\left[<br>\log<br>\sigma<br>\left(<br>\hat{r}_\theta(x,y_w)<br>-<br>\hat{r}_\theta(x,y_l)<br>\right)<br>\right]<br>$$</p>
+
+<hr>
+<h3 id="8-什么是-implicit-reward"><a href="#8-什么是-implicit-reward" class="headerlink" title="8. 什么是 implicit reward"></a>8. 什么是 implicit reward</h3><p>DPO 没有显式训练一个单独的 reward model：</p>
+<p>$$<br>r_\phi(x,y)<br>$$</p>
+
+<p>但是当前策略模型和参考策略模型共同定义了一个隐式 reward：</p>
+<p>$$<br>\hat{r}_\theta(x,y)<br>=<br>\beta<br>\log<br>\frac{\pi_\theta(y\mid x)}<br>{\pi_{\mathrm{ref}}(y\mid x)}<br>$$</p>
+
+<p>之所以说它是隐式 reward，是因为：</p>
+<ul>
+<li>不存在单独的 reward 网络；</li>
+<li>只要知道 $\pi_\theta$ 和 $\pi_{\mathrm{ref}}$，就可以得到回答的相对 reward；</li>
+<li>训练 $\pi_\theta$ 的过程，也是在同时调整这个隐式 reward。</li>
+</ul>
+<p>因此，DPO 中的语言模型同时承担两个角色：</p>
+<p>$$<br>\text{policy model}<br>\quad + \quad<br>\text{implicit reward model}<br>$$</p>
+
+<hr>
+<h3 id="9-DPO-更新到底在做什么"><a href="#9-DPO-更新到底在做什么" class="headerlink" title="9. DPO 更新到底在做什么"></a>9. DPO 更新到底在做什么</h3><p>进一步地，我们来看 DPO loss 的梯度：</p>
+<p>$$<br>\begin{aligned}<br>\nabla_\theta L_{\mathrm{DPO}}<br>=<br>-<br>\beta<br>\mathbb{E}_{(x,y_w,y_l)\sim\mathcal{D}}<br>\Bigg[<br>&<br>\sigma<br>\left(<br>\hat{r}_\theta(x,y_l)<br>-<br>\hat{r}_\theta(x,y_w)<br>\right)<br>\\<br>&\cdot<br>\left(<br>\nabla_\theta \log \pi_\theta(y_w\mid x)<br>-<br>\nabla_\theta \log \pi_\theta(y_l\mid x)<br>\right)<br>\Bigg]<br>\end{aligned}<br>$$</p>
+
+<p>其中：</p>
+<p>$$<br>\hat{r}_\theta(x,y)<br>=<br>\beta<br>\log<br>\frac{\pi_\theta(y\mid x)}<br>{\pi_{\mathrm{ref}}(y\mid x)}<br>$$</p>
+
+<p>这个梯度包含两个重要部分。</p>
+<p>1） 第一部分：提高 preferred answer 的概率</p>
+<p>梯度中包含：</p>
+<p>$$<br>\nabla_\theta \log \pi_\theta(y_w\mid x)<br>$$</p>
+
+<p>它会促使模型提高人类偏好回答 $y_w$ 的概率。</p>
+<p>也就是：</p>
+<p>$$<br>\pi_\theta(y_w\mid x) \uparrow<br>$$</p>
+
+<p>2）  第二部分：降低 rejected answer 的概率</p>
+<p>梯度中还包含：</p>
+<p>$$<br>-<br>\nabla_\theta \log \pi_\theta(y_l\mid x)<br>$$</p>
+
+<p>它会促使模型降低人类不偏好回答 $y_l$ 的概率：</p>
+<p>$$<br>\pi_\theta(y_l\mid x) \downarrow<br>$$</p>
+
+<p>因此，DPO 的基本更新方向是：</p>
+<p>$$<br>\text{提高 preferred completion 的概率}<br>$$</p>
+
+<p>$$<br>\text{降低 rejected completion 的概率}<br>$$</p>
+
+<hr>
+<h3 id="10-为什么梯度中还有一个权重项"><a href="#10-为什么梯度中还有一个权重项" class="headerlink" title="10. 为什么梯度中还有一个权重项"></a>10. 为什么梯度中还有一个权重项</h3><p>梯度中还有一个重要系数：</p>
+<p>$$<br>\sigma<br>\left(<br>\hat{r}_\theta(x,y_l)<br>-<br>\hat{r}_\theta(x,y_w)<br>\right)<br>$$</p>
+
+<p>它衡量当前模型对这一对回答的排序错误程度。</p>
+<p>如果模型已经正确认为：</p>
+<p>$$<br>\hat{r}_\theta(x,y_w)<br>\gg<br>\hat{r}_\theta(x,y_l)<br>$$</p>
+
+<p>那么：</p>
+<p>$$<br>\hat{r}_\theta(x,y_l)<br>-<br>\hat{r}_\theta(x,y_w)<br>\ll 0<br>$$</p>
+
+<p>此时 sigmoid 值很小，这个样本对参数更新的影响也较小。</p>
+<p>直观来说：</p>
+<blockquote>
+<p>模型已经学会的样本，不需要反复进行很强的更新。</p>
+</blockquote>
+<p>相反，如果模型错误地认为 loser 更好：</p>
+<p>$$<br>\hat{r}_\theta(x,y_l)<br>><br>\hat{r}_\theta(x,y_w)<br>$$</p>
+
+<p>那么：</p>
+<p>$$<br>\sigma<br>\left(<br>\hat{r}_\theta(x,y_l)<br>-<br>\hat{r}_\theta(x,y_w)<br>\right)<br>$$</p>
+
+<p>会比较大，这个样本的训练权重也会更大。</p>
+<p>直观来说：</p>
+<blockquote>
+<p>模型排序错得越明显，这个样本就越需要被重点纠正。</p>
+</blockquote>
+<p>这也是 DPO 相比简单“提高 winner、降低 loser”训练方式的重要区别。</p>
+<hr>
+<h3 id="11-beta-在-DPO-中的作用"><a href="#11-beta-在-DPO-中的作用" class="headerlink" title="11. $\beta$ 在 DPO 中的作用"></a>11. $\beta$ 在 DPO 中的作用</h3><p>在 DPO 中，$\beta$ 出现在隐式 reward 中：</p>
+<p>$$<br>\hat{r}_\theta(x,y)<br>=<br>\beta<br>\log<br>\frac{\pi_\theta(y\mid x)}<br>{\pi_{\mathrm{ref}}(y\mid x)}<br>$$</p>
+
+<p>它来自原始 KL 约束优化目标。</p>
+<p>从原始 RLHF 目标来看：</p>
+<p>$$<br>\max_{\pi}<br>\;<br>\mathbb{E}[r]<br>-<br>\beta D_{\mathrm{KL}}(\pi\Vert\pi_{\mathrm{ref}})<br>$$</p>
+
+<p>较大的 $\beta$ 表示更强的 KL 约束，即更强调保持接近参考模型。</p>
+<p>在 DPO loss 中，$\beta$ 同时会改变偏好分类 logit 的尺度，因此它也影响训练梯度的强弱和饱和程度。实践中它是一个需要调节的超参数。</p>
+<hr>
+<h3 id="12-DPO-的完整训练流程"><a href="#12-DPO-的完整训练流程" class="headerlink" title="12. DPO 的完整训练流程"></a>12. DPO 的完整训练流程</h3><p>最后，我们给出 DPO pipeline。</p>
+<p>1） 第一步：构造偏好数据集</p>
+<p>对每个 prompt $x$，从参考模型中生成两个回答：</p>
+<p>$$<br>y_1,y_2<br>\sim<br>\pi_{\mathrm{ref}}(\cdot\mid x)<br>$$</p>
+
+<p>然后由人类比较这两个回答，得到：</p>
+<p>$$<br>y_w \succ y_l \mid x<br>$$</p>
+
+<p>构造离线偏好数据集：</p>
+<p>$$<br>\mathcal{D}<br>=<br>\left\{<br>(x^{(i)},y_w^{(i)},y_l^{(i)})<br>\right\}_{i=1}^{N}<br>$$</p>
+
+<p>2）  第二步：固定参考模型</p>
+<p>通常取：</p>
+<p>$$<br>\pi_{\mathrm{ref}}=\pi_{\mathrm{SFT}}<br>$$</p>
+
+<p>参考模型在 DPO 训练过程中固定不更新。</p>
+<p>3）  第三步：初始化当前策略模型</p>
+<p>通常也从 SFT 模型初始化：</p>
+<p>$$<br>\pi_\theta \leftarrow \pi_{\mathrm{SFT}}<br>$$</p>
+
+<p>4）  第四步：直接最小化 DPO loss</p>
+<p>使用偏好数据训练 $\pi_\theta$：</p>
+<p>$$<br>\min_\theta<br>L_{\mathrm{DPO}}(\pi_\theta;\pi_{\mathrm{ref}})<br>$$</p>
+
+<p>训练过程中不需要：</p>
+<ul>
+<li>单独训练 reward model；</li>
+<li>从模型在线采样并计算 PPO advantage；</li>
+<li>使用 PPO 更新策略；</li>
+<li>显式估计 partition function $Z(x)$。</li>
+</ul>
+<hr>
+<h3 id="13-如果没有原始-SFT-模型怎么办"><a href="#13-如果没有原始-SFT-模型怎么办" class="headerlink" title="13. 如果没有原始 SFT 模型怎么办"></a>13. 如果没有原始 SFT 模型怎么办</h3><p>公开偏好数据集通常是由某个 SFT 模型采样生成的，因此理想情况下应该使用那个 SFT 模型作为：</p>
+<p>$$<br>\pi_{\mathrm{ref}}<br>$$</p>
+
+<p>但是有时原始 SFT 模型无法获得。</p>
+<p>此时作者建议：使用偏好数据中的 preferred completions，对一个模型先进行最大似然训练：</p>
+<p>$$<br>\pi_{\mathrm{ref}}<br>=<br>\arg\max_{\pi}<br>\;<br>\mathbb{E}_{(x,y_w)\sim\mathcal{D}}<br>\left[<br>\log \pi(y_w\mid x)<br>\right]<br>$$</p>
+
+<p>也就是先让参考模型学习生成偏好回答，再把它作为 DPO 的 reference model。</p>
+<p>这样可以减轻参考模型和生成原始偏好数据的真实模型之间的分布差异。</p>
+<hr>
+<h3 id="14-DPO-与传统-RLHF-的对比"><a href="#14-DPO-与传统-RLHF-的对比" class="headerlink" title="14. DPO 与传统 RLHF 的对比"></a>14. DPO 与传统 RLHF 的对比</h3><table>
+<thead>
+<tr>
+<th>方法</th>
+<th>Reward Model</th>
+<th>PPO / RL</th>
+<th>训练方式</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>传统 RLHF</td>
+<td>显式训练 $r_\phi(x,y)$</td>
+<td>需要</td>
+<td>reward model + RL</td>
+</tr>
+<tr>
+<td>DPO</td>
+<td>不单独训练，reward 隐含在 policy ratio 中</td>
+<td>不需要</td>
+<td>直接对偏好数据做分类式训练</td>
+</tr>
+</tbody></table>
+<p>传统 RLHF 流程：</p>
+<p>$$<br>\text{偏好数据}<br>\rightarrow<br>\text{训练 reward model}<br>\rightarrow<br>\text{PPO 优化 policy}<br>$$</p>
+
+<p>DPO 流程：</p>
+<p>$$<br>\text{偏好数据}<br>\rightarrow<br>\text{直接优化 policy}<br>$$</p>
+
+<hr>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>DPO 的推导可以概括为四步：</p>
+<ol>
+<li>KL 约束的 RLHF 目标存在一个最优策略解析形式：</li>
+</ol>
+<p>$$<br>\pi_r(y\mid x)<br>=<br>\frac{1}{Z(x)}<br>\pi_{\mathrm{ref}}(y\mid x)<br>\exp\left(<br>\frac{1}{\beta}r(x,y)<br>\right)<br>$$</p>
+
+<ol start="2">
+<li>将这个公式反解，可以用 policy ratio 表示 reward：</li>
+</ol>
+<p>$$<br>r(x,y)<br>=<br>\beta<br>\log<br>\frac{\pi_r(y\mid x)}<br>{\pi_{\mathrm{ref}}(y\mid x)}<br>+<br>\beta \log Z(x)<br>$$</p>
+
+<ol start="3">
+<li><p>Bradley-Terry 偏好模型只依赖 reward 差值，因此未知的 $Z(x)$ 会抵消。</p>
+</li>
+<li><p>最终得到可以直接训练语言模型的 DPO loss：</p>
+</li>
+</ol>
+<p>$$<br>L_{\mathrm{DPO}}<br>=<br>-<br>\mathbb{E}<br>\left[<br>\log<br>\sigma<br>\left(<br>\beta<br>\log<br>\frac{\pi_\theta(y_w\mid x)}<br>{\pi_{\mathrm{ref}}(y_w\mid x)}<br>-<br>\beta<br>\log<br>\frac{\pi_\theta(y_l\mid x)}<br>{\pi_{\mathrm{ref}}(y_l\mid x)}<br>\right)<br>\right]<br>$$</p>
+
+<p>因此，DPO 的本质是：</p>
+<p><strong>让当前模型相对于参考模型更加偏向人类喜欢的回答、远离人类不喜欢的回答，并通过这种方式隐式完成 reward learning 和 policy optimization。</strong></p>
+<h1 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h1><p>DPO 算法详解： <a target="_blank" rel="noopener" href="https://yuanchaofa.com/post/hands-on-dpo-direct-preference-optimization">https://yuanchaofa.com/post/hands-on-dpo-direct-preference-optimization</a></p>
 
   </section>
 
   
 
   
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
+        packages: {'[+]': ['ams']},
+        processEscapes: true,
+        processEnvironments: true,
+        tags: 'ams'
+      },
+      options: {
+        skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      },
+      svg: {
+        fontCache: 'global'
+      }
+    };
+  </script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-svg.js"></script>
+
 
 </article>
 
