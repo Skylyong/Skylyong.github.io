@@ -85,6 +85,7 @@
       autocomplete="off"
       placeholder="Search posts"
       data-search-url="/search.xml"
+      data-private-search-url="/private/search.xml"
     >
     <p class="left-nav-search-status" aria-live="polite"></p>
     <ol class="left-nav-search-results"></ol>
@@ -106,6 +107,13 @@
           
           <p class="left-nav-year">2026</p>
           <ol class="left-nav-list left-nav-archive-list">
+        
+        <li>
+          <time datetime="2026-06-01T14:45:15.000Z">06-01</time>
+          <a href="/2026/06/01/2026-06-01-ce-lue-ti-du-suan-fa-yi-cong-reinforce-dao-advantage/">2026-06-01-策略梯度算法（一）从REINFORCE到Advantage</a>
+        </li>
+      
+        
         
         <li>
           <time datetime="2026-05-26T16:11:44.000Z">05-27</time>
@@ -431,14 +439,14 @@
         
         <li>
           <time datetime="2025-03-08T08:39:54.000Z">03-08</time>
-          <a href="/2025/03/08/python-duo-jin-cheng-shi-li/">python多进程示例</a>
+          <a href="/2025/03/08/matplotlib-xian-shi-zhong-wen/">matplotlib 设置显示中文</a>
         </li>
       
         
         
         <li>
           <time datetime="2025-03-08T08:39:54.000Z">03-08</time>
-          <a href="/2025/03/08/matplotlib-xian-shi-zhong-wen/">matplotlib 设置显示中文</a>
+          <a href="/2025/03/08/python-duo-jin-cheng-shi-li/">python多进程示例</a>
         </li>
       
         
@@ -780,425 +788,605 @@
     
       <ol class="left-nav-chip-list">
         
-          <li>
-            <button class="left-nav-chip" type="button" data-left-nav-meta="tags" data-left-nav-name="BPE">
-              <span>BPE</span>
-              <span class="left-nav-count">3</span>
-            </button>
-          </li>
+          
+          
+            <li>
+              <button class="left-nav-chip" type="button" data-left-nav-meta="tags" data-left-nav-name="BPE">
+                <span>BPE</span>
+                <span class="left-nav-count">3</span>
+              </button>
+            </li>
+          
         
-          <li>
-            <button class="left-nav-chip" type="button" data-left-nav-meta="tags" data-left-nav-name="Clash, 规则配置">
-              <span>Clash, 规则配置</span>
-              <span class="left-nav-count">1</span>
-            </button>
-          </li>
+          
+          
+            <li>
+              <button class="left-nav-chip" type="button" data-left-nav-meta="tags" data-left-nav-name="Clash, 规则配置">
+                <span>Clash, 规则配置</span>
+                <span class="left-nav-count">1</span>
+              </button>
+            </li>
+          
         
-          <li>
-            <button class="left-nav-chip" type="button" data-left-nav-meta="tags" data-left-nav-name="Dotfiles">
-              <span>Dotfiles</span>
-              <span class="left-nav-count">1</span>
-            </button>
-          </li>
+          
+          
+            <li>
+              <button class="left-nav-chip" type="button" data-left-nav-meta="tags" data-left-nav-name="Dotfiles">
+                <span>Dotfiles</span>
+                <span class="left-nav-count">1</span>
+              </button>
+            </li>
+          
         
-          <li>
-            <button class="left-nav-chip" type="button" data-left-nav-meta="tags" data-left-nav-name="GitHub">
-              <span>GitHub</span>
-              <span class="left-nav-count">2</span>
-            </button>
-          </li>
+          
+          
+            <li>
+              <button class="left-nav-chip" type="button" data-left-nav-meta="tags" data-left-nav-name="GitHub">
+                <span>GitHub</span>
+                <span class="left-nav-count">2</span>
+              </button>
+            </li>
+          
         
-          <li>
-            <button class="left-nav-chip" type="button" data-left-nav-meta="tags" data-left-nav-name="GitLab">
-              <span>GitLab</span>
-              <span class="left-nav-count">1</span>
-            </button>
-          </li>
+          
+          
+            <li>
+              <button class="left-nav-chip" type="button" data-left-nav-meta="tags" data-left-nav-name="GitLab">
+                <span>GitLab</span>
+                <span class="left-nav-count">1</span>
+              </button>
+            </li>
+          
         
-          <li>
-            <button class="left-nav-chip" type="button" data-left-nav-meta="tags" data-left-nav-name="Google访问助手">
-              <span>Google访问助手</span>
-              <span class="left-nav-count">1</span>
-            </button>
-          </li>
+          
+          
+            <li>
+              <button class="left-nav-chip" type="button" data-left-nav-meta="tags" data-left-nav-name="Google访问助手">
+                <span>Google访问助手</span>
+                <span class="left-nav-count">1</span>
+              </button>
+            </li>
+          
         
-          <li>
-            <button class="left-nav-chip" type="button" data-left-nav-meta="tags" data-left-nav-name="Hexo">
-              <span>Hexo</span>
-              <span class="left-nav-count">1</span>
-            </button>
-          </li>
+          
+          
+            <li>
+              <button class="left-nav-chip" type="button" data-left-nav-meta="tags" data-left-nav-name="Hexo">
+                <span>Hexo</span>
+                <span class="left-nav-count">1</span>
+              </button>
+            </li>
+          
         
-          <li>
-            <button class="left-nav-chip" type="button" data-left-nav-meta="tags" data-left-nav-name="NIVIDIA驱动">
-              <span>NIVIDIA驱动</span>
-              <span class="left-nav-count">1</span>
-            </button>
-          </li>
+          
+          
+            <li>
+              <button class="left-nav-chip" type="button" data-left-nav-meta="tags" data-left-nav-name="NIVIDIA驱动">
+                <span>NIVIDIA驱动</span>
+                <span class="left-nav-count">1</span>
+              </button>
+            </li>
+          
         
-          <li>
-            <button class="left-nav-chip" type="button" data-left-nav-meta="tags" data-left-nav-name="NVIDIA">
-              <span>NVIDIA</span>
-              <span class="left-nav-count">1</span>
-            </button>
-          </li>
+          
+          
+            <li>
+              <button class="left-nav-chip" type="button" data-left-nav-meta="tags" data-left-nav-name="NVIDIA">
+                <span>NVIDIA</span>
+                <span class="left-nav-count">1</span>
+              </button>
+            </li>
+          
         
-          <li>
-            <button class="left-nav-chip" type="button" data-left-nav-meta="tags" data-left-nav-name="Pandas">
-              <span>Pandas</span>
-              <span class="left-nav-count">1</span>
-            </button>
-          </li>
+          
+          
+            <li>
+              <button class="left-nav-chip" type="button" data-left-nav-meta="tags" data-left-nav-name="Pandas">
+                <span>Pandas</span>
+                <span class="left-nav-count">1</span>
+              </button>
+            </li>
+          
         
-          <li>
-            <button class="left-nav-chip" type="button" data-left-nav-meta="tags" data-left-nav-name="RAG">
-              <span>RAG</span>
-              <span class="left-nav-count">1</span>
-            </button>
-          </li>
+          
+          
+            <li>
+              <button class="left-nav-chip" type="button" data-left-nav-meta="tags" data-left-nav-name="RAG">
+                <span>RAG</span>
+                <span class="left-nav-count">1</span>
+              </button>
+            </li>
+          
         
-          <li>
-            <button class="left-nav-chip" type="button" data-left-nav-meta="tags" data-left-nav-name="SwiGLU">
-              <span>SwiGLU</span>
-              <span class="left-nav-count">1</span>
-            </button>
-          </li>
+          
+          
+            <li>
+              <button class="left-nav-chip" type="button" data-left-nav-meta="tags" data-left-nav-name="SwiGLU">
+                <span>SwiGLU</span>
+                <span class="left-nav-count">1</span>
+              </button>
+            </li>
+          
         
-          <li>
-            <button class="left-nav-chip" type="button" data-left-nav-meta="tags" data-left-nav-name="Syncthing">
-              <span>Syncthing</span>
-              <span class="left-nav-count">1</span>
-            </button>
-          </li>
+          
+          
+            <li>
+              <button class="left-nav-chip" type="button" data-left-nav-meta="tags" data-left-nav-name="Syncthing">
+                <span>Syncthing</span>
+                <span class="left-nav-count">1</span>
+              </button>
+            </li>
+          
         
-          <li>
-            <button class="left-nav-chip" type="button" data-left-nav-meta="tags" data-left-nav-name="Transformer">
-              <span>Transformer</span>
-              <span class="left-nav-count">1</span>
-            </button>
-          </li>
+          
+          
+            <li>
+              <button class="left-nav-chip" type="button" data-left-nav-meta="tags" data-left-nav-name="Transformer">
+                <span>Transformer</span>
+                <span class="left-nav-count">1</span>
+              </button>
+            </li>
+          
         
-          <li>
-            <button class="left-nav-chip" type="button" data-left-nav-meta="tags" data-left-nav-name="Tufte">
-              <span>Tufte</span>
-              <span class="left-nav-count">2</span>
-            </button>
-          </li>
+          
+          
+            <li>
+              <button class="left-nav-chip" type="button" data-left-nav-meta="tags" data-left-nav-name="Tufte">
+                <span>Tufte</span>
+                <span class="left-nav-count">2</span>
+              </button>
+            </li>
+          
         
-          <li>
-            <button class="left-nav-chip" type="button" data-left-nav-meta="tags" data-left-nav-name="ai竞赛">
-              <span>ai竞赛</span>
-              <span class="left-nav-count">1</span>
-            </button>
-          </li>
+          
+          
+            <li>
+              <button class="left-nav-chip" type="button" data-left-nav-meta="tags" data-left-nav-name="ai竞赛">
+                <span>ai竞赛</span>
+                <span class="left-nav-count">1</span>
+              </button>
+            </li>
+          
         
-          <li>
-            <button class="left-nav-chip" type="button" data-left-nav-meta="tags" data-left-nav-name="claude-code">
-              <span>claude-code</span>
-              <span class="left-nav-count">1</span>
-            </button>
-          </li>
+          
+          
+            <li>
+              <button class="left-nav-chip" type="button" data-left-nav-meta="tags" data-left-nav-name="claude-code">
+                <span>claude-code</span>
+                <span class="left-nav-count">1</span>
+              </button>
+            </li>
+          
         
-          <li>
-            <button class="left-nav-chip" type="button" data-left-nav-meta="tags" data-left-nav-name="docker">
-              <span>docker</span>
-              <span class="left-nav-count">2</span>
-            </button>
-          </li>
+          
+          
+            <li>
+              <button class="left-nav-chip" type="button" data-left-nav-meta="tags" data-left-nav-name="docker">
+                <span>docker</span>
+                <span class="left-nav-count">2</span>
+              </button>
+            </li>
+          
         
-          <li>
-            <button class="left-nav-chip" type="button" data-left-nav-meta="tags" data-left-nav-name="docker, doccano">
-              <span>docker, doccano</span>
-              <span class="left-nav-count">1</span>
-            </button>
-          </li>
+          
+          
+            <li>
+              <button class="left-nav-chip" type="button" data-left-nav-meta="tags" data-left-nav-name="docker, doccano">
+                <span>docker, doccano</span>
+                <span class="left-nav-count">1</span>
+              </button>
+            </li>
+          
         
-          <li>
-            <button class="left-nav-chip" type="button" data-left-nav-meta="tags" data-left-nav-name="git">
-              <span>git</span>
-              <span class="left-nav-count">2</span>
-            </button>
-          </li>
+          
+          
+            <li>
+              <button class="left-nav-chip" type="button" data-left-nav-meta="tags" data-left-nav-name="git">
+                <span>git</span>
+                <span class="left-nav-count">2</span>
+              </button>
+            </li>
+          
         
-          <li>
-            <button class="left-nav-chip" type="button" data-left-nav-meta="tags" data-left-nav-name="github">
-              <span>github</span>
-              <span class="left-nav-count">1</span>
-            </button>
-          </li>
+          
+          
+            <li>
+              <button class="left-nav-chip" type="button" data-left-nav-meta="tags" data-left-nav-name="github">
+                <span>github</span>
+                <span class="left-nav-count">1</span>
+              </button>
+            </li>
+          
         
-          <li>
-            <button class="left-nav-chip" type="button" data-left-nav-meta="tags" data-left-nav-name="jupyter notebook">
-              <span>jupyter notebook</span>
-              <span class="left-nav-count">2</span>
-            </button>
-          </li>
+          
+          
+            <li>
+              <button class="left-nav-chip" type="button" data-left-nav-meta="tags" data-left-nav-name="jupyter notebook">
+                <span>jupyter notebook</span>
+                <span class="left-nav-count">2</span>
+              </button>
+            </li>
+          
         
-          <li>
-            <button class="left-nav-chip" type="button" data-left-nav-meta="tags" data-left-nav-name="mineru">
-              <span>mineru</span>
-              <span class="left-nav-count">1</span>
-            </button>
-          </li>
+          
+          
+            <li>
+              <button class="left-nav-chip" type="button" data-left-nav-meta="tags" data-left-nav-name="mineru">
+                <span>mineru</span>
+                <span class="left-nav-count">1</span>
+              </button>
+            </li>
+          
         
-          <li>
-            <button class="left-nav-chip" type="button" data-left-nav-meta="tags" data-left-nav-name="neo4j">
-              <span>neo4j</span>
-              <span class="left-nav-count">1</span>
-            </button>
-          </li>
+          
+          
+            <li>
+              <button class="left-nav-chip" type="button" data-left-nav-meta="tags" data-left-nav-name="neo4j">
+                <span>neo4j</span>
+                <span class="left-nav-count">1</span>
+              </button>
+            </li>
+          
         
-          <li>
-            <button class="left-nav-chip" type="button" data-left-nav-meta="tags" data-left-nav-name="nlp">
-              <span>nlp</span>
-              <span class="left-nav-count">1</span>
-            </button>
-          </li>
+          
+          
+            <li>
+              <button class="left-nav-chip" type="button" data-left-nav-meta="tags" data-left-nav-name="nlp">
+                <span>nlp</span>
+                <span class="left-nav-count">1</span>
+              </button>
+            </li>
+          
         
-          <li>
-            <button class="left-nav-chip" type="button" data-left-nav-meta="tags" data-left-nav-name="python">
-              <span>python</span>
-              <span class="left-nav-count">4</span>
-            </button>
-          </li>
+          
+          
+            <li>
+              <button class="left-nav-chip" type="button" data-left-nav-meta="tags" data-left-nav-name="python">
+                <span>python</span>
+                <span class="left-nav-count">4</span>
+              </button>
+            </li>
+          
         
-          <li>
-            <button class="left-nav-chip" type="button" data-left-nav-meta="tags" data-left-nav-name="python_c++_互通">
-              <span>python_c++_互通</span>
-              <span class="left-nav-count">1</span>
-            </button>
-          </li>
+          
+          
+            <li>
+              <button class="left-nav-chip" type="button" data-left-nav-meta="tags" data-left-nav-name="python_c++_互通">
+                <span>python_c++_互通</span>
+                <span class="left-nav-count">1</span>
+              </button>
+            </li>
+          
         
-          <li>
-            <button class="left-nav-chip" type="button" data-left-nav-meta="tags" data-left-nav-name="pytorch">
-              <span>pytorch</span>
-              <span class="left-nav-count">3</span>
-            </button>
-          </li>
+          
+          
+            <li>
+              <button class="left-nav-chip" type="button" data-left-nav-meta="tags" data-left-nav-name="pytorch">
+                <span>pytorch</span>
+                <span class="left-nav-count">3</span>
+              </button>
+            </li>
+          
         
-          <li>
-            <button class="left-nav-chip" type="button" data-left-nav-meta="tags" data-left-nav-name="rclone">
-              <span>rclone</span>
-              <span class="left-nav-count">1</span>
-            </button>
-          </li>
+          
+          
+            <li>
+              <button class="left-nav-chip" type="button" data-left-nav-meta="tags" data-left-nav-name="rclone">
+                <span>rclone</span>
+                <span class="left-nav-count">1</span>
+              </button>
+            </li>
+          
         
-          <li>
-            <button class="left-nav-chip" type="button" data-left-nav-meta="tags" data-left-nav-name="ssh">
-              <span>ssh</span>
-              <span class="left-nav-count">1</span>
-            </button>
-          </li>
+          
+          
+            <li>
+              <button class="left-nav-chip" type="button" data-left-nav-meta="tags" data-left-nav-name="ssh">
+                <span>ssh</span>
+                <span class="left-nav-count">1</span>
+              </button>
+            </li>
+          
         
-          <li>
-            <button class="left-nav-chip" type="button" data-left-nav-meta="tags" data-left-nav-name="svm">
-              <span>svm</span>
-              <span class="left-nav-count">1</span>
-            </button>
-          </li>
+          
+          
+            <li>
+              <button class="left-nav-chip" type="button" data-left-nav-meta="tags" data-left-nav-name="svm">
+                <span>svm</span>
+                <span class="left-nav-count">1</span>
+              </button>
+            </li>
+          
         
-          <li>
-            <button class="left-nav-chip" type="button" data-left-nav-meta="tags" data-left-nav-name="tensor">
-              <span>tensor</span>
-              <span class="left-nav-count">1</span>
-            </button>
-          </li>
+          
+          
+            <li>
+              <button class="left-nav-chip" type="button" data-left-nav-meta="tags" data-left-nav-name="tensor">
+                <span>tensor</span>
+                <span class="left-nav-count">1</span>
+              </button>
+            </li>
+          
         
-          <li>
-            <button class="left-nav-chip" type="button" data-left-nav-meta="tags" data-left-nav-name="uv">
-              <span>uv</span>
-              <span class="left-nav-count">1</span>
-            </button>
-          </li>
+          
+          
+            <li>
+              <button class="left-nav-chip" type="button" data-left-nav-meta="tags" data-left-nav-name="uv">
+                <span>uv</span>
+                <span class="left-nav-count">1</span>
+              </button>
+            </li>
+          
         
-          <li>
-            <button class="left-nav-chip" type="button" data-left-nav-meta="tags" data-left-nav-name="vscode">
-              <span>vscode</span>
-              <span class="left-nav-count">1</span>
-            </button>
-          </li>
+          
+          
+            <li>
+              <button class="left-nav-chip" type="button" data-left-nav-meta="tags" data-left-nav-name="vscode">
+                <span>vscode</span>
+                <span class="left-nav-count">1</span>
+              </button>
+            </li>
+          
         
-          <li>
-            <button class="left-nav-chip" type="button" data-left-nav-meta="tags" data-left-nav-name="webdav, docker, obsidian, zotero">
-              <span>webdav, docker, obsidian, zotero</span>
-              <span class="left-nav-count">1</span>
-            </button>
-          </li>
+          
+          
+            <li>
+              <button class="left-nav-chip" type="button" data-left-nav-meta="tags" data-left-nav-name="webdav, docker, obsidian, zotero">
+                <span>webdav, docker, obsidian, zotero</span>
+                <span class="left-nav-count">1</span>
+              </button>
+            </li>
+          
         
-          <li>
-            <button class="left-nav-chip" type="button" data-left-nav-meta="tags" data-left-nav-name="动态规划">
-              <span>动态规划</span>
-              <span class="left-nav-count">2</span>
-            </button>
-          </li>
+          
+          
+            <li>
+              <button class="left-nav-chip" type="button" data-left-nav-meta="tags" data-left-nav-name="动态规划">
+                <span>动态规划</span>
+                <span class="left-nav-count">2</span>
+              </button>
+            </li>
+          
         
-          <li>
-            <button class="left-nav-chip" type="button" data-left-nav-meta="tags" data-left-nav-name="博客">
-              <span>博客</span>
-              <span class="left-nav-count">2</span>
-            </button>
-          </li>
+          
+          
+            <li>
+              <button class="left-nav-chip" type="button" data-left-nav-meta="tags" data-left-nav-name="博客">
+                <span>博客</span>
+                <span class="left-nav-count">2</span>
+              </button>
+            </li>
+          
         
-          <li>
-            <button class="left-nav-chip" type="button" data-left-nav-meta="tags" data-left-nav-name="反向传播">
-              <span>反向传播</span>
-              <span class="left-nav-count">1</span>
-            </button>
-          </li>
+          
+          
+            <li>
+              <button class="left-nav-chip" type="button" data-left-nav-meta="tags" data-left-nav-name="反向传播">
+                <span>反向传播</span>
+                <span class="left-nav-count">1</span>
+              </button>
+            </li>
+          
         
-          <li>
-            <button class="left-nav-chip" type="button" data-left-nav-meta="tags" data-left-nav-name="启动U盘">
-              <span>启动U盘</span>
-              <span class="left-nav-count">1</span>
-            </button>
-          </li>
+          
+          
+            <li>
+              <button class="left-nav-chip" type="button" data-left-nav-meta="tags" data-left-nav-name="启动U盘">
+                <span>启动U盘</span>
+                <span class="left-nav-count">1</span>
+              </button>
+            </li>
+          
         
-          <li>
-            <button class="left-nav-chip" type="button" data-left-nav-meta="tags" data-left-nav-name="呈贡">
-              <span>呈贡</span>
-              <span class="left-nav-count">2</span>
-            </button>
-          </li>
+          
+          
+            <li>
+              <button class="left-nav-chip" type="button" data-left-nav-meta="tags" data-left-nav-name="呈贡">
+                <span>呈贡</span>
+                <span class="left-nav-count">2</span>
+              </button>
+            </li>
+          
         
-          <li>
-            <button class="left-nav-chip" type="button" data-left-nav-meta="tags" data-left-nav-name="图">
-              <span>图</span>
-              <span class="left-nav-count">1</span>
-            </button>
-          </li>
+          
+          
+            <li>
+              <button class="left-nav-chip" type="button" data-left-nav-meta="tags" data-left-nav-name="图">
+                <span>图</span>
+                <span class="left-nav-count">1</span>
+              </button>
+            </li>
+          
         
-          <li>
-            <button class="left-nav-chip" type="button" data-left-nav-meta="tags" data-left-nav-name="干货">
-              <span>干货</span>
-              <span class="left-nav-count">2</span>
-            </button>
-          </li>
+          
+          
+            <li>
+              <button class="left-nav-chip" type="button" data-left-nav-meta="tags" data-left-nav-name="干货">
+                <span>干货</span>
+                <span class="left-nav-count">2</span>
+              </button>
+            </li>
+          
         
-          <li>
-            <button class="left-nav-chip" type="button" data-left-nav-meta="tags" data-left-nav-name="强化学习">
-              <span>强化学习</span>
-              <span class="left-nav-count">1</span>
-            </button>
-          </li>
+          
+          
+            <li>
+              <button class="left-nav-chip" type="button" data-left-nav-meta="tags" data-left-nav-name="强化学习">
+                <span>强化学习</span>
+                <span class="left-nav-count">1</span>
+              </button>
+            </li>
+          
         
-          <li>
-            <button class="left-nav-chip" type="button" data-left-nav-meta="tags" data-left-nav-name="微信">
-              <span>微信</span>
-              <span class="left-nav-count">2</span>
-            </button>
-          </li>
+          
+          
+            <li>
+              <button class="left-nav-chip" type="button" data-left-nav-meta="tags" data-left-nav-name="微信">
+                <span>微信</span>
+                <span class="left-nav-count">2</span>
+              </button>
+            </li>
+          
         
-          <li>
-            <button class="left-nav-chip" type="button" data-left-nav-meta="tags" data-left-nav-name="摄影">
-              <span>摄影</span>
-              <span class="left-nav-count">1</span>
-            </button>
-          </li>
+          
+          
+            <li>
+              <button class="left-nav-chip" type="button" data-left-nav-meta="tags" data-left-nav-name="摄影">
+                <span>摄影</span>
+                <span class="left-nav-count">1</span>
+              </button>
+            </li>
+          
         
-          <li>
-            <button class="left-nav-chip" type="button" data-left-nav-meta="tags" data-left-nav-name="数学">
-              <span>数学</span>
-              <span class="left-nav-count">3</span>
-            </button>
-          </li>
+          
+          
+            <li>
+              <button class="left-nav-chip" type="button" data-left-nav-meta="tags" data-left-nav-name="数学">
+                <span>数学</span>
+                <span class="left-nav-count">3</span>
+              </button>
+            </li>
+          
         
-          <li>
-            <button class="left-nav-chip" type="button" data-left-nav-meta="tags" data-left-nav-name="文本聚类 bert向量表示">
-              <span>文本聚类 bert向量表示</span>
-              <span class="left-nav-count">1</span>
-            </button>
-          </li>
+          
+          
+            <li>
+              <button class="left-nav-chip" type="button" data-left-nav-meta="tags" data-left-nav-name="文本聚类 bert向量表示">
+                <span>文本聚类 bert向量表示</span>
+                <span class="left-nav-count">1</span>
+              </button>
+            </li>
+          
         
-          <li>
-            <button class="left-nav-chip" type="button" data-left-nav-meta="tags" data-left-nav-name="文本聚类 编辑距离">
-              <span>文本聚类 编辑距离</span>
-              <span class="left-nav-count">1</span>
-            </button>
-          </li>
+          
+          
+            <li>
+              <button class="left-nav-chip" type="button" data-left-nav-meta="tags" data-left-nav-name="文本聚类 编辑距离">
+                <span>文本聚类 编辑距离</span>
+                <span class="left-nav-count">1</span>
+              </button>
+            </li>
+          
         
-          <li>
-            <button class="left-nav-chip" type="button" data-left-nav-meta="tags" data-left-nav-name="日志">
-              <span>日志</span>
-              <span class="left-nav-count">1</span>
-            </button>
-          </li>
+          
+          
+            <li>
+              <button class="left-nav-chip" type="button" data-left-nav-meta="tags" data-left-nav-name="日志">
+                <span>日志</span>
+                <span class="left-nav-count">1</span>
+              </button>
+            </li>
+          
         
-          <li>
-            <button class="left-nav-chip" type="button" data-left-nav-meta="tags" data-left-nav-name="机器学习">
-              <span>机器学习</span>
-              <span class="left-nav-count">3</span>
-            </button>
-          </li>
+          
+          
+            <li>
+              <button class="left-nav-chip" type="button" data-left-nav-meta="tags" data-left-nav-name="机器学习">
+                <span>机器学习</span>
+                <span class="left-nav-count">3</span>
+              </button>
+            </li>
+          
         
-          <li>
-            <button class="left-nav-chip" type="button" data-left-nav-meta="tags" data-left-nav-name="树">
-              <span>树</span>
-              <span class="left-nav-count">1</span>
-            </button>
-          </li>
+          
+          
+            <li>
+              <button class="left-nav-chip" type="button" data-left-nav-meta="tags" data-left-nav-name="树">
+                <span>树</span>
+                <span class="left-nav-count">1</span>
+              </button>
+            </li>
+          
         
-          <li>
-            <button class="left-nav-chip" type="button" data-left-nav-meta="tags" data-left-nav-name="概率论">
-              <span>概率论</span>
-              <span class="left-nav-count">1</span>
-            </button>
-          </li>
+          
+          
+            <li>
+              <button class="left-nav-chip" type="button" data-left-nav-meta="tags" data-left-nav-name="概率论">
+                <span>概率论</span>
+                <span class="left-nav-count">1</span>
+              </button>
+            </li>
+          
         
-          <li>
-            <button class="left-nav-chip" type="button" data-left-nav-meta="tags" data-left-nav-name="熵">
-              <span>熵</span>
-              <span class="left-nav-count">1</span>
-            </button>
-          </li>
+          
+          
+            <li>
+              <button class="left-nav-chip" type="button" data-left-nav-meta="tags" data-left-nav-name="熵">
+                <span>熵</span>
+                <span class="left-nav-count">1</span>
+              </button>
+            </li>
+          
         
-          <li>
-            <button class="left-nav-chip" type="button" data-left-nav-meta="tags" data-left-nav-name="电影">
-              <span>电影</span>
-              <span class="left-nav-count">2</span>
-            </button>
-          </li>
+          
+          
+            <li>
+              <button class="left-nav-chip" type="button" data-left-nav-meta="tags" data-left-nav-name="电影">
+                <span>电影</span>
+                <span class="left-nav-count">2</span>
+              </button>
+            </li>
+          
         
-          <li>
-            <button class="left-nav-chip" type="button" data-left-nav-meta="tags" data-left-nav-name="竞赛">
-              <span>竞赛</span>
-              <span class="left-nav-count">1</span>
-            </button>
-          </li>
+          
+          
+            <li>
+              <button class="left-nav-chip" type="button" data-left-nav-meta="tags" data-left-nav-name="竞赛">
+                <span>竞赛</span>
+                <span class="left-nav-count">1</span>
+              </button>
+            </li>
+          
         
-          <li>
-            <button class="left-nav-chip" type="button" data-left-nav-meta="tags" data-left-nav-name="编程">
-              <span>编程</span>
-              <span class="left-nav-count">1</span>
-            </button>
-          </li>
+          
+          
+            <li>
+              <button class="left-nav-chip" type="button" data-left-nav-meta="tags" data-left-nav-name="编程">
+                <span>编程</span>
+                <span class="left-nav-count">1</span>
+              </button>
+            </li>
+          
         
-          <li>
-            <button class="left-nav-chip" type="button" data-left-nav-meta="tags" data-left-nav-name="街拍">
-              <span>街拍</span>
-              <span class="left-nav-count">1</span>
-            </button>
-          </li>
+          
+          
+            <li>
+              <button class="left-nav-chip" type="button" data-left-nav-meta="tags" data-left-nav-name="街拍">
+                <span>街拍</span>
+                <span class="left-nav-count">1</span>
+              </button>
+            </li>
+          
         
-          <li>
-            <button class="left-nav-chip" type="button" data-left-nav-meta="tags" data-left-nav-name="论文写作">
-              <span>论文写作</span>
-              <span class="left-nav-count">1</span>
-            </button>
-          </li>
+          
+          
+            <li>
+              <button class="left-nav-chip" type="button" data-left-nav-meta="tags" data-left-nav-name="论文写作">
+                <span>论文写作</span>
+                <span class="left-nav-count">1</span>
+              </button>
+            </li>
+          
         
-          <li>
-            <button class="left-nav-chip" type="button" data-left-nav-meta="tags" data-left-nav-name="资源">
-              <span>资源</span>
-              <span class="left-nav-count">1</span>
-            </button>
-          </li>
+          
+          
+            <li>
+              <button class="left-nav-chip" type="button" data-left-nav-meta="tags" data-left-nav-name="资源">
+                <span>资源</span>
+                <span class="left-nav-count">1</span>
+              </button>
+            </li>
+          
         
-          <li>
-            <button class="left-nav-chip" type="button" data-left-nav-meta="tags" data-left-nav-name="预训练模型">
-              <span>预训练模型</span>
-              <span class="left-nav-count">1</span>
-            </button>
-          </li>
+          
+          
+            <li>
+              <button class="left-nav-chip" type="button" data-left-nav-meta="tags" data-left-nav-name="预训练模型">
+                <span>预训练模型</span>
+                <span class="left-nav-count">1</span>
+              </button>
+            </li>
+          
         
       </ol>
       <p class="left-nav-selection-status" data-left-nav-status="tags">Select a tag to view posts.</p>
@@ -1210,173 +1398,245 @@
     
       <ol class="left-nav-chip-list">
         
-          <li>
-            <button class="left-nav-chip" type="button" data-left-nav-meta="categories" data-left-nav-name="人工智能">
-              <span>人工智能</span>
-              <span class="left-nav-count">1</span>
-            </button>
-          </li>
+          
+          
+            <li>
+              <button class="left-nav-chip" type="button" data-left-nav-meta="categories" data-left-nav-name="人工智能">
+                <span>人工智能</span>
+                <span class="left-nav-count">1</span>
+              </button>
+            </li>
+          
         
-          <li>
-            <button class="left-nav-chip" type="button" data-left-nav-meta="categories" data-left-nav-name="大模型">
-              <span>大模型</span>
-              <span class="left-nav-count">4</span>
-            </button>
-          </li>
+          
+          
+            <li>
+              <button class="left-nav-chip" type="button" data-left-nav-meta="categories" data-left-nav-name="大模型">
+                <span>大模型</span>
+                <span class="left-nav-count">4</span>
+              </button>
+            </li>
+          
         
-          <li>
-            <button class="left-nav-chip" type="button" data-left-nav-meta="categories" data-left-nav-name="学习笔记">
-              <span>学习笔记</span>
-              <span class="left-nav-count">13</span>
-            </button>
-          </li>
+          
+          
+            <li>
+              <button class="left-nav-chip" type="button" data-left-nav-meta="categories" data-left-nav-name="学习笔记">
+                <span>学习笔记</span>
+                <span class="left-nav-count">13</span>
+              </button>
+            </li>
+          
         
-          <li>
-            <button class="left-nav-chip" type="button" data-left-nav-meta="categories" data-left-nav-name="学习资料">
-              <span>学习资料</span>
-              <span class="left-nav-count">4</span>
-            </button>
-          </li>
+          
+          
+            <li>
+              <button class="left-nav-chip" type="button" data-left-nav-meta="categories" data-left-nav-name="学习资料">
+                <span>学习资料</span>
+                <span class="left-nav-count">4</span>
+              </button>
+            </li>
+          
         
-          <li>
-            <button class="left-nav-chip" type="button" data-left-nav-meta="categories" data-left-nav-name="干货">
-              <span>干货</span>
-              <span class="left-nav-count">1</span>
-            </button>
-          </li>
+          
+          
+            <li>
+              <button class="left-nav-chip" type="button" data-left-nav-meta="categories" data-left-nav-name="干货">
+                <span>干货</span>
+                <span class="left-nav-count">1</span>
+              </button>
+            </li>
+          
         
-          <li>
-            <button class="left-nav-chip" type="button" data-left-nav-meta="categories" data-left-nav-name="总结">
-              <span>总结</span>
-              <span class="left-nav-count">4</span>
-            </button>
-          </li>
+          
+          
+            <li>
+              <button class="left-nav-chip" type="button" data-left-nav-meta="categories" data-left-nav-name="总结">
+                <span>总结</span>
+                <span class="left-nav-count">4</span>
+              </button>
+            </li>
+          
         
-          <li>
-            <button class="left-nav-chip" type="button" data-left-nav-meta="categories" data-left-nav-name="技术笔记">
-              <span>技术笔记</span>
-              <span class="left-nav-count">2</span>
-            </button>
-          </li>
+          
+          
+            <li>
+              <button class="left-nav-chip" type="button" data-left-nav-meta="categories" data-left-nav-name="技术笔记">
+                <span>技术笔记</span>
+                <span class="left-nav-count">2</span>
+              </button>
+            </li>
+          
         
-          <li>
-            <button class="left-nav-chip" type="button" data-left-nav-meta="categories" data-left-nav-name="摄影">
-              <span>摄影</span>
-              <span class="left-nav-count">2</span>
-            </button>
-          </li>
+          
+          
+            <li>
+              <button class="left-nav-chip" type="button" data-left-nav-meta="categories" data-left-nav-name="摄影">
+                <span>摄影</span>
+                <span class="left-nav-count">2</span>
+              </button>
+            </li>
+          
         
-          <li>
-            <button class="left-nav-chip" type="button" data-left-nav-meta="categories" data-left-nav-name="收藏">
-              <span>收藏</span>
-              <span class="left-nav-count">1</span>
-            </button>
-          </li>
+          
+          
+            <li>
+              <button class="left-nav-chip" type="button" data-left-nav-meta="categories" data-left-nav-name="收藏">
+                <span>收藏</span>
+                <span class="left-nav-count">1</span>
+              </button>
+            </li>
+          
         
-          <li>
-            <button class="left-nav-chip" type="button" data-left-nav-meta="categories" data-left-nav-name="数学算法">
-              <span>数学算法</span>
-              <span class="left-nav-count">1</span>
-            </button>
-          </li>
+          
+          
+            <li>
+              <button class="left-nav-chip" type="button" data-left-nav-meta="categories" data-left-nav-name="数学算法">
+                <span>数学算法</span>
+                <span class="left-nav-count">1</span>
+              </button>
+            </li>
+          
         
-          <li>
-            <button class="left-nav-chip" type="button" data-left-nav-meta="categories" data-left-nav-name="数据集">
-              <span>数据集</span>
-              <span class="left-nav-count">1</span>
-            </button>
-          </li>
+          
+          
+            <li>
+              <button class="left-nav-chip" type="button" data-left-nav-meta="categories" data-left-nav-name="数据集">
+                <span>数据集</span>
+                <span class="left-nav-count">1</span>
+              </button>
+            </li>
+          
         
-          <li>
-            <button class="left-nav-chip" type="button" data-left-nav-meta="categories" data-left-nav-name="机器学习">
-              <span>机器学习</span>
-              <span class="left-nav-count">1</span>
-            </button>
-          </li>
+          
+          
+            <li>
+              <button class="left-nav-chip" type="button" data-left-nav-meta="categories" data-left-nav-name="机器学习">
+                <span>机器学习</span>
+                <span class="left-nav-count">1</span>
+              </button>
+            </li>
+          
         
-          <li>
-            <button class="left-nav-chip" type="button" data-left-nav-meta="categories" data-left-nav-name="爬坑总结">
-              <span>爬坑总结</span>
-              <span class="left-nav-count">9</span>
-            </button>
-          </li>
+          
+          
+            <li>
+              <button class="left-nav-chip" type="button" data-left-nav-meta="categories" data-left-nav-name="爬坑总结">
+                <span>爬坑总结</span>
+                <span class="left-nav-count">9</span>
+              </button>
+            </li>
+          
         
-          <li>
-            <button class="left-nav-chip" type="button" data-left-nav-meta="categories" data-left-nav-name="生活总结">
-              <span>生活总结</span>
-              <span class="left-nav-count">4</span>
-            </button>
-          </li>
+          
+          
+            <li>
+              <button class="left-nav-chip" type="button" data-left-nav-meta="categories" data-left-nav-name="生活总结">
+                <span>生活总结</span>
+                <span class="left-nav-count">4</span>
+              </button>
+            </li>
+          
         
-          <li>
-            <button class="left-nav-chip" type="button" data-left-nav-meta="categories" data-left-nav-name="生活情感">
-              <span>生活情感</span>
-              <span class="left-nav-count">2</span>
-            </button>
-          </li>
+          
+          
+            <li>
+              <button class="left-nav-chip" type="button" data-left-nav-meta="categories" data-left-nav-name="生活情感">
+                <span>生活情感</span>
+                <span class="left-nav-count">2</span>
+              </button>
+            </li>
+          
         
-          <li>
-            <button class="left-nav-chip" type="button" data-left-nav-meta="categories" data-left-nav-name="知识框架">
-              <span>知识框架</span>
-              <span class="left-nav-count">1</span>
-            </button>
-          </li>
+          
+          
+            <li>
+              <button class="left-nav-chip" type="button" data-left-nav-meta="categories" data-left-nav-name="知识框架">
+                <span>知识框架</span>
+                <span class="left-nav-count">1</span>
+              </button>
+            </li>
+          
         
-          <li>
-            <button class="left-nav-chip" type="button" data-left-nav-meta="categories" data-left-nav-name="算法">
-              <span>算法</span>
-              <span class="left-nav-count">1</span>
-            </button>
-          </li>
+          
+          
+            <li>
+              <button class="left-nav-chip" type="button" data-left-nav-meta="categories" data-left-nav-name="算法">
+                <span>算法</span>
+                <span class="left-nav-count">1</span>
+              </button>
+            </li>
+          
         
-          <li>
-            <button class="left-nav-chip" type="button" data-left-nav-meta="categories" data-left-nav-name="算法笔记">
-              <span>算法笔记</span>
-              <span class="left-nav-count">2</span>
-            </button>
-          </li>
+          
+          
+            <li>
+              <button class="left-nav-chip" type="button" data-left-nav-meta="categories" data-left-nav-name="算法笔记">
+                <span>算法笔记</span>
+                <span class="left-nav-count">2</span>
+              </button>
+            </li>
+          
         
-          <li>
-            <button class="left-nav-chip" type="button" data-left-nav-meta="categories" data-left-nav-name="编程">
-              <span>编程</span>
-              <span class="left-nav-count">5</span>
-            </button>
-          </li>
+          
+          
+            <li>
+              <button class="left-nav-chip" type="button" data-left-nav-meta="categories" data-left-nav-name="编程">
+                <span>编程</span>
+                <span class="left-nav-count">5</span>
+              </button>
+            </li>
+          
         
-          <li>
-            <button class="left-nav-chip" type="button" data-left-nav-meta="categories" data-left-nav-name="编程开发">
-              <span>编程开发</span>
-              <span class="left-nav-count">5</span>
-            </button>
-          </li>
+          
+          
+            <li>
+              <button class="left-nav-chip" type="button" data-left-nav-meta="categories" data-left-nav-name="编程开发">
+                <span>编程开发</span>
+                <span class="left-nav-count">5</span>
+              </button>
+            </li>
+          
         
-          <li>
-            <button class="left-nav-chip" type="button" data-left-nav-meta="categories" data-left-nav-name="编程经验">
-              <span>编程经验</span>
-              <span class="left-nav-count">2</span>
-            </button>
-          </li>
+          
+          
+            <li>
+              <button class="left-nav-chip" type="button" data-left-nav-meta="categories" data-left-nav-name="编程经验">
+                <span>编程经验</span>
+                <span class="left-nav-count">2</span>
+              </button>
+            </li>
+          
         
-          <li>
-            <button class="left-nav-chip" type="button" data-left-nav-meta="categories" data-left-nav-name="网络工具">
-              <span>网络工具</span>
-              <span class="left-nav-count">1</span>
-            </button>
-          </li>
+          
+          
+            <li>
+              <button class="left-nav-chip" type="button" data-left-nav-meta="categories" data-left-nav-name="网络工具">
+                <span>网络工具</span>
+                <span class="left-nav-count">1</span>
+              </button>
+            </li>
+          
         
-          <li>
-            <button class="left-nav-chip" type="button" data-left-nav-meta="categories" data-left-nav-name="自然语言处理">
-              <span>自然语言处理</span>
-              <span class="left-nav-count">2</span>
-            </button>
-          </li>
+          
+          
+            <li>
+              <button class="left-nav-chip" type="button" data-left-nav-meta="categories" data-left-nav-name="自然语言处理">
+                <span>自然语言处理</span>
+                <span class="left-nav-count">2</span>
+              </button>
+            </li>
+          
         
-          <li>
-            <button class="left-nav-chip" type="button" data-left-nav-meta="categories" data-left-nav-name="运维">
-              <span>运维</span>
-              <span class="left-nav-count">7</span>
-            </button>
-          </li>
+          
+          
+            <li>
+              <button class="left-nav-chip" type="button" data-left-nav-meta="categories" data-left-nav-name="运维">
+                <span>运维</span>
+                <span class="left-nav-count">7</span>
+              </button>
+            </li>
+          
         
       </ol>
       <p class="left-nav-selection-status" data-left-nav-status="categories">Select a category to view posts.</p>
@@ -1391,305 +1651,485 @@
     
       <ul class="term-list">
         
-          <li>
-            <a href="/tags/BPE/">BPE</a>
-            <span class="term-count">3</span>
-          </li>
+          
+          
+            <li>
+              <a href="/tags/BPE/">BPE</a>
+              <span class="term-count">3</span>
+            </li>
+          
         
-          <li>
-            <a href="/tags/Clash-%E8%A7%84%E5%88%99%E9%85%8D%E7%BD%AE/">Clash, 规则配置</a>
-            <span class="term-count">1</span>
-          </li>
+          
+          
+            <li>
+              <a href="/tags/Clash-%E8%A7%84%E5%88%99%E9%85%8D%E7%BD%AE/">Clash, 规则配置</a>
+              <span class="term-count">1</span>
+            </li>
+          
         
-          <li>
-            <a href="/tags/Dotfiles/">Dotfiles</a>
-            <span class="term-count">1</span>
-          </li>
+          
+          
+            <li>
+              <a href="/tags/Dotfiles/">Dotfiles</a>
+              <span class="term-count">1</span>
+            </li>
+          
         
-          <li>
-            <a href="/tags/GitHub/">GitHub</a>
-            <span class="term-count">2</span>
-          </li>
+          
+          
+            <li>
+              <a href="/tags/GitHub/">GitHub</a>
+              <span class="term-count">2</span>
+            </li>
+          
         
-          <li>
-            <a href="/tags/GitLab/">GitLab</a>
-            <span class="term-count">1</span>
-          </li>
+          
+          
+            <li>
+              <a href="/tags/GitLab/">GitLab</a>
+              <span class="term-count">1</span>
+            </li>
+          
         
-          <li>
-            <a href="/tags/Google%E8%AE%BF%E9%97%AE%E5%8A%A9%E6%89%8B/">Google访问助手</a>
-            <span class="term-count">1</span>
-          </li>
+          
+          
+            <li>
+              <a href="/tags/Google%E8%AE%BF%E9%97%AE%E5%8A%A9%E6%89%8B/">Google访问助手</a>
+              <span class="term-count">1</span>
+            </li>
+          
         
-          <li>
-            <a href="/tags/Hexo/">Hexo</a>
-            <span class="term-count">1</span>
-          </li>
+          
+          
+            <li>
+              <a href="/tags/Hexo/">Hexo</a>
+              <span class="term-count">1</span>
+            </li>
+          
         
-          <li>
-            <a href="/tags/NIVIDIA%E9%A9%B1%E5%8A%A8/">NIVIDIA驱动</a>
-            <span class="term-count">1</span>
-          </li>
+          
+          
+            <li>
+              <a href="/tags/NIVIDIA%E9%A9%B1%E5%8A%A8/">NIVIDIA驱动</a>
+              <span class="term-count">1</span>
+            </li>
+          
         
-          <li>
-            <a href="/tags/NVIDIA/">NVIDIA</a>
-            <span class="term-count">1</span>
-          </li>
+          
+          
+            <li>
+              <a href="/tags/NVIDIA/">NVIDIA</a>
+              <span class="term-count">1</span>
+            </li>
+          
         
-          <li>
-            <a href="/tags/Pandas/">Pandas</a>
-            <span class="term-count">1</span>
-          </li>
+          
+          
+            <li>
+              <a href="/tags/Pandas/">Pandas</a>
+              <span class="term-count">1</span>
+            </li>
+          
         
-          <li>
-            <a href="/tags/RAG/">RAG</a>
-            <span class="term-count">1</span>
-          </li>
+          
+          
+            <li>
+              <a href="/tags/RAG/">RAG</a>
+              <span class="term-count">1</span>
+            </li>
+          
         
-          <li>
-            <a href="/tags/SwiGLU/">SwiGLU</a>
-            <span class="term-count">1</span>
-          </li>
+          
+          
+            <li>
+              <a href="/tags/SwiGLU/">SwiGLU</a>
+              <span class="term-count">1</span>
+            </li>
+          
         
-          <li>
-            <a href="/tags/Syncthing/">Syncthing</a>
-            <span class="term-count">1</span>
-          </li>
+          
+          
+            <li>
+              <a href="/tags/Syncthing/">Syncthing</a>
+              <span class="term-count">1</span>
+            </li>
+          
         
-          <li>
-            <a href="/tags/Transformer/">Transformer</a>
-            <span class="term-count">1</span>
-          </li>
+          
+          
+            <li>
+              <a href="/tags/Transformer/">Transformer</a>
+              <span class="term-count">1</span>
+            </li>
+          
         
-          <li>
-            <a href="/tags/Tufte/">Tufte</a>
-            <span class="term-count">2</span>
-          </li>
+          
+          
+            <li>
+              <a href="/tags/Tufte/">Tufte</a>
+              <span class="term-count">2</span>
+            </li>
+          
         
-          <li>
-            <a href="/tags/ai%E7%AB%9E%E8%B5%9B/">ai竞赛</a>
-            <span class="term-count">1</span>
-          </li>
+          
+          
+            <li>
+              <a href="/tags/ai%E7%AB%9E%E8%B5%9B/">ai竞赛</a>
+              <span class="term-count">1</span>
+            </li>
+          
         
-          <li>
-            <a href="/tags/claude-code/">claude-code</a>
-            <span class="term-count">1</span>
-          </li>
+          
+          
+            <li>
+              <a href="/tags/claude-code/">claude-code</a>
+              <span class="term-count">1</span>
+            </li>
+          
         
-          <li>
-            <a href="/tags/docker/">docker</a>
-            <span class="term-count">2</span>
-          </li>
+          
+          
+            <li>
+              <a href="/tags/docker/">docker</a>
+              <span class="term-count">2</span>
+            </li>
+          
         
-          <li>
-            <a href="/tags/docker-doccano/">docker, doccano</a>
-            <span class="term-count">1</span>
-          </li>
+          
+          
+            <li>
+              <a href="/tags/docker-doccano/">docker, doccano</a>
+              <span class="term-count">1</span>
+            </li>
+          
         
-          <li>
-            <a href="/tags/git/">git</a>
-            <span class="term-count">2</span>
-          </li>
+          
+          
+            <li>
+              <a href="/tags/git/">git</a>
+              <span class="term-count">2</span>
+            </li>
+          
         
-          <li>
-            <a href="/tags/github/">github</a>
-            <span class="term-count">1</span>
-          </li>
+          
+          
+            <li>
+              <a href="/tags/github/">github</a>
+              <span class="term-count">1</span>
+            </li>
+          
         
-          <li>
-            <a href="/tags/jupyter-notebook/">jupyter notebook</a>
-            <span class="term-count">2</span>
-          </li>
+          
+          
+            <li>
+              <a href="/tags/jupyter-notebook/">jupyter notebook</a>
+              <span class="term-count">2</span>
+            </li>
+          
         
-          <li>
-            <a href="/tags/mineru/">mineru</a>
-            <span class="term-count">1</span>
-          </li>
+          
+          
+            <li>
+              <a href="/tags/mineru/">mineru</a>
+              <span class="term-count">1</span>
+            </li>
+          
         
-          <li>
-            <a href="/tags/neo4j/">neo4j</a>
-            <span class="term-count">1</span>
-          </li>
+          
+          
+            <li>
+              <a href="/tags/neo4j/">neo4j</a>
+              <span class="term-count">1</span>
+            </li>
+          
         
-          <li>
-            <a href="/tags/nlp/">nlp</a>
-            <span class="term-count">1</span>
-          </li>
+          
+          
+            <li>
+              <a href="/tags/nlp/">nlp</a>
+              <span class="term-count">1</span>
+            </li>
+          
         
-          <li>
-            <a href="/tags/python/">python</a>
-            <span class="term-count">4</span>
-          </li>
+          
+          
+            <li>
+              <a href="/tags/python/">python</a>
+              <span class="term-count">4</span>
+            </li>
+          
         
-          <li>
-            <a href="/tags/python-c-%E4%BA%92%E9%80%9A/">python_c++_互通</a>
-            <span class="term-count">1</span>
-          </li>
+          
+          
+            <li>
+              <a href="/tags/python-c-%E4%BA%92%E9%80%9A/">python_c++_互通</a>
+              <span class="term-count">1</span>
+            </li>
+          
         
-          <li>
-            <a href="/tags/pytorch/">pytorch</a>
-            <span class="term-count">3</span>
-          </li>
+          
+          
+            <li>
+              <a href="/tags/pytorch/">pytorch</a>
+              <span class="term-count">3</span>
+            </li>
+          
         
-          <li>
-            <a href="/tags/rclone/">rclone</a>
-            <span class="term-count">1</span>
-          </li>
+          
+          
+            <li>
+              <a href="/tags/rclone/">rclone</a>
+              <span class="term-count">1</span>
+            </li>
+          
         
-          <li>
-            <a href="/tags/ssh/">ssh</a>
-            <span class="term-count">1</span>
-          </li>
+          
+          
+            <li>
+              <a href="/tags/ssh/">ssh</a>
+              <span class="term-count">1</span>
+            </li>
+          
         
-          <li>
-            <a href="/tags/svm/">svm</a>
-            <span class="term-count">1</span>
-          </li>
+          
+          
+            <li>
+              <a href="/tags/svm/">svm</a>
+              <span class="term-count">1</span>
+            </li>
+          
         
-          <li>
-            <a href="/tags/tensor/">tensor</a>
-            <span class="term-count">1</span>
-          </li>
+          
+          
+            <li>
+              <a href="/tags/tensor/">tensor</a>
+              <span class="term-count">1</span>
+            </li>
+          
         
-          <li>
-            <a href="/tags/uv/">uv</a>
-            <span class="term-count">1</span>
-          </li>
+          
+          
+            <li>
+              <a href="/tags/uv/">uv</a>
+              <span class="term-count">1</span>
+            </li>
+          
         
-          <li>
-            <a href="/tags/vscode/">vscode</a>
-            <span class="term-count">1</span>
-          </li>
+          
+          
+            <li>
+              <a href="/tags/vscode/">vscode</a>
+              <span class="term-count">1</span>
+            </li>
+          
         
-          <li>
-            <a href="/tags/webdav-docker-obsidian-zotero/">webdav, docker, obsidian, zotero</a>
-            <span class="term-count">1</span>
-          </li>
+          
+          
+            <li>
+              <a href="/tags/webdav-docker-obsidian-zotero/">webdav, docker, obsidian, zotero</a>
+              <span class="term-count">1</span>
+            </li>
+          
         
-          <li>
-            <a href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/">动态规划</a>
-            <span class="term-count">2</span>
-          </li>
+          
+          
+            <li>
+              <a href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/">动态规划</a>
+              <span class="term-count">2</span>
+            </li>
+          
         
-          <li>
-            <a href="/tags/%E5%8D%9A%E5%AE%A2/">博客</a>
-            <span class="term-count">2</span>
-          </li>
+          
+          
+            <li>
+              <a href="/tags/%E5%8D%9A%E5%AE%A2/">博客</a>
+              <span class="term-count">2</span>
+            </li>
+          
         
-          <li>
-            <a href="/tags/%E5%8F%8D%E5%90%91%E4%BC%A0%E6%92%AD/">反向传播</a>
-            <span class="term-count">1</span>
-          </li>
+          
+          
+            <li>
+              <a href="/tags/%E5%8F%8D%E5%90%91%E4%BC%A0%E6%92%AD/">反向传播</a>
+              <span class="term-count">1</span>
+            </li>
+          
         
-          <li>
-            <a href="/tags/%E5%90%AF%E5%8A%A8U%E7%9B%98/">启动U盘</a>
-            <span class="term-count">1</span>
-          </li>
+          
+          
+            <li>
+              <a href="/tags/%E5%90%AF%E5%8A%A8U%E7%9B%98/">启动U盘</a>
+              <span class="term-count">1</span>
+            </li>
+          
         
-          <li>
-            <a href="/tags/%E5%91%88%E8%B4%A1/">呈贡</a>
-            <span class="term-count">2</span>
-          </li>
+          
+          
+            <li>
+              <a href="/tags/%E5%91%88%E8%B4%A1/">呈贡</a>
+              <span class="term-count">2</span>
+            </li>
+          
         
-          <li>
-            <a href="/tags/%E5%9B%BE/">图</a>
-            <span class="term-count">1</span>
-          </li>
+          
+          
+            <li>
+              <a href="/tags/%E5%9B%BE/">图</a>
+              <span class="term-count">1</span>
+            </li>
+          
         
-          <li>
-            <a href="/tags/%E5%B9%B2%E8%B4%A7/">干货</a>
-            <span class="term-count">2</span>
-          </li>
+          
+          
+            <li>
+              <a href="/tags/%E5%B9%B2%E8%B4%A7/">干货</a>
+              <span class="term-count">2</span>
+            </li>
+          
         
-          <li>
-            <a href="/tags/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/">强化学习</a>
-            <span class="term-count">1</span>
-          </li>
+          
+          
+            <li>
+              <a href="/tags/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/">强化学习</a>
+              <span class="term-count">1</span>
+            </li>
+          
         
-          <li>
-            <a href="/tags/%E5%BE%AE%E4%BF%A1/">微信</a>
-            <span class="term-count">2</span>
-          </li>
+          
+          
+            <li>
+              <a href="/tags/%E5%BE%AE%E4%BF%A1/">微信</a>
+              <span class="term-count">2</span>
+            </li>
+          
         
-          <li>
-            <a href="/tags/%E6%91%84%E5%BD%B1/">摄影</a>
-            <span class="term-count">1</span>
-          </li>
+          
+          
+            <li>
+              <a href="/tags/%E6%91%84%E5%BD%B1/">摄影</a>
+              <span class="term-count">1</span>
+            </li>
+          
         
-          <li>
-            <a href="/tags/%E6%95%B0%E5%AD%A6/">数学</a>
-            <span class="term-count">3</span>
-          </li>
+          
+          
+            <li>
+              <a href="/tags/%E6%95%B0%E5%AD%A6/">数学</a>
+              <span class="term-count">3</span>
+            </li>
+          
         
-          <li>
-            <a href="/tags/%E6%96%87%E6%9C%AC%E8%81%9A%E7%B1%BB-bert%E5%90%91%E9%87%8F%E8%A1%A8%E7%A4%BA/">文本聚类 bert向量表示</a>
-            <span class="term-count">1</span>
-          </li>
+          
+          
+            <li>
+              <a href="/tags/%E6%96%87%E6%9C%AC%E8%81%9A%E7%B1%BB-bert%E5%90%91%E9%87%8F%E8%A1%A8%E7%A4%BA/">文本聚类 bert向量表示</a>
+              <span class="term-count">1</span>
+            </li>
+          
         
-          <li>
-            <a href="/tags/%E6%96%87%E6%9C%AC%E8%81%9A%E7%B1%BB-%E7%BC%96%E8%BE%91%E8%B7%9D%E7%A6%BB/">文本聚类 编辑距离</a>
-            <span class="term-count">1</span>
-          </li>
+          
+          
+            <li>
+              <a href="/tags/%E6%96%87%E6%9C%AC%E8%81%9A%E7%B1%BB-%E7%BC%96%E8%BE%91%E8%B7%9D%E7%A6%BB/">文本聚类 编辑距离</a>
+              <span class="term-count">1</span>
+            </li>
+          
         
-          <li>
-            <a href="/tags/%E6%97%A5%E5%BF%97/">日志</a>
-            <span class="term-count">1</span>
-          </li>
+          
+          
+            <li>
+              <a href="/tags/%E6%97%A5%E5%BF%97/">日志</a>
+              <span class="term-count">1</span>
+            </li>
+          
         
-          <li>
-            <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">机器学习</a>
-            <span class="term-count">3</span>
-          </li>
+          
+          
+            <li>
+              <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">机器学习</a>
+              <span class="term-count">3</span>
+            </li>
+          
         
-          <li>
-            <a href="/tags/%E6%A0%91/">树</a>
-            <span class="term-count">1</span>
-          </li>
+          
+          
+            <li>
+              <a href="/tags/%E6%A0%91/">树</a>
+              <span class="term-count">1</span>
+            </li>
+          
         
-          <li>
-            <a href="/tags/%E6%A6%82%E7%8E%87%E8%AE%BA/">概率论</a>
-            <span class="term-count">1</span>
-          </li>
+          
+          
+            <li>
+              <a href="/tags/%E6%A6%82%E7%8E%87%E8%AE%BA/">概率论</a>
+              <span class="term-count">1</span>
+            </li>
+          
         
-          <li>
-            <a href="/tags/%E7%86%B5/">熵</a>
-            <span class="term-count">1</span>
-          </li>
+          
+          
+            <li>
+              <a href="/tags/%E7%86%B5/">熵</a>
+              <span class="term-count">1</span>
+            </li>
+          
         
-          <li>
-            <a href="/tags/%E7%94%B5%E5%BD%B1/">电影</a>
-            <span class="term-count">2</span>
-          </li>
+          
+          
+            <li>
+              <a href="/tags/%E7%94%B5%E5%BD%B1/">电影</a>
+              <span class="term-count">2</span>
+            </li>
+          
         
-          <li>
-            <a href="/tags/%E7%AB%9E%E8%B5%9B/">竞赛</a>
-            <span class="term-count">1</span>
-          </li>
+          
+          
+            <li>
+              <a href="/tags/%E7%AB%9E%E8%B5%9B/">竞赛</a>
+              <span class="term-count">1</span>
+            </li>
+          
         
-          <li>
-            <a href="/tags/%E7%BC%96%E7%A8%8B/">编程</a>
-            <span class="term-count">1</span>
-          </li>
+          
+          
+            <li>
+              <a href="/tags/%E7%BC%96%E7%A8%8B/">编程</a>
+              <span class="term-count">1</span>
+            </li>
+          
         
-          <li>
-            <a href="/tags/%E8%A1%97%E6%8B%8D/">街拍</a>
-            <span class="term-count">1</span>
-          </li>
+          
+          
+            <li>
+              <a href="/tags/%E8%A1%97%E6%8B%8D/">街拍</a>
+              <span class="term-count">1</span>
+            </li>
+          
         
-          <li>
-            <a href="/tags/%E8%AE%BA%E6%96%87%E5%86%99%E4%BD%9C/">论文写作</a>
-            <span class="term-count">1</span>
-          </li>
+          
+          
+            <li>
+              <a href="/tags/%E8%AE%BA%E6%96%87%E5%86%99%E4%BD%9C/">论文写作</a>
+              <span class="term-count">1</span>
+            </li>
+          
         
-          <li>
-            <a href="/tags/%E8%B5%84%E6%BA%90/">资源</a>
-            <span class="term-count">1</span>
-          </li>
+          
+          
+            <li>
+              <a href="/tags/%E8%B5%84%E6%BA%90/">资源</a>
+              <span class="term-count">1</span>
+            </li>
+          
         
-          <li>
-            <a href="/tags/%E9%A2%84%E8%AE%AD%E7%BB%83%E6%A8%A1%E5%9E%8B/">预训练模型</a>
-            <span class="term-count">1</span>
-          </li>
+          
+          
+            <li>
+              <a href="/tags/%E9%A2%84%E8%AE%AD%E7%BB%83%E6%A8%A1%E5%9E%8B/">预训练模型</a>
+              <span class="term-count">1</span>
+            </li>
+          
         
       </ul>
     

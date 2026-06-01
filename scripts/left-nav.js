@@ -11,6 +11,8 @@
   let closeTimer = null;
   let searchIndex = null;
   let searchPromise = null;
+  let privateSearchIndex = null;
+  let privateSearchPromise = null;
   let contentIndex = null;
   let contentPromise = null;
 
@@ -137,6 +139,17 @@
     });
   }
 
+  function loadXmlSearchIndex(url) {
+    return fetch(url, { credentials: 'same-origin' })
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error('Search index unavailable');
+        }
+        return response.text();
+      })
+      .then((xmlText) => parseSearchXml(xmlText));
+  }
+
   function loadSearchIndex(input) {
     if (searchIndex) {
       return Promise.resolve(searchIndex);
@@ -144,20 +157,36 @@
 
     if (!searchPromise) {
       const url = input.getAttribute('data-search-url') || '/search.xml';
-      searchPromise = fetch(url, { credentials: 'same-origin' })
-        .then((response) => {
-          if (!response.ok) {
-            throw new Error('Search index unavailable');
-          }
-          return response.text();
-        })
-        .then((xmlText) => {
-          searchIndex = parseSearchXml(xmlText);
-          return searchIndex;
-        });
+      searchPromise = loadXmlSearchIndex(url).then((items) => {
+        searchIndex = items;
+        return searchIndex;
+      });
     }
 
     return searchPromise;
+  }
+
+  function loadPrivateSearchIndex(input) {
+    const url = input.getAttribute('data-private-search-url');
+
+    if (!url) {
+      return Promise.resolve([]);
+    }
+
+    if (privateSearchIndex) {
+      return Promise.resolve(privateSearchIndex);
+    }
+
+    if (!privateSearchPromise) {
+      privateSearchPromise = loadXmlSearchIndex(url)
+        .then((items) => {
+          privateSearchIndex = items;
+          return privateSearchIndex;
+        })
+        .catch(() => []);
+    }
+
+    return privateSearchPromise;
   }
 
   function loadContentIndex() {
@@ -243,8 +272,16 @@
     const terms = normalize(query).split(/\s+/).filter(Boolean);
     statusElement.textContent = 'Loading...';
 
-    loadSearchIndex(input)
-      .then((items) => {
+    Promise.allSettled([loadSearchIndex(input), loadPrivateSearchIndex(input)])
+      .then((loadedIndexes) => {
+        const items = loadedIndexes
+          .filter((result) => result.status === 'fulfilled')
+          .flatMap((result) => result.value);
+
+        if (!items.length && loadedIndexes.every((result) => result.status === 'rejected')) {
+          throw new Error('Search index unavailable');
+        }
+
         const results = items
           .map((item) => {
             if (!terms.every((term) => item.haystack.includes(term))) {

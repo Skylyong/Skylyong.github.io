@@ -1,0 +1,1993 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="author" content="Lee">
+  <meta name="description" content="Keep go on">
+<meta property="og:type" content="article">
+<meta property="og:title" content="2026-06-01-策略梯度算法（一）从REINFORCE到Advantage">
+<meta property="og:url" content="https://skylyong.github.io/2026/06/01/2026-06-01-ce-lue-ti-du-suan-fa-yi-cong-reinforce-dao-advantage/index.html">
+<meta property="og:site_name" content="Lee&#39;s Blog">
+<meta property="og:description" content="Keep go on">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2026-06-01T14:45:15.000Z">
+<meta property="article:modified_time" content="2026-06-01T14:45:15.638Z">
+<meta property="article:author" content="Lee">
+<meta name="twitter:card" content="summary">
+  <title>2026-06-01-策略梯度算法（一）从REINFORCE到Advantage | Lee's Blog</title>
+  
+    <link rel="alternate" href="/atom.xml" title="Lee's Blog" type="application/atom+xml">
+  
+  <script>
+    (function () {
+      try {
+        var stored = window.sessionStorage.getItem('tufte-note:theme');
+        var theme = stored || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+        document.documentElement.setAttribute('data-theme', theme);
+      } catch (error) {}
+    })();
+  </script>
+  <link rel="stylesheet" href="/css/tufte.css">
+  <link rel="stylesheet" href="/css/hexo-tufte.css">
+<meta name="generator" content="Hexo 7.3.0">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+</head>
+
+  
+  <body class="is-post">
+    <header class="site-header">
+  <a class="site-title" href="/">Lee's Blog</a>
+  
+  
+    <nav class="site-nav" aria-label="Primary navigation">
+      
+        
+        
+        <a href="/">Home</a>
+      
+        
+        
+        <a href="/friends/">Friends</a>
+      
+        
+        
+        <a href="/about/">About</a>
+      
+      <button id="theme-toggle" class="theme-toggle-btn" type="button" aria-label="Toggle theme"></button>
+    </nav>
+  
+</header>
+
+    <button class="left-nav-toggle" type="button" aria-controls="left-nav-drawer" aria-expanded="false">
+  <span class="left-nav-toggle-line"></span>
+  <span class="left-nav-toggle-line"></span>
+  <span class="left-nav-toggle-line"></span>
+  <span class="sr-only">Open navigation</span>
+</button>
+
+<div class="left-nav-overlay" hidden></div>
+
+<aside class="left-nav-drawer" id="left-nav-drawer" aria-label="Archive navigation" data-content-url="/content.json" hidden>
+  <div class="left-nav-header">
+    <p class="left-nav-title">Index</p>
+    <button class="left-nav-close" type="button" aria-label="Close navigation">Close</button>
+  </div>
+
+  <form class="left-nav-search" role="search">
+    <label class="sr-only" for="left-nav-search-input">Search posts</label>
+    <input
+      id="left-nav-search-input"
+      class="left-nav-search-input"
+      type="search"
+      name="q"
+      autocomplete="off"
+      placeholder="Search posts"
+      data-search-url="/search.xml"
+      data-private-search-url="/private/search.xml"
+    >
+    <p class="left-nav-search-status" aria-live="polite"></p>
+    <ol class="left-nav-search-results"></ol>
+  </form>
+
+  <nav class="left-nav-tabs" aria-label="Archive sections">
+    <button class="left-nav-tab is-active" type="button" data-left-nav-tab="archives" aria-selected="true">Archives</button>
+    <button class="left-nav-tab" type="button" data-left-nav-tab="tags" aria-selected="false">Tags</button>
+    <button class="left-nav-tab" type="button" data-left-nav-tab="categories" aria-selected="false">Categories</button>
+  </nav>
+
+  <section class="left-nav-panel is-active" data-left-nav-panel="archives">
+    
+    
+      
+        
+        
+          
+          
+          <p class="left-nav-year">2026</p>
+          <ol class="left-nav-list left-nav-archive-list">
+        
+        <li>
+          <time datetime="2026-06-01T14:45:15.000Z">06-01</time>
+          <a href="/2026/06/01/2026-06-01-ce-lue-ti-du-suan-fa-yi-cong-reinforce-dao-advantage/">2026-06-01-策略梯度算法（一）从REINFORCE到Advantage</a>
+        </li>
+      
+        
+        
+        <li>
+          <time datetime="2026-05-26T16:11:44.000Z">05-27</time>
+          <a href="/2026/05/27/2026-05-14-agenticrl-tool-userl-zi-yuan-su-ji/">2026-05-14-AgenticRL|Tool-UseRL资源速记</a>
+        </li>
+      
+        
+        
+        <li>
+          <time datetime="2026-05-26T15:44:39.000Z">05-26</time>
+          <a href="/2026/05/26/2026-05-25-cot-lun-wen-jing-du/">2026-05-25-COT论文精读</a>
+        </li>
+      
+        
+        
+        <li>
+          <time datetime="2026-05-26T06:19:25.000Z">05-26</time>
+          <a href="/2026/05/26/2026-05-14-agenticrl-tool-userl-he-xin-lun-wen-diao-yan/">2026-05-14-AgenticRL|Tool-UseRL核心论文调研</a>
+        </li>
+      
+        
+        
+        <li>
+          <time datetime="2026-05-25T12:38:50.000Z">05-25</time>
+          <a href="/2026/05/25/2026-05-23-dpo-lun-wen-jing-du-san-dpo-gong-shi/">2026-05-23-DPO论文精读（三）DPO公式</a>
+        </li>
+      
+        
+        
+        <li>
+          <time datetime="2026-05-24T16:45:39.000Z">05-25</time>
+          <a href="/2026/05/25/2026-05-23-dpo-lun-wen-jing-du-er-xing-shi-hua-rlhf/">2026-05-23-DPO论文精读（二）形式化（RLHF）</a>
+        </li>
+      
+        
+        
+        <li>
+          <time datetime="2026-05-24T16:44:21.000Z">05-25</time>
+          <a href="/2026/05/25/2026-05-23-dpo-lun-wen-jing-du-yi-zhai-yao-he-jie-shao/">2026-05-23-DPO论文精读（一）摘要和介绍</a>
+        </li>
+      
+        
+        
+        <li>
+          <time datetime="2026-05-23T11:20:45.000Z">05-23</time>
+          <a href="/2026/05/23/2026-05-15-2023-2025-ren-gong-zhi-neng-ding-hui-yan-jiu-re-dian-fen-xi-bao-gao/">2026-05-15-2023-2025 人工智能顶会研究热点分析报告</a>
+        </li>
+      
+        
+        
+        <li>
+          <time datetime="2026-05-22T20:31:55.000Z">05-23</time>
+          <a href="/2026/05/23/2026-05-20-ce-lue-ti-du-fang-fa/">2026-05-20-策略梯度方法</a>
+        </li>
+      
+        
+        
+        <li>
+          <time datetime="2026-05-22T16:00:00.000Z">05-23</time>
+          <a href="/2026/05/23/tufte-note-zhu-ti-pai-ban-zhi-nan/">tufte-note 主题排版指南：边注、宽图与长文阅读</a>
+        </li>
+      
+        
+        
+        <li>
+          <time datetime="2026-05-19T16:00:00.000Z">05-20</time>
+          <a href="/2026/05/20/transformer-fan-xiang-chuan-bo-3-swiglu-qian-kui-wang-luo-ceng-tui-dao/">Transformer｜反向传播 (Backpropagation)（3）：以SwiGLU为例的前馈网络层推导</a>
+        </li>
+      
+        
+        
+        <li>
+          <time datetime="2026-04-05T09:35:14.000Z">04-05</time>
+          <a href="/2026/04/05/2026-xin-zhong-duan-gong-ju-ji-lu/">2026新终端工具记录</a>
+        </li>
+      
+        
+        
+        <li>
+          <time datetime="2026-04-03T09:52:07.000Z">04-03</time>
+          <a href="/2026/04/03/xin-shou-shang-shou-zhi-nan-aidevbox-aris-zi-dong-hua-ke-yan-huan-jing/">新手上手指南：AIDevBox+ARIS-自动化科研环境</a>
+        </li>
+      
+        
+        
+        <li>
+          <time datetime="2026-04-01T11:41:57.000Z">04-01</time>
+          <a href="/2026/04/01/duo-tai-mac-jian-shu-ju-tong-bu-git-luo-cang-ku-syncthing-fang-an/">多台mac间数据同步：Git裸仓库+Syncthing方案</a>
+        </li>
+      
+        
+        
+        <li>
+          <time datetime="2026-02-26T10:09:37.000Z">02-26</time>
+          <a href="/2026/02/26/git-da-wen-jian-chu-li/">Git大文件处理</a>
+        </li>
+      
+        
+        
+        <li>
+          <time datetime="2026-02-19T06:26:15.000Z">02-19</time>
+          <a href="/2026/02/19/mac-shang-shi-yong-chun-ming-ling-xing-docker/">mac上使用纯命令行docker</a>
+        </li>
+      
+        
+        
+        <li>
+          <time datetime="2026-02-07T06:02:23.000Z">02-07</time>
+          <a href="/2026/02/07/2026-nian-chun-bian-cheng-shua-ti-ji-lu/">2026年春编程刷题记录</a>
+        </li>
+      
+        
+        
+        <li>
+          <time datetime="2026-01-16T08:34:20.000Z">01-16</time>
+          <a href="/2026/01/16/einx-and-einops/">Einx-and-einops</a>
+        </li>
+      
+        
+        
+        <li>
+          <time datetime="2026-01-16T08:13:54.000Z">01-16</time>
+          <a href="/2026/01/16/chunk-hua-fen-fang-fa/">Chunk划分方法</a>
+        </li>
+      
+        
+        
+        <li>
+          <time datetime="2026-01-09T15:01:28.000Z">01-09</time>
+          <a href="/2026/01/09/bpe-fen-ci-bian-ma-he-jie-ma/">BPE分词编码和解码</a>
+        </li>
+      
+        
+        
+        <li>
+          <time datetime="2026-01-09T13:29:23.000Z">01-09</time>
+          <a href="/2026/01/09/bpe-fen-ci-xun-lian/">BPE分词训练</a>
+        </li>
+      
+        
+        
+          
+            </ol>
+          
+          
+          <p class="left-nav-year">2025</p>
+          <ol class="left-nav-list left-nav-archive-list">
+        
+        <li>
+          <time datetime="2025-12-02T03:04:12.000Z">12-02</time>
+          <a href="/2025/12/02/clash-gui-ze-pei-zhi-zhi-nan/">Clash规则配置指南</a>
+        </li>
+      
+        
+        
+        <li>
+          <time datetime="2025-11-20T08:16:11.000Z">11-20</time>
+          <a href="/2025/11/20/1-cs336-bpe-fen-ci-qi-jie-shao/">1-cs336-BPE分词器介绍</a>
+        </li>
+      
+        
+        
+        <li>
+          <time datetime="2025-10-16T05:52:02.000Z">10-16</time>
+          <a href="/2025/10/16/linux-chang-yong-ming-ling-jie-shi/">linux常用命令解释</a>
+        </li>
+      
+        
+        
+        <li>
+          <time datetime="2025-10-14T11:55:30.000Z">10-14</time>
+          <a href="/2025/10/14/shi-yong-rclone-zai-duo-ge-fu-wu-qi-zhi-jian-chuan-shu-wen-jian/">使用rclone在多个服务器之间传输文件</a>
+        </li>
+      
+        
+        
+        <li>
+          <time datetime="2025-10-07T16:20:45.000Z">10-08</time>
+          <a href="/2025/10/08/ubuntu-shang-che-di-xie-zai-he-chong-zhuang-nvidia-qu-dong-ji-xiang-guan-zu-jian/">Ubuntu上彻底卸载和重装NVIDIA驱动及相关组件</a>
+        </li>
+      
+        
+        
+        <li>
+          <time datetime="2025-10-03T10:36:30.000Z">10-03</time>
+          <a href="/2025/10/03/ssh-pei-zhi-jie-shao/">ssh配置介绍</a>
+        </li>
+      
+        
+        
+        <li>
+          <time datetime="2025-10-02T13:39:23.000Z">10-02</time>
+          <a href="/2025/10/02/mineru-an-zhuang-bu-shu/">MinerU安装部署</a>
+        </li>
+      
+        
+        
+        <li>
+          <time datetime="2025-09-29T09:12:41.000Z">09-29</time>
+          <a href="/2025/09/29/tong-guo-docker-yun-xing-easyconnect-deng-vpn-ruan-jian/">通过docker运行EasyConnect等VPN软件</a>
+        </li>
+      
+        
+        
+        <li>
+          <time datetime="2025-09-28T13:07:28.000Z">09-28</time>
+          <a href="/2025/09/28/quan-ju-pei-zhi-docker-ke-hu-duan-dai-li/">全局配置Docker客户端代理</a>
+        </li>
+      
+        
+        
+        <li>
+          <time datetime="2025-09-16T12:36:15.000Z">09-16</time>
+          <a href="/2025/09/16/linux-ci-pan-guan-li-ji-minio-fu-wu-pei-zhi/">Linux磁盘管理及MinIO服务配置</a>
+        </li>
+      
+        
+        
+        <li>
+          <time datetime="2025-08-10T10:51:03.000Z">08-10</time>
+          <a href="/2025/08/10/bu-dong-dian-he-ya-suo-ying-she/">不动点和压缩映射</a>
+        </li>
+      
+        
+        
+        <li>
+          <time datetime="2025-08-10T10:49:11.000Z">08-10</time>
+          <a href="/2025/08/10/xiang-liang-fan-shu/">向量范数</a>
+        </li>
+      
+        
+        
+        <li>
+          <time datetime="2025-08-10T10:48:57.000Z">08-10</time>
+          <a href="/2025/08/10/fan-shu-de-ji-ben-gai-nian/">范数的基本概念</a>
+        </li>
+      
+        
+        
+        <li>
+          <time datetime="2025-08-10T10:48:32.000Z">08-10</time>
+          <a href="/2025/08/10/shu-xue-zhong-de-qi-ci-xing-li-jie/">数学中的齐次性理解</a>
+        </li>
+      
+        
+        
+        <li>
+          <time datetime="2025-07-28T04:35:06.000Z">07-28</time>
+          <a href="/2025/07/28/claude-code-xue-xi-ji-lu/">Claude-Code学习记录</a>
+        </li>
+      
+        
+        
+        <li>
+          <time datetime="2025-07-24T16:03:40.000Z">07-25</time>
+          <a href="/2025/07/25/uv-chang-yong-cao-zuo/">uv常用操作</a>
+        </li>
+      
+        
+        
+        <li>
+          <time datetime="2025-07-12T16:44:26.000Z">07-13</time>
+          <a href="/2025/07/13/quan-qi-wang-ding-li-gong-shi-tui-dao/">全期望定理公式推导</a>
+        </li>
+      
+        
+        
+        <li>
+          <time datetime="2025-07-12T09:00:48.000Z">07-12</time>
+          <a href="/2025/07/12/bei-er-man-deng-shi-jie-shao-ji-tui-dao/">贝尔曼等式介绍及推导</a>
+        </li>
+      
+        
+        
+        <li>
+          <time datetime="2025-06-17T15:17:40.000Z">06-17</time>
+          <a href="/2025/06/17/shi-yong-docker-gou-jian-webdav-fu-wu-qi/">使用Docker构建Webdav服务器</a>
+        </li>
+      
+        
+        
+        <li>
+          <time datetime="2025-05-13T16:22:20.000Z">05-14</time>
+          <a href="/2025/05/14/git-team-collab-workflow/">git_team_collab_workflow</a>
+        </li>
+      
+        
+        
+        <li>
+          <time datetime="2025-04-24T07:11:16.000Z">04-24</time>
+          <a href="/2025/04/24/ben-di-gou-jian-docker-jing-xiang-bing-shang-chuan-zhi-a-li-yun-jing-xiang-fu-wu-zhan/">本地构建docker镜像并上传至阿里云镜像服务站</a>
+        </li>
+      
+        
+        
+        <li>
+          <time datetime="2025-04-18T10:31:58.000Z">04-18</time>
+          <a href="/2025/04/18/an-zhuang-torch-scatter-shi-yu-dao-de-keng/">安装torch-scatter时遇到的坑</a>
+        </li>
+      
+        
+        
+        <li>
+          <time datetime="2025-03-17T11:37:30.000Z">03-17</time>
+          <a href="/2025/03/17/neo4j-dao-ru-jie-dian-he-bian-de-python-dai-ma/">neo4j导入节点和边的python代码</a>
+        </li>
+      
+        
+        
+        <li>
+          <time datetime="2025-03-08T17:05:51.000Z">03-09</time>
+          <a href="/2025/03/09/jie-pai-he-ji/">街拍合集</a>
+        </li>
+      
+        
+        
+        <li>
+          <time datetime="2025-03-08T16:06:13.000Z">03-09</time>
+          <a href="/2025/03/09/ren-xiang-she-ying-he-ji/">人像摄影合集</a>
+        </li>
+      
+        
+        
+        <li>
+          <time datetime="2025-03-08T08:39:54.000Z">03-08</time>
+          <a href="/2025/03/08/matplotlib-xian-shi-zhong-wen/">matplotlib 设置显示中文</a>
+        </li>
+      
+        
+        
+        <li>
+          <time datetime="2025-03-08T08:39:54.000Z">03-08</time>
+          <a href="/2025/03/08/python-duo-jin-cheng-shi-li/">python多进程示例</a>
+        </li>
+      
+        
+        
+        <li>
+          <time datetime="2025-03-06T14:40:33.000Z">03-06</time>
+          <a href="/2025/03/06/shi-yong-bert-de-dao-duan-yu-xiang-liang-biao-shi-bing-jin-xing-ceng-ci-ju-lei-shi-xian-xiang-si-xing-qu-chong/">使用BERT得到短语向量表示并进行层次聚类实现相似性去重</a>
+        </li>
+      
+        
+        
+        <li>
+          <time datetime="2025-03-06T11:23:45.000Z">03-06</time>
+          <a href="/2025/03/06/ji-yu-bian-ji-ju-chi-de-wen-ben-ceng-ci-ju-lei/">基于编辑距离的文本层次聚类</a>
+        </li>
+      
+        
+        
+        <li>
+          <time datetime="2025-02-27T15:18:38.000Z">02-27</time>
+          <a href="/2025/02/27/ai-jing-sai-ping-tai/">Ai竞赛平台</a>
+        </li>
+      
+        
+        
+        <li>
+          <time datetime="2025-02-19T09:02:28.000Z">02-19</time>
+          <a href="/2025/02/19/python-ri-chang-kai-fa-za-ji/">python日常开发杂记</a>
+        </li>
+      
+        
+        
+        <li>
+          <time datetime="2025-02-12T09:15:42.000Z">02-12</time>
+          <a href="/2025/02/12/tong-guo-docker-bu-shu-doccano-biao-zhu-gong-ju/">通过docker部署doccano标注工具</a>
+        </li>
+      
+        
+        
+        <li>
+          <time datetime="2025-02-06T08:45:24.000Z">02-06</time>
+          <a href="/2025/02/06/zai-cheng-gong-de-ri-zi-fu-xi-zi-liao-bu-jian-liao/">在呈贡的日子——复习资料不见了</a>
+        </li>
+      
+        
+        
+        <li>
+          <time datetime="2025-02-06T07:15:04.000Z">02-06</time>
+          <a href="/2025/02/06/zai-cheng-gong-de-ri-zi-lao-yu-he/">在呈贡的日子——捞鱼河</a>
+        </li>
+      
+        
+        
+        <li>
+          <time datetime="2025-01-28T09:13:43.000Z">01-28</time>
+          <a href="/2025/01/28/vscode-kai-fa-ji-qiao-ji-lu/">vscode开发技巧记录</a>
+        </li>
+      
+        
+        
+        <li>
+          <time datetime="2025-01-28T08:17:28.000Z">01-28</time>
+          <a href="/2025/01/28/bo-ke-wei-hu-ri-zhi/">博客维护日志</a>
+        </li>
+      
+        
+        
+        <li>
+          <time datetime="2025-01-26T13:08:21.000Z">01-26</time>
+          <a href="/2025/01/26/da-jian-webdav-fu-wu-qi-shi-xian-obsidian-he-zotero-duo-duan-tong-bu/">搭建Webdav服务器实现Obsidian和Zotero多端同步</a>
+        </li>
+      
+        
+        
+        <li>
+          <time datetime="2025-01-07T08:12:50.000Z">01-07</time>
+          <a href="/2025/01/07/sentence-transformers-sampler-bug-zhi-set-bu-yi-ding-shi-wu-xu-de/">sentence-transformers sampler bug 之 set 不一定是无序的</a>
+        </li>
+      
+        
+        
+          
+            </ol>
+          
+          
+          <p class="left-nav-year">2023</p>
+          <ol class="left-nav-list left-nav-archive-list">
+        
+        <li>
+          <time datetime="2023-09-12T01:37:44.000Z">09-12</time>
+          <a href="/2023/09/12/ubuntu-shang-an-zhuang-nividia-qu-dong-he-cuda-tookit/">ubuntu上安装NIVIDIA驱动和CUDA_Tookit</a>
+        </li>
+      
+        
+        
+        <li>
+          <time datetime="2023-07-22T18:28:00.000Z">07-23</time>
+          <a href="/2023/07/23/zai-mac-shang-shi-yong-pybind11-shi-xian-c-yu-python-hu-tong-de-demo/">在mac上使用pybind11实现c++与python互通的demo</a>
+        </li>
+      
+        
+        
+          
+            </ol>
+          
+          
+          <p class="left-nav-year">2022</p>
+          <ol class="left-nav-list left-nav-archive-list">
+        
+        <li>
+          <time datetime="2022-09-07T11:51:54.000Z">09-07</time>
+          <a href="/2022/09/07/mac-xi-tong-zhi-zuo-win10-qi-dong-u-pan/">Mac系统制作win10启动U盘</a>
+        </li>
+      
+        
+        
+        <li>
+          <time datetime="2022-09-05T06:47:54.000Z">09-05</time>
+          <a href="/2022/09/05/dian-ci-bi-sai-zong-jie/">电磁比赛总结</a>
+        </li>
+      
+        
+        
+        <li>
+          <time datetime="2022-04-29T08:24:56.000Z">04-29</time>
+          <a href="/2022/04/29/yuan-cheng-fang-wen-fu-wu-qi-jupyter-notebook/">远程访问服务器Jupyter-Notebook</a>
+        </li>
+      
+        
+        
+          
+            </ol>
+          
+          
+          <p class="left-nav-year">2021</p>
+          <ol class="left-nav-list left-nav-archive-list">
+        
+        <li>
+          <time datetime="2021-12-10T14:48:07.000Z">12-10</time>
+          <a href="/2021/12/10/c-duo-xian-cheng-bian-cheng/">C++多线程编程</a>
+        </li>
+      
+        
+        
+        <li>
+          <time datetime="2021-09-29T09:21:06.000Z">09-29</time>
+          <a href="/2021/09/29/jiang-wei-xin-liao-tian-zhong-de-yu-yin-zhuan-huan-wei-mp3/">将微信聊天中的语音转换为mp3</a>
+        </li>
+      
+        
+        
+        <li>
+          <time datetime="2021-09-19T15:59:09.000Z">09-19</time>
+          <a href="/2021/09/19/ji-qi-xue-xi-can-kao-zi-liao/">机器学习参考资料</a>
+        </li>
+      
+        
+        
+        <li>
+          <time datetime="2021-09-19T15:28:51.000Z">09-19</time>
+          <a href="/2021/09/19/you-yong-de-zi-yuan/">有用的资源</a>
+        </li>
+      
+        
+        
+        <li>
+          <time datetime="2021-08-13T17:06:28.000Z">08-14</time>
+          <a href="/2021/08/14/wei-xin-biao-qian-zheng-li/">微信标签整理</a>
+        </li>
+      
+        
+        
+        <li>
+          <time datetime="2021-08-13T17:01:38.000Z">08-14</time>
+          <a href="/2021/08/14/gong-ju-xiang/">工具箱</a>
+        </li>
+      
+        
+        
+        <li>
+          <time datetime="2021-08-13T14:54:55.000Z">08-13</time>
+          <a href="/2021/08/13/google-fang-wen-zhu-shou-an-zhuang/">Google访问助手安装</a>
+        </li>
+      
+        
+        
+        <li>
+          <time datetime="2021-08-13T14:48:02.000Z">08-13</time>
+          <a href="/2021/08/13/chang-yong-shu-ju-ji-zheng-li/">常用数据集整理</a>
+        </li>
+      
+        
+        
+        <li>
+          <time datetime="2021-08-13T14:41:02.000Z">08-13</time>
+          <a href="/2021/08/13/tu-de-chuang-jian-he-bian-li/">【课程设计】图的创建和遍历</a>
+        </li>
+      
+        
+        
+        <li>
+          <time datetime="2021-08-13T14:41:02.000Z">08-13</time>
+          <a href="/2021/08/13/li-bao-chun-writing-perfect-papers/">论文写作</a>
+        </li>
+      
+        
+        
+        <li>
+          <time datetime="2021-08-09T13:50:37.000Z">08-09</time>
+          <a href="/2021/08/09/svm-xue-xi-bi-ji/">SVM学习笔记</a>
+        </li>
+      
+        
+        
+        <li>
+          <time datetime="2021-08-06T13:35:53.000Z">08-06</time>
+          <a href="/2021/08/06/pandas-xue-xi/">Pandas学习</a>
+        </li>
+      
+        
+        
+        <li>
+          <time datetime="2021-08-05T13:50:37.000Z">08-05</time>
+          <a href="/2021/08/05/pytorch-xue-xi/">Pytorch学习</a>
+        </li>
+      
+        
+        
+        <li>
+          <time datetime="2021-06-30T17:44:09.000Z">07-01</time>
+          <a href="/2021/07/01/huggingface-yu-xun-lian-mo-xing-quan-chong-xia-zai-de-wen-ti/">Huggingface 预训练模型权重下载的问题</a>
+        </li>
+      
+        
+        
+        <li>
+          <time datetime="2021-06-20T16:36:40.000Z">06-21</time>
+          <a href="/2021/06/21/jupyter-notebook-ben-di-fu-wu-qi-da-jian/">jupyter notebook 本地服务器搭建</a>
+        </li>
+      
+        
+        
+        <li>
+          <time datetime="2021-04-16T13:49:06.000Z">04-16</time>
+          <a href="/2021/04/16/ji-qi-xue-xi-zhong-de-ge-chong-shang/">机器学习中的各种熵</a>
+        </li>
+      
+        
+        
+        <li>
+          <time datetime="2021-04-08T09:11:14.000Z">04-08</time>
+          <a href="/2021/04/08/git-chang-yong-ming-ling/">git常用命令</a>
+        </li>
+      
+        
+        
+        <li>
+          <time datetime="2021-04-08T02:21:44.000Z">04-08</time>
+          <a href="/2021/04/08/nlp-zhi-shi-ti-xi/">NLP知识体系</a>
+        </li>
+      
+        
+        
+        <li>
+          <time datetime="2021-03-31T18:08:43.000Z">04-01</time>
+          <a href="/2021/04/01/zui-xiao-lu-jing-he/">【每日算法】2021年03月31日 小雨 最小路径和</a>
+        </li>
+      
+        
+        
+        <li>
+          <time datetime="2021-03-31T11:59:24.000Z">03-31</time>
+          <a href="/2021/03/31/gitlab-da-jian-bi-ji/">GitLab搭建笔记</a>
+        </li>
+      
+        
+        
+        <li>
+          <time datetime="2021-03-30T21:08:40.000Z">03-31</time>
+          <a href="/2021/03/31/ying-yu-kou-yu-lian-xi-dian-ying-tui-jian/">英语口语练习电影推荐</a>
+        </li>
+      
+        
+        
+        <li>
+          <time datetime="2021-03-30T21:05:15.000Z">03-31</time>
+          <a href="/2021/03/31/xue-xi-shi-pin-zheng-li/">学习视频整理</a>
+        </li>
+      
+        
+        
+        <li>
+          <time datetime="2021-03-30T21:01:57.000Z">03-31</time>
+          <a href="/2021/03/31/ke-cheng-she-ji-zui-xiao-sheng-cheng-shu-ying-yong/">【课程设计】最小生成树应用</a>
+        </li>
+      
+        
+        
+        <li>
+          <time datetime="2021-03-30T10:36:46.000Z">03-30</time>
+          <a href="/2021/03/30/bu-tong-lu-jing/">【每日算法】2021年03月30日 多云 不同路径</a>
+        </li>
+      
+        
+        
+        <li>
+          <time datetime="2021-03-29T06:35:48.000Z">03-29</time>
+          <a href="/2021/03/29/bian-fen-xue-xi-bi-ji/">变分学习笔记</a>
+        </li>
+      
+        
+        
+        <li>
+          <time datetime="2021-03-28T05:57:49.000Z">03-28</time>
+          <a href="/2021/03/28/github-jia-su-fang-fa/">GitHub加速方法</a>
+        </li>
+      
+        
+        
+        <li>
+          <time datetime="2021-02-20T17:37:22.000Z">02-21</time>
+          <a href="/2021/02/21/hexo-ge-ren-bo-ke-da-jian-jiao-cheng/">hexo个人博客搭建</a>
+        </li>
+      
+        
+        
+        <li>
+          <time datetime="2021-02-20T17:28:10.000Z">02-21</time>
+          <a href="/2021/02/21/hao-yong-de-mian-fei-wu-guang-gao-dian-ying-wang-zhan-tui-jian/">好用的免费无广告电影网站推荐</a>
+        </li>
+      
+      
+        </ol>
+      
+    
+  </section>
+
+  <section class="left-nav-panel" data-left-nav-panel="tags" hidden>
+    
+      <ol class="left-nav-chip-list">
+        
+          
+          
+            <li>
+              <button class="left-nav-chip" type="button" data-left-nav-meta="tags" data-left-nav-name="BPE">
+                <span>BPE</span>
+                <span class="left-nav-count">3</span>
+              </button>
+            </li>
+          
+        
+          
+          
+            <li>
+              <button class="left-nav-chip" type="button" data-left-nav-meta="tags" data-left-nav-name="Clash, 规则配置">
+                <span>Clash, 规则配置</span>
+                <span class="left-nav-count">1</span>
+              </button>
+            </li>
+          
+        
+          
+          
+            <li>
+              <button class="left-nav-chip" type="button" data-left-nav-meta="tags" data-left-nav-name="Dotfiles">
+                <span>Dotfiles</span>
+                <span class="left-nav-count">1</span>
+              </button>
+            </li>
+          
+        
+          
+          
+            <li>
+              <button class="left-nav-chip" type="button" data-left-nav-meta="tags" data-left-nav-name="GitHub">
+                <span>GitHub</span>
+                <span class="left-nav-count">2</span>
+              </button>
+            </li>
+          
+        
+          
+          
+            <li>
+              <button class="left-nav-chip" type="button" data-left-nav-meta="tags" data-left-nav-name="GitLab">
+                <span>GitLab</span>
+                <span class="left-nav-count">1</span>
+              </button>
+            </li>
+          
+        
+          
+          
+            <li>
+              <button class="left-nav-chip" type="button" data-left-nav-meta="tags" data-left-nav-name="Google访问助手">
+                <span>Google访问助手</span>
+                <span class="left-nav-count">1</span>
+              </button>
+            </li>
+          
+        
+          
+          
+            <li>
+              <button class="left-nav-chip" type="button" data-left-nav-meta="tags" data-left-nav-name="Hexo">
+                <span>Hexo</span>
+                <span class="left-nav-count">1</span>
+              </button>
+            </li>
+          
+        
+          
+          
+            <li>
+              <button class="left-nav-chip" type="button" data-left-nav-meta="tags" data-left-nav-name="NIVIDIA驱动">
+                <span>NIVIDIA驱动</span>
+                <span class="left-nav-count">1</span>
+              </button>
+            </li>
+          
+        
+          
+          
+            <li>
+              <button class="left-nav-chip" type="button" data-left-nav-meta="tags" data-left-nav-name="NVIDIA">
+                <span>NVIDIA</span>
+                <span class="left-nav-count">1</span>
+              </button>
+            </li>
+          
+        
+          
+          
+            <li>
+              <button class="left-nav-chip" type="button" data-left-nav-meta="tags" data-left-nav-name="Pandas">
+                <span>Pandas</span>
+                <span class="left-nav-count">1</span>
+              </button>
+            </li>
+          
+        
+          
+          
+            <li>
+              <button class="left-nav-chip" type="button" data-left-nav-meta="tags" data-left-nav-name="RAG">
+                <span>RAG</span>
+                <span class="left-nav-count">1</span>
+              </button>
+            </li>
+          
+        
+          
+          
+            <li>
+              <button class="left-nav-chip" type="button" data-left-nav-meta="tags" data-left-nav-name="SwiGLU">
+                <span>SwiGLU</span>
+                <span class="left-nav-count">1</span>
+              </button>
+            </li>
+          
+        
+          
+          
+            <li>
+              <button class="left-nav-chip" type="button" data-left-nav-meta="tags" data-left-nav-name="Syncthing">
+                <span>Syncthing</span>
+                <span class="left-nav-count">1</span>
+              </button>
+            </li>
+          
+        
+          
+          
+            <li>
+              <button class="left-nav-chip" type="button" data-left-nav-meta="tags" data-left-nav-name="Transformer">
+                <span>Transformer</span>
+                <span class="left-nav-count">1</span>
+              </button>
+            </li>
+          
+        
+          
+          
+            <li>
+              <button class="left-nav-chip" type="button" data-left-nav-meta="tags" data-left-nav-name="Tufte">
+                <span>Tufte</span>
+                <span class="left-nav-count">2</span>
+              </button>
+            </li>
+          
+        
+          
+          
+            <li>
+              <button class="left-nav-chip" type="button" data-left-nav-meta="tags" data-left-nav-name="ai竞赛">
+                <span>ai竞赛</span>
+                <span class="left-nav-count">1</span>
+              </button>
+            </li>
+          
+        
+          
+          
+            <li>
+              <button class="left-nav-chip" type="button" data-left-nav-meta="tags" data-left-nav-name="claude-code">
+                <span>claude-code</span>
+                <span class="left-nav-count">1</span>
+              </button>
+            </li>
+          
+        
+          
+          
+            <li>
+              <button class="left-nav-chip" type="button" data-left-nav-meta="tags" data-left-nav-name="docker">
+                <span>docker</span>
+                <span class="left-nav-count">2</span>
+              </button>
+            </li>
+          
+        
+          
+          
+            <li>
+              <button class="left-nav-chip" type="button" data-left-nav-meta="tags" data-left-nav-name="docker, doccano">
+                <span>docker, doccano</span>
+                <span class="left-nav-count">1</span>
+              </button>
+            </li>
+          
+        
+          
+          
+            <li>
+              <button class="left-nav-chip" type="button" data-left-nav-meta="tags" data-left-nav-name="git">
+                <span>git</span>
+                <span class="left-nav-count">2</span>
+              </button>
+            </li>
+          
+        
+          
+          
+            <li>
+              <button class="left-nav-chip" type="button" data-left-nav-meta="tags" data-left-nav-name="github">
+                <span>github</span>
+                <span class="left-nav-count">1</span>
+              </button>
+            </li>
+          
+        
+          
+          
+            <li>
+              <button class="left-nav-chip" type="button" data-left-nav-meta="tags" data-left-nav-name="jupyter notebook">
+                <span>jupyter notebook</span>
+                <span class="left-nav-count">2</span>
+              </button>
+            </li>
+          
+        
+          
+          
+            <li>
+              <button class="left-nav-chip" type="button" data-left-nav-meta="tags" data-left-nav-name="mineru">
+                <span>mineru</span>
+                <span class="left-nav-count">1</span>
+              </button>
+            </li>
+          
+        
+          
+          
+            <li>
+              <button class="left-nav-chip" type="button" data-left-nav-meta="tags" data-left-nav-name="neo4j">
+                <span>neo4j</span>
+                <span class="left-nav-count">1</span>
+              </button>
+            </li>
+          
+        
+          
+          
+            <li>
+              <button class="left-nav-chip" type="button" data-left-nav-meta="tags" data-left-nav-name="nlp">
+                <span>nlp</span>
+                <span class="left-nav-count">1</span>
+              </button>
+            </li>
+          
+        
+          
+          
+            <li>
+              <button class="left-nav-chip" type="button" data-left-nav-meta="tags" data-left-nav-name="python">
+                <span>python</span>
+                <span class="left-nav-count">4</span>
+              </button>
+            </li>
+          
+        
+          
+          
+            <li>
+              <button class="left-nav-chip" type="button" data-left-nav-meta="tags" data-left-nav-name="python_c++_互通">
+                <span>python_c++_互通</span>
+                <span class="left-nav-count">1</span>
+              </button>
+            </li>
+          
+        
+          
+          
+            <li>
+              <button class="left-nav-chip" type="button" data-left-nav-meta="tags" data-left-nav-name="pytorch">
+                <span>pytorch</span>
+                <span class="left-nav-count">3</span>
+              </button>
+            </li>
+          
+        
+          
+          
+            <li>
+              <button class="left-nav-chip" type="button" data-left-nav-meta="tags" data-left-nav-name="rclone">
+                <span>rclone</span>
+                <span class="left-nav-count">1</span>
+              </button>
+            </li>
+          
+        
+          
+          
+            <li>
+              <button class="left-nav-chip" type="button" data-left-nav-meta="tags" data-left-nav-name="ssh">
+                <span>ssh</span>
+                <span class="left-nav-count">1</span>
+              </button>
+            </li>
+          
+        
+          
+          
+            <li>
+              <button class="left-nav-chip" type="button" data-left-nav-meta="tags" data-left-nav-name="svm">
+                <span>svm</span>
+                <span class="left-nav-count">1</span>
+              </button>
+            </li>
+          
+        
+          
+          
+            <li>
+              <button class="left-nav-chip" type="button" data-left-nav-meta="tags" data-left-nav-name="tensor">
+                <span>tensor</span>
+                <span class="left-nav-count">1</span>
+              </button>
+            </li>
+          
+        
+          
+          
+            <li>
+              <button class="left-nav-chip" type="button" data-left-nav-meta="tags" data-left-nav-name="uv">
+                <span>uv</span>
+                <span class="left-nav-count">1</span>
+              </button>
+            </li>
+          
+        
+          
+          
+            <li>
+              <button class="left-nav-chip" type="button" data-left-nav-meta="tags" data-left-nav-name="vscode">
+                <span>vscode</span>
+                <span class="left-nav-count">1</span>
+              </button>
+            </li>
+          
+        
+          
+          
+            <li>
+              <button class="left-nav-chip" type="button" data-left-nav-meta="tags" data-left-nav-name="webdav, docker, obsidian, zotero">
+                <span>webdav, docker, obsidian, zotero</span>
+                <span class="left-nav-count">1</span>
+              </button>
+            </li>
+          
+        
+          
+          
+            <li>
+              <button class="left-nav-chip" type="button" data-left-nav-meta="tags" data-left-nav-name="动态规划">
+                <span>动态规划</span>
+                <span class="left-nav-count">2</span>
+              </button>
+            </li>
+          
+        
+          
+          
+            <li>
+              <button class="left-nav-chip" type="button" data-left-nav-meta="tags" data-left-nav-name="博客">
+                <span>博客</span>
+                <span class="left-nav-count">2</span>
+              </button>
+            </li>
+          
+        
+          
+          
+            <li>
+              <button class="left-nav-chip" type="button" data-left-nav-meta="tags" data-left-nav-name="反向传播">
+                <span>反向传播</span>
+                <span class="left-nav-count">1</span>
+              </button>
+            </li>
+          
+        
+          
+          
+            <li>
+              <button class="left-nav-chip" type="button" data-left-nav-meta="tags" data-left-nav-name="启动U盘">
+                <span>启动U盘</span>
+                <span class="left-nav-count">1</span>
+              </button>
+            </li>
+          
+        
+          
+          
+            <li>
+              <button class="left-nav-chip" type="button" data-left-nav-meta="tags" data-left-nav-name="呈贡">
+                <span>呈贡</span>
+                <span class="left-nav-count">2</span>
+              </button>
+            </li>
+          
+        
+          
+          
+            <li>
+              <button class="left-nav-chip" type="button" data-left-nav-meta="tags" data-left-nav-name="图">
+                <span>图</span>
+                <span class="left-nav-count">1</span>
+              </button>
+            </li>
+          
+        
+          
+          
+            <li>
+              <button class="left-nav-chip" type="button" data-left-nav-meta="tags" data-left-nav-name="干货">
+                <span>干货</span>
+                <span class="left-nav-count">2</span>
+              </button>
+            </li>
+          
+        
+          
+          
+            <li>
+              <button class="left-nav-chip" type="button" data-left-nav-meta="tags" data-left-nav-name="强化学习">
+                <span>强化学习</span>
+                <span class="left-nav-count">1</span>
+              </button>
+            </li>
+          
+        
+          
+          
+            <li>
+              <button class="left-nav-chip" type="button" data-left-nav-meta="tags" data-left-nav-name="微信">
+                <span>微信</span>
+                <span class="left-nav-count">2</span>
+              </button>
+            </li>
+          
+        
+          
+          
+            <li>
+              <button class="left-nav-chip" type="button" data-left-nav-meta="tags" data-left-nav-name="摄影">
+                <span>摄影</span>
+                <span class="left-nav-count">1</span>
+              </button>
+            </li>
+          
+        
+          
+          
+            <li>
+              <button class="left-nav-chip" type="button" data-left-nav-meta="tags" data-left-nav-name="数学">
+                <span>数学</span>
+                <span class="left-nav-count">3</span>
+              </button>
+            </li>
+          
+        
+          
+          
+            <li>
+              <button class="left-nav-chip" type="button" data-left-nav-meta="tags" data-left-nav-name="文本聚类 bert向量表示">
+                <span>文本聚类 bert向量表示</span>
+                <span class="left-nav-count">1</span>
+              </button>
+            </li>
+          
+        
+          
+          
+            <li>
+              <button class="left-nav-chip" type="button" data-left-nav-meta="tags" data-left-nav-name="文本聚类 编辑距离">
+                <span>文本聚类 编辑距离</span>
+                <span class="left-nav-count">1</span>
+              </button>
+            </li>
+          
+        
+          
+          
+            <li>
+              <button class="left-nav-chip" type="button" data-left-nav-meta="tags" data-left-nav-name="日志">
+                <span>日志</span>
+                <span class="left-nav-count">1</span>
+              </button>
+            </li>
+          
+        
+          
+          
+            <li>
+              <button class="left-nav-chip" type="button" data-left-nav-meta="tags" data-left-nav-name="机器学习">
+                <span>机器学习</span>
+                <span class="left-nav-count">3</span>
+              </button>
+            </li>
+          
+        
+          
+          
+            <li>
+              <button class="left-nav-chip" type="button" data-left-nav-meta="tags" data-left-nav-name="树">
+                <span>树</span>
+                <span class="left-nav-count">1</span>
+              </button>
+            </li>
+          
+        
+          
+          
+            <li>
+              <button class="left-nav-chip" type="button" data-left-nav-meta="tags" data-left-nav-name="概率论">
+                <span>概率论</span>
+                <span class="left-nav-count">1</span>
+              </button>
+            </li>
+          
+        
+          
+          
+            <li>
+              <button class="left-nav-chip" type="button" data-left-nav-meta="tags" data-left-nav-name="熵">
+                <span>熵</span>
+                <span class="left-nav-count">1</span>
+              </button>
+            </li>
+          
+        
+          
+          
+            <li>
+              <button class="left-nav-chip" type="button" data-left-nav-meta="tags" data-left-nav-name="电影">
+                <span>电影</span>
+                <span class="left-nav-count">2</span>
+              </button>
+            </li>
+          
+        
+          
+          
+            <li>
+              <button class="left-nav-chip" type="button" data-left-nav-meta="tags" data-left-nav-name="竞赛">
+                <span>竞赛</span>
+                <span class="left-nav-count">1</span>
+              </button>
+            </li>
+          
+        
+          
+          
+            <li>
+              <button class="left-nav-chip" type="button" data-left-nav-meta="tags" data-left-nav-name="编程">
+                <span>编程</span>
+                <span class="left-nav-count">1</span>
+              </button>
+            </li>
+          
+        
+          
+          
+            <li>
+              <button class="left-nav-chip" type="button" data-left-nav-meta="tags" data-left-nav-name="街拍">
+                <span>街拍</span>
+                <span class="left-nav-count">1</span>
+              </button>
+            </li>
+          
+        
+          
+          
+            <li>
+              <button class="left-nav-chip" type="button" data-left-nav-meta="tags" data-left-nav-name="论文写作">
+                <span>论文写作</span>
+                <span class="left-nav-count">1</span>
+              </button>
+            </li>
+          
+        
+          
+          
+            <li>
+              <button class="left-nav-chip" type="button" data-left-nav-meta="tags" data-left-nav-name="资源">
+                <span>资源</span>
+                <span class="left-nav-count">1</span>
+              </button>
+            </li>
+          
+        
+          
+          
+            <li>
+              <button class="left-nav-chip" type="button" data-left-nav-meta="tags" data-left-nav-name="预训练模型">
+                <span>预训练模型</span>
+                <span class="left-nav-count">1</span>
+              </button>
+            </li>
+          
+        
+      </ol>
+      <p class="left-nav-selection-status" data-left-nav-status="tags">Select a tag to view posts.</p>
+      <ol class="left-nav-meta-posts" data-left-nav-posts="tags"></ol>
+    
+  </section>
+
+  <section class="left-nav-panel" data-left-nav-panel="categories" hidden>
+    
+      <ol class="left-nav-chip-list">
+        
+          
+          
+            <li>
+              <button class="left-nav-chip" type="button" data-left-nav-meta="categories" data-left-nav-name="人工智能">
+                <span>人工智能</span>
+                <span class="left-nav-count">1</span>
+              </button>
+            </li>
+          
+        
+          
+          
+            <li>
+              <button class="left-nav-chip" type="button" data-left-nav-meta="categories" data-left-nav-name="大模型">
+                <span>大模型</span>
+                <span class="left-nav-count">4</span>
+              </button>
+            </li>
+          
+        
+          
+          
+            <li>
+              <button class="left-nav-chip" type="button" data-left-nav-meta="categories" data-left-nav-name="学习笔记">
+                <span>学习笔记</span>
+                <span class="left-nav-count">13</span>
+              </button>
+            </li>
+          
+        
+          
+          
+            <li>
+              <button class="left-nav-chip" type="button" data-left-nav-meta="categories" data-left-nav-name="学习资料">
+                <span>学习资料</span>
+                <span class="left-nav-count">4</span>
+              </button>
+            </li>
+          
+        
+          
+          
+            <li>
+              <button class="left-nav-chip" type="button" data-left-nav-meta="categories" data-left-nav-name="干货">
+                <span>干货</span>
+                <span class="left-nav-count">1</span>
+              </button>
+            </li>
+          
+        
+          
+          
+            <li>
+              <button class="left-nav-chip" type="button" data-left-nav-meta="categories" data-left-nav-name="总结">
+                <span>总结</span>
+                <span class="left-nav-count">4</span>
+              </button>
+            </li>
+          
+        
+          
+          
+            <li>
+              <button class="left-nav-chip" type="button" data-left-nav-meta="categories" data-left-nav-name="技术笔记">
+                <span>技术笔记</span>
+                <span class="left-nav-count">2</span>
+              </button>
+            </li>
+          
+        
+          
+          
+            <li>
+              <button class="left-nav-chip" type="button" data-left-nav-meta="categories" data-left-nav-name="摄影">
+                <span>摄影</span>
+                <span class="left-nav-count">2</span>
+              </button>
+            </li>
+          
+        
+          
+          
+            <li>
+              <button class="left-nav-chip" type="button" data-left-nav-meta="categories" data-left-nav-name="收藏">
+                <span>收藏</span>
+                <span class="left-nav-count">1</span>
+              </button>
+            </li>
+          
+        
+          
+          
+            <li>
+              <button class="left-nav-chip" type="button" data-left-nav-meta="categories" data-left-nav-name="数学算法">
+                <span>数学算法</span>
+                <span class="left-nav-count">1</span>
+              </button>
+            </li>
+          
+        
+          
+          
+            <li>
+              <button class="left-nav-chip" type="button" data-left-nav-meta="categories" data-left-nav-name="数据集">
+                <span>数据集</span>
+                <span class="left-nav-count">1</span>
+              </button>
+            </li>
+          
+        
+          
+          
+            <li>
+              <button class="left-nav-chip" type="button" data-left-nav-meta="categories" data-left-nav-name="机器学习">
+                <span>机器学习</span>
+                <span class="left-nav-count">1</span>
+              </button>
+            </li>
+          
+        
+          
+          
+            <li>
+              <button class="left-nav-chip" type="button" data-left-nav-meta="categories" data-left-nav-name="爬坑总结">
+                <span>爬坑总结</span>
+                <span class="left-nav-count">9</span>
+              </button>
+            </li>
+          
+        
+          
+          
+            <li>
+              <button class="left-nav-chip" type="button" data-left-nav-meta="categories" data-left-nav-name="生活总结">
+                <span>生活总结</span>
+                <span class="left-nav-count">4</span>
+              </button>
+            </li>
+          
+        
+          
+          
+            <li>
+              <button class="left-nav-chip" type="button" data-left-nav-meta="categories" data-left-nav-name="生活情感">
+                <span>生活情感</span>
+                <span class="left-nav-count">2</span>
+              </button>
+            </li>
+          
+        
+          
+          
+            <li>
+              <button class="left-nav-chip" type="button" data-left-nav-meta="categories" data-left-nav-name="知识框架">
+                <span>知识框架</span>
+                <span class="left-nav-count">1</span>
+              </button>
+            </li>
+          
+        
+          
+          
+            <li>
+              <button class="left-nav-chip" type="button" data-left-nav-meta="categories" data-left-nav-name="算法">
+                <span>算法</span>
+                <span class="left-nav-count">1</span>
+              </button>
+            </li>
+          
+        
+          
+          
+            <li>
+              <button class="left-nav-chip" type="button" data-left-nav-meta="categories" data-left-nav-name="算法笔记">
+                <span>算法笔记</span>
+                <span class="left-nav-count">2</span>
+              </button>
+            </li>
+          
+        
+          
+          
+            <li>
+              <button class="left-nav-chip" type="button" data-left-nav-meta="categories" data-left-nav-name="编程">
+                <span>编程</span>
+                <span class="left-nav-count">5</span>
+              </button>
+            </li>
+          
+        
+          
+          
+            <li>
+              <button class="left-nav-chip" type="button" data-left-nav-meta="categories" data-left-nav-name="编程开发">
+                <span>编程开发</span>
+                <span class="left-nav-count">5</span>
+              </button>
+            </li>
+          
+        
+          
+          
+            <li>
+              <button class="left-nav-chip" type="button" data-left-nav-meta="categories" data-left-nav-name="编程经验">
+                <span>编程经验</span>
+                <span class="left-nav-count">2</span>
+              </button>
+            </li>
+          
+        
+          
+          
+            <li>
+              <button class="left-nav-chip" type="button" data-left-nav-meta="categories" data-left-nav-name="网络工具">
+                <span>网络工具</span>
+                <span class="left-nav-count">1</span>
+              </button>
+            </li>
+          
+        
+          
+          
+            <li>
+              <button class="left-nav-chip" type="button" data-left-nav-meta="categories" data-left-nav-name="自然语言处理">
+                <span>自然语言处理</span>
+                <span class="left-nav-count">2</span>
+              </button>
+            </li>
+          
+        
+          
+          
+            <li>
+              <button class="left-nav-chip" type="button" data-left-nav-meta="categories" data-left-nav-name="运维">
+                <span>运维</span>
+                <span class="left-nav-count">7</span>
+              </button>
+            </li>
+          
+        
+      </ol>
+      <p class="left-nav-selection-status" data-left-nav-status="categories">Select a category to view posts.</p>
+      <ol class="left-nav-meta-posts" data-left-nav-posts="categories"></ol>
+    
+  </section>
+</aside>
+
+    <article class="post-page">
+  <h1>2026-06-01-策略梯度算法（一）从REINFORCE到Advantage</h1>
+  
+<p class="post-meta">
+  
+    <time datetime="2026-06-01T14:45:15.000Z">2026-06-01</time>
+  
+  
+  
+  
+</p>
+
+
+  
+
+  
+  <button class="toc-toggle" type="button" aria-controls="toc-sidebar" aria-expanded="true" aria-label="Toggle table of contents">
+    Contents
+  </button>
+  <aside class="toc-sidebar" id="toc-sidebar" aria-label="Table of contents">
+    <p class="toc-title">Contents</p>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E7%9A%84%E5%9F%BA%E6%9C%AC%E7%9B%AE%E6%A0%87"><span class="toc-text">1. 强化学习的基本目标</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-%E8%BD%A8%E8%BF%B9%E6%A6%82%E7%8E%87%E6%98%AF%E6%80%8E%E4%B9%88%E5%86%99%E5%87%BA%E6%9D%A5%E7%9A%84%EF%BC%9F"><span class="toc-text">2. 轨迹概率是怎么写出来的？</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-%E7%AD%96%E7%95%A5%E6%A2%AF%E5%BA%A6%E7%9A%84%E6%A0%B8%E5%BF%83%E6%8E%A8%E5%AF%BC"><span class="toc-text">3. 策略梯度的核心推导</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#4-%E4%B8%BA%E4%BB%80%E4%B9%88%E4%BC%9A%E5%87%BA%E7%8E%B0-nabla-theta-log-pi-theta-a-t-mid-s-t-%EF%BC%9F"><span class="toc-text">4. 为什么会出现 $\nabla_\theta \log \pi_\theta(a_t\mid s_t)$？</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#5-REINFORCE-%E7%AE%97%E6%B3%95"><span class="toc-text">5. REINFORCE 算法</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#6-REINFORCE-%E7%9A%84%E9%97%AE%E9%A2%98%EF%BC%9A%E6%96%B9%E5%B7%AE%E5%A4%AA%E5%A4%A7"><span class="toc-text">6. REINFORCE 的问题：方差太大</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#7-Baseline%EF%BC%9A%E4%B8%BA%E4%BB%80%E4%B9%88%E5%8F%AF%E4%BB%A5%E5%87%8F%E5%8E%BB%E4%B8%80%E4%B8%AA%E5%9F%BA%E5%87%86%EF%BC%9F"><span class="toc-text">7. Baseline：为什么可以减去一个基准？</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#8-%E6%9C%80%E5%B8%B8%E7%94%A8%E7%9A%84-baseline%EF%BC%9A%E7%8A%B6%E6%80%81%E4%BB%B7%E5%80%BC%E5%87%BD%E6%95%B0"><span class="toc-text">8. 最常用的 baseline：状态价值函数</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#9-Advantage%EF%BC%9A%E4%BC%98%E5%8A%BF%E5%87%BD%E6%95%B0"><span class="toc-text">9. Advantage：优势函数</span></a></li></ol>
+  </aside>
+
+
+
+  <section class="article-content">
+    <p>下面这条线可以把这些算法串起来：</p>
+<p><strong>REINFORCE：直接优化策略。</strong><br><strong>Baseline：降低梯度估计方差。</strong><br><strong>Advantage：告诉 Actor 某个动作比平均水平好多少。</strong><br><strong>Actor-Critic：用神经网络（Critic）近似价值函数，再据此估计 advantage。</strong><br><strong>PPO：在 Actor-Critic 基础上限制策略每次更新不要太激进。</strong><br><strong>GRPO:</strong>  在 PPO 的基础上去掉 Critic，用“同一个问题下多条回答之间的相对好坏”来估计 advantage。</p>
+<p>我们将分三个部分来讲解策略梯度系列算法。第一部分，我们先讲 <code>REINFORCE</code> 到 <code>Advantage</code>；第二部分从 <code>Actor-Critic</code> 到 <code>PPO</code>; 最后一部分讲解现代最前沿的算法 <code>GRPO</code> 及几个与之相关的主要变体。</p>
+<p>下面开始第一部分的内容：</p>
+<hr>
+<h1 id="1-强化学习的基本目标"><a href="#1-强化学习的基本目标" class="headerlink" title="1. 强化学习的基本目标"></a>1. 强化学习的基本目标</h1><p>我们有一个马尔科夫决策过程：</p>
+<p>$$<br>\mathcal{M}=(\mathcal{S},\mathcal{A},P,r,\gamma)<br>$$</p>
+
+<p>其中：</p>
+<p>$$<br>s_t \in \mathcal{S}<br>$$</p>
+
+<p>表示状态，</p>
+<p>$$<br>a_t \in \mathcal{A}<br>$$</p>
+
+<p>表示动作，</p>
+<p>$$<br>P(s_{t+1}\mid s_t,a_t)<br>$$</p>
+
+<p>表示环境转移概率，</p>
+<p>$$<br>r(s_t,a_t)<br>$$</p>
+
+<p>表示奖励，</p>
+<p>$$<br>\gamma \in [0,1]<br>$$</p>
+
+<p>表示折扣因子。</p>
+<p>策略是：</p>
+<p>$$<br>\pi_\theta(a\mid s)<br>$$</p>
+
+<p>它表示在状态 $s$ 下选择动作 $a$ 的概率。参数 $\theta$ 是我们要学习的。</p>
+<p>强化学习的目标是找到一个策略，让期望累计回报最大：</p>
+<p>$$<br>J(\theta)=\mathbb{E}_{\tau\sim p_\theta(\tau)}[R(\tau)]<br>$$</p>
+
+<p>其中 $\tau$ 表示一整条轨迹：</p>
+<p>$$<br>\tau=(s_0,a_0,s_1,a_1,\dots,s_T,a_T)<br>$$</p>
+
+<p>轨迹回报为：</p>
+<p>$$<br>R(\tau)=\sum_{t=0}^{T}\gamma^t r_t<br>$$</p>
+
+<p>所以目标可以写成：</p>
+<p>$$<br>J(\theta)<br>=<br>\mathbb{E}_{\tau\sim p_\theta(\tau)}<br>\left[<br>\sum_{t=0}^{T}\gamma^t r_t<br>\right]<br>$$</p>
+
+<p>我们真正想做的是：</p>
+<p>$$<br>\max_\theta J(\theta)<br>$$</p>
+
+<p>也就是调整策略参数 $\theta$，让采样出来的轨迹平均回报更高。</p>
+<hr>
+<h1 id="2-轨迹概率是怎么写出来的？"><a href="#2-轨迹概率是怎么写出来的？" class="headerlink" title="2. 轨迹概率是怎么写出来的？"></a>2. 轨迹概率是怎么写出来的？</h1><p>一条轨迹 $\tau$ 的概率可以展开为：</p>
+<p>$$<br>p_\theta(\tau)<br>=<br>p(s_0)<br>\prod_{t=0}^{T}<br>\pi_\theta(a_t\mid s_t)<br>P(s_{t+1}\mid s_t,a_t)<br>$$</p>
+
+<p>这里有三部分：</p>
+<p>第一，初始状态分布：</p>
+<p>$$<br>p(s_0)<br>$$</p>
+
+<p>第二，智能体选择动作的概率：</p>
+<p>$$<br>\pi_\theta(a_t\mid s_t)<br>$$</p>
+
+<p>第三，环境从当前状态转移到下一个状态的概率：</p>
+<p>$$<br>P(s_{t+1}\mid s_t,a_t)<br>$$</p>
+
+<p>注意，只有策略 $\pi_\theta(a_t\mid s_t)$ 依赖参数 $\theta$。环境转移概率 $P$ 不由智能体控制，所以不依赖 $\theta$。</p>
+<p>（下标说明：转移项实际只到 $t=T-1$，因为轨迹在 $a_T$ 处结束、不再有 $s_{T+1}$。这里为书写简洁统一写到 $T$，不影响后面的推导，因为转移项求梯度后都会变成 0。）</p>
+<hr>
+<h1 id="3-策略梯度的核心推导"><a href="#3-策略梯度的核心推导" class="headerlink" title="3. 策略梯度的核心推导"></a>3. 策略梯度的核心推导</h1><p>目标函数是：</p>
+<p>$$<br>J(\theta)<br>=<br>\int p_\theta(\tau)R(\tau)d\tau<br>$$</p>
+
+<p>为了优化它，我们要求梯度：</p>
+<p>$$<br>\nabla_\theta J(\theta)<br>=<br>\nabla_\theta<br>\int p_\theta(\tau)R(\tau)d\tau<br>$$</p>
+
+<p>把梯度移进积分：</p>
+<p>$$<br>\nabla_\theta J(\theta)<br>=<br>\int \nabla_\theta p_\theta(\tau)R(\tau)d\tau<br>$$</p>
+
+<p>现在关键一步来了。</p>
+<p>我们使用一个恒等式：</p>
+<p>$$<br>\nabla_\theta p_\theta(\tau)<br>=<br>p_\theta(\tau)\nabla_\theta \log p_\theta(\tau)<br>$$</p>
+
+<p>为什么成立？</p>
+<p>因为：</p>
+<p>$$<br>\nabla_\theta \log p_\theta(\tau)<br>=<br>\frac{\nabla_\theta p_\theta(\tau)}{p_\theta(\tau)}<br>$$</p>
+
+<p>所以两边乘上 $p_\theta(\tau)$，得到：</p>
+<p>$$<br>p_\theta(\tau)\nabla_\theta \log p_\theta(\tau)<br>=<br>\nabla_\theta p_\theta(\tau)<br>$$</p>
+
+<p>于是：</p>
+<p>$$<br>\nabla_\theta J(\theta)<br>=<br>\int p_\theta(\tau)<br>\nabla_\theta \log p_\theta(\tau)<br>R(\tau)d\tau<br>$$</p>
+
+<p>这就是一个期望：</p>
+<p>$$<br>\nabla_\theta J(\theta)<br>=<br>\mathbb{E}_{\tau\sim p_\theta(\tau)}<br>\left[<br>\nabla_\theta \log p_\theta(\tau)R(\tau)<br>\right]<br>$$</p>
+
+<p>这一步非常重要。它把“对概率分布求梯度”转化成了“对 log 概率求梯度”。</p>
+<hr>
+<h1 id="4-为什么会出现-nabla-theta-log-pi-theta-a-t-mid-s-t-？"><a href="#4-为什么会出现-nabla-theta-log-pi-theta-a-t-mid-s-t-？" class="headerlink" title="4. 为什么会出现 $\nabla_\theta \log \pi_\theta(a_t\mid s_t)$？"></a>4. 为什么会出现 $\nabla_\theta \log \pi_\theta(a_t\mid s_t)$？</h1><p>前面得到：</p>
+<p>$$<br>\nabla_\theta J(\theta)<br>=<br>\mathbb{E}_{\tau}<br>\left[<br>\nabla_\theta \log p_\theta(\tau)R(\tau)<br>\right]<br>$$</p>
+
+<p>现在展开：</p>
+<p>$$<br>p_\theta(\tau)<br>=<br>p(s_0)<br>\prod_{t=0}^{T}<br>\pi_\theta(a_t\mid s_t)<br>P(s_{t+1}\mid s_t,a_t)<br>$$</p>
+
+<p>取 log：</p>
+<p>$$<br>\log p_\theta(\tau)<br>=<br>\log p(s_0)<br>+<br>\sum_{t=0}^{T}<br>\log \pi_\theta(a_t\mid s_t)<br>+<br>\sum_{t=0}^{T}<br>\log P(s_{t+1}\mid s_t,a_t)<br>$$</p>
+
+<p>对 $\theta$ 求梯度：</p>
+<p>$$<br>\nabla_\theta \log p_\theta(\tau)<br>=<br>\nabla_\theta \log p(s_0)<br>+<br>\sum_{t=0}^{T}<br>\nabla_\theta \log \pi_\theta(a_t\mid s_t)<br>+<br>\sum_{t=0}^{T}<br>\nabla_\theta \log P(s_{t+1}\mid s_t,a_t)<br>$$</p>
+
+<p>但是：</p>
+<p>$$<br>p(s_0)<br>$$</p>
+
+<p>不依赖 $\theta$，所以：</p>
+<p>$$<br>\nabla_\theta \log p(s_0)=0<br>$$</p>
+
+<p>环境转移概率：</p>
+<p>$$<br>P(s_{t+1}\mid s_t,a_t)<br>$$</p>
+
+<p>也不依赖 $\theta$，所以：</p>
+<p>$$<br>\nabla_\theta \log P(s_{t+1}\mid s_t,a_t)=0<br>$$</p>
+
+<p>于是只剩下策略项：</p>
+<p>$$<br>\nabla_\theta \log p_\theta(\tau)<br>=<br>\sum_{t=0}^{T}<br>\nabla_\theta \log \pi_\theta(a_t\mid s_t)<br>$$</p>
+
+<p>代回去：</p>
+<p>$$<br>\nabla_\theta J(\theta)<br>=<br>\mathbb{E}_{\tau}<br>\left[<br>\sum_{t=0}^{T}<br>\nabla_\theta \log \pi_\theta(a_t\mid s_t)<br>R(\tau)<br>\right]<br>$$</p>
+
+<p>这就是最基本的策略梯度公式。</p>
+<p>它的直觉是：</p>
+<p>如果某条轨迹的总回报 $R(\tau)$ 很高，那么这条轨迹里出现过的动作，其概率应该被提高。</p>
+<p>如果某条轨迹的总回报 $R(\tau)$ 很低，那么这条轨迹里出现过的动作，其概率应该被降低。</p>
+<hr>
+<h1 id="5-REINFORCE-算法"><a href="#5-REINFORCE-算法" class="headerlink" title="5. REINFORCE 算法"></a>5. REINFORCE 算法</h1><p>REINFORCE 就是直接使用上面的策略梯度公式。</p>
+<p>对于一条采样轨迹：</p>
+<p>$$<br>\tau=(s_0,a_0,s_1,a_1,\dots,s_T,a_T)<br>$$</p>
+
+<p>我们估计梯度为：</p>
+<p>$$<br>\hat{g}<br>=<br>\sum_{t=0}^{T}<br>\nabla_\theta \log \pi_\theta(a_t\mid s_t)<br>R(\tau)<br>$$</p>
+
+<p>然后做梯度上升：</p>
+<p>$$<br>\theta<br>\leftarrow<br>\theta+\alpha \hat{g}<br>$$</p>
+
+<p>其中 $\alpha$ 是学习率。</p>
+<p>但是这样有一个问题：在时间 $t$ 做的动作 $a_t$，不应该被整个轨迹的所有奖励影响，尤其不应该被动作发生之前的奖励影响。</p>
+<p>这里要补一个关键事实：<strong>砍掉动作之前的奖励，不会改变梯度的期望。</strong> 因为对于 $k&lt;t$ 的奖励 $r_k$，它在 $a_t$ 被选之前就已经确定，与 $a_t$ 无关，于是</p>
+<p>$$<br>\mathbb{E}<br>\left[<br>\nabla_\theta \log \pi_\theta(a_t\mid s_t)\, r_k<br>\right]<br>=<br>\mathbb{E}_{s_t}<br>\left[<br>r_k\,<br>\mathbb{E}_{a_t\sim\pi_\theta(\cdot\mid s_t)}<br>\left[<br>\nabla_\theta \log \pi_\theta(a_t\mid s_t)<br>\right]<br>\right]<br>=0<br>$$</p>
+
+<p>最里层的期望为 0，用的是和第 7 节 baseline 完全相同的恒等式 $\mathbb{E}<em>{a\sim\pi}[\nabla</em>\theta\log\pi(a\mid s)]=0$。所以把过去的奖励项去掉是“免费”的：它们对梯度的贡献本来就是 0，只是徒增方差。</p>
+<p>所以更合理的是用从时间 $t$ 开始的未来回报（reward-to-go）：</p>
+<p>$$<br>G_t<br>=<br>\sum_{k=t}^{T}<br>\gamma^{k-t}r_k<br>$$</p>
+
+<p>于是 REINFORCE 的梯度估计变成：</p>
+<p>$$<br>\hat{g}<br>=<br>\sum_{t=0}^{T}<br>\nabla_\theta \log \pi_\theta(a_t\mid s_t)<br>G_t<br>$$</p>
+
+<p>更新为：</p>
+<p>$$<br>\theta<br>\leftarrow<br>\theta<br>+<br>\alpha<br>\sum_{t=0}^{T}<br>\nabla_\theta \log \pi_\theta(a_t\mid s_t)<br>G_t<br>$$</p>
+
+<p>这就是经典 REINFORCE。</p>
+<p>（一个常被略过的细节：从第 4 节严格推导出的折扣版本，每一项前面其实还带一个 $\gamma^t$ 因子，即 $\hat{g}=\sum_t \gamma^t\nabla_\theta\log\pi_\theta(a_t\mid s_t)G_t$。绝大多数实现都会把这个 $\gamma^t$ 丢掉——这相当于对每个时间步一视同仁，工程上更稳定、效果通常更好，但严格说它优化的已不再是原始的折扣目标 $J(\theta)$。本文后续沿用这个去掉 $\gamma^t$ 的实践写法。）</p>
+<hr>
+<h1 id="6-REINFORCE-的问题：方差太大"><a href="#6-REINFORCE-的问题：方差太大" class="headerlink" title="6. REINFORCE 的问题：方差太大"></a>6. REINFORCE 的问题：方差太大</h1><p>虽然 REINFORCE 的梯度估计是无偏的，但它的方差很大。</p>
+<p>为什么？</p>
+<p>因为 $G_t$ 是通过真实采样得到的完整未来回报：</p>
+<p>$$<br>G_t<br>=<br>r_t+\gamma r_{t+1}+\gamma^2 r_{t+2}+\cdots<br>$$</p>
+
+<p>而未来状态和未来奖励都受到随机性影响。比如：</p>
+<p>$$<br>s_{t+1}\sim P(\cdot\mid s_t,a_t)<br>$$</p>
+
+<p>$$<br>a_{t+1}\sim \pi_\theta(\cdot\mid s_{t+1})<br>$$</p>
+
+<p>所以同一个状态 $s_t$，同一个动作 $a_t$，每次采样出来的 $G_t$ 可能差异很大。</p>
+<p>这会导致梯度方向非常不稳定。</p>
+<p>比如某个动作本身是好的，但刚好后面环境随机出了坏结果，那么 $G_t$ 很低，这个动作的概率就被错误降低。</p>
+<p>因此我们需要降低方差。</p>
+<hr>
+<h1 id="7-Baseline：为什么可以减去一个基准？"><a href="#7-Baseline：为什么可以减去一个基准？" class="headerlink" title="7. Baseline：为什么可以减去一个基准？"></a>7. Baseline：为什么可以减去一个基准？</h1><p>我们把梯度写成：</p>
+<p>$$<br>\nabla_\theta J(\theta)<br>=<br>\mathbb{E}<br>\left[<br>\nabla_\theta \log \pi_\theta(a_t\mid s_t)G_t<br>\right]<br>$$</p>
+
+<p>现在我们希望把 $G_t$ 替换成：</p>
+<p>$$<br>G_t-b(s_t)<br>$$</p>
+
+<p>其中 $b(s_t)$ 是一个只依赖状态、不依赖动作的函数。</p>
+<p>新的梯度形式是：</p>
+<p>$$<br>\mathbb{E}<br>\left[<br>\nabla_\theta \log \pi_\theta(a_t\mid s_t)(G_t-b(s_t))<br>\right]<br>$$</p>
+
+<p>问题是：这样会不会改变期望梯度？</p>
+<p>答案是不会。</p>
+<p>因为多出来的项是：</p>
+<p>$$<br>\mathbb{E}<br>\left[<br>\nabla_\theta \log \pi_\theta(a_t\mid s_t)b(s_t)<br>\right]<br>$$</p>
+
+<p>我们证明它等于 0。</p>
+<p>固定一个状态 $s_t=s$，考虑对动作的期望：</p>
+<p>$$<br>\mathbb{E}_{a\sim \pi_\theta(\cdot\mid s)}<br>\left[<br>\nabla_\theta \log \pi_\theta(a\mid s)b(s)<br>\right]<br>$$</p>
+
+<p>因为 $b(s)$ 不依赖动作 $a$，所以可以提出去：</p>
+<p>$$<br>b(s)<br>\mathbb{E}_{a\sim \pi_\theta(\cdot\mid s)}<br>\left[<br>\nabla_\theta \log \pi_\theta(a\mid s)<br>\right]<br>$$</p>
+
+<p>展开期望：</p>
+<p>$$<br>b(s)<br>\sum_a<br>\pi_\theta(a\mid s)<br>\nabla_\theta \log \pi_\theta(a\mid s)<br>$$</p>
+
+<p>又因为：</p>
+<p>$$<br>\nabla_\theta \log \pi_\theta(a\mid s)<br>=<br>\frac{\nabla_\theta \pi_\theta(a\mid s)}<br>{\pi_\theta(a\mid s)}<br>$$</p>
+
+<p>所以：</p>
+<p>$$<br>\pi_\theta(a\mid s)<br>\nabla_\theta \log \pi_\theta(a\mid s)<br>=<br>\nabla_\theta \pi_\theta(a\mid s)<br>$$</p>
+
+<p>于是：</p>
+<p>$$<br>b(s)<br>\sum_a<br>\nabla_\theta \pi_\theta(a\mid s)<br>$$</p>
+
+<p>梯度可以移到求和外：</p>
+<p>$$<br>b(s)<br>\nabla_\theta<br>\sum_a<br>\pi_\theta(a\mid s)<br>$$</p>
+
+<p>而策略概率对所有动作求和为 1：</p>
+<p>$$<br>\sum_a \pi_\theta(a\mid s)=1<br>$$</p>
+
+<p>所以：</p>
+<p>$$<br>b(s)\nabla_\theta 1=0<br>$$</p>
+
+<p>因此：</p>
+<p>$$<br>\mathbb{E}<br>\left[<br>\nabla_\theta \log \pi_\theta(a_t\mid s_t)b(s_t)<br>\right]<br>=<br>0<br>$$</p>
+
+<p>所以减去 baseline 不会改变梯度期望，只会改变方差。</p>
+<p>这就是 baseline 的关键作用：</p>
+<p>$$<br>G_t<br>\quad \longrightarrow \quad<br>G_t-b(s_t)<br>$$</p>
+
+<hr>
+<h1 id="8-最常用的-baseline：状态价值函数"><a href="#8-最常用的-baseline：状态价值函数" class="headerlink" title="8. 最常用的 baseline：状态价值函数"></a>8. 最常用的 baseline：状态价值函数</h1><p>最自然的 baseline 是状态价值函数：</p>
+<p>$$<br>V^\pi(s)<br>=<br>\mathbb{E}_\pi<br>\left[<br>G_t\mid s_t=s<br>\right]<br>$$</p>
+
+<p>它表示：在状态 $s$ 下，按照当前策略继续行动，平均能拿到多少未来回报。</p>
+<p>于是我们可以令：</p>
+<p>$$<br>b(s_t)=V^\pi(s_t)<br>$$</p>
+
+<p>那么策略梯度变成：</p>
+<p>$$<br>\nabla_\theta J(\theta)<br>=<br>\mathbb{E}<br>\left[<br>\nabla_\theta \log \pi_\theta(a_t\mid s_t)<br>(G_t-V^\pi(s_t))<br>\right]<br>$$</p>
+
+<p>这里的：</p>
+<p>$$<br>G_t-V^\pi(s_t)<br>$$</p>
+
+<p>表示：</p>
+<p>真实得到的回报，比这个状态下的平均预期回报高多少。</p>
+<p>如果：</p>
+<p>$$<br>G_t>V^\pi(s_t)<br>$$</p>
+
+<p>说明这个动作带来的结果比平均水平好，应该提高概率。</p>
+<p>如果：</p>
+<p>$$<br>G_t<V^\pi(s_t)<br>$$</p>
+
+<p>说明这个动作带来的结果比平均水平差，应该降低概率。</p>
+<hr>
+<h1 id="9-Advantage：优势函数"><a href="#9-Advantage：优势函数" class="headerlink" title="9. Advantage：优势函数"></a>9. Advantage：优势函数</h1><p>我们定义动作价值函数：</p>
+<p>$$<br>Q^\pi(s,a)<br>=<br>\mathbb{E}_\pi<br>\left[<br>G_t\mid s_t=s,a_t=a<br>\right]<br>$$</p>
+
+<p>它表示：在状态 $s$ 下先做动作 (a)，之后按照策略 $\pi$ 行动，平均能获得多少未来回报。</p>
+<p>状态价值函数是：</p>
+<p>$$<br>V^\pi(s)<br>=<br>\mathbb{E}_{a\sim \pi(\cdot\mid s)}<br>\left[<br>Q^\pi(s,a)<br>\right]<br>$$</p>
+
+<p>它表示：在状态 $s$ 下，不指定具体动作，而是按照策略平均选择动作，平均能获得多少回报。</p>
+<p>优势函数定义为：</p>
+<p>$$<br>A^\pi(s,a)<br>=<br>Q^\pi(s,a)-V^\pi(s)<br>$$</p>
+
+<p>它表示：</p>
+<p>动作 $a$ 比当前策略在状态 $s$ 下的平均动作好多少。</p>
+<p>如果：</p>
+<p>$$<br>A^\pi(s,a)>0<br>$$</p>
+
+<p>说明动作 $a$ 比平均水平好。</p>
+<p>如果：</p>
+<p>$$<br>A^\pi(s,a)<0<br>$$</p>
+
+<p>说明动作 $a$ 比平均水平差。</p>
+<p>这里要把第 8 节和这一节接起来：第 8 节里我们用的是采样回报 $G_t-V^\pi(s_t)$，这一节定义的是 $A^\pi(s_t,a_t)=Q^\pi-V^\pi$，二者凭什么能互换？关键在于 $G_t$ 正是 $Q^\pi$ 的一次无偏采样：</p>
+<p>$$<br>\mathbb{E}<br>\left[<br>G_t\mid s_t,a_t<br>\right]<br>=<br>Q^\pi(s_t,a_t)<br>$$</p>
+
+<p>所以固定 $(s_t,a_t)$ 后，</p>
+<p>$$<br>\mathbb{E}<br>\left[<br>G_t-V^\pi(s_t)\mid s_t,a_t<br>\right]<br>=<br>Q^\pi(s_t,a_t)-V^\pi(s_t)<br>=<br>A^\pi(s_t,a_t)<br>$$</p>
+
+<p>也就是说，<strong>第 8 节那个“采样回报减 baseline”本来就是 advantage 的一个无偏估计</strong>。把它换成 $A^\pi$ 本身，期望梯度不变，只是写得更干净。</p>
+<p>所以策略梯度可以写成：</p>
+<p>$$<br>\nabla_\theta J(\theta)<br>=<br>\mathbb{E}<br>\left[<br>\nabla_\theta \log \pi_\theta(a_t\mid s_t)<br>A^\pi(s_t,a_t)<br>\right]<br>$$</p>
+
+<p>这就是 advantage 形式的策略梯度。</p>
+
+  </section>
+
+  
+
+  
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
+        packages: {'[+]': ['ams']},
+        processEscapes: true,
+        processEnvironments: true,
+        tags: 'ams'
+      },
+      options: {
+        skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      },
+      svg: {
+        fontCache: 'global'
+      }
+    };
+  </script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-svg.js"></script>
+
+
+</article>
+
+    <footer class="site-footer">
+  <p>&copy; 2026 Lee</p>
+  
+    <p class="site-powered">Powered by <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>. Typography based on <a target="_blank" rel="noopener" href="https://github.com/edwardtufte/tufte-css">Tufte CSS</a>.</p>
+  
+</footer>
+
+    <script src="/scripts/theme-toggle.js" defer></script>
+    <script src="/scripts/left-nav.js" defer></script>
+    <script src="/scripts/back-to-top.js" defer></script>
+    
+      <script src="/scripts/toc-scrollspy.js" defer></script>
+      <script src="/scripts/copy-code.js" defer></script>
+    
+  </body>
+</html>
