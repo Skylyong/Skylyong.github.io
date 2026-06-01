@@ -6,15 +6,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="author" content="Lee">
   <meta name="description" content="Keep go on">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Lee&#39;s Blog">
-<meta property="og:url" content="https://skylyong.github.io/archives/2025/02/index.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="2026-06-01-策略梯度算法（二）从Actor-Critic到PPO">
+<meta property="og:url" content="https://skylyong.github.io/2026/06/01/2026-06-01-ce-lue-ti-du-suan-fa-er-cong-actor-critic-dao-ppo/index.html">
 <meta property="og:site_name" content="Lee&#39;s Blog">
 <meta property="og:description" content="Keep go on">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2026-06-01T15:11:44.000Z">
+<meta property="article:modified_time" content="2026-06-01T15:11:44.432Z">
 <meta property="article:author" content="Lee">
 <meta name="twitter:card" content="summary">
-  <title>Lee's Blog</title>
+  <title>2026-06-01-策略梯度算法（二）从Actor-Critic到PPO | Lee's Blog</title>
   
     <link rel="alternate" href="/atom.xml" title="Lee's Blog" type="application/atom+xml">
   
@@ -34,7 +36,7 @@
 </head>
 
   
-  <body class="is-page">
+  <body class="is-post">
     <header class="site-header">
   <a class="site-title" href="/">Lee's Blog</a>
   
@@ -1650,47 +1652,428 @@
   </section>
 </aside>
 
-    <article class="archive-page">
-  <h1>Archives</h1>
-  <section class="post-list compact archive-list">
-    
-      <article class="blog-entry archive-entry">
-        <div class="blog-entry-content">
-          <h2><a href="/2025/02/27/ai-jing-sai-ping-tai/">Ai竞赛平台</a></h2>
-        </div>
-        <time class="blog-entry-date" datetime="2025-02-27T15:18:38.000Z">2025-02-27</time>
-      </article>
-    
-      <article class="blog-entry archive-entry">
-        <div class="blog-entry-content">
-          <h2><a href="/2025/02/19/python-ri-chang-kai-fa-za-ji/">python日常开发杂记</a></h2>
-        </div>
-        <time class="blog-entry-date" datetime="2025-02-19T09:02:28.000Z">2025-02-19</time>
-      </article>
-    
-      <article class="blog-entry archive-entry">
-        <div class="blog-entry-content">
-          <h2><a href="/2025/02/12/tong-guo-docker-bu-shu-doccano-biao-zhu-gong-ju/">通过docker部署doccano标注工具</a></h2>
-        </div>
-        <time class="blog-entry-date" datetime="2025-02-12T09:15:42.000Z">2025-02-12</time>
-      </article>
-    
-      <article class="blog-entry archive-entry">
-        <div class="blog-entry-content">
-          <h2><a href="/2025/02/06/zai-cheng-gong-de-ri-zi-fu-xi-zi-liao-bu-jian-liao/">在呈贡的日子——复习资料不见了</a></h2>
-        </div>
-        <time class="blog-entry-date" datetime="2025-02-06T08:45:24.000Z">2025-02-06</time>
-      </article>
-    
-      <article class="blog-entry archive-entry">
-        <div class="blog-entry-content">
-          <h2><a href="/2025/02/06/zai-cheng-gong-de-ri-zi-lao-yu-he/">在呈贡的日子——捞鱼河</a></h2>
-        </div>
-        <time class="blog-entry-date" datetime="2025-02-06T07:15:04.000Z">2025-02-06</time>
-      </article>
-    
-    
+    <article class="post-page">
+  <h1>2026-06-01-策略梯度算法（二）从Actor-Critic到PPO</h1>
+  
+<p class="post-meta">
+  
+    <time datetime="2026-06-01T15:11:44.000Z">2026-06-01</time>
+  
+  
+  
+  
+</p>
+
+
+  
+
+  
+  <button class="toc-toggle" type="button" aria-controls="toc-sidebar" aria-expanded="true" aria-label="Toggle table of contents">
+    Contents
+  </button>
+  <aside class="toc-sidebar" id="toc-sidebar" aria-label="Table of contents">
+    <p class="toc-title">Contents</p>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#10-%E4%BB%8E-REINFORCE-%E5%88%B0-Actor-Critic"><span class="toc-text">10. 从 REINFORCE 到 Actor-Critic</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#11-Critic-%E5%A6%82%E4%BD%95%E5%AD%A6%E4%B9%A0%EF%BC%9F"><span class="toc-text">11. Critic 如何学习？</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#12-%E4%B8%BA%E4%BB%80%E4%B9%88-TD-error-%E5%8F%AF%E4%BB%A5%E4%BD%9C%E4%B8%BA-advantage%EF%BC%9F"><span class="toc-text">12. 为什么 TD error 可以作为 advantage？</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#13-Actor-Critic-%E7%9A%84-Actor-%E6%9B%B4%E6%96%B0"><span class="toc-text">13. Actor-Critic 的 Actor 更新</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#14-Actor-Critic-%E6%80%BB%E6%8D%9F%E5%A4%B1"><span class="toc-text">14. Actor-Critic 总损失</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#15-Actor-Critic-%E7%9B%B8%E6%AF%94-REINFORCE-%E7%9A%84%E5%8F%98%E5%8C%96"><span class="toc-text">15. Actor-Critic 相比 REINFORCE 的变化</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#16-%E4%B8%BA%E4%BB%80%E4%B9%88%E8%BF%98%E9%9C%80%E8%A6%81-PPO%EF%BC%9F"><span class="toc-text">16. 为什么还需要 PPO？</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#17-PPO-%E7%9A%84%E6%A6%82%E7%8E%87%E6%AF%94%E7%8E%87"><span class="toc-text">17. PPO 的概率比率</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#18-PPO-%E7%9A%84-unclipped-objective"><span class="toc-text">18. PPO 的 unclipped objective</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#19-PPO-%E7%9A%84-clipped-objective"><span class="toc-text">19. PPO 的 clipped objective</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#20-PPO-clipping-%E7%9A%84%E7%9B%B4%E8%A7%89"><span class="toc-text">20. PPO clipping 的直觉</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%83%85%E5%86%B5%E4%B8%80%EF%BC%9A-hat-A-t-0"><span class="toc-text">情况一：$\hat{A}_t&gt;0$</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%83%85%E5%86%B5%E4%BA%8C%EF%BC%9A-hat-A-t"><span class="toc-text">情况二：$\hat{A}_t&lt;0$</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#21-PPO-%E7%9A%84%E5%AE%8C%E6%95%B4%E6%8D%9F%E5%A4%B1"><span class="toc-text">21. PPO 的完整损失</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#22-%E5%87%A0%E4%B8%AA%E7%AE%97%E6%B3%95%E4%B9%8B%E9%97%B4%E7%9A%84%E5%85%B3%E7%B3%BB"><span class="toc-text">22. 几个算法之间的关系</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#23-%E7%94%A8%E4%B8%80%E5%8F%A5%E8%AF%9D%E6%80%BB%E7%BB%93%E6%AF%8F%E4%B8%AA%E7%AE%97%E6%B3%95"><span class="toc-text">23. 用一句话总结每个算法</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#24-%E6%9C%80%E9%87%8D%E8%A6%81%E7%9A%84%E9%80%BB%E8%BE%91%E9%93%BE"><span class="toc-text">24. 最重要的逻辑链</span></a></li></ol>
+  </aside>
+
+
+
+  <section class="article-content">
+    <p>下面这条线可以把这些算法串起来：</p>
+<p><strong>REINFORCE：直接优化策略。</strong><br><strong>Baseline：降低梯度估计方差。</strong><br><strong>Advantage：告诉 Actor 某个动作比平均水平好多少。</strong><br><strong>Actor-Critic：用神经网络（Critic）近似价值函数，再据此估计 advantage。</strong><br><strong>PPO：在 Actor-Critic 基础上限制策略每次更新不要太激进。</strong><br><strong>GRPO:</strong>  在 PPO 的基础上去掉 Critic，用“同一个问题下多条回答之间的相对好坏”来估计 advantage。</p>
+<p>我们将分三个部分来讲解策略梯度系列算法。第一部分，我们先讲 <code>REINFORCE</code> 到 <code>Advantage</code>；第二部分从 <code>Actor-Critic</code> 到 <code>PPO</code>; 最后一部分讲解现代最前沿的算法 <code>GRPO</code> 及几个与之相关的主要变体。</p>
+<p>上一篇我们讲了策略梯度算法的第一部分，接下来我们开始第二部分内容的讲解：</p>
+<hr>
+<h1 id="10-从-REINFORCE-到-Actor-Critic"><a href="#10-从-REINFORCE-到-Actor-Critic" class="headerlink" title="10. 从 REINFORCE 到 Actor-Critic"></a>10. 从 REINFORCE 到 Actor-Critic</h1><p>REINFORCE 使用真实采样得到的 $G_t$：</p>
+<p>$$<br>G_t<br>=<br>r_t+\gamma r_{t+1}+\gamma^2r_{t+2}+\cdots<br>$$</p>
+
+<p>然后用：</p>
+<p>$$<br>G_t-V^\pi(s_t)<br>$$</p>
+
+<p>估计 advantage。</p>
+<p>但是 $G_t$ 需要等一整条轨迹结束才能计算，而且方差很大。</p>
+<p>Actor-Critic 的想法是：</p>
+<p>不要完全依赖完整回报 $G_t$，而是训练一个 Critic 来估计价值函数。</p>
+<p>Actor 是策略网络：</p>
+<p>$$<br>\pi_\theta(a\mid s)<br>$$</p>
+
+<p>Critic 是价值网络：</p>
+<p>$$<br>V_\phi(s)<br>$$</p>
+
+<p>其中 $\theta$ 是 Actor 的参数，$\phi$ 是 Critic 的参数。</p>
+<p>Critic 负责估计：</p>
+<p>$$<br>V^\pi(s)<br>$$</p>
+
+<p>Actor 负责根据 Critic 给出的信号更新策略。</p>
+<hr>
+<h1 id="11-Critic-如何学习？"><a href="#11-Critic-如何学习？" class="headerlink" title="11. Critic 如何学习？"></a>11. Critic 如何学习？</h1><p>状态价值函数满足贝尔曼方程：</p>
+<p>$$<br>V^\pi(s_t)<br>=<br>\mathbb{E}_\pi<br>\left[<br>r_t+\gamma V^\pi(s_{t+1})<br>\mid s_t<br>\right]<br>$$</p>
+
+<p>如果我们用神经网络 $V_\phi(s)$ 近似 $V^\pi(s)$，那么一次真实采样得到：</p>
+<p>$$<br>s_t,a_t,r_t,s_{t+1}<br>$$</p>
+
+<p>可以构造一个目标：</p>
+<p>$$<br>y_t<br>=<br>r_t+\gamma V_\phi(s_{t+1})<br>$$</p>
+
+<p>这个目标叫 TD target。</p>
+<p>当前 Critic 的预测是：</p>
+<p>$$<br>V_\phi(s_t)<br>$$</p>
+
+<p>于是 TD error 是：</p>
+<p>$$<br>\delta_t<br>=<br>r_t+\gamma V_\phi(s_{t+1})-V_\phi(s_t)<br>$$</p>
+
+<p>它表示：</p>
+<p>实际观察到的一步奖励加上下一个状态价值，比 Critic 原来对当前状态的估计高多少。</p>
+<p>Critic 的损失函数一般写成：</p>
+<p>$$<br>L_{\text{critic}}(\phi)<br>=<br>\frac{1}{2}<br>\left(<br>r_t+\gamma V_\phi(s_{t+1})<br>-<br>V_\phi(s_t)<br>\right)^2<br>$$</p>
+
+<p>也就是：</p>
+<p>$$<br>L_{\text{critic}}(\phi)<br>=<br>\frac{1}{2}\delta_t^2<br>$$</p>
+
+<p>Critic 通过最小化这个损失来学习价值函数。</p>
+<p>需要强调一点：求梯度时，TD target $r_t+\gamma V_\phi(s_{t+1})$ 被<strong>当作常数</strong>（detach / stop-gradient），梯度只通过 $V_\phi(s_t)$ 传播。也就是说我们其实是在让 $V_\phi(s_t)$ 去追一个（暂时固定的）目标，而不是对 $\delta_t^2$ 里两个 $V_\phi$ 同时求导。这叫半梯度（semi-gradient）TD，是 TD 学习能稳定收敛的标准做法；如果把目标也一起求导，就变成了另一回事，容易发散。</p>
+<hr>
+<h1 id="12-为什么-TD-error-可以作为-advantage？"><a href="#12-为什么-TD-error-可以作为-advantage？" class="headerlink" title="12. 为什么 TD error 可以作为 advantage？"></a>12. 为什么 TD error 可以作为 advantage？</h1><p>优势函数是：</p>
+<p>$$<br>A^\pi(s_t,a_t)<br>=<br>Q^\pi(s_t,a_t)-V^\pi(s_t)<br>$$</p>
+
+<p>而根据贝尔曼关系：</p>
+<p>$$<br>Q^\pi(s_t,a_t)<br>=<br>\mathbb{E}<br>\left[<br>r_t+\gamma V^\pi(s_{t+1})<br>\mid s_t,a_t<br>\right]<br>$$</p>
+
+<p>所以：</p>
+<p>$$<br>A^\pi(s_t,a_t)<br>=<br>\mathbb{E}<br>\left[<br>r_t+\gamma V^\pi(s_{t+1})<br>-<br>V^\pi(s_t)<br>\mid s_t,a_t<br>\right]<br>$$</p>
+
+<p>如果我们用一次采样近似这个期望，并且用 $V_\phi$ 近似 $V^\pi$，就得到：</p>
+<p>$$<br>\hat{A}_t<br>=<br>r_t+\gamma V_\phi(s_{t+1})-V_\phi(s_t)<br>$$</p>
+
+<p>也就是：</p>
+<p>$$<br>\hat{A}_t=\delta_t<br>$$</p>
+
+<p>所以 TD error 可以看作 advantage 的一种估计。</p>
+<p>这就是 Actor-Critic 的核心：</p>
+<p>Critic 计算：</p>
+<p>$$<br>\delta_t<br>=<br>r_t+\gamma V_\phi(s_{t+1})-V_\phi(s_t)<br>$$</p>
+
+<p>Actor 使用：</p>
+<p>$$<br>\nabla_\theta \log \pi_\theta(a_t\mid s_t)\delta_t<br>$$</p>
+
+<p>更新策略。</p>
+<hr>
+<h1 id="13-Actor-Critic-的-Actor-更新"><a href="#13-Actor-Critic-的-Actor-更新" class="headerlink" title="13. Actor-Critic 的 Actor 更新"></a>13. Actor-Critic 的 Actor 更新</h1><p>Actor 的目标是最大化：</p>
+<p>$$<br>J_{\text{actor}}(\theta)<br>=<br>\mathbb{E}<br>\left[<br>\log \pi_\theta(a_t\mid s_t)\hat{A}_t<br>\right]<br>$$</p>
+
+<p>其中：</p>
+<p>$$<br>\hat{A}_t<br>=<br>r_t+\gamma V_\phi(s_{t+1})-V_\phi(s_t)<br>$$</p>
+
+<p>梯度是：</p>
+<p>$$<br>\nabla_\theta J_{\text{actor}}(\theta)<br>=<br>\mathbb{E}<br>\left[<br>\nabla_\theta \log \pi_\theta(a_t\mid s_t)\hat{A}_t<br>\right]<br>$$</p>
+
+<p>如果：</p>
+<p>$$<br>\hat{A}_t>0<br>$$</p>
+
+<p>说明这个动作比 Critic 预期更好，于是增大：</p>
+<p>$$<br>\log \pi_\theta(a_t\mid s_t)<br>$$</p>
+
+<p>等价于增大：</p>
+<p>$$<br>\pi_\theta(a_t\mid s_t)<br>$$</p>
+
+<p>如果：</p>
+<p>$$<br>\hat{A}_t<0<br>$$</p>
+
+<p>说明这个动作比 Critic 预期更差，于是减小：</p>
+<p>$$<br>\log \pi_\theta(a_t\mid s_t)<br>$$</p>
+
+<p>等价于减小：</p>
+<p>$$<br>\pi_\theta(a_t\mid s_t)<br>$$</p>
+
+<p>实际训练中，我们通常最小化损失函数，所以写成负号：</p>
+<p>$$<br>L_{\text{actor}}(\theta)<br>=<br>-<br>\log \pi_\theta(a_t\mid s_t)\hat{A}_t<br>$$</p>
+
+<p>最小化这个损失，等价于最大化原来的 actor 目标。</p>
+<hr>
+<h1 id="14-Actor-Critic-总损失"><a href="#14-Actor-Critic-总损失" class="headerlink" title="14. Actor-Critic 总损失"></a>14. Actor-Critic 总损失</h1><p>常见 Actor-Critic 会同时训练 Actor 和 Critic。</p>
+<p>Actor loss：</p>
+<p>$$<br>L_{\text{actor}}(\theta)<br>=<br>-<br>\log \pi_\theta(a_t\mid s_t)\hat{A}_t<br>$$</p>
+
+<p>Critic loss：</p>
+<p>$$<br>L_{\text{critic}}(\phi)<br>=<br>\frac{1}{2}<br>\left(<br>r_t+\gamma V_\phi(s_{t+1})-V_\phi(s_t)<br>\right)^2<br>$$</p>
+
+<p>有时还会加熵正则项，鼓励策略探索：</p>
+<p>$$<br>H(\pi_\theta(\cdot\mid s_t))<br>=<br>-<br>\sum_a<br>\pi_\theta(a\mid s_t)<br>\log \pi_\theta(a\mid s_t)<br>$$</p>
+
+<p>总损失可以写成：</p>
+<p>$$<br>L(\theta,\phi)<br>=<br>L_{\text{actor}}(\theta)<br>+<br>c_1 L_{\text{critic}}(\phi)<br>-<br>c_2 H(\pi_\theta)<br>$$</p>
+
+<p>其中 $c_1,c_2$ 是权重系数。</p>
+<p>注意最后是减去熵项，因为我们在最小化损失，减去熵就等价于鼓励熵变大。</p>
+<hr>
+<h1 id="15-Actor-Critic-相比-REINFORCE-的变化"><a href="#15-Actor-Critic-相比-REINFORCE-的变化" class="headerlink" title="15. Actor-Critic 相比 REINFORCE 的变化"></a>15. Actor-Critic 相比 REINFORCE 的变化</h1><p>REINFORCE 用完整回报：</p>
+<p>$$<br>G_t<br>=<br>r_t+\gamma r_{t+1}+\gamma^2r_{t+2}+\cdots<br>$$</p>
+
+<p>作为更新信号。</p>
+<p>Actor-Critic 用 TD error：</p>
+<p>$$<br>\delta_t<br>=<br>r_t+\gamma V_\phi(s_{t+1})-V_\phi(s_t)<br>$$</p>
+
+<p>作为更新信号。</p>
+<p>所以两者的核心区别是：</p>
+<p>$$<br>G_t - V(s_t)<br>$$</p>
+
+<p>变成了：</p>
+<p>$$<br>r_t+\gamma V(s_{t+1})-V(s_t)<br>$$</p>
+
+<p>前者依赖完整未来回报，方差大，但偏差小。</p>
+<p>后者依赖 Critic 估计，方差小，但可能有偏差，因为 $V_\phi$ 不一定准确。</p>
+<p>这就是强化学习中常见的 bias-variance tradeoff：</p>
+<p>REINFORCE：高方差，低偏差。<br>Actor-Critic：低方差，但引入价值函数近似偏差。</p>
+<hr>
+<h1 id="16-为什么还需要-PPO？"><a href="#16-为什么还需要-PPO？" class="headerlink" title="16. 为什么还需要 PPO？"></a>16. 为什么还需要 PPO？</h1><p>Actor-Critic 有一个问题：策略更新可能太大。</p>
+<p>假设旧策略是：</p>
+<p>$$<br>\pi_{\theta_{\text{old}}}(a\mid s)<br>$$</p>
+
+<p>更新后新策略是：</p>
+<p>$$<br>\pi_\theta(a\mid s)<br>$$</p>
+
+<p>如果一次更新让策略变化很大，那么之前采样到的数据就不再适合当前策略。</p>
+<p>比如旧策略下某个动作概率是：</p>
+<p>$$<br>\pi_{\theta_{\text{old}}}(a_t\mid s_t)=0.2<br>$$</p>
+
+<p>新策略突然变成：</p>
+<p>$$<br>\pi_\theta(a_t\mid s_t)=0.9<br>$$</p>
+
+<p>这说明策略发生了非常剧烈的变化。</p>
+<p>在强化学习中，数据是由策略自己采样出来的。策略一旦变太快，训练就容易不稳定。</p>
+<p>PPO 的目标就是：</p>
+<p>在提高好动作概率的同时，限制新策略不要离旧策略太远。</p>
+<hr>
+<h1 id="17-PPO-的概率比率"><a href="#17-PPO-的概率比率" class="headerlink" title="17. PPO 的概率比率"></a>17. PPO 的概率比率</h1><p>PPO 定义一个概率比率：</p>
+<p>$$<br>r_t(\theta)<br>=<br>\frac{<br>\pi_\theta(a_t\mid s_t)<br>}{<br>\pi_{\theta_{\text{old}}}(a_t\mid s_t)<br>}<br>$$</p>
+
+<p>它表示：</p>
+<p>新策略给这个动作的概率，是旧策略的多少倍。</p>
+<p>如果：</p>
+<p>$$<br>r_t(\theta)=1<br>$$</p>
+
+<p>说明新旧策略对这个动作的概率一样。</p>
+<p>如果：</p>
+<p>$$<br>r_t(\theta)>1<br>$$</p>
+
+<p>说明新策略提高了这个动作的概率。</p>
+<p>如果：</p>
+<p>$$<br>r_t(\theta)<1<br>$$</p>
+
+<p>说明新策略降低了这个动作的概率。</p>
+<p>Actor-Critic 的目标大概是：</p>
+<p>$$<br>\log \pi_\theta(a_t\mid s_t)\hat{A}_t<br>$$</p>
+
+<p>PPO 改成了：</p>
+<p>$$<br>r_t(\theta)\hat{A}_t<br>$$</p>
+
+<p>为什么？</p>
+<p>因为数据是旧策略采样的，但我们想估计新策略的效果。概率比率就是重要性采样修正。</p>
+<p>可以直观理解为：</p>
+<p>旧策略采样到了动作 $a_t$，现在看新策略相对于旧策略，是更想选它，还是更不想选它。</p>
+<p>为什么把 $\log\pi_\theta$ 换成 $r_t(\theta)$ 是自洽的？因为在更新的起点 $\theta=\theta_{\text{old}}$ 处，二者的梯度完全相同：</p>
+<p>$$<br>\nabla_\theta\, r_t(\theta)\Big|_{\theta=\theta_{\text{old}}}<br>=<br>\frac{\nabla_\theta \pi_\theta(a_t\mid s_t)}{\pi_{\theta_{\text{old}}}(a_t\mid s_t)}\Bigg|_{\theta=\theta_{\text{old}}}<br>=<br>\nabla_\theta \log \pi_\theta(a_t\mid s_t)\Big|_{\theta=\theta_{\text{old}}}<br>$$</p>
+
+<p>所以 $r_t(\theta)\hat A_t$ 在起点给出的梯度，和 Actor-Critic 的 $\log\pi_\theta\cdot\hat A_t$ 一模一样——它只是把同一个目标改写成一个<strong>可以在 $\theta$ 离开 $\theta_{\text{old}}$ 后仍然连续度量“走了多远”的形式</strong>，这样才好在它上面做 clipping。（严格说 $r_t\hat A_t$ 是 TRPO 推出的代理目标，不是逐条轨迹的精确重要性采样；“重要性采样修正”是常用的直觉说法。）</p>
+<hr>
+<h1 id="18-PPO-的-unclipped-objective"><a href="#18-PPO-的-unclipped-objective" class="headerlink" title="18. PPO 的 unclipped objective"></a>18. PPO 的 unclipped objective</h1><p>PPO 的基本目标是：</p>
+<p>$$<br>L^{\text{PG}}(\theta)<br>=<br>\mathbb{E}_t<br>\left[<br>r_t(\theta)\hat{A}_t<br>\right]<br>$$</p>
+
+<p>其中：</p>
+<p>$$<br>r_t(\theta)<br>=<br>\frac{<br>\pi_\theta(a_t\mid s_t)<br>}{<br>\pi_{\theta_{\text{old}}}(a_t\mid s_t)<br>}<br>$$</p>
+
+<p>如果：</p>
+<p>$$<br>\hat{A}_t>0<br>$$</p>
+
+<p>说明动作好，我们希望增大：</p>
+<p>$$<br>r_t(\theta)<br>$$</p>
+
+<p>也就是让新策略更倾向于选择这个动作。</p>
+<p>如果：</p>
+<p>$$<br>\hat{A}_t<0<br>$$</p>
+
+<p>说明动作差，我们希望减小：</p>
+<p>$$<br>r_t(\theta)<br>$$</p>
+
+<p>也就是让新策略不那么倾向于选择这个动作。</p>
+<p>但是，如果完全最大化这个目标，就可能让 $r_t(\theta)$ 变得过大或过小，导致策略更新过猛。</p>
+<p>所以 PPO 引入 clipping。</p>
+<hr>
+<h1 id="19-PPO-的-clipped-objective"><a href="#19-PPO-的-clipped-objective" class="headerlink" title="19. PPO 的 clipped objective"></a>19. PPO 的 clipped objective</h1><p>PPO 的核心目标函数是：</p>
+<p>$$<br>L^{\text{CLIP}}(\theta)<br>=<br>\mathbb{E}_t<br>\left[<br>\min<br>\left(<br>r_t(\theta)\hat{A}_t,<br>\operatorname{clip}<br>(r_t(\theta),1-\epsilon,1+\epsilon)\hat{A}_t<br>\right)<br>\right]<br>$$</p>
+
+<p>其中：</p>
+<p>$$<br>\epsilon<br>$$</p>
+
+<p>通常取 $0.1$ 或 $0.2$。</p>
+<p>clip 操作定义为：</p>
+<p>$$<br>\operatorname{clip}(r_t,1-\epsilon,1+\epsilon)<br>=<br>\begin{cases}<br>1-\epsilon, & r_t<1-\epsilon \\<br>r_t, & 1-\epsilon\le r_t\le 1+\epsilon \\<br>1+\epsilon, & r_t>1+\epsilon<br>\end{cases}<br>$$</p>
+
+<p>这个公式有两层结构，要分开看：内层的 $\operatorname{clip}$ 把比率限制在 $[1-\epsilon,1+\epsilon]$ 内，外层再套一个 $\min$。</p>
+<p>先说一个常见误解：<strong>这个公式并不是强行把 $r_t(\theta)$ 锁死在 $[1-\epsilon,1+\epsilon]$ 里。</strong> 真实参数 $r_t(\theta)$ 完全可以跑到区间外，clip 只发生在“目标函数”里，作用是<strong>在某些方向上把梯度变成 0，从而不再激励策略继续往那个方向更新</strong>。而且因为有外层的 $\min$ 和 $\hat A_t$ 的符号，这个限制是<strong>单边、非对称</strong>的，方向取决于这个动作是好是坏。具体怎么单边，下一节分两种情况讲清楚。</p>
+<p>如果 $\epsilon=0.2$，那么这个“安全区”就是：</p>
+<p>$$<br>[1-\epsilon,1+\epsilon]=[0.8,1.2]<br>$$</p>
+
+<p>直觉上：只要新策略给某个动作的概率落在旧策略的 $0.8$ 到 $1.2$ 倍之间，就照常更新；一旦越过边界、并且是在“会让目标继续变好”的那个方向上越过，$\min$ 就会把它截断，不再奖励更激进的更新。</p>
+<hr>
+<h1 id="20-PPO-clipping-的直觉"><a href="#20-PPO-clipping-的直觉" class="headerlink" title="20. PPO clipping 的直觉"></a>20. PPO clipping 的直觉</h1><p>分两种情况看。</p>
+<h2 id="情况一：-hat-A-t-0"><a href="#情况一：-hat-A-t-0" class="headerlink" title="情况一：$\hat{A}_t>0$"></a>情况一：$\hat{A}_t&gt;0$</h2><p>动作是好的。</p>
+<p>原始目标：</p>
+<p>$$<br>r_t(\theta)\hat{A}_t<br>$$</p>
+
+<p>希望 $r_t(\theta)$ 越大越好。</p>
+<p>但是如果 $r_t(\theta)$ 太大，比如超过：</p>
+<p>$$<br>1+\epsilon<br>$$</p>
+
+<p>说明新策略已经把这个好动作的概率提高很多了。</p>
+<p>PPO 认为：</p>
+<p>已经提高够了，不要继续鼓励更大的更新。</p>
+<p>于是使用：</p>
+<p>$$<br>\operatorname{clip}(r_t,1-\epsilon,1+\epsilon)\hat{A}_t<br>$$</p>
+
+<p>当 $r_t&gt;1+\epsilon$ 时，clip 后变成：</p>
+<p>$$<br>(1+\epsilon)\hat{A}_t<br>$$</p>
+
+<p>目标不再继续增加。</p>
+<p>所以对于好动作，PPO 限制：</p>
+<p>$$<br>r_t(\theta) \le 1+\epsilon<br>$$</p>
+
+<p>不要把好动作概率提升得太猛。</p>
+<p>那反过来，如果 $\hat A_t&gt;0$ 但 $r_t(\theta)$ 反而掉到了 $1-\epsilon$ 以下呢（好动作的概率被压低了）？这时 $\min$ 的作用就体现出来了：</p>
+<p>$$<br>\min\big(\,r_t\hat A_t,\ (1-\epsilon)\hat A_t\,\big)<br>$$</p>
+
+<p>因为 $\hat A_t&gt;0$ 且 $r_t&lt;1-\epsilon$，有 $r_t\hat A_t&lt;(1-\epsilon)\hat A_t$，所以 $\min$ 选的是<strong>未裁剪</strong>的 $r_t\hat A_t$。也就是说，PPO <strong>没有</strong>在这个方向上设限——它允许策略把这个被错误压低的好动作的概率重新拉回来。这正是 $\min$ 的设计意图：<strong>裁剪只在“会把更新推得过猛”的方向上生效，在“纠正错误”的方向上始终放行。</strong> 单纯一个 $\operatorname{clip}$ 做不到这种非对称效果，必须靠外层的 $\min$。</p>
+<hr>
+<h2 id="情况二：-hat-A-t"><a href="#情况二：-hat-A-t" class="headerlink" title="情况二：$\hat{A}_t<0$"></a>情况二：$\hat{A}_t&lt;0$</h2><p>动作是差的。</p>
+<p>原始目标：</p>
+<p>$$<br>r_t(\theta)\hat{A}_t<br>$$</p>
+
+<p>因为 $\hat{A}_t&lt;0$，如果要最大化目标，就希望 $r_t(\theta)$ 越小越好。</p>
+<p>也就是降低差动作的概率。</p>
+<p>但是如果 $r_t(\theta)$ 太小，比如低于：</p>
+<p>$$<br>1-\epsilon<br>$$</p>
+
+<p>说明新策略已经把这个差动作概率降低很多了。</p>
+<p>PPO 认为：</p>
+<p>已经降低够了，不要继续鼓励更大的更新。</p>
+<p>于是对于差动作，PPO 限制：</p>
+<p>$$<br>r_t(\theta) \ge 1-\epsilon<br>$$</p>
+
+<p>不要把差动作概率压得太猛。</p>
+<p>同样地，如果 $\hat A_t&lt;0$ 但 $r_t(\theta)$ 反而涨到了 $1+\epsilon$ 以上（差动作的概率被错误抬高了），此时 $\hat A_t&lt;0$、$r_t&gt;1+\epsilon$，有 $r_t\hat A_t&lt;(1+\epsilon)\hat A_t$，$\min$ 仍然选未裁剪的 $r_t\hat A_t$，于是允许策略把这个差动作的概率重新压下去。两种情况合起来就是一句话：<strong>$\min$ 让 PPO 只在“离 $\theta_{\text{old}}$ 越来越远且方向有害”时停手，在“往回纠正”时永远放行。</strong></p>
+<hr>
+<h1 id="21-PPO-的完整损失"><a href="#21-PPO-的完整损失" class="headerlink" title="21. PPO 的完整损失"></a>21. PPO 的完整损失</h1><p>实际 PPO 通常会同时包含三部分：</p>
+<p>Actor clipped loss：</p>
+<p>$$<br>L^{\text{CLIP}}(\theta)<br>$$</p>
+
+<p>Value function loss：</p>
+<p>$$<br>L^{\text{VF}}(\phi)<br>=<br>\mathbb{E}_t<br>\left[<br>(V_\phi(s_t)-V_t^{\text{target}})^2<br>\right]<br>$$</p>
+
+<p>Entropy bonus：</p>
+<p>$$<br>H(\pi_\theta)<br>$$</p>
+
+<p>最终最大化目标可以写成：</p>
+<p>$$<br>L^{\text{PPO}}(\theta,\phi)<br>=<br>\mathbb{E}_t<br>\left[<br>L_t^{\text{CLIP}}(\theta)<br>-<br>c_1 L_t^{\text{VF}}(\phi)<br>+<br>c_2 H(\pi_\theta(\cdot\mid s_t))<br>\right]<br>$$</p>
+
+<p>如果写成最小化损失，则通常是：</p>
+<p>$$<br>\mathcal{L}^{\text{PPO}}<br>=<br>-<br>L^{\text{CLIP}}(\theta)<br>+<br>c_1 L^{\text{VF}}(\phi)<br>-<br>c_2 H(\pi_\theta)<br>$$</p>
+
+<p>这里：</p>
+<p>$$<br>c_1<br>$$</p>
+
+<p>控制 Critic loss 的权重，</p>
+<p>$$<br>c_2<br>$$</p>
+
+<p>控制 entropy bonus 的权重。</p>
+<hr>
+<h1 id="22-几个算法之间的关系"><a href="#22-几个算法之间的关系" class="headerlink" title="22. 几个算法之间的关系"></a>22. 几个算法之间的关系</h1><p>最原始的策略梯度是：</p>
+<p>$$<br>\nabla_\theta J(\theta)<br>=<br>\mathbb{E}<br>\left[<br>\nabla_\theta \log \pi_\theta(a_t\mid s_t)G_t<br>\right]<br>$$</p>
+
+<p>REINFORCE 使用完整回报：</p>
+<p>$$<br>G_t<br>$$</p>
+
+<p>加入 baseline 后：</p>
+<p>$$<br>\nabla_\theta J(\theta)<br>=<br>\mathbb{E}<br>\left[<br>\nabla_\theta \log \pi_\theta(a_t\mid s_t)<br>(G_t-V(s_t))<br>\right]<br>$$</p>
+
+<p>于是出现 advantage：</p>
+<p>$$<br>A(s_t,a_t)<br>=<br>Q(s_t,a_t)-V(s_t)<br>$$</p>
+
+<p>Actor-Critic 用 TD error 近似 advantage：</p>
+<p>$$<br>\hat{A}_t<br>=<br>r_t+\gamma V_\phi(s_{t+1})-V_\phi(s_t)<br>$$</p>
+
+<p>所以 Actor-Critic 更新为：</p>
+<p>$$<br>\nabla_\theta J(\theta)<br>=<br>\mathbb{E}<br>\left[<br>\nabla_\theta \log \pi_\theta(a_t\mid s_t)\hat{A}_t<br>\right]<br>$$</p>
+
+<p>PPO 在 Actor-Critic 基础上加入概率比率：</p>
+<p>$$<br>r_t(\theta)<br>=<br>\frac{<br>\pi_\theta(a_t\mid s_t)<br>}{<br>\pi_{\theta_{\text{old}}}(a_t\mid s_t)<br>}<br>$$</p>
+
+<p>然后用 clipping 限制更新：</p>
+<p>$$<br>L^{\text{CLIP}}(\theta)<br>=<br>\mathbb{E}<br>\left[<br>\min(<br>r_t(\theta)\hat{A}_t,<br>\operatorname{clip}(r_t(\theta),1-\epsilon,1+\epsilon)\hat{A}_t<br>)<br>\right]<br>$$</p>
+
+<hr>
+<h1 id="23-用一句话总结每个算法"><a href="#23-用一句话总结每个算法" class="headerlink" title="23. 用一句话总结每个算法"></a>23. 用一句话总结每个算法</h1><p><strong>REINFORCE</strong>：</p>
+<p>直接用采样到的完整未来回报 $G_t$ 来增强或削弱动作概率。</p>
+<p>$$<br>\nabla_\theta J<br>=<br>\mathbb{E}<br>\left[<br>\nabla_\theta \log \pi_\theta(a_t\mid s_t)G_t<br>\right]<br>$$</p>
+
+<p><strong>REINFORCE with baseline</strong>：</p>
+<p>不是看回报绝对值，而是看它比当前状态的平均水平高多少。</p>
+<p>$$<br>\nabla_\theta J<br>=<br>\mathbb{E}<br>\left[<br>\nabla_\theta \log \pi_\theta(a_t\mid s_t)<br>(G_t-V(s_t))<br>\right]<br>$$</p>
+
+<p><strong>Advantage Actor-Critic</strong>：</p>
+<p>用 Critic 估计价值函数，并用 TD error 近似 advantage。</p>
+<p>$$<br>\hat{A}_t<br>=<br>r_t+\gamma V_\phi(s_{t+1})-V_\phi(s_t)<br>$$</p>
+
+<p>$$<br>\nabla_\theta J<br>=<br>\mathbb{E}<br>\left[<br>\nabla_\theta \log \pi_\theta(a_t\mid s_t)\hat{A}_t<br>\right]<br>$$</p>
+
+<p><strong>PPO</strong>：</p>
+<p>在 Actor-Critic 的基础上，用概率比率控制新旧策略差异，避免策略更新过大。</p>
+<p>$$<br>r_t(\theta)<br>=<br>\frac{<br>\pi_\theta(a_t\mid s_t)<br>}{<br>\pi_{\theta_{\text{old}}}(a_t\mid s_t)<br>}<br>$$</p>
+
+<p>$$<br>L^{\text{CLIP}}<br>=<br>\mathbb{E}<br>\left[<br>\min(<br>r_t\hat{A}_t,<br>\operatorname{clip}(r_t,1-\epsilon,1+\epsilon)\hat{A}_t<br>)<br>\right]<br>$$</p>
+
+<hr>
+<h1 id="24-最重要的逻辑链"><a href="#24-最重要的逻辑链" class="headerlink" title="24. 最重要的逻辑链"></a>24. 最重要的逻辑链</h1><p>你可以把整个发展过程理解为：</p>
+<p>$$<br>\text{Policy Gradient}<br>\rightarrow<br>\text{REINFORCE}<br>\rightarrow<br>\text{Baseline}<br>\rightarrow<br>\text{Advantage}<br>\rightarrow<br>\text{Actor-Critic}<br>\rightarrow<br>\text{PPO}<br>$$</p>
+
+<p>对应的思想变化是：</p>
+<p>最开始，我们只知道：</p>
+<p>“回报高的动作，概率应该增大。”</p>
+<p>后来发现：</p>
+<p>“不能只看回报绝对值，要看它比平均水平好多少。”</p>
+<p>于是有了 baseline 和 advantage。</p>
+<p>再后来发现：</p>
+<p>“完整回报 $G_t$ 方差太大，应该训练一个 Critic 来估计价值。”</p>
+<p>于是有了 Actor-Critic。</p>
+<p>最后发现：</p>
+<p>“Actor-Critic 更新可能太猛，需要限制新旧策略差距。”</p>
+<p>于是有了 PPO。</p>
+
   </section>
+
+  
+
+  
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
+        packages: {'[+]': ['ams']},
+        processEscapes: true,
+        processEnvironments: true,
+        tags: 'ams'
+      },
+      options: {
+        skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      },
+      svg: {
+        fontCache: 'global'
+      }
+    };
+  </script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-svg.js"></script>
+
+
 </article>
 
     <footer class="site-footer">
@@ -1703,6 +2086,9 @@
     <script src="/scripts/theme-toggle.js" defer></script>
     <script src="/scripts/left-nav.js" defer></script>
     <script src="/scripts/back-to-top.js" defer></script>
+    
+      <script src="/scripts/toc-scrollspy.js" defer></script>
+      <script src="/scripts/copy-code.js" defer></script>
     
   </body>
 </html>
